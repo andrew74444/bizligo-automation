@@ -17,7 +17,7 @@ public class SystemAdminDashboardPage extends BasePage{
 	}
 	
 	
-	@FindBy(xpath="//h3[contains(text(),'System Admin Dashboard')]")
+	@FindBy(xpath="//h3[contains(text(),'Admin Dashboard')]")
 	WebElement SystemAdminDashboardHeader;
 	
 	
