@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" thread-count="2" parallel="classes">
+
+	<listeners>
+		<listener
+			class-name="com.cpcommunity.ExtentListeners.ExtentListeners"></listener>
+		<listener
+			class-name="com.uiFramework.pamTen.cpcommunity.helper.listener.RetryListener" />
+							<listener class-name="com.cpcommunity.utilities.CustomTestNGReporter" />
+	</listeners>
+
+	<!-- 167 -->
+	
+	
+	<test name="Test10" preserve-order="true">
+		<classes>
+
+					
+			
+				
+			
+			
+			
+
+			
+			
+				
+		</classes>
+	</test>
+
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+
+
+
+	<!-- https://cpcommunityqa.azurewebsites.net/paymentgateways/paymentconfirmation?PaymentId=11060&TransactionId=89956520CL977604X&Message=Payment%20Processed%20successfully&PaymentPurpose=PRICING_PLAN_PURCHASE&FailedAttempts=0&ReturnUrlType=communities%2Fpricing%2F1360 
+		https://cpcommunityqa.azurewebsites.net/paymentgateways/paymentconfirmation?PaymentId=11061&TransactionId=95P14972NY335362Y&Message=Payment%20Processed%20successfully&PaymentPurpose=PRICING_PLAN_PURCHASE&FailedAttempts=0&ReturnUrlType=communities%2Fpricing%2F1359 -->
+
+	<!-- TC180_Verify_Expired_Membership_Member_Not_Able_Access_Community -->
+</suite> <!-- Suite -->

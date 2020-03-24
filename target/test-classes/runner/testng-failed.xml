@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" verbose="0" name="Failed suite [Failed suite [Suite]]" parallel="classes">
+  <listeners>
+    <listener class-name="com.cpcommunity.ExtentListeners.ExtentListeners"/>
+    <listener class-name="com.uiFramework.pamTen.cpcommunity.helper.listener.RetryListener"/>
+    <listener class-name="com.cpcommunity.utilities.CustomTestNGReporter"/>
+  </listeners>
+  
+  
+  <test name="Test9(failed)(failed)" parallel="classes">
+    <classes>
+      <class name="com.cpcommunity.testScripts.community.TC108_Share_Posts_in_Group">
+        <methods>
+          <include name="setUpFramework"/>
+          <include name="TC058" invocation-numbers="0"/>
+          <include name="sendmail"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.community.TC058_Group_Admin_Manage_Group_Members -->
+      
+    </classes>
+  </test> <!-- Test9(failed)(failed) -->
+  
+</suite> <!-- Failed suite [Failed suite [Suite]] -->

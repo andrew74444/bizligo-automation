@@ -1,0 +1,4 @@
+INFO    2020-03-24 07:05:31,317 [main] com.cpcommunity.testScripts.community.BaseTest  - Config properties file loaded
+INFO    2020-03-24 07:05:33,390 [TestNG-test=Test1-1] com.cpcommunity.testScripts.community.BaseTest  - Inside Login Test
+INFO    2020-03-24 07:05:49,559 [TestNG-test=Test1-1] com.cpcommunity.testScripts.community.BaseTest  - Driver Initialized !!!
+INFO    2020-03-24 07:06:45,588 [TestNG-test=Test1-1] com.cpcommunity.testScripts.community.BaseTest  - Test Execution Completed !!!
