@@ -28,17 +28,17 @@ public class TC141_Create_Free_Event extends BaseTest {
 		DataUtil.checkExecution("master", "TC141", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		System.out.println(data);
-//		openBrowser(data.get("browser"));
-//		logInfo("Launched Browser : " + data.get("browser"));
-//		HomePage home = new HomePage().open();
-//		LoginPage login = home.clickOnLOGINBtn();
-//		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
-//		MyDashboardPage Dashboard_Page = EcoSystemPage.goToDashBoardPage();
-//		MyCommunitiesPage myCommunitiesPage = Dashboard_Page.NaviagtingToMyCommunities();
-//		CommunityDashboardPage communityDashboardPage = myCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
-//		CommunityEventsPage CommunityEvents = communityDashboardPage.navigateToEvents();
-//		CreateOrEditEvent CreateOrEditEvent = CommunityEvents.NewEvent();
-//		CreateOrEditEvent.createEvent(data);
+		openBrowser(data.get("browser"));
+		logInfo("Launched Browser : " + data.get("browser"));
+		HomePage home = new HomePage().open();
+		LoginPage login = home.clickOnLOGINBtn();
+		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+		MyDashboardPage Dashboard_Page = EcoSystemPage.goToDashBoardPage();
+		MyCommunitiesPage myCommunitiesPage = Dashboard_Page.NaviagtingToMyCommunities();
+		CommunityDashboardPage communityDashboardPage = myCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
+		CommunityEventsPage CommunityEvents = communityDashboardPage.navigateToEvents();
+		CreateOrEditEvent CreateOrEditEvent = CommunityEvents.NewEvent();
+		CreateOrEditEvent.createEvent(data);
 	}
 
 	@AfterMethod

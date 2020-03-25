@@ -1,2 +1,16 @@
-INFO    2020-03-25 20:48:31,358 [main] com.cpcommunity.testScripts.community.BaseTest  - Config properties file loaded
-INFO    2020-03-25 20:48:33,355 [TestNG-test=Test1-1] com.cpcommunity.testScripts.community.BaseTest  - Inside Login Test
+INFO    2020-03-25 21:15:07,553 [main] com.cpcommunity.testScripts.community.BaseTest  - Config properties file loaded
+INFO    2020-03-25 21:15:09,589 [TestNG-test=Test1-1] com.cpcommunity.testScripts.community.BaseTest  - Inside Login Test
+INFO    2020-03-25 21:15:18,008 [TestNG-test=Test1-1] com.cpcommunity.testScripts.community.BaseTest  - Driver Initialized !!!
+INFO    2020-03-25 21:15:46,061 [TestNG-test=Test1-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2020-03-25 21:15:51,189 [TestNG-test=Test1-1] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (de8f3cf2f57b2dc239d6948583a2ce13)] -> xpath: //a[contains(.,'Login')]] for :60 seconds
+INFO    2020-03-25 21:15:54,244 [TestNG-test=Test1-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : LOGIN
+INFO    2020-03-25 21:16:03,709 [TestNG-test=Test1-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2020-03-25 21:16:08,727 [TestNG-test=Test1-1] com.cpcommunity.PageObjects.BasePage  - Typing in : email address entered the value as : andrew74444@gmail.com
+INFO    2020-03-25 21:16:09,610 [TestNG-test=Test1-1] com.cpcommunity.PageObjects.BasePage  - Typing in : password entered the value as : Admin@123
+INFO    2020-03-25 21:16:09,955 [TestNG-test=Test1-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Login
+INFO    2020-03-25 21:16:24,270 [TestNG-test=Test1-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2020-03-25 21:16:29,357 [TestNG-test=Test1-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Toggledropdownmenu
+INFO    2020-03-25 21:16:29,695 [TestNG-test=Test1-1] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (de8f3cf2f57b2dc239d6948583a2ce13)] -> xpath: //a[contains(.,' Dashboard')]] for :60 seconds
+INFO    2020-03-25 21:16:31,732 [TestNG-test=Test1-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Dashboard
+INFO    2020-03-25 21:16:43,920 [TestNG-test=Test1-1] com.cpcommunity.PageObjects.BasePage  - ---> DashBoard
+INFO    2020-03-25 21:17:01,101 [TestNG-test=Test1-1] com.cpcommunity.testScripts.community.BaseTest  - Test Execution Completed !!!
