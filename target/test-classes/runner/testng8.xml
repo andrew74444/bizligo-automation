@@ -12,7 +12,7 @@
 
 	<test name="Test1" preserve-order="true">
 		<classes>
-			<class name="com.cpcommunity.testScripts.Event_Registrations.TC145_PromoCode_Event_Registration_With_PayPal_From_Event_Details_Page" />
+			<class name="com.cpcommunity.testScripts.community.TC108_Share_Posts_in_Group" />
 			
 			
 			

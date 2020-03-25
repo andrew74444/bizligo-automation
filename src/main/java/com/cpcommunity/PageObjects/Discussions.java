@@ -151,9 +151,11 @@ public class Discussions extends BasePage {
 
 		addPost(postMessage);
 
-		click(PostBtn, "Post");
+//		click(, "Post");
+		clickElementByJavaScript(PostBtn);
 		Thread.sleep(20000);
-
+		
+		
 		type(searchDiscussion, postMessage, "searchDiscussion");
 		click(Searchbtn, "Search");
 		Thread.sleep(2000);
