@@ -506,7 +506,7 @@ public class CreateOrEditEvent extends BasePage {
 		click(AddSpeakerBtn, "Add Speaker");
 		waitForElementToPresent(AddReminderBtn);
 		type(Speaker_Name, data.get("speakerName"), "Speaker_Name");
-		type(Speaker_Image, "D:\\Workspace\\CPCommunityQA\\src\\main\\resources\\configfile\\Files\\ChromeImage8.jpg",
+		type(Speaker_Image, System.getProperty("user.dir") + "src/test/resources/testImages/Files/ChromeImage8.jpg",
 				"Speaker Image");
 
 		Thread.sleep(2000);

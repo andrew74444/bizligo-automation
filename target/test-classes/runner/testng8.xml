@@ -12,7 +12,7 @@
 
 	<test name="Test1" preserve-order="true">
 		<classes>
-			<class name="com.cpcommunity.testScripts.community.TC108_Share_Posts_in_Group" />
+			<class name="com.cpcommunity.testScripts.Create_Free_Event.TC141_Create_Free_Event" />
 			
 			
 			
