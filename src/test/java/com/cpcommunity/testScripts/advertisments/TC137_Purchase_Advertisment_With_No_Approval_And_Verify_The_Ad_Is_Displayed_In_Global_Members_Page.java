@@ -41,12 +41,12 @@ public class TC137_Purchase_Advertisment_With_No_Approval_And_Verify_The_Ad_Is_D
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		MyDashboardPage myDashboardPage = EcoSystemPage.goToDashBoardPage();	
-		MyCommunitiesPage myCommunitiesPage =  myDashboardPage.NaviagtingToMyCommunities();
-		CommunityDetailsPage communityDetailsPage = myCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
-		AdvertismentPurchasePage advertismentPurchasePage =communityDetailsPage.clickOnAdvertisements();
-		PaymentOptionsPage paymentOptionsPage = advertismentPurchasePage.SelectPlan(data.get("planName"),  data.get("adImage"), data.get("linkUrl"), data.get("additionalInstructions"));
-		PaymentReceipt paymentReceipt = paymentOptionsPage.makePayment(data.get("paymentMethod"),data.get("promoCode"));
-		paymentReceipt.verifyPublishedMessageisDisplayed();
+//		MyCommunitiesPage myCommunitiesPage =  myDashboardPage.NaviagtingToMyCommunities();
+//		CommunityDetailsPage communityDetailsPage = myCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
+//		AdvertismentPurchasePage advertismentPurchasePage =communityDetailsPage.clickOnAdvertisements();
+//		PaymentOptionsPage paymentOptionsPage = advertismentPurchasePage.SelectPlan(data.get("planName"),  data.get("adImage"), data.get("linkUrl"), data.get("additionalInstructions"));
+//		PaymentReceipt paymentReceipt = paymentOptionsPage.makePayment(data.get("paymentMethod"),data.get("promoCode"));
+//		paymentReceipt.verifyPublishedMessageisDisplayed();
 		GlobalMembersPage globalMembersPage =myDashboardPage.navigateToGlobalMembers();
 		globalMembersPage.verifyAdImage(data.get("imgVerification"));
 

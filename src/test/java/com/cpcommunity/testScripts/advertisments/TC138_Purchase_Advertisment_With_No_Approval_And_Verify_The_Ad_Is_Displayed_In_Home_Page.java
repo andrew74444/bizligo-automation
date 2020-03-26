@@ -32,15 +32,15 @@ public class TC138_Purchase_Advertisment_With_No_Approval_And_Verify_The_Ad_Is_D
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		HomePage home = new HomePage().open();
-		LoginPage login = home.clickOnLOGINBtn();
-		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
-		MyDashboardPage myDashboardPage = EcoSystemPage.goToDashBoardPage();	
-		MyAdvertisements myAdvertisements =  myDashboardPage.NaviagtingToMyAdvertisements();
-		AdvertismentPurchasePage advertismentPurchasePage=myAdvertisements.createAd();
-		PaymentOptionsPage paymentOptionsPage=advertismentPurchasePage.SelectPlan(data.get("planName"), data.get("adImage"), data.get("linkUrl"), data.get("additionalInstructions"));
-		PaymentReceipt paymentReceipt = paymentOptionsPage.makePayment(data.get("paymentMethod"),data.get("promoCode"));
-		paymentReceipt.verifyPublishedMessageisDisplayed();
-		home = home.NavigateToHome();
+//		LoginPage login = home.clickOnLOGINBtn();
+//		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+//		MyDashboardPage myDashboardPage = EcoSystemPage.goToDashBoardPage();	
+//		MyAdvertisements myAdvertisements =  myDashboardPage.NaviagtingToMyAdvertisements();
+//		AdvertismentPurchasePage advertismentPurchasePage=myAdvertisements.createAd();
+//		PaymentOptionsPage paymentOptionsPage=advertismentPurchasePage.SelectPlan(data.get("planName"), data.get("adImage"), data.get("linkUrl"), data.get("additionalInstructions"));
+//		PaymentReceipt paymentReceipt = paymentOptionsPage.makePayment(data.get("paymentMethod"),data.get("promoCode"));
+//		paymentReceipt.verifyPublishedMessageisDisplayed();
+//		home = home.NavigateToHome();
 		home.verifyAdImage(data.get("imgVerification"));		
 		
 		//Assert.fail("Failing the login test");

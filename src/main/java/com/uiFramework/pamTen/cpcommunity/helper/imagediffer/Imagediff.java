@@ -46,10 +46,10 @@ public class Imagediff {
 	}
 
 	public static void check(String expectedImageFileName, String actualImageFileName) throws Exception {
-		System.out.println(System.getProperty("user.dir") + expectedImageFileName);
-		System.out.println(System.getProperty("user.dir") + actualImageFileName);
-		BufferedImage expectedImg = readFile(System.getProperty("user.dir") + expectedImageFileName);
-		BufferedImage actualImg = readFile(System.getProperty("user.dir") + actualImageFileName);
+		System.out.println(expectedImageFileName);
+		System.out.println(actualImageFileName);
+		BufferedImage expectedImg = readFile(expectedImageFileName);
+		BufferedImage actualImg = readFile(actualImageFileName);
 		diff(expectedImg, actualImg);
 	}
 

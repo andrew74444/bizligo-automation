@@ -38,11 +38,11 @@ public class TC136_Purchase_Advertisment_With_No_Approval_And_Verify_The_Ad_Is_D
 		MyDashboardPage myDashboardPage = EcoSystemPage.goToDashBoardPage();	
 		MyCommunitiesPage myCommunitiesPage =  myDashboardPage.NaviagtingToMyCommunities();
 		CommunityDetailsPage communityDetailsPage = myCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
-		AdvertismentPurchasePage advertismentPurchasePage =communityDetailsPage.clickOnAdvertisements();
-		PaymentOptionsPage paymentOptionsPage = advertismentPurchasePage.SelectPlan(data.get("planName"), data.get("adImage"), data.get("linkUrl"), data.get("additionalInstructions"));
-		PaymentReceipt paymentReceipt = paymentOptionsPage.makePayment(data.get("paymentMethod"),data.get("promoCode"));
-		paymentReceipt.verifyPublishedMessageisDisplayed();
-		communityDetailsPage = paymentReceipt.NavigateToCommunityDetailspage();
+//		AdvertismentPurchasePage advertismentPurchasePage =communityDetailsPage.clickOnAdvertisements();
+//		PaymentOptionsPage paymentOptionsPage = advertismentPurchasePage.SelectPlan(data.get("planName"), data.get("adImage"), data.get("linkUrl"), data.get("additionalInstructions"));
+//		PaymentReceipt paymentReceipt = paymentOptionsPage.makePayment(data.get("paymentMethod"),data.get("promoCode"));
+//		paymentReceipt.verifyPublishedMessageisDisplayed();
+//		communityDetailsPage = paymentReceipt.NavigateToCommunityDetailspage();
 		communityDetailsPage.verifyAdImage(data.get("Imgverification"));
 
 		
