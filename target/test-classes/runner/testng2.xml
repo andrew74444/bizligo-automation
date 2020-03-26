@@ -144,7 +144,7 @@
 			<class name="com.cpcommunity.testScripts.community.TC064_Community_Admin_Approve_And_Reject_Community_Requests" />
 			<class name="com.cpcommunity.testScripts.community.TC053_Community_Admin_Manage_Group_Members" />
 						
-			<class name="com.cpcommunity.testScripts.community.TC106_Join_And_Leave_Public_Group_From_My_Groups_Page" />
+			
 			<class name="com.cpcommunity.testScripts.community.TC107_Member_Cancel_Groups_Request_From_MyGroups" />
 			<class name="com.cpcommunity.testScripts.community.TC108_Share_Posts_in_Group" />
 			<class name="com.cpcommunity.testScripts.community.TC162_Verify_Member_Able_To_Access_Manage_Community_When_The_CA_Role_Is_Assigned" />	
@@ -159,7 +159,7 @@
 				<class name="com.cpcommunity.testScripts.advertisments.TC134_Verify_Member_Is_Able_Purchased_Required_Approval_Ad" />
 				<class name="com.cpcommunity.testScripts.advertisments.TC135_Verify_Member_Is_Able_Purchased_Required_Approval_Global_Members_Ad" />
 				<class name="com.cpcommunity.testScripts.community.TC120_Add_Terms_And_Conditions" />
-						
+				<class name="com.cpcommunity.testScripts.community.TC106_Join_And_Leave_Public_Group_From_My_Groups_Page" />
 				<class name="com.cpcommunity.testScripts.advertisments.TC136_Purchase_Advertisment_With_No_Approval_And_Verify_The_Ad_Is_Displayed_Community_Details_Page" />
 				<class name="com.cpcommunity.testScripts.advertisments.TC137_Purchase_Advertisment_With_No_Approval_And_Verify_The_Ad_Is_Displayed_In_Global_Members_Page" />
 				<class name="com.cpcommunity.testScripts.advertisments.TC138_Purchase_Advertisment_With_No_Approval_And_Verify_The_Ad_Is_Displayed_In_Home_Page" />
