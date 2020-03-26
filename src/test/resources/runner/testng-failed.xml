@@ -36,17 +36,5 @@
     </classes>
   </test> <!-- Test10(failed)(failed) -->
 
-  <test name="Test13(failed)(failed)" parallel="classes">
-    <classes>
-      <class name="com.cpcommunity.testScripts.community.TC105_Group_Admin_Approve_And_Reject_Group_Requests">
-        <methods>
-          <include name="setUpFramework"/>
-          <include name="TC105" invocation-numbers="0"/>
-          <include name="tearDown"/>
-          <include name="sendmail"/>
-        </methods>
-      </class> <!-- com.cpcommunity.testScripts.community.TC105_Group_Admin_Approve_And_Reject_Group_Requests -->
 
-    </classes>
-  </test> <!-- Test13(failed)(failed) -->
 </suite> <!-- Failed suite [Failed suite [Suite]] -->
