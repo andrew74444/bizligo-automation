@@ -9,22 +9,7 @@
 
   <test name="Test10(failed)(failed)" parallel="classes">
     <classes>
-      <class name="com.cpcommunity.testScripts.advertisments.TC137_Purchase_Advertisment_With_No_Approval_And_Verify_The_Ad_Is_Displayed_In_Global_Members_Page">
-        <methods>
-          <include name="setUpFramework"/>
-          <include name="tearDown"/>
-          <include name="TC137" invocation-numbers="0"/>
-          <include name="sendmail"/>
-        </methods>
-      </class> <!-- com.cpcommunity.testScripts.advertisments.TC137_Purchase_Advertisment_With_No_Approval_And_Verify_The_Ad_Is_Displayed_In_Global_Members_Page -->
-      <class name="com.cpcommunity.testScripts.advertisments.TC136_Purchase_Advertisment_With_No_Approval_And_Verify_The_Ad_Is_Displayed_Community_Details_Page">
-        <methods>
-          <include name="setUpFramework"/>
-          <include name="TC136" invocation-numbers="0"/>
-          <include name="sendmail"/>
-          <include name="tearDown"/>
-        </methods>
-      </class> <!-- com.cpcommunity.testScripts.advertisments.TC136_Purchase_Advertisment_With_No_Approval_And_Verify_The_Ad_Is_Displayed_Community_Details_Page -->
+      
       <class name="com.cpcommunity.testScripts.advertisments.TC138_Purchase_Advertisment_With_No_Approval_And_Verify_The_Ad_Is_Displayed_In_Home_Page">
         <methods>
           <include name="setUpFramework"/>

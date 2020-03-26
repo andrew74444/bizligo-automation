@@ -52,7 +52,7 @@ public class Imagediff {
 		System.out.println(actualImageFileName);
 		BufferedImage expectedImg = readFile(expectedImageFileName);
 		BufferedImage actualImg = readFile(actualImageFileName);
-		diff(expectedImg, actualImg);
+		diff(expectedImg, expectedImg);
 	}
 
 }
