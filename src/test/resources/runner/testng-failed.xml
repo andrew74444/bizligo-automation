@@ -6,18 +6,7 @@
     <listener class-name="com.uiFramework.pamTen.cpcommunity.helper.listener.RetryListener"/>
     <listener class-name="com.cpcommunity.utilities.CustomTestNGReporter"/>
   </listeners>
-  <test name="Test1(failed)(failed)" parallel="classes">
-    <classes>
-      <class name="com.cpcommunity.testScripts.community.TC001_Purchase_Pricing_Plan_With_PayPal">
-        <methods>
-          <include name="TC001" invocation-numbers="0"/>
-          <include name="tearDown"/>
-          <include name="setUpFramework"/>
-          <include name="sendmail"/>
-        </methods>
-      </class> <!-- com.cpcommunity.testScripts.community.TC001_Purchase_Pricing_Plan_With_PayPal -->
-    </classes>
-  </test> <!-- Test1(failed)(failed) -->
+
   <test name="Test10(failed)(failed)" parallel="classes">
     <classes>
       <class name="com.cpcommunity.testScripts.advertisments.TC137_Purchase_Advertisment_With_No_Approval_And_Verify_The_Ad_Is_Displayed_In_Global_Members_Page">
@@ -46,18 +35,7 @@
       </class> <!-- com.cpcommunity.testScripts.advertisments.TC138_Purchase_Advertisment_With_No_Approval_And_Verify_The_Ad_Is_Displayed_In_Home_Page -->
     </classes>
   </test> <!-- Test10(failed)(failed) -->
-  <test name="Test12(failed)(failed)" parallel="classes">
-    <classes>
-      <class name="com.cpcommunity.testScripts.community.TC170_Verify_Non_Member_Not_Able_Share_Posts_And_Like_Comment_in_Communities">
-        <methods>
-          <include name="tearDown"/>
-          <include name="setUpFramework"/>
-          <include name="TC170" invocation-numbers="0"/>
-          <include name="sendmail"/>
-        </methods>
-      </class> <!-- com.cpcommunity.testScripts.community.TC170_Verify_Non_Member_Not_Able_Share_Posts_And_Like_Comment_in_Communities -->
-    </classes>
-  </test> <!-- Test12(failed)(failed) -->
+
   <test name="Test13(failed)(failed)" parallel="classes">
     <classes>
       <class name="com.cpcommunity.testScripts.community.TC105_Group_Admin_Approve_And_Reject_Group_Requests">
@@ -68,14 +46,7 @@
           <include name="sendmail"/>
         </methods>
       </class> <!-- com.cpcommunity.testScripts.community.TC105_Group_Admin_Approve_And_Reject_Group_Requests -->
-      <class name="com.cpcommunity.testScripts.community.TC179_Verify_Member_Is_Able_Update_Membership_Plan">
-        <methods>
-          <include name="tearDown"/>
-          <include name="setUpFramework"/>
-          <include name="TC179" invocation-numbers="0"/>
-          <include name="sendmail"/>
-        </methods>
-      </class> <!-- com.cpcommunity.testScripts.community.TC179_Verify_Member_Is_Able_Update_Membership_Plan -->
+
     </classes>
   </test> <!-- Test13(failed)(failed) -->
 </suite> <!-- Failed suite [Failed suite [Suite]] -->
