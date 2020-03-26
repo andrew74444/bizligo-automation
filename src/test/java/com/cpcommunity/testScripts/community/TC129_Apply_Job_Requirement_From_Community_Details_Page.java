@@ -33,7 +33,6 @@ public class TC129_Apply_Job_Requirement_From_Community_Details_Page extends Bas
 		logInfo("Launched Browser : "+data.get("browser"));
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
-//		login.login(data.get("username"), data.get("password"));
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		MyDashboardPage Dashboard_Page = EcoSystemPage.goToDashBoardPage();		
 		GlobalCommunitesPage GlobalCommunitesPage = Dashboard_Page.naviagtingToGlobalCommunities();

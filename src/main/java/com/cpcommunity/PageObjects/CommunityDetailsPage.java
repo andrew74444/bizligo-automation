@@ -300,8 +300,9 @@ public class CommunityDetailsPage extends BasePage {
 		waitForElementToPresent(Apply);
 		click(Apply, "Apply");
 		waitForElementToPresent(this.Resume);
-		type(this.Resume, Resume, "OptionalMessage");
-		type(this.OptionalMessage, OptionalMessage, "OptionalMessage");
+		
+		type(this.Resume, projectFloder(Resume), "Resume");
+		type(this.OptionalMessage, OptionalMessage, "Optional Message");
 		click(Submit, "Submit");
 		waitForElementToPresent(CurrentJobOpenings);
 		this.searchJob(JobTitle);

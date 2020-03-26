@@ -22,7 +22,6 @@ public class TC130_Apply_Job_Requirement_From_Global_Careers extends BaseTest {
 
 	
 	
-	
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP",enabled=true)
 	public void TC130(Hashtable<String,String> data) throws Exception {
 
@@ -32,8 +31,7 @@ public class TC130_Apply_Job_Requirement_From_Global_Careers extends BaseTest {
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		HomePage home = new HomePage().open();
-		LoginPage login = home.clickOnLOGINBtn();
-		
+		LoginPage login = home.clickOnLOGINBtn();		
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		MyDashboardPage Dashboard_Page = EcoSystemPage.goToDashBoardPage();
 		MyCommunitiesPage MyCommunitiesPage = Dashboard_Page.NaviagtingToMyCommunities();
