@@ -30,6 +30,8 @@ public class Imagediff {
 	public static void diff(BufferedImage expectedImg, BufferedImage actualImg) {
 		ImageDiffer imgDiff = new ImageDiffer();
 		log.info("Verifing the the image");
+		log.info(expectedImg);
+		log.info(actualImg);
 		ImageDiff dif = imgDiff.makeDiff(expectedImg, actualImg);
 		if (dif.hasDiff()) {
 			log.info("Both images are different");
