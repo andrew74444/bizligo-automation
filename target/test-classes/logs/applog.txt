@@ -1,103 +1,11 @@
-INFO    2020-03-25 21:27:42,490 [main] com.cpcommunity.testScripts.community.BaseTest  - Config properties file loaded
-INFO    2020-03-25 21:27:44,563 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.testScripts.community.BaseTest  - Inside Login Test
-INFO    2020-03-25 21:27:50,753 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.testScripts.community.BaseTest  - Driver Initialized !!!
-INFO    2020-03-25 21:28:17,901 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
-INFO    2020-03-25 21:28:23,026 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (fea4b3d0b02ddaafdbc6e790f62cadcc)] -> xpath: //a[contains(.,'Login')]] for :60 seconds
-INFO    2020-03-25 21:28:26,060 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : LOGIN
-INFO    2020-03-25 21:28:35,217 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
-INFO    2020-03-25 21:28:40,233 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Typing in : email address entered the value as : andrew74444@gmail.com
-INFO    2020-03-25 21:28:41,100 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Typing in : password entered the value as : Admin@123
-INFO    2020-03-25 21:28:41,461 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Login
-INFO    2020-03-25 21:28:54,801 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
-INFO    2020-03-25 21:28:59,860 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Toggledropdownmenu
-INFO    2020-03-25 21:29:00,225 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (fea4b3d0b02ddaafdbc6e790f62cadcc)] -> xpath: //a[contains(.,' Dashboard')]] for :60 seconds
-INFO    2020-03-25 21:29:02,263 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Dashboard
-INFO    2020-03-25 21:29:12,218 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - ---> DashBoard
-INFO    2020-03-25 21:29:15,704 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
-INFO    2020-03-25 21:29:30,477 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
-INFO    2020-03-25 21:29:35,625 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (fea4b3d0b02ddaafdbc6e790f62cadcc)] -> xpath: //input[@placeholder='Search by Community Name']] for :60 seconds
-INFO    2020-03-25 21:29:38,252 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Typing in : Search by Community entered the value as : Community - 25 March 2020
-INFO    2020-03-25 21:29:39,188 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : search btn
-INFO    2020-03-25 21:29:45,511 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (fea4b3d0b02ddaafdbc6e790f62cadcc)] -> xpath: //a[@tooltip='Community - 25 March 2020']] for :60 seconds
-INFO    2020-03-25 21:29:47,965 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Manage
-INFO    2020-03-25 21:29:51,942 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (fea4b3d0b02ddaafdbc6e790f62cadcc)] -> xpath: //h2[contains(text(),'Dashboard')]] for :60 seconds
-INFO    2020-03-25 21:29:58,932 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
-INFO    2020-03-25 21:30:03,955 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Events
-INFO    2020-03-25 21:30:10,500 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
-INFO    2020-03-25 21:30:15,523 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : New button
-INFO    2020-03-25 21:30:34,244 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
-INFO    2020-03-25 21:30:39,299 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Typing in : Location entered the value as : 5 Independence Way, Princeton, NJ
-INFO    2020-03-25 21:30:43,986 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Typing in : Event Name entered the value as : Free event - 25 March 2020
-INFO    2020-03-25 21:30:48,659 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Selecting the +Event Category+ value as : Community
-INFO    2020-03-25 21:30:50,125 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Selecting the +Timezone+ value as : India Standard Time
-INFO    2020-03-25 21:30:50,578 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Start Date Time
-INFO    2020-03-25 21:30:52,296 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Typing in : Event Start Time entered the value as : 3/25/2020 9:45 PM
-INFO    2020-03-25 21:30:53,502 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Selecting the +hourselect+ value as : 9
-INFO    2020-03-25 21:30:53,627 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Selecting the +hourselect+ value as : 45
-INFO    2020-03-25 21:30:53,751 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Selecting the +ampmselect+ value as : PM
-INFO    2020-03-25 21:30:53,864 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Typing in : Event End Date entered the value as : 3/25/2020 11:45 PM
-INFO    2020-03-25 21:30:55,164 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Selecting the +Selecting Event End hour+ value as : 10
-INFO    2020-03-25 21:30:55,478 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Selecting the +hour selecting+ value as : 45
-INFO    2020-03-25 21:30:55,777 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Selecting the +PM+ value as : PM
-INFO    2020-03-25 21:30:55,861 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : ApplyBtn
-INFO    2020-03-25 21:31:00,696 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Typing in : Description entered the value as : Please check back event description soon
-INFO    2020-03-25 21:31:02,910 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Typing in : Description entered the value as : D:\workspace\bizligo-Automation\src\test\resources\testImages\Files\ChromeImage8.jpg
-INFO    2020-03-25 21:31:10,537 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (fea4b3d0b02ddaafdbc6e790f62cadcc)] -> xpath: //span[contains(.,'  Add Ticket ')]] for :60 seconds
-INFO    2020-03-25 21:31:19,603 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Add Ticket
-INFO    2020-03-25 21:31:20,811 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Typing in : Ticket entered the value as : Member Ticket
-INFO    2020-03-25 21:31:23,682 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Selecting the +Ticket Type+ value as : Individual
-INFO    2020-03-25 21:31:27,898 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Available Dates
-INFO    2020-03-25 21:31:28,377 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (fea4b3d0b02ddaafdbc6e790f62cadcc)] -> xpath: //*[@class='daterangepicker dropdown-menu ltr show-calendar openscenter dropup']//*[contains(text(),'Apply')]] for :60 seconds
-INFO    2020-03-25 21:31:30,647 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Typing in : Ticket Start Time entered the value as : 3/25/2020 9:45 PM
-INFO    2020-03-25 21:31:31,864 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Typing in : Ticket End Time entered the value as : 3/25/2020 11:45 PM
-INFO    2020-03-25 21:31:33,112 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Calendar Apply
-INFO    2020-03-25 21:31:33,450 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Save button in the pop up
-INFO    2020-03-25 21:31:35,689 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Save And Continue
-INFO    2020-03-25 21:31:36,009 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (fea4b3d0b02ddaafdbc6e790f62cadcc)] -> xpath: //span[contains(.,'  Add Reminder ')]] for :60 seconds
-INFO    2020-03-25 21:31:46,280 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Add Reminder
-INFO    2020-03-25 21:31:46,490 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Selecting the +Notification Type+ value as : SMS
-INFO    2020-03-25 21:31:46,837 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Add Reminder
-INFO    2020-03-25 21:31:47,104 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Add Speaker
-INFO    2020-03-25 21:31:47,441 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (fea4b3d0b02ddaafdbc6e790f62cadcc)] -> xpath: //span[contains(.,'  Add Reminder ')]] for :60 seconds
-INFO    2020-03-25 21:31:49,555 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Typing in : Speaker_Name entered the value as : Donald trump
-INFO    2020-03-25 21:31:50,237 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Typing in : Speaker Image entered the value as : D:\workspace\bizligo-Automation/src/test/resources/testImages/Files/ChromeImage8.jpg
-INFO    2020-03-25 21:31:52,497 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Typing in : Speaker Linked Url entered the value as : http://www.linkedin.com/company/pamten/
-INFO    2020-03-25 21:31:54,119 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Typing in : speakerBio entered the value as : Please check speaker bio again
-INFO    2020-03-25 21:31:55,282 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Save Speaker Details
-INFO    2020-03-25 21:31:57,638 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Add Agenda
-INFO    2020-03-25 21:32:02,956 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (fea4b3d0b02ddaafdbc6e790f62cadcc)] -> xpath: //input[@name='AgendaVenue']] for :60 seconds
-INFO    2020-03-25 21:32:05,166 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Agenda Dates
-INFO    2020-03-25 21:32:05,606 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (fea4b3d0b02ddaafdbc6e790f62cadcc)] -> xpath: (//*[@class='daterangepicker dropdown-menu ltr show-calendar openscenter']//*[@name='daterangepicker_start'])[2]] for :60 seconds
-INFO    2020-03-25 21:32:07,895 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Typing in : Agenda Start Time entered the value as : 3/25/2020 9:45 PM
-INFO    2020-03-25 21:32:09,188 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Typing in : Agenda End Time entered the value as : 3/25/2020 11:45 PM
-INFO    2020-03-25 21:32:10,150 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Apply
-INFO    2020-03-25 21:32:10,482 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Typing in : Agenda Venue entered the value as : 5 Independence Way, Princeton
-INFO    2020-03-25 21:32:11,577 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Typing in : Agenda Description entered the value as : Please check back Agenda description again
-INFO    2020-03-25 21:32:20,436 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Typing in : Sponsor Type entered the value as : Gold
-INFO    2020-03-25 21:32:20,792 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Sponsor Type Save
-INFO    2020-03-25 21:32:24,167 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Selecting the +SponsorType+ value as : Gold
-INFO    2020-03-25 21:32:24,561 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Typing in : Sponsor Name entered the value as : PamTen
-INFO    2020-03-25 21:32:25,182 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Typing in : Sponsor Url entered the value as : https://www.pamten.com/
-INFO    2020-03-25 21:32:26,282 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Typing in : Sponsor Image entered the value as : D:\workspace\bizligo-Automation\src\test\resources\testImages\Files\ChromeImage6.jpg
-INFO    2020-03-25 21:32:28,477 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Save Sponsor
-INFO    2020-03-25 21:32:31,977 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (fea4b3d0b02ddaafdbc6e790f62cadcc)] -> xpath: //span[contains(.,'  Add Album ')]] for :60 seconds
-INFO    2020-03-25 21:32:42,455 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : AddAlbumBtn
-INFO    2020-03-25 21:32:42,734 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (fea4b3d0b02ddaafdbc6e790f62cadcc)] -> xpath: //input[@id='AlbumTitle']] for :60 seconds
-INFO    2020-03-25 21:32:45,323 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Typing in : Album Title entered the value as : Album Corporate Premier League
-INFO    2020-03-25 21:32:46,542 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Typing in : Album Description entered the value as : Album Re-discovery our passion to play the game professionally.
-INFO    2020-03-25 21:32:48,570 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Typing in : Album URL entered the value as : https://www.pamten.com/
-INFO    2020-03-25 21:32:49,564 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Album Form Save
-INFO    2020-03-25 21:32:51,775 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Add Document 
-INFO    2020-03-25 21:32:52,056 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (fea4b3d0b02ddaafdbc6e790f62cadcc)] -> xpath: //input[@id='DocumentTitle']] for :60 seconds
-INFO    2020-03-25 21:32:54,645 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Typing in : Document Title entered the value as : Doc Corporate Premier League
-INFO    2020-03-25 21:32:55,806 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Typing in : Document Description entered the value as : Document Re-discovery our passion to play the game professionally.
-INFO    2020-03-25 21:32:57,993 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Document Form Save
-INFO    2020-03-25 21:33:00,349 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Add Video
-INFO    2020-03-25 21:33:00,589 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (fea4b3d0b02ddaafdbc6e790f62cadcc)] -> xpath: //input[@id='VideoTitle']] for :60 seconds
-INFO    2020-03-25 21:33:03,179 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Typing in : Video Title entered the value as : Video Corporate Premier League
-INFO    2020-03-25 21:33:04,452 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Typing in : Video Description entered the value as : Video Re-discovery our passion to play the game professionally.
-INFO    2020-03-25 21:33:06,472 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Typing in : Video URL entered the value as : https://www.pamten.com/
-INFO    2020-03-25 21:33:07,503 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : VideoFormSaveBtn
-INFO    2020-03-25 21:33:15,914 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
-INFO    2020-03-25 21:33:22,030 [TestNG-test=Test6(failed)(failed)-1] com.cpcommunity.testScripts.community.BaseTest  - Test Execution Completed !!!
-INFO    2020-03-25 21:33:23,718 [TestNG-test=Test7(failed)(failed)-1] com.cpcommunity.testScripts.community.BaseTest  - Inside Login Test
+INFO    2020-03-26 23:15:01,590 [main] com.cpcommunity.testScripts.community.BaseTest  - Config properties file loaded
+INFO    2020-03-26 23:15:03,674 [TestNG-test=Test10(failed)(failed)-1] com.cpcommunity.testScripts.community.BaseTest  - Inside TC138 Test
+INFO    2020-03-26 23:15:13,141 [TestNG-test=Test10(failed)(failed)-1] com.cpcommunity.testScripts.community.BaseTest  - Driver Initialized !!!
+INFO    2020-03-26 23:15:46,721 [TestNG-test=Test10(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2020-03-26 23:15:56,931 [TestNG-test=Test10(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Taking Screen shot of the element
+INFO    2020-03-26 23:15:57,684 [TestNG-test=Test10(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Taken Screen shot of the element
+INFO    2020-03-26 23:15:57,724 [TestNG-test=Test10(failed)(failed)-1] com.uiFramework.pamTen.cpcommunity.helper.imagediffer.Imagediff  - Verifing the the image
+INFO    2020-03-26 23:15:57,725 [TestNG-test=Test10(failed)(failed)-1] com.uiFramework.pamTen.cpcommunity.helper.imagediffer.Imagediff  - BufferedImage@3f8c1fad: type = 6 ColorModel: #pixelBits = 32 numComponents = 4 color space = java.awt.color.ICC_ColorSpace@288e3fd2 transparency = 3 has alpha = true isAlphaPre = false ByteInterleavedRaster: width = 443 height = 222 #numDataElements 4 dataOff[0] = 3
+INFO    2020-03-26 23:15:57,725 [TestNG-test=Test10(failed)(failed)-1] com.uiFramework.pamTen.cpcommunity.helper.imagediffer.Imagediff  - BufferedImage@3abe13ca: type = 6 ColorModel: #pixelBits = 32 numComponents = 4 color space = java.awt.color.ICC_ColorSpace@288e3fd2 transparency = 3 has alpha = true isAlphaPre = false ByteInterleavedRaster: width = 443 height = 222 #numDataElements 4 dataOff[0] = 3
+INFO    2020-03-26 23:15:57,868 [TestNG-test=Test10(failed)(failed)-1] com.uiFramework.pamTen.cpcommunity.helper.imagediffer.Imagediff  - Both images are different
+INFO    2020-03-26 23:15:59,415 [TestNG-test=Test10(failed)(failed)-1] com.cpcommunity.testScripts.community.BaseTest  - Test Execution Completed !!!
