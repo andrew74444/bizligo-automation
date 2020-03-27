@@ -1,11 +1,54 @@
-INFO    2020-03-26 23:15:01,590 [main] com.cpcommunity.testScripts.community.BaseTest  - Config properties file loaded
-INFO    2020-03-26 23:15:03,674 [TestNG-test=Test10(failed)(failed)-1] com.cpcommunity.testScripts.community.BaseTest  - Inside TC138 Test
-INFO    2020-03-26 23:15:13,141 [TestNG-test=Test10(failed)(failed)-1] com.cpcommunity.testScripts.community.BaseTest  - Driver Initialized !!!
-INFO    2020-03-26 23:15:46,721 [TestNG-test=Test10(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
-INFO    2020-03-26 23:15:56,931 [TestNG-test=Test10(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Taking Screen shot of the element
-INFO    2020-03-26 23:15:57,684 [TestNG-test=Test10(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Taken Screen shot of the element
-INFO    2020-03-26 23:15:57,724 [TestNG-test=Test10(failed)(failed)-1] com.uiFramework.pamTen.cpcommunity.helper.imagediffer.Imagediff  - Verifing the the image
-INFO    2020-03-26 23:15:57,725 [TestNG-test=Test10(failed)(failed)-1] com.uiFramework.pamTen.cpcommunity.helper.imagediffer.Imagediff  - BufferedImage@3f8c1fad: type = 6 ColorModel: #pixelBits = 32 numComponents = 4 color space = java.awt.color.ICC_ColorSpace@288e3fd2 transparency = 3 has alpha = true isAlphaPre = false ByteInterleavedRaster: width = 443 height = 222 #numDataElements 4 dataOff[0] = 3
-INFO    2020-03-26 23:15:57,725 [TestNG-test=Test10(failed)(failed)-1] com.uiFramework.pamTen.cpcommunity.helper.imagediffer.Imagediff  - BufferedImage@3abe13ca: type = 6 ColorModel: #pixelBits = 32 numComponents = 4 color space = java.awt.color.ICC_ColorSpace@288e3fd2 transparency = 3 has alpha = true isAlphaPre = false ByteInterleavedRaster: width = 443 height = 222 #numDataElements 4 dataOff[0] = 3
-INFO    2020-03-26 23:15:57,868 [TestNG-test=Test10(failed)(failed)-1] com.uiFramework.pamTen.cpcommunity.helper.imagediffer.Imagediff  - Both images are different
-INFO    2020-03-26 23:15:59,415 [TestNG-test=Test10(failed)(failed)-1] com.cpcommunity.testScripts.community.BaseTest  - Test Execution Completed !!!
+INFO    2020-03-27 08:44:45,173 [main] com.cpcommunity.testScripts.community.BaseTest  - Config properties file loaded
+INFO    2020-03-27 08:44:47,982 [TestNG-test=Test10(failed)(failed)-3] com.cpcommunity.testScripts.community.BaseTest  - Inside TC138 Test
+INFO    2020-03-27 08:44:48,041 [TestNG-test=Test10(failed)(failed)-1] com.cpcommunity.testScripts.community.BaseTest  - Inside Login Test
+INFO    2020-03-27 08:44:48,084 [TestNG-test=Test10(failed)(failed)-2] com.cpcommunity.testScripts.community.BaseTest  - Inside Login Test
+INFO    2020-03-27 08:45:29,114 [TestNG-test=Test10(failed)(failed)-2] com.cpcommunity.testScripts.community.BaseTest  - Driver Initialized !!!
+INFO    2020-03-27 08:45:29,114 [TestNG-test=Test10(failed)(failed)-3] com.cpcommunity.testScripts.community.BaseTest  - Driver Initialized !!!
+INFO    2020-03-27 08:45:29,114 [TestNG-test=Test10(failed)(failed)-1] com.cpcommunity.testScripts.community.BaseTest  - Driver Initialized !!!
+INFO    2020-03-27 08:46:13,185 [TestNG-test=Test10(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2020-03-27 08:46:13,187 [TestNG-test=Test10(failed)(failed)-2] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2020-03-27 08:46:13,193 [TestNG-test=Test10(failed)(failed)-3] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2020-03-27 08:46:18,407 [TestNG-test=Test10(failed)(failed)-2] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (88f5f7f20e49c1cc3b304de72d53641c)] -> xpath: //a[contains(.,'Login')]] for :60 seconds
+INFO    2020-03-27 08:46:18,669 [TestNG-test=Test10(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (75724164c8c5e13c5b6835f5f2274402)] -> xpath: //a[contains(.,'Login')]] for :60 seconds
+INFO    2020-03-27 08:46:21,612 [TestNG-test=Test10(failed)(failed)-2] com.cpcommunity.PageObjects.BasePage  - Clicking on : LOGIN
+INFO    2020-03-27 08:46:21,731 [TestNG-test=Test10(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : LOGIN
+INFO    2020-03-27 08:46:24,347 [TestNG-test=Test10(failed)(failed)-3] com.cpcommunity.PageObjects.BasePage  - Taking Screen shot of the element
+INFO    2020-03-27 08:46:26,746 [TestNG-test=Test10(failed)(failed)-3] com.cpcommunity.PageObjects.BasePage  - Taken Screen shot of the element
+INFO    2020-03-27 08:46:36,607 [TestNG-test=Test10(failed)(failed)-3] com.uiFramework.pamTen.cpcommunity.helper.imagediffer.Imagediff  - Verifing the the image
+INFO    2020-03-27 08:46:36,607 [TestNG-test=Test10(failed)(failed)-3] com.uiFramework.pamTen.cpcommunity.helper.imagediffer.Imagediff  - BufferedImage@64cde592: type = 6 ColorModel: #pixelBits = 32 numComponents = 4 color space = java.awt.color.ICC_ColorSpace@59ebaa0f transparency = 3 has alpha = true isAlphaPre = false ByteInterleavedRaster: width = 443 height = 222 #numDataElements 4 dataOff[0] = 3
+INFO    2020-03-27 08:46:36,609 [TestNG-test=Test10(failed)(failed)-3] com.uiFramework.pamTen.cpcommunity.helper.imagediffer.Imagediff  - BufferedImage@666a836e: type = 6 ColorModel: #pixelBits = 32 numComponents = 4 color space = java.awt.color.ICC_ColorSpace@59ebaa0f transparency = 3 has alpha = true isAlphaPre = false ByteInterleavedRaster: width = 443 height = 222 #numDataElements 4 dataOff[0] = 3
+INFO    2020-03-27 08:46:36,840 [TestNG-test=Test10(failed)(failed)-3] com.uiFramework.pamTen.cpcommunity.helper.imagediffer.Imagediff  - Both images are different
+INFO    2020-03-27 08:46:39,086 [TestNG-test=Test10(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2020-03-27 08:46:40,880 [TestNG-test=Test10(failed)(failed)-2] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2020-03-27 08:46:44,169 [TestNG-test=Test10(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Typing in : email address entered the value as : curatora99@gmail.com
+INFO    2020-03-27 08:46:44,874 [TestNG-test=Test10(failed)(failed)-3] com.cpcommunity.testScripts.community.BaseTest  - Test Execution Completed !!!
+INFO    2020-03-27 08:46:45,895 [TestNG-test=Test10(failed)(failed)-2] com.cpcommunity.PageObjects.BasePage  - Typing in : email address entered the value as : curatora99@gmail.com
+INFO    2020-03-27 08:46:51,241 [TestNG-test=Test10(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Typing in : password entered the value as : Admin@123
+INFO    2020-03-27 08:46:51,874 [TestNG-test=Test10(failed)(failed)-2] com.cpcommunity.PageObjects.BasePage  - Typing in : password entered the value as : Admin@123
+INFO    2020-03-27 08:46:52,270 [TestNG-test=Test10(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Login
+INFO    2020-03-27 08:46:52,400 [TestNG-test=Test10(failed)(failed)-2] com.cpcommunity.PageObjects.BasePage  - Clicking on : Login
+INFO    2020-03-27 08:47:07,057 [TestNG-test=Test10(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2020-03-27 08:47:07,094 [TestNG-test=Test10(failed)(failed)-2] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2020-03-27 08:47:12,160 [TestNG-test=Test10(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Toggledropdownmenu
+INFO    2020-03-27 08:47:12,191 [TestNG-test=Test10(failed)(failed)-2] com.cpcommunity.PageObjects.BasePage  - Clicking on : Toggledropdownmenu
+INFO    2020-03-27 08:47:12,610 [TestNG-test=Test10(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (75724164c8c5e13c5b6835f5f2274402)] -> xpath: //a[contains(.,' Dashboard')]] for :60 seconds
+INFO    2020-03-27 08:47:12,614 [TestNG-test=Test10(failed)(failed)-2] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (88f5f7f20e49c1cc3b304de72d53641c)] -> xpath: //a[contains(.,' Dashboard')]] for :60 seconds
+INFO    2020-03-27 08:47:14,659 [TestNG-test=Test10(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Dashboard
+INFO    2020-03-27 08:47:14,667 [TestNG-test=Test10(failed)(failed)-2] com.cpcommunity.PageObjects.BasePage  - Clicking on : Dashboard
+INFO    2020-03-27 08:47:17,835 [TestNG-test=Test10(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - ---> DashBoard
+INFO    2020-03-27 08:47:19,771 [TestNG-test=Test10(failed)(failed)-2] com.cpcommunity.PageObjects.BasePage  - ---> DashBoard
+INFO    2020-03-27 08:47:21,487 [TestNG-test=Test10(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2020-03-27 08:47:23,452 [TestNG-test=Test10(failed)(failed)-2] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2020-03-27 08:47:37,842 [TestNG-test=Test10(failed)(failed)-2] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2020-03-27 08:47:41,530 [TestNG-test=Test10(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2020-03-27 08:47:42,977 [TestNG-test=Test10(failed)(failed)-2] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (88f5f7f20e49c1cc3b304de72d53641c)] -> xpath: //input[@placeholder='Search by Community Name']] for :60 seconds
+INFO    2020-03-27 08:47:45,394 [TestNG-test=Test10(failed)(failed)-2] com.cpcommunity.PageObjects.BasePage  - Typing in : Search by Community entered the value as : Community - 27 March 2020
+INFO    2020-03-27 08:47:46,041 [TestNG-test=Test10(failed)(failed)-2] com.cpcommunity.PageObjects.BasePage  - Clicking on : search btn
+INFO    2020-03-27 08:47:46,699 [TestNG-test=Test10(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Taking Screen shot of the element
+INFO    2020-03-27 08:47:47,327 [TestNG-test=Test10(failed)(failed)-1] com.cpcommunity.PageObjects.BasePage  - Taken Screen shot of the element
+INFO    2020-03-27 08:47:47,358 [TestNG-test=Test10(failed)(failed)-1] com.uiFramework.pamTen.cpcommunity.helper.imagediffer.Imagediff  - Verifing the the image
+INFO    2020-03-27 08:47:47,358 [TestNG-test=Test10(failed)(failed)-1] com.uiFramework.pamTen.cpcommunity.helper.imagediffer.Imagediff  - BufferedImage@20bb2d79: type = 6 ColorModel: #pixelBits = 32 numComponents = 4 color space = java.awt.color.ICC_ColorSpace@59ebaa0f transparency = 3 has alpha = true isAlphaPre = false ByteInterleavedRaster: width = 262 height = 137 #numDataElements 4 dataOff[0] = 3
+INFO    2020-03-27 08:47:47,358 [TestNG-test=Test10(failed)(failed)-1] com.uiFramework.pamTen.cpcommunity.helper.imagediffer.Imagediff  - BufferedImage@3ad29f18: type = 6 ColorModel: #pixelBits = 32 numComponents = 4 color space = java.awt.color.ICC_ColorSpace@59ebaa0f transparency = 3 has alpha = true isAlphaPre = false ByteInterleavedRaster: width = 262 height = 137 #numDataElements 4 dataOff[0] = 3
+INFO    2020-03-27 08:47:47,389 [TestNG-test=Test10(failed)(failed)-1] com.uiFramework.pamTen.cpcommunity.helper.imagediffer.Imagediff  - Both images are different
+INFO    2020-03-27 08:47:48,900 [TestNG-test=Test10(failed)(failed)-1] com.cpcommunity.testScripts.community.BaseTest  - Test Execution Completed !!!
+INFO    2020-03-27 08:48:09,429 [TestNG-test=Test10(failed)(failed)-2] com.cpcommunity.testScripts.community.BaseTest  - Test Execution Completed !!!
