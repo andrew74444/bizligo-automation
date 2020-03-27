@@ -1,40 +1,213 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="8" guice-stage="DEVELOPMENT" verbose="0" name="Failed suite [Failed suite [Suite]]" parallel="classes">
+<suite thread-count="8" guice-stage="DEVELOPMENT" verbose="0" name="Failed suite [Suite]" parallel="classes">
   <listeners>
     <listener class-name="com.cpcommunity.ExtentListeners.ExtentListeners"/>
     <listener class-name="com.uiFramework.pamTen.cpcommunity.helper.listener.RetryListener"/>
     <listener class-name="com.cpcommunity.utilities.CustomTestNGReporter"/>
   </listeners>
-
-  <test name="Test10(failed)(failed)" parallel="classes">
+  <test name="Test1(failed)" parallel="classes">
     <classes>
-      <class name="com.cpcommunity.testScripts.advertisments.TC137_Purchase_Advertisment_With_No_Approval_And_Verify_The_Ad_Is_Displayed_In_Global_Members_Page">
+      <class name="com.cpcommunity.testScripts.myprofiletestcases.TC022_Verify_User_Is_Able_To_Add_Protfolio">
         <methods>
+          <include name="TC022" invocation-numbers="0"/>
           <include name="setUpFramework"/>
           <include name="tearDown"/>
-          <include name="TC137" invocation-numbers="0"/>
           <include name="sendmail"/>
         </methods>
-      </class> <!-- com.cpcommunity.testScripts.advertisments.TC137_Purchase_Advertisment_With_No_Approval_And_Verify_The_Ad_Is_Displayed_In_Global_Members_Page -->
-      <class name="com.cpcommunity.testScripts.advertisments.TC136_Purchase_Advertisment_With_No_Approval_And_Verify_The_Ad_Is_Displayed_Community_Details_Page">
-        <methods>
-          <include name="setUpFramework"/>
-          <include name="TC136" invocation-numbers="0"/>
-          <include name="sendmail"/>
-          <include name="tearDown"/>
-        </methods>
-      </class> <!-- com.cpcommunity.testScripts.advertisments.TC136_Purchase_Advertisment_With_No_Approval_And_Verify_The_Ad_Is_Displayed_Community_Details_Page -->
-      <class name="com.cpcommunity.testScripts.advertisments.TC138_Purchase_Advertisment_With_No_Approval_And_Verify_The_Ad_Is_Displayed_In_Home_Page">
-        <methods>
-          <include name="setUpFramework"/>
-          <include name="TC138" invocation-numbers="0"/>
-          <include name="sendmail"/>
-          <include name="tearDown"/>
-        </methods>
-      </class> <!-- com.cpcommunity.testScripts.advertisments.TC138_Purchase_Advertisment_With_No_Approval_And_Verify_The_Ad_Is_Displayed_In_Home_Page -->
+      </class> <!-- com.cpcommunity.testScripts.myprofiletestcases.TC022_Verify_User_Is_Able_To_Add_Protfolio -->
     </classes>
-  </test> <!-- Test10(failed)(failed) -->
-
-
-</suite> <!-- Failed suite [Failed suite [Suite]] -->
+  </test> <!-- Test1(failed) -->
+  <test name="Test2(failed)" parallel="classes">
+    <classes>
+      <class name="com.cpcommunity.testScripts.myprofiletestcases.TC028_Verify_User_Is_Able_To_Delete_Interests">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUpFramework"/>
+          <include name="TC028" invocation-numbers="0"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.myprofiletestcases.TC028_Verify_User_Is_Able_To_Delete_Interests -->
+    </classes>
+  </test> <!-- Test2(failed) -->
+  <test name="Test5(failed)" parallel="classes">
+    <classes>
+      <class name="com.cpcommunity.testScripts.Promocodes.TC184_Create_PromoCode">
+        <methods>
+          <include name="setUpFramework"/>
+          <include name="TC184" invocation-numbers="0"/>
+          <include name="tearDown"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.Promocodes.TC184_Create_PromoCode -->
+      <class name="com.cpcommunity.testScripts.community.TC127_Zoom_Meeting_Configuration">
+        <methods>
+          <include name="setUpFramework"/>
+          <include name="tearDown"/>
+          <include name="TC127" invocation-numbers="0"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.community.TC127_Zoom_Meeting_Configuration -->
+      <class name="com.cpcommunity.testScripts.community.TC087_Configure_Cash_Payment">
+        <methods>
+          <include name="setUpFramework"/>
+          <include name="sendmail"/>
+          <include name="TC087" invocation-numbers="0"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.community.TC087_Configure_Cash_Payment -->
+      <class name="com.cpcommunity.testScripts.community.TC088_Configure_Cheque_Payment">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUpFramework"/>
+          <include name="sendmail"/>
+          <include name="TC088" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.community.TC088_Configure_Cheque_Payment -->
+      <class name="com.cpcommunity.testScripts.community.TC089_Configure_Paypal_Payment_Gateway">
+        <methods>
+          <include name="setUpFramework"/>
+          <include name="tearDown"/>
+          <include name="TC089" invocation-numbers="0"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.community.TC089_Configure_Paypal_Payment_Gateway -->
+      <class name="com.cpcommunity.testScripts.Blogs.Create_Blog">
+        <methods>
+          <include name="TC194" invocation-numbers="0"/>
+          <include name="setUpFramework"/>
+          <include name="tearDown"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.Blogs.Create_Blog -->
+    </classes>
+  </test> <!-- Test5(failed) -->
+  <test name="Test7(failed)" parallel="classes">
+    <classes>
+      <class name="com.cpcommunity.testScripts.Create_Paid_Event.TC142_Create_Paid_Event">
+        <methods>
+          <include name="setUpFramework"/>
+          <include name="TC142" invocation-numbers="0"/>
+          <include name="tearDown"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.Create_Paid_Event.TC142_Create_Paid_Event -->
+    </classes>
+  </test> <!-- Test7(failed) -->
+  <test name="Test8(failed)" parallel="classes">
+    <classes>
+      <class name="com.cpcommunity.testScripts.Event_Registrations.TC152_Paid_Event_Registration_With_Cash_From_Event_CheckIn">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUpFramework"/>
+          <include name="TC152" invocation-numbers="0"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.Event_Registrations.TC152_Paid_Event_Registration_With_Cash_From_Event_CheckIn -->
+      <class name="com.cpcommunity.testScripts.Event_Registrations.TC150_Paid_Event_Registration_With_Authorize_From_Event_CheckIn">
+        <methods>
+          <include name="setUpFramework"/>
+          <include name="TC150" invocation-numbers="0"/>
+          <include name="sendmail"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.Event_Registrations.TC150_Paid_Event_Registration_With_Authorize_From_Event_CheckIn -->
+      <class name="com.cpcommunity.testScripts.community.TC043_Member_Reject_Community_Request_From_Global_Community">
+        <methods>
+          <include name="setUpFramework"/>
+          <include name="tearDown"/>
+          <include name="TC041ToTC046" invocation-numbers="0"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.community.TC043_Member_Reject_Community_Request_From_Global_Community -->
+      <class name="com.cpcommunity.testScripts.Event_Registrations.TC149_Paid_Event_Registration_With_PayPal_From_Event_CheckIn">
+        <methods>
+          <include name="setUpFramework"/>
+          <include name="sendmail"/>
+          <include name="TC149" invocation-numbers="0"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.Event_Registrations.TC149_Paid_Event_Registration_With_PayPal_From_Event_CheckIn -->
+      <class name="com.cpcommunity.testScripts.Event_Registrations.TC151_Paid_Event_Registration_With_Cheque_From_Event_CheckIn">
+        <methods>
+          <include name="TC151" invocation-numbers="0"/>
+          <include name="setUpFramework"/>
+          <include name="tearDown"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.Event_Registrations.TC151_Paid_Event_Registration_With_Cheque_From_Event_CheckIn -->
+    </classes>
+  </test> <!-- Test8(failed) -->
+  <test name="Test9(failed)" parallel="classes">
+    <classes>
+      <class name="com.cpcommunity.testScripts.community.TC108_Share_Posts_in_Group">
+        <methods>
+          <include name="TC108" invocation-numbers="0"/>
+          <include name="setUpFramework"/>
+          <include name="tearDown"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.community.TC108_Share_Posts_in_Group -->
+    </classes>
+  </test> <!-- Test9(failed) -->
+  <test name="Test12(failed)" parallel="classes">
+    <classes>
+      <class name="com.cpcommunity.testScripts.community.TC170_Verify_Non_Member_Not_Able_Share_Posts_And_Like_Comment_in_Communities">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUpFramework"/>
+          <include name="TC170" invocation-numbers="0"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.community.TC170_Verify_Non_Member_Not_Able_Share_Posts_And_Like_Comment_in_Communities -->
+    </classes>
+  </test> <!-- Test12(failed) -->
+  <test name="Test13(failed)" parallel="classes">
+    <classes>
+      <class name="com.cpcommunity.testScripts.Event_Registrations.TC143_Paid_Event_Registration_With_PayPal_From_Event_Details_Page">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUpFramework"/>
+          <include name="TC143" invocation-numbers="0"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.Event_Registrations.TC143_Paid_Event_Registration_With_PayPal_From_Event_Details_Page -->
+      <class name="com.cpcommunity.testScripts.Event_Registrations.TC144_Paid_Event_Registration_With_Authorize_From_Event_Details_Page">
+        <methods>
+          <include name="setUpFramework"/>
+          <include name="TC144" invocation-numbers="0"/>
+          <include name="tearDown"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.Event_Registrations.TC144_Paid_Event_Registration_With_Authorize_From_Event_Details_Page -->
+    </classes>
+  </test> <!-- Test13(failed) -->
+  <test name="Test14(failed)" parallel="classes">
+    <classes>
+      <class name="com.cpcommunity.testScripts.Event_Registrations.TC146_PromoCode_Event_Registration_With_Authorize_From_Event_Details_Page">
+        <methods>
+          <include name="setUpFramework"/>
+          <include name="tearDown"/>
+          <include name="TC146" invocation-numbers="0"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.Event_Registrations.TC146_PromoCode_Event_Registration_With_Authorize_From_Event_Details_Page -->
+      <class name="com.cpcommunity.testScripts.Event_Registrations.TC147_100_Percent_PromoCode_Event_Registration_From_Event_Details_Page">
+        <methods>
+          <include name="TC147" invocation-numbers="0"/>
+          <include name="setUpFramework"/>
+          <include name="tearDown"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.Event_Registrations.TC147_100_Percent_PromoCode_Event_Registration_From_Event_Details_Page -->
+      <class name="com.cpcommunity.testScripts.Event_Registrations.TC145_PromoCode_Event_Registration_With_PayPal_From_Event_Details_Page">
+        <methods>
+          <include name="setUpFramework"/>
+          <include name="TC145" invocation-numbers="0"/>
+          <include name="sendmail"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.Event_Registrations.TC145_PromoCode_Event_Registration_With_PayPal_From_Event_Details_Page -->
+    </classes>
+  </test> <!-- Test14(failed) -->
+</suite> <!-- Failed suite [Suite] -->
