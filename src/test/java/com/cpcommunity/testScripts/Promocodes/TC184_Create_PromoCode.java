@@ -35,7 +35,7 @@ public class TC184_Create_PromoCode extends BaseTest {
 				 data.get("appliesToMembership"),  data.get("appliesToEvents"),  data.get("allAds"),  data.get("allEvents"),  data.get("allMemberships"),
 				data.get("advertisementPlan"), data.get("event"), data.get("memberShipPlan"));
 		promoCodePage.createPromocode( data.get("promoCode3"),  data.get("promoCodeExpiry"),  data.get("discountByPercent"),
-				data.get("discountByValue"),  data.get("discountByPercentageValue2"),  data.get("maxNumberofUses"),  data.get("appliesToAd"),
+				data.get("discountByValue"),  data.get("discountByPercentageValue1"),  data.get("maxNumberofUses"),  data.get("appliesToAd"),
 				 data.get("appliesToMembership"),  data.get("appliesToEvents"),  data.get("allAds"),  data.get("allEvents"),  data.get("allMemberships"),
 				data.get("advertisementPlan"), data.get("event"), data.get("memberShipPlan"));
 	}
