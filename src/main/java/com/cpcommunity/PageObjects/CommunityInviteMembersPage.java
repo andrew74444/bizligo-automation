@@ -40,7 +40,10 @@ public class CommunityInviteMembersPage extends BasePage{
 	 WebElement Showing1to1of1entries;
 
 	@FindBy(xpath = "//*[contains(text(),'1 row selected')]")
-	WebElement rowselected;	
+	WebElement rowselected;
+	
+	@FindBy(xpath = "//*[contains(text(),'There are no members available.')]")
+	WebElement noMembersAvailable;
 
 	public void InviteMembers(String Email1, String Email2, String Email3, String Email4, String Email5, String Email6,
 			String Email7) throws Exception {
@@ -48,60 +51,59 @@ public class CommunityInviteMembersPage extends BasePage{
 		try {
 			this.invite(Email1);	
 		} catch (Exception e) {
-			// TODO: handle exception
+			picture();
+			noMembersAvailable.isDisplayed();
+			
 		}
 		
 		try {
 			this.invite(Email2);	
 		} catch (Exception e) {
-			// TODO: handle exception
+			picture();
+			noMembersAvailable.isDisplayed();
 		}
 		
 		try {
 			this.invite(Email3);	
 		} catch (Exception e) {
-			// TODO: handle exception
+			picture();
+			noMembersAvailable.isDisplayed();
 		}
 		
 		try {
 			this.invite(Email4);	
 		} catch (Exception e) {
-			// TODO: handle exception
+			picture();
+			noMembersAvailable.isDisplayed();
 		}
 		
 		try {
 			this.invite(Email5);	
 		} catch (Exception e) {
-			// TODO: handle exception
+			picture();
+			noMembersAvailable.isDisplayed();
 		}
 		
 		try {
 			this.invite(Email6);	
 		} catch (Exception e) {
-			// TODO: handle exception
+			picture();
+			noMembersAvailable.isDisplayed();
 		}
 		
 		try {
 			this.invite(Email7);	
 		} catch (Exception e) {
-			// TODO: handle exception
+			 picture();
+			 noMembersAvailable.isDisplayed();
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-				
-
 	}
 	
 	
 	
 	public void invite(String Email) throws Exception {
 		
+		search.clear();
 		type(search, Email,"Search");
 		WebElement ele = driver.findElement(By.xpath("//*[contains(text(),'"+Email+"')]"));
 		waitForElementToPresent(ele);

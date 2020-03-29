@@ -12,7 +12,7 @@ import org.testng.ITestResult;
  */
 public class Retry implements IRetryAnalyzer{
 	private int retryCount = 0;
-	private int maxRetryCount = 0;
+	private int maxRetryCount = 3;
 	
 //	private Logger log = LoggerHelper.getLogger(Retry.class);
 
