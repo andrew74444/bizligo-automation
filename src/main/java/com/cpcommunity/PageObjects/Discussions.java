@@ -323,7 +323,8 @@ public class Discussions extends BasePage {
 	public void tagMemberInComment(String postComment,String memberName) throws Exception {
 
 		type(FirstPostComment, postComment, "First Post Comment");
-		driver.findElement(By.xpath("//*[contains(text(),'"+memberName+"')]")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("(//*[@class='list-group-item pointer ng-scope ng-isolate-scope active'])[2]")).click();
 		Thread.sleep(2000);
 		click(SendCommentBtn, "Send Comment");
 		Thread.sleep(10000);
@@ -358,7 +359,9 @@ public class Discussions extends BasePage {
 
 		addPost(postMessage);
 		type(tagInPost, memberName, "Tag");
-		driver.findElement(By.xpath("//*[contains(text(),'"+memberName+"')]")).click();
+		Thread.sleep(2000);
+		
+		driver.findElement(By.xpath("((//*[@class='list-group user-search'])[1])//li")).click();
 		Thread.sleep(2000);
 		click(PostBtn, "Post");
 		Thread.sleep(20000);

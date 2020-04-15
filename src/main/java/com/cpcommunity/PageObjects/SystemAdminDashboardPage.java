@@ -60,9 +60,11 @@ public class SystemAdminDashboardPage extends BasePage{
 //	return (ZohoCRMPage) openPage(ZohoCRMPage.class);
 	
 	public PendingCommunitiesPage naviagteToPendingCommunities(){
-		click(CommunitiesNavSideMenu,"Communities");
+		clickElementByJavaScript(CommunitiesNavSideMenu);
+//		click(CommunitiesNavSideMenu,"Communities");
 		waitForElementToPresent(pendingCommunities);
-		click(pendingCommunities,"pendingCommunities");
+		clickElementByJavaScript(pendingCommunities);
+//		click(pendingCommunities,"pendingCommunities");
 		
 		return (PendingCommunitiesPage) openPage(PendingCommunitiesPage.class);
 //				new PendingCommunitiesPage(driver, );

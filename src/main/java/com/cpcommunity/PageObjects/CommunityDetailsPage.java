@@ -21,7 +21,7 @@ import com.uiFramework.pamTen.cpcommunity.helper.imagediffer.Imagediff;
 
 public class CommunityDetailsPage extends BasePage {
 
-	@FindBy(xpath = "//*[@class='header']//*[contains(text(),'Discussion')]")
+	@FindBy(xpath = "(//*[@class='top-strip']/..)//*[contains(text(),'Discussion')]")
 	WebElement discussion;
 
 	@FindBy(xpath = "//div[@class='swal-text']")

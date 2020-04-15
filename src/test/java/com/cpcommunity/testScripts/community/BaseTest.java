@@ -451,7 +451,7 @@ public class BaseTest {
 		DriverManager.setWebDriver(driver);
 		log.info("Driver Initialized !!!");
 		DriverManager.getDriver().manage().window().maximize();
-		DriverManager.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		DriverManager.getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 //		SessionId sessionid = ((RemoteWebDriver) driver).getSessionId();
 //		System.out.println(sessionid);
 //		System.out.println(DriverManager.getDriver().toString());
