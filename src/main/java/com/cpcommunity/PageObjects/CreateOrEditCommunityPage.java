@@ -242,6 +242,7 @@ public class CreateOrEditCommunityPage extends BasePage{
 	    		String InvestInBusiness,String OtherName,String About,String Category,String type,String StateName,String CityName,String FacebookUrl,
 	    		String TwitterUrl,String LinkedInUrl,String LogoImagePath, String websiteUrl, String ImagePath,String CommunityUpdate) throws Exception {
 	       
+	    	waitForElementToPresent(this.CommunityName);
 	        this.CommunityName.clear();
 	        scrollToElement(State);
 	        

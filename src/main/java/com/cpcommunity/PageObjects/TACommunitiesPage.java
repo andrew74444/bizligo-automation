@@ -97,7 +97,8 @@ public class TACommunitiesPage extends BasePage{
 		name = name+" "+date();
 		searchCommunity(name);
 		updateCommunityName = updateCommunityName+" "+date();
-		click(CommunityEdit,"Community Edit");
+		clickElementByJavaScript(CommunityEdit);
+//		click(CommunityEdit,"Community Edit");
 		new CreateOrEditCommunityPage(driver).UpdateCommunity(name, Networking, Marketing, BuildingRelationship, Branding, GrowMyBusiness, InvestInBusiness, OtherName, About, Category, type, StateName, CityName, FacebookUrl, TwitterUrl, LinkedInUrl, LogoImagePath, websiteUrl, ImagePath, updateCommunityName);
 	}
 
