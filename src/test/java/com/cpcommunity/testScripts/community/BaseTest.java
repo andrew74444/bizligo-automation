@@ -436,7 +436,7 @@ public class BaseTest {
 		System.out.println(ID);
 		JavascriptExecutor js = (JavascriptExecutor)driver;
 		JavaScript.setJavaScriptObject(js);
-		WebDriverWait wait = new WebDriverWait(driver, 15);
+		WebDriverWait wait = new WebDriverWait(driver, 20);
 		waitHelper.setWebDriverWaitObject(wait);
 		try {
 			Robot robot = new Robot();
