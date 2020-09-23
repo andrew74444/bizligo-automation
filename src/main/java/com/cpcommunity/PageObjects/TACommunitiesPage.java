@@ -99,6 +99,7 @@ public class TACommunitiesPage extends BasePage{
 		updateCommunityName = updateCommunityName+" "+date();
 //		clickElementByJavaScript(CommunityEdit);
 		click(CommunityEdit,"Community Edit");
+		Thread.sleep(5000);
 		new CreateOrEditCommunityPage(driver).UpdateCommunity(name, Networking, Marketing, BuildingRelationship, Branding, GrowMyBusiness, InvestInBusiness, OtherName, About, Category, type, StateName, CityName, FacebookUrl, TwitterUrl, LinkedInUrl, LogoImagePath, websiteUrl, ImagePath, updateCommunityName);
 	}
 
