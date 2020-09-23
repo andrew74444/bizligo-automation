@@ -40,7 +40,7 @@ public class TACommunitiesPage extends BasePage{
 	@FindBy(xpath="//tbody/tr[1]/td[3]")
 	WebElement communityNameinFirstRow;
 
-	@FindBy(xpath="((//tbody/tr[1]/td[2])/a[1])/span")
+	@FindBy(xpath="((//tbody/tr[1]/td[2])/a[1])")
 	WebElement CommunityEdit;
 	
 	
