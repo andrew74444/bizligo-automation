@@ -83,7 +83,7 @@ public class SystemAdminDashboardPage extends BasePage {
 	public TACommunitiesPage navigateToCommunitiesPage() {
 		click(CommunitiesNavSideMenu, "Communities");
 		waitForElementToPresent(manageCommunity);
-		click(manageCommunity, "manage Community");
+		clickElementByJavaScript(manageCommunity);
 		return (TACommunitiesPage) openPage(TACommunitiesPage.class);
 	}
 
