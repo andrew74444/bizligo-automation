@@ -49,8 +49,8 @@ public abstract class BasePage<T> {
 	protected String ID;
 	public Logger log = Logger.getLogger(BasePage.class);
 	// private long LOAD_TIMEOUT = 200;
-	private int AJAX_ELEMENT_TIMEOUT = 150;
-	public int expTime = 60;
+	private int AJAX_ELEMENT_TIMEOUT = 20;
+	public int expTime = 15;
 	protected JavascriptExecutor exe;
 	protected Robot robot;
 	protected WebDriverWait wait;
