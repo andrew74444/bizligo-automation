@@ -169,12 +169,15 @@ public abstract class BasePage<T> {
 		// timeOutInSeconds + " seconds");
 
 		wait.until(ExpectedConditions.visibilityOf(element));
+		log.info(element.toString() + "is displayed");
+		
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 
 			e.printStackTrace();
 		}
+		
 	}
 
 	public void moveToElement(WebElement element) {
@@ -557,6 +560,7 @@ public abstract class BasePage<T> {
 	 */
 	public void clickElementByJavaScript(WebElement element) {
 		highlightElement(element);
+		log.info("Clicking"+element.toString());
 		executeScript("arguments[0].click();", element);
 		try {
 			Thread.sleep(2000);
@@ -564,6 +568,7 @@ public abstract class BasePage<T> {
 
 			e.printStackTrace();
 		}
+		log.info("Clicked"+element.toString());
 	}
 
 	public void getBrowserInstance() {

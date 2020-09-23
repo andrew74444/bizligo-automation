@@ -16,10 +16,10 @@ public class TACommunitiesPage extends BasePage{
 		aShot();
 	}
 	
-	 @FindBy(xpath="//*[id='btnAddNew']")
+	 @FindBy(xpath="//*[@id='btnAddNew']")
 	 WebElement createCommunity;
 	
-	@FindBy(xpath="//*[id='PricingPlan']")
+	@FindBy(xpath="//*[@id='PricingPlan']")
 	WebElement pricingPlan;
 	
 	@FindBy(xpath="//*[contains(text(),'Showing')]")
