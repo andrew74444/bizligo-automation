@@ -385,6 +385,9 @@ public class BaseTest {
 
 		DriverFactory.setRemote(grid);
 		Capabilities caps;
+		ChromeOptions options = new ChromeOptions(); 
+
+		options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
 		if (DriverFactory.isRemote()) {
 			DesiredCapabilities cap = null;
 
@@ -421,9 +424,7 @@ public class BaseTest {
 			System.setProperty("webdriver.chrome.driver", DriverFactory.getChromeDriverExePath());
 //			WebDriverManager.chromedriver().setup();
 			
-			ChromeOptions options = new ChromeOptions(); 
-
-			options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+			
 			driver = new ChromeDriver(options);
 		} else if (browser.equals("firefox")) {
 			System.out.println("Launching : " + browser);
