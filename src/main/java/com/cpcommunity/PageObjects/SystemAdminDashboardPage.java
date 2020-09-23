@@ -29,7 +29,7 @@ public class SystemAdminDashboardPage extends BasePage {
 	 @FindBy(xpath="")
 	 WebElement communities;
 	
-	 @FindBy(xpath="")
+	 @FindBy(xpath="//*[text()='Manage Communities']")
 	 WebElement manageCommunity;
 
 	@FindBy(xpath = "//*[@class='fa fa-angle-down']")
