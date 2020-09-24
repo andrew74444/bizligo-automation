@@ -15,7 +15,7 @@
 		<classes>
 
 			<class
-				name="com.cpcommunity.testScripts.TC208_TA_Not_Able_To_Remove_Admin_Role_When_Only_One_Admin_To_The_Community" />
+				name="com.cpcommunity.testScripts.community.TC208_TA_Not_Able_To_Remove_Admin_Role_When_Only_One_Admin_To_The_Community" />
 			<class
 				name="com.cpcommunity.testScripts.community.TC209_Tenant_Admin_Remove_Admin_To_Community" />
 			<class
