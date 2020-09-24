@@ -22,10 +22,10 @@ public class TC220_Verify_TA_InActivated_Community_Is_Not_Displaying_In_The_Glob
 
 	
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC205(Hashtable<String,String> data) throws Exception {
+	public void TC220(Hashtable<String,String> data) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC205", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC220", data.get("Runmode"), excel);
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		HomePage home = new HomePage().open();

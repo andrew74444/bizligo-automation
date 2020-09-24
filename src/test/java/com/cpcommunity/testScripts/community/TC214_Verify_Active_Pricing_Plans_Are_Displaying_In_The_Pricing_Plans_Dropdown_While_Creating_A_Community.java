@@ -24,10 +24,10 @@ public class TC214_Verify_Active_Pricing_Plans_Are_Displaying_In_The_Pricing_Pla
 
 	
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC205(Hashtable<String,String> data) throws Exception {
+	public void TC214(Hashtable<String,String> data) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC205", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC214", data.get("Runmode"), excel);
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		HomePage home = new HomePage().open();

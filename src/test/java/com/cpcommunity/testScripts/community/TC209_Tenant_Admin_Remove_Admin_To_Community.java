@@ -23,10 +23,10 @@ public class TC209_Tenant_Admin_Remove_Admin_To_Community extends BaseTest {
 
 	
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC207(Hashtable<String,String> data) throws Exception {
+	public void TC209(Hashtable<String,String> data) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC207", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC209", data.get("Runmode"), excel);
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		HomePage home = new HomePage().open();
@@ -34,9 +34,9 @@ public class TC209_Tenant_Admin_Remove_Admin_To_Community extends BaseTest {
 		SystemAdminDashboardPage Dashboard_Page = login.SystemAdminloginToApplication(data.get("email"), data.get("password"));
 		TACommunitiesPage tACommunitiesPage =  Dashboard_Page.navigateToCommunitiesPage();
 		ManageCommunityMembersPage manageCommunityMembersPage =tACommunitiesPage.navigateTomanageMembers(data.get("communityName"));
-		manageCommunityMembersPage.addmember(data.get("makeAdminMemberEmail"));
-		manageCommunityMembersPage.makeAdmin(data.get("makeAdminMemberEmail"));
-		manageCommunityMembersPage.removeAdmin(data.get("makeAdminMemberEmail"));
+		manageCommunityMembersPage.addmember(data.get("removeAdminEMail"));
+		manageCommunityMembersPage.makeAdmin(data.get("removeAdminEMail"));
+		manageCommunityMembersPage.removeAdmin(data.get("removeAdminEMail"));
 //		Assert.fail("Failing the login test");
 	}
 

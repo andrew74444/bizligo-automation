@@ -22,10 +22,10 @@ public class TC213_Verify_The_Community_Feature_As_Per_Pricing_Plan extends Base
 
 	
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC210(Hashtable<String,String> data) throws Exception {
+	public void TC213(Hashtable<String,String> data) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC210", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC213", data.get("Runmode"), excel);
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		HomePage home = new HomePage().open();

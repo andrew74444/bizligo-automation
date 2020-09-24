@@ -18,12 +18,12 @@ import com.cpcommunity.utilities.ExcelReader;
 
 public class TC212_Verify_TA_Created_Community_Is_Not_Displayed_In_Pending_Communities extends BaseTest {
 
-	String TCID ="TC032";	
+
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC032(Hashtable<String,String> data) throws Exception {
+	public void TC212(Hashtable<String,String> data) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC032", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC212", data.get("Runmode"), excel);
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		HomePage home = new HomePage().open();

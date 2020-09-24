@@ -23,10 +23,10 @@ public class TC208_TA_Not_Able_To_Remove_Admin_Role_When_Only_One_Admin_To_The_C
 
 	
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC207(Hashtable<String,String> data) throws Exception {
+	public void TC208(Hashtable<String,String> data) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC207", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC208", data.get("Runmode"), excel);
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		HomePage home = new HomePage().open();
@@ -34,9 +34,9 @@ public class TC208_TA_Not_Able_To_Remove_Admin_Role_When_Only_One_Admin_To_The_C
 		SystemAdminDashboardPage Dashboard_Page = login.SystemAdminloginToApplication(data.get("email"), data.get("password"));
 		TACommunitiesPage tACommunitiesPage =  Dashboard_Page.navigateToCommunitiesPage();
 		ManageCommunityMembersPage manageCommunityMembersPage =tACommunitiesPage.navigateTomanageMembers(data.get("communityName"));
-		manageCommunityMembersPage.addmember(data.get("makeAdminMemberEmail"));
-		manageCommunityMembersPage.makeAdmin(data.get("makeAdminMemberEmail"));
-		manageCommunityMembersPage.checkNotAbleToRemoveAdminOnlyOneAdmin(data.get("makeAdminMemberEmail"));
+//		manageCommunityMembersPage.addmember(data.get("makeAdminMemberEmail"));
+//		manageCommunityMembersPage.makeAdmin(data.get("makeAdminMemberEmail"));
+		manageCommunityMembersPage.checkNotAbleToRemoveAdminOnlyOneAdmin(data.get("notAbleToRemoveEmail"));
 //		Assert.fail("Failing the login test");
 	}
 
