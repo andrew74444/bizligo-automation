@@ -40,7 +40,7 @@ public class TACommunitiesPage extends BasePage{
 	@FindBy(xpath="//tbody/tr[1]/td[3]")
 	WebElement communityNameinFirstRow;
 
-	@FindBy(xpath="((//tbody/tr[1]/td[2])/a[1])/span")
+	@FindBy(xpath="((//tbody/tr[1]/td[2])/a[1])")
 	WebElement CommunityEdit;
 	
 	
@@ -97,7 +97,14 @@ public class TACommunitiesPage extends BasePage{
 		name = name+" "+date();
 		searchCommunity(name);
 		updateCommunityName = updateCommunityName+" "+date();
-		click(CommunityEdit,"Community Edit");
+		clickElementByJavaScript(CommunityEdit);
+		
+//		clickByVisibleScreen("D:\\workspace\\bizligo-automation\\src\\test\\resources\\testImages\\Files\\TA Community Edit Button.png");
+		Thread.sleep(20000);
+		Thread.sleep(20000);
+//		
+//		click(CommunityEdit,"Community Edit");
+		
 		new CreateOrEditCommunityPage(driver).UpdateCommunity(name, Networking, Marketing, BuildingRelationship, Branding, GrowMyBusiness, InvestInBusiness, OtherName, About, Category, type, StateName, CityName, FacebookUrl, TwitterUrl, LinkedInUrl, LogoImagePath, websiteUrl, ImagePath, updateCommunityName);
 	}
 

@@ -23,6 +23,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -384,6 +385,9 @@ public class BaseTest {
 
 		DriverFactory.setRemote(grid);
 		Capabilities caps;
+		ChromeOptions options = new ChromeOptions(); 
+
+		options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
 		if (DriverFactory.isRemote()) {
 			DesiredCapabilities cap = null;
 
@@ -419,7 +423,9 @@ public class BaseTest {
 			System.out.println("Launching : " + browser);
 			System.setProperty("webdriver.chrome.driver", DriverFactory.getChromeDriverExePath());
 //			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
+			
+			
+			driver = new ChromeDriver(options);
 		} else if (browser.equals("firefox")) {
 			System.out.println("Launching : " + browser);
 			System.setProperty("webdriver.gecko.driver", DriverFactory.getGeckoDriverExePath());
