@@ -187,7 +187,7 @@ public class ManageCommunityMembersPage extends BasePage {
 		this.clickOnYesProceed();
 	}
 
-	public void verifyCANotAbleToRemoveAdminOnlyOneAdmin(String email) throws Exception {
+	public void checkNotAbleToRemoveAdminOnlyOneAdmin(String email) throws Exception {
 
 		this.memberInSearch(email);
 		click(RemoveAdmin, "Remove Admin");

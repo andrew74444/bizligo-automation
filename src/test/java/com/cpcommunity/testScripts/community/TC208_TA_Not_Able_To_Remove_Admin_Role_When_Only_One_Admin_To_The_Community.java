@@ -18,7 +18,7 @@ import com.cpcommunity.PageObjects.TACommunitiesPage;
 import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.ExcelReader;
 
-public class TC208_Verify_TA_Not_Able_To_Remove_Admin_Role_When_Only_One_Admin_To_The_Community extends BaseTest {
+public class TC208_TA_Not_Able_To_Remove_Admin_Role_When_Only_One_Admin_To_The_Community extends BaseTest {
 
 
 	
@@ -36,7 +36,7 @@ public class TC208_Verify_TA_Not_Able_To_Remove_Admin_Role_When_Only_One_Admin_T
 		ManageCommunityMembersPage manageCommunityMembersPage =tACommunitiesPage.navigateTomanageMembers(data.get("communityName"));
 		manageCommunityMembersPage.addmember(data.get("makeAdminMemberEmail"));
 		manageCommunityMembersPage.makeAdmin(data.get("makeAdminMemberEmail"));
-		manageCommunityMembersPage.removeAdmin(data.get("makeAdminMemberEmail"));
+		manageCommunityMembersPage.checkNotAbleToRemoveAdminOnlyOneAdmin(data.get("makeAdminMemberEmail"));
 //		Assert.fail("Failing the login test");
 	}
 

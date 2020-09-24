@@ -30,7 +30,7 @@ public class TC212_Verify_TA_Created_Community_Is_Not_Displayed_In_Pending_Commu
 		LoginPage login = home.clickOnLOGINBtn();	
 		SystemAdminDashboardPage Dashboard_Page = login.SystemAdminloginToApplication(data.get("email"), data.get("password"));
 		PendingCommunitiesPage PendingCommunitiesPage = Dashboard_Page.naviagteToPendingCommunities();
-		PendingCommunitiesPage.approveCommunity(data.get("communityName"));
+		PendingCommunitiesPage.checkCommunityNotDisplayed(data.get("communityName"));
 //		Assert.fail("Failing the login test");
 	}
 

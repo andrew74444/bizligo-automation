@@ -54,6 +54,9 @@ public class PendingCommunitiesPage extends BasePage{
 	WebElement OkBtn;	
 
 	
+	@FindBy(xpath="//*[contains(text(),'There are no Communities available')]")
+	WebElement noCommunitiesAvailable;
+	
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 		
@@ -111,5 +114,11 @@ public class PendingCommunitiesPage extends BasePage{
 		click( OkBtn,"Ok Btn"); 
 		Thread.sleep(6000);
 		picture();
+	}
+
+
+	public void checkCommunityNotDisplayed(String communityName) throws Exception {
+		 this.Searchcommmunity(communityName+" "+date());
+		waitForElementToPresent(noCommunitiesAvailable);
 	}
 }

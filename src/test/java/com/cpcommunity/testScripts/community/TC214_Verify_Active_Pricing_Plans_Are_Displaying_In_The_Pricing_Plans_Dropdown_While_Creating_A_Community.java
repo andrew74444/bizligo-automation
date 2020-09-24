@@ -32,7 +32,7 @@ public class TC214_Verify_Active_Pricing_Plans_Are_Displaying_In_The_Pricing_Pla
 		LoginPage login = home.clickOnLOGINBtn();	
 		SystemAdminDashboardPage Dashboard_Page = login.SystemAdminloginToApplication(data.get("email"), data.get("password"));
 		TACommunitiesPage tACommunitiesPage =  Dashboard_Page.navigateToCommunitiesPage();
-		tACommunitiesPage.AddNewCommunity(data.get("communityName"), data.get("Networking"), data.get("Marketing"), data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"), data.get("InvestInBusiness"), data.get("Other"), data.get("About"), data.get("Category"), data.get("type"),data.get("pricingPlan"));
+		tACommunitiesPage.checkActivePricingPlans();
 		
 //		Assert.fail("Failing the login test");
 	}
