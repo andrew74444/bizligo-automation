@@ -59,12 +59,12 @@ public class TACommunitiesPage extends BasePage{
 	
 	
 	
-	public void AddNewCommunity (String name,String Networking,String Marketing,String BuildingRelationship,String Branding,String GrowMyBusiness,String InvestInBusiness,String Other,String About,String Category, String type) throws Exception {
+	public void AddNewCommunity (String name,String Networking,String Marketing,String BuildingRelationship,String Branding,String GrowMyBusiness,String InvestInBusiness,String Other,String About,String Category, String type,String pricingPlan) throws Exception {
 			
 		click(createCommunity,"create Community");
-		waitForElementToPresent(pricingPlan);
-		scrollToElement(pricingPlan);
-		selectByVisibleText(pricingPlan, "All Plans 1", "pricing Plan");
+		waitForElementToPresent(this.pricingPlan);
+		scrollToElement(this.pricingPlan);
+		selectByVisibleText(this.pricingPlan, pricingPlan, "pricing Plan");
 		scrollToElement(showing);
 		name = name+" "+date();
 		new CreateOrEditCommunityPage(driver).FillCommunityDetails(name, Networking, Marketing, BuildingRelationship, Branding, GrowMyBusiness, InvestInBusiness, Other, About, Category, type);

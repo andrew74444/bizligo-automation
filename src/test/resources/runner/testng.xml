@@ -2,19 +2,41 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite" parallel="classes" thread-count="8">
 
-<listeners>
-		<listener		
+	<listeners>
+		<listener
 			class-name="com.cpcommunity.ExtentListeners.ExtentListeners"></listener>
 		<listener
 			class-name="com.uiFramework.pamTen.cpcommunity.helper.listener.RetryListener" />
 	</listeners>
 
-<!-- 167 -->
-	
+	<!-- 167 -->
+
 	<test name="Test1" preserve-order="true">
 		<classes>
-			<class name="com.cpcommunity.testScripts.community.TC207_Tenant_Admin_Make_Admin_Community" />
-</classes>
+			<class
+				name="com.cpcommunity.testScripts.community.TC205_Tenant_Admin_Create_Community" />
+		</classes>
 	</test>
+
+	<test name="Test2" preserve-order="true">
+		<classes>
+			<class
+				name="com.cpcommunity.testScripts.community.TC206_Tenant_Admin_Add_Member_To_Community" />
+		</classes>
+	</test>
+	<test name="Test3" preserve-order="true">
+		<classes>
+			<class
+				name="com.cpcommunity.testScripts.community.TC207_Tenant_Admin_Make_Admin_Community" />
+		</classes>
+	</test>
+
+	<test name="Test4" preserve-order="true">
+		<classes>
+			<class
+				name="com.cpcommunity.testScripts.community.TC210_TA_Update_The_Community_Details" />
+		</classes>
+	</test>
+
 
 </suite> <!-- Suite -->
