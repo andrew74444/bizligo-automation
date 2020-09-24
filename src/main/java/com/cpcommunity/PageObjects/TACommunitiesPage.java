@@ -104,7 +104,7 @@ public class TACommunitiesPage extends BasePage{
 		
 //		
 //		click(CommunityEdit,"Community Edit");
-		Thread.sleep(5000);
+		Thread.sleep(20000);
 		new CreateOrEditCommunityPage(driver).UpdateCommunity(name, Networking, Marketing, BuildingRelationship, Branding, GrowMyBusiness, InvestInBusiness, OtherName, About, Category, type, StateName, CityName, FacebookUrl, TwitterUrl, LinkedInUrl, LogoImagePath, websiteUrl, ImagePath, updateCommunityName);
 	}
 
