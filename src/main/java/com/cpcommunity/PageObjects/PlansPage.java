@@ -553,21 +553,21 @@ public class PlansPage extends BasePage {
 		click(editPlan, "edit Plan");
 		waitForElementToPresent(name);
 
-		System.out.println(adsCheckbox.isSelected());
-		System.out.println(manageCampaignCheckbox.isSelected());
-		System.out.println(paymentGatewaysCheckbox.isSelected());
-		System.out.println(groupsCheckbox.isSelected());
-		System.out.println(eventsCheckbox.isSelected());
-		System.out.println(zoomCheckbox.isSelected());
-		System.out.println(surveysCheckbox.isSelected());
-		System.out.println(jobBoardCheckbox.isSelected());
-		System.out.println(promoCodesCheckbox.isSelected());
-		System.out.println(membershipPlansCheckbox.isSelected());
-		System.out.println(crmCheckbox.isSelected());
-		System.out.println(blogCheckbox.isSelected());
-		System.out.println(memberActivityReportCheckbox.isSelected());
-		System.out.println(communityMembersCheckbox.isSelected());
-		System.out.println(communityDiscussionsCheckbox.isSelected());
+		System.out.println(adsCheckbox.isSelected()+"Check Box");
+		System.out.println(manageCampaignCheckbox.isSelected()+"Bulk mail");
+		System.out.println(paymentGatewaysCheckbox.isSelected()+"Payment Gateway");
+		System.out.println(groupsCheckbox.isSelected()+"Groups");
+		System.out.println(eventsCheckbox.isSelected()+"Events");
+		System.out.println(zoomCheckbox.isSelected()+"Zoom");
+		System.out.println(surveysCheckbox.isSelected()+"Serveys");
+		System.out.println(jobBoardCheckbox.isSelected()+"Job");
+		System.out.println(promoCodesCheckbox.isSelected()+"Promo code");
+		System.out.println(membershipPlansCheckbox.isSelected()+"Memberships");
+		System.out.println(crmCheckbox.isSelected()+"CRM");
+		System.out.println(blogCheckbox.isSelected()+"Blog");
+		System.out.println(memberActivityReportCheckbox.isSelected()+"Report");
+		System.out.println(communityMembersCheckbox.isSelected()+"Members");
+		System.out.println(communityDiscussionsCheckbox.isSelected()+"Discussions");
 	}
 
 	public void searchPlan(String planName) throws Exception {
