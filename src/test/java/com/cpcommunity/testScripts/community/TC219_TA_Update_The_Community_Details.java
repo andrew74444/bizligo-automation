@@ -17,7 +17,7 @@ import com.cpcommunity.PageObjects.TACommunitiesPage;
 import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.ExcelReader;
 
-public class TC210_TA_Update_The_Community_Details extends BaseTest {
+public class TC219_TA_Update_The_Community_Details extends BaseTest {
 
 
 	
