@@ -98,6 +98,7 @@ public class TACommunitiesPage extends BasePage{
 		searchCommunity(name);
 		updateCommunityName = updateCommunityName+" "+date();
 		clickElementByJavaScript(CommunityEdit);
+		
 //		clickByVisibleScreen("D:\\workspace\\bizligo-automation\\src\\test\\resources\\testImages\\Files\\TA Community Edit Button.png");
 		Thread.sleep(20000);
 		Thread.sleep(20000);
