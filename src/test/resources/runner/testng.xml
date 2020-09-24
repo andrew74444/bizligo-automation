@@ -26,7 +26,7 @@
 				name="com.cpcommunity.testScripts.community.TC212_Verify_TA_Created_Community_Is_Not_Displayed_In_Pending_Communities" />
 
 			<class
-				name="com.cpcommunity.testScripts.TC214_Verify_Active_Pricing_Plans_Are_Displaying_In_The_Pricing_Plans_Dropdown_While_Creating_A_Community" />
+				name="com.cpcommunity.testScripts.community.TC214_Verify_Active_Pricing_Plans_Are_Displaying_In_The_Pricing_Plans_Dropdown_While_Creating_A_Community" />
 
 
 		</classes>
