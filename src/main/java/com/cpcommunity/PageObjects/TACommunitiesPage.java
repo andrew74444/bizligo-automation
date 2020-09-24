@@ -43,7 +43,8 @@ public class TACommunitiesPage extends BasePage{
 	@FindBy(xpath="((//tbody/tr[1]/td[2])/a[1])")
 	WebElement CommunityEdit;
 	
-	
+	@FindBy(xpath="((//tbody/tr[1]/td[2])/a[2])")
+	WebElement manageMembers;
 //		Community created successfully
 
 	
@@ -105,6 +106,16 @@ public class TACommunitiesPage extends BasePage{
 //		click(CommunityEdit,"Community Edit");
 		
 		new CreateOrEditCommunityPage(driver).UpdateCommunity(name, Networking, Marketing, BuildingRelationship, Branding, GrowMyBusiness, InvestInBusiness, OtherName, About, Category, type, StateName, CityName, FacebookUrl, TwitterUrl, LinkedInUrl, LogoImagePath, websiteUrl, ImagePath, communityUpdate, updateCommunityName);
+	}
+
+
+
+	public ManageCommunityMembersPage navigateTomanageMembers(String name) {
+		
+		name = name+" "+date();
+		searchCommunity(name);
+		clickElementByJavaScript(manageMembers);
+		return (ManageCommunityMembersPage) openPage(ManageCommunityMembersPage.class);
 	}
 
 	

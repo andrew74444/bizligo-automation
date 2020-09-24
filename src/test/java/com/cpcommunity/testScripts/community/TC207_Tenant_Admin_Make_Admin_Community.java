@@ -11,6 +11,7 @@ import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataUtil;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
+import com.cpcommunity.PageObjects.ManageCommunityMembersPage;
 import com.cpcommunity.PageObjects.PendingCommunitiesPage;
 import com.cpcommunity.PageObjects.SystemAdminDashboardPage;
 import com.cpcommunity.PageObjects.TACommunitiesPage;
@@ -22,18 +23,18 @@ public class TC207_Tenant_Admin_Make_Admin_Community extends BaseTest {
 
 	
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC205(Hashtable<String,String> data) throws Exception {
+	public void TC207(Hashtable<String,String> data) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC205", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC207", data.get("Runmode"), excel);
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();	
 		SystemAdminDashboardPage Dashboard_Page = login.SystemAdminloginToApplication(data.get("email"), data.get("password"));
 		TACommunitiesPage tACommunitiesPage =  Dashboard_Page.navigateToCommunitiesPage();
-		tACommunitiesPage.AddNewCommunity(data.get("communityName"), data.get("Networking"), data.get("Marketing"), data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"), data.get("InvestInBusiness"), data.get("Other"), data.get("About"), data.get("Category"), data.get("type"));
-		
+		ManageCommunityMembersPage manageCommunityMembersPage =tACommunitiesPage.navigateTomanageMembers(data.get("communityName"));
+		manageCommunityMembersPage.addmember(data.get("makeAdminMemberEmail"));
 //		Assert.fail("Failing the login test");
 	}
 
