@@ -34,7 +34,7 @@ public class TC207_Tenant_Admin_Make_Admin_Community extends BaseTest {
 		SystemAdminDashboardPage Dashboard_Page = login.SystemAdminloginToApplication(data.get("email"), data.get("password"));
 		TACommunitiesPage tACommunitiesPage =  Dashboard_Page.navigateToCommunitiesPage();
 		ManageCommunityMembersPage manageCommunityMembersPage =tACommunitiesPage.navigateTomanageMembers(data.get("communityName"));
-		manageCommunityMembersPage.addmember(data.get("makeAdminMemberEmail"));
+		manageCommunityMembersPage.makeAdmin(data.get("makeAdminMemberEmail"));
 //		Assert.fail("Failing the login test");
 	}
 
