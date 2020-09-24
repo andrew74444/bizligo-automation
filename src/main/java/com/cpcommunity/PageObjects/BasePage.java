@@ -376,7 +376,8 @@ public abstract class BasePage<T> {
 
 	public String date() {
 		Date date = new Date();
-		SimpleDateFormat formatter = new SimpleDateFormat("dd MMMM yyyy");
+//		SimpleDateFormat formatter = new SimpleDateFormat("dd MMMM yyyy");
+		SimpleDateFormat formatter = new SimpleDateFormat("dd MMM yyyy");
 		String strDate = formatter.format(date);
 		System.out.println("Date Format with dd MMMM yyyy : " + strDate);
 		return strDate;

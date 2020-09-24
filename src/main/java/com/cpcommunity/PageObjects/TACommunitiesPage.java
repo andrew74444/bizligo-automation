@@ -64,6 +64,7 @@ public class TACommunitiesPage extends BasePage{
 		click(createCommunity,"create Community");
 		waitForElementToPresent(this.pricingPlan);
 		scrollToElement(this.pricingPlan);
+		pricingPlan = pricingPlan+" "+date();
 		selectByVisibleText(this.pricingPlan, pricingPlan, "pricing Plan");
 		scrollToElement(showing);
 		name = name+" "+date();

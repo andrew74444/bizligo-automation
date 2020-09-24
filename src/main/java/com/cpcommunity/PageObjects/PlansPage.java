@@ -363,7 +363,7 @@ public class PlansPage extends BasePage {
 		// Feature1
 		click(btnAddNew, "AddNew");
 		waitForElementToPresent(name);
-
+		PlanName = PlanName+" "+date();
 		type(name, PlanName, "Name");
 		type(price, PlanPrice, "Price");
 		type(duration, PlanDuration, "Duration");
@@ -391,8 +391,45 @@ public class PlansPage extends BasePage {
 			click(adsCheckbox,"ads Check box");
 		}
 		if(getRandomBoolean()) {
-			click(,"");
+			click(manageCampaignCheckbox,"manage Campaign Check box");
 		}
+		if(getRandomBoolean()) {
+			click(paymentGatewaysCheckbox,"payment Gateways Check box");
+		}
+		if(getRandomBoolean()) {
+			click(groupsCheckbox,"groups Check box");
+		}
+		if(getRandomBoolean()) {
+			click(zoomCheckbox,"zoom Check box");
+		}
+		if(getRandomBoolean()) {
+			click(surveysCheckbox,"surveys Check box");
+		}
+		if(getRandomBoolean()) {
+			click(jobBoardCheckbox,"job Board Check box");
+		}
+		if(getRandomBoolean()) {
+			click(promoCodesCheckbox,"promo Codes Check box");
+		}
+		if(getRandomBoolean()) {
+			click(membershipPlansCheckbox,"membership Plans Check box");
+		}
+		if(getRandomBoolean()) {
+			click(crmCheckbox,"crm Check box");
+		}
+		if(getRandomBoolean()) {
+			click(blogCheckbox,"blog Check box");
+		}
+		if(getRandomBoolean()) {
+			click(memberActivityReportCheckbox,"member Activity Report Check box");
+		}
+		if(getRandomBoolean()) {
+			click(communityMembersCheckbox,"community Members Check box");
+		}
+		if(getRandomBoolean()) {
+			click(communityDiscussionsCheckbox,"community Discussions Check box");
+		}
+		
 		
 		
 		int StorageID = this.getFeatureID();
