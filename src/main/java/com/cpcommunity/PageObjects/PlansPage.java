@@ -418,4 +418,16 @@ public class PlansPage extends BasePage {
 	}
 	
 
+	public int getTotalActivePlansCount() throws Exception {
+		
+		selectByVisibleText(isActiveSearch, "Active", "Status");
+		click(btnSearch,"btn Search");
+		Thread.sleep(10000);
+		String str = TotalMembershiplans.getText();
+		return getString(str, 5);
+		
+	}
+	
+	
+	
 }

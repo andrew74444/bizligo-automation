@@ -8,6 +8,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 
@@ -220,6 +222,26 @@ public abstract class BasePage<T> {
 		select.selectByIndex(index);
 	}
 
+	
+	
+	public List<String> getAllDropDownData(WebElement element){
+		Select select = new Select(element);
+		List<WebElement> elementList = select.getOptions();
+		List<String> valueList = new LinkedList<String>();
+		for(WebElement ele: elementList){
+			log.info(ele.getText());
+			valueList.add(ele.getText());
+		}
+		return valueList;
+	}
+	public int getTotalCountOfDropDown(WebElement element){
+		Select select = new Select(element);
+		List<WebElement> elementList = select.getOptions();
+		return elementList.size();
+	}
+	
+	
+	
 	// public void picture(String ID) {
 	// try {
 	// ExtentManager.captureScreenshot(ID);

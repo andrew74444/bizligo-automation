@@ -118,6 +118,17 @@ public class TACommunitiesPage extends BasePage{
 		return (ManageCommunityMembersPage) openPage(ManageCommunityMembersPage.class);
 	}
 
+
+
+	public int checkActivePricingPlans() {
+		click(createCommunity,"create Community");
+		waitForElementToPresent(this.pricingPlan);
+		scrollToElement(this.pricingPlan);
+		
+		return getTotalCountOfDropDown(pricingPlan);
+		
+	}
+
 	
 //	public ZohoCRMPage gotoCRM() {
 //		
