@@ -338,7 +338,7 @@ public class CreateOrEditCommunityPage extends BasePage{
 	        
 	        driver.switchTo().frame(iframe);
 	        enterTextInframe.clear();
-	        Thread.sleep(1000);
+	        Thread.sleep(3000);
 	      
 	        enterTextInframe.sendKeys(About);
 	        driver.switchTo().defaultContent();
