@@ -13,7 +13,7 @@
 	
 	<test name="Test1" preserve-order="true">
 		<classes>
-			<class name="com.cpcommunity.testScripts.community.TC206_Tenant_Admin_Add_Member_To_Community" />
+			<class name="com.cpcommunity.testScripts.community.TC207_Tenant_Admin_Make_Admin_Community" />
 </classes>
 	</test>
 
