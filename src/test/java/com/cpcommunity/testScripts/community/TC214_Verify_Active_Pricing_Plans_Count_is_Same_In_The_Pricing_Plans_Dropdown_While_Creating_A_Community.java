@@ -19,7 +19,7 @@ import com.cpcommunity.PageObjects.TACommunitiesPage;
 import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.ExcelReader;
 
-public class TC214_Verify_Active_Pricing_Plans_Are_Displaying_In_The_Pricing_Plans_Dropdown_While_Creating_A_Community extends BaseTest {
+public class TC214_Verify_Active_Pricing_Plans_Count_is_Same_In_The_Pricing_Plans_Dropdown_While_Creating_A_Community extends BaseTest {
 
 
 	
