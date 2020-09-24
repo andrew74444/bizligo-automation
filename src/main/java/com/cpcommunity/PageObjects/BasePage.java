@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 
@@ -239,6 +240,15 @@ public abstract class BasePage<T> {
 		List<WebElement> elementList = select.getOptions();
 		return elementList.size();
 	}
+	
+//	https://www.javatpoint.com/how-to-generate-random-number-in-java
+//	https://www.tutorialspoint.com/generate-random-boolean-in-java
+//	https://www.tutorialspoint.com/java/util/random_nextboolean.htm
+	public boolean getRandomBoolean() {
+		Random random = new Random(); 
+		return random.nextBoolean(); 
+	}
+	
 	
 	
 	

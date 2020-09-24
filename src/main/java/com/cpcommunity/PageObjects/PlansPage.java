@@ -70,7 +70,55 @@ public class PlansPage extends BasePage {
 	
 	@FindBy(xpath = "//input[@type='checkbox']")
 	WebElement checkbox;
-
+	
+	@FindBy(xpath = "(//input[@type='checkbox'])[1]")
+	WebElement eventsCheckbox;
+	
+	@FindBy(xpath = "(//input[@type='checkbox'])[2]")
+	WebElement adsCheckbox;
+	
+	@FindBy(xpath = "(//input[@type='checkbox'])[3]")
+	WebElement manageCampaignCheckbox;
+	
+	@FindBy(xpath = "(//input[@type='checkbox'])[4]")
+	WebElement paymentGatewaysCheckbox;
+	
+	@FindBy(xpath = "(//input[@type='checkbox'])[5]")
+	WebElement groupsCheckbox;
+	
+	@FindBy(xpath = "(//input[@type='checkbox'])[6]")
+	WebElement zoomCheckbox;
+	
+	@FindBy(xpath = "(//input[@type='checkbox'])[7]")
+	WebElement surveysCheckbox;
+	
+	
+	@FindBy(xpath = "(//input[@type='checkbox'])[8]")
+	WebElement jobBoardCheckbox;
+	
+	@FindBy(xpath = "(//input[@type='checkbox'])[9]")
+	WebElement promoCodesCheckbox;
+	
+	@FindBy(xpath = "(//input[@type='checkbox'])[10]")
+	WebElement membershipPlansCheckbox;
+	
+	
+	@FindBy(xpath = "(//input[@type='checkbox'])[11]")
+	WebElement crmCheckbox;
+	
+	@FindBy(xpath = "(//input[@type='checkbox'])[12]")
+	WebElement blogCheckbox;
+	
+	@FindBy(xpath = "(//input[@type='checkbox'])[13]")
+	WebElement memberActivityReportCheckbox;
+	
+	@FindBy(xpath = "(//input[@type='checkbox'])[14]")
+	WebElement communityMembersCheckbox;
+	
+	@FindBy(xpath = "(//input[@type='checkbox'])[15]")
+	WebElement communityDiscussionsCheckbox;
+	
+	
 	@FindBy(xpath = "//select[@id='Storage']")
 	WebElement Storage;
 
@@ -133,7 +181,7 @@ public class PlansPage extends BasePage {
 
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
-		// TODO Auto-generated method stub
+		
 		
 		
 		return ExpectedConditions.visibilityOf(btnAddNew);
@@ -174,8 +222,8 @@ public class PlansPage extends BasePage {
 			String description ) throws Exception {
 		click(btnAddNew, "Add Paln");
 		waitForElementToPresent(this.name);		
-		int ID1 = this.getFeatureID();
-		String feature = this.selectMembershipPlan(ID1);		
+//		int ID1 = this.getFeatureID();
+//		String feature = this.selectMembershipPlan(ID1);		
 		
 		type(this.name, name ,"Name");
 		type(this.price, price, "Price");
@@ -307,27 +355,16 @@ public class PlansPage extends BasePage {
 
 	}
 
+	
+	
 	public void CreatePlan(String PlanName, String PlanPrice, String PlanDuration, String NumberOfAdmins,
 			String NumberOfGroups, String NumberOfMembers) {
 
 		// Feature1
 		click(btnAddNew, "AddNew");
 		waitForElementToPresent(name);
-		int ID1 = this.getFeatureID();
-		int ID2 = this.getFeatureID();
-		while (ID1 == ID2) {
-			ID2 = this.getFeatureID();
-			if (ID1 == 2 && ID2 == 4) {
-				ID2 = this.getFeatureID();
-			} else if (ID1 == 6 && ID2 == 1 || ID1 == 7 && ID2 == 1) {
-				ID2 = this.getFeatureID();
-			} else if (ID1 == 6 && ID2 == 1 || ID1 == 7 && ID2 == 1) {
-				ID2 = this.getFeatureID();
-			}
-		}
-		this.selectFeature(ID1);
-		this.selectFeature(ID2);
-		type(name, PlanName + ID1 + ID2, "Name");
+
+		type(name, PlanName, "Name");
 		type(price, PlanPrice, "Price");
 		type(duration, PlanDuration, "Duration");
 		type(this.NumberOfAdmins, NumberOfAdmins, "NumberOfAdmins");
@@ -349,6 +386,15 @@ public class PlansPage extends BasePage {
 		
 		selectUsingIndex(durationType, DurationTypeID,"duration Type");
 		
+		
+		if(getRandomBoolean()) {
+			click(adsCheckbox,"ads Check box");
+		}
+		if(getRandomBoolean()) {
+			click(,"");
+		}
+		
+		
 		int StorageID = this.getFeatureID();
 		if (StorageID >= 1 && StorageID <= 3) {
 			StorageID = 1;
@@ -368,6 +414,74 @@ public class PlansPage extends BasePage {
 		AssertionHelper.verifyText(toastmessage.getText(), "Pricing plan details saved successfully");
 
 	}
+
+	
+	
+	
+	
+	
+	
+//	public void CreatePlan(String PlanName, String PlanPrice, String PlanDuration, String NumberOfAdmins,
+//			String NumberOfGroups, String NumberOfMembers) {
+//
+//		// Feature1
+//		click(btnAddNew, "AddNew");
+//		waitForElementToPresent(name);
+//		int ID1 = this.getFeatureID();
+//		int ID2 = this.getFeatureID();
+//		while (ID1 == ID2) {
+//			ID2 = this.getFeatureID();
+//			if (ID1 == 2 && ID2 == 4) {
+//				ID2 = this.getFeatureID();
+//			} else if (ID1 == 6 && ID2 == 1 || ID1 == 7 && ID2 == 1) {
+//				ID2 = this.getFeatureID();
+//			} else if (ID1 == 6 && ID2 == 1 || ID1 == 7 && ID2 == 1) {
+//				ID2 = this.getFeatureID();
+//			}
+//		}
+//		this.selectFeature(ID1);
+//		this.selectFeature(ID2);
+//		type(name, PlanName + ID1 + ID2, "Name");
+//		type(price, PlanPrice, "Price");
+//		type(duration, PlanDuration, "Duration");
+//		type(this.NumberOfAdmins, NumberOfAdmins, "NumberOfAdmins");
+//		type(this.NumberOfGroups, NumberOfGroups, "NumberOfGroups");
+//		type(this.NumberOfMembers, NumberOfMembers, "NumberOfMembers");
+//
+//		int DurationTypeID = this.getFeatureID();
+//		if (DurationTypeID >= 1 && DurationTypeID <= 3) {
+//			DurationTypeID = 1;
+//		} else if (DurationTypeID >= 4 && DurationTypeID <= 6) {
+//			DurationTypeID = 2;
+//		} else if (DurationTypeID >= 7 && DurationTypeID <= 9) {
+//			DurationTypeID = 3;
+//		} else {
+//			DurationTypeID = 4;
+//		}
+//
+//		System.out.println(DurationTypeID);
+//		
+//		selectUsingIndex(durationType, DurationTypeID,"duration Type");
+//		
+//		int StorageID = this.getFeatureID();
+//		if (StorageID >= 1 && StorageID <= 3) {
+//			StorageID = 1;
+//			click(Email, "Email");
+//		} else if (StorageID >= 4 && StorageID <= 6) {
+//			StorageID = 2;
+//			click(FullTime, "FullTime");
+//		} else {
+//			StorageID = 3;
+//			click(Calls, "Calls");
+//		}
+//		DurationTypeID = 3;
+//		selectUsingIndex(Storage, DurationTypeID,"duration Type");
+//		click(btnSave, "Save");
+//
+//		waitForElementToPresent(toastmessage);
+//		AssertionHelper.verifyText(toastmessage.getText(), "Pricing plan details saved successfully");
+//
+//	}
 
 	
 	
