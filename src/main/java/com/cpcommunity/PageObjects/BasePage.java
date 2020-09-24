@@ -25,6 +25,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.sikuli.script.FindFailed;
 import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
 
@@ -613,6 +614,18 @@ public abstract class BasePage<T> {
 		}
 	}
 	
+	public void clickByVisibleScreen(String imagePath) throws FindFailed {
+		// We have to create Screen class object to access method 
+		Screen screen = new Screen(); 
+		// Create object of Pattern class and specify the images path 
+		Pattern image = new Pattern(imagePath); 
+	 
+		 screen.wait(image, 10);
+		 // using screen object we can call click method which will accept image path and will perform //action
+		 // This will click on gmail image on google home page
+		 screen.click(image);
+
+	}
 	
 	public String projectFloder(String path) {
 		return System.getProperty("user.dir")+path;
