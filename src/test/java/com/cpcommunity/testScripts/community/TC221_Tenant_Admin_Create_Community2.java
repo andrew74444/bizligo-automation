@@ -32,11 +32,11 @@ public class TC221_Tenant_Admin_Create_Community2 extends BaseTest {
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();	
 		SystemAdminDashboardPage Dashboard_Page = login.SystemAdminloginToApplication(data.get("email"), data.get("password"));
-//		PlansPage plansPage = Dashboard_Page.NavigateManagePricingPlans();
+		PlansPage plansPage = Dashboard_Page.NavigateManagePricingPlans();
 //		plansPage.CreatePlan(data.get("PlanName"), data.get("PlanPrice"), data.get("PlanDuration"), data.get("NumberOfAdmins"), data.get("NumberOfGroups"), data.get("NumberOfMembers"));  
-		TACommunitiesPage tACommunitiesPage =  Dashboard_Page.navigateToCommunitiesPage();
-		tACommunitiesPage.AddNewCommunity(data.get("communityName"), data.get("Networking"), data.get("Marketing"), data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"), data.get("InvestInBusiness"), data.get("Other"), data.get("About"), data.get("Category"), data.get("type"),data.get("PlanName"));
-		
+//		TACommunitiesPage tACommunitiesPage =  Dashboard_Page.navigateToCommunitiesPage();
+//		tACommunitiesPage.AddNewCommunity(data.get("communityName"), data.get("Networking"), data.get("Marketing"), data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"), data.get("InvestInBusiness"), data.get("Other"), data.get("About"), data.get("Category"), data.get("type"),data.get("PlanName"));
+		plansPage.getPricingPlanFeatures(data.get("PlanPrice"));
 //		Assert.fail("Failing the login test");
 	}
 
