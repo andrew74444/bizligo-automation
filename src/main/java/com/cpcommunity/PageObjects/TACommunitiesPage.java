@@ -125,7 +125,7 @@ public class TACommunitiesPage extends BasePage{
 		waitForElementToPresent(this.pricingPlan);
 		scrollToElement(this.pricingPlan);
 		log.info(getAllDropDownData(pricingPlan));
-		return getTotalCountOfDropDown(pricingPlan);
+		return getTotalCountOfDropDown(pricingPlan)-1;
 		
 	}
 
