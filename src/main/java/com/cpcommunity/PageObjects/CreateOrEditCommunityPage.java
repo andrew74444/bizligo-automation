@@ -240,7 +240,7 @@ public class CreateOrEditCommunityPage extends BasePage{
 	    
 	    public void UpdateCommunity(String CommunityName,String Networking,String Marketing,String BuildingRelationship,String Branding,String GrowMyBusiness,
 	    		String InvestInBusiness,String OtherName,String About,String Category,String type,String StateName,String CityName,String FacebookUrl,
-	    		String TwitterUrl,String LinkedInUrl,String LogoImagePath, String websiteUrl, String ImagePath,String CommunityUpdate) throws Exception {
+	    		String TwitterUrl,String LinkedInUrl,String LogoImagePath, String websiteUrl, String ImagePath,String communityUpdate, String CommunityNameUpdate) throws Exception {
 	       
 	    	waitForElementToPresent(this.CommunityName);
 	        this.CommunityName.clear();
@@ -334,7 +334,7 @@ public class CreateOrEditCommunityPage extends BasePage{
 	        Thread.sleep(5000);
 	        scrollToElement(this.CommunityName);
 	        
-	        type(this.CommunityName, CommunityName,"Name");
+	        type(this.CommunityName, CommunityNameUpdate,"Name");
 	        
 	        driver.switchTo().frame(iframe);
 	        enterTextInframe.clear();
@@ -344,8 +344,8 @@ public class CreateOrEditCommunityPage extends BasePage{
 	        driver.switchTo().defaultContent();
 	        driver.switchTo().frame(1);
 	        enterTextInframe.clear();
-	       
-	        enterTextInframe.sendKeys(CommunityUpdate);
+	       Thread.sleep(3000);
+	        enterTextInframe.sendKeys(communityUpdate);
 	        
 	        driver.switchTo().defaultContent();
 	        

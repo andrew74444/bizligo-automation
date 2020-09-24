@@ -93,19 +93,18 @@ public class TACommunitiesPage extends BasePage{
 
 
 
-	public void UpdateCommunity(String name,String Networking,String Marketing,String BuildingRelationship,String Branding,String GrowMyBusiness,String InvestInBusiness,String OtherName,String About,String Category,String type,String StateName,String CityName,String FacebookUrl,String TwitterUrl,String LinkedInUrl,String LogoImagePath,String websiteUrl,String ImagePath,String updateCommunityName) throws Exception {
+	public void UpdateCommunity(String name,String Networking,String Marketing,String BuildingRelationship,String Branding,String GrowMyBusiness,String InvestInBusiness,String OtherName,String About,String Category,String type,String StateName,String CityName,String FacebookUrl,String TwitterUrl,String LinkedInUrl,String LogoImagePath,String websiteUrl,String ImagePath,String communityUpdate, String updateCommunityName) throws Exception {
 		name = name+" "+date();
 		searchCommunity(name);
 		updateCommunityName = updateCommunityName+" "+date();
 		clickElementByJavaScript(CommunityEdit);
 		
 //		clickByVisibleScreen("D:\\workspace\\bizligo-automation\\src\\test\\resources\\testImages\\Files\\TA Community Edit Button.png");
-		Thread.sleep(20000);
-		Thread.sleep(20000);
+		
 //		
 //		click(CommunityEdit,"Community Edit");
 		
-		new CreateOrEditCommunityPage(driver).UpdateCommunity(name, Networking, Marketing, BuildingRelationship, Branding, GrowMyBusiness, InvestInBusiness, OtherName, About, Category, type, StateName, CityName, FacebookUrl, TwitterUrl, LinkedInUrl, LogoImagePath, websiteUrl, ImagePath, updateCommunityName);
+		new CreateOrEditCommunityPage(driver).UpdateCommunity(name, Networking, Marketing, BuildingRelationship, Branding, GrowMyBusiness, InvestInBusiness, OtherName, About, Category, type, StateName, CityName, FacebookUrl, TwitterUrl, LinkedInUrl, LogoImagePath, websiteUrl, ImagePath, communityUpdate, updateCommunityName);
 	}
 
 	
