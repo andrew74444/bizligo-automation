@@ -124,7 +124,7 @@ public class TACommunitiesPage extends BasePage{
 		click(createCommunity,"create Community");
 		waitForElementToPresent(this.pricingPlan);
 		scrollToElement(this.pricingPlan);
-		
+		log.info(getAllDropDownData(pricingPlan));
 		return getTotalCountOfDropDown(pricingPlan);
 		
 	}

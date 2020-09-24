@@ -37,7 +37,7 @@ public class TC214_Verify_Active_Pricing_Plans_Are_Displaying_In_The_Pricing_Pla
 		int tppdd = tACommunitiesPage.checkActivePricingPlans();
 		PlansPage plansPage = Dashboard_Page.NavigateManagePricingPlans();
 		int tapp= plansPage.getTotalActivePlansCount();
-
+		logInfo("Total Active Plans in Pricing Plans Page:"+tapp+" Total Active Plans in Drop down is: "+tppdd );
 
 		Assert.assertEquals(tppdd, tapp);
 //		Assert.fail("Failing the login test");
