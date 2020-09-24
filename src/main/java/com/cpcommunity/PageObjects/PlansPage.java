@@ -391,7 +391,7 @@ public class PlansPage extends BasePage {
 			click(adsCheckbox,"ads Check box");
 		}
 		if(getRandomBoolean()) {
-			click(manageCampaignCheckbox,"manage Campaign Check box");
+//			click(manageCampaignCheckbox,"manage Campaign Check box");
 		}
 		if(getRandomBoolean()) {
 			click(paymentGatewaysCheckbox,"payment Gateways Check box");
