@@ -97,14 +97,12 @@ public class TACommunitiesPage extends BasePage{
 		name = name+" "+date();
 		searchCommunity(name);
 		updateCommunityName = updateCommunityName+" "+date();
-//		clickElementByJavaScript(CommunityEdit);
-		
+
 		clickByVisibleScreen("D:\\workspace\\bizligo-automation\\src\\test\\resources\\testImages\\Files\\TA Community Edit Button.png");
-		
-		
-//		
-//		click(CommunityEdit,"Community Edit");
 		Thread.sleep(20000);
+		Thread.sleep(20000);
+
+		
 		new CreateOrEditCommunityPage(driver).UpdateCommunity(name, Networking, Marketing, BuildingRelationship, Branding, GrowMyBusiness, InvestInBusiness, OtherName, About, Category, type, StateName, CityName, FacebookUrl, TwitterUrl, LinkedInUrl, LogoImagePath, websiteUrl, ImagePath, updateCommunityName);
 	}
 
