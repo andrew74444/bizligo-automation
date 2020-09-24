@@ -83,8 +83,8 @@ public class MyDashboardPage extends BasePage{
 	@FindBy(xpath="//a[contains(text(),'Logout')]")
 	WebElement Logout;
 	//***********************************Member******************************************
-	@FindBy(xpath="//a[contains(text(),'Global Members')]")
-	WebElement globalMembers;
+	@FindBy(xpath="//a[contains(text(),'Member Directory')]")
+	WebElement memberDirectory;
 	
 	@FindBy(xpath="//a[contains(text(),'Global Communities')]")
 	WebElement globalCommunities;
@@ -140,7 +140,7 @@ public class MyDashboardPage extends BasePage{
 		
 		log.info("---> DashBoard");
 		
-		return ExpectedConditions.visibilityOf(globalMembers);
+		return ExpectedConditions.visibilityOf(memberDirectory);
 	}
 
 	
@@ -273,7 +273,7 @@ public class MyDashboardPage extends BasePage{
 	public GlobalMembersPage navigateToGlobalMembers()
 	{
 			
-		globalMembers.click();
+		memberDirectory.click();
 		return (GlobalMembersPage) openPage(GlobalMembersPage.class);
 //		new GlobalMembersPage(driver, );
 	}

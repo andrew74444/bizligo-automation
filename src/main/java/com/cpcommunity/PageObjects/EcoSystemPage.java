@@ -11,11 +11,15 @@ import com.cpcommunity.utilities.DriverManager;
 public class EcoSystemPage extends BasePage {
 
 	
-	@FindBy(xpath = "//*[contains(text(),'My Communities')]")
-	WebElement myCommunitiesTab;
+	@FindBy(xpath = "//*[contains(text(),'MY ECOSYSTEM')]")
+	WebElement myEcosystem;
 
 	@FindBy(xpath = "//*[@id='header']")
 	WebElement pageheader;
+	
+	
+	@FindBy(xpath="//*[@id='navbar']//*[contains(text(),'Global Communities')]")
+	WebElement globalCommunities;
 
 	@Override
 	protected  void getPageScreenSot() {
@@ -30,7 +34,7 @@ public class EcoSystemPage extends BasePage {
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 		
-		return ExpectedConditions.visibilityOf(myCommunitiesTab);
+		return ExpectedConditions.visibilityOf(myEcosystem);
 	}
 
 	@FindBy(xpath="//span[@title='Toggle dropdown menu']")
@@ -48,6 +52,17 @@ public class EcoSystemPage extends BasePage {
 			return (MyDashboardPage) openPage(MyDashboardPage.class);
 //			new MyDashboardPage(driver, );
 		}
+	
+	public GlobalCommunitesPage naviagtingToGlobalCommunities() throws Exception
+	{
+//		click(Toggledropdownmenu,"Toggledropdownmenu");
+		waitForElementToPresent(globalCommunities);
+		clickElementByJavaScript(globalCommunities);
+//		Thread.sleep(1000);
+		return (GlobalCommunitesPage) openPage(GlobalCommunitesPage.class);
+//		new GlobalCommunitesPage(driver, );
+		
+	}
 	
 
 	

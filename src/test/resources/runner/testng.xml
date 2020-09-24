@@ -14,16 +14,12 @@
 	<test name="Test1" preserve-order="true">
 		<classes>
 
-			<class
-				name="com.cpcommunity.testScripts.community.TC208_TA_Not_Able_To_Remove_Admin_Role_When_Only_One_Admin_To_The_Community" />
-			<class
-				name="com.cpcommunity.testScripts.community.TC209_Tenant_Admin_Remove_Admin_To_Community" />
-			<class
-				name="com.cpcommunity.testScripts.community.TC210_Tenant_Admin_Remove_Member_From_Community" />
+			
+			
+			
 			<class
 				name="com.cpcommunity.testScripts.community.TC211_Verify_TA_Created_Community_Is_Displaying_In_The_Global_Communities_Page" />
-			<class
-				name="com.cpcommunity.testScripts.community.TC212_Verify_TA_Created_Community_Is_Not_Displayed_In_Pending_Communities" />
+			
 
 			<class
 				name="com.cpcommunity.testScripts.community.TC214_Verify_Active_Pricing_Plans_Are_Displaying_In_The_Pricing_Plans_Dropdown_While_Creating_A_Community" />
