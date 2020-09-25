@@ -12,6 +12,7 @@ import com.cpcommunity.utilities.DataUtil;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.PendingCommunitiesPage;
+import com.cpcommunity.PageObjects.PlansPage;
 import com.cpcommunity.PageObjects.SystemAdminDashboardPage;
 import com.cpcommunity.PageObjects.TACommunitiesPage;
 import com.cpcommunity.utilities.DataProviders;
@@ -31,8 +32,11 @@ public class TC205_Tenant_Admin_Create_Community extends BaseTest {
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();	
 		SystemAdminDashboardPage Dashboard_Page = login.SystemAdminloginToApplication(data.get("email"), data.get("password"));
+		PlansPage plansPage = Dashboard_Page.NavigateManagePricingPlans();
+		plansPage.CreatePlan(data.get("PlanName"), data.get("PlanPrice"), data.get("PlanDuration"), data.get("NumberOfAdmins"), data.get("NumberOfGroups"), data.get("NumberOfMembers"));  
 		TACommunitiesPage tACommunitiesPage =  Dashboard_Page.navigateToCommunitiesPage();
-		tACommunitiesPage.AddNewCommunity(data.get("communityName"), data.get("Networking"), data.get("Marketing"), data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"), data.get("InvestInBusiness"), data.get("Other"), data.get("About"), data.get("Category"), data.get("type"),data.get("pricingPlan"));
+		tACommunitiesPage.AddNewCommunity(data.get("communityName"), data.get("Networking"), data.get("Marketing"), data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"), data.get("InvestInBusiness"), data.get("Other"), data.get("About"), data.get("Category"), data.get("type"),data.get("PlanName"));
+		plansPage.getPricingPlanFeatures(data.get("PlanName"));
 		
 //		Assert.fail("Failing the login test");
 	}
