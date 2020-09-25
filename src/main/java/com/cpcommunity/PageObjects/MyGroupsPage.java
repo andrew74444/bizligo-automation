@@ -56,7 +56,7 @@ public class MyGroupsPage extends BasePage{
   
     
     public ManageGroupMembersPageByGroupAdmin manageGroupMembers(String groupName ) throws Exception {
-    	groupName = groupName+" "+dateInNumbers();
+    	groupName = groupName+" "+getDate();
     	this.searchGroup(groupName);
     	waitForElementToPresent(Menu);
     	picture();
@@ -90,7 +90,7 @@ public class MyGroupsPage extends BasePage{
     
     
     public boolean cancel(String groupName) throws Exception {
-    	groupName = groupName+" "+dateInNumbers();
+    	groupName = groupName+" "+getDate();
     	this.searchGroup(groupName);
 		click(CancelBtn,"Leave"); 
 		waitForElementToPresent(ToastMessage);
@@ -106,7 +106,7 @@ public class MyGroupsPage extends BasePage{
 		
 	}
     public boolean LeaveGroup(String groupName) throws Exception  {
-    	groupName = groupName+" "+dateInNumbers();
+    	groupName = groupName+" "+getDate();
     	this.searchGroup(groupName);
 		click(LeaveBtn,"Leave"); 
 		waitForElementToPresent(ToastMessage);
@@ -162,7 +162,7 @@ public class MyGroupsPage extends BasePage{
 		
 		public Create_UpdateGroupPage navigateToEditGroupPage(String groupName) throws Exception {
 		       
-			groupName = groupName+" "+dateInNumbers();
+			groupName = groupName+" "+getDate();
 	        this.searchGroup(groupName);
 	        
 	        WebElement element = driver.findElement(By.xpath("//span[contains(text(),'"+groupName+"')]"));

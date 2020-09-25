@@ -138,7 +138,7 @@ public abstract class BasePage<T> {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
@@ -174,14 +174,14 @@ public abstract class BasePage<T> {
 
 		wait.until(ExpectedConditions.visibilityOf(element));
 		log.info(element.toString() + "is displayed");
-		
+
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	public void moveToElement(WebElement element) {
@@ -208,6 +208,15 @@ public abstract class BasePage<T> {
 		element.sendKeys(value);
 	}
 
+	public String getValueFromInputFiled(WebElement ele) {
+		return ele.getAttribute("value");
+
+		// JavascriptExecutor js = (JavascriptExecutor) driver;
+		//
+		// WebElement inpElement = driver.findElement(By.id("inputTag"));
+		// String value = js.executeScript("return arguments[0].value", inpElement);
+	}
+
 	public void selectByVisibleText(WebElement element, String value, String elementName) {
 		log.info("Selecting the +" + elementName + "+ value as : " + value);
 		ExtentListeners.testReport.get().info("Selecting the " + elementName + " value as : " + value);
@@ -223,35 +232,31 @@ public abstract class BasePage<T> {
 		select.selectByIndex(index);
 	}
 
-	
-	
-	public List<String> getAllDropDownData(WebElement element){
+	public List<String> getAllDropDownData(WebElement element) {
 		Select select = new Select(element);
 		List<WebElement> elementList = select.getOptions();
 		List<String> valueList = new LinkedList<String>();
-		for(WebElement ele: elementList){
+		for (WebElement ele : elementList) {
 			log.info(ele.getText());
 			valueList.add(ele.getText());
 		}
 		return valueList;
 	}
-	public int getTotalCountOfDropDown(WebElement element){
+
+	public int getTotalCountOfDropDown(WebElement element) {
 		Select select = new Select(element);
 		List<WebElement> elementList = select.getOptions();
 		return elementList.size();
 	}
-	
-//	https://www.javatpoint.com/how-to-generate-random-number-in-java
-//	https://www.tutorialspoint.com/generate-random-boolean-in-java
-//	https://www.tutorialspoint.com/java/util/random_nextboolean.htm
+
+	// https://www.javatpoint.com/how-to-generate-random-number-in-java
+	// https://www.tutorialspoint.com/generate-random-boolean-in-java
+	// https://www.tutorialspoint.com/java/util/random_nextboolean.htm
 	public boolean getRandomBoolean() {
-		Random random = new Random(); 
-		return random.nextBoolean(); 
+		Random random = new Random();
+		return random.nextBoolean();
 	}
-	
-	
-	
-	
+
 	// public void picture(String ID) {
 	// try {
 	// ExtentManager.captureScreenshot(ID);
@@ -315,9 +320,6 @@ public abstract class BasePage<T> {
 		return d;
 	}
 
-	
-	
-	
 	public String getSystemCurrentYear() {
 		Date date = new Date();
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
@@ -374,20 +376,46 @@ public abstract class BasePage<T> {
 		return i;
 	}
 
-	public String date() {
+	public Date getDate() {
 		Date date = new Date();
-//		SimpleDateFormat formatter = new SimpleDateFormat("dd MMMM yyyy");
+		return date;
+	}
+
+	public String getDateInDDMMMYYYY() {
+
+		// SimpleDateFormat formatter = new SimpleDateFormat("dd MMMM yyyy");
 		SimpleDateFormat formatter = new SimpleDateFormat("dd MMM yyyy");
-		String strDate = formatter.format(date);
+		String strDate = formatter.format(getDate());
 		System.out.println("Date Format with dd MMMM yyyy : " + strDate);
 		return strDate;
+	}
+
+	public String addDaysToCurrentDate(int days, int months, int year) {
+
+		DateFormat dateFormat = new SimpleDateFormat("mm/dd/yyyy");
+		Date d = getDate();
+		dateFormat.format(d);
+		Calendar c = Calendar.getInstance();
+		c.setTime(d);
+		c.add(Calendar.DATE, days);
+		c.add(Calendar.DATE, months);
+		c.add(Calendar.DATE, year);
+		Date daysAdded = c.getTime();
+		return dateFormat.format(daysAdded);
 	}
 	
 	
 	
-	public String dateInNumbers() {
-		return getSystemCurrentDate()+"-"+getSystemCurrentMonth()+"-"+getSystemCurrentYear();
-		 
+
+	public void getDateInDDMMYYYY() {
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		Date date = new Date();
+		System.out.println(formatter.format(date));
+	}
+
+	public String getDateInString() {
+		return getSystemCurrentDate() + "-" + getSystemCurrentMonth() + "-" + getSystemCurrentYear();
+
 	}
 
 	// Sun Nov 25 11:45:05 PST 2012
@@ -515,13 +543,12 @@ public abstract class BasePage<T> {
 		executeScript("arguments[0].setAttribute('" + attribute + "','" + value + "');", element);
 	}
 
-	public String getAttributeValue(WebElement element,String name) {
+	public String getAttributeValue(WebElement element, String name) {
 		// System.out.println("value is "+value);
 		return element.getAttribute(name);
-		
+
 	}
-	
-	
+
 	/**
 	 * Scroll till element view
 	 * 
@@ -594,7 +621,7 @@ public abstract class BasePage<T> {
 	 */
 	public void clickElementByJavaScript(WebElement element) {
 		highlightElement(element);
-		log.info("Clicking"+element.toString());
+		log.info("Clicking" + element.toString());
 		executeScript("arguments[0].click();", element);
 		try {
 			Thread.sleep(2000);
@@ -602,7 +629,7 @@ public abstract class BasePage<T> {
 
 			e.printStackTrace();
 		}
-		log.info("Clicked"+element.toString());
+		log.info("Clicked" + element.toString());
 	}
 
 	public void getBrowserInstance() {
@@ -629,40 +656,40 @@ public abstract class BasePage<T> {
 		}
 		return updatedName;
 	}
-	
-	
-	public void applyPromoCode(String promo,WebElement promoCode,WebElement  applybtn, WebElement promoCodeApplied) throws Exception {
-		
+
+	public void applyPromoCode(String promo, WebElement promoCode, WebElement applybtn, WebElement promoCodeApplied)
+			throws Exception {
+
 		Thread.sleep(1000);
 		Thread.sleep(1000);
 		Thread.sleep(1000);
-		
-		
-		if(promo.contains("PROMO")){
-			driver.findElement(By.xpath("//*[@for='IHavePromoCode']")).click();	
-			type(promoCode,promo+getSystemCurrentMonth()+getSystemCurrentDate()+getSystemCurrentYear(),"promo Code");
-			click(applybtn,"apply button");
+
+		if (promo.contains("PROMO")) {
+			driver.findElement(By.xpath("//*[@for='IHavePromoCode']")).click();
+			type(promoCode, promo + getSystemCurrentMonth() + getSystemCurrentDate() + getSystemCurrentYear(),
+					"promo Code");
+			click(applybtn, "apply button");
 			waitForElementToPresent(promoCodeApplied);
-			
+
 		}
 	}
-	
+
 	public void clickByVisibleScreen(String imagePath) throws FindFailed {
-		// We have to create Screen class object to access method 
-		Screen screen = new Screen(); 
-		// Create object of Pattern class and specify the images path 
-		Pattern image = new Pattern(imagePath); 
-	 
-		 screen.wait(image, 10);
-		 // using screen object we can call click method which will accept image path and will perform //action
-		 // This will click on gmail image on google home page
-		 screen.click(image);
+		// We have to create Screen class object to access method
+		Screen screen = new Screen();
+		// Create object of Pattern class and specify the images path
+		Pattern image = new Pattern(imagePath);
+
+		screen.wait(image, 10);
+		// using screen object we can call click method which will accept image path and
+		// will perform //action
+		// This will click on gmail image on google home page
+		screen.click(image);
 
 	}
-	
+
 	public String projectFloder(String path) {
-		return System.getProperty("user.dir")+path;
+		return System.getProperty("user.dir") + path;
 	}
-	
 
 }

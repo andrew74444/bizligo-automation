@@ -93,7 +93,7 @@ public class CommunityEventsPage extends BasePage {
 	}
 
 	public CheckInPage checkIn(Hashtable<String, String> data) throws Exception {
-		this.SearchEvent(data.get("eventName")+" "+date());
+		this.SearchEvent(data.get("eventName")+" "+getDateInDDMMMYYYY());
 		click(firstEventRowCheckBox,"firstEventRowCheckBox");
 		Thread.sleep(1000);
 		click(btnCheckinEvent, "Checkin Event");		

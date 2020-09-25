@@ -107,7 +107,7 @@ public class GlobalCommunitesPage extends BasePage {
 	}
 
 	public void joinCommunitytermsandconditions(String communityName) throws Exception {
-		communityName = communityName+" "+date();
+		communityName = communityName+" "+getDateInDDMMMYYYY();
 		this.searchCommunity(communityName);
 		click(join, "join");
 
@@ -139,7 +139,7 @@ public class GlobalCommunitesPage extends BasePage {
 	}
 
 	public boolean leaveCommunity(String communityName) throws Exception {
-		communityName = communityName+" "+date();
+		communityName = communityName+" "+getDateInDDMMMYYYY();
 		this.searchCommunity(communityName);
 		click(Leave, "Leave");
 		picture();
@@ -183,7 +183,7 @@ public class GlobalCommunitesPage extends BasePage {
 
 	public boolean cancelRequest(String communityName) throws Exception {
 		
-		communityName = communityName+" "+date();
+		communityName = communityName+" "+getDateInDDMMMYYYY();
 		this.searchCommunity(communityName);
 		click(Cancel, "Cancel");
 		waitForElementToPresent(YesProceed);
@@ -199,7 +199,7 @@ public class GlobalCommunitesPage extends BasePage {
 	}
 
 	public MembershipPlansPage joinCommunityWithMembershipPlan(String communityName) throws Exception {
-		this.searchCommunity(communityName + " " + date());
+		this.searchCommunity(communityName + " " + getDateInDDMMMYYYY());
 		this.clickOnJoin();
 		return (MembershipPlansPage) openPage(MembershipPlansPage.class);
 	}
@@ -226,7 +226,7 @@ public class GlobalCommunitesPage extends BasePage {
 	}
 	
 	public void JoinCommunity(String communityName) throws Exception {
-		communityName = communityName + " " + date();
+		communityName = communityName + " " + getDateInDDMMMYYYY();
 		this.searchCommunity(communityName);
 		this.clickOnJoin();
 		waitForElementToPresent(YesProceed);
@@ -240,7 +240,7 @@ public class GlobalCommunitesPage extends BasePage {
 	}
 
 	public boolean JoinPublicCommunity(String publicCommunity) throws Exception {
-		publicCommunity = publicCommunity+" "+date();
+		publicCommunity = publicCommunity+" "+getDateInDDMMMYYYY();
 		this.searchCommunity(publicCommunity);
 		picture();
 		this.JoinCommunity(publicCommunity);
@@ -254,7 +254,7 @@ public class GlobalCommunitesPage extends BasePage {
 	}
 
 	public boolean JoinPrivateCommunity(String privateCommunity) throws Exception {
-		privateCommunity = privateCommunity+" "+date();
+		privateCommunity = privateCommunity+" "+getDateInDDMMMYYYY();
 		this.JoinCommunity(privateCommunity);
 		this.searchCommunity(privateCommunity);
 		if (Cancel.isDisplayed()) {
@@ -271,7 +271,7 @@ public class GlobalCommunitesPage extends BasePage {
 	}
 
 	public boolean rejectCommunity(String communityName) throws Exception {
-		communityName = communityName+" "+date();
+		communityName = communityName+" "+getDateInDDMMMYYYY();
 		this.searchCommunity(communityName);
 		click(rejectBtn, "reject Btn");
 		waitForElementToPresent(YesProceed);
@@ -289,7 +289,7 @@ public class GlobalCommunitesPage extends BasePage {
 	}
 
 	public void checkCommunityIsDisplayed(String communityName) throws Exception {
-		communityName = communityName+" "+date();
+		communityName = communityName+" "+getDateInDDMMMYYYY();
 		this.searchCommunity(communityName);
 
 	}
@@ -306,7 +306,7 @@ public class GlobalCommunitesPage extends BasePage {
 	}
 
 	public boolean acceptCommunity(String communityName) throws Exception {
-		communityName = communityName+" "+date();
+		communityName = communityName+" "+getDateInDDMMMYYYY();
 		this.searchCommunity(communityName);
 		click(acceptBtn, "Accept Btn");
 		waitForElementToPresent(YesProceed);
@@ -325,7 +325,7 @@ public class GlobalCommunitesPage extends BasePage {
 	}
 
 	public boolean acceptCommunity(String communityName, String TC) throws Exception {
-		communityName = communityName+" "+date();
+		communityName = communityName+" "+getDateInDDMMMYYYY();
 		this.searchCommunity(communityName);
 		click(acceptBtn, "Accept Btn");
 		String parent = driver.getWindowHandle();
@@ -362,7 +362,7 @@ public class GlobalCommunitesPage extends BasePage {
 
 	public void verifyCommunityCategory(String communityName) throws Exception {
 
-		communityName = communityName + " " + date();
+		communityName = communityName + " " + getDateInDDMMMYYYY();
 		this.searchCommunity(communityName);
 
 		String category;
@@ -457,7 +457,7 @@ public class GlobalCommunitesPage extends BasePage {
 	}
 
 	public CommunityDetailsPage navigateToCommunityDetailsPage(String communityName) throws Exception {
-		communityName = communityName + " " + date();
+		communityName = communityName + " " + getDateInDDMMMYYYY();
 		this.searchCommunity(communityName);
 
 		driver.findElement(By.xpath("//a[@tooltip='" + communityName + "']")).click();
@@ -466,7 +466,7 @@ public class GlobalCommunitesPage extends BasePage {
 	}
 
 	public void verifyInActivatedCommunityIsNotDisplayed(String communityName) throws Exception {
-		communityName = communityName + " " + date();
+		communityName = communityName + " " + getDateInDDMMMYYYY();
 		type(searchName, communityName, "search");
 		click(searchBtn, "search Btn");
 		waitForElementToPresent(noCommunitiesfound);

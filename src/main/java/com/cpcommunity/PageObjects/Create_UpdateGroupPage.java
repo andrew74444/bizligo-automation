@@ -74,7 +74,7 @@ public class Create_UpdateGroupPage extends BasePage {
 
 	public ManageGroupsPage createGroup(String name, String Description, String City, String State,
 			String GroupCategory, String GroupType, String LogoImagePath ) throws Exception {
-		name = name+" "+dateInNumbers();
+		name = name+" "+getDate();
 		this.fillGroupDetails(name, Description, City, State, GroupType, LogoImagePath);
 		waitForElementToPresent(Create);
 		scrollToElement(Create);
@@ -129,7 +129,7 @@ public class Create_UpdateGroupPage extends BasePage {
 	        String GroupType, String logoImagePath,String newGroupName ) throws Exception
 	{
 	    this.fillGroupDetails(Name, Description, City, State,  GroupType, logoImagePath);
-	    type(this.Name, newGroupName+" "+dateInNumbers(), "new Group Name");
+	    type(this.Name, newGroupName+" "+getDate(), "new Group Name");
 	    click(Save, "Save");
 	    return (GroupDetailsPage) openPage(GroupDetailsPage.class);
 	}

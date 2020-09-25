@@ -41,7 +41,7 @@ public class CreateCommunityPage extends BasePage{
 	
 	
 	public GlobalCommunitesPage CreateCommunity(String Name,String Networking,String Marketing,String BuildingRelationship,String Branding,String GrowMyBusiness,String InvestInBusiness,String Other,String About,String Category,String type ) throws Exception{
-		new CreateOrEditCommunityPage(driver).FillCommunityDetails(Name+" "+date(), Networking, Marketing, BuildingRelationship, Branding, GrowMyBusiness, InvestInBusiness, Other, About, Category, type);
+		new CreateOrEditCommunityPage(driver).FillCommunityDetails(Name+" "+getDateInDDMMMYYYY(), Networking, Marketing, BuildingRelationship, Branding, GrowMyBusiness, InvestInBusiness, Other, About, Category, type);
 		picture();
 		return (GlobalCommunitesPage) openPage(GlobalCommunitesPage.class);
 //				new GlobalCommunitesPage(driver,);
@@ -49,7 +49,7 @@ public class CreateCommunityPage extends BasePage{
 
 	public String getCommunityName(String communityName) {
 		
-		String d = date();
+		String d = getDateInDDMMMYYYY();
 		
 		communityName = communityName +" "+ d;
 		return communityName;

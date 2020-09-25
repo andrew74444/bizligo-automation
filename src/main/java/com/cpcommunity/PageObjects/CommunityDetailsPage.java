@@ -386,7 +386,7 @@ public class CommunityDetailsPage extends BasePage {
 	public void verifycommunityDetails(String communityName, String Description, String State, String City,
 			String FbUrl, String linkedinUrl, String twitterUrl, String type) throws Exception {
 
-		communityName = communityName + " " + date();
+		communityName = communityName + " " + getDateInDDMMMYYYY();
 		if (driver.findElement(By.xpath("//span[contains(.,'" + communityName + "')]")).isDisplayed()) {
 			AssertionHelper.verifyTrue(true);
 		} else {
@@ -477,7 +477,7 @@ public class CommunityDetailsPage extends BasePage {
 	}
 
 	public GroupDetailsPage navigateToGroupDetailsPage(String groupName) throws Exception {
-		groupName = groupName + " " + dateInNumbers();
+		groupName = groupName + " " + getDate();
 		this.searchGroup(groupName);
 		driver.findElement(By.xpath("//*[@tooltip='" + groupName + "']")).click();
 		return (GroupDetailsPage) openPage(GroupDetailsPage.class);
@@ -497,7 +497,7 @@ public class CommunityDetailsPage extends BasePage {
 	
 	
 	public void JoinGroups(String groupName) throws Exception {
-		groupName = groupName + " " + dateInNumbers();
+		groupName = groupName + " " + getDate();
 		this.searchGroup(groupName);
 		clickElementByJavaScript(JoinGroup);
 		waitForElementToPresent(GroupsYesProceed);
@@ -712,9 +712,9 @@ public class CommunityDetailsPage extends BasePage {
 
 	public void searchEvent(Hashtable<String, String> data) {
 		this.clickOnEventsInTheMenu();
-		type(events, data.get("eventName") + " " + date(), "event Search");
+		type(events, data.get("eventName") + " " + getDateInDDMMMYYYY(), "event Search");
 		click(eventsSearchButton, "Events Search Button");
-		String eventName = data.get("eventName") + " " + date();
+		String eventName = data.get("eventName") + " " + getDateInDDMMMYYYY();
 		WebElement ele = driver.findElement(By.xpath("//*[contains(text(),'" + eventName + "')]"));
 		waitForElementToPresent(ele);
 		ele.isDisplayed();
@@ -767,7 +767,7 @@ public class CommunityDetailsPage extends BasePage {
 	WebElement no;
 
 	public void checkMemberIsnotAbleToJoinGroupWithoutJoiningCommunity(String groupName) throws Exception {
-		groupName = groupName + " " + dateInNumbers();
+		groupName = groupName + " " + getDate();
 		this.searchGroup(groupName);
 		clickElementByJavaScript(JoinGroup);
 		waitForElementToPresent(GroupsYesProceed);
@@ -784,7 +784,7 @@ public class CommunityDetailsPage extends BasePage {
 
 	public ManageGroupMembersPageByGroupAdmin navigateToManageGroupMembers(String groupName) throws Exception {
 
-		groupName = groupName + " " + dateInNumbers();
+		groupName = groupName + " " + getDate();
 		this.searchGroup(groupName);
 		waitForElementToPresent(Menu);
 		picture();

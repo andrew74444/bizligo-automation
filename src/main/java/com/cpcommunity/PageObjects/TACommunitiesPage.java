@@ -64,10 +64,10 @@ public class TACommunitiesPage extends BasePage{
 		click(createCommunity,"create Community");
 		waitForElementToPresent(this.pricingPlan);
 		scrollToElement(this.pricingPlan);
-		pricingPlan = pricingPlan+" "+date();
+		pricingPlan = pricingPlan+" "+getDateInDDMMMYYYY();
 		selectByVisibleText(this.pricingPlan, pricingPlan, "pricing Plan");
 		scrollToElement(showing);
-		name = name+" "+date();
+		name = name+" "+getDateInDDMMMYYYY();
 		new CreateOrEditCommunityPage(driver).FillCommunityDetails(name, Networking, Marketing, BuildingRelationship, Branding, GrowMyBusiness, InvestInBusiness, Other, About, Category, type);
 		searchCommunity(name);
 		
@@ -96,9 +96,9 @@ public class TACommunitiesPage extends BasePage{
 
 
 	public void UpdateCommunity(String name,String Networking,String Marketing,String BuildingRelationship,String Branding,String GrowMyBusiness,String InvestInBusiness,String OtherName,String About,String Category,String type,String StateName,String CityName,String FacebookUrl,String TwitterUrl,String LinkedInUrl,String LogoImagePath,String websiteUrl,String ImagePath,String communityUpdate, String updateCommunityName) throws Exception {
-		name = name+" "+date();
+		name = name+" "+getDateInDDMMMYYYY();
 		searchCommunity(name);
-		updateCommunityName = updateCommunityName+" "+date();
+		updateCommunityName = updateCommunityName+" "+getDateInDDMMMYYYY();
 		clickElementByJavaScript(CommunityEdit);
 		
 //		clickByVisibleScreen("D:\\workspace\\bizligo-automation\\src\\test\\resources\\testImages\\Files\\TA Community Edit Button.png");
@@ -113,7 +113,7 @@ public class TACommunitiesPage extends BasePage{
 
 	public ManageCommunityMembersPage navigateTomanageMembers(String name) {
 		
-		name = name+" "+date();
+		name = name+" "+getDateInDDMMMYYYY();
 		searchCommunity(name);
 		clickElementByJavaScript(manageMembers);
 		return (ManageCommunityMembersPage) openPage(ManageCommunityMembersPage.class);

@@ -105,7 +105,7 @@ public class PendingCommunitiesPage extends BasePage{
 	}
 	
 	public void approveCommunity(String communityName ) throws Exception{
-		this.Searchcommmunity(communityName+" "+date());
+		this.Searchcommmunity(communityName+" "+getDateInDDMMMYYYY());
 		this.viewCommunityDetails();
 		clickElementByJavaScript(btnApprove);	
 		waitForElementToPresent(this.ApproveYesProceed);
@@ -118,7 +118,7 @@ public class PendingCommunitiesPage extends BasePage{
 
 
 	public void checkCommunityNotDisplayed(String communityName) throws Exception {
-		 this.Searchcommmunity(communityName+" "+date());
+		 this.Searchcommmunity(communityName+" "+getDateInDDMMMYYYY());
 		waitForElementToPresent(noCommunitiesAvailable);
 	}
 }

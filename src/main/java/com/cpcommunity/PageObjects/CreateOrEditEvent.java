@@ -355,7 +355,7 @@ public class CreateOrEditEvent extends BasePage {
 
 		enterLocation(data.get("location"));
 		
-		type(EventName, data.get("eventTitleName")+" "+date(), "Event Name");
+		type(EventName, data.get("eventTitleName")+" "+getDateInDDMMMYYYY(), "Event Name");
 		selectEventType(data.get("isPaidEvent"));
 		selectEventMode(data.get("eventModeTo"));
 		selectByVisibleText(EventCategoryID, data.get("eventCategory"), "Event Category");

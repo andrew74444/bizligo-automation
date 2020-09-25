@@ -62,7 +62,7 @@ public class UpcomingEventsPage extends BasePage{
 	
 	public void searchEvent(Hashtable<String, String> data) throws Exception {
 		EventNameSearch.clear();
-		type(EventNameSearch, data.get("eventName")+" "+date(), "eventName");
+		type(EventNameSearch, data.get("eventName")+" "+getDateInDDMMMYYYY(), "eventName");
 		click(Search,"Search");
 		Thread.sleep(5000);
 	}

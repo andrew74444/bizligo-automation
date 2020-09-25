@@ -154,7 +154,7 @@ public class MyCommunitiesPage extends BasePage {
 	}
 
 	public SelectPlanPage completeSetup(String communityName) throws Exception {
-		this.searchCommunity(communityName+" "+date());
+		this.searchCommunity(communityName+" "+getDateInDDMMMYYYY());
 		click(completeSetup, "complete Set up Community");
 		return (SelectPlanPage) openPage(SelectPlanPage.class);
 	}// button
@@ -173,7 +173,7 @@ public class MyCommunitiesPage extends BasePage {
 	}
 
 	public void checkProperAlertDisplayedWhenOnlyOneAdmin(String communityName) throws Exception {
-		this.searchCommunity(communityName+" "+date());
+		this.searchCommunity(communityName+" "+getDateInDDMMMYYYY());
 		click(LeaveBtn, "leave");
 		takeScreenshotByShutterBug(LeaveBtn, "Leave Btn");
 		waitForElementToPresent(YesProceed);
@@ -187,7 +187,7 @@ public class MyCommunitiesPage extends BasePage {
 	}
 
 	public boolean cancelCommunityRequest(String CommunityName) throws Exception {
-		this.searchCommunity(CommunityName+" "+date());
+		this.searchCommunity(CommunityName+" "+getDateInDDMMMYYYY());
 		click(Cancel, "Cancel");
 		waitForElementToPresent(YesProceed);
 		YesProceed.click();
@@ -203,7 +203,7 @@ public class MyCommunitiesPage extends BasePage {
 	}
 
 	public void activateCommunity(String communityName) throws Exception {
-		this.searchCommunity(communityName+" "+date());
+		this.searchCommunity(communityName+" "+getDateInDDMMMYYYY());
 		Activate.click();
 		picture();
 		waitForElementToPresent(YesProceed);
@@ -221,7 +221,7 @@ public class MyCommunitiesPage extends BasePage {
 	}
 
 	public boolean leaveCommunity(String communityName) throws Exception {
-		this.searchCommunity(communityName+" "+date());
+		this.searchCommunity(communityName+" "+getDateInDDMMMYYYY());
 		LeaveBtn.click();
 		waitForElementToPresent(YesProceed);
 		YesProceed.click();
@@ -248,7 +248,7 @@ public class MyCommunitiesPage extends BasePage {
 	}
 
 	public CommunityDetailsPage navigateToCommunityDetailsPage(String communityName) throws Exception {
-		communityName = communityName+" "+date();
+		communityName = communityName+" "+getDateInDDMMMYYYY();
 		this.searchCommunity(communityName);
 		WebElement ele = driver.findElement(By.xpath("//a[@tooltip='" + communityName + "']"));
 		click(ele, "CommunityName");
@@ -268,7 +268,7 @@ public class MyCommunitiesPage extends BasePage {
 
 	public boolean cancelReviewCommunity(String CommunityName) throws Exception {
 
-		this.searchCommunity(CommunityName+" "+date());
+		this.searchCommunity(CommunityName+" "+getDateInDDMMMYYYY());
 		Zero.isDisplayed();
 		Cancel.click();
 		waitForElementToPresent(YesProceed);
@@ -287,7 +287,7 @@ public class MyCommunitiesPage extends BasePage {
 
 	public void cancelJoinCommunity(String CommunityName) throws Exception {
 
-		this.searchCommunity(CommunityName+" "+date());
+		this.searchCommunity(CommunityName+" "+getDateInDDMMMYYYY());
 		Cancel.click();
 		waitForElementToPresent(YesProceed);
 		YesProceed.click();
@@ -299,7 +299,7 @@ public class MyCommunitiesPage extends BasePage {
 
 	public boolean rejectcommunity(String CommunityName) throws Exception {
 
-		this.searchCommunity(CommunityName+" "+date());
+		this.searchCommunity(CommunityName+" "+getDateInDDMMMYYYY());
 		RejectBtn.click();
 		waitForElementToPresent(YesProceed);
 		YesProceed.click();
@@ -318,7 +318,7 @@ public class MyCommunitiesPage extends BasePage {
 	}
 
 	public void acceptcommunity(String CommunityName) throws Exception {
-		this.searchCommunity(CommunityName+" "+date());
+		this.searchCommunity(CommunityName+" "+getDateInDDMMMYYYY());
 
 		AcceptBtn.click();
 		waitForElementToPresent(YesProceed);
@@ -335,7 +335,7 @@ public class MyCommunitiesPage extends BasePage {
 	}
 
 	public void acceptcommunity(String CommunityName, String TC) throws Exception {
-		this.searchCommunity(CommunityName+" "+date());
+		this.searchCommunity(CommunityName+" "+getDateInDDMMMYYYY());
 
 		AcceptBtn.click();
 		waitForElementToPresent(YesProceed);
@@ -371,7 +371,7 @@ public class MyCommunitiesPage extends BasePage {
 
 	public CommunityDashboardPage NaviagtetoManageCommunity(String communityName) throws Exception {
 
-		this.searchCommunity(communityName+" "+date());
+		this.searchCommunity(communityName+" "+getDateInDDMMMYYYY());
 		click(MANAGEbtn, "Manage");
 		return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
 		// new CommunityDashboardPage(driver, );
@@ -384,7 +384,7 @@ public class MyCommunitiesPage extends BasePage {
 		// new CommunityDashboardPage(driver, );
 	}
 	public void verifyWaitForReviewIsDisplayed(String communityName) throws Exception {
-		this.searchCommunity(communityName+" "+date());
+		this.searchCommunity(communityName+" "+getDateInDDMMMYYYY());
 		waitingForReview.isDisplayed();		
 	}
 
@@ -409,7 +409,7 @@ public class MyCommunitiesPage extends BasePage {
 	}
 
 	public void verifyPaymentPendindDisplayed(String communityName) throws Exception {
-		this.searchCommunity(communityName+" "+date());
+		this.searchCommunity(communityName+" "+getDateInDDMMMYYYY());
 		waitForElementToPresent(paymentPending);
 		paymentPending.isDisplayed();
 		

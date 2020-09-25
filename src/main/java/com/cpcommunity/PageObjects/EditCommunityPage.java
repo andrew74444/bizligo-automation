@@ -72,7 +72,7 @@ public class EditCommunityPage extends BasePage{
 	
 	public CommunityDashboardPage editcommunity(String Name,String Networking,String Marketing,String BuildingRelationship,String Branding,String GrowMyBusiness,String InvestInBusiness,String Other,String About,String Category,String type,String StateName,String CityName,String FacebookUrl,String TwitterUrl,String LinkedInUrl,String LogoImagePath, String websiteUrl, String ImagePath, String CommunityUpdate, String communityNameUpdate) throws Exception{
 		CreateOrEditCommunityPage EditCommunity = new CreateOrEditCommunityPage(driver); 		
-		EditCommunity.UpdateCommunity(Name+" "+date(), Networking, Marketing, BuildingRelationship, Branding, GrowMyBusiness, InvestInBusiness, Other, About, Category, type,StateName, CityName, FacebookUrl, TwitterUrl, LinkedInUrl, LogoImagePath, websiteUrl, ImagePath, CommunityUpdate, communityNameUpdate);
+		EditCommunity.UpdateCommunity(Name+" "+getDateInDDMMMYYYY(), Networking, Marketing, BuildingRelationship, Branding, GrowMyBusiness, InvestInBusiness, Other, About, Category, type,StateName, CityName, FacebookUrl, TwitterUrl, LinkedInUrl, LogoImagePath, websiteUrl, ImagePath, CommunityUpdate, communityNameUpdate);
 		return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
 //		new CommunityDashboardPage(driver);				
 	}

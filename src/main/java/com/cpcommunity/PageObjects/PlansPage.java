@@ -8,7 +8,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 
@@ -347,7 +350,7 @@ public class PlansPage extends BasePage {
 		// Feature1
 		click(btnAddNew, "AddNew");
 		waitForElementToPresent(name);
-		PlanName = PlanName + " " + date();
+		PlanName = PlanName + " " + getDateInDDMMMYYYY();
 		type(name, PlanName, "Name");
 		type(price, PlanPrice, "Price");
 		type(duration, PlanDuration, "Duration");
@@ -546,28 +549,101 @@ public class PlansPage extends BasePage {
 
 	}
 
-	public void getPricingPlanFeatures(String planName) throws Exception {
-		planName = planName + " " + date();
+	public HashMap<String, String> getPricingPlanFeatures(String planName) throws Exception {
+
+		// create a HashMap and print
+		HashMap<String, String> Planfeatures = new HashMap<String, String>();
+
+		planName = planName + " " + getDateInDDMMMYYYY();
 		searchPlan(planName);
 
 		click(editPlan, "edit Plan");
 		waitForElementToPresent(name);
 
-		System.out.println(adsCheckbox.isSelected()+"Check Box");
-		System.out.println(manageCampaignCheckbox.isSelected()+"Bulk mail");
-		System.out.println(paymentGatewaysCheckbox.isSelected()+"Payment Gateway");
-		System.out.println(groupsCheckbox.isSelected()+"Groups");
-		System.out.println(eventsCheckbox.isSelected()+"Events");
-		System.out.println(zoomCheckbox.isSelected()+"Zoom");
-		System.out.println(surveysCheckbox.isSelected()+"Serveys");
-		System.out.println(jobBoardCheckbox.isSelected()+"Job");
-		System.out.println(promoCodesCheckbox.isSelected()+"Promo code");
-		System.out.println(membershipPlansCheckbox.isSelected()+"Memberships");
-		System.out.println(crmCheckbox.isSelected()+"CRM");
-		System.out.println(blogCheckbox.isSelected()+"Blog");
-		System.out.println(memberActivityReportCheckbox.isSelected()+"Report");
-		System.out.println(communityMembersCheckbox.isSelected()+"Members");
-		System.out.println(communityDiscussionsCheckbox.isSelected()+"Discussions");
+		int dr = stringToInt(getValueFromInputFiled(duration));
+		String dt = getValueFromInputFiled(durationType);
+
+			
+		if (dt.equalsIgnoreCase("number:4")) {
+			Planfeatures.put("endDate", addDaysToCurrentDate(dr, 0, 0));
+		}
+		if (dt.equalsIgnoreCase("number:1")) {
+			Planfeatures.put("endDate", addDaysToCurrentDate(0, 0, dr));
+		}
+		if (dt.equalsIgnoreCase("number:2")) {
+			Planfeatures.put("endDate", addDaysToCurrentDate(0, dr, 0));
+		}
+		if (dt.equalsIgnoreCase("number:3")) {
+			dr = dr * 7;
+			Planfeatures.put("endDate", addDaysToCurrentDate(dr, 0, 0));
+		}
+		
+		
+		
+		if (adsCheckbox.isSelected()) {
+			Planfeatures.put("Advertisments", "Yes");
+			log.info("Advertisments - Yes");
+		}
+		if (manageCampaignCheckbox.isSelected()) {
+			Planfeatures.put("Bulk mail", "Yes");
+			log.info("Bulk mail - Yes");
+		}
+		if (paymentGatewaysCheckbox.isSelected()) {
+			Planfeatures.put("Payment Gateway", "Yes");
+			log.info("Payment Gateway - Yes");
+		}
+		if (groupsCheckbox.isSelected()) {
+			Planfeatures.put("Groups", "Yes");
+			log.info("Groups - Yes");
+		}
+		if (eventsCheckbox.isSelected()) {
+			Planfeatures.put("Events", "Yes");
+			log.info("Events - Yes");
+		}
+		if (zoomCheckbox.isSelected()) {
+			Planfeatures.put("Zoom", "Yes");
+			log.info("Zoom - Yes");
+		}
+		if (surveysCheckbox.isSelected()) {
+			Planfeatures.put("Serveys", "Yes");
+			log.info("Serveys - Yes");
+		}
+		if (jobBoardCheckbox.isSelected()) {
+			Planfeatures.put("Job", "Yes");
+			log.info("Job - Yes");
+		}
+		if (promoCodesCheckbox.isSelected()) {
+			Planfeatures.put("Promo code", "Yes");
+			log.info("Promo code - Yes");
+		}
+		if (membershipPlansCheckbox.isSelected()) {
+			Planfeatures.put("Memberships", "Yes");
+			log.info("Memberships - Yes");
+		}
+		if (crmCheckbox.isSelected()) {
+			Planfeatures.put("CRM", "Yes");
+			log.info("CRM - Yes");
+		}
+		if (blogCheckbox.isSelected()) {
+			Planfeatures.put("Blog", "Yes");
+			log.info("Blog - Yes");
+		}
+		if (memberActivityReportCheckbox.isSelected()) {
+			Planfeatures.put("Report", "Yes");
+			log.info("Report - Yes");
+		}
+		if (communityMembersCheckbox.isSelected()) {
+			Planfeatures.put("Members", "Yes");
+			log.info("Members - Yes");
+		}
+		if (communityDiscussionsCheckbox.isSelected()) {
+			Planfeatures.put("Discussions", "Yes");
+			log.info("Discussions - Yes");
+		}
+
+		log.info(Planfeatures);
+		
+		return Planfeatures;
 	}
 
 	public void searchPlan(String planName) throws Exception {

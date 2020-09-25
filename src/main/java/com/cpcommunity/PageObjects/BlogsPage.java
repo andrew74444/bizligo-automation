@@ -34,7 +34,7 @@ public class BlogsPage extends BasePage {
 	WebElement SearchBtn;
 
 	public void searchPost(String communityName, String blogName) {
-		communityName =communityName+" "+date();
+		communityName =communityName+" "+getDateInDDMMMYYYY();
 		selectByVisibleText(selectCommuntiy, communityName, "selecting Communtiy");
 		type(blogsPostName, blogName, "Post Name to search");
 		click(SearchBtn, "Search");

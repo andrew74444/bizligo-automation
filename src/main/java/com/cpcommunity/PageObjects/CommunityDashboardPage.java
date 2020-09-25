@@ -345,4 +345,9 @@ public class CommunityDashboardPage extends BasePage {
 		return (ServeysPage) openPage(ServeysPage.class);
 	}
 
+	public void navigateToPricingPlansDetailsPage() {
+		
+		
+	}
+
 }
