@@ -9,11 +9,8 @@ import java.util.List;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
-import com.cpcommunity.utilities.Constants;
-import com.cpcommunity.utilities.DataUtil;
 import com.cpcommunity.PageObjects.*;
-import com.cpcommunity.utilities.DataProviders;
-import com.cpcommunity.utilities.ExcelReader;
+import com.cpcommunity.utilities.*;
 
 public class TC221_Tenant_Admin_Create_Community2 extends BaseTest {
 
@@ -34,15 +31,15 @@ public class TC221_Tenant_Admin_Create_Community2 extends BaseTest {
 //		TACommunitiesPage tACommunitiesPage =  Dashboard_Page.navigateToCommunitiesPage();
 //		tACommunitiesPage.AddNewCommunity(data.get("communityName"), data.get("Networking"), data.get("Marketing"), data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"), data.get("InvestInBusiness"), data.get("Other"), data.get("About"), data.get("Category"), data.get("type"),data.get("PlanName"));
 		HashMap<String, String> Ftr_list = plansPage.getPricingPlanFeatures(data.get("PlanName"));
-//		home = Dashboard_Page.logout();
-//		login = home.clickOnLOGINBtn();
-//		EcoSystemPage ecoSystemPage = login.loginToApplication(data.get("communityAdminEmail"), data.get("password"));
-//		GlobalCommunitesPage globalCommunitesPage = ecoSystemPage.naviagtingToGlobalCommunities();
-//		CommunityDetailsPage communityDetailsPage = globalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));
-//		EditCommunityPage editCommunityPage = communityDetailsPage.managecommunity();
-//		CommunityDashboardPage communityDashboardPage =editCommunityPage.saveCommunity();
-//		communityDashboardPage.navigateToPricingPlansDetailsPage();
-		
+		home = Dashboard_Page.logout();
+		login = home.clickOnLOGINBtn();
+		EcoSystemPage ecoSystemPage = login.loginToApplication(data.get("communityAdminEmail"), data.get("password"));
+		GlobalCommunitesPage globalCommunitesPage = ecoSystemPage.naviagtingToGlobalCommunities();
+		CommunityDetailsPage communityDetailsPage = globalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));
+		EditCommunityPage editCommunityPage = communityDetailsPage.managecommunity();
+		CommunityDashboardPage communityDashboardPage =editCommunityPage.saveCommunity();
+		PricingPlanDetailsPage pricingPlanDetailsPage = communityDashboardPage.navigateToPricingPlansDetailsPage();
+		pricingPlanDetailsPage.checkPlanDetails(Ftr_list);
 		
 		
 //		Assert.fail("Failing the login test");

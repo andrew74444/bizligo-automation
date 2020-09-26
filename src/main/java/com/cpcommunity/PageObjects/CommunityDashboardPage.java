@@ -345,9 +345,9 @@ public class CommunityDashboardPage extends BasePage {
 		return (ServeysPage) openPage(ServeysPage.class);
 	}
 
-	public void navigateToPricingPlansDetailsPage() {
+	public PricingPlanDetailsPage navigateToPricingPlansDetailsPage() {
 		
-		
+		return (PricingPlanDetailsPage) openPage(PricingPlanDetailsPage.class);
 	}
 
 }
