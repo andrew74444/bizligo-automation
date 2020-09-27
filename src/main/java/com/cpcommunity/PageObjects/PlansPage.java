@@ -581,16 +581,16 @@ public class PlansPage extends BasePage {
 		
 		
 		if (adsCheckbox.isSelected()) {
-			Planfeatures.put("Advertisments", "Yes");
+			Planfeatures.put("Advertisements", "Yes");
 			log.info("Advertisments - Yes");
 		}
 		if (manageCampaignCheckbox.isSelected()) {
-			Planfeatures.put("Bulk mail", "Yes");
+			Planfeatures.put("Manage Campaign", "Yes");
 			log.info("Bulk mail - Yes");
 		}
 		if (paymentGatewaysCheckbox.isSelected()) {
-			Planfeatures.put("Payment Gateway", "Yes");
-			log.info("Payment Gateway - Yes");
+			Planfeatures.put("Payment Gateways", "Yes");
+			log.info("Payment Gateways - Yes");
 		}
 		if (groupsCheckbox.isSelected()) {
 			Planfeatures.put("Groups", "Yes");
@@ -605,20 +605,20 @@ public class PlansPage extends BasePage {
 			log.info("Zoom - Yes");
 		}
 		if (surveysCheckbox.isSelected()) {
-			Planfeatures.put("Serveys", "Yes");
-			log.info("Serveys - Yes");
+			Planfeatures.put("Surveys", "Yes");
+			log.info("Surveys - Yes");
 		}
 		if (jobBoardCheckbox.isSelected()) {
-			Planfeatures.put("Job", "Yes");
-			log.info("Job - Yes");
+			Planfeatures.put("Job Board", "Yes");
+			log.info("Job Board - Yes");
 		}
 		if (promoCodesCheckbox.isSelected()) {
-			Planfeatures.put("Promo code", "Yes");
-			log.info("Promo code - Yes");
+			Planfeatures.put("Promo Codes", "Yes");
+			log.info("Promo Codes - Yes");
 		}
 		if (membershipPlansCheckbox.isSelected()) {
-			Planfeatures.put("Memberships", "Yes");
-			log.info("Memberships - Yes");
+			Planfeatures.put("Membership Plans", "Yes");
+			log.info("Membership Plans - Yes");
 		}
 		if (crmCheckbox.isSelected()) {
 			Planfeatures.put("CRM", "Yes");
@@ -629,16 +629,16 @@ public class PlansPage extends BasePage {
 			log.info("Blog - Yes");
 		}
 		if (memberActivityReportCheckbox.isSelected()) {
-			Planfeatures.put("Report", "Yes");
-			log.info("Report - Yes");
+			Planfeatures.put("Member Activity Report", "Yes");
+			log.info("Member Activity Report - Yes");
 		}
 		if (communityMembersCheckbox.isSelected()) {
-			Planfeatures.put("Members", "Yes");
-			log.info("Members - Yes");
+			Planfeatures.put("Community Members", "Yes");
+			log.info("Community Members - Yes");
 		}
 		if (communityDiscussionsCheckbox.isSelected()) {
-			Planfeatures.put("Discussions", "Yes");
-			log.info("Discussions - Yes");
+			Planfeatures.put("Community Discussions", "Yes");
+			log.info("Community Discussions - Yes");
 		}
 
 		log.info(Planfeatures);
