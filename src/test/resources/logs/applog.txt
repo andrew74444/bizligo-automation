@@ -1,1 +1,17 @@
-INFO    2020-09-25 20:29:50,180 [main] com.cpcommunity.testScripts.community.BaseTest  - Config properties file loaded
+INFO    2020-09-27 08:16:14,500 [main] com.cpcommunity.testScripts.community.BaseTest  - Config properties file loaded
+INFO    2020-09-27 08:16:20,329 [TestNG-test=Test 1-1] com.cpcommunity.testScripts.community.BaseTest  - Driver Initialized !!!
+INFO    2020-09-27 08:16:29,580 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2020-09-27 08:16:34,636 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (4d61d460ea8c9e67242e74f9b4f9b428)] -> xpath: //a[contains(.,'Login')]] for :18 seconds
+INFO    2020-09-27 08:16:34,670 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - [[ChromeDriver: chrome on XP (4d61d460ea8c9e67242e74f9b4f9b428)] -> xpath: //a[contains(.,'Login')]]is displayed
+INFO    2020-09-27 08:16:37,673 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : LOGIN
+INFO    2020-09-27 08:16:41,884 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2020-09-27 08:16:46,894 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Typing in : email address entered the value as : connectproem@gmail.com
+INFO    2020-09-27 08:16:47,273 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Typing in : password entered the value as : Admin@123
+INFO    2020-09-27 08:16:47,448 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Login
+INFO    2020-09-27 08:16:53,774 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2020-09-27 08:16:58,783 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : PricingPlans
+INFO    2020-09-27 08:17:02,739 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2020-09-27 08:17:07,750 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Typing in :  plan Name entered the value as : 1 Pricing Plan 27 Sep 2020
+INFO    2020-09-27 08:17:07,979 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : btn Search
+INFO    2020-09-27 08:17:18,147 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : edit Plan
+INFO    2020-09-27 08:17:50,371 [TestNG-test=Test 1-1] com.cpcommunity.testScripts.community.BaseTest  - Test Execution Completed !!!
