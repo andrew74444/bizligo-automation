@@ -390,19 +390,45 @@ public abstract class BasePage<T> {
 		return strDate;
 	}
 
+//	https://mkyong.com/java/java-date-and-calendar-examples/
+	
 	public String addDaysToCurrentDate(int days, int weeks, int months, int year) {
 
-		DateFormat dateFormat = new SimpleDateFormat("mm/dd/yyyy");
+//		DateFormat dateFormat = new SimpleDateFormat("mm/dd/yyyy");
 		Date d = getDate();
-		dateFormat.format(d);
+		
+		log.info(d);
 		Calendar c = Calendar.getInstance();
 		c.setTime(d);
-		c.add(Calendar.DATE, days);
-		c.add(Calendar.DATE, months);
-		c.add(Calendar.DATE, year);
-		c.add(Calendar.WEEK_OF_YEAR, weeks);
 		Date daysAdded = c.getTime();
-		return dateFormat.format(daysAdded);
+		log.info(daysAdded);
+		
+		c.add(Calendar.DATE, days);
+		daysAdded = c.getTime();
+		log.info(daysAdded);
+		
+		c.add(Calendar.MONTH, months);
+		log.info(daysAdded);
+		daysAdded = c.getTime();
+		
+		c.add(Calendar.YEAR, year);
+		daysAdded = c.getTime();
+		log.info(daysAdded);
+		
+		c.add(Calendar.WEEK_OF_YEAR, weeks);
+		daysAdded = c.getTime();
+		log.info(daysAdded);
+		
+		int yr       = c.get(Calendar.YEAR);
+		int month      = c.get(Calendar.MONTH); // Jan = 0, dec = 11
+		int dayOfMonth = c.get(Calendar.DAY_OF_MONTH);
+		int dayOfWeek  = c.get(Calendar.DAY_OF_WEEK);
+		int weekOfYear = c.get(Calendar.WEEK_OF_YEAR);
+		int weekOfMonth= c.get(Calendar.WEEK_OF_MONTH);
+		
+		String date = month+"/"+dayOfMonth+"/"+yr;
+		log.info(date);
+		return date;
 	}
 	
 	
