@@ -390,7 +390,7 @@ public abstract class BasePage<T> {
 		return strDate;
 	}
 
-	public String addDaysToCurrentDate(int days, int months, int year) {
+	public String addDaysToCurrentDate(int days, int weeks, int months, int year) {
 
 		DateFormat dateFormat = new SimpleDateFormat("mm/dd/yyyy");
 		Date d = getDate();
@@ -400,6 +400,7 @@ public abstract class BasePage<T> {
 		c.add(Calendar.DATE, days);
 		c.add(Calendar.DATE, months);
 		c.add(Calendar.DATE, year);
+		c.add(Calendar.WEEK_OF_YEAR, weeks);
 		Date daysAdded = c.getTime();
 		return dateFormat.format(daysAdded);
 	}

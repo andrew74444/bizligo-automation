@@ -564,18 +564,19 @@ public class PlansPage extends BasePage {
 		String dt = getValueFromInputFiled(durationType);
 
 			
-		if (dt.equalsIgnoreCase("number:4")) {
-			Planfeatures.put("endDate", addDaysToCurrentDate(dr, 0, 0));
-		}
+		
 		if (dt.equalsIgnoreCase("number:1")) {
-			Planfeatures.put("endDate", addDaysToCurrentDate(0, 0, dr));
+			Planfeatures.put("endDate", addDaysToCurrentDate(0, 0,0, dr));
 		}
 		if (dt.equalsIgnoreCase("number:2")) {
-			Planfeatures.put("endDate", addDaysToCurrentDate(0, dr, 0));
+			Planfeatures.put("endDate", addDaysToCurrentDate(0, 0,dr, 0));
 		}
 		if (dt.equalsIgnoreCase("number:3")) {
-			dr = dr * 7;
-			Planfeatures.put("endDate", addDaysToCurrentDate(dr, 0, 0));
+			
+			Planfeatures.put("endDate", addDaysToCurrentDate(0,dr, 0, 0));
+		}
+		if (dt.equalsIgnoreCase("number:4")) {
+			Planfeatures.put("endDate", addDaysToCurrentDate(dr, 0, 0,0));
 		}
 		
 		
@@ -586,7 +587,7 @@ public class PlansPage extends BasePage {
 		}
 		if (manageCampaignCheckbox.isSelected()) {
 			Planfeatures.put("Manage Campaign", "Yes");
-			log.info("Bulk mail - Yes");
+			log.info("Manage Campaign - Yes");
 		}
 		if (paymentGatewaysCheckbox.isSelected()) {
 			Planfeatures.put("Payment Gateways", "Yes");
