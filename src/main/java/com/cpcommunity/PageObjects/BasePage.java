@@ -425,7 +425,7 @@ public abstract class BasePage<T> {
 		int dayOfWeek  = c.get(Calendar.DAY_OF_WEEK);
 		int weekOfYear = c.get(Calendar.WEEK_OF_YEAR);
 		int weekOfMonth= c.get(Calendar.WEEK_OF_MONTH);
-		
+		month++;
 		String date = month+"/"+dayOfMonth+"/"+yr;
 		log.info(date);
 		return date;
