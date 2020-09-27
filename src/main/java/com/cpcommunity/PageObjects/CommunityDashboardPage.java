@@ -344,8 +344,14 @@ public class CommunityDashboardPage extends BasePage {
 		click(serveys,"serveys");
 		return (ServeysPage) openPage(ServeysPage.class);
 	}
-
+	@FindBy(xpath="//*[contains(text(),'Pricing Plan Details')]")
+	WebElement pricingPlanDetails;
 	public PricingPlanDetailsPage navigateToPricingPlansDetailsPage() {
+		
+		
+		
+		click(pricingPlanDetails,"pricingPlanDetails");
+		
 		
 		return (PricingPlanDetailsPage) openPage(PricingPlanDetailsPage.class);
 	}
