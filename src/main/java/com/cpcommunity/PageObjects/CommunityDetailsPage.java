@@ -241,7 +241,7 @@ public class CommunityDetailsPage extends BasePage {
 	protected ExpectedCondition getPageLoadCondition() {
 
 		scrollUpVertically();
-		return ExpectedConditions.visibilityOf(discussion);
+		return ExpectedConditions.visibilityOf(eventsMenu);
 	}
 
 	public EditCommunityPage managecommunity() throws InterruptedException {
