@@ -174,7 +174,7 @@ public class CommunityDetailsPage extends BasePage {
 	@FindBy(xpath = "//*[contains(text(),'no results found matching your search criteria.')]")
 	WebElement noResultsFound;
 
-	@FindBy(xpath = "//*[@title='Manage Community']")
+	@FindBy(xpath = "//*[@data-original-title='Manage Community']")
 	WebElement manageCommunity;
 
 	@FindBy(xpath = "//strong[contains(text(),'Advertisements')]")
