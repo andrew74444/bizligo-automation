@@ -69,12 +69,12 @@ public class CommunityDashboardPage extends BasePage {
 	@FindBy(xpath = "//*[@title='Meeting Accounts']")
 	WebElement MeetingAccounts;
 
-	@FindBy(xpath = "(//a[contains(text(),'Jobs')])[1]")
+	@FindBy(xpath = "(//*[@class='col-md-3 left_col']//img[@src='/Content/Images/Jobs/Jobs-active.png'])")
 	WebElement Jobs;
-	@FindBy(xpath = "//a[contains(text(),'Manage Jobs')]")
+	@FindBy(xpath = "(//*[@class='col-md-3 left_col']//*[@title='Manage Jobs'])")
 	WebElement ManageJobs;
 
-	@FindBy(xpath = "//a[contains(text(),'Manage Applications')]")
+	@FindBy(xpath = "(//*[@class='col-md-3 left_col']//*[@title='Manage Applications'])")
 	WebElement ManageApplications;
 
 	@FindBy(xpath = "//a[@title='Edit Community']")
