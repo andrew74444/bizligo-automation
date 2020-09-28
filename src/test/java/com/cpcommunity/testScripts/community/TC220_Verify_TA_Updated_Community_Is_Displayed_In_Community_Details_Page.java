@@ -35,7 +35,7 @@ public class TC220_Verify_TA_Updated_Community_Is_Displayed_In_Community_Details
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
-		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("communityAdminEmail"), data.get("password"));
+		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 	
 //	
 		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.naviagtingToGlobalCommunities();
