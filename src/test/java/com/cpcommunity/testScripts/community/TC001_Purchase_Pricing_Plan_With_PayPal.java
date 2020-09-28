@@ -7,31 +7,8 @@ import org.testng.annotations.Test;
 
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataUtil;
-import com.cpcommunity.PageObjects.AuthorizeGateway;
-import com.cpcommunity.PageObjects.AuthorizeMerchanLogin;
-import com.cpcommunity.PageObjects.CommunityDashboardPage;
-import com.cpcommunity.PageObjects.CommunityDetailsPage;
-import com.cpcommunity.PageObjects.CreateCommunityPage;
-import com.cpcommunity.PageObjects.Create_UpdateGroupPage;
-import com.cpcommunity.PageObjects.EcoSystemPage;
-import com.cpcommunity.PageObjects.EditCommunityPage;
-import com.cpcommunity.PageObjects.GlobalCommunitesPage;
-import com.cpcommunity.PageObjects.HomePage;
-import com.cpcommunity.PageObjects.LoginPage;
-import com.cpcommunity.PageObjects.ManageGroupsPage;
-import com.cpcommunity.PageObjects.ManageJobsPage;
-import com.cpcommunity.PageObjects.MembershipPlansPage;
-import com.cpcommunity.PageObjects.MyCommunitiesPage;
-import com.cpcommunity.PageObjects.MyDashboardPage;
-import com.cpcommunity.PageObjects.PayPalPayment;
-import com.cpcommunity.PageObjects.PaymentConfirmation;
-import com.cpcommunity.PageObjects.PaymentGatewaysPage;
-import com.cpcommunity.PageObjects.PendingCommunitiesPage;
-import com.cpcommunity.PageObjects.PlansPage;
-import com.cpcommunity.PageObjects.SelectPlanPage;
-import com.cpcommunity.PageObjects.SetupAuthorizePage;
-import com.cpcommunity.PageObjects.PaymentReceipt;
-import com.cpcommunity.PageObjects.SystemAdminDashboardPage;
+import com.cpcommunity.PageObjects.*;
+
 import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.ExcelReader;
 
@@ -51,13 +28,13 @@ public class TC001_Purchase_Pricing_Plan_With_PayPal extends BaseTest {
 		HomePage home = new HomePage().open();
 		LoginPage loginPage = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = loginPage.loginToApplication(data.get("email"), data.get("password"));
-		MyDashboardPage myDashboardPage = EcoSystemPage.goToDashBoardPage();
-		MyCommunitiesPage MyCommunitiesPage = myDashboardPage.NaviagtingToMyCommunities();
+		
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CreateCommunityPage CreateCommunityPage = MyCommunitiesPage.clickOnCreateCommunity();
 //		String communityName= data.get("communityName")+ currentTime();
 		String communityName= data.get("communityName");
 		CreateCommunityPage.CreateCommunity(communityName, data.get("Networking"), data.get("Marketing"),data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"),data.get("InvestInBusiness"), data.get("Other"), data.get("About"), data.get("Category"),data.get("type"));
-		home = myDashboardPage.logout();
+		home = EcoSystemPage.logout();
 		home.clickOnLOGINBtn();
 		SystemAdminDashboardPage systemAdminDashboardPage = loginPage.SystemAdminloginToApplication(data.get("email1"),	data.get("password"));
 		PendingCommunitiesPage PendingCommunitiesPage = systemAdminDashboardPage.naviagteToPendingCommunities();
@@ -65,9 +42,9 @@ public class TC001_Purchase_Pricing_Plan_With_PayPal extends BaseTest {
 		home = systemAdminDashboardPage.logout();
 		loginPage = home.clickOnLOGINBtn();
 		EcoSystemPage = loginPage.loginToApplication(data.get("email"), data.get("password"));
-		myDashboardPage = EcoSystemPage.goToDashBoardPage();
 		
-		MyCommunitiesPage = myDashboardPage.NaviagtingToMyCommunities();
+		
+		MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		SelectPlanPage SelectPlanPage = MyCommunitiesPage.completeSetup(communityName);
 		SelectPlanPage.selectPaidPlan(data.get("planName"));
 		if (data.get("paymentGateway").equalsIgnoreCase("paypal")) 
@@ -109,8 +86,8 @@ public class TC001_Purchase_Pricing_Plan_With_PayPal extends BaseTest {
 		loginPage = home.clickOnLOGINBtn();
 		
 		EcoSystemPage = loginPage.loginToApplication(data.get("email2"), data.get("password"));
-		myDashboardPage =EcoSystemPage.goToDashBoardPage();
-		GlobalCommunitesPage globalCommunitesPage = myDashboardPage.NaviagtingToGlobalCommunities();
+	
+		GlobalCommunitesPage globalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
 		
 		MembershipPlansPage membershipPlansPage = globalCommunitesPage.joinCommunityWithMembershipPlan(communityName);
 		membershipPlansPage.purchaseMembershipPlan(membershipPlan);
@@ -126,13 +103,13 @@ public class TC001_Purchase_Pricing_Plan_With_PayPal extends BaseTest {
 		CommunityDetailsPage = PaymentReceipt.viewCommunity();
 		CommunityDetailsPage.verifyMembershipDetails(membershipPlan, data.get("duration"));
 		CommunityDetailsPage.verifymembershipPlan(membershipPlan, data.get("groupName"), data.get("jobTitle"),data.get("resume"), data.get("optionalMessage"));
-		myDashboardPage.navigateToMyDashBoard();
-		myDashboardPage.checkUnreadCountIsDisplayed();
-		home = myDashboardPage.logout();
+//		myDashboardPage.navigateToMyDashBoard();
+//		myDashboardPage.checkUnreadCountIsDisplayed();
+		home = EcoSystemPage.logout();
 		loginPage = home.clickOnLOGINBtn();
 		EcoSystemPage = loginPage.loginToApplication(data.get("email"), data.get("password"));
-		myDashboardPage = EcoSystemPage.goToDashBoardPage();
-		MyCommunitiesPage = myDashboardPage.NaviagtingToMyCommunities();	
+//		myDashboardPage = EcoSystemPage.goToDashBoardPage();
+		MyCommunitiesPage = EcoSystemPage.goToMyCommunities();	
 		communityDashboardPage= MyCommunitiesPage.NaviagtetoManageCommunity(communityName);
 		plansPage = communityDashboardPage.navigateToMembershipPlans();
 		plansPage.checkPurchasedMembershipPlanIsNotEditable();	

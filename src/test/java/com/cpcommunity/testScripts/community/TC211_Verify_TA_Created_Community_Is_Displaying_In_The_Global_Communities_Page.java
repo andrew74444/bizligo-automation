@@ -33,7 +33,7 @@ public class TC211_Verify_TA_Created_Community_Is_Displaying_In_The_Global_Commu
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"),data.get("password"));
-		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.naviagtingToGlobalCommunities();
+		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
 		GlobalCommunitesPage.checkCommunityIsDisplayed(data.get("communityName"));
 		
 		//Assert.fail("Failing the login test");

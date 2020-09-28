@@ -17,9 +17,23 @@ public class EcoSystemPage extends BasePage {
 	@FindBy(xpath = "//*[@id='header']")
 	WebElement pageheader;
 	
-	
 	@FindBy(xpath="//*[@id='navbar']//*[contains(text(),'Global Communities')]")
 	WebElement globalCommunities;
+	
+	@FindBy(xpath="//span[@title='Toggle dropdown menu']")
+	WebElement Toggledropdownmenu;
+	
+	@FindBy(xpath="//a[contains(.,' Dashboard')]")
+	WebElement Dashboard;
+
+	@FindBy(xpath="//*[@id='mycommunitestab']//a[contains(text(),'VIEW ALL')]")
+	WebElement viewAll;
+	
+	@FindBy(xpath="//a[contains(text(),'Logout')]")
+	WebElement Logout;
+	
+	
+	
 
 	@Override
 	protected  void getPageScreenSot() {
@@ -37,13 +51,16 @@ public class EcoSystemPage extends BasePage {
 		return ExpectedConditions.visibilityOf(myEcosystem);
 	}
 
-	@FindBy(xpath="//span[@title='Toggle dropdown menu']")
-	WebElement Toggledropdownmenu;
+	public HomePage logout() throws Exception
+	{
+		Toggledropdownmenu.click();
+		Thread.sleep(500);
+		waitForElementToPresent(Logout);
+		Logout.click();
+		return (HomePage) openPage(HomePage.class);
+//		new HomePage(driver, );
+	}
 	
-	
-	@FindBy(xpath="//a[contains(.,' Dashboard')]")
-	WebElement Dashboard;
-
 	public MyDashboardPage goToDashBoardPage() {
 	
 			click(Toggledropdownmenu,"Toggledropdownmenu");
@@ -53,7 +70,7 @@ public class EcoSystemPage extends BasePage {
 //			new MyDashboardPage(driver, );
 		}
 	
-	public GlobalCommunitesPage naviagtingToGlobalCommunities() throws Exception
+	public GlobalCommunitesPage goToGlobalCommunities() throws Exception
 	{
 //		click(Toggledropdownmenu,"Toggledropdownmenu");
 		waitForElementToPresent(globalCommunities);
@@ -62,6 +79,11 @@ public class EcoSystemPage extends BasePage {
 		return (GlobalCommunitesPage) openPage(GlobalCommunitesPage.class);
 //		new GlobalCommunitesPage(driver, );
 		
+	}
+
+	public MyCommunitiesPage goToMyCommunities() {
+		click(viewAll, "view All");
+		return  (MyCommunitiesPage) openPage(MyCommunitiesPage.class);
 	}
 	
 
