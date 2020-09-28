@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="classes" thread-count="8">
+
+	<listeners>
+		<listener
+			class-name="com.cpcommunity.ExtentListeners.ExtentListeners"></listener>
+		<listener
+			class-name="com.uiFramework.pamTen.cpcommunity.helper.listener.RetryListener" />
+	</listeners>
+
+	<!-- 167 -->
+
+	<test name="Test 1" preserve-order="true">
+		<classes>
+			<class
+				name="com.cpcommunity.testScripts.community.TC221_Tenant_Admin_Create_Community2" />
+		</classes>
+	</test>
+		
+
+</suite> <!-- Suite -->

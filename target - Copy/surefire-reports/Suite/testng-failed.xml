@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="8" guice-stage="DEVELOPMENT" verbose="0" name="Failed suite [Suite]" parallel="classes">
+  <listeners>
+    <listener class-name="com.cpcommunity.ExtentListeners.ExtentListeners"/>
+    <listener class-name="com.uiFramework.pamTen.cpcommunity.helper.listener.RetryListener"/>
+  </listeners>
+  <test name="Test 4(failed)" parallel="classes">
+    <classes>
+      <class name="com.cpcommunity.testScripts.community.TC213_Verify_The_Community_Feature_As_Per_Pricing_Plan">
+        <methods>
+          <include name="TC213" invocation-numbers="0"/>
+          <include name="setUpFramework"/>
+          <include name="tearDown"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.community.TC213_Verify_The_Community_Feature_As_Per_Pricing_Plan -->
+    </classes>
+  </test> <!-- Test 4(failed) -->
+</suite> <!-- Failed suite [Suite] -->
