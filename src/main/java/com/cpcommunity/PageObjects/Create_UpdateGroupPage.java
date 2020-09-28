@@ -74,7 +74,7 @@ public class Create_UpdateGroupPage extends BasePage {
 
 	public ManageGroupsPage createGroup(String name, String Description, String City, String State,
 			String GroupCategory, String GroupType, String LogoImagePath ) throws Exception {
-		name = name+" "+getDate();
+		name = name+" "+getDateInDDMMMYYYY();
 		this.fillGroupDetails(name, Description, City, State, GroupType, LogoImagePath);
 		waitForElementToPresent(Create);
 		scrollToElement(Create);

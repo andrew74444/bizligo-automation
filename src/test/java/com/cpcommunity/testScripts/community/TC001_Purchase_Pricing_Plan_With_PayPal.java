@@ -27,50 +27,50 @@ public class TC001_Purchase_Pricing_Plan_With_PayPal extends BaseTest {
 		logInfo("Launched Browser : " + data.get("browser"));
 		HomePage home = new HomePage().open();
 		LoginPage loginPage = home.clickOnLOGINBtn();
-//		EcoSystemPage EcoSystemPage = loginPage.loginToApplication(data.get("email"), data.get("password"));
-//		
-//		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-//		CreateCommunityPage CreateCommunityPage = MyCommunitiesPage.clickOnCreateCommunity();
-////		String communityName= data.get("communityName")+ currentTime();
-		String communityName= data.get("communityName");
-//		CreateCommunityPage.CreateCommunity(communityName, data.get("Networking"), data.get("Marketing"),data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"),data.get("InvestInBusiness"), data.get("Other"), data.get("About"), data.get("Category"),data.get("type"));
-//		home = EcoSystemPage.logout();
-//		home.clickOnLOGINBtn();
-//		SystemAdminDashboardPage systemAdminDashboardPage = loginPage.SystemAdminloginToApplication(data.get("email1"),	data.get("password"));
-//		PendingCommunitiesPage PendingCommunitiesPage = systemAdminDashboardPage.naviagteToPendingCommunities();
-//		PendingCommunitiesPage.approveCommunity(communityName);
-//		home = systemAdminDashboardPage.logout();
-//		loginPage = home.clickOnLOGINBtn();
-		EcoSystemPage	EcoSystemPage = loginPage.loginToApplication(data.get("email"), data.get("password"));
-		
+		EcoSystemPage EcoSystemPage = loginPage.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-//		SelectPlanPage SelectPlanPage = MyCommunitiesPage.completeSetup(communityName);
-//		SelectPlanPage.selectPaidPlan(data.get("planName"));
-//		if (data.get("paymentGateway").equalsIgnoreCase("paypal")) 
-//		{
-//			PayPalPayment PayPalPayment = SelectPlanPage.paymentByPayPal();
-//			PaymentReceipt = PayPalPayment.Payment(data.get("email"), data.get("password"));
-//		} else if (data.get("paymentGateway").equalsIgnoreCase("authorize")) 
-//		{
-//			AuthorizeGateway AuthorizeGateway = SelectPlanPage.paymentByauthorize();
-//			PaymentReceipt = AuthorizeGateway.payment();
-//		}
-//		PaymentReceipt.paymentSuccess();
-//		CommunityDetailsPage CommunityDetailsPage = PaymentReceipt.viewCommunity();
+		CreateCommunityPage CreateCommunityPage = MyCommunitiesPage.clickOnCreateCommunity();
+//		String communityName= data.get("communityName")+ currentTime();
+		String communityName= data.get("communityName");
+		CreateCommunityPage.CreateCommunity(communityName, data.get("Networking"), data.get("Marketing"),data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"),data.get("InvestInBusiness"), data.get("Other"), data.get("About"), data.get("Category"),data.get("type"));
+		home = EcoSystemPage.logout();
+		home.clickOnLOGINBtn();
+		SystemAdminDashboardPage systemAdminDashboardPage = loginPage.SystemAdminloginToApplication(data.get("email1"),	data.get("password"));
+		PendingCommunitiesPage PendingCommunitiesPage = systemAdminDashboardPage.naviagteToPendingCommunities();
+		PendingCommunitiesPage.approveCommunity(communityName);
+		home = systemAdminDashboardPage.logout();
+		loginPage = home.clickOnLOGINBtn();
+			EcoSystemPage = loginPage.loginToApplication(data.get("email"), data.get("password"));
 		
-		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(communityName);
+		
+		 MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
+		SelectPlanPage SelectPlanPage = MyCommunitiesPage.completeSetup(communityName);
+		SelectPlanPage.selectPaidPlan(data.get("planName"));
+		if (data.get("paymentGateway").equalsIgnoreCase("paypal")) 
+		{
+			PayPalPayment PayPalPayment = SelectPlanPage.paymentByPayPal();
+			PaymentReceipt = PayPalPayment.Payment(data.get("email"), data.get("password"));
+		} else if (data.get("paymentGateway").equalsIgnoreCase("authorize")) 
+		{
+			AuthorizeGateway AuthorizeGateway = SelectPlanPage.paymentByauthorize();
+			PaymentReceipt = AuthorizeGateway.payment();
+		}
+		PaymentReceipt.paymentSuccess();
+		CommunityDetailsPage CommunityDetailsPage = PaymentReceipt.viewCommunity();
+		
+//		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(communityName);
 		EditCommunityPage editCommunityPage = CommunityDetailsPage.managecommunity();
 		CommunityDashboardPage communityDashboardPage = editCommunityPage.saveCommunity();
-//		PaymentGatewaysPage PaymentGatewaysPage = communityDashboardPage.navigateToPaymentGateways();
-//		SetupAuthorizePage SetupAuthorizePage =PaymentGatewaysPage.setUpAuthorize();
-//		AuthorizeGateway AuthorizeGateway =SetupAuthorizePage.SetUpAuthorizeGateway();
-//		String amount = AuthorizeGateway.makePayment();
-//		PaymentConfirmation PaymentConfirmation = AuthorizeGateway.paymentConfirmation();
-//		AuthorizeMerchanLogin AuthorizeMerchanLogin = PaymentConfirmation.login(); 
-//		String TransactionID =AuthorizeMerchanLogin.MerchantLogin();
-//		PaymentConfirmation = AuthorizeMerchanLogin.confirmation();		
-//		PaymentGatewaysPage = PaymentConfirmation.EnterTransactionDetails(amount, TransactionID);
+		PaymentGatewaysPage PaymentGatewaysPage = communityDashboardPage.navigateToPaymentGateways();
+		SetupAuthorizePage SetupAuthorizePage =PaymentGatewaysPage.setUpAuthorize();
+		AuthorizeGateway AuthorizeGateway =SetupAuthorizePage.SetUpAuthorizeGateway();
+		String amount = AuthorizeGateway.makePayment();
+		PaymentConfirmation PaymentConfirmation = AuthorizeGateway.paymentConfirmation();
+		AuthorizeMerchanLogin AuthorizeMerchanLogin = PaymentConfirmation.login(); 
+		String TransactionID =AuthorizeMerchanLogin.MerchantLogin();
+		PaymentConfirmation = AuthorizeMerchanLogin.confirmation();		
+		PaymentGatewaysPage = PaymentConfirmation.EnterTransactionDetails(amount, TransactionID);
 		
 		PlansPage plansPage = communityDashboardPage.navigateToMembershipPlans();
 		String membershipPlan = plansPage.createMembershipPlan(data.get("name"), data.get("price"),	data.get("duration"), data.get("durationType"), data.get("membershipPlanDescription"));
@@ -96,7 +96,7 @@ public class TC001_Purchase_Pricing_Plan_With_PayPal extends BaseTest {
 			PayPalPayment PayPalPayment = membershipPlansPage.paymentByPayPal();
 			PaymentReceipt = PayPalPayment.Payment(data.get("email"), data.get("password"));
 		} else if (data.get("paymentMethod").equalsIgnoreCase("authorize")) {
-			AuthorizeGateway	AuthorizeGateway = membershipPlansPage.paymentByauthorize();
+				AuthorizeGateway = membershipPlansPage.paymentByauthorize();
 			PaymentReceipt = AuthorizeGateway.payment();
 		}
 		PaymentReceipt.paymentSuccess();
