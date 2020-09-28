@@ -45,21 +45,21 @@ public class TC001_Purchase_Pricing_Plan_With_PayPal extends BaseTest {
 		
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		SelectPlanPage SelectPlanPage = MyCommunitiesPage.completeSetup(communityName);
-		SelectPlanPage.selectPaidPlan(data.get("planName"));
-		if (data.get("paymentGateway").equalsIgnoreCase("paypal")) 
-		{
-			PayPalPayment PayPalPayment = SelectPlanPage.paymentByPayPal();
-			PaymentReceipt = PayPalPayment.Payment(data.get("email"), data.get("password"));
-		} else if (data.get("paymentGateway").equalsIgnoreCase("authorize")) 
-		{
-			AuthorizeGateway AuthorizeGateway = SelectPlanPage.paymentByauthorize();
-			PaymentReceipt = AuthorizeGateway.payment();
-		}
-		PaymentReceipt.paymentSuccess();
-		CommunityDetailsPage CommunityDetailsPage = PaymentReceipt.viewCommunity();
+//		SelectPlanPage SelectPlanPage = MyCommunitiesPage.completeSetup(communityName);
+//		SelectPlanPage.selectPaidPlan(data.get("planName"));
+//		if (data.get("paymentGateway").equalsIgnoreCase("paypal")) 
+//		{
+//			PayPalPayment PayPalPayment = SelectPlanPage.paymentByPayPal();
+//			PaymentReceipt = PayPalPayment.Payment(data.get("email"), data.get("password"));
+//		} else if (data.get("paymentGateway").equalsIgnoreCase("authorize")) 
+//		{
+//			AuthorizeGateway AuthorizeGateway = SelectPlanPage.paymentByauthorize();
+//			PaymentReceipt = AuthorizeGateway.payment();
+//		}
+//		PaymentReceipt.paymentSuccess();
+//		CommunityDetailsPage CommunityDetailsPage = PaymentReceipt.viewCommunity();
 		
-//		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(communityName);
+		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(communityName);
 		EditCommunityPage editCommunityPage = CommunityDetailsPage.managecommunity();
 		CommunityDashboardPage communityDashboardPage = editCommunityPage.saveCommunity();
 		PaymentGatewaysPage PaymentGatewaysPage = communityDashboardPage.navigateToPaymentGateways();
