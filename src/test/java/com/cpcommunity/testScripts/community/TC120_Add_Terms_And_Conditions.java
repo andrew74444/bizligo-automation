@@ -10,13 +10,7 @@ import org.testng.annotations.Test;
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataUtil;
 import com.cpcommunity.utilities.DriverManager;
-import com.cpcommunity.PageObjects.CommunityDashboardPage;
-import com.cpcommunity.PageObjects.EcoSystemPage;
-import com.cpcommunity.PageObjects.EditCommunityPage;
-import com.cpcommunity.PageObjects.HomePage;
-import com.cpcommunity.PageObjects.LoginPage;
-import com.cpcommunity.PageObjects.MyCommunitiesPage;
-import com.cpcommunity.PageObjects.MyDashboardPage;
+import com.cpcommunity.PageObjects.*;
 import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.ExcelReader;
 
@@ -38,8 +32,7 @@ public class TC120_Add_Terms_And_Conditions extends BaseTest {
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
-		MyDashboardPage Dashboard_Page = EcoSystemPage.goToDashBoardPage();
-		MyCommunitiesPage MyCommunitiesPage = Dashboard_Page.NaviagtingToMyCommunities();
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		DriverManager.getDriver().manage().window().maximize();
 		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
 		EditCommunityPage EditCommunityPage = CommunityDashboardPage.navigateToEditCommunityPage();

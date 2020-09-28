@@ -9,11 +9,7 @@ import org.testng.annotations.Test;
 
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataUtil;
-import com.cpcommunity.PageObjects.EcoSystemPage;
-import com.cpcommunity.PageObjects.GlobalCommunitesPage;
-import com.cpcommunity.PageObjects.HomePage;
-import com.cpcommunity.PageObjects.LoginPage;
-import com.cpcommunity.PageObjects.MyDashboardPage;
+import com.cpcommunity.PageObjects.*;
 import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.ExcelReader;
 
@@ -33,7 +29,7 @@ public class TC211_Verify_TA_Created_Community_Is_Displaying_In_The_Global_Commu
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"),data.get("password"));
-		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
+		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.naviagtingToGlobalCommunities();
 		GlobalCommunitesPage.checkCommunityIsDisplayed(data.get("communityName"));
 		
 		//Assert.fail("Failing the login test");

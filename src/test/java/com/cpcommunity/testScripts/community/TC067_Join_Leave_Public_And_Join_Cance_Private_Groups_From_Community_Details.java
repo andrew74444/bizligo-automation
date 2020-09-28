@@ -9,12 +9,7 @@ import org.testng.annotations.Test;
 
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataUtil;
-import com.cpcommunity.PageObjects.CommunityDetailsPage;
-import com.cpcommunity.PageObjects.EcoSystemPage;
-import com.cpcommunity.PageObjects.GlobalCommunitesPage;
-import com.cpcommunity.PageObjects.HomePage;
-import com.cpcommunity.PageObjects.LoginPage;
-import com.cpcommunity.PageObjects.MyDashboardPage;
+import com.cpcommunity.PageObjects.*;
 import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.ExcelReader;
 import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
@@ -33,16 +28,16 @@ public class TC067_Join_Leave_Public_And_Join_Cance_Private_Groups_From_Communit
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
-		MyDashboardPage Dashboard_Page = EcoSystemPage.goToDashBoardPage();
-		int T1 = Dashboard_Page.totalGroupsCount();
-		GlobalCommunitesPage GlobalCommunitesPage = Dashboard_Page.naviagtingToGlobalCommunities();
+		
+//		int T1 = Dashboard_Page.totalGroupsCount();
+		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.naviagtingToGlobalCommunities();
 		CommunityDetailsPage CommunityDetailsPage = GlobalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		CommunityDetailsPage.PublicGroupJoinedSuccessfully(data.get("name1"));
-		Dashboard_Page = Dashboard_Page.navigateToMyDashBoard();
-		int T2 = Dashboard_Page.totalGroupsCount();
-		T1++;		
-		AssertionHelper.verifyText(String.valueOf(T1), String.valueOf(T2));
-		GlobalCommunitesPage = Dashboard_Page.naviagtingToGlobalCommunities();
+		
+//		int T2 = Dashboard_Page.totalGroupsCount();
+//		T1++;		
+//		AssertionHelper.verifyText(String.valueOf(T1), String.valueOf(T2));
+		GlobalCommunitesPage = EcoSystemPage.naviagtingToGlobalCommunities();
 		CommunityDetailsPage = GlobalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));		
 		CommunityDetailsPage.LeaveGroup(data.get("name1"));
 		CommunityDetailsPage.PrivateGroupJoinedSuccessfully(data.get("name2"));

@@ -23,8 +23,7 @@ public class EcoSystemPage extends BasePage {
 	@FindBy(xpath="//span[@title='Toggle dropdown menu']")
 	WebElement Toggledropdownmenu;
 	
-	@FindBy(xpath="//a[contains(.,' Dashboard')]")
-	WebElement Dashboard;
+	
 
 	@FindBy(xpath="//*[@id='mycommunitestab']//a[contains(text(),'VIEW ALL')]")
 	WebElement viewAll;
@@ -61,16 +60,9 @@ public class EcoSystemPage extends BasePage {
 //		new HomePage(driver, );
 	}
 	
-	public MyDashboardPage goToDashBoardPage() {
 	
-			click(Toggledropdownmenu,"Toggledropdownmenu");
-			waitForElementToPresent(Dashboard);
-			click(Dashboard,"Dashboard");		
-			return (MyDashboardPage) openPage(MyDashboardPage.class);
-//			new MyDashboardPage(driver, );
-		}
 	
-	public GlobalCommunitesPage goToGlobalCommunities() throws Exception
+	public GlobalCommunitesPage naviagtingToGlobalCommunities() throws Exception
 	{
 //		click(Toggledropdownmenu,"Toggledropdownmenu");
 		waitForElementToPresent(globalCommunities);
@@ -81,12 +73,17 @@ public class EcoSystemPage extends BasePage {
 		
 	}
 
-	public MyCommunitiesPage goToMyCommunities() {
+	public MyCommunitiesPage NaviagtingToMyCommunities() {
 		click(viewAll, "view All");
 		return  (MyCommunitiesPage) openPage(MyCommunitiesPage.class);
 	}
 	
-
+	public EcoSystemPage goToMyEcosystem() {
+		click(Toggledropdownmenu,"Toggledropdownmenu");
+		waitForElementToPresent(myEcosystem);		
+		click(myEcosystem, "myEcosystem");
+		return  (EcoSystemPage) openPage(EcoSystemPage.class);
+	}
 	
 	// public ZohoCRMPage gotoCRM() {
 	//

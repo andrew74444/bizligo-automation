@@ -9,11 +9,7 @@ import org.testng.annotations.Test;
 
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataUtil;
-import com.cpcommunity.PageObjects.EcoSystemPage;
-import com.cpcommunity.PageObjects.HomePage;
-import com.cpcommunity.PageObjects.LoginPage;
-import com.cpcommunity.PageObjects.Messages;
-import com.cpcommunity.PageObjects.MyDashboardPage;
+import com.cpcommunity.PageObjects.*;
 import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.ExcelReader;
 
@@ -35,14 +31,12 @@ public class TC115_SendMessages extends BaseTest {
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
-		MyDashboardPage Dashboard_Page = EcoSystemPage.goToDashBoardPage();
-		Messages messages = Dashboard_Page.NavigateToMyMessages();
+		Messages messages = EcoSystemPage.goToMyMessages();
 		String Message =messages.SendNewMessage("Curator", data.get("NewMessage"));
-		Dashboard_Page.logout();
+		EcoSystemPage.logout();
 		home.clickOnLOGINBtn();
 		EcoSystemPage = login.loginToApplication(data.get("email1"), data.get("password"));
-		Dashboard_Page = EcoSystemPage.goToDashBoardPage();		
-		messages = Dashboard_Page.NavigateToMyMessages();
+		messages = EcoSystemPage.goToMyMessages();
 		messages.messageDisplayed("Andrew", Message);		
 		messages.SendNewMessage("Andrew", data.get("ReplyMessage"));
 		

@@ -9,19 +9,13 @@ import org.testng.annotations.Test;
 
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataUtil;
-import com.cpcommunity.PageObjects.CommunityDashboardPage;
-import com.cpcommunity.PageObjects.CommunityPendingRequestsPage;
-import com.cpcommunity.PageObjects.EcoSystemPage;
-import com.cpcommunity.PageObjects.HomePage;
-import com.cpcommunity.PageObjects.LoginPage;
-import com.cpcommunity.PageObjects.MyCommunitiesPage;
-import com.cpcommunity.PageObjects.MyDashboardPage;
+import com.cpcommunity.PageObjects.*;
 import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.ExcelReader;
 
 public class TC064_Community_Admin_Approve_And_Reject_Community_Requests extends BaseTest {
 
-	String TCID= "TC064";	
+	
 	
 	
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
@@ -37,8 +31,8 @@ public class TC064_Community_Admin_Approve_And_Reject_Community_Requests extends
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
-		MyDashboardPage Dashboard_Page = EcoSystemPage.goToDashBoardPage();
-		MyCommunitiesPage MyCommunitiesPage = Dashboard_Page.NaviagtingToMyCommunities();
+		
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();
 		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
 		CommunityPendingRequestsPage CommunityPendingRequestsPage = CommunityDashboardPage.navigateToPendingRequests();
 		CommunityPendingRequestsPage.approveMember(data.get("email1"));

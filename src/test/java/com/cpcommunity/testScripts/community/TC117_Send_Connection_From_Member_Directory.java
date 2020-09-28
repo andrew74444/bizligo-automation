@@ -9,11 +9,7 @@ import org.testng.annotations.Test;
 
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataUtil;
-import com.cpcommunity.PageObjects.EcoSystemPage;
-import com.cpcommunity.PageObjects.GlobalMembersPage;
-import com.cpcommunity.PageObjects.HomePage;
-import com.cpcommunity.PageObjects.LoginPage;
-import com.cpcommunity.PageObjects.MyDashboardPage;
+import com.cpcommunity.PageObjects.*;
 import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.ExcelReader;
 
@@ -38,8 +34,7 @@ public class TC117_Send_Connection_From_Member_Directory extends BaseTest {
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
-		MyDashboardPage Dashboard_Page = EcoSystemPage.goToDashBoardPage();
-		GlobalMembersPage GlobalMembersPage = Dashboard_Page.navigateToGlobalMembers();
+		GlobalMembersPage GlobalMembersPage = EcoSystemPage.goToMembers();
 		GlobalMembersPage.sendconnection();
 		
 		//Assert.fail("Failing the login test");

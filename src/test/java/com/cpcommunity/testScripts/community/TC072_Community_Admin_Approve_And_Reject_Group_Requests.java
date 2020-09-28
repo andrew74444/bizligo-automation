@@ -9,20 +9,12 @@ import org.testng.annotations.Test;
 
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataUtil;
-import com.cpcommunity.PageObjects.CommunityDashboardPage;
-import com.cpcommunity.PageObjects.CommunityDetailsPage;
-import com.cpcommunity.PageObjects.EcoSystemPage;
-import com.cpcommunity.PageObjects.GroupsPendingRequestsPage;
-import com.cpcommunity.PageObjects.HomePage;
-import com.cpcommunity.PageObjects.LoginPage;
-import com.cpcommunity.PageObjects.MyCommunitiesPage;
-import com.cpcommunity.PageObjects.MyDashboardPage;
+import com.cpcommunity.PageObjects.*;
 import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.ExcelReader;
 
 public class TC072_Community_Admin_Approve_And_Reject_Group_Requests extends BaseTest {
 
-	String TCID= "TC072";	
 	
 	
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
@@ -38,33 +30,33 @@ public class TC072_Community_Admin_Approve_And_Reject_Group_Requests extends Bas
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email1"), data.get("password"));
-		MyDashboardPage Dashboard_Page = EcoSystemPage.goToDashBoardPage();
+		
 
-		MyCommunitiesPage MyCommunitiesPage = Dashboard_Page.NaviagtingToMyCommunities();
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();
 		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		CommunityDetailsPage.PrivateGroupJoinedSuccessfully(data.get("groupName"));
 		Thread.sleep(8000);	
-		home = Dashboard_Page.logout();
+		home = EcoSystemPage.logout();
 		
 		
 
 		home.clickOnLOGINBtn();
 		EcoSystemPage = login.loginToApplication(data.get("email2"), data.get("password"));
-		Dashboard_Page = EcoSystemPage.goToDashBoardPage();	
-		Dashboard_Page.verifySuccessLogin();
-		MyCommunitiesPage = Dashboard_Page.NaviagtingToMyCommunities();
+		
+//		EcoSystemPage.verifySuccessLogin();
+		MyCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();
 		CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		CommunityDetailsPage.PrivateGroupJoinedSuccessfully(data.get("groupName"));
 		Thread.sleep(8000);	
-		home = Dashboard_Page.logout();	
+		home = EcoSystemPage.logout();	
 		
 		
 		
 		home.clickOnLOGINBtn();
 		EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
-		Dashboard_Page = EcoSystemPage.goToDashBoardPage();	
-		Dashboard_Page.verifySuccessLogin();
-		MyCommunitiesPage = Dashboard_Page.NaviagtingToMyCommunities();		
+			
+//		EcoSystemPage.verifySuccessLogin();
+		MyCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();		
 		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));		
 		GroupsPendingRequestsPage GroupsPendingRequestsPage = CommunityDashboardPage.NavigateToCommunitygroupPendingRequets();
 		GroupsPendingRequestsPage.approveMember(data.get("email1"));

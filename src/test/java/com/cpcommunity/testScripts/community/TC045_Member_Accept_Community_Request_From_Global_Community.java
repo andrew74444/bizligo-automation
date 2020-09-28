@@ -10,10 +10,7 @@ import org.testng.annotations.Test;
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataUtil;
 import com.cpcommunity.PageObjects.EcoSystemPage;
-import com.cpcommunity.PageObjects.GlobalCommunitesPage;
-import com.cpcommunity.PageObjects.HomePage;
-import com.cpcommunity.PageObjects.LoginPage;
-import com.cpcommunity.PageObjects.MyDashboardPage;
+import com.cpcommunity.PageObjects.*;
 import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.ExcelReader;
 
@@ -33,8 +30,7 @@ public class TC045_Member_Accept_Community_Request_From_Global_Community extends
 		HomePage home = new HomePage().open();
 		LoginPage loginPage = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = loginPage.loginToApplication(data.get("email1"),data.get("password"));
-		MyDashboardPage myDashboardPage = EcoSystemPage.goToDashBoardPage();
-		GlobalCommunitesPage GlobalCommunitesPage = myDashboardPage.naviagtingToGlobalCommunities();
+		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.naviagtingToGlobalCommunities();
 		GlobalCommunitesPage.acceptCommunity(data.get("communityName"));
 		
 		//Assert.fail("Failing the login test");

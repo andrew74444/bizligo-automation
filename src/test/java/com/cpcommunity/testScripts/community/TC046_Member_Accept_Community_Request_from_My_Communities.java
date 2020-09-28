@@ -9,11 +9,7 @@ import org.testng.annotations.Test;
 
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataUtil;
-import com.cpcommunity.PageObjects.EcoSystemPage;
-import com.cpcommunity.PageObjects.HomePage;
-import com.cpcommunity.PageObjects.LoginPage;
-import com.cpcommunity.PageObjects.MyCommunitiesPage;
-import com.cpcommunity.PageObjects.MyDashboardPage;
+import com.cpcommunity.PageObjects.*;
 import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.ExcelReader;
 
@@ -35,8 +31,8 @@ public class TC046_Member_Accept_Community_Request_from_My_Communities extends B
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+getNancykemper()+" and Password entered as "+getPassword());
 		EcoSystemPage EcoSystemPage = loginPage.loginToApplication(data.get("email2"), data.get("password"));
-		MyDashboardPage myDashboardPage = EcoSystemPage.goToDashBoardPage();
-		MyCommunitiesPage MyCommunitiesPage = myDashboardPage.NaviagtingToMyCommunities();
+		
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		MyCommunitiesPage.acceptcommunity(data.get("communityName"));
 		
 		//Assert.fail("Failing the login test");

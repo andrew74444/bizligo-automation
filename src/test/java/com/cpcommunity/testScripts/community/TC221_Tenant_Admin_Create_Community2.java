@@ -34,7 +34,7 @@ public class TC221_Tenant_Admin_Create_Community2 extends BaseTest {
 		home = Dashboard_Page.logout();
 		login = home.clickOnLOGINBtn();
 		EcoSystemPage ecoSystemPage = login.loginToApplication(data.get("communityAdminEmail"), data.get("password"));
-		GlobalCommunitesPage globalCommunitesPage = ecoSystemPage.goToGlobalCommunities();
+		GlobalCommunitesPage globalCommunitesPage = ecoSystemPage.naviagtingToGlobalCommunities();
 		CommunityDetailsPage communityDetailsPage = globalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		EditCommunityPage editCommunityPage = communityDetailsPage.managecommunity();
 		CommunityDashboardPage communityDashboardPage =editCommunityPage.saveCommunity();

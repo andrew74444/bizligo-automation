@@ -9,15 +9,7 @@ import org.testng.annotations.Test;
 
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataUtil;
-import com.cpcommunity.PageObjects.CommunityDashboardPage;
-import com.cpcommunity.PageObjects.CommunityDetailsPage;
-import com.cpcommunity.PageObjects.EcoSystemPage;
-import com.cpcommunity.PageObjects.GlobalCommunitesPage;
-import com.cpcommunity.PageObjects.HomePage;
-import com.cpcommunity.PageObjects.LoginPage;
-import com.cpcommunity.PageObjects.ManageCommunityMembersPage;
-import com.cpcommunity.PageObjects.MyCommunitiesPage;
-import com.cpcommunity.PageObjects.MyDashboardPage;
+import com.cpcommunity.PageObjects.*;
 import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.ExcelReader;
 
@@ -35,8 +27,8 @@ public class TC178_Payment_Pending_Is_Displayed_For_Adding_A_Member_By_CA extend
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
-		MyDashboardPage Dashboard_Page = EcoSystemPage.goToDashBoardPage();
-		MyCommunitiesPage MyCommunitiesPage = Dashboard_Page.NaviagtingToMyCommunities();
+		
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();
 		CommunityDashboardPage communityDashboardPage = MyCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
 		ManageCommunityMembersPage manageCommunityMembersPage = communityDashboardPage.navigateToManageCommunityMembers();
 		manageCommunityMembersPage.addmember(data.get("email1"));
@@ -44,8 +36,8 @@ public class TC178_Payment_Pending_Is_Displayed_For_Adding_A_Member_By_CA extend
 		communityDashboardPage.logout();
 		login = home.clickOnLOGINBtn();
 		EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
-		Dashboard_Page = EcoSystemPage.goToDashBoardPage();
-		MyCommunitiesPage = Dashboard_Page.NaviagtingToMyCommunities();
+		
+		MyCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();
 		MyCommunitiesPage.verifyPaymentPendindDisplayed(data.get("communityName"));
 		CommunityDetailsPage communityDetailsPage= MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		communityDetailsPage.verifyPaymentPendingDisplayed();

@@ -37,7 +37,7 @@ public class TC218_Verify_TA_InActivated_Community_Is_Not_Displaying_In_The_Glob
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 	
 //	
-		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
+		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.naviagtingToGlobalCommunities();
 		GlobalCommunitesPage.checkInActivatedCommunityIsNotDisplayed(data.get("communityName"));
 		
 //		Assert.fail("Failing the login test");

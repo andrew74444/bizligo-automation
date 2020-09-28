@@ -9,12 +9,7 @@ import org.testng.annotations.Test;
 
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataUtil;
-import com.cpcommunity.PageObjects.EcoSystemPage;
-import com.cpcommunity.PageObjects.HomePage;
-import com.cpcommunity.PageObjects.LoginPage;
-import com.cpcommunity.PageObjects.ManageGroupMembersPageByGroupAdmin;
-import com.cpcommunity.PageObjects.MyDashboardPage;
-import com.cpcommunity.PageObjects.MyGroupsPage;
+import com.cpcommunity.PageObjects.*;
 import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.ExcelReader;
 
@@ -36,8 +31,8 @@ public class TC058_Group_Admin_Manage_Group_Members extends BaseTest {
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+getAndrew()+" and Password entered as "+getPassword());
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
-		MyDashboardPage Dashboard_Page = EcoSystemPage.goToDashBoardPage();
-		MyGroupsPage MyGroupsPage = Dashboard_Page.NavigatingToMyGroups();
+		
+		MyGroupsPage MyGroupsPage = EcoSystemPage.NavigatingToMyGroups();
 		ManageGroupMembersPageByGroupAdmin ManageGroupMembersPageByGroupAdmin = MyGroupsPage.manageGroupMembers(data.get("groupName"));
 		ManageGroupMembersPageByGroupAdmin.ManageMembers(data.get("email1"));
 		
