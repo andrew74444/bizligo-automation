@@ -465,7 +465,7 @@ public class GlobalCommunitesPage extends BasePage {
 		// CommunityDetailsPage(driver);
 	}
 
-	public void verifyInActivatedCommunityIsNotDisplayed(String communityName) throws Exception {
+	public void checkInActivatedCommunityIsNotDisplayed(String communityName) throws Exception {
 		communityName = communityName + " " + getDateInDDMMMYYYY();
 		type(searchName, communityName, "search");
 		click(searchBtn, "search Btn");

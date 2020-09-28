@@ -14,7 +14,7 @@
 	<test name="Test 1" preserve-order="true">
 		<classes>
 			<class
-				name="com.cpcommunity.testScripts.community.TC217_TA_InActivate_The_Community" />
+				name="com.cpcommunity.testScripts.community.TC218_Verify_TA_InActivated_Community_Is_Not_Displaying_In_The_Global_Communities_Page" />
 		</classes>
 	</test>
 

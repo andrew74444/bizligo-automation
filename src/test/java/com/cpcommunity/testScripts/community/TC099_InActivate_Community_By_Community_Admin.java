@@ -45,7 +45,7 @@ public class TC099_InActivate_Community_By_Community_Admin extends BaseTest {
 		EditCommunityPage EditCommunityPage = CommunityDashboardPage.navigateToEditCommunityPage();
 		Dashboard_Page = EditCommunityPage.inActiveCommunity();
 		GlobalCommunitesPage globalCommunitesPage = Dashboard_Page.naviagtingToGlobalCommunities();
-		globalCommunitesPage.verifyInActivatedCommunityIsNotDisplayed(data.get("communityName"));
+		globalCommunitesPage.checkInActivatedCommunityIsNotDisplayed(data.get("communityName"));
 //		//Assert.fail("Failing the login test");
 	}
 	
