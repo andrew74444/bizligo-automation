@@ -442,7 +442,7 @@ public class BaseTest {
 		System.out.println(ID);
 		JavascriptExecutor js = (JavascriptExecutor)driver;
 		JavaScript.setJavaScriptObject(js);
-		WebDriverWait wait = new WebDriverWait(driver, 20);
+		WebDriverWait wait = new WebDriverWait(driver, 30);
 		waitHelper.setWebDriverWaitObject(wait);
 		try {
 			Robot robot = new Robot();
@@ -457,7 +457,7 @@ public class BaseTest {
 		DriverManager.setWebDriver(driver);
 		log.info("Driver Initialized !!!");
 		DriverManager.getDriver().manage().window().maximize();
-		DriverManager.getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		DriverManager.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 //		SessionId sessionid = ((RemoteWebDriver) driver).getSessionId();
 //		System.out.println(sessionid);
 //		System.out.println(DriverManager.getDriver().toString());

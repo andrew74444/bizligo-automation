@@ -252,6 +252,8 @@ public class CommunityDashboardPage extends BasePage {
 	}
 
 	public ManageApplications navigateToManageApplicationsPage() {
+		scrollDownVertically();
+		scrollToElement(Jobs);
 		click(Jobs, "Jobs");
 		waitForElementToPresent(ManageApplications);
 		click(ManageApplications, "ManageApplications");

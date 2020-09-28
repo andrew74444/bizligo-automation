@@ -40,7 +40,7 @@ public class Create_UpdateGroupPage extends BasePage {
 	@FindBy(xpath = "//a[@id='changeImageLink']")
 	WebElement changeImageLink;
 
-	@FindBy(xpath = "(//*[contains(text(),'Browse')])[1]")
+	@FindBy(xpath = "//*[@id='EditMyGroupLogoForm']//*[contains(text(),'Browse')]")
 	WebElement Browse;
 
 	@FindBy(xpath = "//*[contains(text(),'Upload')]")
