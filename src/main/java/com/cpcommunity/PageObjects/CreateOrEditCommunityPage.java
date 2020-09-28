@@ -101,9 +101,9 @@ public class CreateOrEditCommunityPage extends BasePage{
     WebElement ImageBrowseBtn;
     @FindBy(xpath = "//*[@id='EditMyCommunityImageForm']/div[3]/div/div[2]/button")
     WebElement ImageUploadBtn;
-    @FindBy(xpath = "//*[@id='CommunityForm']/div[14]/div/div/div/label[1]")
+    @FindBy(xpath = "//*[@id='CommunityForm']//*[@class='btn btn-success toggle-on']")
     WebElement ActiveToggeleBtn;
-    @FindBy(xpath = "//button[contains(.,'Yes Proceed')]")
+    @FindBy(xpath = "//*[contains(text(),'Yes, Proceed')]")
     WebElement YesProceedBtn;
 	
     @FindBy(xpath = "//label[contains(text(),'Community Update')]")
