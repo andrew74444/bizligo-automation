@@ -27,24 +27,24 @@ public class TC001_Purchase_Pricing_Plan_With_PayPal extends BaseTest {
 		logInfo("Launched Browser : " + data.get("browser"));
 		HomePage home = new HomePage().open();
 		LoginPage loginPage = home.clickOnLOGINBtn();
-		EcoSystemPage EcoSystemPage = loginPage.loginToApplication(data.get("email"), data.get("password"));
+//		EcoSystemPage EcoSystemPage = loginPage.loginToApplication(data.get("email"), data.get("password"));
+//		
+//		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
+//		CreateCommunityPage CreateCommunityPage = MyCommunitiesPage.clickOnCreateCommunity();
+////		String communityName= data.get("communityName")+ currentTime();
+		String communityName= data.get("communityName");
+//		CreateCommunityPage.CreateCommunity(communityName, data.get("Networking"), data.get("Marketing"),data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"),data.get("InvestInBusiness"), data.get("Other"), data.get("About"), data.get("Category"),data.get("type"));
+//		home = EcoSystemPage.logout();
+//		home.clickOnLOGINBtn();
+//		SystemAdminDashboardPage systemAdminDashboardPage = loginPage.SystemAdminloginToApplication(data.get("email1"),	data.get("password"));
+//		PendingCommunitiesPage PendingCommunitiesPage = systemAdminDashboardPage.naviagteToPendingCommunities();
+//		PendingCommunitiesPage.approveCommunity(communityName);
+//		home = systemAdminDashboardPage.logout();
+//		loginPage = home.clickOnLOGINBtn();
+		EcoSystemPage	EcoSystemPage = loginPage.loginToApplication(data.get("email"), data.get("password"));
+		
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CreateCommunityPage CreateCommunityPage = MyCommunitiesPage.clickOnCreateCommunity();
-//		String communityName= data.get("communityName")+ currentTime();
-		String communityName= data.get("communityName");
-		CreateCommunityPage.CreateCommunity(communityName, data.get("Networking"), data.get("Marketing"),data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"),data.get("InvestInBusiness"), data.get("Other"), data.get("About"), data.get("Category"),data.get("type"));
-		home = EcoSystemPage.logout();
-		home.clickOnLOGINBtn();
-		SystemAdminDashboardPage systemAdminDashboardPage = loginPage.SystemAdminloginToApplication(data.get("email1"),	data.get("password"));
-		PendingCommunitiesPage PendingCommunitiesPage = systemAdminDashboardPage.naviagteToPendingCommunities();
-		PendingCommunitiesPage.approveCommunity(communityName);
-		home = systemAdminDashboardPage.logout();
-		loginPage = home.clickOnLOGINBtn();
-		EcoSystemPage = loginPage.loginToApplication(data.get("email"), data.get("password"));
-		
-		
-		MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		SelectPlanPage SelectPlanPage = MyCommunitiesPage.completeSetup(communityName);
 		SelectPlanPage.selectPaidPlan(data.get("planName"));
 		if (data.get("paymentGateway").equalsIgnoreCase("paypal")) 
