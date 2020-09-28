@@ -62,15 +62,15 @@ public class TC001_Purchase_Pricing_Plan_With_PayPal extends BaseTest {
 		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(communityName);
 		EditCommunityPage editCommunityPage = CommunityDetailsPage.managecommunity();
 		CommunityDashboardPage communityDashboardPage = editCommunityPage.saveCommunity();
-		PaymentGatewaysPage PaymentGatewaysPage = communityDashboardPage.navigateToPaymentGateways();
-		SetupAuthorizePage SetupAuthorizePage =PaymentGatewaysPage.setUpAuthorize();
-		AuthorizeGateway AuthorizeGateway =SetupAuthorizePage.SetUpAuthorizeGateway();
-		String amount = AuthorizeGateway.makePayment();
-		PaymentConfirmation PaymentConfirmation = AuthorizeGateway.paymentConfirmation();
-		AuthorizeMerchanLogin AuthorizeMerchanLogin = PaymentConfirmation.login(); 
-		String TransactionID =AuthorizeMerchanLogin.MerchantLogin();
-		PaymentConfirmation = AuthorizeMerchanLogin.confirmation();		
-		PaymentGatewaysPage = PaymentConfirmation.EnterTransactionDetails(amount, TransactionID);
+//		PaymentGatewaysPage PaymentGatewaysPage = communityDashboardPage.navigateToPaymentGateways();
+//		SetupAuthorizePage SetupAuthorizePage =PaymentGatewaysPage.setUpAuthorize();
+//		AuthorizeGateway AuthorizeGateway =SetupAuthorizePage.SetUpAuthorizeGateway();
+//		String amount = AuthorizeGateway.makePayment();
+//		PaymentConfirmation PaymentConfirmation = AuthorizeGateway.paymentConfirmation();
+//		AuthorizeMerchanLogin AuthorizeMerchanLogin = PaymentConfirmation.login(); 
+//		String TransactionID =AuthorizeMerchanLogin.MerchantLogin();
+//		PaymentConfirmation = AuthorizeMerchanLogin.confirmation();		
+//		PaymentGatewaysPage = PaymentConfirmation.EnterTransactionDetails(amount, TransactionID);
 		
 		PlansPage plansPage = communityDashboardPage.navigateToMembershipPlans();
 		String membershipPlan = plansPage.createMembershipPlan(data.get("name"), data.get("price"),	data.get("duration"), data.get("durationType"), data.get("membershipPlanDescription"));
@@ -96,7 +96,7 @@ public class TC001_Purchase_Pricing_Plan_With_PayPal extends BaseTest {
 			PayPalPayment PayPalPayment = membershipPlansPage.paymentByPayPal();
 			PaymentReceipt = PayPalPayment.Payment(data.get("email"), data.get("password"));
 		} else if (data.get("paymentMethod").equalsIgnoreCase("authorize")) {
-			AuthorizeGateway = membershipPlansPage.paymentByauthorize();
+			AuthorizeGateway	AuthorizeGateway = membershipPlansPage.paymentByauthorize();
 			PaymentReceipt = AuthorizeGateway.payment();
 		}
 		PaymentReceipt.paymentSuccess();
