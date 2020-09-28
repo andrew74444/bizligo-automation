@@ -21,13 +21,13 @@ import com.cpcommunity.PageObjects.MyDashboardPage;
 import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.ExcelReader;
 
-public class TC217_Verify_TA_Updated_Community_Is_Displayed_In_Community_Details_Page extends BaseTest {	
+public class TC220_Verify_TA_Updated_Community_Is_Displayed_In_Community_Details_Page extends BaseTest {	
 	
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC039(Hashtable<String,String> data) throws Exception {
+	public void TC220(Hashtable<String,String> data) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC039", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC220", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
