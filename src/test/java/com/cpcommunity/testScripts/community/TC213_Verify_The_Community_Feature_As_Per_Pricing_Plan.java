@@ -2,6 +2,7 @@ package com.cpcommunity.testScripts.community;
 
 
 
+import java.util.HashMap;
 import java.util.Hashtable;
 
 import org.testng.annotations.AfterMethod;
@@ -9,9 +10,16 @@ import org.testng.annotations.Test;
 
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataUtil;
+import com.cpcommunity.PageObjects.CommunityDashboardPage;
+import com.cpcommunity.PageObjects.CommunityDetailsPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
+import com.cpcommunity.PageObjects.EditCommunityPage;
+import com.cpcommunity.PageObjects.GlobalCommunitesPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.PendingCommunitiesPage;
+import com.cpcommunity.PageObjects.PlansPage;
+import com.cpcommunity.PageObjects.PricingPlanDetailsPage;
 import com.cpcommunity.PageObjects.SystemAdminDashboardPage;
 import com.cpcommunity.PageObjects.TACommunitiesPage;
 import com.cpcommunity.utilities.DataProviders;
@@ -31,8 +39,20 @@ public class TC213_Verify_The_Community_Feature_As_Per_Pricing_Plan extends Base
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();	
 		SystemAdminDashboardPage Dashboard_Page = login.SystemAdminloginToApplication(data.get("email"), data.get("password"));
-		TACommunitiesPage tACommunitiesPage =  Dashboard_Page.navigateToCommunitiesPage();
-		tACommunitiesPage.UpdateCommunity(data.get("communityName"), data.get("Networking"), data.get("Marketing"), data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"), data.get("InvestInBusiness"), data.get("OtherName"), data.get("About"), data.get("Category"), data.get("type"), data.get("StateName"), data.get("CityName"), data.get("FacebookUrl"), data.get("TwitterUrl"), data.get("LinkedInUrl"), data.get("LogoImagePath"), data.get("websiteUrl"), data.get("ImagePath"), data.get("CommunityUpdate"),data.get("updateCommunityName"));
+		PlansPage plansPage = Dashboard_Page.NavigateManagePricingPlans();
+//		plansPage.CreatePlan(data.get("PlanName"), data.get("PlanPrice"), data.get("PlanDuration"), data.get("NumberOfAdmins"), data.get("NumberOfGroups"), data.get("NumberOfMembers"));  
+//		TACommunitiesPage tACommunitiesPage =  Dashboard_Page.navigateToCommunitiesPage();
+//		tACommunitiesPage.AddNewCommunity(data.get("communityName"), data.get("Networking"), data.get("Marketing"), data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"), data.get("InvestInBusiness"), data.get("Other"), data.get("About"), data.get("Category"), data.get("type"),data.get("PlanName"));
+		HashMap<String, String> Ftr_list = plansPage.getPricingPlanFeatures(data.get("PlanName"));
+		home = Dashboard_Page.logout();
+		login = home.clickOnLOGINBtn();
+		EcoSystemPage ecoSystemPage = login.loginToApplication(data.get("communityAdminEmail"), data.get("password"));
+		GlobalCommunitesPage globalCommunitesPage = ecoSystemPage.naviagtingToGlobalCommunities();
+		CommunityDetailsPage communityDetailsPage = globalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));
+		EditCommunityPage editCommunityPage = communityDetailsPage.managecommunity();
+		CommunityDashboardPage communityDashboardPage =editCommunityPage.saveCommunity();
+		PricingPlanDetailsPage pricingPlanDetailsPage = communityDashboardPage.navigateToPricingPlansDetailsPage();
+		pricingPlanDetailsPage.checkPlanDetails(Ftr_list);
 		
 //		Assert.fail("Failing the login test");
 	}

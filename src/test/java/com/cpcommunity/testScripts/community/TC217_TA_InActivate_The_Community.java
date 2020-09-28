@@ -17,22 +17,22 @@ import com.cpcommunity.PageObjects.TACommunitiesPage;
 import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.ExcelReader;
 
-public class TC215_TA_Update_The_Community_Details extends BaseTest {
+public class TC217_TA_InActivate_The_Community extends BaseTest {
 
 
 	
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC215(Hashtable<String,String> data) throws Exception {
+	public void TC217(Hashtable<String,String> data) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC215", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC217", data.get("Runmode"), excel);
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();	
 		SystemAdminDashboardPage Dashboard_Page = login.SystemAdminloginToApplication(data.get("email"), data.get("password"));
 		TACommunitiesPage tACommunitiesPage =  Dashboard_Page.navigateToCommunitiesPage();
-		tACommunitiesPage.UpdateCommunity(data.get("communityName"), data.get("Networking"), data.get("Marketing"), data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"), data.get("InvestInBusiness"), data.get("OtherName"), data.get("About"), data.get("Category"), data.get("type"), data.get("StateName"), data.get("CityName"), data.get("FacebookUrl"), data.get("TwitterUrl"), data.get("LinkedInUrl"), data.get("LogoImagePath"), data.get("websiteUrl"), data.get("ImagePath"), data.get("CommunityUpdate"),data.get("updateCommunityName"));
+		tACommunitiesPage.InActivateCommunity(data.get("communityName"));
 		
 //		Assert.fail("Failing the login test");
 	}

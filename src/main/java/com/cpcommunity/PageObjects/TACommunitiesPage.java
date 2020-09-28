@@ -130,6 +130,18 @@ public class TACommunitiesPage extends BasePage{
 		
 	}
 
+
+
+	public void InActivateCommunity(String name) throws Exception {
+		name = name+" "+getDateInDDMMMYYYY();
+		searchCommunity(name);
+		
+		clickElementByJavaScript(CommunityEdit);
+
+		new CreateOrEditCommunityPage(driver).InActiavteCommunity();
+		
+	}
+
 	
 //	public ZohoCRMPage gotoCRM() {
 //		

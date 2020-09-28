@@ -14,7 +14,7 @@
 	<test name="Test 1" preserve-order="true">
 		<classes>
 			<class
-				name="com.cpcommunity.testScripts.community.TC220_Verify_TA_Updated_Community_Is_Displayed_In_Community_Details_Page" />
+				name="com.cpcommunity.testScripts.community.TC217_TA_InActivate_The_Community" />
 		</classes>
 	</test>
 

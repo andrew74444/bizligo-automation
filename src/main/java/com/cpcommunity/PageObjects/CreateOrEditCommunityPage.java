@@ -441,7 +441,7 @@ public class CreateOrEditCommunityPage extends BasePage{
 	       
 	        waitForElementToPresent(CommunityName);
 	        Thread.sleep(3000);
-			scrollToElement(ActiveToggeleBtn);
+			scrollToElement(website);
 	       
 			Thread.sleep(1000);
 	        ActiveToggeleBtn.click();
@@ -449,6 +449,7 @@ public class CreateOrEditCommunityPage extends BasePage{
 			
 			YesProceedBtn.click();			
 			Thread.sleep(1000);
+			scrollToElement(Createbtn);
 			Createbtn.click();		
 			Thread.sleep(4000);	
 		}
