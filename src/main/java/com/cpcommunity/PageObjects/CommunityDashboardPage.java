@@ -242,6 +242,7 @@ public class CommunityDashboardPage extends BasePage {
 	}
 
 	public ManageJobsPage navigateToManageJobsPage() {
+		scrollDownVertically();
 		scrollToElement(Jobs);
 		click(Jobs, "Jobs");
 		waitForElementToPresent(ManageJobs);
