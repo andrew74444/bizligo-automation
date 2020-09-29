@@ -26,14 +26,14 @@ public class Create_Blog extends BaseTest {
 		HomePage home = new HomePage().open();
 		LoginPage loginpage = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = loginpage.loginToApplication(data.get("email"), data.get("password"));
-		MyDashboardPage myDashboardPage = EcoSystemPage.goToDashBoardPage();
-		MyCommunitiesPage mycommunities = myDashboardPage.NaviagtingToMyCommunities();
+		
+		MyCommunitiesPage mycommunities = EcoSystemPage.NaviagtingToMyCommunities();
 		CommunityDashboardPage communityDashboardPage = mycommunities.NaviagtetoManageCommunity(data.get("communityName"));
 		CommunityBlogsPage communityBlogsPage = communityDashboardPage.gotoManageBlogs();
 		communityBlogsPage.createBlog(data);
 		CommunityDetailsPage communityDetailsPage = communityDashboardPage.navigateToCommunityDetailsPage(data);
-		myDashboardPage = myDashboardPage.navigateToMyDashBoard();
-		BlogsPage bolgsPage = myDashboardPage.goToBlogsPage();
+		EcoSystemPage = EcoSystemPage.goToMyEcosystem()();
+		BlogsPage bolgsPage = EcoSystemPage.goToBlogsPage();
 		bolgsPage.searchPost(data.get("communityName"), data.get("title"));
 		
 

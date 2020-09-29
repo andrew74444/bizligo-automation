@@ -9,17 +9,13 @@ import org.testng.annotations.Test;
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataUtil;
 import com.cpcommunity.testScripts.community.BaseTest;
-import com.cpcommunity.PageObjects.EcoSystemPage;
-import com.cpcommunity.PageObjects.HomePage;
-import com.cpcommunity.PageObjects.LoginPage;
-import com.cpcommunity.PageObjects.MyDashboardPage;
-import com.cpcommunity.PageObjects.MyProfilePage;
+import com.cpcommunity.PageObjects.*;
 import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.ExcelReader;
 
 public class TC027_Verify_User_Is_Able_To_Update_Interests extends BaseTest {
 
-	String TCID ="TC027";	
+	
 	
 	
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
@@ -35,8 +31,8 @@ public class TC027_Verify_User_Is_Able_To_Update_Interests extends BaseTest {
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
-		MyDashboardPage myDashboardPage = EcoSystemPage.goToDashBoardPage();
-		MyProfilePage MyProfile_Page = myDashboardPage.NaviagtingToMyProfilePage();
+		
+		MyProfilePage MyProfile_Page = EcoSystemPage.NaviagtingToMyProfilePage();
 		MyProfile_Page.AddInterests(data.get("interests"));
 		
 		//Assert.fail("Failing the login test");

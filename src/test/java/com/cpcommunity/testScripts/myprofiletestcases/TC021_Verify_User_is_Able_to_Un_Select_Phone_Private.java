@@ -35,8 +35,8 @@ public class TC021_Verify_User_is_Able_to_Un_Select_Phone_Private extends BaseTe
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
-		MyDashboardPage myDashboardPage = EcoSystemPage.goToDashBoardPage();
-		MyProfilePage MyProfile_Page = myDashboardPage.NaviagtingToMyProfilePage();
+		
+		MyProfilePage MyProfile_Page = EcoSystemPage.NaviagtingToMyProfilePage();
 		MyProfile_Page.UnSelectPhonePrivate(data.get("PPhone"));
 		
 		//Assert.fail("Failing the login test");

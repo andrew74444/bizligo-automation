@@ -9,19 +9,13 @@ import org.testng.annotations.Test;
 
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataUtil;
-import com.cpcommunity.PageObjects.CommunityDashboardPage;
-import com.cpcommunity.PageObjects.EcoSystemPage;
-import com.cpcommunity.PageObjects.HomePage;
-import com.cpcommunity.PageObjects.LoginPage;
-import com.cpcommunity.PageObjects.ManageCommunityMembersPage;
-import com.cpcommunity.PageObjects.MyCommunitiesPage;
-import com.cpcommunity.PageObjects.MyDashboardPage;
+import com.cpcommunity.PageObjects.*;
 import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.ExcelReader;
 
 public class TC162_Verify_Member_Able_To_Access_Manage_Community_When_The_CA_Role_Is_Assigned extends BaseTest {
 
-	String TCID= "TC047";	
+		
 	
 	
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
@@ -35,8 +29,8 @@ public class TC162_Verify_Member_Able_To_Access_Manage_Community_When_The_CA_Rol
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
-		MyDashboardPage Dashboard_Page = EcoSystemPage.goToDashBoardPage();
-		MyCommunitiesPage MyCommunitiesPage = Dashboard_Page.NaviagtingToMyCommunities();
+		
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();
 		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
 		ManageCommunityMembersPage ManageCommunityMembersPage = CommunityDashboardPage.navigateToManageCommunityMembers();
 		ManageCommunityMembersPage.addmember(data.get("email1"));
@@ -45,8 +39,8 @@ public class TC162_Verify_Member_Able_To_Access_Manage_Community_When_The_CA_Rol
 		home = CommunityDashboardPage.logout();
 		login = home.clickOnLOGINBtn();
 		EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
-		Dashboard_Page = EcoSystemPage.goToDashBoardPage();
-		MyCommunitiesPage = Dashboard_Page.NaviagtingToMyCommunities();
+		
+		MyCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();
 		MyCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
 		
 		//Assert.fail("Failing the login test");

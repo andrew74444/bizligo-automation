@@ -7,14 +7,7 @@ import java.util.Hashtable;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import com.cpcommunity.testScripts.community.BaseTest;
-import com.cpcommunity.PageObjects.AdvertismentPurchasePage;
-import com.cpcommunity.PageObjects.EcoSystemPage;
-import com.cpcommunity.PageObjects.HomePage;
-import com.cpcommunity.PageObjects.LoginPage;
-import com.cpcommunity.PageObjects.MyAdvertisements;
-import com.cpcommunity.PageObjects.MyDashboardPage;
-import com.cpcommunity.PageObjects.PaymentOptionsPage;
-import com.cpcommunity.PageObjects.PaymentReceipt;
+import com.cpcommunity.PageObjects.*;
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataUtil;
 import com.cpcommunity.utilities.DataProviders;
@@ -34,8 +27,8 @@ public class TC138_Purchase_Advertisment_With_No_Approval_And_Verify_The_Ad_Is_D
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
-		MyDashboardPage myDashboardPage = EcoSystemPage.goToDashBoardPage();	
-		MyAdvertisements myAdvertisements =  myDashboardPage.NaviagtingToMyAdvertisements();
+			
+		MyAdvertisements myAdvertisements =  EcoSystemPage.NaviagtingToMyAdvertisements();
 		AdvertismentPurchasePage advertismentPurchasePage=myAdvertisements.createAd();
 		PaymentOptionsPage paymentOptionsPage=advertismentPurchasePage.SelectPlan(data.get("planName"), data.get("adImage"), data.get("linkUrl"), data.get("additionalInstructions"));
 		PaymentReceipt paymentReceipt = paymentOptionsPage.makePayment(data.get("paymentMethod"),data.get("promoCode"));

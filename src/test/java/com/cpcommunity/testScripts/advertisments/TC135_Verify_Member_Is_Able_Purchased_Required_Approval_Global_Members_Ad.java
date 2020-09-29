@@ -24,19 +24,19 @@ public class TC135_Verify_Member_Is_Able_Purchased_Required_Approval_Global_Memb
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
-		MyDashboardPage myDashboardPage = EcoSystemPage.goToDashBoardPage();	
-		MyCommunitiesPage myCommunitiesPage =  myDashboardPage.NaviagtingToMyCommunities();
+		
+		MyCommunitiesPage myCommunitiesPage =  EcoSystemPage.NaviagtingToMyCommunities();
 		CommunityDetailsPage communityDetailsPage = myCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		AdvertismentPurchasePage advertismentPurchasePage =communityDetailsPage.clickOnAdvertisements();
 		PaymentOptionsPage paymentOptionsPage = advertismentPurchasePage.SelectPlan(data.get("planName"),  data.get("adImage"), data.get("linkUrl"), data.get("additionalInstructions"));
 		PaymentReceipt paymentReceipt = paymentOptionsPage.makePayment(data.get("paymentMethod"),data.get("promoCode"));
 		paymentReceipt.verifyAdSentToAdminReview();
 		communityDetailsPage = paymentReceipt.NavigateToCommunityDetailspage();
-		home = myDashboardPage.logout();
+		home = EcoSystemPage.logout();
 		login = home.clickOnLOGINBtn();
 		EcoSystemPage = login.loginToApplication(data.get("email2"), data.get("password"));
-		myDashboardPage = EcoSystemPage.goToDashBoardPage();	
-		myCommunitiesPage =  myDashboardPage.NaviagtingToMyCommunities();
+			
+		myCommunitiesPage =  EcoSystemPage.NaviagtingToMyCommunities();
 		CommunityDashboardPage communityDashboardPage = myCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
 		ManageMemberAdvertisementsPage manageMemberAdvertisementsPage =communityDashboardPage.navigateToMemberAdvertisements();
 		manageMemberAdvertisementsPage.verifyPurchasedAdisDisplayed(data.get("planName"));	

@@ -5,14 +5,7 @@ import java.util.Hashtable;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import com.cpcommunity.testScripts.community.BaseTest;
-import com.cpcommunity.PageObjects.EcoSystemPage;
-import com.cpcommunity.PageObjects.EventDetailsPage;
-import com.cpcommunity.PageObjects.EventTicketPage;
-import com.cpcommunity.PageObjects.HomePage;
-import com.cpcommunity.PageObjects.LoginPage;
-import com.cpcommunity.PageObjects.MyDashboardPage;
-import com.cpcommunity.PageObjects.PayPalPayment;
-import com.cpcommunity.PageObjects.UpcomingEventsPage;
+import com.cpcommunity.PageObjects.*;
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataUtil;
 import com.cpcommunity.utilities.DataProviders;
@@ -32,8 +25,8 @@ public class TC143_Paid_Event_Registration_With_PayPal_From_Event_Details_Page e
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
-		MyDashboardPage myDashboardPage = EcoSystemPage.goToDashBoardPage();
-		UpcomingEventsPage upcomingEventsPage = myDashboardPage.GoToUpComingEvents();
+		
+		UpcomingEventsPage upcomingEventsPage = EcoSystemPage.GoToUpComingEvents();
 		EventDetailsPage eventDetailsPage = upcomingEventsPage.goToEventDetailsPage(data);
 		PayPalPayment payPalGateway= eventDetailsPage.registerEventByPayPal(data);
 		EventTicketPage eventTicketPage = payPalGateway.MakePayment();

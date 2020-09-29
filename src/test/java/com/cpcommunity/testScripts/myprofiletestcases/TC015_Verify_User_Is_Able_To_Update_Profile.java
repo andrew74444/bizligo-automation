@@ -35,8 +35,8 @@ public class TC015_Verify_User_Is_Able_To_Update_Profile extends BaseTest {
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
-		MyDashboardPage myDashboardPage = EcoSystemPage.goToDashBoardPage();
-		MyProfilePage MyProfile_Page = myDashboardPage.NaviagtingToMyProfilePage();
+		
+		MyProfilePage MyProfile_Page = EcoSystemPage.NaviagtingToMyProfilePage();
 		MyProfile_Page.UpdateProfileDetails(data.get("FName"), data.get("LName"), data.get("jtitle"), data.get("PPhone"), data.get("PExt"), data.get("PSummary"), data.get("Ytube"), data.get("LUrl"), data.get("FUrl"), data.get("TUrl"));
 		
 		//Assert.fail("Failing the login test");

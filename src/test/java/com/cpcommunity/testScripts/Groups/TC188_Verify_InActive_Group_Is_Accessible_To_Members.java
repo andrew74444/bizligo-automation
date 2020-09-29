@@ -26,8 +26,8 @@ public class TC188_Verify_InActive_Group_Is_Accessible_To_Members extends BaseTe
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
-		MyDashboardPage myDashboardPage = EcoSystemPage.goToDashBoardPage();
-		MyGroupsPage MyGroupsPage = myDashboardPage.NavigatingToMyGroups();
+	
+		MyGroupsPage MyGroupsPage = EcoSystemPage.NavigatingToMyGroups();
 		MyGroupsPage.goToInActivegroup(data.get("groupName"));		
 	}
 

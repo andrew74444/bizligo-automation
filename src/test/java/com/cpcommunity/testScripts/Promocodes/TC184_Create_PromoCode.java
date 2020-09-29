@@ -22,8 +22,8 @@ public class TC184_Create_PromoCode extends BaseTest {
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
-		MyDashboardPage myDashboardPage = EcoSystemPage.goToDashBoardPage();
-		MyCommunitiesPage myCommunitiesPage = myDashboardPage.NaviagtingToMyCommunities();
+		
+		MyCommunitiesPage myCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();
 		CommunityDashboardPage communityDashboardPage = myCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
 		PromoCodePage promoCodePage = communityDashboardPage.goToPromoCodePage();
 		promoCodePage.createPromocode( data.get("promoCode1"),  data.get("promoCodeExpiry"),  data.get("discountByPercent"),

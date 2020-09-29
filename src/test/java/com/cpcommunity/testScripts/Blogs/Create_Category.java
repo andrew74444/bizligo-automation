@@ -7,14 +7,7 @@ import org.testng.annotations.Test;
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataUtil;
 import com.cpcommunity.testScripts.community.BaseTest;
-import com.cpcommunity.PageObjects.CategoriesPage;
-import com.cpcommunity.PageObjects.CommunityDashboardPage;
-import com.cpcommunity.PageObjects.EcoSystemPage;
-import com.cpcommunity.PageObjects.HomePage;
-import com.cpcommunity.PageObjects.LoginPage;
-import com.cpcommunity.PageObjects.MyCommunitiesPage;
-import com.cpcommunity.PageObjects.MyDashboardPage;
-import com.cpcommunity.PageObjects.MyProfilePage;
+import com.cpcommunity.PageObjects.*;
 import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.ExcelReader;
 
@@ -35,8 +28,8 @@ public class Create_Category extends BaseTest {
 		HomePage home = new HomePage().open();
 		LoginPage loginpage = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = loginpage.loginToApplication(data.get("email"), data.get("password"));
-		MyDashboardPage myDashboardPage = EcoSystemPage.goToDashBoardPage();
-		MyCommunitiesPage mycommunities = myDashboardPage.NaviagtingToMyCommunities();
+		
+		MyCommunitiesPage mycommunities = EcoSystemPage.NaviagtingToMyCommunities();
 		CommunityDashboardPage communityDashboardPage = mycommunities.NaviagtetoManageCommunity(data.get("communityName"));
 		CategoriesPage categoriesPage = communityDashboardPage.gotoCategories();
 		categoriesPage.createCategorie(data);

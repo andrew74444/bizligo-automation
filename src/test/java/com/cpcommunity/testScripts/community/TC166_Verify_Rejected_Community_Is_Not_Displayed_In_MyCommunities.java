@@ -7,13 +7,7 @@ import org.testng.annotations.Test;
 
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataUtil;
-import com.cpcommunity.PageObjects.CreateCommunityPage;
-import com.cpcommunity.PageObjects.EcoSystemPage;
-import com.cpcommunity.PageObjects.GlobalCommunitesPage;
-import com.cpcommunity.PageObjects.HomePage;
-import com.cpcommunity.PageObjects.LoginPage;
-import com.cpcommunity.PageObjects.MyCommunitiesPage;
-import com.cpcommunity.PageObjects.MyDashboardPage;
+import com.cpcommunity.PageObjects.*;
 import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.ExcelReader;
 
@@ -31,8 +25,8 @@ public class TC166_Verify_Rejected_Community_Is_Not_Displayed_In_MyCommunities e
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
-		MyDashboardPage Dashboard_Page = EcoSystemPage.goToDashBoardPage();
-		MyCommunitiesPage myCommunitiesPage= Dashboard_Page.NaviagtingToMyCommunities();
+		
+		MyCommunitiesPage myCommunitiesPage= EcoSystemPage.NaviagtingToMyCommunities();
 		myCommunitiesPage.verifyRejectCommunityIsNotDisplayedInMyCommunities(data.get("communityName"));
 		//Assert.fail("Failing the login test");
 	}
