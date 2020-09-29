@@ -477,7 +477,7 @@ public class CommunityDetailsPage extends BasePage {
 	}
 
 	public GroupDetailsPage navigateToGroupDetailsPage(String groupName) throws Exception {
-		groupName = groupName + " " + getDate();
+		groupName = groupName + " " + getDateInDDMMMYYYY();
 		this.searchGroup(groupName);
 		driver.findElement(By.xpath("//*[@tooltip='" + groupName + "']")).click();
 		return (GroupDetailsPage) openPage(GroupDetailsPage.class);
@@ -497,7 +497,7 @@ public class CommunityDetailsPage extends BasePage {
 	
 	
 	public void JoinGroups(String groupName) throws Exception {
-		groupName = groupName + " " + getDate();
+		groupName = groupName + " " + getDateInDDMMMYYYY();
 		this.searchGroup(groupName);
 		clickElementByJavaScript(JoinGroup);
 		waitForElementToPresent(GroupsYesProceed);
@@ -767,7 +767,7 @@ public class CommunityDetailsPage extends BasePage {
 	WebElement no;
 
 	public void checkMemberIsnotAbleToJoinGroupWithoutJoiningCommunity(String groupName) throws Exception {
-		groupName = groupName + " " + getDate();
+		groupName = groupName + " " + getDateInDDMMMYYYY();
 		this.searchGroup(groupName);
 		clickElementByJavaScript(JoinGroup);
 		waitForElementToPresent(GroupsYesProceed);
@@ -784,7 +784,7 @@ public class CommunityDetailsPage extends BasePage {
 
 	public ManageGroupMembersPageByGroupAdmin navigateToManageGroupMembers(String groupName) throws Exception {
 
-		groupName = groupName + " " + getDate();
+		groupName = groupName + " " + getDateInDDMMMYYYY();
 		this.searchGroup(groupName);
 		waitForElementToPresent(Menu);
 		picture();
