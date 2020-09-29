@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" thread-count="3" parallel="classes">
+
+
+	<listeners>
+		<listener
+			class-name="com.w2a.zoho.ExtentListeners.ExtentListeners"></listener>
+	</listeners>
+
+	<test name="Test1">
+
+		<!--<packages> <package name="com.w2a.zoho.testcases" /> </packages> -->
+		<classes>
+			 
+			<class
+				name="com.cpcommunity.emailtestcases.TC124_Member_Accept_Community_Request_from_EMail" />
+				
+		</classes>
+	</test> <!-- Test -->
+
+
+
+
+</suite> <!-- Suite -->

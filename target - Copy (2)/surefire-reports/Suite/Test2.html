@@ -1,0 +1,109 @@
+<html>
+<head>
+<title>TestNG:  Test2</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Test2</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>6/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Tue Sep 29 06:48:34 EDT 2020</td>
+</tr>
+<tr><td>Total time:</td><td>243 seconds (243685 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.cpcommunity.testScripts.myprofiletestcases.TC023_Verify_User_Is_Able_To_Update_Protfolio.TC023()'><b>TC023</b><br>Test class: com.cpcommunity.testScripts.myprofiletestcases.TC023_Verify_User_Is_Able_To_Update_Protfolio<br>Parameters: {Test Descrption=TC023_Verify_User_Is_Able_To_Update_Protfolio, updateTitle=Pamten, password=Admin@123, email=andrew74444@gmail.com, browser=chrome, Runmode=Y, updateUrl=https://www.pamten.com}</td>
+<td></td>
+<td>172</td>
+<td>com.cpcommunity.testScripts.myprofiletestcases.TC023_Verify_User_Is_Able_To_Update_Protfolio@ed9d034</td></tr>
+<tr>
+<td title='com.cpcommunity.testScripts.myprofiletestcases.TC025_Verify_User_Is_Able_To_Delete_Skills.TC025()'><b>TC025</b><br>Test class: com.cpcommunity.testScripts.myprofiletestcases.TC025_Verify_User_Is_Able_To_Delete_Skills<br>Parameters: {Test Descrption=TC025_Verify_User_Is_Able_To_Delete_Skills, password=Admin@123, email=andrew74444@gmail.com, browser=chrome, Runmode=Y}</td>
+<td></td>
+<td>150</td>
+<td>com.cpcommunity.testScripts.myprofiletestcases.TC025_Verify_User_Is_Able_To_Delete_Skills@6121c9d6</td></tr>
+<tr>
+<td title='com.cpcommunity.testScripts.myprofiletestcases.TC028_Verify_User_Is_Able_To_Delete_Interests.TC028()'><b>TC028</b><br>Test class: com.cpcommunity.testScripts.myprofiletestcases.TC028_Verify_User_Is_Able_To_Delete_Interests<br>Parameters: {Test Descrption=TC028_Verify_User_Is_Able_To_Delete_Interests, password=Admin@123, email=andrew74444@gmail.com, browser=chrome, Runmode=Y}</td>
+<td></td>
+<td>70</td>
+<td>com.cpcommunity.testScripts.myprofiletestcases.TC028_Verify_User_Is_Able_To_Delete_Interests@87f383f</td></tr>
+<tr>
+<td title='com.cpcommunity.testScripts.community.TC030_System_Admin_Community_Rejection.TC030()'><b>TC030</b><br>Test class: com.cpcommunity.testScripts.community.TC030_System_Admin_Community_Rejection<br>Parameters: {Test Descrption=TC030_System_Admin_Community_Rejection, browser=chrome, password=Admin@123, email=connectproemqa@gmail.com, Runmode=Y, communityName=Virtual Business -, rejectReason=Rejecting the community}</td>
+<td></td>
+<td>128</td>
+<td>com.cpcommunity.testScripts.community.TC030_System_Admin_Community_Rejection@3aeaafa6</td></tr>
+<tr>
+<td title='com.cpcommunity.testScripts.community.TC032_System_Admin_Community_Approval.TC032()'><b>TC032</b><br>Test class: com.cpcommunity.testScripts.community.TC032_System_Admin_Community_Approval<br>Parameters: {Test Descrption=TC032_System_Admin_Community_Approval, browser=chrome, password=Admin@123, email=connectproemqa@gmail.com, Runmode=Y, communityName=Community -}</td>
+<td></td>
+<td>168</td>
+<td>com.cpcommunity.testScripts.community.TC032_System_Admin_Community_Approval@76a3e297</td></tr>
+<tr>
+<td title='com.cpcommunity.testScripts.community.TC094_Activate_PayMent_Gateways.TC094()'><b>TC094</b><br>Test class: com.cpcommunity.testScripts.community.TC094_Activate_PayMent_Gateways<br>Parameters: {Test Descrption=TC094_Activate_PayMent_Gateways, password=Admin@123, email=andrew74444@gmail.com, browser=chrome, Runmode=Y, Community ID=1066.0, communityName=Co-next Works}</td>
+<td></td>
+<td>242</td>
+<td>com.cpcommunity.testScripts.community.TC094_Activate_PayMent_Gateways@4d3167f4</td></tr>
+</table><p>
+</body>
+</html>
