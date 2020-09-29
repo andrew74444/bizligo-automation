@@ -24,7 +24,7 @@ public class TC190_Group_Admin_Edit_Group extends BaseTest {
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		MyGroupsPage MyGroupsPage = EcoSystemPage.NavigatingToMyGroups();
+		MyGroupsPage MyGroupsPage = EcoSystemPage.goToMyGroups();
 		Create_UpdateGroupPage Create_UpdateGroupPage=MyGroupsPage.navigateToEditGroupPage(data.get("groupName"));
 		Create_UpdateGroupPage.updateGroup(data.get("groupName"), data.get("description"), data.get("city"), data.get("state"), data.get("groupType"), data.get("logoImagePath"),data.get("newGroupName"));
 	}

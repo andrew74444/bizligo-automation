@@ -30,7 +30,7 @@ public class TC077_Member_Join_And_Cancel_Community_From_Global_Communities_____
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.naviagtingToGlobalCommunities();
+		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
 		GlobalCommunitesPage.JoinCommunity(data.get("communityName"));
 		GlobalCommunitesPage.cancelRequest(data.get("communityName"));
 		

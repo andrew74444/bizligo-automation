@@ -31,7 +31,7 @@ public class TC019_Verify_User_is_Able_to_Un_Select_Email_Private extends BaseTe
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		MyProfilePage MyProfile_Page = EcoSystemPage.NaviagtingToMyProfilePage();
+		MyProfilePage MyProfile_Page = EcoSystemPage.goToMyProfilePage();
 		MyProfile_Page.UnSelectEmailPrivate();
 		
 		//Assert.fail("Failing the login test");

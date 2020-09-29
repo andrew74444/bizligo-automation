@@ -33,7 +33,7 @@ public class TC125_Member_Cancel_Created_Community_Request extends BaseTest {
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		MyCommunitiesPage.cancelReviewCommunity(data.get("communityName"));
 		
 		//Assert.fail("Failing the login test");

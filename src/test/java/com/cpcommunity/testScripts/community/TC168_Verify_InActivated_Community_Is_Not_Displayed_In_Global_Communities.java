@@ -32,7 +32,7 @@ public class TC168_Verify_InActivated_Community_Is_Not_Displayed_In_Global_Commu
 //		logInfo("Username entered as "+getHarley()+" and Password entered as "+getPassword());
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.naviagtingToGlobalCommunities();
+		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
 		GlobalCommunitesPage.rejectCommunity(data.get("communityName"));
 		
 		//Assert.fail("Failing the login test");

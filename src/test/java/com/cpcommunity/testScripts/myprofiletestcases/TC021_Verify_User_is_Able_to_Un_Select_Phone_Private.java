@@ -9,11 +9,7 @@ import org.testng.annotations.Test;
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataUtil;
 import com.cpcommunity.testScripts.community.BaseTest;
-import com.cpcommunity.PageObjects.EcoSystemPage;
-import com.cpcommunity.PageObjects.HomePage;
-import com.cpcommunity.PageObjects.LoginPage;
-import com.cpcommunity.PageObjects.MyDashboardPage;
-import com.cpcommunity.PageObjects.MyProfilePage;
+import com.cpcommunity.PageObjects.*;
 import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.ExcelReader;
 
@@ -36,7 +32,7 @@ public class TC021_Verify_User_is_Able_to_Un_Select_Phone_Private extends BaseTe
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		MyProfilePage MyProfile_Page = EcoSystemPage.NaviagtingToMyProfilePage();
+		MyProfilePage MyProfile_Page = EcoSystemPage.goToMyProfilePage();
 		MyProfile_Page.UnSelectPhonePrivate(data.get("PPhone"));
 		
 		//Assert.fail("Failing the login test");

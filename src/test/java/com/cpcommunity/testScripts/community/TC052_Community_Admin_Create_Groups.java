@@ -29,7 +29,7 @@ public class TC052_Community_Admin_Create_Groups extends BaseTest {
 		LoginPage login = home.clickOnLOGINBtn();		
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
 		ManageGroupsPage ManageGroupsPage = CommunityDashboardPage.navigateToManageGroupsPage();
 		Create_UpdateGroupPage Create_UpdateGroupPage = ManageGroupsPage.clickOnCreateBtn();

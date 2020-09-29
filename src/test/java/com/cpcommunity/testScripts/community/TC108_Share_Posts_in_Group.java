@@ -29,7 +29,7 @@ public class TC108_Share_Posts_in_Group extends BaseTest {
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+getAndrew()+" and Password entered as "+getPassword());
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
-		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.naviagtingToGlobalCommunities();
+		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
 		CommunityDetailsPage CommunityDetailsPage = GlobalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		GroupDetailsPage GroupDetailsPage = CommunityDetailsPage.navigateToGroupDetailsPage(data.get("groupName"));
 		Discussions discussions = GroupDetailsPage.sharePosts();

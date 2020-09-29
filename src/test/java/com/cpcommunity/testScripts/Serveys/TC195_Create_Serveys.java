@@ -23,7 +23,7 @@ public class TC195_Create_Serveys extends BaseTest {
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		MyCommunitiesPage myCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();
+		MyCommunitiesPage myCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CommunityDashboardPage communityDashboardPage = myCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
 		ServeysPage serveysPage = communityDashboardPage.GoToServeysPage();
 		serveysPage.createServey();

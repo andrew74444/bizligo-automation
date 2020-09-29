@@ -29,7 +29,7 @@ public class TC139_Approve_Advertisement_By_CA_And_Verify_The_Ad_Dispplayed_In_C
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 			
-		MyCommunitiesPage myCommunitiesPage=EcoSystemPage.NaviagtingToMyCommunities();
+		MyCommunitiesPage myCommunitiesPage=EcoSystemPage.goToMyCommunities();
 		CommunityDashboardPage communityDashboardPage =myCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
 		ManageMemberAdvertisementsPage manageMemberAdvertisementsPage =communityDashboardPage.navigateToMemberAdvertisements();
 		manageMemberAdvertisementsPage.approveAd(data.get("planName"),data.get("adImage"),data.get("linkUrl"));

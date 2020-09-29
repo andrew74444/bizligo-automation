@@ -28,7 +28,7 @@ public class TC136_Purchase_Advertisment_With_No_Approval_And_Verify_The_Ad_Is_D
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		MyCommunitiesPage myCommunitiesPage =  EcoSystemPage.NaviagtingToMyCommunities();
+		MyCommunitiesPage myCommunitiesPage =  EcoSystemPage.goToMyCommunities();
 		CommunityDetailsPage communityDetailsPage = myCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		AdvertismentPurchasePage advertismentPurchasePage =communityDetailsPage.clickOnAdvertisements();
 		PaymentOptionsPage paymentOptionsPage = advertismentPurchasePage.SelectPlan(data.get("planName"), data.get("adImage"), data.get("linkUrl"), data.get("additionalInstructions"));

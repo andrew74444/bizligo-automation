@@ -27,11 +27,11 @@ public class TC191_Verify_Back_Button_Is_Redirected_To_Respective_Page_From_Mana
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		MyGroupsPage MyGroupsPage = EcoSystemPage.NavigatingToMyGroups();
+		MyGroupsPage MyGroupsPage = EcoSystemPage.goToMyGroups();
 		ManageGroupMembersPageByGroupAdmin ManageGroupMembersPageByGroupAdmin = MyGroupsPage.manageGroupMembers(data.get("groupName"));
 		MyGroupsPage = ManageGroupMembersPageByGroupAdmin.backToMyGroups();
 		EcoSystemPage = EcoSystemPage.goToMyEcosystem();
-		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CommunityDetailsPage CommunityDetailsPage =MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		ManageGroupMembersPageByGroupAdmin = CommunityDetailsPage.navigateToManageGroupMembers(data.get("groupName"));
 		CommunityDetailsPage = ManageGroupMembersPageByGroupAdmin.backToCommunityDetailsPage();

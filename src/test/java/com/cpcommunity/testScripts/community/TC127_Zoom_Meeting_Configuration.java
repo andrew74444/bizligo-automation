@@ -33,7 +33,7 @@ public class TC127_Zoom_Meeting_Configuration extends BaseTest {
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		DriverManager.getDriver().manage().window().maximize();
 		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
 		MeetingAccountsPage MeetingAccountsPage = CommunityDashboardPage.navigateToMeetingAccounts();

@@ -31,17 +31,17 @@ public class TC081_Member_Join_And_Leave_Public_Community_From_Global_Communitie
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 //		String T1 = Dashboard_Page.totalCommunitiesCount();
-		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.naviagtingToGlobalCommunities();
+		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
 		GlobalCommunitesPage.communityJoinWithOutDate(data.get("communityName"));
 		
 //		String T2 = Dashboard_Page.totalCommunitiesCount();
 //		int TotalCommunities=  Integer.parseInt(T1);
 //		TotalCommunities++;
 //		AssertionHelper.verifyText(String.valueOf(TotalCommunities), T2);
-		GlobalCommunitesPage = EcoSystemPage.naviagtingToGlobalCommunities();
+		GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
 		GlobalCommunitesPage.leaveCommunityWithoutDate(data.get("communityName"));
 		
-		String T3 = EcoSystemPage.totalCommunitiesCount();
+//		String T3 = EcoSystemPage.totalCommunitiesCount();
 //		AssertionHelper.verifyText(T1, T3);	
 		
 		//Assert.fail("Failing the login test");

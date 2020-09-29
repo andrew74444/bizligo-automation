@@ -30,7 +30,7 @@ public class TC170_Verify_Non_Member_Not_Able_Share_Posts_And_Like_Comment_in_Co
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.naviagtingToGlobalCommunities();
+		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
 		CommunityDetailsPage CommunityDetailsPage = GlobalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		Discussions discussions =CommunityDetailsPage.CheckNonMemberNotAbleTosharePosts();
 		discussions.CheckNonMemberIsNotAbleToPostLikeComment();

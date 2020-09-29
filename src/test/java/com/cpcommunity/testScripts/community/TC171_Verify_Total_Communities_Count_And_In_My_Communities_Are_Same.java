@@ -32,7 +32,7 @@ public class TC171_Verify_Total_Communities_Count_And_In_My_Communities_Are_Same
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 				
 //		String T1 = Dashboard_Page.totalCommunitiesCount();
-		MyCommunitiesPage myCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();
+		MyCommunitiesPage myCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		String T2 = myCommunitiesPage.getTotalCommunities();
 //		AssertionHelper.verifyText(T1, T2);
 		

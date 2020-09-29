@@ -31,7 +31,7 @@ public class TC089_Configure_Paypal_Payment_Gateway extends BaseTest {
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
 		PaymentGatewaysPage PaymentGatewaysPage  = CommunityDashboardPage.navigateToPaymentGateways();
 		SetupPayPalPage SetupPayPalPage = PaymentGatewaysPage.SetPayPal();

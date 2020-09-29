@@ -29,7 +29,7 @@ public class Create_Category extends BaseTest {
 		LoginPage loginpage = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = loginpage.loginToApplication(data.get("email"), data.get("password"));
 		
-		MyCommunitiesPage mycommunities = EcoSystemPage.NaviagtingToMyCommunities();
+		MyCommunitiesPage mycommunities = EcoSystemPage.goToMyCommunities();
 		CommunityDashboardPage communityDashboardPage = mycommunities.NaviagtetoManageCommunity(data.get("communityName"));
 		CategoriesPage categoriesPage = communityDashboardPage.gotoCategories();
 		categoriesPage.createCategorie(data);

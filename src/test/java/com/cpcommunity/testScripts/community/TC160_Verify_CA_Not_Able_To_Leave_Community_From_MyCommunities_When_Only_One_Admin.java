@@ -30,7 +30,7 @@ public class TC160_Verify_CA_Not_Able_To_Leave_Community_From_MyCommunities_When
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		MyCommunitiesPage myCommunitiesPage= EcoSystemPage.NaviagtingToMyCommunities();
+		MyCommunitiesPage myCommunitiesPage= EcoSystemPage.goToMyCommunities();
 		myCommunitiesPage.checkProperAlertDisplayedWhenOnlyOneAdmin(data.get("communityName"));
 		
 		

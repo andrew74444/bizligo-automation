@@ -10,81 +10,250 @@ import com.cpcommunity.utilities.DriverManager;
 
 public class EcoSystemPage extends BasePage {
 
-	
 	@FindBy(xpath = "//*[contains(text(),'MY ECOSYSTEM')]")
 	WebElement myEcosystem;
 
 	@FindBy(xpath = "//*[@id='header']")
 	WebElement pageheader;
-	
-	@FindBy(xpath="//*[@id='navbar']//*[contains(text(),'Global Communities')]")
+
+	@FindBy(xpath = "//*[@id='navbar']//*[contains(text(),'Global Communities')]")
 	WebElement globalCommunities;
-	
-	@FindBy(xpath="//span[@title='Toggle dropdown menu']")
+
+	@FindBy(xpath = "//span[@title='Toggle dropdown menu']")
 	WebElement Toggledropdownmenu;
-	
-	
 
-	@FindBy(xpath="//*[@id='mycommunitestab']//a[contains(text(),'VIEW ALL')]")
+	@FindBy(xpath = "//*[@id='mycommunitestab']//a[contains(text(),'VIEW ALL')]")
 	WebElement viewAll;
-	
-	@FindBy(xpath="//a[contains(text(),'Logout')]")
-	WebElement Logout;
-	
-	
-	
 
-	@Override
-	protected  void getPageScreenSot() {
+	@FindBy(xpath = "//a[contains(text(),'Logout')]")
+	WebElement Logout;
+
+	@FindBy(xpath = "//*[contains(text(),'Blog')]")
+	WebElement blog;
+
+	@FindBy(xpath = "//*[contains(text(),'My Advertisements')]")
+	WebElement myAdvertisements;
+	// *************************************Endorsements**********************************
+	@FindBy(xpath = "//*[contains(text(),'My Endorsements')]")
+	WebElement myEndorsements;
+
+	// *************************************Groups****************************************
+	@FindBy(xpath = "//*[contains(text(),'My Groups')]")
+	WebElement myGroups;
+
+	@FindBy (xpath="//*[contains(text(),'My Connections')]")
+	WebElement myConnections;
 	
+	@FindBy (xpath = "//*[contains(text(),'My Messages')]")
+	WebElement myMessages;
+	
+	@FindBy(xpath="//a[contains(text(),'Member Directory')]")
+	WebElement memberDirectory;
+	
+	@FindBy(xpath="//a[contains(text(),'My Profile')]")
+	WebElement myProfile;
+	
+	@FindBy(xpath="//a[contains(text(),'Manage Password')]")
+	WebElement ManagePassword;
+	
+	@FindBy(xpath="//a[contains(.,' Dashboard')]")
+	WebElement Dashboard;
+	@FindBy(xpath="//span[contains(text(),'Global Events')]")
+	WebElement globalEvents;
+	
+	
+	@FindBy(xpath="//a[contains(text(),'Upcoming Events')]")
+	WebElement upcomingEvents;
+	@FindBy(xpath="//a[contains(text(),'Past Events')]")
+	WebElement PastEvents;
+	
+	@FindBy(xpath="//a[contains(text(),'Global Careers')]")
+	WebElement GlobalCareers;
+	
+	
+	
+	
+	@Override
+	protected void getPageScreenSot() {
+
 		updateClass(pageheader, "");
 		aShot();
 		updateClass(pageheader, "navbar-fixed-top");
 	}
-	
-	
 
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
-		
+
 		return ExpectedConditions.visibilityOf(myEcosystem);
 	}
 
-	public HomePage logout() throws Exception
-	{
+	public HomePage logout() throws Exception {
 		Toggledropdownmenu.click();
 		Thread.sleep(500);
 		waitForElementToPresent(Logout);
 		Logout.click();
 		return (HomePage) openPage(HomePage.class);
-//		new HomePage(driver, );
-	}
-	
-	
-	
-	public GlobalCommunitesPage naviagtingToGlobalCommunities() throws Exception
-	{
-//		click(Toggledropdownmenu,"Toggledropdownmenu");
-		waitForElementToPresent(globalCommunities);
-		clickElementByJavaScript(globalCommunities);
-//		Thread.sleep(1000);
-		return (GlobalCommunitesPage) openPage(GlobalCommunitesPage.class);
-//		new GlobalCommunitesPage(driver, );
-		
+		// new HomePage(driver, );
 	}
 
-	public MyCommunitiesPage NaviagtingToMyCommunities() {
+	public GlobalCommunitesPage goToGlobalCommunities() throws Exception {
+		// click(Toggledropdownmenu,"Toggledropdownmenu");
+		waitForElementToPresent(globalCommunities);
+		clickElementByJavaScript(globalCommunities);
+		// Thread.sleep(1000);
+		return (GlobalCommunitesPage) openPage(GlobalCommunitesPage.class);
+		// new GlobalCommunitesPage(driver, );
+
+	}
+
+	public MyCommunitiesPage goToMyCommunities() {
 		click(viewAll, "view All");
-		return  (MyCommunitiesPage) openPage(MyCommunitiesPage.class);
+		return (MyCommunitiesPage) openPage(MyCommunitiesPage.class);
 	}
-	
+
 	public EcoSystemPage goToMyEcosystem() {
-		click(Toggledropdownmenu,"Toggledropdownmenu");
-		waitForElementToPresent(myEcosystem);		
+		click(Toggledropdownmenu, "Toggledropdownmenu");
+		waitForElementToPresent(myEcosystem);
 		click(myEcosystem, "myEcosystem");
-		return  (EcoSystemPage) openPage(EcoSystemPage.class);
+		return (EcoSystemPage) openPage(EcoSystemPage.class);
 	}
-	
+
+	public GlobalCareers goToGlobalCareers() {
+		click(GlobalCareers, "click");
+		return (GlobalCareers) openPage(GlobalCareers.class);
+		// new GlobalCareers(driver, );
+	}
+
+	public Messages goToMyMessages() {
+		myMessages.click();
+		return (Messages) openPage(Messages.class);
+		// new Messages(driver, );
+	}
+
+	public MyGroupsPage goToMyGroups() {
+		click(myGroups, "myGroups");
+		return (MyGroupsPage) openPage(MyGroupsPage.class);
+		// new MyGroupsPage(driver, );
+	}
+
+	// public int GoToMygroups(ExtentTest logger) throws Exception
+	// {
+	//
+	// }
+
+	public GlobalCommunitesPage goToGlobalCommunitiesFromMenuDropDown() throws Exception {
+
+		click(Toggledropdownmenu, "Toggle drop down menu");
+		Thread.sleep(1000);
+		click(globalCommunities, "Global Communities");
+		return (GlobalCommunitesPage) openPage(GlobalCommunitesPage.class);
+		// new ChangePasswordPage(driver, );
+
+	}
+
+	public ChangePasswordPage goToManagePassword() throws Exception {
+
+		Toggledropdownmenu.click();
+		Thread.sleep(1000);
+		ManagePassword.click();
+		return (ChangePasswordPage) openPage(ChangePasswordPage.class);
+		// new ChangePasswordPage(driver, );
+
+	}
+
+	// public int GoToMyCommunities(ExtentTest logger) throws InterruptedException {
+	//
+	//
+	//
+	//
+	// js.executeScript("arguments[0].scrollIntoView(true);",Communities);
+	// String C = TotalCommmunities.getText();
+	// int TC=Integer.parseInt(C);
+	// Utility.highLightElement(driver, Communities);
+	// Communities.click();
+	// return TC;
+	// }
+	//
+
+	public MyProfilePage goToMyProfilePage() throws Exception {
+
+		Toggledropdownmenu.click();
+		Thread.sleep(1000);
+		myProfile.click();
+		return (MyProfilePage) openPage(MyProfilePage.class);
+		// new MyProfilePage(driver, );
+
+	}
+
+	public GlobalMembersPage goToMembersPage() {
+
+		memberDirectory.click();
+		return (GlobalMembersPage) openPage(GlobalMembersPage.class);
+		// new GlobalMembersPage(driver, );
+	}
+
+	public ConnectionsPage goToMyConnections() {
+		myConnections.click();
+		return (ConnectionsPage) openPage(ConnectionsPage.class);
+		// new ConnectionsPage(driver, );
+	}
+
+	public void eventsMenu() {
+		moveToElement(globalEvents);
+		// click(globalEvents,"Global Events");
+	}
+
+	public UpcomingEventsPage goToUpComingEvents() {
+
+		this.eventsMenu();
+		waitForElementToPresent(upcomingEvents);
+		click(upcomingEvents, "Upcoming Events");
+		return (UpcomingEventsPage) openPage(UpcomingEventsPage.class);
+		// new UpcomingEventsPage(driver, );
+	}
+
+	// public PastEventsPage ClickOnPastEvents()
+	// {
+	// this.ClickOnGlobalEvents();
+	// waitHelper.waitForElement(PastEvents,100);
+	//
+	// PastEvents.click();
+	// return () openPage(.class);
+	// new PastEventsPage(driver, );
+	// }
+
+	// public EndorsementPage NaviagtingToMyEndorsements()
+	// {
+	//
+	// myEndorsements.click();
+	// return (EndorsementPage) openPage(EndorsementPage.class);
+	//// new EndorsementPage(driver, );
+	// }
+
+	public MyAdvertisements goToMyAdvertisements() {
+		scrollToElement(myAdvertisements);
+		click(myAdvertisements, "My Advertisements");
+		return (MyAdvertisements) openPage(MyAdvertisements.class);
+		// new MyProfilePage(driver, );
+	}
+
+	@FindBy(xpath = "//*[contains(text(),'Posts')]")
+	WebElement posts;
+
+	public BlogsPage goToBlogsPage() {
+		click(blog, "blog");
+
+		return (BlogsPage) openPage(BlogsPage.class);
+
+	}
+
+//	public MyProfilePage NaviagtingToMyProfilePage1() {
+//
+//		myEndorsements.click();
+//		return (MyProfilePage) openPage(MyProfilePage.class);
+//		// new MyProfilePage(driver, );
+//	}
+
 	// public ZohoCRMPage gotoCRM() {
 	//
 	// click(crm,"CRM Link");

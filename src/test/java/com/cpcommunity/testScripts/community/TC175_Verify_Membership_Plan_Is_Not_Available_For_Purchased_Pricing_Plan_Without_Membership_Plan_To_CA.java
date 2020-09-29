@@ -27,7 +27,7 @@ public class TC175_Verify_Membership_Plan_Is_Not_Available_For_Purchased_Pricing
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CreateCommunityPage CreateCommunityPage = MyCommunitiesPage.clickOnCreateCommunity();
 		CreateCommunityPage.CreateCommunity(data.get("communityName"), data.get("Networking"), data.get("Marketing"),data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"),data.get("InvestInBusiness"), data.get("Other"), data.get("About"), data.get("Category"),data.get("type"));
 		home = EcoSystemPage.logout();
@@ -39,7 +39,7 @@ public class TC175_Verify_Membership_Plan_Is_Not_Available_For_Purchased_Pricing
 		login = home.clickOnLOGINBtn();
 		EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		EcoSystemPage = EcoSystemPage.goToMyEcosystem();
-		MyCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();
+		MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		SelectPlanPage SelectPlanPage = MyCommunitiesPage.completeSetup(data.get("communityName"));
 		SelectPlanPage.selectPaidPlan(data.get("planName"));
 		if (data.get("paymentGateway").equalsIgnoreCase("paypal")) 

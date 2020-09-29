@@ -31,7 +31,7 @@ public class TC044_Member_Accept_Community_Request_From_Community_details_page e
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+getNancycarton()+" and Password entered as "+getPassword());
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email3"),data.get("password"));
-		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.naviagtingToGlobalCommunities();
+		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
 		CommunityDetailsPage CommunityDetailsPage = GlobalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		CommunityDetailsPage.acceptCommunityRequest();
 		

@@ -31,10 +31,10 @@ public class TC075_Member_Cancel_Community_Join_Request_from_My_Communities_____
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.naviagtingToGlobalCommunities();
+		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
 		GlobalCommunitesPage.JoinCommunity(data.get("communityName"));
 		
-		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		MyCommunitiesPage.cancelCommunityRequest(data.get("communityName"));
 		
 		//Assert.fail("Failing the login test");

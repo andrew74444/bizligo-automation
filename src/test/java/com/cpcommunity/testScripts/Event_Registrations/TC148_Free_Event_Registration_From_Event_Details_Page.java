@@ -26,7 +26,7 @@ public class TC148_Free_Event_Registration_From_Event_Details_Page extends BaseT
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		UpcomingEventsPage UpcomingEventsPage = EcoSystemPage.GoToUpComingEvents();
+		UpcomingEventsPage UpcomingEventsPage = EcoSystemPage.goToUpComingEvents();
 		EventDetailsPage eventDetailsPage = UpcomingEventsPage.goToEventDetailsPage(data);
 		eventDetailsPage.registerFreeEvent(data);
 

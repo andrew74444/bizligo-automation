@@ -32,7 +32,7 @@ public class TC100_Activate_Community_By_Community_Admin extends BaseTest {
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		MyCommunitiesPage.activateCommunity(data.get("communityName"));
-		GlobalCommunitesPage globalCommunitesPage=EcoSystemPage.naviagtingToGlobalCommunities();
+		GlobalCommunitesPage globalCommunitesPage=EcoSystemPage.goToGlobalCommunities();
 		CommunityDetailsPage communityDetailsPage= globalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		communityDetailsPage.verifyNoEvents();
 		communityDetailsPage.VerifyNoGroups();

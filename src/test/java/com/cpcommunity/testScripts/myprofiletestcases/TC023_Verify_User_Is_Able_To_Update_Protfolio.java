@@ -32,7 +32,7 @@ public class TC023_Verify_User_Is_Able_To_Update_Protfolio extends BaseTest {
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		MyProfilePage MyProfile_Page = EcoSystemPage.NaviagtingToMyProfilePage();
+		MyProfilePage MyProfile_Page = EcoSystemPage.goToMyProfilePage();
 		MyProfile_Page.updatePortfolio(data.get("updateTitle"), data.get("updateUrl"));
 		Thread.sleep(20000);
 		//Assert.fail("Failing the login test");

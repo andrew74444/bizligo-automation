@@ -27,7 +27,7 @@ public class TC131_Purchase_Pricing_Plan_With_Authorize_Net extends BaseTest {
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CreateCommunityPage CreateCommunityPage = MyCommunitiesPage.clickOnCreateCommunity();
 		String communityName = data.get("communityName");
 		CreateCommunityPage.CreateCommunity(data.get("communityName"), data.get("Networking"), data.get("Marketing"),
@@ -45,7 +45,7 @@ public class TC131_Purchase_Pricing_Plan_With_Authorize_Net extends BaseTest {
 		login = home.clickOnLOGINBtn();
 		EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		MyCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();
+		MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		SelectPlanPage SelectPlanPage = MyCommunitiesPage.completeSetup(communityName);
 		SelectPlanPage.selectPaidPlan(data.get("planName"));
 		if (data.get("paymentGateway").equalsIgnoreCase("paypal")) {

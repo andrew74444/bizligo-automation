@@ -84,7 +84,7 @@ public class EditCommunityPage extends BasePage{
 		EditCommunity.TC(TC);
 	}
 
-	public MyDashboardPage inActiveCommunity() throws Exception{
+	public EcoSystemPage inActiveCommunity() throws Exception{
 		
 		picture();
 		
@@ -96,7 +96,7 @@ public class EditCommunityPage extends BasePage{
 		Thread.sleep(1000);
 		clickElementByJavaScript(Save);
 		picture();
-		return (MyDashboardPage) openPage(MyDashboardPage.class);
+		return (EcoSystemPage) openPage(EcoSystemPage.class);
 //		new MyCommunitiesPage(driver);
 		
 	}	

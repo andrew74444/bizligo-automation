@@ -24,7 +24,7 @@ public class TC153_Free_Event_Registration_From_Event_CheckIn extends BaseTest {
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		MyCommunitiesPage myCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();
+		MyCommunitiesPage myCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CommunityDashboardPage communityDashboardPage = myCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
 		CommunityEventsPage CommunityEvents = communityDashboardPage.navigateToEvents();
 		CheckInPage checkInPage = CommunityEvents.checkIn(data);

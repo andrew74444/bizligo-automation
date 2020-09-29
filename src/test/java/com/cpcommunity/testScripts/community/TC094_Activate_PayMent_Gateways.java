@@ -32,7 +32,7 @@ public class TC094_Activate_PayMent_Gateways extends BaseTest {
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.goToManageCommunity(data.get("communityName"));
 		PaymentGatewaysPage PaymentGatewaysPage = CommunityDashboardPage.navigateToPaymentGateways();
 		PaymentGatewaysPage.activateCheque();

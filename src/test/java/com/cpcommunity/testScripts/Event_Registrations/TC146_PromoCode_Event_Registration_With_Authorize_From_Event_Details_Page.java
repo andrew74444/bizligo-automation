@@ -26,7 +26,7 @@ public class TC146_PromoCode_Event_Registration_With_Authorize_From_Event_Detail
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		UpcomingEventsPage UpcomingEventsPage = EcoSystemPage.GoToUpComingEvents();
+		UpcomingEventsPage UpcomingEventsPage = EcoSystemPage.goToUpComingEvents();
 		EventDetailsPage eventDetailsPage =UpcomingEventsPage.goToEventDetailsPage(data);
 		AuthorizeGateway authorizeGateway = eventDetailsPage.registerEventbyAuthorizeNet(data);
 		EventTicketPage eventTicket = authorizeGateway.MakePaymentToEvent();

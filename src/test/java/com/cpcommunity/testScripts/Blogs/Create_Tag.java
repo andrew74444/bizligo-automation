@@ -28,7 +28,7 @@ public class Create_Tag extends BaseTest {
 			
 		
 		
-		MyCommunitiesPage mycommunities = EcoSystemPage.NaviagtingToMyCommunities();
+		MyCommunitiesPage mycommunities = EcoSystemPage.goToMyCommunities();
 		CommunityDashboardPage communityDashboardPage = mycommunities
 				.NaviagtetoManageCommunity(data.get("communityName"));
 		TagsPage tags = communityDashboardPage.gotoTags();

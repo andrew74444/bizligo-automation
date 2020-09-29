@@ -27,7 +27,7 @@ public class TC176_Verify_CA_Is_Able_Create_Free_Membership_Plan extends BaseTes
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CommunityDashboardPage communityDashboardPage= MyCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
 		PlansPage plansPage = communityDashboardPage.navigateToMembershipPlans();
 		plansPage.MembershipPlanCreate(data.get("name"), data.get("price"),	data.get("duration"), data.get("durationType"), data.get("membershipPlanDescription"));

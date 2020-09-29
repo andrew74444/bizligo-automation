@@ -25,7 +25,7 @@ public class TC189_Verify_Group_Admin_Not_Able_To_Leave_For_One_Admin_To_Group e
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		MyGroupsPage MyGroupsPage = EcoSystemPage.NavigatingToMyGroups();
+		MyGroupsPage MyGroupsPage = EcoSystemPage.goToMyGroups();
 		ManageGroupMembersPageByGroupAdmin ManageGroupMembersPageByGroupAdmin = MyGroupsPage.manageGroupMembers(data.get("groupName"));
 		ManageGroupMembersPageByGroupAdmin.checkMakeAnotherMemberAsAdmin(data.get("email"));
 		

@@ -26,7 +26,7 @@ public class TC142_Create_Paid_Event extends BaseTest {
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		MyCommunitiesPage myCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();
+		MyCommunitiesPage myCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CommunityDashboardPage communityDashboardPage = myCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
 		CommunityEventsPage CommunityEvents = communityDashboardPage.navigateToEvents();
 		CreateOrEditEvent CreateOrEditEvent = CommunityEvents.NewEvent();

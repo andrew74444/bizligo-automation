@@ -26,7 +26,7 @@ public class TC031_Create_community_From_Global_Communities_page extends BaseTes
 		HomePage home = new HomePage().open();
 		LoginPage loginPage = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = loginPage.loginToApplication(data.get("email"), data.get("password"));
-		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.naviagtingToGlobalCommunities();	
+		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();	
 		CreateCommunityPage CreateCommunityPage = GlobalCommunitesPage.clickOnCreateCommunity();
 		GlobalCommunitesPage = CreateCommunityPage.CreateCommunity(data.get("communityName"), data.get("Networking"), data.get("Marketing"), data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"), data.get("InvestInBusiness"), data.get("Other"), data.get("About"), data.get("Category"), data.get("type"));
 		EcoSystemPage = EcoSystemPage.goToMyEcosystem();

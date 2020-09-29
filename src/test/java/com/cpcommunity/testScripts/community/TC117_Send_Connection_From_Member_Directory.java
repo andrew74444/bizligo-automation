@@ -34,7 +34,7 @@ public class TC117_Send_Connection_From_Member_Directory extends BaseTest {
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
-		GlobalMembersPage GlobalMembersPage = EcoSystemPage.goToMembers();
+		GlobalMembersPage GlobalMembersPage = EcoSystemPage.goToMembersPage();
 		GlobalMembersPage.sendconnection();
 		
 		//Assert.fail("Failing the login test");

@@ -29,7 +29,7 @@ public class TC140_Reject_Advertisement_By_CA extends BaseTest {
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		MyCommunitiesPage myCommunitiesPage=EcoSystemPage.NaviagtingToMyCommunities();
+		MyCommunitiesPage myCommunitiesPage=EcoSystemPage.goToMyCommunities();
 		CommunityDashboardPage communityDashboardPage =myCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
 		ManageMemberAdvertisementsPage manageMemberAdvertisementsPage =communityDashboardPage.navigateToMemberAdvertisements();
 		manageMemberAdvertisementsPage.rejectAd(data.get("planName"));

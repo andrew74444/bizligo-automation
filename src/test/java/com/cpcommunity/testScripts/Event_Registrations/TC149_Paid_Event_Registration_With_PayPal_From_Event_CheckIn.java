@@ -26,7 +26,7 @@ public class TC149_Paid_Event_Registration_With_PayPal_From_Event_CheckIn extend
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		MyCommunitiesPage myCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();
+		MyCommunitiesPage myCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CommunityDashboardPage communityDashboardPage = myCommunitiesPage
 				.NaviagtetoManageCommunity(data.get("communityName"));
 		CommunityEventsPage CommunityEvents = communityDashboardPage.navigateToEvents();

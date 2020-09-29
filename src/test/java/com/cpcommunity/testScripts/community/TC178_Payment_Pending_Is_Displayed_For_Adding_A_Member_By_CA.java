@@ -28,7 +28,7 @@ public class TC178_Payment_Pending_Is_Displayed_For_Adding_A_Member_By_CA extend
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CommunityDashboardPage communityDashboardPage = MyCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
 		ManageCommunityMembersPage manageCommunityMembersPage = communityDashboardPage.navigateToManageCommunityMembers();
 		manageCommunityMembersPage.addmember(data.get("email1"));
@@ -37,7 +37,7 @@ public class TC178_Payment_Pending_Is_Displayed_For_Adding_A_Member_By_CA extend
 		login = home.clickOnLOGINBtn();
 		EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		MyCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();
+		MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		MyCommunitiesPage.verifyPaymentPendindDisplayed(data.get("communityName"));
 		CommunityDetailsPage communityDetailsPage= MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		communityDetailsPage.verifyPaymentPendingDisplayed();

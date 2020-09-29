@@ -11,9 +11,7 @@ import com.cpcommunity.utilities.*;
 
 public class Create_Blog extends BaseTest {
 
-	
-	
-	
+		
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC194(Hashtable<String,String> data) throws Exception
 	{
@@ -27,12 +25,12 @@ public class Create_Blog extends BaseTest {
 		LoginPage loginpage = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = loginpage.loginToApplication(data.get("email"), data.get("password"));
 		
-		MyCommunitiesPage mycommunities = EcoSystemPage.NaviagtingToMyCommunities();
+		MyCommunitiesPage mycommunities = EcoSystemPage.goToMyCommunities();
 		CommunityDashboardPage communityDashboardPage = mycommunities.NaviagtetoManageCommunity(data.get("communityName"));
 		CommunityBlogsPage communityBlogsPage = communityDashboardPage.gotoManageBlogs();
 		communityBlogsPage.createBlog(data);
 		CommunityDetailsPage communityDetailsPage = communityDashboardPage.navigateToCommunityDetailsPage(data);
-		EcoSystemPage = EcoSystemPage.goToMyEcosystem()();
+		EcoSystemPage = EcoSystemPage.goToMyEcosystem();
 		BlogsPage bolgsPage = EcoSystemPage.goToBlogsPage();
 		bolgsPage.searchPost(data.get("communityName"), data.get("title"));
 		

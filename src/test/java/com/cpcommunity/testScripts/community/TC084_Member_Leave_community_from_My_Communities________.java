@@ -33,10 +33,10 @@ public class TC084_Member_Leave_community_from_My_Communities________ extends Ba
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 //		Dashboard_Page.verifySuccessLogin();
-		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.naviagtingToGlobalCommunities();
+		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
 		GlobalCommunitesPage.communityJoinWithOutDate(data.get("communityName"));
 		EcoSystemPage = EcoSystemPage.goToMyEcosystem();
-		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		MyCommunitiesPage.leaveCommunityWithName(data.get("communityName"));
 		
 		//Assert.fail("Failing the login test");

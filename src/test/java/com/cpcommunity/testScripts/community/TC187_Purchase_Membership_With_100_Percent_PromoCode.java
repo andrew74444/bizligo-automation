@@ -29,7 +29,7 @@ public class TC187_Purchase_Membership_With_100_Percent_PromoCode extends BaseTe
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 				
-		GlobalCommunitesPage globalCommunitesPage = EcoSystemPage.naviagtingToGlobalCommunities();
+		GlobalCommunitesPage globalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
 		
 		MembershipPlansPage membershipPlansPage = globalCommunitesPage.joinCommunityWithMembershipPlan(data.get("communityName"));
 		membershipPlansPage.purchaseMembershipPlan(data.get("membershipPlan"));

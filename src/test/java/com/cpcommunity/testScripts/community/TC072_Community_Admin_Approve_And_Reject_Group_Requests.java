@@ -32,7 +32,7 @@ public class TC072_Community_Admin_Approve_And_Reject_Group_Requests extends Bas
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email1"), data.get("password"));
 		
 
-		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		CommunityDetailsPage.PrivateGroupJoinedSuccessfully(data.get("groupName"));
 		Thread.sleep(8000);	
@@ -44,7 +44,7 @@ public class TC072_Community_Admin_Approve_And_Reject_Group_Requests extends Bas
 		EcoSystemPage = login.loginToApplication(data.get("email2"), data.get("password"));
 		
 //		EcoSystemPage.verifySuccessLogin();
-		MyCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();
+		MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		CommunityDetailsPage.PrivateGroupJoinedSuccessfully(data.get("groupName"));
 		Thread.sleep(8000);	
@@ -56,7 +56,7 @@ public class TC072_Community_Admin_Approve_And_Reject_Group_Requests extends Bas
 		EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 			
 //		EcoSystemPage.verifySuccessLogin();
-		MyCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();		
+		MyCommunitiesPage = EcoSystemPage.goToMyCommunities();		
 		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));		
 		GroupsPendingRequestsPage GroupsPendingRequestsPage = CommunityDashboardPage.NavigateToCommunitygroupPendingRequets();
 		GroupsPendingRequestsPage.approveMember(data.get("email1"));

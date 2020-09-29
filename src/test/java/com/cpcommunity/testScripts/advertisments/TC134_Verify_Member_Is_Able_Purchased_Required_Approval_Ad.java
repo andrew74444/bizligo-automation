@@ -28,7 +28,7 @@ public class TC134_Verify_Member_Is_Able_Purchased_Required_Approval_Ad extends 
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		MyCommunitiesPage myCommunitiesPage =  EcoSystemPage.NaviagtingToMyCommunities();
+		MyCommunitiesPage myCommunitiesPage =  EcoSystemPage.goToMyCommunities();
 		CommunityDetailsPage communityDetailsPage = myCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		AdvertismentPurchasePage advertismentPurchasePage =communityDetailsPage.clickOnAdvertisements();
 		PaymentOptionsPage paymentOptionsPage = advertismentPurchasePage.SelectPlan(data.get("planName"),  data.get("adImage"), data.get("linkUrl"), data.get("additionalInstructions"));
@@ -39,7 +39,7 @@ public class TC134_Verify_Member_Is_Able_Purchased_Required_Approval_Ad extends 
 		login = home.clickOnLOGINBtn();
 		EcoSystemPage = login.loginToApplication(data.get("email2"), data.get("password"));
 			
-		myCommunitiesPage =  EcoSystemPage.NaviagtingToMyCommunities();
+		myCommunitiesPage =  EcoSystemPage.goToMyCommunities();
 		CommunityDashboardPage communityDashboardPage = myCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
 		ManageMemberAdvertisementsPage manageMemberAdvertisementsPage =communityDashboardPage.navigateToMemberAdvertisements();
 		manageMemberAdvertisementsPage.verifyPurchasedAdisDisplayed(data.get("planName"));

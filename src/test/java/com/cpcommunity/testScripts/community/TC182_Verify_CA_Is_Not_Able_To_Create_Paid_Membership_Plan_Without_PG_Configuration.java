@@ -27,7 +27,7 @@ public class TC182_Verify_CA_Is_Not_Able_To_Create_Paid_Membership_Plan_Without_
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CommunityDashboardPage communityDashboardPage= MyCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
 		PlansPage plansPage = communityDashboardPage.navigateToMembershipPlans();
 		plansPage.verifyCANotAbleToCreatePaidPlanForPayMentGatewayNotConfigured(data.get("price"));

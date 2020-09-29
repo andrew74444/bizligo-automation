@@ -34,7 +34,7 @@ public class TC123_Member_Accept_Community_Request_from_My_Communities extends B
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		MyCommunitiesPage.acceptcommunity(data.get("communityName"),data.get("termsAndConditions"));
 		
 		//Assert.fail("Failing the login test");

@@ -29,7 +29,7 @@ public class TC130_Apply_Job_Requirement_From_Global_Careers extends BaseTest {
 		LoginPage login = home.clickOnLOGINBtn();		
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CommunityDetailsPage CommunityDetailsPage =MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		CommunityDetailsPage.applyJob(data.get("JobTitle"),data.get("Resume"),data.get("OptionalMessage"));
 		

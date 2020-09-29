@@ -32,7 +32,7 @@ public class TC058_Group_Admin_Manage_Group_Members extends BaseTest {
 //		logInfo("Username entered as "+getAndrew()+" and Password entered as "+getPassword());
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		MyGroupsPage MyGroupsPage = EcoSystemPage.NavigatingToMyGroups();
+		MyGroupsPage MyGroupsPage = EcoSystemPage.goToMyGroups();
 		ManageGroupMembersPageByGroupAdmin ManageGroupMembersPageByGroupAdmin = MyGroupsPage.manageGroupMembers(data.get("groupName"));
 		ManageGroupMembersPageByGroupAdmin.ManageMembers(data.get("email1"));
 		

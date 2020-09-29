@@ -25,7 +25,7 @@ public class TC042_Member_Reject_community_Request_from_Community_details_page e
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.naviagtingToGlobalCommunities();
+		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
 		CommunityDetailsPage CommunityDetailsPage = GlobalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		CommunityDetailsPage.checkMemberIsnotAbleToJoinGroupWithoutJoiningCommunity(data.get("groupName"));
 		

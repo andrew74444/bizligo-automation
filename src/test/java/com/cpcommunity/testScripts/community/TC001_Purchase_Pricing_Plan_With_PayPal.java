@@ -87,7 +87,7 @@ public class TC001_Purchase_Pricing_Plan_With_PayPal extends BaseTest {
 		
 		EcoSystemPage = loginPage.loginToApplication(data.get("email2"), data.get("password"));
 	
-		GlobalCommunitesPage globalCommunitesPage = EcoSystemPage.naviagtingToGlobalCommunities();
+		GlobalCommunitesPage globalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
 		
 		MembershipPlansPage membershipPlansPage = globalCommunitesPage.joinCommunityWithMembershipPlan(communityName);
 		membershipPlansPage.purchaseMembershipPlan(membershipPlan);

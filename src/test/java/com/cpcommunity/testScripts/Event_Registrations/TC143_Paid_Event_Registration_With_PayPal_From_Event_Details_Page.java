@@ -26,7 +26,7 @@ public class TC143_Paid_Event_Registration_With_PayPal_From_Event_Details_Page e
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		UpcomingEventsPage upcomingEventsPage = EcoSystemPage.GoToUpComingEvents();
+		UpcomingEventsPage upcomingEventsPage = EcoSystemPage.goToUpComingEvents();
 		EventDetailsPage eventDetailsPage = upcomingEventsPage.goToEventDetailsPage(data);
 		PayPalPayment payPalGateway= eventDetailsPage.registerEventByPayPal(data);
 		EventTicketPage eventTicketPage = payPalGateway.MakePayment();

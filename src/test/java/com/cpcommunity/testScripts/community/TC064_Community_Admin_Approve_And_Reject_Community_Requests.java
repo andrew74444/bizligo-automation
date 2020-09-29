@@ -32,7 +32,7 @@ public class TC064_Community_Admin_Approve_And_Reject_Community_Requests extends
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.NaviagtingToMyCommunities();
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
 		CommunityPendingRequestsPage CommunityPendingRequestsPage = CommunityDashboardPage.navigateToPendingRequests();
 		CommunityPendingRequestsPage.approveMember(data.get("email1"));

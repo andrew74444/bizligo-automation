@@ -32,7 +32,7 @@ public class TC020_Verify_User_is_Able_to_Select_Phone_Private extends BaseTest 
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		MyProfilePage MyProfile_Page = EcoSystemPage.NaviagtingToMyProfilePage();
+		MyProfilePage MyProfile_Page = EcoSystemPage.goToMyProfilePage();
 		MyProfile_Page.SelectPhonePrivate(data.get("PPhone"));
 		
 		//Assert.fail("Failing the login test");

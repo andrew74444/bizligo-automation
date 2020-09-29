@@ -47,7 +47,7 @@ public class TC213_Verify_The_Community_Feature_As_Per_Pricing_Plan extends Base
 		home = Dashboard_Page.logout();
 		login = home.clickOnLOGINBtn();
 		EcoSystemPage ecoSystemPage = login.loginToApplication(data.get("communityAdminEmail"), data.get("password"));
-		GlobalCommunitesPage globalCommunitesPage = ecoSystemPage.naviagtingToGlobalCommunities();
+		GlobalCommunitesPage globalCommunitesPage = ecoSystemPage.goToGlobalCommunities();
 		CommunityDetailsPage communityDetailsPage = globalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		EditCommunityPage editCommunityPage = communityDetailsPage.managecommunity();
 		CommunityDashboardPage communityDashboardPage =editCommunityPage.saveCommunity();
