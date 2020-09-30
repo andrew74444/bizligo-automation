@@ -15,7 +15,7 @@ import com.cpcommunity.utilities.ExcelReader;
 
 public class TC084_Member_Leave_community_from_My_Communities________ extends BaseTest {
 
-	String TCID= "TC084";
+
 	
 	
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")

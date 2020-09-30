@@ -5,17 +5,15 @@
 
 	<listeners>
 		<listener class-name="com.cpcommunity.ExtentListeners.ExtentListeners"></listener>
-		<listener class-name="com.uiFramework.pamTen.cpcommunity.helper.listener.RetryListener" />
+		
 				<listener class-name="com.cpcommunity.utilities.CustomTestNGReporter" />
 	</listeners>
 
 
 	<test name="Test1" preserve-order="true">
 		<classes>
-			<class name="com.cpcommunity.testScripts.notifications.TC201_CommunityTagMemberInPost" />
+			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC015_Verify_User_Is_Able_To_Update_Profile	" />
 			
-			<class name="com.cpcommunity.testScripts.notifications.TC203_GroupTagMemberInPost" />
-						
 						
 		</classes>
 	</test>
@@ -31,5 +29,6 @@
 
 </suite> <!-- Suite -->
 <!--ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH); String 
+	<listener class-name="com.uiFramework.pamTen.cpcommunity.helper.listener.RetryListener" />
 	testcase = "TC015"; Hashtable<String,String> data = DataUtil.getData1(testcase, 
 	excel); openBrowser(data.get("browser")); -->
