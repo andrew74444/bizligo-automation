@@ -13,6 +13,10 @@ public class EcoSystemPage extends BasePage {
 	@FindBy(xpath = "//*[contains(text(),'MY ECOSYSTEM')]")
 	WebElement myEcosystem;
 
+	@FindBy(xpath = "//*[@class='dropdown-menu']//*[contains(text(),'My Ecosystem')]")
+	WebElement myEcosystemInMenu;
+	
+	
 	@FindBy(xpath = "//*[@id='header']")
 	WebElement pageheader;
 
@@ -113,8 +117,8 @@ public class EcoSystemPage extends BasePage {
 
 	public EcoSystemPage goToMyEcosystem() {
 		click(Toggledropdownmenu, "Toggledropdownmenu");
-		waitForElementToPresent(myEcosystem);
-		click(myEcosystem, "myEcosystem");
+		waitForElementToPresent(myEcosystemInMenu);
+		click(myEcosystemInMenu, "My Ecosystem In Menu Drop Down");
 		return (EcoSystemPage) openPage(EcoSystemPage.class);
 	}
 

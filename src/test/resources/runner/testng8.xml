@@ -12,7 +12,7 @@
 
 	<test name="Test1" preserve-order="true">
 		<classes>
-			<class name="com.cpcommunity.testScripts.advertisments.TC183_Verify_CA_Is_Not_Able_To_Create_Advertisment_Plan_Without_PG_Configuration" />
+			<class name="com.cpcommunity.testScripts.community.TC031_Create_community_From_Global_Communities_page" />
 			
 						
 		</classes>
