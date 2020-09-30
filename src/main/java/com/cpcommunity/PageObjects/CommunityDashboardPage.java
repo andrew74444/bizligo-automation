@@ -42,7 +42,7 @@ public class CommunityDashboardPage extends BasePage {
 	@FindBy(xpath = "//h2[contains(text(),'Dashboard')]")
 	WebElement Dashboard;
 
-	@FindBy(xpath = "(//*[contains(text(),'Manage')])[1]")
+	@FindBy(xpath = "(((//*[@class='col-md-3 left_col']//img[@src='/Content/Images/setting-icon.png'])/..))")
 	WebElement manage;
 
 	@FindBy(xpath = "(//*[contains(text(),' Invite Members')])")
