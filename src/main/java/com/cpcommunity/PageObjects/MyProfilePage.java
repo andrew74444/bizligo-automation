@@ -70,9 +70,9 @@ public class MyProfilePage extends BasePage{
 	WebElement PrivatePhoneNo;
 	@FindBy(xpath = "//span[@ng-bind='profile.MemberProfile.Phone']")
 	WebElement myProfilePageSavedPhoneno;
-	@FindBy(xpath = "//label[@title='Visible only to your connections']")
+	@FindBy(xpath = "//label[@title='Visible only to your connections']//input")
 	WebElement PrivateRdnBtn;
-	@FindBy(xpath = "//input[@value='0']")
+	@FindBy(xpath = "//*[@id='EditMyProfileModal']//*[@class='modal-content']//*[@title='Everyone can see my profile']//input")
 	WebElement PublicRdnBtn;
 
 	@FindBy(xpath = "//span[@ng-bind='profile.MemberInfo.EmailID']")
