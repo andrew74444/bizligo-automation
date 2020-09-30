@@ -12,7 +12,7 @@
 
 	<test name="Test1" preserve-order="true">
 		<classes>
-			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC015_Verify_User_Is_Able_To_Update_Profile	" />
+			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC015_Verify_User_Is_Able_To_Update_Profile" />
 			
 						
 		</classes>
