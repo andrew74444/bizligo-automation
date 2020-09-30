@@ -28,8 +28,8 @@ public class TC133_Create_Advertisement_Plans_With_Required_Approval extends Bas
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 			
 		MyCommunitiesPage myCommunitiesPage=EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage communityDashboardPage =myCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
-		ManageAdPlansPage manageAdPlansPage =communityDashboardPage.NavigateToManageAdPlansPage();
+		CommunityDashboardPage communityDashboardPage =myCommunitiesPage.gotoManageCommunity(data.get("communityName"));
+		ManageAdPlansPage manageAdPlansPage =communityDashboardPage.goToManageAdPlansPage();
 		manageAdPlansPage.createAdPlan(data.get("name1"), data.get("price"), data.get("planDetails"), data.get("duration"), data.get("durationType"), data.get("adLocation1"), data.get("adType"), data.get("approvalType"));
 		Thread.sleep(5000);
 		manageAdPlansPage.createAdPlan(data.get("name2"), data.get("price"), data.get("planDetails"), data.get("duration"), data.get("durationType"), data.get("adLocation2"), data.get("adType"), data.get("approvalType"));

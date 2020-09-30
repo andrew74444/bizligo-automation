@@ -32,7 +32,7 @@ public class TC053_Community_Admin_Manage_Group_Members extends BaseTest {
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
+		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
 		ManageGroupsPage ManageGroupsPage = CommunityDashboardPage.navigateToManageGroupsPage();
 		ManageGroupMembersPage ManageGroupMembersPage = ManageGroupsPage.navigateToManageGroupMembers(data.get("groupName"));
 		ManageGroupMembersPage.ManageMembers(data.get("email1"));

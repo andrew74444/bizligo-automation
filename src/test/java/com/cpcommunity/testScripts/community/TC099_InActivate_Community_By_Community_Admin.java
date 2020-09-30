@@ -32,7 +32,7 @@ public class TC099_InActivate_Community_By_Community_Admin extends BaseTest {
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage CommunityDashboardPage  = MyCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
+		CommunityDashboardPage CommunityDashboardPage  = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
 		EditCommunityPage EditCommunityPage = CommunityDashboardPage.navigateToEditCommunityPage();
 		EcoSystemPage = EditCommunityPage.inActiveCommunity();
 		GlobalCommunitesPage globalCommunitesPage = EcoSystemPage.goToGlobalCommunities();

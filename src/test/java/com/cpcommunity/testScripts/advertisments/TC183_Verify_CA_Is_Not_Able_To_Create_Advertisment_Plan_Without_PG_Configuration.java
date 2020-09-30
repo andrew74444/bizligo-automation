@@ -24,8 +24,8 @@ public class TC183_Verify_CA_Is_Not_Able_To_Create_Advertisment_Plan_Without_PG_
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 			
 		MyCommunitiesPage myCommunitiesPage=EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage communityDashboardPage =myCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
-		ManageAdPlansPage manageAdPlansPage =communityDashboardPage.NavigateToManageAdPlansPage();
+		CommunityDashboardPage communityDashboardPage =myCommunitiesPage.gotoManageCommunity(data.get("communityName"));
+		ManageAdPlansPage manageAdPlansPage =communityDashboardPage.goToManageAdPlansPage();
 		manageAdPlansPage.verifyCAIsNotAblrToCreateAdPlanWithoutConfiguringPaymentGateways();
 		
 	}

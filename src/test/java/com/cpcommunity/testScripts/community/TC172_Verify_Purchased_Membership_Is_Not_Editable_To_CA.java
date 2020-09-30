@@ -28,7 +28,7 @@ public class TC172_Verify_Purchased_Membership_Is_Not_Editable_To_CA extends Bas
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage communityDashboardPage= MyCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
+		CommunityDashboardPage communityDashboardPage= MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
 		PlansPage plansPage = communityDashboardPage.navigateToMembershipPlans();
 		plansPage.checkPurchasedMembershipPlanIsNotEditable();	
 	}

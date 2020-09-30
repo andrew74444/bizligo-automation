@@ -36,7 +36,7 @@ public class TC167_Verify_CA_Able_To_Change_Community_Status_To_Public_And_Verif
 		EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
+		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
 		EditCommunityPage EditCommunityPage = CommunityDashboardPage.navigateToEditCommunityPage();
 		CommunityDashboardPage = EditCommunityPage.updateCommunityType(data.get("type"));
 		CommunityPendingRequestsPage communityPendingRequestsPage =CommunityDashboardPage.NavigateToCommunityPendingRequets();

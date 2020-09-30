@@ -37,7 +37,7 @@ public class TC135_Verify_Member_Is_Able_Purchased_Required_Approval_Global_Memb
 		EcoSystemPage = login.loginToApplication(data.get("email2"), data.get("password"));
 			
 		myCommunitiesPage =  EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage communityDashboardPage = myCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
+		CommunityDashboardPage communityDashboardPage = myCommunitiesPage.gotoManageCommunity(data.get("communityName"));
 		ManageMemberAdvertisementsPage manageMemberAdvertisementsPage =communityDashboardPage.navigateToMemberAdvertisements();
 		manageMemberAdvertisementsPage.verifyPurchasedAdisDisplayed(data.get("planName"));	
 		

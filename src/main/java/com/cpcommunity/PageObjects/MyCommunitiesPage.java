@@ -369,7 +369,7 @@ public class MyCommunitiesPage extends BasePage {
 		picture();
 	}
 
-	public CommunityDashboardPage NaviagtetoManageCommunity(String communityName) throws Exception {
+	public CommunityDashboardPage gotoManageCommunity(String communityName) throws Exception {
 
 		this.searchCommunity(communityName+" "+getDateInDDMMMYYYY());
 		click(MANAGEbtn, "Manage");

@@ -29,7 +29,7 @@ public class TC178_Payment_Pending_Is_Displayed_For_Adding_A_Member_By_CA extend
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage communityDashboardPage = MyCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
+		CommunityDashboardPage communityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
 		ManageCommunityMembersPage manageCommunityMembersPage = communityDashboardPage.navigateToManageCommunityMembers();
 		manageCommunityMembersPage.addmember(data.get("email1"));
 		Thread.sleep(6000);

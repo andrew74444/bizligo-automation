@@ -29,7 +29,7 @@ public class TC161_Verify_CA_Not_Able_To_Leave_Community_From_M extends BaseTest
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage myCommunitiesPage= EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage communityDashboardPage =myCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
+		CommunityDashboardPage communityDashboardPage =myCommunitiesPage.gotoManageCommunity(data.get("communityName"));
 		communityDashboardPage.navigateToCommunityDetailsPage(data);
 		EcoSystemPage.goToMyEcosystem();
 		

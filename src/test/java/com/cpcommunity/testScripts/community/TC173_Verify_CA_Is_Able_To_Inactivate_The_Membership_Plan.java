@@ -28,7 +28,7 @@ public class TC173_Verify_CA_Is_Able_To_Inactivate_The_Membership_Plan extends B
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage communityDashboardPage= MyCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
+		CommunityDashboardPage communityDashboardPage= MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
 		PlansPage plansPage = communityDashboardPage.navigateToMembershipPlans();
 		plansPage.InActivateTheMembershipPlan();	
 	}

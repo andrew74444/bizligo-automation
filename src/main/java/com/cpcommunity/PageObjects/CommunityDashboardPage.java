@@ -106,7 +106,7 @@ public class CommunityDashboardPage extends BasePage {
 	@FindBy(xpath = "//*[contains(text(),'Manage Member Advertisements')]")
 	WebElement manageMemberAdvertisements;
 
-	@FindBy(xpath = "//a[contains(text(),'Advertisements')]//span")
+	@FindBy(xpath = "(((//*[@class='col-md-3 left_col']//img[@src='/Content/Images/Advertisement-menu.png'])/..)/..)")
 	WebElement advertisements;
 	
 	@FindBy(xpath = "//a[contains(text(),'Promo Code')]")
@@ -127,7 +127,7 @@ public class CommunityDashboardPage extends BasePage {
 		click(advertisements, "advertisements");
 	}
 
-	public ManageAdPlansPage NavigateToManageAdPlansPage() {
+	public ManageAdPlansPage goToManageAdPlansPage() {
 
 		this.clickOnAdvertisments();
 		waitForElementToPresent(managePlans);

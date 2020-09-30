@@ -26,7 +26,7 @@ public class Create_Blog extends BaseTest {
 		EcoSystemPage EcoSystemPage = loginpage.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage mycommunities = EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage communityDashboardPage = mycommunities.NaviagtetoManageCommunity(data.get("communityName"));
+		CommunityDashboardPage communityDashboardPage = mycommunities.gotoManageCommunity(data.get("communityName"));
 		CommunityBlogsPage communityBlogsPage = communityDashboardPage.gotoManageBlogs();
 		communityBlogsPage.createBlog(data);
 		CommunityDetailsPage communityDetailsPage = communityDashboardPage.navigateToCommunityDetailsPage(data);

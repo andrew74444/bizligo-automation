@@ -28,7 +28,7 @@ public class TC152_Paid_Event_Registration_With_Cash_From_Event_CheckIn extends 
 		
 		MyCommunitiesPage myCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CommunityDashboardPage communityDashboardPage = myCommunitiesPage
-				.NaviagtetoManageCommunity(data.get("communityName"));
+				.gotoManageCommunity(data.get("communityName"));
 		CommunityEventsPage CommunityEvents = communityDashboardPage.navigateToEvents();
 		CheckInPage checkInPage = CommunityEvents.checkIn(data);
 		checkInPage.cashPayment(data);

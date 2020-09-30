@@ -28,7 +28,7 @@ public class TC177_Verify_CA_Is_Not_Able_Create_Duplicate_Membership_Plan extend
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage communityDashboardPage= MyCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
+		CommunityDashboardPage communityDashboardPage= MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
 		PlansPage plansPage = communityDashboardPage.navigateToMembershipPlans();
 		plansPage.MembershipPlanCreate(data.get("name"), data.get("price"),	"99", data.get("durationType"), data.get("membershipPlanDescription"));
 		plansPage.planNameAlreadyExsits();

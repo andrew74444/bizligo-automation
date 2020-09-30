@@ -110,7 +110,7 @@ public class TC001_Purchase_Pricing_Plan_With_PayPal extends BaseTest {
 		EcoSystemPage = loginPage.loginToApplication(data.get("email"), data.get("password"));
 //		myDashboardPage = EcoSystemPage.goToDashBoardPage();
 		MyCommunitiesPage = EcoSystemPage.goToMyCommunities();	
-		communityDashboardPage= MyCommunitiesPage.NaviagtetoManageCommunity(communityName);
+		communityDashboardPage= MyCommunitiesPage.gotoManageCommunity(communityName);
 		plansPage = communityDashboardPage.navigateToMembershipPlans();
 		plansPage.checkPurchasedMembershipPlanIsNotEditable();	
 	}

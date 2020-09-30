@@ -31,7 +31,7 @@ public class TC162_Verify_Member_Able_To_Access_Manage_Community_When_The_CA_Rol
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
+		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
 		ManageCommunityMembersPage ManageCommunityMembersPage = CommunityDashboardPage.navigateToManageCommunityMembers();
 		ManageCommunityMembersPage.addmember(data.get("email1"));
 		ManageCommunityMembersPage.makeAdmin(data.get("email1"));
@@ -41,7 +41,7 @@ public class TC162_Verify_Member_Able_To_Access_Manage_Community_When_The_CA_Rol
 		EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		MyCommunitiesPage.NaviagtetoManageCommunity(data.get("communityName"));
+		MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
 		
 		//Assert.fail("Failing the login test");
 	}

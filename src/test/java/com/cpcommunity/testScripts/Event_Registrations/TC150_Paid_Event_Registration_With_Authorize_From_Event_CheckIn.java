@@ -28,7 +28,7 @@ public class TC150_Paid_Event_Registration_With_Authorize_From_Event_CheckIn ext
 		
 		MyCommunitiesPage myCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CommunityDashboardPage communityDashboardPage = myCommunitiesPage
-				.NaviagtetoManageCommunity(data.get("communityName"));
+				.gotoManageCommunity(data.get("communityName"));
 		CommunityEventsPage CommunityEvents = communityDashboardPage.navigateToEvents();
 		CheckInPage checkInPage = CommunityEvents.checkIn(data);
 		AuthorizeGateway authorizeGateway = checkInPage.registerEventbyAuthorizeNet(data);
