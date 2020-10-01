@@ -560,6 +560,42 @@ public class PlansPage extends BasePage {
 		click(editPlan, "edit Plan");
 		waitForElementToPresent(name);
 
+		
+		Planfeatures.put("price", getValueFromInputFiled(price));
+		Planfeatures.put("Number of Admins", getValueFromInputFiled(NumberOfAdmins));
+		Planfeatures.put("Number of Groups", getValueFromInputFiled(NumberOfGroups));
+		Planfeatures.put("Number of Members", getValueFromInputFiled(NumberOfMembers));
+		
+		
+		String st = getValueFromInputFiled(Storage);
+
+			
+		
+		if (st.equalsIgnoreCase("number:1")) {
+			Planfeatures.put("Storage","1 GB");
+		}
+		if (st.equalsIgnoreCase("number:2")) {
+			Planfeatures.put("Storage","5 GB");
+		}
+		if (st.equalsIgnoreCase("number:3")) {
+			
+			Planfeatures.put("Storage","10 GB");
+		}
+		
+		if (Email.isSelected()) {
+			Planfeatures.put("Support","Email");
+		}
+
+		if (FullTime.isSelected()) {
+			Planfeatures.put("Support","24/7");
+		}
+		if (Calls.isSelected()) {
+			Planfeatures.put("Support","Calls");
+		}
+		
+		
+		
+		
 		int dr = stringToInt(getValueFromInputFiled(duration));
 		String dt = getValueFromInputFiled(durationType);
 
