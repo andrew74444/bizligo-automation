@@ -116,6 +116,9 @@ public class CreateOrEditEvent extends BasePage {
 	WebElement AddSpeakerBtn;
 	@FindBy(xpath = "//input[@name='SpeakerName']")
 	WebElement Speaker_Name;
+	@FindBy(xpath = "//input[@name='SpeakerEmail']")
+	WebElement SpeakerEmail;
+	
 	@FindBy(xpath = "//input[@id='SpeakerImage']")
 	WebElement Speaker_Image;
 	@FindBy(xpath = "//textarea[@name='SpeakerBIO']")
@@ -517,11 +520,13 @@ public class CreateOrEditEvent extends BasePage {
 		selectByVisibleText(NotificationType, "SMS", "Notification Type");
 		click(AddReminderBtn, "Add Reminder");
 		click(AddSpeakerBtn, "Add Speaker");
-		waitForElementToPresent(AddReminderBtn);
+		waitForElementToPresent(Speaker_Name);
 		type(Speaker_Name, data.get("speakerName"), "Speaker_Name");
 		type(Speaker_Image, System.getProperty("user.dir") + "/src/test/resources/testImages/Files/ChromeImage8.jpg",
 				"Speaker Image");
 
+		type(SpeakerEmail,"andrew74444@gmail.com","Speaker Email");
+		
 		Thread.sleep(2000);
 		// Runtime.getRuntime().exec(SpeakerImagePath);
 		// Thread.sleep(5000);
