@@ -14,7 +14,7 @@
 	<test name="Test 1" preserve-order="true">
 		<classes>
 			<class
-				name="com.cpcommunity.testScripts.community.TC001_Purchase_Pricing_Plan_With_PayPal" />
+				name="com.cpcommunity.testScripts.community.TC213_Verify_The_Community_Feature_As_Per_Pricing_Plan" />
 		</classes>
 	</test>
 

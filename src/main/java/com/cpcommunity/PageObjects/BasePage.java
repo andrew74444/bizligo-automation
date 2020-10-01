@@ -31,6 +31,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.sikuli.script.FindFailed;
 import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
+import org.testng.asserts.SoftAssert;
 
 import com.assertthat.selenium_shutterbug.core.Shutterbug;
 import com.aventstack.extentreports.MediaEntityBuilder;
@@ -718,5 +719,15 @@ public abstract class BasePage<T> {
 	public String projectFloder(String path) {
 		return System.getProperty("user.dir") + path;
 	}
+	
+	
+	public void verifyText(String actual,String expected) {
+	
+		SoftAssert st = new SoftAssert();
+		st.assertEquals(actual, expected);
+		st.assertAll();
+		
+	}
+	
 
 }

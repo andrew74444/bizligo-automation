@@ -13,9 +13,27 @@ public class PricingPlanDetailsPage extends BasePage {
 	@FindBy(xpath = "//h2[contains(text(),'Pricing Plan Details')]")
 	WebElement pricingPlanDetailsTitle;
 
-	@FindBy(xpath = "")
-	WebElement disabled;
-
+	@FindBy(xpath = "(//*[@class='row plan-detail-cont']//*[contains(text(),'$')]/..)/span")
+	WebElement price;
+	
+	@FindBy(xpath = "((//*[@class='row plan-detail-cont'])[1])//*[@ng-bind='data.PricingPlanDetails.Name']")
+	WebElement pricingPlanName;
+	@FindBy(xpath = "//*[contains(text(),'Date')]//*[@ng-bind='data.PricingPlanDetails.StartDateStr']")
+	WebElement startDate;
+	@FindBy(xpath = "//*[contains(text(),'Date')]//*[@ng-bind='data.PricingPlanDetails.EndDateStr']")
+	WebElement endDate;
+	@FindBy(xpath = "//*[contains(text(),'Number of Admins: Upto')]//*")
+	WebElement numberofAdmins;
+	@FindBy(xpath = "//*[contains(text(),'Number of Groups: Upto')]//*")
+	WebElement numberofGroups;
+	@FindBy(xpath = "//*[contains(text(),'Number of Members: Upto')]//*")
+	WebElement numberofMembers;
+	@FindBy(xpath = "//*[contains(text(),'Storage: ')]//*")
+	WebElement storage;
+	@FindBy(xpath = "//*[contains(text(),'Support: ')]//*")
+	WebElement support;
+	
+	
 	public void checkFeaturedisbled(String feature) {
 		driver.findElement(By.xpath("((//*[@class='row plan-detail-cont'])[2]//*[contains(text(),'" + feature
 				+ "')]/..)//i[@class='fa fa-times-circle']"));
@@ -28,6 +46,10 @@ public class PricingPlanDetailsPage extends BasePage {
 
 	public void checkPlanDetails(HashMap<String, String> ftr_list) {
 
+		
+		
+		
+		
 		if (ftr_list.containsKey("Events")) {
 			checkFeatureEnabled("Events");
 		} else {
@@ -90,36 +112,22 @@ public class PricingPlanDetailsPage extends BasePage {
 		} else {
 			checkFeaturedisbled("Community Members");
 		}
-		if (ftr_list.containsKey("")) {
-			checkFeatureEnabled("");
-		} else {
-			checkFeaturedisbled("");
-		}
-		if (ftr_list.containsKey("")) {
-			checkFeatureEnabled("");
-		} else {
-			checkFeaturedisbled("");
-		}
-		if (ftr_list.containsKey("")) {
-			checkFeatureEnabled("");
-		} else {
-			checkFeaturedisbled("");
-		}
-		if (ftr_list.containsKey("")) {
-			checkFeatureEnabled("");
-		} else {
-			checkFeaturedisbled("");
-		}
-		if (ftr_list.containsKey("")) {
-			checkFeatureEnabled("");
-		} else {
-			checkFeaturedisbled("");
-		}
-		if (ftr_list.containsKey("")) {
-			checkFeatureEnabled("");
-		} else {
-			checkFeaturedisbled("");
-		}
+
+		
+		verifyText(price.getText(),ftr_list.get("price"));
+		verifyText(pricingPlanName.getText(),ftr_list.get("plan Name") );
+		verifyText(startDate.getText(), ftr_list.get("startDate"));
+		verifyText(endDate.getText(), ftr_list.get("endDate"));
+		verifyText(numberofAdmins.getText(), ftr_list.get("Number of Admins"));
+		
+		verifyText(numberofGroups.getText(), ftr_list.get("Number of Groups"));
+		verifyText(numberofMembers.getText(),ftr_list.get("Number of Members") );
+		verifyText(storage.getText(), ftr_list.get("Storage"));
+		verifyText(support.getText(), ftr_list.get("Support"));
+		
+		
+		
+
 		
 	}
 

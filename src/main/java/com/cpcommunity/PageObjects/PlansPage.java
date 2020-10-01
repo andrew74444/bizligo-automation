@@ -560,6 +560,7 @@ public class PlansPage extends BasePage {
 		click(editPlan, "edit Plan");
 		waitForElementToPresent(name);
 
+		Planfeatures.put("plan Name", planName);
 		
 		Planfeatures.put("price", getValueFromInputFiled(price));
 		Planfeatures.put("Number of Admins", getValueFromInputFiled(NumberOfAdmins));
@@ -599,7 +600,7 @@ public class PlansPage extends BasePage {
 		int dr = stringToInt(getValueFromInputFiled(duration));
 		String dt = getValueFromInputFiled(durationType);
 
-			
+		Planfeatures.put("startDate", addDaysToCurrentDate(0, 0,0, 0));
 		
 		if (dt.equalsIgnoreCase("number:1")) {
 			Planfeatures.put("endDate", addDaysToCurrentDate(0, 0,0, dr));
