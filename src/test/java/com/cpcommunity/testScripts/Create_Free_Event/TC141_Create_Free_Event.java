@@ -18,8 +18,8 @@ public class TC141_Create_Free_Event extends BaseTest {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC141", data.get("Runmode"), excel);
-		log.info("Inside Login Test");
-		System.out.println(data);
+		log.info(data.get("imagePath"));
+		
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
 		HomePage home = new HomePage().open();

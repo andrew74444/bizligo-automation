@@ -61,8 +61,14 @@ public class CreateOrEditEvent extends BasePage {
 	WebElement EventDescription;
 	@FindBy(tagName = "body")
 	WebElement CommunityAbout;
-	@FindBy(xpath = "//input[@id='event_img']")
-	WebElement Event_img;
+	@FindBy(xpath = "//*[@id='changeImageLink']")
+	WebElement changeImageLink;
+
+	@FindBy(xpath = "//button[contains(text(),'Browse')]")
+	WebElement browse;
+
+	@FindBy(xpath = "//button[contains(text(),'Upload')]")
+	WebElement upload;
 
 	@FindBy(xpath = "//*[@class='btn btn-primary'][contains(text(),'Save & Continue')]")
 	WebElement SaveEventdetailsBtn;
@@ -277,8 +283,8 @@ public class CreateOrEditEvent extends BasePage {
 	public CommunityEventsPage createEvent(Hashtable<String, String> data) throws Exception {
 		String h = getSystemCurrentHourIn12Hour();
 		String m = getSystemCurrentMintues();
-		
-//		String m = "55";
+
+		// String m = "55";
 		String y = getSystemCurrentYear();
 		String date = getSystemCurrentDate();
 		String month = getSystemCurrentMonth();
@@ -293,7 +299,7 @@ public class CreateOrEditEvent extends BasePage {
 			m = "00";
 			hour = stringToInt(h) + 1;
 
-		} else  {
+		} else {
 			m = intToString(15);
 			hour = stringToInt(h) + 1;
 
@@ -316,7 +322,8 @@ public class CreateOrEditEvent extends BasePage {
 			endHour = 11;
 		}
 		String endTime = month + "/" + date + "/" + y + " " + "11" + ":" + m + " " + "PM";
-//		String endTime = month + "/" + date + "/" + y + " " + endHour + ":" + m + " " + AmPm;
+		// String endTime = month + "/" + date + "/" + y + " " + endHour + ":" + m + " "
+		// + AmPm;
 
 		this.FillEventDetails(data, StartTime, endTime, hour, m, AmPm, endHour);
 		clickElementByJavaScript(SaveEventdetailsBtn);
@@ -354,8 +361,8 @@ public class CreateOrEditEvent extends BasePage {
 			String AmPm, int endHour) throws Exception {
 
 		enterLocation(data.get("location"));
-		
-		type(EventName, data.get("eventTitleName")+" "+getDateInDDMMMYYYY(), "Event Name");
+
+		type(EventName, data.get("eventTitleName") + " " + getDateInDDMMMYYYY(), "Event Name");
 		selectEventType(data.get("isPaidEvent"));
 		selectEventMode(data.get("eventModeTo"));
 		selectByVisibleText(EventCategoryID, data.get("eventCategory"), "Event Category");
@@ -379,7 +386,13 @@ public class CreateOrEditEvent extends BasePage {
 		Thread.sleep(1000);
 		type(EventDescription, data.get("eventDescription"), "Description");
 		switchTodefaultContent();
-		type(Event_img, data.get("imagePath"), "Description");
+		click(changeImageLink, "change Image Link");
+
+		waitForElementToPresent(browse);
+		click(browse, "browse");
+		uploadImage("D:\\workspace\\bizligo-automation\\src\\test\\resources\\testImages\\ExeFiles\\ChromeImage8.exe");
+		click(upload, "upload");
+		// type(Event_img, data.get("imagePath"), "Description");
 
 		Thread.sleep(5000);
 		// Runtime.getRuntime().exec(ImagePath);
@@ -409,7 +422,7 @@ public class CreateOrEditEvent extends BasePage {
 		// type(EventEndtdate, EventEndTime, "Event End Date");
 		type(EventEndtdate, EventEndTime, "Event End Date");
 		EventStartDate.sendKeys((Keys.CONTROL + "a"));
-//		intToString(endHour);
+		// intToString(endHour);
 		WebElement h2 = driver.findElement(By.xpath("(//*[@class='hourselect'])[2]"));
 		selectByVisibleText(h2, "10", "Selecting Event End hour");
 		WebElement m2 = driver.findElement(By.xpath("(//*[@class='minuteselect'])[2]"));
@@ -598,7 +611,7 @@ public class CreateOrEditEvent extends BasePage {
 		type(Video_URL, data.get("videoURL"), "Video URL");
 		click(VideoFormSaveBtn, "VideoFormSaveBtn");
 		clickElementByJavaScript(Publishbtn);
-		
+
 	}
 
 	public void EditEvent(String isPrivateCommunityEvent, String isPrivateGroupEvent, String publicGroupName,
@@ -626,7 +639,7 @@ public class CreateOrEditEvent extends BasePage {
 	}
 
 	public int UpdateEventDetails(String EventTitleName, String EventStartTime, String EventEndTime, String Location,
-			String Description, String ImagePath, String AgendaStartTime, String AgendaEndTime, String AgendaVenue,
+			String Description, String imagePath, String AgendaStartTime, String AgendaEndTime, String AgendaVenue,
 			String AgendaDescription, String TicketName, String TotalTickets, String Type, String NoOfTicketPerTable,
 			String TicketAvailablityStartsFrom, String TicketAvailablityEndson) throws Exception {
 
@@ -716,7 +729,13 @@ public class CreateOrEditEvent extends BasePage {
 		driver.switchTo().defaultContent();
 		//
 
-		Event_img.sendKeys("D:\\Workspace\\CPCommunityQA\\src\\main\\resources\\configfile\\Files\\ChromeImage6.jpg");
+		click(changeImageLink, "change Image Link");
+
+		waitForElementToPresent(browse);
+		click(browse, "browse");
+		uploadImage("D:\\workspace\\bizligo-automation\\src\\test\\resources\\testImages\\ExeFiles\\ChromeImage8.exe");
+		click(upload, "upload");
+
 		// Runtime.getRuntime().exec(ImagePath);
 		Thread.sleep(2000);
 

@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -391,49 +392,46 @@ public abstract class BasePage<T> {
 		return strDate;
 	}
 
-//	https://mkyong.com/java/java-date-and-calendar-examples/
-	
+	// https://mkyong.com/java/java-date-and-calendar-examples/
+
 	public String addDaysToCurrentDate(int days, int weeks, int months, int year) {
 
-//		DateFormat dateFormat = new SimpleDateFormat("mm/dd/yyyy");
+		// DateFormat dateFormat = new SimpleDateFormat("mm/dd/yyyy");
 		Date d = getDate();
-		
+
 		log.info(d);
 		Calendar c = Calendar.getInstance();
 		c.setTime(d);
 		Date daysAdded = c.getTime();
 		log.info(daysAdded);
-		
+
 		c.add(Calendar.DATE, days);
 		daysAdded = c.getTime();
 		log.info(daysAdded);
-		
+
 		c.add(Calendar.MONTH, months);
 		log.info(daysAdded);
 		daysAdded = c.getTime();
-		
+
 		c.add(Calendar.YEAR, year);
 		daysAdded = c.getTime();
 		log.info(daysAdded);
-		
+
 		c.add(Calendar.WEEK_OF_YEAR, weeks);
 		daysAdded = c.getTime();
 		log.info(daysAdded);
-		
-		int yr       = c.get(Calendar.YEAR);
-		int month      = c.get(Calendar.MONTH); // Jan = 0, dec = 11
+
+		int yr = c.get(Calendar.YEAR);
+		int month = c.get(Calendar.MONTH); // Jan = 0, dec = 11
 		int dayOfMonth = c.get(Calendar.DAY_OF_MONTH);
-		int dayOfWeek  = c.get(Calendar.DAY_OF_WEEK);
+		int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
 		int weekOfYear = c.get(Calendar.WEEK_OF_YEAR);
-		int weekOfMonth= c.get(Calendar.WEEK_OF_MONTH);
+		int weekOfMonth = c.get(Calendar.WEEK_OF_MONTH);
 		month++;
-		String date = month+"/"+dayOfMonth+"/"+yr;
+		String date = month + "/" + dayOfMonth + "/" + yr;
 		log.info(date);
 		return date;
 	}
-	
-	
-	
 
 	public void getDateInDDMMYYYY() {
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -660,15 +658,21 @@ public abstract class BasePage<T> {
 		log.info("Clicked" + element.toString());
 	}
 
-	public void getBrowserInstance() {
+	public HashMap<String, String> getBrowserInstance() {
+		HashMap<String, String> instanceDetails = new HashMap<String, String>();
+		
 		String browserName = caps.getBrowserName();
 		String browserVersion = caps.getVersion();
 		System.out.println(browserName);
 		System.out.println(browserVersion);
-
+		instanceDetails.put("browserName", browserName);
+		instanceDetails.put("browserVersion", browserVersion);
 		// Get OS name.
 		String os = System.getProperty("os.name").toLowerCase();
 		System.out.println(os);
+		instanceDetails.put("os", os);
+		log.info(instanceDetails);
+		return instanceDetails;
 	}
 
 	public StringBuffer chanageToUpperCase(String name) {
@@ -719,15 +723,25 @@ public abstract class BasePage<T> {
 	public String projectFloder(String path) {
 		return System.getProperty("user.dir") + path;
 	}
-	
-	
-	public void verifyText(String actual,String expected) {
-	
+
+	public void verifyText(String actual, String expected) {
+
 		SoftAssert st = new SoftAssert();
 		st.assertEquals(actual, expected);
 		st.assertAll();
+
+	}
+
+	public void uploadImage(String filePath) throws IOException, InterruptedException {
+		HashMap<String, String> instanceDetails = getBrowserInstance();
+		Thread.sleep(10000);
+		if(instanceDetails.get("browserName").equalsIgnoreCase("chrome")) {
+			
+			 Runtime.getRuntime().exec(filePath);
+			 log.info("Image uploaded");
+		}
+		
+		Thread.sleep(10000);
 		
 	}
-	
-
 }
