@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" verbose="0" name="Failed suite [Failed suite [Suite]]" parallel="classes">
+<suite guice-stage="DEVELOPMENT" verbose="0" name="Failed suite [Suite]" parallel="classes">
   <listeners>
     <listener class-name="com.cpcommunity.ExtentListeners.ExtentListeners"/>
     <listener class-name="com.uiFramework.pamTen.cpcommunity.helper.listener.RetryListener"/>
   </listeners>
-  <test name="Test1(failed)(failed)" parallel="classes">
+  <test name="Test1(failed)" parallel="classes">
     <classes>
       <class name="com.cpcommunity.testScripts.community.TC084_Member_Leave_community_from_My_Communities________">
         <methods>
@@ -15,66 +15,58 @@
           <include name="sendmail"/>
         </methods>
       </class> <!-- com.cpcommunity.testScripts.community.TC084_Member_Leave_community_from_My_Communities________ -->
+      <class name="com.cpcommunity.testScripts.community.TC119_Send_Connection_From_Group_Details_Page">
+        <methods>
+          <include name="setUpFramework"/>
+          <include name="TC119" invocation-numbers="0"/>
+          <include name="sendmail"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.community.TC119_Send_Connection_From_Group_Details_Page -->
+      <class name="com.cpcommunity.testScripts.community.TC081_Member_Join_And_Leave_Public_Community_From_Global_Communities">
+        <methods>
+          <include name="setUpFramework"/>
+          <include name="TC081" invocation-numbers="0"/>
+          <include name="sendmail"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.community.TC081_Member_Join_And_Leave_Public_Community_From_Global_Communities -->
+      <class name="com.cpcommunity.testScripts.community.TC175_Verify_Membership_Plan_Is_Not_Available_For_Purchased_Pricing_Plan_Without_Membership_Plan_To_CA">
+        <methods>
+          <include name="setUpFramework"/>
+          <include name="sendmail"/>
+          <include name="TC175" invocation-numbers="0"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.community.TC175_Verify_Membership_Plan_Is_Not_Available_For_Purchased_Pricing_Plan_Without_Membership_Plan_To_CA -->
     </classes>
-  </test> <!-- Test1(failed)(failed) -->
-  <test name="Test4(failed)(failed)" parallel="classes">
+  </test> <!-- Test1(failed) -->
+  <test name="Test4(failed)" parallel="classes">
     <classes>
+      <class name="com.cpcommunity.testScripts.community.TC040_Community_Admin_Invite_Members">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUpFramework"/>
+          <include name="TC040" invocation-numbers="0"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.community.TC040_Community_Admin_Invite_Members -->
       <class name="com.cpcommunity.testScripts.community.TC039_Edit_Community">
         <methods>
           <include name="tearDown"/>
           <include name="setUpFramework"/>
-          <include name="TC039" invocation-numbers="0 0 0"/>
+          <include name="TC039" invocation-numbers="0"/>
           <include name="sendmail"/>
         </methods>
       </class> <!-- com.cpcommunity.testScripts.community.TC039_Edit_Community -->
       <class name="com.cpcommunity.testScripts.community.TC079_Share_Posts_in_Communities">
         <methods>
           <include name="setUpFramework"/>
-          <include name="TC079" invocation-numbers="0 0 0"/>
+          <include name="TC079" invocation-numbers="0"/>
           <include name="sendmail"/>
           <include name="tearDown"/>
         </methods>
       </class> <!-- com.cpcommunity.testScripts.community.TC079_Share_Posts_in_Communities -->
-      <class name="com.cpcommunity.testScripts.community.TC128_Create_Job_Requirement">
-        <methods>
-          <include name="setUpFramework"/>
-          <include name="tearDown"/>
-          <include name="TC128" invocation-numbers="0 0 0"/>
-          <include name="sendmail"/>
-        </methods>
-      </class> <!-- com.cpcommunity.testScripts.community.TC128_Create_Job_Requirement -->
-      <class name="com.cpcommunity.testScripts.community.TC040_Community_Admin_Invite_Members">
-        <methods>
-          <include name="tearDown"/>
-          <include name="setUpFramework"/>
-          <include name="TC040" invocation-numbers="0 0 0"/>
-          <include name="sendmail"/>
-        </methods>
-      </class> <!-- com.cpcommunity.testScripts.community.TC040_Community_Admin_Invite_Members -->
-      <class name="com.cpcommunity.testScripts.community.TC162_Verify_Member_Able_To_Access_Manage_Community_When_The_CA_Role_Is_Assigned">
-        <methods>
-          <include name="tearDown"/>
-          <include name="setUpFramework"/>
-          <include name="sendmail"/>
-          <include name="TC162" invocation-numbers="0 0 0"/>
-        </methods>
-      </class> <!-- com.cpcommunity.testScripts.community.TC162_Verify_Member_Able_To_Access_Manage_Community_When_The_CA_Role_Is_Assigned -->
-      <class name="com.cpcommunity.testScripts.advertisments.TC183_Verify_CA_Is_Not_Able_To_Create_Advertisment_Plan_Without_PG_Configuration">
-        <methods>
-          <include name="TC183" invocation-numbers="0"/>
-          <include name="setUpFramework"/>
-          <include name="tearDown"/>
-          <include name="sendmail"/>
-        </methods>
-      </class> <!-- com.cpcommunity.testScripts.advertisments.TC183_Verify_CA_Is_Not_Able_To_Create_Advertisment_Plan_Without_PG_Configuration -->
-      <class name="com.cpcommunity.testScripts.community.TC163_Member_Invite_Friends_To_Community">
-        <methods>
-          <include name="setUpFramework"/>
-          <include name="tearDown"/>
-          <include name="TC163" invocation-numbers="0 0 0"/>
-          <include name="sendmail"/>
-        </methods>
-      </class> <!-- com.cpcommunity.testScripts.community.TC163_Member_Invite_Friends_To_Community -->
       <class name="com.cpcommunity.testScripts.community.TC052_Community_Admin_Create_Groups">
         <methods>
           <include name="setUpFramework"/>
@@ -83,57 +75,153 @@
           <include name="sendmail"/>
         </methods>
       </class> <!-- com.cpcommunity.testScripts.community.TC052_Community_Admin_Create_Groups -->
+      <class name="com.cpcommunity.testScripts.community.TC128_Create_Job_Requirement">
+        <methods>
+          <include name="setUpFramework"/>
+          <include name="tearDown"/>
+          <include name="TC128" invocation-numbers="0"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.community.TC128_Create_Job_Requirement -->
+      <class name="com.cpcommunity.testScripts.community.TC163_Member_Invite_Friends_To_Community">
+        <methods>
+          <include name="setUpFramework"/>
+          <include name="tearDown"/>
+          <include name="TC163" invocation-numbers="0"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.community.TC163_Member_Invite_Friends_To_Community -->
     </classes>
-  </test> <!-- Test4(failed)(failed) -->
-  <test name="Test5(failed)(failed)" parallel="classes">
+  </test> <!-- Test4(failed) -->
+  <test name="Test5(failed)" parallel="classes">
     <classes>
+      <class name="com.cpcommunity.testScripts.community.TC088_Configure_Cheque_Payment">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUpFramework"/>
+          <include name="sendmail"/>
+          <include name="TC088" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.community.TC088_Configure_Cheque_Payment -->
       <class name="com.cpcommunity.testScripts.community.TC089_Configure_Paypal_Payment_Gateway">
         <methods>
           <include name="setUpFramework"/>
           <include name="tearDown"/>
-          <include name="TC089" invocation-numbers="0 0 0"/>
+          <include name="TC089" invocation-numbers="0"/>
           <include name="sendmail"/>
         </methods>
       </class> <!-- com.cpcommunity.testScripts.community.TC089_Configure_Paypal_Payment_Gateway -->
+      <class name="com.cpcommunity.testScripts.community.TC127_Zoom_Meeting_Configuration">
+        <methods>
+          <include name="setUpFramework"/>
+          <include name="tearDown"/>
+          <include name="TC127" invocation-numbers="0"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.community.TC127_Zoom_Meeting_Configuration -->
+      <class name="com.cpcommunity.testScripts.community.TC090_Configure_AuthorizeNet_Payment_Gateway_____">
+        <methods>
+          <include name="setUpFramework"/>
+          <include name="TC090" invocation-numbers="0"/>
+          <include name="sendmail"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.community.TC090_Configure_AuthorizeNet_Payment_Gateway_____ -->
+      <class name="com.cpcommunity.testScripts.Promocodes.TC184_Create_PromoCode">
+        <methods>
+          <include name="setUpFramework"/>
+          <include name="TC184" invocation-numbers="0"/>
+          <include name="tearDown"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.Promocodes.TC184_Create_PromoCode -->
+      <class name="com.cpcommunity.testScripts.community.TC087_Configure_Cash_Payment">
+        <methods>
+          <include name="setUpFramework"/>
+          <include name="sendmail"/>
+          <include name="TC087" invocation-numbers="0"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.community.TC087_Configure_Cash_Payment -->
     </classes>
-  </test> <!-- Test5(failed)(failed) -->
-  <test name="Test6(failed)(failed)" parallel="classes">
+  </test> <!-- Test5(failed) -->
+  <test name="Test6(failed)" parallel="classes">
     <classes>
       <class name="com.cpcommunity.testScripts.Create_Free_Event.TC141_Create_Free_Event">
         <methods>
           <include name="tearDown"/>
           <include name="setUpFramework"/>
-          <include name="TC141" invocation-numbers="0 0 0"/>
+          <include name="TC141" invocation-numbers="0"/>
           <include name="sendmail"/>
         </methods>
       </class> <!-- com.cpcommunity.testScripts.Create_Free_Event.TC141_Create_Free_Event -->
     </classes>
-  </test> <!-- Test6(failed)(failed) -->
-  <test name="Test7(failed)(failed)" parallel="classes">
+  </test> <!-- Test6(failed) -->
+  <test name="Test7(failed)" parallel="classes">
     <classes>
       <class name="com.cpcommunity.testScripts.Create_Paid_Event.TC142_Create_Paid_Event">
         <methods>
           <include name="setUpFramework"/>
-          <include name="TC142" invocation-numbers="0 0 0"/>
+          <include name="TC142" invocation-numbers="0"/>
           <include name="tearDown"/>
           <include name="sendmail"/>
         </methods>
       </class> <!-- com.cpcommunity.testScripts.Create_Paid_Event.TC142_Create_Paid_Event -->
     </classes>
-  </test> <!-- Test7(failed)(failed) -->
-  <test name="Test8(failed)(failed)" parallel="classes">
+  </test> <!-- Test7(failed) -->
+  <test name="Test8(failed)" parallel="classes">
     <classes>
+      <class name="com.cpcommunity.testScripts.community.TC044_Member_Accept_Community_Request_From_Community_details_page">
+        <methods>
+          <include name="setUpFramework"/>
+          <include name="tearDown"/>
+          <include name="sendmail"/>
+          <include name="TC041ToTC046" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.community.TC044_Member_Accept_Community_Request_From_Community_details_page -->
+      <class name="com.cpcommunity.testScripts.community.TC046_Member_Accept_Community_Request_from_My_Communities">
+        <methods>
+          <include name="setUpFramework"/>
+          <include name="TC041ToTC046" invocation-numbers="0"/>
+          <include name="tearDown"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.community.TC046_Member_Accept_Community_Request_from_My_Communities -->
       <class name="com.cpcommunity.testScripts.Event_Registrations.TC149_Paid_Event_Registration_With_PayPal_From_Event_CheckIn">
         <methods>
           <include name="setUpFramework"/>
           <include name="sendmail"/>
-          <include name="TC149" invocation-numbers="0 0 0"/>
+          <include name="TC149" invocation-numbers="0"/>
           <include name="tearDown"/>
         </methods>
       </class> <!-- com.cpcommunity.testScripts.Event_Registrations.TC149_Paid_Event_Registration_With_PayPal_From_Event_CheckIn -->
+      <class name="com.cpcommunity.testScripts.advertisments.TC132_Create_Advertisement_Plans_With_No_Approval">
+        <methods>
+          <include name="setUpFramework"/>
+          <include name="tearDown"/>
+          <include name="TC132" invocation-numbers="0"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.advertisments.TC132_Create_Advertisement_Plans_With_No_Approval -->
+      <class name="com.cpcommunity.testScripts.community.TC043_Member_Reject_Community_Request_From_Global_Community">
+        <methods>
+          <include name="setUpFramework"/>
+          <include name="tearDown"/>
+          <include name="TC041ToTC046" invocation-numbers="0"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.community.TC043_Member_Reject_Community_Request_From_Global_Community -->
+      <class name="com.cpcommunity.testScripts.community.TC075_Member_Cancel_Community_Join_Request_from_My_Communities________">
+        <methods>
+          <include name="TC075" invocation-numbers="0"/>
+          <include name="setUpFramework"/>
+          <include name="tearDown"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.community.TC075_Member_Cancel_Community_Join_Request_from_My_Communities________ -->
       <class name="com.cpcommunity.testScripts.Event_Registrations.TC151_Paid_Event_Registration_With_Cheque_From_Event_CheckIn">
         <methods>
-          <include name="TC151" invocation-numbers="0 0 0"/>
+          <include name="TC151" invocation-numbers="0"/>
           <include name="setUpFramework"/>
           <include name="tearDown"/>
           <include name="sendmail"/>
@@ -143,165 +231,149 @@
         <methods>
           <include name="setUpFramework"/>
           <include name="tearDown"/>
-          <include name="TC041ToTC046" invocation-numbers="0 0 0"/>
+          <include name="TC041ToTC046" invocation-numbers="0"/>
           <include name="sendmail"/>
         </methods>
       </class> <!-- com.cpcommunity.testScripts.community.TC041_Member_Reject_Community_request_from_My_Communities -->
-      <class name="com.cpcommunity.testScripts.Event_Registrations.TC150_Paid_Event_Registration_With_Authorize_From_Event_CheckIn">
-        <methods>
-          <include name="setUpFramework"/>
-          <include name="TC150" invocation-numbers="0 0 0"/>
-          <include name="sendmail"/>
-          <include name="tearDown"/>
-        </methods>
-      </class> <!-- com.cpcommunity.testScripts.Event_Registrations.TC150_Paid_Event_Registration_With_Authorize_From_Event_CheckIn -->
-      <class name="com.cpcommunity.testScripts.Event_Registrations.TC153_Free_Event_Registration_From_Event_CheckIn">
-        <methods>
-          <include name="TC153" invocation-numbers="0 0 0"/>
-          <include name="tearDown"/>
-          <include name="setUpFramework"/>
-          <include name="sendmail"/>
-        </methods>
-      </class> <!-- com.cpcommunity.testScripts.Event_Registrations.TC153_Free_Event_Registration_From_Event_CheckIn -->
-      <class name="com.cpcommunity.testScripts.community.TC044_Member_Accept_Community_Request_From_Community_details_page">
+      <class name="com.cpcommunity.testScripts.advertisments.TC133_Create_Advertisement_Plans_With_Required_Approval">
         <methods>
           <include name="setUpFramework"/>
           <include name="tearDown"/>
           <include name="sendmail"/>
-          <include name="TC041ToTC046" invocation-numbers="0 0 0"/>
+          <include name="TC133" invocation-numbers="0"/>
         </methods>
-      </class> <!-- com.cpcommunity.testScripts.community.TC044_Member_Accept_Community_Request_From_Community_details_page -->
-      <class name="com.cpcommunity.testScripts.community.TC046_Member_Accept_Community_Request_from_My_Communities">
-        <methods>
-          <include name="setUpFramework"/>
-          <include name="TC041ToTC046" invocation-numbers="0 0 0"/>
-          <include name="tearDown"/>
-          <include name="sendmail"/>
-        </methods>
-      </class> <!-- com.cpcommunity.testScripts.community.TC046_Member_Accept_Community_Request_from_My_Communities -->
-      <class name="com.cpcommunity.testScripts.community.TC045_Member_Accept_Community_Request_From_Global_Community">
-        <methods>
-          <include name="TC041ToTC046" invocation-numbers="0 0 0"/>
-          <include name="setUpFramework"/>
-          <include name="sendmail"/>
-          <include name="tearDown"/>
-        </methods>
-      </class> <!-- com.cpcommunity.testScripts.community.TC045_Member_Accept_Community_Request_From_Global_Community -->
-      <class name="com.cpcommunity.testScripts.community.TC075_Member_Cancel_Community_Join_Request_from_My_Communities________">
-        <methods>
-          <include name="TC075" invocation-numbers="0 0 0"/>
-          <include name="setUpFramework"/>
-          <include name="tearDown"/>
-          <include name="sendmail"/>
-        </methods>
-      </class> <!-- com.cpcommunity.testScripts.community.TC075_Member_Cancel_Community_Join_Request_from_My_Communities________ -->
+      </class> <!-- com.cpcommunity.testScripts.advertisments.TC133_Create_Advertisement_Plans_With_Required_Approval -->
       <class name="com.cpcommunity.testScripts.community.TC164_Search_Event_In_Community_Details_Page">
         <methods>
-          <include name="TC164" invocation-numbers="0 0 0"/>
+          <include name="TC164" invocation-numbers="0"/>
           <include name="setUpFramework"/>
           <include name="tearDown"/>
           <include name="sendmail"/>
         </methods>
       </class> <!-- com.cpcommunity.testScripts.community.TC164_Search_Event_In_Community_Details_Page -->
+      <class name="com.cpcommunity.testScripts.community.TC045_Member_Accept_Community_Request_From_Global_Community">
+        <methods>
+          <include name="TC041ToTC046" invocation-numbers="0"/>
+          <include name="setUpFramework"/>
+          <include name="sendmail"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.community.TC045_Member_Accept_Community_Request_From_Global_Community -->
+      <class name="com.cpcommunity.testScripts.Event_Registrations.TC150_Paid_Event_Registration_With_Authorize_From_Event_CheckIn">
+        <methods>
+          <include name="setUpFramework"/>
+          <include name="TC150" invocation-numbers="0"/>
+          <include name="sendmail"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.Event_Registrations.TC150_Paid_Event_Registration_With_Authorize_From_Event_CheckIn -->
       <class name="com.cpcommunity.testScripts.community.TC042_Member_Reject_community_Request_from_Community_details_page">
         <methods>
           <include name="setUpFramework"/>
           <include name="tearDown"/>
-          <include name="TC041ToTC046" invocation-numbers="0 0 0"/>
+          <include name="TC041ToTC046" invocation-numbers="0"/>
           <include name="sendmail"/>
         </methods>
       </class> <!-- com.cpcommunity.testScripts.community.TC042_Member_Reject_community_Request_from_Community_details_page -->
-      <class name="com.cpcommunity.testScripts.community.TC043_Member_Reject_Community_Request_From_Global_Community">
+      <class name="com.cpcommunity.testScripts.Event_Registrations.TC153_Free_Event_Registration_From_Event_CheckIn">
         <methods>
-          <include name="setUpFramework"/>
+          <include name="TC153" invocation-numbers="0"/>
           <include name="tearDown"/>
-          <include name="TC041ToTC046" invocation-numbers="0 0 0"/>
+          <include name="setUpFramework"/>
           <include name="sendmail"/>
         </methods>
-      </class> <!-- com.cpcommunity.testScripts.community.TC043_Member_Reject_Community_Request_From_Global_Community -->
+      </class> <!-- com.cpcommunity.testScripts.Event_Registrations.TC153_Free_Event_Registration_From_Event_CheckIn -->
       <class name="com.cpcommunity.testScripts.Event_Registrations.TC152_Paid_Event_Registration_With_Cash_From_Event_CheckIn">
         <methods>
           <include name="tearDown"/>
           <include name="setUpFramework"/>
-          <include name="TC152" invocation-numbers="0 0 0"/>
+          <include name="TC152" invocation-numbers="0"/>
           <include name="sendmail"/>
         </methods>
       </class> <!-- com.cpcommunity.testScripts.Event_Registrations.TC152_Paid_Event_Registration_With_Cash_From_Event_CheckIn -->
     </classes>
-  </test> <!-- Test8(failed)(failed) -->
-  <test name="Test9(failed)(failed)" parallel="classes">
+  </test> <!-- Test8(failed) -->
+  <test name="Test9(failed)" parallel="classes">
     <classes>
-      <class name="com.cpcommunity.testScripts.community.TC072_Community_Admin_Approve_And_Reject_Group_Requests">
+      <class name="com.cpcommunity.testScripts.community.TC058_Group_Admin_Manage_Group_Members">
         <methods>
-          <include name="tearDown"/>
           <include name="setUpFramework"/>
-          <include name="TC072" invocation-numbers="0 0 0"/>
+          <include name="TC058" invocation-numbers="0"/>
           <include name="sendmail"/>
+          <include name="tearDown"/>
         </methods>
-      </class> <!-- com.cpcommunity.testScripts.community.TC072_Community_Admin_Approve_And_Reject_Group_Requests -->
+      </class> <!-- com.cpcommunity.testScripts.community.TC058_Group_Admin_Manage_Group_Members -->
       <class name="com.cpcommunity.testScripts.community.TC106_Join_And_Leave_Public_Group_From_My_Groups_Page">
         <methods>
-          <include name="TC106" invocation-numbers="0 0 0"/>
+          <include name="TC106" invocation-numbers="0"/>
           <include name="setUpFramework"/>
           <include name="tearDown"/>
           <include name="sendmail"/>
         </methods>
       </class> <!-- com.cpcommunity.testScripts.community.TC106_Join_And_Leave_Public_Group_From_My_Groups_Page -->
-      <class name="com.cpcommunity.testScripts.community.TC053_Community_Admin_Manage_Group_Members">
-        <methods>
-          <include name="setUpFramework"/>
-          <include name="tearDown"/>
-          <include name="TC053" invocation-numbers="0 0 0"/>
-          <include name="sendmail"/>
-        </methods>
-      </class> <!-- com.cpcommunity.testScripts.community.TC053_Community_Admin_Manage_Group_Members -->
       <class name="com.cpcommunity.testScripts.community.TC107_Member_Cancel_Groups_Request_From_MyGroups">
         <methods>
-          <include name="TC107" invocation-numbers="0 0 0"/>
+          <include name="TC107" invocation-numbers="0"/>
           <include name="setUpFramework"/>
           <include name="tearDown"/>
           <include name="sendmail"/>
         </methods>
       </class> <!-- com.cpcommunity.testScripts.community.TC107_Member_Cancel_Groups_Request_From_MyGroups -->
-      <class name="com.cpcommunity.testScripts.myprofiletestcases.TC019_Verify_User_is_Able_to_Un_Select_Email_Private">
-        <methods>
-          <include name="setUpFramework"/>
-          <include name="tearDown"/>
-          <include name="TC019" invocation-numbers="0 0 0"/>
-          <include name="sendmail"/>
-        </methods>
-      </class> <!-- com.cpcommunity.testScripts.myprofiletestcases.TC019_Verify_User_is_Able_to_Un_Select_Email_Private -->
-      <class name="com.cpcommunity.testScripts.community.TC058_Group_Admin_Manage_Group_Members">
-        <methods>
-          <include name="setUpFramework"/>
-          <include name="TC058" invocation-numbers="0 0 0"/>
-          <include name="sendmail"/>
-          <include name="tearDown"/>
-        </methods>
-      </class> <!-- com.cpcommunity.testScripts.community.TC058_Group_Admin_Manage_Group_Members -->
       <class name="com.cpcommunity.testScripts.community.TC067_Join_Leave_Public_And_Join_Cance_Private_Groups_From_Community_Details">
         <methods>
           <include name="setUpFramework"/>
-          <include name="TC067" invocation-numbers="0 0 0"/>
+          <include name="TC067" invocation-numbers="0"/>
           <include name="tearDown"/>
           <include name="sendmail"/>
         </methods>
       </class> <!-- com.cpcommunity.testScripts.community.TC067_Join_Leave_Public_And_Join_Cance_Private_Groups_From_Community_Details -->
+      <class name="com.cpcommunity.testScripts.community.TC064_Community_Admin_Approve_And_Reject_Community_Requests">
+        <methods>
+          <include name="setUpFramework"/>
+          <include name="tearDown"/>
+          <include name="TC064" invocation-numbers="0"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.community.TC064_Community_Admin_Approve_And_Reject_Community_Requests -->
+      <class name="com.cpcommunity.testScripts.myprofiletestcases.TC019_Verify_User_is_Able_to_Un_Select_Email_Private">
+        <methods>
+          <include name="setUpFramework"/>
+          <include name="tearDown"/>
+          <include name="TC019" invocation-numbers="0"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.myprofiletestcases.TC019_Verify_User_is_Able_to_Un_Select_Email_Private -->
+      <class name="com.cpcommunity.testScripts.community.TC072_Community_Admin_Approve_And_Reject_Group_Requests">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUpFramework"/>
+          <include name="TC072" invocation-numbers="0"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.community.TC072_Community_Admin_Approve_And_Reject_Group_Requests -->
       <class name="com.cpcommunity.testScripts.community.TC108_Share_Posts_in_Group">
         <methods>
-          <include name="TC108" invocation-numbers="0 0 0"/>
+          <include name="TC108" invocation-numbers="0"/>
           <include name="setUpFramework"/>
           <include name="tearDown"/>
           <include name="sendmail"/>
         </methods>
       </class> <!-- com.cpcommunity.testScripts.community.TC108_Share_Posts_in_Group -->
+      <class name="com.cpcommunity.testScripts.community.TC053_Community_Admin_Manage_Group_Members">
+        <methods>
+          <include name="setUpFramework"/>
+          <include name="tearDown"/>
+          <include name="TC053" invocation-numbers="0"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.community.TC053_Community_Admin_Manage_Group_Members -->
     </classes>
-  </test> <!-- Test9(failed)(failed) -->
-  <test name="Test10(failed)(failed)" parallel="classes">
+  </test> <!-- Test9(failed) -->
+  <test name="Test10(failed)" parallel="classes">
     <classes>
       <class name="com.cpcommunity.testScripts.advertisments.TC135_Verify_Member_Is_Able_Purchased_Required_Approval_Global_Members_Ad">
         <methods>
-          <include name="TC135" invocation-numbers="0 0 0"/>
+          <include name="TC135" invocation-numbers="0"/>
           <include name="setUpFramework"/>
           <include name="tearDown"/>
           <include name="sendmail"/>
@@ -311,14 +383,14 @@
         <methods>
           <include name="setUpFramework"/>
           <include name="tearDown"/>
-          <include name="TC134" invocation-numbers="0 0 0"/>
+          <include name="TC134" invocation-numbers="0"/>
           <include name="sendmail"/>
         </methods>
       </class> <!-- com.cpcommunity.testScripts.advertisments.TC134_Verify_Member_Is_Able_Purchased_Required_Approval_Ad -->
       <class name="com.cpcommunity.testScripts.community.TC120_Add_Terms_And_Conditions">
         <methods>
           <include name="setUpFramework"/>
-          <include name="TC120" invocation-numbers="0 0 0"/>
+          <include name="TC120" invocation-numbers="0"/>
           <include name="tearDown"/>
           <include name="sendmail"/>
         </methods>
@@ -326,48 +398,40 @@
       <class name="com.cpcommunity.testScripts.community.TC105_Group_Admin_Approve_And_Reject_Group_Requests">
         <methods>
           <include name="setUpFramework"/>
-          <include name="TC105" invocation-numbers="0 0 0"/>
+          <include name="TC105" invocation-numbers="0"/>
           <include name="tearDown"/>
           <include name="sendmail"/>
         </methods>
       </class> <!-- com.cpcommunity.testScripts.community.TC105_Group_Admin_Approve_And_Reject_Group_Requests -->
     </classes>
-  </test> <!-- Test10(failed)(failed) -->
-  <test name="Test11(failed)(failed)" parallel="classes">
+  </test> <!-- Test10(failed) -->
+  <test name="Test11(failed)" parallel="classes">
     <classes>
+      <class name="com.cpcommunity.testScripts.myprofiletestcases.TC021_Verify_User_is_Able_to_Un_Select_Phone_Private">
+        <methods>
+          <include name="setUpFramework"/>
+          <include name="sendmail"/>
+          <include name="TC021" invocation-numbers="0"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.myprofiletestcases.TC021_Verify_User_is_Able_to_Un_Select_Phone_Private -->
       <class name="com.cpcommunity.testScripts.community.TC121_Community_Admin_Invite_Members_With_Terms_And_Conditions">
         <methods>
-          <include name="TC121" invocation-numbers="0 0 0"/>
+          <include name="TC121" invocation-numbers="0"/>
           <include name="setUpFramework"/>
           <include name="tearDown"/>
           <include name="sendmail"/>
         </methods>
       </class> <!-- com.cpcommunity.testScripts.community.TC121_Community_Admin_Invite_Members_With_Terms_And_Conditions -->
-      <class name="com.cpcommunity.testScripts.myprofiletestcases.TC021_Verify_User_is_Able_to_Un_Select_Phone_Private">
-        <methods>
-          <include name="setUpFramework"/>
-          <include name="sendmail"/>
-          <include name="TC021" invocation-numbers="0 0 0"/>
-          <include name="tearDown"/>
-        </methods>
-      </class> <!-- com.cpcommunity.testScripts.myprofiletestcases.TC021_Verify_User_is_Able_to_Un_Select_Phone_Private -->
     </classes>
-  </test> <!-- Test11(failed)(failed) -->
-  <test name="Test12(failed)(failed)" parallel="classes">
+  </test> <!-- Test11(failed) -->
+  <test name="Test12(failed)" parallel="classes">
     <classes>
-      <class name="com.cpcommunity.testScripts.community.TC123_Member_Accept_Community_Request_from_My_Communities">
-        <methods>
-          <include name="setUpFramework"/>
-          <include name="tearDown"/>
-          <include name="TC123" invocation-numbers="0 0 0"/>
-          <include name="sendmail"/>
-        </methods>
-      </class> <!-- com.cpcommunity.testScripts.community.TC123_Member_Accept_Community_Request_from_My_Communities -->
       <class name="com.cpcommunity.testScripts.community.TC122_Member_Accept_Community_Request_From_Global_Community">
         <methods>
           <include name="tearDown"/>
           <include name="setUpFramework"/>
-          <include name="TC122" invocation-numbers="0 0 0"/>
+          <include name="TC122" invocation-numbers="0"/>
           <include name="sendmail"/>
         </methods>
       </class> <!-- com.cpcommunity.testScripts.community.TC122_Member_Accept_Community_Request_From_Global_Community -->
@@ -375,46 +439,46 @@
         <methods>
           <include name="tearDown"/>
           <include name="setUpFramework"/>
-          <include name="TC124" invocation-numbers="0 0 0"/>
+          <include name="TC124" invocation-numbers="0"/>
           <include name="sendmail"/>
         </methods>
       </class> <!-- com.cpcommunity.testScripts.community.TC124_Member_Accept_Community_Request_From_Community_details_page -->
-    </classes>
-  </test> <!-- Test12(failed)(failed) -->
-  <test name="Test13(failed)(failed)" parallel="classes">
-    <classes>
-      <class name="com.cpcommunity.testScripts.community.TC179_Verify_Member_Is_Able_Update_Membership_Plan">
+      <class name="com.cpcommunity.testScripts.community.TC123_Member_Accept_Community_Request_from_My_Communities">
         <methods>
-          <include name="tearDown"/>
           <include name="setUpFramework"/>
-          <include name="TC179" invocation-numbers="0 0 0"/>
+          <include name="tearDown"/>
+          <include name="TC123" invocation-numbers="0"/>
           <include name="sendmail"/>
         </methods>
-      </class> <!-- com.cpcommunity.testScripts.community.TC179_Verify_Member_Is_Able_Update_Membership_Plan -->
+      </class> <!-- com.cpcommunity.testScripts.community.TC123_Member_Accept_Community_Request_from_My_Communities -->
+    </classes>
+  </test> <!-- Test12(failed) -->
+  <test name="Test13(failed)" parallel="classes">
+    <classes>
       <class name="com.cpcommunity.testScripts.community.TC129_Apply_Job_Requirement_From_Community_Details_Page">
         <methods>
           <include name="setUpFramework"/>
-          <include name="TC129" invocation-numbers="0 0 0"/>
+          <include name="TC129" invocation-numbers="0"/>
           <include name="sendmail"/>
           <include name="tearDown"/>
         </methods>
       </class> <!-- com.cpcommunity.testScripts.community.TC129_Apply_Job_Requirement_From_Community_Details_Page -->
-    </classes>
-  </test> <!-- Test13(failed)(failed) -->
-  <test name="Test14(failed)(failed)" parallel="classes">
-    <classes>
-      <class name="com.cpcommunity.testScripts.community.TC170_Verify_Non_Member_Not_Able_Share_Posts_And_Like_Comment_in_Communities">
+      <class name="com.cpcommunity.testScripts.community.TC179_Verify_Member_Is_Able_Update_Membership_Plan">
         <methods>
           <include name="tearDown"/>
           <include name="setUpFramework"/>
-          <include name="TC170" invocation-numbers="0 0 0"/>
+          <include name="TC179" invocation-numbers="0"/>
           <include name="sendmail"/>
         </methods>
-      </class> <!-- com.cpcommunity.testScripts.community.TC170_Verify_Non_Member_Not_Able_Share_Posts_And_Like_Comment_in_Communities -->
+      </class> <!-- com.cpcommunity.testScripts.community.TC179_Verify_Member_Is_Able_Update_Membership_Plan -->
+    </classes>
+  </test> <!-- Test13(failed) -->
+  <test name="Test14(failed)" parallel="classes">
+    <classes>
       <class name="com.cpcommunity.testScripts.Event_Registrations.TC145_PromoCode_Event_Registration_With_PayPal_From_Event_Details_Page">
         <methods>
           <include name="setUpFramework"/>
-          <include name="TC145" invocation-numbers="0 0 0"/>
+          <include name="TC145" invocation-numbers="0"/>
           <include name="sendmail"/>
           <include name="tearDown"/>
         </methods>
@@ -423,86 +487,94 @@
         <methods>
           <include name="setUpFramework"/>
           <include name="tearDown"/>
-          <include name="TC146" invocation-numbers="0 0 0"/>
+          <include name="TC146" invocation-numbers="0"/>
           <include name="sendmail"/>
         </methods>
       </class> <!-- com.cpcommunity.testScripts.Event_Registrations.TC146_PromoCode_Event_Registration_With_Authorize_From_Event_Details_Page -->
+      <class name="com.cpcommunity.testScripts.Event_Registrations.TC148_Free_Event_Registration_From_Event_Details_Page">
+        <methods>
+          <include name="setUpFramework"/>
+          <include name="tearDown"/>
+          <include name="TC148" invocation-numbers="0"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.Event_Registrations.TC148_Free_Event_Registration_From_Event_Details_Page -->
+      <class name="com.cpcommunity.testScripts.Event_Registrations.TC143_Paid_Event_Registration_With_PayPal_From_Event_Details_Page">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUpFramework"/>
+          <include name="TC143" invocation-numbers="0"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.Event_Registrations.TC143_Paid_Event_Registration_With_PayPal_From_Event_Details_Page -->
       <class name="com.cpcommunity.testScripts.Event_Registrations.TC147_100_Percent_PromoCode_Event_Registration_From_Event_Details_Page">
         <methods>
-          <include name="TC147" invocation-numbers="0 0 0"/>
+          <include name="TC147" invocation-numbers="0"/>
           <include name="setUpFramework"/>
           <include name="tearDown"/>
           <include name="sendmail"/>
         </methods>
       </class> <!-- com.cpcommunity.testScripts.Event_Registrations.TC147_100_Percent_PromoCode_Event_Registration_From_Event_Details_Page -->
-      <class name="com.cpcommunity.testScripts.Event_Registrations.TC143_Paid_Event_Registration_With_PayPal_From_Event_Details_Page">
+      <class name="com.cpcommunity.testScripts.community.TC170_Verify_Non_Member_Not_Able_Share_Posts_And_Like_Comment_in_Communities">
         <methods>
           <include name="tearDown"/>
           <include name="setUpFramework"/>
-          <include name="TC143" invocation-numbers="0 0 0"/>
+          <include name="TC170" invocation-numbers="0"/>
           <include name="sendmail"/>
         </methods>
-      </class> <!-- com.cpcommunity.testScripts.Event_Registrations.TC143_Paid_Event_Registration_With_PayPal_From_Event_Details_Page -->
-      <class name="com.cpcommunity.testScripts.Event_Registrations.TC148_Free_Event_Registration_From_Event_Details_Page">
-        <methods>
-          <include name="setUpFramework"/>
-          <include name="tearDown"/>
-          <include name="TC148" invocation-numbers="0 0 0"/>
-          <include name="sendmail"/>
-        </methods>
-      </class> <!-- com.cpcommunity.testScripts.Event_Registrations.TC148_Free_Event_Registration_From_Event_Details_Page -->
+      </class> <!-- com.cpcommunity.testScripts.community.TC170_Verify_Non_Member_Not_Able_Share_Posts_And_Like_Comment_in_Communities -->
       <class name="com.cpcommunity.testScripts.Event_Registrations.TC144_Paid_Event_Registration_With_Authorize_From_Event_Details_Page">
         <methods>
           <include name="setUpFramework"/>
-          <include name="TC144" invocation-numbers="0 0 0"/>
+          <include name="TC144" invocation-numbers="0"/>
           <include name="tearDown"/>
           <include name="sendmail"/>
         </methods>
       </class> <!-- com.cpcommunity.testScripts.Event_Registrations.TC144_Paid_Event_Registration_With_Authorize_From_Event_Details_Page -->
     </classes>
-  </test> <!-- Test14(failed)(failed) -->
-  <test name="Test15(failed)(failed)" parallel="classes">
+  </test> <!-- Test14(failed) -->
+  <test name="Test15(failed)" parallel="classes">
     <classes>
       <class name="com.cpcommunity.testScripts.community.TC099_InActivate_Community_By_Community_Admin">
         <methods>
           <include name="setUpFramework"/>
           <include name="tearDown"/>
-          <include name="TC099" invocation-numbers="0 0 0"/>
+          <include name="TC099" invocation-numbers="0"/>
           <include name="sendmail"/>
         </methods>
       </class> <!-- com.cpcommunity.testScripts.community.TC099_InActivate_Community_By_Community_Admin -->
     </classes>
-  </test> <!-- Test15(failed)(failed) -->
-  <test name="Test16(failed)(failed)" parallel="classes">
+  </test> <!-- Test15(failed) -->
+  <test name="Test16(failed)" parallel="classes">
     <classes>
       <class name="com.cpcommunity.testScripts.community.TC168_Verify_InActivated_Community_Is_Not_Displayed_In_Global_Communities">
         <methods>
-          <include name="TC041ToTC046" invocation-numbers="0 0 0"/>
+          <include name="TC041ToTC046" invocation-numbers="0"/>
           <include name="setUpFramework"/>
           <include name="tearDown"/>
           <include name="sendmail"/>
         </methods>
       </class> <!-- com.cpcommunity.testScripts.community.TC168_Verify_InActivated_Community_Is_Not_Displayed_In_Global_Communities -->
     </classes>
-  </test> <!-- Test16(failed)(failed) -->
-  <test name="Test17(failed)(failed)" parallel="classes">
+  </test> <!-- Test16(failed) -->
+  <test name="Test17(failed)" parallel="classes">
     <classes>
-      <class name="com.cpcommunity.testScripts.community.TC178_Payment_Pending_Is_Displayed_For_Adding_A_Member_By_CA">
-        <methods>
-          <include name="setUpFramework"/>
-          <include name="tearDown"/>
-          <include name="TC178" invocation-numbers="0 0 0"/>
-          <include name="sendmail"/>
-        </methods>
-      </class> <!-- com.cpcommunity.testScripts.community.TC178_Payment_Pending_Is_Displayed_For_Adding_A_Member_By_CA -->
       <class name="com.cpcommunity.testScripts.community.TC100_Activate_Community_By_Community_Admin">
         <methods>
           <include name="setUpFramework"/>
           <include name="tearDown"/>
-          <include name="TC099" invocation-numbers="0 0 0"/>
+          <include name="TC099" invocation-numbers="0"/>
           <include name="sendmail"/>
         </methods>
       </class> <!-- com.cpcommunity.testScripts.community.TC100_Activate_Community_By_Community_Admin -->
+      <class name="com.cpcommunity.testScripts.community.TC178_Payment_Pending_Is_Displayed_For_Adding_A_Member_By_CA">
+        <methods>
+          <include name="setUpFramework"/>
+          <include name="tearDown"/>
+          <include name="TC178" invocation-numbers="0"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.community.TC178_Payment_Pending_Is_Displayed_For_Adding_A_Member_By_CA -->
     </classes>
-  </test> <!-- Test17(failed)(failed) -->
-</suite> <!-- Failed suite [Failed suite [Suite]] -->
+  </test> <!-- Test17(failed) -->
+</suite> <!-- Failed suite [Suite] -->
