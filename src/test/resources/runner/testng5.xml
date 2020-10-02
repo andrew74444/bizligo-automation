@@ -20,7 +20,7 @@
 			<class name="com.cpcommunity.testScripts.community.TC084_Member_Leave_community_from_My_Communities________" />
 			<class name="com.cpcommunity.testScripts.community.TC092_InActivate_PayMent_Gateways" />
 			<class name="com.cpcommunity.testScripts.community.TC131_Purchase_Pricing_Plan_With_Authorize_Net" />
-			<class name="com.cpcommunity.testScripts.community.TC175_Verify_Membership_Plan_Is_Not_Available_For_Purchased_Pricing_Plan_Without_Membership_Plan_To_CA" />
+
 			<class name="com.cpcommunity.testScripts.community.TC115_SendMessages" />
 			<class name="com.cpcommunity.testScripts.community.TC117_Send_Connection_From_Member_Directory" />
 			<class name="com.cpcommunity.testScripts.community.TC118_Send_Connection_From_Community_Details_Page" />
@@ -35,6 +35,7 @@
 
 	<test name="Test2" preserve-order="true">
 		<classes>
+			<class name="com.cpcommunity.testScripts.community.TC175_Verify_Membership_Plan_Is_Not_Available_For_Purchased_Pricing_Plan_Without_Membership_Plan_To_CA" />
 			<class name="com.cpcommunity.testScripts.community.TC030_System_Admin_Community_Rejection" />
 			<class name="com.cpcommunity.testScripts.community.TC032_System_Admin_Community_Approval" />
 			<class name="com.cpcommunity.testScripts.community.TC094_Activate_PayMent_Gateways" />
