@@ -31,14 +31,7 @@
           <include name="tearDown"/>
         </methods>
       </class> <!-- com.cpcommunity.testScripts.community.TC079_Share_Posts_in_Communities -->
-      <class name="com.cpcommunity.testScripts.community.TC052_Community_Admin_Create_Groups">
-        <methods>
-          <include name="setUpFramework"/>
-          <include name="tearDown"/>
-          <include name="TC052" invocation-numbers="1"/>
-          <include name="sendmail"/>
-        </methods>
-      </class> <!-- com.cpcommunity.testScripts.community.TC052_Community_Admin_Create_Groups -->
+      
       <class name="com.cpcommunity.testScripts.community.TC128_Create_Job_Requirement">
         <methods>
           <include name="setUpFramework"/>
