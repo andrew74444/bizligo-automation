@@ -63,7 +63,7 @@
 			<class name="com.cpcommunity.testScripts.community.TC035_Create_Community_With_Rejected_Community_Name" />
 			<class name="com.cpcommunity.testScripts.community.TC039_Edit_Community" />
 			<class name="com.cpcommunity.testScripts.community.TC040_Community_Admin_Invite_Members" />
-			<class name="com.cpcommunity.testScripts.community.TC047_Community_Admin_Able_To_Manage_Community_Members" />
+		
 			<class name="com.cpcommunity.testScripts.community.TC052_Community_Admin_Create_Groups" />
 			<class name="com.cpcommunity.testScripts.community.TC079_Share_Posts_in_Communities" />
 			<class name="com.cpcommunity.testScripts.community.TC128_Create_Job_Requirement" />
@@ -91,7 +91,7 @@
 			<class name="com.cpcommunity.testScripts.community.TC127_Zoom_Meeting_Configuration" />
 			<class name="com.cpcommunity.testScripts.community.TC165_Veirfy_Community_Website_URL_Redirected_To_Configured_Website" />
 			<class name="com.cpcommunity.testScripts.Promocodes.TC184_Create_PromoCode" />
-						
+			<class name="com.cpcommunity.testScripts.community.TC047_Community_Admin_Able_To_Manage_Community_Members" />				
 		</classes>
 	</test>
 	
