@@ -69,7 +69,7 @@ public class GlobalCommunitesPage extends BasePage {
 
 	@FindBy(xpath = "//button[contains(.,'Yes, Proceed')]")
 	WebElement YesProceed;
-	@FindBy(xpath = "(//button[contains(.,'Join')])[1]")
+	@FindBy(xpath = "((//*[@class='cmt-groups'])[1])//*[contains(text(),'Join')]")
 	WebElement join;
 	@FindBy(xpath = "//button[contains(.,'Cancel')]")
 	WebElement Cancel;
