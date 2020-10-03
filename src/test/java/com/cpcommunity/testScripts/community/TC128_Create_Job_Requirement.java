@@ -36,6 +36,7 @@ public class TC128_Create_Job_Requirement extends BaseTest {
 		manageJobsPage.postJob(data.get("JobTitle"), data.get("BillingRate"), data.get("JobTypeID"), data.get("Location"), data.get("Description"), data.get("AdditionalDetails"), data.get("remarks"), data.get("makeGlobal"));
 		CommunityDetailsPage cdp = manageJobsPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		cdp.searchJob(data.get("JobTitle"));
+		EcoSystemPage =EcoSystemPage.goToMyEcosystem();
 		EcoSystemPage.goToGlobalCommunities();
 		GlobalCareers GC = EcoSystemPage.goToGlobalCareers();
 		GC.searchJob(data.get("JobTitle"));
