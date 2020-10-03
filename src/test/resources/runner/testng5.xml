@@ -138,14 +138,6 @@
 			<classes>
 			
 			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC019_Verify_User_is_Able_to_Un_Select_Email_Private" />
-			<class name="com.cpcommunity.testScripts.community.TC072_Community_Admin_Approve_And_Reject_Group_Requests" />
-			<class name="com.cpcommunity.testScripts.community.TC067_Join_Leave_Public_And_Join_Cance_Private_Groups_From_Community_Details" />			
-			<class name="com.cpcommunity.testScripts.community.TC064_Community_Admin_Approve_And_Reject_Community_Requests" />
-			<class name="com.cpcommunity.testScripts.community.TC053_Community_Admin_Manage_Group_Members" />
-			<class name="com.cpcommunity.testScripts.community.TC058_Group_Admin_Manage_Group_Members" />			
-			<class name="com.cpcommunity.testScripts.community.TC106_Join_And_Leave_Public_Group_From_My_Groups_Page" />
-			<class name="com.cpcommunity.testScripts.community.TC107_Member_Cancel_Groups_Request_From_MyGroups" />
-			<class name="com.cpcommunity.testScripts.community.TC108_Share_Posts_in_Group" />
 			
 			
 		</classes>
@@ -179,6 +171,14 @@
 
 	<test name="Test13" preserve-order="true">
 		<classes>
+			<class name="com.cpcommunity.testScripts.community.TC072_Community_Admin_Approve_And_Reject_Group_Requests" />
+			<class name="com.cpcommunity.testScripts.community.TC067_Join_Leave_Public_And_Join_Cance_Private_Groups_From_Community_Details" />			
+			<class name="com.cpcommunity.testScripts.community.TC064_Community_Admin_Approve_And_Reject_Community_Requests" />
+			<class name="com.cpcommunity.testScripts.community.TC053_Community_Admin_Manage_Group_Members" />
+			<class name="com.cpcommunity.testScripts.community.TC058_Group_Admin_Manage_Group_Members" />			
+			<class name="com.cpcommunity.testScripts.community.TC106_Join_And_Leave_Public_Group_From_My_Groups_Page" />
+			<class name="com.cpcommunity.testScripts.community.TC107_Member_Cancel_Groups_Request_From_MyGroups" />
+			<class name="com.cpcommunity.testScripts.community.TC108_Share_Posts_in_Group" />
 		
 		    <class name="com.cpcommunity.testScripts.community.TC129_Apply_Job_Requirement_From_Community_Details_Page" />
 		    <class name="com.cpcommunity.testScripts.community.TC130_Apply_Job_Requirement_From_Global_Careers" />

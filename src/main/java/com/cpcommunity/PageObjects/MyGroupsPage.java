@@ -56,7 +56,7 @@ public class MyGroupsPage extends BasePage{
   
     
     public ManageGroupMembersPageByGroupAdmin manageGroupMembers(String groupName ) throws Exception {
-    	groupName = groupName+" "+getDate();
+    	groupName = groupName+" "+getDateInDDMMMYYYY();
     	this.searchGroup(groupName);
     	waitForElementToPresent(Menu);
     	picture();
