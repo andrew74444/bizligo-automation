@@ -71,9 +71,8 @@
 			<class name="com.cpcommunity.testScripts.community.TC128_Create_Job_Requirement" />
 			
 			<class name="com.cpcommunity.testScripts.community.TC169_Verify_Member_Cannot_Able_To_Remove_CA_From_Manage_Community_Members_page_For_Only_One_Community_Admin" />
-			<class name="com.cpcommunity.testScripts.community.TC162_Verify_Member_Able_To_Access_Manage_Community_When_The_CA_Role_Is_Assigned" />
 			<class name="com.cpcommunity.testScripts.community.TC163_Member_Invite_Friends_To_Community" />
-			<class name="com.cpcommunity.testScripts.community.TC169_Verify_Member_Cannot_Able_To_Remove_CA_From_Manage_Community_Members_page_For_Only_One_Community_Admin" />
+
 			
 			<class name="com.cpcommunity.testScripts.community.TC171_Verify_Total_Communities_Count_And_In_My_Communities_Are_Same" />
 			<class name="com.cpcommunity.testScripts.community.TC172_Verify_Purchased_Membership_Is_Not_Editable_To_CA" />
@@ -85,6 +84,7 @@
 
 	<test name="Test5" preserve-order="true">
 		<classes>
+			<class name="com.cpcommunity.testScripts.community.TC162_Verify_Member_Able_To_Access_Manage_Community_When_The_CA_Role_Is_Assigned" />
 			
 			<class name="com.cpcommunity.testScripts.community.TC087_Configure_Cash_Payment" />
 			<class name="com.cpcommunity.testScripts.community.TC088_Configure_Cheque_Payment" />
