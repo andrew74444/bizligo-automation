@@ -105,7 +105,7 @@ public class ManageCommunityMembersPage extends BasePage {
 
 	public void clickOnYesProceed() throws Exception {
 		waitForElementToPresent(YesProceed);
-
+		picture();
 		click(YesProceed, "Yes, Proceed");
 		waitForElementToPresent(OkBth);
 		click(OkBth, "Ok Button");

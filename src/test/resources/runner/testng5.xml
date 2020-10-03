@@ -27,7 +27,7 @@
 			<class name="com.cpcommunity.testScripts.community.TC119_Send_Connection_From_Group_Details_Page" />
 			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC015_Verify_User_Is_Able_To_Update_Profile" />
 			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC022_Verify_User_Is_Able_To_Add_Protfolio" />
-			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC026_Verify_User_Is_Able_To_Update_Skills" />
+			
 			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC027_Verify_User_Is_Able_To_Update_Interests" />	
 			
 		</classes>
@@ -41,7 +41,7 @@
 			<class name="com.cpcommunity.testScripts.community.TC094_Activate_PayMent_Gateways" />
 			<!--<class name="com.cpcommunity.testScripts.community.TC116_Accept_And_Reject_Connection" /> -->	
 			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC023_Verify_User_Is_Able_To_Update_Protfolio" />
-			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC025_Verify_User_Is_Able_To_Delete_Skills" />
+			
 			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC028_Verify_User_Is_Able_To_Delete_Interests" />
 								
 		</classes>
@@ -53,6 +53,7 @@
 			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC024_Verify_User_Is_Able_To_Delete_Protfolio" />
 			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC016_Verify_User_is_Able_to_Select_Private_Radio_Button" />
 			<class	name="com.cpcommunity.testScripts.community.TC166_Verify_Rejected_Community_Is_Not_Displayed_In_MyCommunities" />
+			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC026_Verify_User_Is_Able_To_Update_Skills" />
 		</classes>
 	</test>
 	
@@ -64,7 +65,7 @@
 			<class name="com.cpcommunity.testScripts.community.TC035_Create_Community_With_Rejected_Community_Name" />
 			<class name="com.cpcommunity.testScripts.community.TC039_Edit_Community" />
 			<class name="com.cpcommunity.testScripts.community.TC040_Community_Admin_Invite_Members" />
-		
+			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC025_Verify_User_Is_Able_To_Delete_Skills" />
 			<class name="com.cpcommunity.testScripts.community.TC052_Community_Admin_Create_Groups" />
 			<class name="com.cpcommunity.testScripts.community.TC079_Share_Posts_in_Communities" />
 			<class name="com.cpcommunity.testScripts.community.TC128_Create_Job_Requirement" />
