@@ -183,8 +183,15 @@ public class CommunityDetailsPage extends BasePage {
 	@FindBy(xpath = "//*[@value='Invite Friends']")
 	WebElement inviteFriends;
 
-	@FindBy(xpath = "//*[@id='inviteSelect-selectized']")
-	WebElement invitefield;
+	
+	@FindBy(xpath = "//*[@id='inviteMembersForm']//*[@name='FirstName']")
+	WebElement firstName;
+	
+	@FindBy(xpath = "//*[@id='inviteMembersForm']//*[@name='LastName']")
+	WebElement lastName;
+
+	@FindBy(xpath = "//*[@id='inviteMembersForm']//*[@name='EmailID']")
+	WebElement EmailID;
 
 	@FindBy(xpath = "//*[@id='btnInvites']")
 	WebElement invitebtn;
@@ -681,8 +688,9 @@ public class CommunityDetailsPage extends BasePage {
 		clickElementByJavaScript(inviteFriends);
 		// click(inviteFriends,"Invite Friends");
 		waitForElementToPresent(invitebtn);
-		type(invitefield, data.get("friendEmail"), "invite");
-		invitefield.sendKeys(Keys.ENTER);
+		type(EmailID, data.get("friendEmail"), "invite");
+		type(firstName, "Ellis", "invite");
+		type(lastName, "watson", "invite");
 		picture();
 		click(invitebtn, "invite button");
 		waitForElementToPresent(toastMessage);

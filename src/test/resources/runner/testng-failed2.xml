@@ -32,14 +32,7 @@
         </methods>
       </class> <!-- com.cpcommunity.testScripts.community.TC079_Share_Posts_in_Communities -->
       
-      <class name="com.cpcommunity.testScripts.community.TC128_Create_Job_Requirement">
-        <methods>
-          <include name="setUpFramework"/>
-          <include name="tearDown"/>
-          <include name="TC128" invocation-numbers="0"/>
-          <include name="sendmail"/>
-        </methods>
-      </class> <!-- com.cpcommunity.testScripts.community.TC128_Create_Job_Requirement -->
+      
       <class name="com.cpcommunity.testScripts.community.TC163_Member_Invite_Friends_To_Community">
         <methods>
           <include name="setUpFramework"/>

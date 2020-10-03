@@ -117,9 +117,9 @@ public class CommunityInviteMembersPage extends BasePage{
 		waitForElementToPresent(OkBtn);
 		click(OkBtn,"Ok Btn");
 		Thread.sleep(1000);
-		waitForElementToPresent(noMembersAvailable);
-		
-		search.clear();
+//		waitForElementToPresent(noMembersAvailable);
+//		
+//		search.clear();
 		
 		
 	}
