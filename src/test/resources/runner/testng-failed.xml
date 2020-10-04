@@ -6,18 +6,16 @@
     <listener class-name="com.uiFramework.pamTen.cpcommunity.helper.listener.RetryListener"/>
   </listeners>
 
-  <test name="Test8(failed)" parallel="classes">
+  <test name="Test10(failed)" parallel="classes">
     <classes>
-      
-       <class name="com.cpcommunity.testScripts.community.TC075_Member_Cancel_Community_Join_Request_from_My_Communities________">
+      <class name="com.cpcommunity.testScripts.community.TC105_Group_Admin_Approve_And_Reject_Group_Requests">
         <methods>
-          <include name="TC075" invocation-numbers="0"/>
           <include name="setUpFramework"/>
+          <include name="TC105" invocation-numbers="0"/>
           <include name="tearDown"/>
           <include name="sendmail"/>
         </methods>
-      </class> <!-- com.cpcommunity.testScripts.community.TC075_Member_Cancel_Community_Join_Request_from_My_Communities________ -->
-      
+      </class> <!-- com.cpcommunity.testScripts.community.TC105_Group_Admin_Approve_And_Reject_Group_Requests -->
     </classes>
-  </test> <!-- Test8(failed) -->
+  </test> <!-- Test10(failed) -->
 </suite> <!-- Failed suite [Suite] -->
