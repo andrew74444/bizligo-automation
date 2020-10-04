@@ -37,7 +37,7 @@ public class EventDetailsPage extends BasePage {
 	WebElement AttendeeEmailID;
 	@FindBy(xpath = "//*[@name='Phone[]']")
 	WebElement AttendeePhone;
-	@FindBy(xpath = "//button[contains(.,' Next ')]")
+	@FindBy(xpath = "//*[contains(text(),'Next')]")
 	WebElement NextBtn;
 	@FindBy(xpath = "//input[@name='PayerEmailID']")
 	WebElement PayerEmailID;
