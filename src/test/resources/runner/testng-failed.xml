@@ -8,14 +8,7 @@
 
   <test name="Test8(failed)" parallel="classes">
     <classes>
-      <class name="com.cpcommunity.testScripts.community.TC046_Member_Accept_Community_Request_from_My_Communities">
-        <methods>
-          <include name="setUpFramework"/>
-          <include name="TC041ToTC046" invocation-numbers="0"/>
-          <include name="tearDown"/>
-          <include name="sendmail"/>
-        </methods>
-      </class> <!-- com.cpcommunity.testScripts.community.TC046_Member_Accept_Community_Request_from_My_Communities -->
+      
        <class name="com.cpcommunity.testScripts.community.TC075_Member_Cancel_Community_Join_Request_from_My_Communities________">
         <methods>
           <include name="TC075" invocation-numbers="0"/>

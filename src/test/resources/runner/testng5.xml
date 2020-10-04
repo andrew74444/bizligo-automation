@@ -126,17 +126,17 @@
 			<class name="com.cpcommunity.testScripts.advertisments.TC132_Create_Advertisement_Plans_With_No_Approval" />
 			<class name="com.cpcommunity.testScripts.advertisments.TC133_Create_Advertisement_Plans_With_Required_Approval" />
 			<class name="com.cpcommunity.testScripts.community.TC164_Search_Event_In_Community_Details_Page" />
-			<class name="com.cpcommunity.testScripts.Event_Registrations.TC150_Paid_Event_Registration_With_Authorize_From_Event_CheckIn" />
-			<class name="com.cpcommunity.testScripts.Event_Registrations.TC149_Paid_Event_Registration_With_PayPal_From_Event_CheckIn" />
-			<class name="com.cpcommunity.testScripts.Event_Registrations.TC151_Paid_Event_Registration_With_Cheque_From_Event_CheckIn" />
-			<class name="com.cpcommunity.testScripts.Event_Registrations.TC152_Paid_Event_Registration_With_Cash_From_Event_CheckIn" />
+			
+			
+			
+			
 			<class name="com.cpcommunity.testScripts.Event_Registrations.TC153_Free_Event_Registration_From_Event_CheckIn" />
 		</classes>
 	</test>	
 	
 	<test name="Test9" preserve-order="true">
 			<classes>
-			
+			<class name="com.cpcommunity.testScripts.Event_Registrations.TC150_Paid_Event_Registration_With_Authorize_From_Event_CheckIn" />
 			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC019_Verify_User_is_Able_to_Un_Select_Email_Private" />
 			
 			
@@ -149,7 +149,8 @@
 				<class name="com.cpcommunity.testScripts.community.TC120_Add_Terms_And_Conditions" />
 				<class name="com.cpcommunity.testScripts.community.TC105_Group_Admin_Approve_And_Reject_Group_Requests" />		
 				<class name="com.cpcommunity.testScripts.advertisments.TC134_Verify_Member_Is_Able_Purchased_Required_Approval_Ad" />
-				<class name="com.cpcommunity.testScripts.advertisments.TC135_Verify_Member_Is_Able_Purchased_Required_Approval_Global_Members_Ad" />		
+				<class name="com.cpcommunity.testScripts.advertisments.TC135_Verify_Member_Is_Able_Purchased_Required_Approval_Global_Members_Ad" />
+				<class name="com.cpcommunity.testScripts.Event_Registrations.TC149_Paid_Event_Registration_With_PayPal_From_Event_CheckIn" />		
 			</classes>
 		</test>
 	
@@ -157,7 +158,7 @@
 		<classes>
 			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC021_Verify_User_is_Able_to_Un_Select_Phone_Private" />	
 			<class name="com.cpcommunity.testScripts.community.TC121_Community_Admin_Invite_Members_With_Terms_And_Conditions" />		
-					
+			<class name="com.cpcommunity.testScripts.Event_Registrations.TC151_Paid_Event_Registration_With_Cheque_From_Event_CheckIn" />		
 		</classes>
 	</test>
 		
@@ -166,6 +167,7 @@
 			<class name="com.cpcommunity.testScripts.community.TC122_Member_Accept_Community_Request_From_Global_Community" />
 			<class name="com.cpcommunity.testScripts.community.TC123_Member_Accept_Community_Request_from_My_Communities" />
 			<class name="com.cpcommunity.testScripts.community.TC124_Member_Accept_Community_Request_From_Community_details_page" />
+			<class name="com.cpcommunity.testScripts.Event_Registrations.TC152_Paid_Event_Registration_With_Cash_From_Event_CheckIn" />
 		</classes>
 	</test>
 
