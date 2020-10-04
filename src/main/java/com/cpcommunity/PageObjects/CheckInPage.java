@@ -125,8 +125,10 @@ public class CheckInPage extends BasePage {
 	public void registerFreeEvent(Hashtable<String, String> data) throws Exception {
 		this.clickOnBookTicketsTab();		
 		this.addAttendeeDetails(data);
+		picture();
 		clickElementByJavaScript(BookNowBtn);
 		waitForElementToPresent(freeEventRegistrationProcessed);
+		
 		this.registeredEventsuccessfully();
 	}
 
@@ -164,6 +166,7 @@ public class CheckInPage extends BasePage {
 		waitForElementToPresent(cash);
 		click(cash, "cash");
 		waitForElementToPresent(payment);
+		picture();
 		click(payment, "payment");
 		this.registeredEventsuccessfully();
 	}
@@ -186,7 +189,8 @@ public class CheckInPage extends BasePage {
 		DateManager d = new DateManager(driver);
 		String currentDate = d.getCurrentDateString();
 		d.selectDate("//*[@class='daterangepicker dropdown-menu ltr single openscenter show-calendar']", currentDate);
-		Thread.sleep(1000);		
+		Thread.sleep(1000);
+		picture();
 		click(payment, "payment");
 		this.registeredEventsuccessfully();
 		

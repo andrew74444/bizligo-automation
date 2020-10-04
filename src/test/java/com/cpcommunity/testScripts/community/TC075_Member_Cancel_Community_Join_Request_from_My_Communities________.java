@@ -33,7 +33,7 @@ public class TC075_Member_Cancel_Community_Join_Request_from_My_Communities_____
 		
 		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
 		GlobalCommunitesPage.JoinCommunity(data.get("communityName"));
-		
+		EcoSystemPage = EcoSystemPage.goToMyEcosystem();
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		MyCommunitiesPage.cancelCommunityRequest(data.get("communityName"));
 		
