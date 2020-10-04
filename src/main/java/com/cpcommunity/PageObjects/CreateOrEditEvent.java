@@ -372,7 +372,7 @@ public class CreateOrEditEvent extends BasePage {
 		eventAvailableTo(data.get("isPrivateCommunityEvent"), data.get("isPrivateGroupEvent"),
 				data.get("publicGroupName"), data.get("privateGroupName"));
 		Thread.sleep(1000);
-		selectByVisibleText(Timezone, data.get("timeZone"), "Timezone");
+//		selectByVisibleText(Timezone, data.get("timeZone"), "Timezone");
 		selectEventDates(StartTime, endTime, hour, m, AmPm, endHour);
 		Thread.sleep(2000);
 		// try {
