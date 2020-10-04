@@ -6,16 +6,57 @@
     <listener class-name="com.uiFramework.pamTen.cpcommunity.helper.listener.RetryListener"/>
   </listeners>
 
-  <test name="Test10(failed)" parallel="classes">
+  <test name="Test13(failed)" parallel="classes">
     <classes>
-      <class name="com.cpcommunity.testScripts.community.TC105_Group_Admin_Approve_And_Reject_Group_Requests">
+      <class name="com.cpcommunity.testScripts.community.TC067_Join_Leave_Public_And_Join_Cance_Private_Groups_From_Community_Details">
         <methods>
           <include name="setUpFramework"/>
-          <include name="TC105" invocation-numbers="0"/>
+          <include name="TC067" invocation-numbers="0"/>
           <include name="tearDown"/>
           <include name="sendmail"/>
         </methods>
-      </class> <!-- com.cpcommunity.testScripts.community.TC105_Group_Admin_Approve_And_Reject_Group_Requests -->
+      </class> <!-- com.cpcommunity.testScripts.community.TC067_Join_Leave_Public_And_Join_Cance_Private_Groups_From_Community_Details -->
+      <class name="com.cpcommunity.testScripts.community.TC106_Join_And_Leave_Public_Group_From_My_Groups_Page">
+        <methods>
+          <include name="TC106" invocation-numbers="0"/>
+          <include name="setUpFramework"/>
+          <include name="tearDown"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.community.TC106_Join_And_Leave_Public_Group_From_My_Groups_Page -->
+      <class name="com.cpcommunity.testScripts.community.TC108_Share_Posts_in_Group">
+        <methods>
+          <include name="TC108" invocation-numbers="0"/>
+          <include name="setUpFramework"/>
+          <include name="tearDown"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.community.TC108_Share_Posts_in_Group -->
+      <class name="com.cpcommunity.testScripts.community.TC179_Verify_Member_Is_Able_Update_Membership_Plan">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUpFramework"/>
+          <include name="TC179" invocation-numbers="0"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.community.TC179_Verify_Member_Is_Able_Update_Membership_Plan -->
+      <class name="com.cpcommunity.testScripts.community.TC072_Community_Admin_Approve_And_Reject_Group_Requests">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUpFramework"/>
+          <include name="TC072" invocation-numbers="0"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.community.TC072_Community_Admin_Approve_And_Reject_Group_Requests -->
+      <class name="com.cpcommunity.testScripts.community.TC107_Member_Cancel_Groups_Request_From_MyGroups">
+        <methods>
+          <include name="TC107" invocation-numbers="0"/>
+          <include name="setUpFramework"/>
+          <include name="tearDown"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.community.TC107_Member_Cancel_Groups_Request_From_MyGroups -->
     </classes>
-  </test> <!-- Test10(failed) -->
+  </test> <!-- Test13(failed) -->
+
 </suite> <!-- Failed suite [Suite] -->
