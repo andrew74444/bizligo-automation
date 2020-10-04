@@ -72,11 +72,11 @@ public class UpcomingEventsPage extends BasePage{
 		this.searchEvent(data);
 		
 		
-		WebElement element = driver.findElement(By.xpath("(//div[@ng-app='EventsApp']//*[@class='row']//a[@target='_blank'])[1]"));
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("arguments[0].setAttribute('target','_self');", element);
+		WebElement element = driver.findElement(By.xpath("(//div[@ng-app='EventsApp']//*[@class='row']//a[@target='_self'])[1]"));
+//		JavascriptExecutor js = (JavascriptExecutor) driver;
+//		js.executeScript("arguments[0].setAttribute('target','_self');", element);
 		String hrefUrl = element.getAttribute("href");
-		System.out.println(hrefUrl);
+		log.info(hrefUrl);
 		driver.get(hrefUrl);
 		
 		return (EventDetailsPage) openPage(EventDetailsPage.class);
