@@ -111,6 +111,7 @@ public class EcoSystemPage extends BasePage {
 	}
 
 	public MyCommunitiesPage goToMyCommunities() {
+		waitForElementToPresent(viewAll);
 		click(viewAll, "view All");
 		return (MyCommunitiesPage) openPage(MyCommunitiesPage.class);
 	}
