@@ -134,6 +134,14 @@ public class Discussions extends BasePage {
 	@FindBy(xpath = "//*[@id='copsDisable']")
 	WebElement tagInPost;
 
+	@FindBy(xpath = "//*[contains(text(),'Create New Post')]")
+	WebElement	createNewPost;
+	
+	//*[@id='discussionTitle']
+	
+	
+	
+	
 	// String TCID;
 	// //public HomePage(WebDriver driver,ExtentTest test) throws IOException {
 	// public Discussions(WebDriver driver) {
@@ -149,6 +157,10 @@ public class Discussions extends BasePage {
 
 	public void addPosts(String postMessage, String postComment) throws Exception {
 
+		
+		
+		
+		
 		addPost(postMessage);
 
 //		click(, "Post");
@@ -334,7 +346,7 @@ public class Discussions extends BasePage {
 
 		click(discussions, "discussions");
 		waitForElementToPresent(searchDiscussion);
-
+		waitForElementToPresent(createNewPost);
 		waitForElementToPresent(PostBtn);
 		try {
 			updateClass(header, "");
