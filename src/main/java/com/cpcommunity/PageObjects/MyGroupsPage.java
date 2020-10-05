@@ -106,7 +106,7 @@ public class MyGroupsPage extends BasePage{
 		
 	}
     public boolean LeaveGroup(String groupName) throws Exception  {
-    	groupName = groupName+" "+getDate();
+    	groupName = groupName+" "+getDateInDDMMMYYYY();
     	this.searchGroup(groupName);
 		click(LeaveBtn,"Leave"); 
 		waitForElementToPresent(ToastMessage);
