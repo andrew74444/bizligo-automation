@@ -37,6 +37,7 @@ public class TC107_Member_Cancel_Groups_Request_From_MyGroups extends BaseTest {
 		GroupDetailsPage GroupDetailsPage = CommunityDetailsPage.navigateToGroupDetailsPage(data.get("groupName"));
 		GroupDetailsPage.JoinPrivateGroup();  
 		Thread.sleep(7000);
+		EcoSystemPage = EcoSystemPage.goToMyEcosystem();
 		MyGroupsPage MyGroupsPage = EcoSystemPage.goToMyGroups();
 		MyGroupsPage.cancel(data.get("groupName"));	
 		
