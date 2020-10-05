@@ -63,6 +63,13 @@ public class ManageGroupMembersPageByGroupAdmin extends BasePage {
 	@FindBy(xpath = "//*[contains(text(),'Add')]")
 	WebElement AddBtn;
 
+	@FindBy(xpath = "//*[@id='CommunityUsersTable']/tbody/tr[2]/td[5]")
+	WebElement email2;
+	
+	@FindBy(xpath = "//*[@id='CommunityUsersTable']/tbody/tr[1]/td[5]")
+	WebElement email1;
+	
+	
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 		// TODO Auto-generated method stub
@@ -216,5 +223,19 @@ public class ManageGroupMembersPageByGroupAdmin extends BasePage {
 
 		return (CommunityDetailsPage) openPage(CommunityDetailsPage.class);
 	}
+
+	public String getMember1() {
+		
+		log.info(email1.getText());
+		return email1.getText();	
+	}
+	
+	public String getMember2() {
+		
+		log.info(email2.getText());
+		return email2.getText();	
+	}
+	
+	
 
 }

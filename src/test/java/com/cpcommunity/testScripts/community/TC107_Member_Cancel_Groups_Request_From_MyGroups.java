@@ -17,7 +17,7 @@ import com.cpcommunity.utilities.ExcelReader;
 public class TC107_Member_Cancel_Groups_Request_From_MyGroups extends BaseTest {
 
 	
-	String TCID="TC107";
+	
 	
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC107(Hashtable<String,String> data) throws Exception {

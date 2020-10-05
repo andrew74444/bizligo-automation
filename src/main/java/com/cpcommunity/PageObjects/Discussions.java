@@ -66,7 +66,7 @@ public class Discussions extends BasePage {
 	@FindBy(xpath = "//label[@name='FileUploadLabel']")
 	WebElement FileUploadBtn;
 
-	@FindBy(xpath = "//button[contains(.,'Post')]")
+	@FindBy(xpath = "//*[@id='NewPostForm']//button[contains(text(),'Post')]")
 	WebElement PostBtn;
 
 	@FindBy(xpath = "//a[contains(.,'Link')]")
@@ -231,48 +231,48 @@ public class Discussions extends BasePage {
 			// // log.info("Post Like Count not Decreased");
 		}
 
-		L = NoOfFirstCommmentLikes.getText();
-		// System.out.println("Total No of Like = "+L);
-
-		if (L.equals("")) {
-			likes = 0;
-		} else {
-			likes = Integer.parseInt(L);
-		}
-		likes = likes + 1;
+//		L = NoOfFirstCommmentLikes.getText();
+//		// System.out.println("Total No of Like = "+L);
+//
+//		if (L.equals("")) {
+//			likes = 0;
+//		} else {
+//			likes = Integer.parseInt(L);
+//		}
+//		likes = likes + 1;
 		click(clickFirstCommentLike, "FirstCommentLike"); // liking first comment
 		Thread.sleep(2000);
-		L = NoOfFirstCommmentLikes.getText();
-		UpdatedL = NoOfFirstCommmentLikes.getText();
-		Updatedlikes = Integer.parseInt(UpdatedL);
-		if (Updatedlikes == likes) {
-			System.out.println("Pass");
-		} else {
-			System.out.println("Fail");
-		}
-
-		L = NoOfFirstCommmentLikes.getText();
-		// System.out.println("Total No of Like = "+L);
-		UpdatedlL = Integer.parseInt(L);
-		if (UpdatedlL == 1) {
-			L = "";
-		} else {
-			UpdatedlL = UpdatedlL - 1;
-			L = Integer.toString(UpdatedlL);
-		}
+//		L = NoOfFirstCommmentLikes.getText();
+//		UpdatedL = NoOfFirstCommmentLikes.getText();
+//		Updatedlikes = Integer.parseInt(UpdatedL);
+//		if (Updatedlikes == likes) {
+//			System.out.println("Pass");
+//		} else {
+//			System.out.println("Fail");
+//		}
+//
+//		L = NoOfFirstCommmentLikes.getText();
+//		// System.out.println("Total No of Like = "+L);
+//		UpdatedlL = Integer.parseInt(L);
+//		if (UpdatedlL == 1) {
+//			L = "";
+//		} else {
+//			UpdatedlL = UpdatedlL - 1;
+//			L = Integer.toString(UpdatedlL);
+//		}
 
 		click(clickFirstCommentLike, "unliking the comment");// unliking the comment
 		Thread.sleep(2000);
 
-		UpdatedLikes = NoOfFirstCommmentLikes.getText();
-
-		if (L.equals(UpdatedLikes)) {
-			System.out.println("Pass");
-		} else {
-			System.out.println("Fail");
-		}
-
-		Thread.sleep(2000);
+//		UpdatedLikes = NoOfFirstCommmentLikes.getText();
+//
+//		if (L.equals(UpdatedLikes)) {
+//			System.out.println("Pass");
+//		} else {
+//			System.out.println("Fail");
+//		}
+//
+//		Thread.sleep(2000);
 
 		clickElementByJavaScript(commentMenu);
 		Thread.sleep(1000);
@@ -280,7 +280,7 @@ public class Discussions extends BasePage {
 		// Comment =
 		// driver.findElement(By.xpath("//*[@id='MainContainer']/div[9]/div[6]/div[2]/div[3]/div[3]/div[2]/div/div/div")).getText();
 
-		clickElementByJavaScript(deleteComment);
+//		clickElementByJavaScript(deleteComment);
 		Thread.sleep(6000);
 
 		try {
@@ -302,13 +302,13 @@ public class Discussions extends BasePage {
 		clickElementByJavaScript(postMenu);
 		Thread.sleep(1000);
 
-		clickElementByJavaScript(deletePost);
+//		clickElementByJavaScript(deletePost);
 		Thread.sleep(2000);
 
-		click(okBtn, "OK");
-		Thread.sleep(7000);
-		waitForElementToPresent(noResultsFound);
-		noResultsFound.isDisplayed();
+//		click(okBtn, "OK");
+//		Thread.sleep(7000);
+//		waitForElementToPresent(noResultsFound);
+//		noResultsFound.isDisplayed();
 	}
 
 	public void CheckNonMemberIsNotAbleToPostLikeComment() throws Exception {
@@ -347,6 +347,7 @@ public class Discussions extends BasePage {
 		click(discussions, "discussions");
 		waitForElementToPresent(searchDiscussion);
 		waitForElementToPresent(createNewPost);
+		click(createNewPost, "create New Post");
 		waitForElementToPresent(PostBtn);
 		try {
 			updateClass(header, "");

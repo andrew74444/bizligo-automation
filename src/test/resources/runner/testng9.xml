@@ -14,7 +14,7 @@
 	<test name="Test 1" preserve-order="true">
 		<classes>
 			<class
-				name="com.cpcommunity.testScripts.Create_Free_Event.TC141_Create_Free_Event"/>
+				name="com.cpcommunity.testScripts.community.TC079_Share_Posts_in_Communities"/>
 		</classes>
 	</test>
 

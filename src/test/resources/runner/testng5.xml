@@ -167,7 +167,7 @@
 		
 	<test name="Test12" preserve-order="true">
 		<classes>
-			<class name="com.cpcommunity.testScripts.community.TC072_Community_Admin_Approve_And_Reject_Group_Requests" />
+	
 			<class name="com.cpcommunity.testScripts.community.TC067_Join_Leave_Public_And_Join_Cance_Private_Groups_From_Community_Details" />			
 			<class name="com.cpcommunity.testScripts.Event_Registrations.TC149_Paid_Event_Registration_With_PayPal_From_Event_CheckIn" />
 			<class name="com.cpcommunity.testScripts.community.TC053_Community_Admin_Manage_Group_Members" />
@@ -183,9 +183,9 @@
 
 	<test name="Test13" preserve-order="true">
 		<classes>
+				<class name="com.cpcommunity.testScripts.community.TC072_Community_Admin_Approve_And_Reject_Group_Requests" />
 			<class name="com.cpcommunity.testScripts.community.TC170_Verify_Non_Member_Not_Able_Share_Posts_And_Like_Comment_in_Communities" />
 			<class name="com.cpcommunity.testScripts.community.TC106_Join_And_Leave_Public_Group_From_My_Groups_Page" />
-			<class name="com.cpcommunity.testScripts.community.TC107_Member_Cancel_Groups_Request_From_MyGroups" />	
 			
 			<class name="com.cpcommunity.testScripts.Event_Registrations.TC143_Paid_Event_Registration_With_PayPal_From_Event_Details_Page" />
 			<class name="com.cpcommunity.testScripts.Event_Registrations.TC144_Paid_Event_Registration_With_Authorize_From_Event_Details_Page" />
@@ -199,12 +199,20 @@
 	<test name="Test14" preserve-order="true">
 		<classes>
 			<class name="com.cpcommunity.testScripts.community.TC064_Community_Admin_Approve_And_Reject_Community_Requests" /> 
+							 
+		</classes>
+	</test>	
+
+
+	<test name="Test15" preserve-order="true">
+		<classes>
+			<class name="com.cpcommunity.testScripts.community.TC107_Member_Cancel_Groups_Request_From_MyGroups" />			
+
 		</classes>
 	</test>	
 	
-	<test name="Test15" preserve-order="true">
+	<test name="Test16" preserve-order="true">
 	    <classes>
-	    
 	    	
 	        <class name="com.cpcommunity.testScripts.community.TC099_InActivate_Community_By_Community_Admin" />
 	    </classes>
@@ -212,15 +220,14 @@
 
 
 
-	<test name="Test16" preserve-order="true">
+	<test name="Test17" preserve-order="true">
 		<classes>
 			<class name="com.cpcommunity.testScripts.community.TC168_Verify_InActivated_Community_Is_Not_Displayed_In_Global_Communities" />
-			
 			
 		</classes>
 	</test>	
 
-	<test name="Test17" preserve-order="true">
+	<test name="Test18" preserve-order="true">
 		<classes>
 			
 			<class name="com.cpcommunity.testScripts.community.TC178_Payment_Pending_Is_Displayed_For_Adding_A_Member_By_CA" />		
