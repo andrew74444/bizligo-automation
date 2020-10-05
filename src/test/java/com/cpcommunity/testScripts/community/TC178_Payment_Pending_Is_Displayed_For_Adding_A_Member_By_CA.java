@@ -35,7 +35,7 @@ public class TC178_Payment_Pending_Is_Displayed_For_Adding_A_Member_By_CA extend
 		Thread.sleep(6000);
 		communityDashboardPage.logout();
 		login = home.clickOnLOGINBtn();
-		EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+		EcoSystemPage = login.loginToApplication(data.get("email1"), data.get("password"));
 		
 		MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		MyCommunitiesPage.verifyPaymentPendindDisplayed(data.get("communityName"));

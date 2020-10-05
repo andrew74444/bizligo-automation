@@ -207,7 +207,7 @@
 	<test name="Test15" preserve-order="true">
 		<classes>
 			<class name="com.cpcommunity.testScripts.community.TC107_Member_Cancel_Groups_Request_From_MyGroups" />			
-
+check
 		</classes>
 	</test>	
 	

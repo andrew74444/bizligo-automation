@@ -90,7 +90,7 @@ public class MyGroupsPage extends BasePage{
     
     
     public boolean cancel(String groupName) throws Exception {
-    	groupName = groupName+" "+getDate();
+    	groupName = groupName+" "+getDateInDDMMMYYYY();
     	this.searchGroup(groupName);
 		click(CancelBtn,"Leave"); 
 		waitForElementToPresent(ToastMessage);
