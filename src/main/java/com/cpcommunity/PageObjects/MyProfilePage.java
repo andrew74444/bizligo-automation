@@ -330,6 +330,9 @@ public class MyProfilePage extends BasePage{
 		
 		executeScript("arguments[0].value='" + PPhone + "';", Phone);
 		executeScript("arguments[0].scrollIntoView(true);", MyProfileSaveBtn);
+		picture();
+		click(PublicRdnBtn,"PublicRdnBtn");
+		picture();
 		boolean PEmail = PrivatePhoneNo.isSelected();
 		System.out.println(PEmail);
 		if (PEmail) {
@@ -352,6 +355,8 @@ public class MyProfilePage extends BasePage{
 		
 		executeScript("arguments[0].value='" + PPhone + "';", Phone);
 		executeScript("arguments[0].scrollIntoView(true);", MyProfileSaveBtn);
+		picture();
+		click(PublicRdnBtn,"PublicRdnBtn");
 		picture();
 //		new TestBase().captureScreen(, driver);
 		boolean PEmail = PrivatePhoneNo.isSelected();
@@ -377,7 +382,9 @@ public class MyProfilePage extends BasePage{
 		executeScript("arguments[0].value='" + PPhone + "';", Phone);
 		executeScript("arguments[0].scrollIntoView(true);", MyProfileSaveBtn);
 		Thread.sleep(5000);
+		picture();
 		click(PrivateRdnBtn,"PrivateRdnBtn");
+		picture();
 		boolean status = this.UpdateProfile();
 		return status;
 	}
@@ -391,6 +398,7 @@ public class MyProfilePage extends BasePage{
 		executeScript("arguments[0].scrollIntoView(true);", MyProfileSaveBtn);
 		Thread.sleep(5000);
 		click(PublicRdnBtn,"PublicRdnBtn");
+		picture();
 		Thread.sleep(1000);
 		return this.UpdateProfile();
 
