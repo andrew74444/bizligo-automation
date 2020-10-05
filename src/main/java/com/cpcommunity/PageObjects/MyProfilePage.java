@@ -309,6 +309,7 @@ public class MyProfilePage extends BasePage{
 	public boolean UnSelectEmailPrivate( ) throws Exception {
 		this.clickOnEditButton();
 		scrollIntoView(MyProfileSaveBtn);
+		click(PublicRdnBtn, "PublicRdnBtn");
 		boolean PEmail = PrivateEmail.isSelected();
 		if (PEmail) {
 			Thread.sleep(1000);

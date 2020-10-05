@@ -785,7 +785,7 @@ public class CommunityDetailsPage extends BasePage {
 		// navigateToGroupDetailsPage(groupName);
 	}
 
-	@FindBy(xpath = "//img[@height='16']")
+	@FindBy(xpath = "//*[@title='Manage Group']")
 	WebElement Menu;
 	@FindBy(xpath = "//*[contains(text(),'Manage Members')]")
 	WebElement ManageMembers;

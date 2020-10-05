@@ -14,7 +14,7 @@
 	<test name="Test 1" preserve-order="true">
 		<classes>
 			<class
-				name="com.cpcommunity.testScripts.community.TC079_Share_Posts_in_Communities"/>
+				name="com.cpcommunity.testScripts.community.TC178_Payment_Pending_Is_Displayed_For_Adding_A_Member_By_CA"/>
 		</classes>
 	</test>
 

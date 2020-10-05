@@ -94,7 +94,7 @@ public class monitoringMail
 	    public PasswordAuthentication getPasswordAuthentication()
 	    {
 	        String username = "andrew74444@gmail.com";
-	        String password = "asdf1237";
+	        String password = "Pamten@123";
 	        return new PasswordAuthentication(username, password);
 	    }
 	}

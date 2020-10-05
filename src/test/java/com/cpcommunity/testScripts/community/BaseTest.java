@@ -13,6 +13,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -388,6 +390,22 @@ public class BaseTest {
 		ChromeOptions options = new ChromeOptions(); 
 
 		options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+		
+		
+		// Create object of HashMap Class
+				Map<String, Object> prefs = new HashMap<String, Object>();
+		              
+		                // Set the notification setting it will override the default setting
+				prefs.put("profile.default_content_setting_values.notifications", 2);
+		 
+				prefs.put("credentials_enable_service", false);
+				prefs.put("profile.password_manager_enabled", false);
+
+				
+		                // Set the experimental option
+				options.setExperimentalOption("prefs", prefs);
+		
+		
 		if (DriverFactory.isRemote()) {
 			DesiredCapabilities cap = null;
 

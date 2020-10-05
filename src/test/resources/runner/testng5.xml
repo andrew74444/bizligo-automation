@@ -139,7 +139,6 @@
 			<class name="com.cpcommunity.testScripts.Event_Registrations.TC150_Paid_Event_Registration_With_Authorize_From_Event_CheckIn" />
 			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC019_Verify_User_is_Able_to_Un_Select_Email_Private" />
 			<class name="com.cpcommunity.testScripts.community.TC120_Add_Terms_And_Conditions" />
-			<class name="com.cpcommunity.testScripts.community.TC105_Group_Admin_Approve_And_Reject_Group_Requests" />		
 			<class name="com.cpcommunity.testScripts.advertisments.TC134_Verify_Member_Is_Able_Purchased_Required_Approval_Ad" />
 			<class name="com.cpcommunity.testScripts.advertisments.TC135_Verify_Member_Is_Able_Purchased_Required_Approval_Global_Members_Ad" />
 			
@@ -198,6 +197,8 @@
 	
 	<test name="Test14" preserve-order="true">
 		<classes>
+		
+			<class name="com.cpcommunity.testScripts.community.TC105_Group_Admin_Approve_And_Reject_Group_Requests" />
 			<class name="com.cpcommunity.testScripts.community.TC064_Community_Admin_Approve_And_Reject_Community_Requests" /> 
 							 
 		</classes>
@@ -207,7 +208,7 @@
 	<test name="Test15" preserve-order="true">
 		<classes>
 			<class name="com.cpcommunity.testScripts.community.TC107_Member_Cancel_Groups_Request_From_MyGroups" />			
-check
+
 		</classes>
 	</test>	
 	

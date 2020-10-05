@@ -82,6 +82,7 @@ public class MyGroupsPage extends BasePage{
     
     public void searchGroup(String groupName) throws Exception{
     	SearchGroup.clear();
+    	log.info(groupName);
     	type( SearchGroup, groupName,"Search by Group Name");
     	click(searchbtn,"search btn");
     	Thread.sleep(6000); 
