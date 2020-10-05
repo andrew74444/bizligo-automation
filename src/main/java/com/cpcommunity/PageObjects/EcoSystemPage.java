@@ -13,7 +13,7 @@ public class EcoSystemPage extends BasePage {
 	@FindBy(xpath = "//*[contains(text(),'MY ECOSYSTEM')]")
 	WebElement myEcosystem;
 
-	@FindBy(xpath = "//*[@class='dropdown-menu']//*[contains(text(),'My Ecosystem')]")
+	@FindBy(xpath = "//*[@class='dropdown-menu']//*[contains(text(),'My Ecosystem')] | //*[@class='dropdown-menu gretdrpmenu']//*[contains(text(),'My Ecosystem')]")
 	WebElement myEcosystemInMenu;
 	
 	
@@ -110,9 +110,23 @@ public class EcoSystemPage extends BasePage {
 
 	}
 
-	public MyCommunitiesPage goToMyCommunities() {
-		waitForElementToPresent(viewAll);
-		click(viewAll, "view All");
+	public MyCommunitiesPage goToMyCommunities() throws Exception {
+		
+		try {
+			waitForElementToPresent(viewAll);
+			click(viewAll, "view All");	
+		} catch (Exception e) {
+			
+			driver.navigate().refresh();
+			Thread.sleep(10000);
+			waitForElementToPresent(viewAll);
+			click(viewAll, "view All");
+			
+		}
+		
+		
+		
+		
 		return (MyCommunitiesPage) openPage(MyCommunitiesPage.class);
 	}
 
