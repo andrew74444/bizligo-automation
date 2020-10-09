@@ -446,7 +446,10 @@ public class BaseTest {
 			driver = new ChromeDriver(options);
 		} else if (browser.equals("firefox")) {
 			System.out.println("Launching : " + browser);
-			System.setProperty("webdriver.gecko.driver", DriverFactory.getGeckoDriverExePath());
+//			System.setProperty("webdriver.gecko.driver", DriverFactory.getGeckoDriverExePath());
+
+			WebDriverManager.firefoxdriver().setup();
+
 			driver = new FirefoxDriver();
 
 		}
@@ -460,7 +463,7 @@ public class BaseTest {
 		System.out.println(ID);
 		JavascriptExecutor js = (JavascriptExecutor)driver;
 		JavaScript.setJavaScriptObject(js);
-		WebDriverWait wait = new WebDriverWait(driver, 30);
+		WebDriverWait wait = new WebDriverWait(driver, 200);
 		waitHelper.setWebDriverWaitObject(wait);
 		try {
 			Robot robot = new Robot();

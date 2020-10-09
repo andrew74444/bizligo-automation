@@ -77,6 +77,10 @@ public class CreateOrEditEvent extends BasePage {
 	WebElement AddTicketBtn;
 	@FindBy(xpath = "//input[@name='TicketName']")
 	WebElement Ticket;
+	
+	@FindBy(xpath = "//*[@name='AvailableTo']")
+	WebElement availableTo;
+	
 	@FindBy(xpath = "//input[@name='TicketQunatity']")
 	WebElement TicketQunatity;
 	@FindBy(xpath = "//select[@name='TicketType']")
@@ -464,7 +468,7 @@ public class CreateOrEditEvent extends BasePage {
 		if (data.get("isPaidEvent").equalsIgnoreCase("Yes")) {
 			type(TicketPrice, data.get("ticketValue"), "TicketPrice");
 		}
-
+		selectByVisibleText(availableTo, "All", "All");
 		executeScript("arguments[0].value='" + data.get("totalTickets") + "';", TicketQunatity);
 		TicketQunatity.click();
 		robot.keyPress(KeyEvent.VK_UP);

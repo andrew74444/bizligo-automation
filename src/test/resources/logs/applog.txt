@@ -1,79 +1,107 @@
-INFO    2020-10-05 23:06:20,396 [main] com.cpcommunity.testScripts.community.BaseTest  - Config properties file loaded
-INFO    2020-10-05 23:06:21,463 [TestNG-test=Test 1-1] com.cpcommunity.testScripts.community.BaseTest  - Inside Login Test
-INFO    2020-10-05 23:06:25,575 [TestNG-test=Test 1-1] com.cpcommunity.testScripts.community.BaseTest  - Driver Initialized !!!
-INFO    2020-10-05 23:07:23,321 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
-INFO    2020-10-05 23:07:28,426 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (22f8488c2e88802beac8c132081c3eb5)] -> xpath: //a[contains(.,'Login')]] for :18 seconds
-INFO    2020-10-05 23:07:28,486 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - [[ChromeDriver: chrome on XP (22f8488c2e88802beac8c132081c3eb5)] -> xpath: //a[contains(.,'Login')]]is displayed
-INFO    2020-10-05 23:07:31,487 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : LOGIN
-INFO    2020-10-05 23:07:45,655 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
-INFO    2020-10-05 23:07:50,664 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Typing in : email address entered the value as : indiaaustralia0@gmail.com
-INFO    2020-10-05 23:07:51,141 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Typing in : password entered the value as : Admin@123
-INFO    2020-10-05 23:07:51,294 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Login
-INFO    2020-10-05 23:08:11,814 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
-INFO    2020-10-05 23:08:16,936 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (22f8488c2e88802beac8c132081c3eb5)] -> xpath: //*[@id='navbar']//*[contains(text(),'Global Communities')]] for :18 seconds
-INFO    2020-10-05 23:08:16,979 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - [[ChromeDriver: chrome on XP (22f8488c2e88802beac8c132081c3eb5)] -> xpath: //*[@id='navbar']//*[contains(text(),'Global Communities')]]is displayed
-INFO    2020-10-05 23:08:19,051 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Clicking[[ChromeDriver: chrome on XP (22f8488c2e88802beac8c132081c3eb5)] -> xpath: //*[@id='navbar']//*[contains(text(),'Global Communities')]]
-INFO    2020-10-05 23:08:29,792 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Clicked[[ChromeDriver: chrome on XP (22f8488c2e88802beac8c132081c3eb5)] -> xpath: //*[@id='navbar']//*[contains(text(),'Global Communities')]]
-INFO    2020-10-05 23:08:33,424 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
-INFO    2020-10-05 23:08:38,629 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Typing in : search entered the value as : Community - 05 Oct 2020
-INFO    2020-10-05 23:08:38,970 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : search Btn
-INFO    2020-10-05 23:08:42,562 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (22f8488c2e88802beac8c132081c3eb5)] -> xpath: //a[contains(text(),'Community - 05 Oct 2020')]] for :18 seconds
-INFO    2020-10-05 23:08:42,591 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - [[ChromeDriver: chrome on XP (22f8488c2e88802beac8c132081c3eb5)] -> xpath: //a[contains(text(),'Community - 05 Oct 2020')]]is displayed
-INFO    2020-10-05 23:08:49,007 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
-INFO    2020-10-05 23:09:12,293 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
-INFO    2020-10-05 23:09:21,352 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Groups
-INFO    2020-10-05 23:09:37,280 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (22f8488c2e88802beac8c132081c3eb5)] -> xpath: //input[@placeholder='Search by Groups']] for :18 seconds
-INFO    2020-10-05 23:09:37,325 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - [[ChromeDriver: chrome on XP (22f8488c2e88802beac8c132081c3eb5)] -> xpath: //input[@placeholder='Search by Groups']]is displayed
-INFO    2020-10-05 23:09:45,909 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Typing in : Group Name entered the value as : Private Group 05 Oct 2020
-INFO    2020-10-05 23:09:46,151 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Groups Search Btn
-INFO    2020-10-05 23:09:59,275 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
-INFO    2020-10-05 23:10:05,224 [TestNG-test=Test 1-1] com.cpcommunity.testScripts.community.BaseTest  - Test Execution Completed !!!
-INFO    2020-10-05 23:10:05,581 [TestNG-test=Test 1-1] com.cpcommunity.testScripts.community.BaseTest  - Inside Login Test
-INFO    2020-10-05 23:10:08,685 [TestNG-test=Test 1-1] com.cpcommunity.testScripts.community.BaseTest  - Driver Initialized !!!
-INFO    2020-10-05 23:11:09,391 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
-INFO    2020-10-05 23:11:14,485 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (6ca06cfb15417908e38461f14b117c69)] -> xpath: //a[contains(.,'Login')]] for :18 seconds
-INFO    2020-10-05 23:11:14,552 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - [[ChromeDriver: chrome on XP (6ca06cfb15417908e38461f14b117c69)] -> xpath: //a[contains(.,'Login')]]is displayed
-INFO    2020-10-05 23:11:17,554 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : LOGIN
-INFO    2020-10-05 23:11:30,766 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
-INFO    2020-10-05 23:11:35,774 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Typing in : email address entered the value as : indiaaustralia0@gmail.com
-INFO    2020-10-05 23:11:36,247 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Typing in : password entered the value as : Admin@123
-INFO    2020-10-05 23:11:36,398 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Login
-INFO    2020-10-05 23:11:55,684 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
-INFO    2020-10-05 23:12:00,802 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (6ca06cfb15417908e38461f14b117c69)] -> xpath: //*[@id='navbar']//*[contains(text(),'Global Communities')]] for :18 seconds
-INFO    2020-10-05 23:12:00,860 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - [[ChromeDriver: chrome on XP (6ca06cfb15417908e38461f14b117c69)] -> xpath: //*[@id='navbar']//*[contains(text(),'Global Communities')]]is displayed
-INFO    2020-10-05 23:12:02,894 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Clicking[[ChromeDriver: chrome on XP (6ca06cfb15417908e38461f14b117c69)] -> xpath: //*[@id='navbar']//*[contains(text(),'Global Communities')]]
-INFO    2020-10-05 23:12:13,674 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Clicked[[ChromeDriver: chrome on XP (6ca06cfb15417908e38461f14b117c69)] -> xpath: //*[@id='navbar']//*[contains(text(),'Global Communities')]]
-INFO    2020-10-05 23:12:17,530 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
-INFO    2020-10-05 23:12:22,667 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Typing in : search entered the value as : Community - 05 Oct 2020
-INFO    2020-10-05 23:12:23,022 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : search Btn
-INFO    2020-10-05 23:12:25,185 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (6ca06cfb15417908e38461f14b117c69)] -> xpath: //a[contains(text(),'Community - 05 Oct 2020')]] for :18 seconds
-INFO    2020-10-05 23:12:25,216 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - [[ChromeDriver: chrome on XP (6ca06cfb15417908e38461f14b117c69)] -> xpath: //a[contains(text(),'Community - 05 Oct 2020')]]is displayed
-INFO    2020-10-05 23:12:31,210 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
-INFO    2020-10-05 23:12:50,810 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
-INFO    2020-10-05 23:12:59,873 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Groups
-INFO    2020-10-05 23:13:06,246 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (6ca06cfb15417908e38461f14b117c69)] -> xpath: //input[@placeholder='Search by Groups']] for :18 seconds
-INFO    2020-10-05 23:13:06,283 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - [[ChromeDriver: chrome on XP (6ca06cfb15417908e38461f14b117c69)] -> xpath: //input[@placeholder='Search by Groups']]is displayed
-INFO    2020-10-05 23:13:14,726 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Typing in : Group Name entered the value as : Private Group 05 Oct 2020
-INFO    2020-10-05 23:13:14,978 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Groups Search Btn
-INFO    2020-10-05 23:13:28,619 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
-INFO    2020-10-05 23:13:37,095 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (6ca06cfb15417908e38461f14b117c69)] -> xpath: //*[contains(text(),'Yes,Proceed')]] for :18 seconds
-INFO    2020-10-05 23:13:37,126 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - [[ChromeDriver: chrome on XP (6ca06cfb15417908e38461f14b117c69)] -> xpath: //*[contains(text(),'Yes,Proceed')]]is displayed
-INFO    2020-10-05 23:13:46,746 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (6ca06cfb15417908e38461f14b117c69)] -> xpath: //*[contains(text(),'Ok')]] for :18 seconds
-INFO    2020-10-05 23:13:47,350 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - [[ChromeDriver: chrome on XP (6ca06cfb15417908e38461f14b117c69)] -> xpath: //*[contains(text(),'Ok')]]is displayed
-INFO    2020-10-05 23:14:06,966 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Toggledropdownmenu
-INFO    2020-10-05 23:14:07,186 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (6ca06cfb15417908e38461f14b117c69)] -> xpath: //*[@class='dropdown-menu']//*[contains(text(),'My Ecosystem')] | //*[@class='dropdown-menu gretdrpmenu']//*[contains(text(),'My Ecosystem')]] for :18 seconds
-INFO    2020-10-05 23:14:07,220 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - [[ChromeDriver: chrome on XP (6ca06cfb15417908e38461f14b117c69)] -> xpath: //*[@class='dropdown-menu']//*[contains(text(),'My Ecosystem')] | //*[@class='dropdown-menu gretdrpmenu']//*[contains(text(),'My Ecosystem')]]is displayed
-INFO    2020-10-05 23:14:09,220 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : My Ecosystem In Menu Drop Down
-INFO    2020-10-05 23:14:22,331 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
-INFO    2020-10-05 23:14:27,409 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : myGroups
-INFO    2020-10-05 23:14:33,905 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
-INFO    2020-10-05 23:14:39,083 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Private Group 05 Oct 2020
-INFO    2020-10-05 23:14:39,083 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Typing in : Search by Group Name entered the value as : Private Group 05 Oct 2020
-INFO    2020-10-05 23:14:39,317 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : search btn
-INFO    2020-10-05 23:14:45,434 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : Leave
-INFO    2020-10-05 23:14:46,417 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - waiting for :[[ChromeDriver: chrome on XP (6ca06cfb15417908e38461f14b117c69)] -> xpath: //*[@id='toast-container']] for :18 seconds
-INFO    2020-10-05 23:14:46,504 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - [[ChromeDriver: chrome on XP (6ca06cfb15417908e38461f14b117c69)] -> xpath: //*[@id='toast-container']]is displayed
-INFO    2020-10-05 23:14:48,648 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Private Group 05 Oct 2020
-INFO    2020-10-05 23:14:48,648 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Typing in : Search by Group Name entered the value as : Private Group 05 Oct 2020
-INFO    2020-10-05 23:14:48,907 [TestNG-test=Test 1-1] com.cpcommunity.PageObjects.BasePage  - Clicking on : search btn
-INFO    2020-10-05 23:14:55,836 [TestNG-test=Test 1-1] com.cpcommunity.testScripts.community.BaseTest  - Test Execution Completed !!!
+INFO    2020-10-09 21:57:09,031 [main] com.cpcommunity.testScripts.community.BaseTest  - Config properties file loaded
+INFO    2020-10-09 21:57:10,178 [main] com.cpcommunity.testScripts.community.BaseTest  - Inside Login Test
+INFO    2020-10-09 21:57:14,388 [main] com.cpcommunity.testScripts.community.BaseTest  - Driver Initialized !!!
+INFO    2020-10-09 21:58:21,413 [main] com.cpcommunity.PageObjects.BasePage  - waiting for visibility of [[ChromeDriver: chrome on XP (5e846a9cf8d38d04b8c8bf5a5867b7df)] -> xpath: //*[@id='navbar']//*[contains(text(),'Home')]]
+INFO    2020-10-09 21:58:27,692 [main] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2020-10-09 21:58:32,800 [main] com.cpcommunity.PageObjects.BasePage  - waiting for :-> xpath: //a[contains(.,'Login')]] for :60 seconds
+INFO    2020-10-09 21:58:32,903 [main] com.cpcommunity.PageObjects.BasePage  - -> xpath: //a[contains(.,'Login')]]is displayed
+INFO    2020-10-09 21:58:35,906 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : LOGIN
+INFO    2020-10-09 21:58:50,547 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : LOGIN
+INFO    2020-10-09 21:58:50,596 [main] com.cpcommunity.PageObjects.BasePage  - waiting for visibility of [[ChromeDriver: chrome on XP (5e846a9cf8d38d04b8c8bf5a5867b7df)] -> xpath: //button[contains(.,'Login')]]
+INFO    2020-10-09 21:58:54,094 [main] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2020-10-09 21:58:59,112 [main] com.cpcommunity.PageObjects.BasePage  - Typing in : email address entered the value as : andrew74444@gmail.com
+INFO    2020-10-09 21:58:59,431 [main] com.cpcommunity.PageObjects.BasePage  - Typing in : password entered the value as : Admin@123
+INFO    2020-10-09 21:58:59,581 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : Login
+INFO    2020-10-09 21:58:59,694 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : Login
+INFO    2020-10-09 21:59:20,331 [main] com.cpcommunity.PageObjects.BasePage  - waiting for visibility of [[ChromeDriver: chrome on XP (5e846a9cf8d38d04b8c8bf5a5867b7df)] -> xpath: //*[contains(text(),'MY ECOSYSTEM')]]
+INFO    2020-10-09 21:59:26,150 [main] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2020-10-09 21:59:31,905 [main] com.cpcommunity.testScripts.community.BaseTest  - Test Execution Completed !!!
+INFO    2020-10-09 21:59:32,528 [main] com.cpcommunity.testScripts.community.BaseTest  - Inside Test
+INFO    2020-10-09 21:59:35,581 [main] com.cpcommunity.testScripts.community.BaseTest  - Driver Initialized !!!
+INFO    2020-10-09 22:00:47,231 [main] com.cpcommunity.PageObjects.BasePage  - waiting for visibility of [[ChromeDriver: chrome on XP (2f01e28208a1607facf20c58c3836c9d)] -> xpath: //*[@id='navbar']//*[contains(text(),'Home')]]
+INFO    2020-10-09 22:00:53,421 [main] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2020-10-09 22:00:58,474 [main] com.cpcommunity.PageObjects.BasePage  - waiting for :-> xpath: //a[contains(.,'Login')]] for :60 seconds
+INFO    2020-10-09 22:00:58,507 [main] com.cpcommunity.PageObjects.BasePage  - -> xpath: //a[contains(.,'Login')]]is displayed
+INFO    2020-10-09 22:01:01,508 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : LOGIN
+INFO    2020-10-09 22:01:15,772 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : LOGIN
+INFO    2020-10-09 22:01:15,844 [main] com.cpcommunity.PageObjects.BasePage  - waiting for visibility of [[ChromeDriver: chrome on XP (2f01e28208a1607facf20c58c3836c9d)] -> xpath: //button[contains(.,'Login')]]
+INFO    2020-10-09 22:01:18,848 [main] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2020-10-09 22:01:23,856 [main] com.cpcommunity.PageObjects.BasePage  - Typing in : email address entered the value as : andrew74444@gmail.com
+INFO    2020-10-09 22:01:24,147 [main] com.cpcommunity.PageObjects.BasePage  - Typing in : password entered the value as : Admin@1234543635
+INFO    2020-10-09 22:01:24,339 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : Login
+INFO    2020-10-09 22:01:24,454 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : Login
+INFO    2020-10-09 22:01:24,856 [main] com.cpcommunity.PageObjects.BasePage  - waiting for :-> xpath: //*[contains(text(),'Invalid login credentials. Please try again')]] for :60 seconds
+INFO    2020-10-09 22:01:24,885 [main] com.cpcommunity.PageObjects.BasePage  - -> xpath: //*[contains(text(),'Invalid login credentials. Please try again')]]is displayed
+INFO    2020-10-09 22:01:28,209 [main] com.cpcommunity.testScripts.community.BaseTest  - Test Execution Completed !!!
+INFO    2020-10-09 22:01:29,010 [main] com.cpcommunity.testScripts.community.BaseTest  - Inside Login Test
+INFO    2020-10-09 22:01:32,017 [main] com.cpcommunity.testScripts.community.BaseTest  - Driver Initialized !!!
+INFO    2020-10-09 22:02:41,274 [main] com.cpcommunity.PageObjects.BasePage  - waiting for visibility of [[ChromeDriver: chrome on XP (015c6e4c1347b1190b85bbb2dcfe7a77)] -> xpath: //*[@id='navbar']//*[contains(text(),'Home')]]
+INFO    2020-10-09 22:02:47,693 [main] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2020-10-09 22:02:52,758 [main] com.cpcommunity.PageObjects.BasePage  - waiting for :-> xpath: //a[contains(.,'Login')]] for :60 seconds
+INFO    2020-10-09 22:02:52,819 [main] com.cpcommunity.PageObjects.BasePage  - -> xpath: //a[contains(.,'Login')]]is displayed
+INFO    2020-10-09 22:02:55,821 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : LOGIN
+INFO    2020-10-09 22:03:10,740 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : LOGIN
+INFO    2020-10-09 22:03:10,823 [main] com.cpcommunity.PageObjects.BasePage  - waiting for visibility of [[ChromeDriver: chrome on XP (015c6e4c1347b1190b85bbb2dcfe7a77)] -> xpath: //button[contains(.,'Login')]]
+INFO    2020-10-09 22:03:14,429 [main] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2020-10-09 22:03:19,442 [main] com.cpcommunity.PageObjects.BasePage  - Typing in : email address entered the value as : andrew74444+12@pamten.com
+INFO    2020-10-09 22:03:19,780 [main] com.cpcommunity.PageObjects.BasePage  - Typing in : password entered the value as : Admin@123
+INFO    2020-10-09 22:03:19,917 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : Login
+INFO    2020-10-09 22:03:20,019 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : Login
+INFO    2020-10-09 22:03:20,370 [main] com.cpcommunity.PageObjects.BasePage  - waiting for :-> xpath: //a[contains(text(),'click here')]] for :60 seconds
+INFO    2020-10-09 22:03:20,401 [main] com.cpcommunity.PageObjects.BasePage  - -> xpath: //a[contains(text(),'click here')]]is displayed
+INFO    2020-10-09 22:03:22,844 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : Click Here
+INFO    2020-10-09 22:03:23,045 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : Click Here
+INFO    2020-10-09 22:03:23,087 [main] com.cpcommunity.PageObjects.BasePage  - waiting for :-> xpath: //div[@class='col-xs-12 text-right']//button[@type='submit']] for :60 seconds
+INFO    2020-10-09 22:03:23,670 [main] com.cpcommunity.PageObjects.BasePage  - -> xpath: //div[@class='col-xs-12 text-right']//button[@type='submit']]is displayed
+INFO    2020-10-09 22:03:27,170 [main] com.cpcommunity.testScripts.community.BaseTest  - Test Execution Completed !!!
+INFO    2020-10-09 22:03:27,581 [main] com.cpcommunity.testScripts.community.BaseTest  - Inside Login Test
+INFO    2020-10-09 22:03:30,592 [main] com.cpcommunity.testScripts.community.BaseTest  - Driver Initialized !!!
+INFO    2020-10-09 22:04:41,987 [main] com.cpcommunity.PageObjects.BasePage  - waiting for visibility of [[ChromeDriver: chrome on XP (3b4f8a46c40a42468d49039341a3244c)] -> xpath: //*[@id='navbar']//*[contains(text(),'Home')]]
+INFO    2020-10-09 22:04:48,200 [main] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2020-10-09 22:04:53,252 [main] com.cpcommunity.PageObjects.BasePage  - waiting for :-> xpath: //a[contains(.,'Login')]] for :60 seconds
+INFO    2020-10-09 22:04:53,283 [main] com.cpcommunity.PageObjects.BasePage  - -> xpath: //a[contains(.,'Login')]]is displayed
+INFO    2020-10-09 22:04:56,284 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : LOGIN
+INFO    2020-10-09 22:05:08,385 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : LOGIN
+INFO    2020-10-09 22:05:08,446 [main] com.cpcommunity.PageObjects.BasePage  - waiting for visibility of [[ChromeDriver: chrome on XP (3b4f8a46c40a42468d49039341a3244c)] -> xpath: //button[contains(.,'Login')]]
+INFO    2020-10-09 22:05:12,025 [main] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2020-10-09 22:05:17,047 [main] com.cpcommunity.PageObjects.BasePage  - Typing in : email address entered the value as : andrew74444+109@gmail.com
+INFO    2020-10-09 22:05:17,421 [main] com.cpcommunity.PageObjects.BasePage  - Typing in : password entered the value as : Admin@123
+INFO    2020-10-09 22:05:17,572 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : Login
+INFO    2020-10-09 22:05:17,679 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : Login
+INFO    2020-10-09 22:05:18,254 [main] com.cpcommunity.PageObjects.BasePage  - waiting for :-> xpath: //*[contains(text(),'Your organization license is pending for approval. Please contact administrator.')]] for :60 seconds
+INFO    2020-10-09 22:05:18,284 [main] com.cpcommunity.PageObjects.BasePage  - -> xpath: //*[contains(text(),'Your organization license is pending for approval. Please contact administrator.')]]is displayed
+INFO    2020-10-09 22:05:21,949 [main] com.cpcommunity.testScripts.community.BaseTest  - Test Execution Completed !!!
+INFO    2020-10-09 22:05:22,438 [main] com.cpcommunity.testScripts.community.BaseTest  - Inside Login Test
+INFO    2020-10-09 22:05:25,466 [main] com.cpcommunity.testScripts.community.BaseTest  - Driver Initialized !!!
+INFO    2020-10-09 22:06:43,916 [main] com.cpcommunity.PageObjects.BasePage  - waiting for visibility of [[ChromeDriver: chrome on XP (fa3f21fc8a5a8a1b1b0556fa14acddfe)] -> xpath: //*[@id='navbar']//*[contains(text(),'Home')]]
+INFO    2020-10-09 22:06:49,342 [main] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2020-10-09 22:06:54,440 [main] com.cpcommunity.PageObjects.BasePage  - waiting for :-> xpath: //a[contains(.,'Login')]] for :60 seconds
+INFO    2020-10-09 22:06:54,532 [main] com.cpcommunity.PageObjects.BasePage  - -> xpath: //a[contains(.,'Login')]]is displayed
+INFO    2020-10-09 22:06:57,534 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : LOGIN
+INFO    2020-10-09 22:07:14,669 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : LOGIN
+INFO    2020-10-09 22:07:14,756 [main] com.cpcommunity.PageObjects.BasePage  - waiting for visibility of [[ChromeDriver: chrome on XP (fa3f21fc8a5a8a1b1b0556fa14acddfe)] -> xpath: //button[contains(.,'Login')]]
+INFO    2020-10-09 22:07:18,378 [main] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2020-10-09 22:07:23,401 [main] com.cpcommunity.PageObjects.BasePage  - Typing in : email address entered the value as : andrew74444+14@gmail.com
+INFO    2020-10-09 22:07:23,754 [main] com.cpcommunity.PageObjects.BasePage  - Typing in : password entered the value as : Admin@123
+INFO    2020-10-09 22:07:23,897 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : Login
+INFO    2020-10-09 22:07:23,994 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : Login
+INFO    2020-10-09 22:07:24,451 [main] com.cpcommunity.PageObjects.BasePage  - waiting for :-> xpath: //*[contains(text(),'Your account is suspended')]] for :60 seconds
+INFO    2020-10-09 22:07:24,482 [main] com.cpcommunity.PageObjects.BasePage  - -> xpath: //*[contains(text(),'Your account is suspended')]]is displayed
+INFO    2020-10-09 22:07:27,860 [main] com.cpcommunity.testScripts.community.BaseTest  - Test Execution Completed !!!
+INFO    2020-10-09 22:07:28,521 [main] com.cpcommunity.testScripts.community.BaseTest  - Inside Login Test
+INFO    2020-10-09 22:07:31,538 [main] com.cpcommunity.testScripts.community.BaseTest  - Driver Initialized !!!
+INFO    2020-10-09 22:08:40,789 [main] com.cpcommunity.PageObjects.BasePage  - waiting for visibility of [[ChromeDriver: chrome on XP (3f91ef4cb32c28735022e47c2c81366d)] -> xpath: //*[@id='navbar']//*[contains(text(),'Home')]]
+INFO    2020-10-09 22:08:46,717 [main] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2020-10-09 22:08:51,790 [main] com.cpcommunity.PageObjects.BasePage  - waiting for :-> xpath: //a[contains(.,'Login')]] for :60 seconds
+INFO    2020-10-09 22:08:51,828 [main] com.cpcommunity.PageObjects.BasePage  - -> xpath: //a[contains(.,'Login')]]is displayed
+INFO    2020-10-09 22:08:54,829 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : LOGIN
+INFO    2020-10-09 22:09:10,612 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : LOGIN
+INFO    2020-10-09 22:09:10,747 [main] com.cpcommunity.PageObjects.BasePage  - waiting for visibility of [[ChromeDriver: chrome on XP (3f91ef4cb32c28735022e47c2c81366d)] -> xpath: //button[contains(.,'Login')]]
+INFO    2020-10-09 22:09:14,250 [main] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2020-10-09 22:09:19,256 [main] com.cpcommunity.PageObjects.BasePage  - Typing in : email address entered the value as : email
+INFO    2020-10-09 22:09:19,441 [main] com.cpcommunity.PageObjects.BasePage  - Typing in : password entered the value as : Admin@123
+INFO    2020-10-09 22:09:19,651 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : Login
+INFO    2020-10-09 22:09:19,750 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : Login
+INFO    2020-10-09 22:10:51,118 [main] com.cpcommunity.PageObjects.BasePage  - waiting for visibility of Proxy element for: AjaxElementLocator 'By.xpath: (//*[contains(text(),'Select')])[1]'
+INFO    2020-10-09 22:13:15,672 [main] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2020-10-09 22:13:21,424 [main] com.cpcommunity.testScripts.community.BaseTest  - Test Execution Completed !!!

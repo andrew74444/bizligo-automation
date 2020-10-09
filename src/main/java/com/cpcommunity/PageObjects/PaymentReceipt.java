@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.asserts.SoftAssert;
 
 public class PaymentReceipt extends BasePage {
 
@@ -38,6 +39,9 @@ public class PaymentReceipt extends BasePage {
 	@FindBy(xpath = "//*[@class='fa fa-arrow-left'] | //*[@class='fa fa-tv']")
 	WebElement advertisementsBtn;
 	
+	@FindBy(xpath = "(//h4[contains(text(),'Success')]/..)//span")
+	WebElement processed;
+	
 	
 	
 	@Override
@@ -48,10 +52,45 @@ public class PaymentReceipt extends BasePage {
 	}
 
 	
+	@FindBy(xpath="(//*[contains(text(),'This is the payment confirmation')]/..)//span[@ng-bind='data.MembershipPaymentSummary.MembershipPlanName']")
+	WebElement planName;
+	
+	
+	
+	@FindBy(xpath="((//*[contains(text(),'Plan Description')]/..)//span)[2]//*")
+	WebElement planDescription;
+	
+	@FindBy(xpath="((//*[contains(text(),'License valid upto')])/..)//strong")
+	WebElement licenseValidUpto;
+	
+	@FindBy(xpath="((//*[contains(text(),'Amount Paid')])/..)//strong/span")
+	WebElement amountPaid;
+	
+	public void B2CMemberSignupsuccess(String planName, String endDate, String planDescription, String price) {
+		SoftAssert st = new SoftAssert();
+		st.assertEquals(processed.getText(), "Your Payment processed successfully");
+		st.assertEquals(this.planName.getText(),planName);
+		st.assertEquals(this.planDescription.getText(),planDescription);
+		if(licenseValidUpto.getText().contains(endDate))
+		{
+			st.assertTrue(true);
+		}else {
+			st.assertEquals(licenseValidUpto.getText(), endDate);
+		}
+		
+		String actualAmountPaid = amountPaid.getText();
+		actualAmountPaid = actualAmountPaid.replace("$", "");
+		actualAmountPaid = actualAmountPaid.replace(".00", "");
+		st.assertEquals(actualAmountPaid,price);
+		st.assertAll();
+		
+	}
+
+	
 	public void paymentSuccess( ) {
 		
-		waitForElementToPresent(Paymentprocessed);
-		Paymentprocessed.isDisplayed();
+		waitForElementToPresent(Success);
+		Success.isDisplayed();
 		picture();
 	}
 	

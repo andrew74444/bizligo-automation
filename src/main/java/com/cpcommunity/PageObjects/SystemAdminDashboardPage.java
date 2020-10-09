@@ -25,12 +25,12 @@ public class SystemAdminDashboardPage extends BasePage {
 
 	@FindBy(xpath = "//a[contains(text(),'Pricing Plans')]")
 	WebElement PricingPlans;
-	
-	 @FindBy(xpath="")
-	 WebElement communities;
-	
-	 @FindBy(xpath="//*[text()='Manage Communities']")
-	 WebElement manageCommunity;
+
+	@FindBy(xpath = "")
+	WebElement communities;
+
+	@FindBy(xpath = "//*[text()='Manage Communities']")
+	WebElement manageCommunity;
 
 	@FindBy(xpath = "//*[@class='fa fa-angle-down']")
 	WebElement angleDown;
@@ -38,6 +38,11 @@ public class SystemAdminDashboardPage extends BasePage {
 	@FindBy(xpath = "//*[contains(text(),'Logout')]")
 	WebElement logout;
 
+	@FindBy(xpath="//*[@title='Manage Organizations/Companies']")
+	WebElement Organizations;
+	@FindBy(xpath="//*[@title='Membership Plans']/i")
+	WebElement 	membershipPlans;
+	
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 
@@ -77,9 +82,7 @@ public class SystemAdminDashboardPage extends BasePage {
 		click(logout, "logout");
 		return (HomePage) openPage(HomePage.class);
 	}
-	
-	
-	
+
 	public TACommunitiesPage navigateToCommunitiesPage() {
 		click(CommunitiesNavSideMenu, "Communities");
 		waitForElementToPresent(manageCommunity);
@@ -87,4 +90,17 @@ public class SystemAdminDashboardPage extends BasePage {
 		return (TACommunitiesPage) openPage(TACommunitiesPage.class);
 	}
 
+	public OrganizationsPage goToOrganizationsPage() {
+		click(Organizations, "Organizations");
+		return (OrganizationsPage) openPage(OrganizationsPage.class);
+	}
+
+	public TenantAdminMemberShipPlansPage goToMembershipPlansPage() {
+		scrollToElement(membershipPlans);
+		click(membershipPlans, "Membership Plans");
+		return (TenantAdminMemberShipPlansPage) openPage(TenantAdminMemberShipPlansPage.class);
+	}
+	
+	
+	
 }

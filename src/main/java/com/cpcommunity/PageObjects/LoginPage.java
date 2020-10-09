@@ -34,11 +34,14 @@ public class LoginPage extends BasePage {
 	@FindBy(xpath = "//div[@class='user-text']")
 	WebElement usertext;
 
-	@FindBy(xpath = "//li[contains(text(),'Invalid login credentials. Please try again')]")
+	@FindBy(xpath = "//*[contains(text(),'Invalid login credentials. Please try again')]")
 	WebElement Invalidlogin;
 
 	@FindBy(xpath = "//a[contains(text(),'click here')]")
 	WebElement ClickHere;
+
+	@FindBy(xpath = "//*[contains(text(),'Your organization license is pending for approval. Please contact administrator.')]")
+	WebElement pendingForApproval;
 
 	@FindBy(xpath = "//div[@class='col-xs-12 text-right']//button[@type='submit']")
 	WebElement submitBtn;
@@ -109,7 +112,7 @@ public class LoginPage extends BasePage {
 		this.login(EmailAddress, password);
 		waitForElementToPresent(Invalidlogin);
 		Invalidlogin.isDisplayed();
-
+		picture();
 		// new LoginPage(driver, );
 	}
 
@@ -141,63 +144,55 @@ public class LoginPage extends BasePage {
 		waitForElementToPresent(submitBtn);
 		AssertionHelper.verifyText(EmailAddress, ResendEmail.getText());
 		picture();
-		click(submitBtn, "submitBtn");
-		waitForElementToPresent(toastMessage);
+//		click(submitBtn, "submitBtn");
+//		waitForElementToPresent(toastMessage);
+//
+//		String m = "Verification email has been sent to " + EmailAddress;
+//		AssertionHelper.verifyText(m, toastMessage.getText());
+//		picture();
 
-		String m = "Verification email has been sent to " + EmailAddress;
-		AssertionHelper.verifyText(m, toastMessage.getText());
+	}
+
+	public SignupPage clickonSignup() {
+
+		click(signup, "sign up");
+		return (SignupPage) openPage(SignupPage.class);
+	}
+
+	public SignupPage clickHereToSignup() {
+
+		click(clickHereToSignup, "Click Here To Signup");
+		return (SignupPage) openPage(SignupPage.class);
+	}
+
+	@FindBy(xpath = "//*[contains(text(),'Your account is suspended')]")
+	WebElement suspended;
+
+	public void suspended(String email, String password) {
+
+		this.login(email, password);
+		waitForElementToPresent(suspended);
 		picture();
 
 	}
 
-	public void signup() {
+	public void waitingForApproval(String email, String password) {
 
-		click(signup, "sign up");
+		this.login(email, password);
+		waitForElementToPresent(pendingForApproval);
+		picture();
+
 	}
 
-	public void clickHereToSignup() {
+	public superAdminDashboardPage superAdminloginToApplication(String email, String password) {
+		this.login(email, password);
 
-		click(clickHereToSignup, "Click Here To Signup");
+		return (superAdminDashboardPage) openPage(superAdminDashboardPage.class);
+	}
+
+	public AccountSelectPlansPage loginWithPaymentPendingUser(String email, String password) {
+		this.login(email, password);
+		return (AccountSelectPlansPage) openPage(AccountSelectPlansPage.class);
 	}
 
 }
-
-// public JoinUserCommunity joinUserCommunityLogin(String enterEmailAddress,
-// String password) {
-//
-// this.login(enterEmailAddress, password);
-// return (JoinUserCommunity) openPage(JoinUserCommunity.class);
-//// new JoinUserCommunity(driver, );
-// }
-
-// public void clickOnClickHereLink() {
-// log.info("clicking on Click Here...");
-//// logExtentReport("clicking on Click Here...");
-// waitForElementToPresent(ClickHere, ObjectReader.reader.getExplicitWait());
-// click(ClickHere,"ClickHere");
-// }
-
-// public boolean verifySuccessLoginMsg() {
-// return new VerificationHelper(driver).isDisplayed(usertext);
-// }
-
-// public boolean verifyInvalidlogin() {
-// return new VerificationHelper(driver).isDisplayed(Invalidlogin);
-// }
-//
-// public boolean LoginPagedisplayed() {
-// return new VerificationHelper(driver).isDisplayed(LoginBtn);
-// }
-//
-// public boolean verificationMailSent() {
-//
-// return true;
-// }
-
-// public ZohoCRMPage gotoCRM() {
-//
-// click(crm,"CRM Link");
-// return () openPage(.class);
-// }
-//
-// return (ZohoCRMPage) openPage(ZohoCRMPage.class);
