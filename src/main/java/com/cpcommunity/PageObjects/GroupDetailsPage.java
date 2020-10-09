@@ -201,7 +201,7 @@ public class GroupDetailsPage extends BasePage {
 
 	public void approveMember( ) throws Exception {
 		Thread.sleep(5000);
-
+		updateClass(header, "");
 		clickElementByJavaScript(checkbox);
 		clickElementByJavaScript(Accept);
 		waitForElementToPresent(toast);
@@ -212,7 +212,7 @@ public class GroupDetailsPage extends BasePage {
 
 	public void rejectMember( ) throws Exception {
 		Thread.sleep(5000);
-		
+		updateClass(header, "");
 		clickElementByJavaScript(checkbox);
 		clickElementByJavaScript(Reject);
 		waitForElementToPresent(toast);

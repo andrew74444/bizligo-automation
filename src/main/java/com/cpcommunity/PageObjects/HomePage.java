@@ -43,7 +43,7 @@ public class HomePage extends BasePage {
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 		
-		return ExpectedConditions.visibilityOf(buildingcommunities);
+		return ExpectedConditions.visibilityOf(home);
 	}
 
 	public HomePage NavigateToHome() {
@@ -55,10 +55,19 @@ public class HomePage extends BasePage {
 	public HomePage open() {
 
 		DriverManager.getDriver().navigate().to("https://multi1.ezysubscribe.com/");
-		System.out.println("Page Opened");
+		
 		return (HomePage) openPage(HomePage.class);
 	}
 
+	
+	
+	public HomePage open(String url) {
+
+		DriverManager.getDriver().navigate().to("https://multi2.ezysubscribe.com/");
+		
+		return (HomePage) openPage(HomePage.class);
+	}
+	
 	public LoginPage clickOnLOGINBtn() throws Exception {
 
 		waitForElementToPresent(LOGINBtn);
@@ -107,6 +116,16 @@ public class HomePage extends BasePage {
 		Imagediff.check(expectedImgFileName, "\\screenshots\\HomePageAd.png");
 
 	}
+
+
+	public HomePage superAdminHomePageOpen() throws Exception {
+		DriverManager.getDriver().navigate().to("https://admin.ezysubscribe.com/");
+		
+		
+		return (HomePage) openPage(HomePage.class);
+	}
+
+
 
 	// public ZohoCRMPage gotoCRM() {
 	//

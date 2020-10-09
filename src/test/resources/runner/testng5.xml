@@ -29,6 +29,13 @@
 			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC022_Verify_User_Is_Able_To_Add_Protfolio" />
 			
 			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC027_Verify_User_Is_Able_To_Update_Interests" />	
+			<class name="com.cpcommunity.testScripts.loginPage.TC001_Verify_User_Able_Login_With_Valid_Credentials" />
+			<class name="com.cpcommunity.testScripts.loginPage.TC002_Verify_User_Able_Login_With_Invalid_Credentials" />
+			<class name="com.cpcommunity.testScripts.loginPage.TC003_Verify_Alert_Displayed_To_Email_Pending_User" />
+			<class name="com.cpcommunity.testScripts.loginPage.TC004_Verify_Organization_Pending_User_Not_Able_Login" />
+			<class name="com.cpcommunity.testScripts.loginPage.TC005_Verify_Alert_Displayed_To_Suspened_User" />
+			<class name="com.cpcommunity.testScripts.loginPage.TC006_Verify_User_Redirected_To_Select_Plans_For_Payment_Pending" />
+
 			
 		</classes>
 	</test>

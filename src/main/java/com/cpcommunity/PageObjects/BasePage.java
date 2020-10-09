@@ -1,8 +1,16 @@
 package com.cpcommunity.PageObjects;
 
 import java.awt.Robot;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -55,8 +63,8 @@ public abstract class BasePage<T> {
 	protected String ID;
 	public Logger log = Logger.getLogger(BasePage.class);
 	// private long LOAD_TIMEOUT = 200;
-	private int AJAX_ELEMENT_TIMEOUT = 20;
-	public int expTime = 18;
+	private int AJAX_ELEMENT_TIMEOUT = 60;
+	public int expTime = 60;
 	protected JavascriptExecutor exe;
 	protected Robot robot;
 	protected WebDriverWait wait;
@@ -93,6 +101,7 @@ public abstract class BasePage<T> {
 
 	private void waitForPageToLoad(ExpectedCondition pageLoadCondition) {
 		// WebDriverWait wait = new WebDriverWait(driver, LOAD_TIMEOUT);
+	log.info("waiting for "+ pageLoadCondition);
 		wait.until(pageLoadCondition);
 
 	}
@@ -170,12 +179,13 @@ public abstract class BasePage<T> {
 
 	protected void waitForElementToPresent(WebElement element) {
 
-		log.info("waiting for :" + element.toString() + " for :" + expTime + " seconds");
+		
+		log.info("waiting for :" + element.toString().substring(65) + " for :" + expTime + " seconds");
 		// System.out.println("waiting for :" + element.toString() + " for :" +
 		// timeOutInSeconds + " seconds");
 
 		wait.until(ExpectedConditions.visibilityOf(element));
-		log.info(element.toString() + "is displayed");
+		log.info(element.toString().substring(65) + "is displayed");
 
 		try {
 			Thread.sleep(2000);
@@ -198,6 +208,7 @@ public abstract class BasePage<T> {
 		log.info("Clicking on : " + elementName);
 		highlightElement(element);
 		element.click();
+		log.info("Clicked on : " + elementName);
 	}
 
 	public void type(WebElement element, String value, String elementName) {
@@ -258,6 +269,13 @@ public abstract class BasePage<T> {
 		Random random = new Random();
 		return random.nextBoolean();
 	}
+	
+	public int getnumber() {
+	    double  number = Math.random()*1000;
+	    int n = (int) number ;
+		return n;
+	}
+	
 
 	// public void picture(String ID) {
 	// try {
@@ -318,7 +336,9 @@ public abstract class BasePage<T> {
 		DateFormat dateFormat = new SimpleDateFormat("MMddHHmmss");
 		Date date = new Date();
 		// System.out.println(date)); //0809190355
+		
 		String d = dateFormat.format(date);
+		log.info(d);
 		return d;
 	}
 
@@ -375,6 +395,7 @@ public abstract class BasePage<T> {
 
 	public int stringToInt(String s) {
 		int i = Integer.parseInt(s);
+		log.info(i);
 		return i;
 	}
 
@@ -647,7 +668,7 @@ public abstract class BasePage<T> {
 	 */
 	public void clickElementByJavaScript(WebElement element) {
 		highlightElement(element);
-		log.info("Clicking" + element.toString());
+		log.info("Clicking" + element.toString().substring(65));
 		executeScript("arguments[0].click();", element);
 		try {
 			Thread.sleep(2000);
@@ -655,12 +676,12 @@ public abstract class BasePage<T> {
 
 			e.printStackTrace();
 		}
-		log.info("Clicked" + element.toString());
+		log.info("Clicked" + element.toString().substring(65));
 	}
 
 	public HashMap<String, String> getBrowserInstance() {
 		HashMap<String, String> instanceDetails = new HashMap<String, String>();
-		
+//		https://multi2.ezysubscribe.com/paymentgateways/paymentconfirmation?PaymentId=792&TransactionId=40055248987&Message=Payment%20Processed%20successfully&PaymentPurpose=MEMBERSHIP_PLAN_PURCHASE&FailedAttempts=0
 		String browserName = caps.getBrowserName();
 		String browserVersion = caps.getVersion();
 		System.out.println(browserName);
@@ -735,13 +756,64 @@ public abstract class BasePage<T> {
 	public void uploadImage(String filePath) throws IOException, InterruptedException {
 		HashMap<String, String> instanceDetails = getBrowserInstance();
 		Thread.sleep(10000);
-		if(instanceDetails.get("browserName").equalsIgnoreCase("chrome")) {
-			
+		if(instanceDetails.get("browserName").equalsIgnoreCase("chrome")) {	
 			 Runtime.getRuntime().exec(filePath);
 			 log.info("Image uploaded");
 		}
+		Thread.sleep(10000);	
+	}
+	
+	public void writeInNotePad() throws Exception {
+	
+		try {
+
+			  Path path = Paths.get(System.getProperty("user.dir")+"//src//test//resources//testdata//test");
+
+			  //java.nio.file.Files;
+			  Files.createDirectories(path);
+
+			  System.out.println("Directory is created!");
+
+			} catch (IOException e) {
+
+			  System.err.println("Failed to create directory!" + e.getMessage());
+
+			}
+	    
 		
-		Thread.sleep(10000);
+		File f = new File(System.getProperty("user.dir")+"//src//test//resources//testdata//test//text.txt");
+		f.delete();
+		Thread.sleep(3000);
+		FileWriter fw = new FileWriter(f,true);
+		BufferedWriter writer = new BufferedWriter(fw);	
+		writer.write(getDateInDDMMMYYYY()+" 1");
+		
+		writer.close();
 		
 	}
+	
+	public void readInNotePadFile() throws Exception {
+	File f = new File(System.getProperty("user.dir")+"//src//test//resources//testdata//test//text.txt");
+	
+	FileReader fr = new FileReader(f);
+	
+	BufferedReader reader = new BufferedReader(fr);
+	
+	log.info(reader.readLine());
+	reader.close();
+	}
+	
+	public void DeleteFolder () throws InterruptedException{
+		
+		Thread.sleep(3000);
+		    File myObj = new File(System.getProperty("user.dir")+"//src//test//resources//testdata//test//text.txt"); 
+		    if (myObj.delete()) { 
+		      System.out.println("Deleted the folder: " + myObj.getName());
+		    } else {
+		      System.out.println("Failed to delete the folder.");
+		    } 
+		  } 
+		
 }
+	
+	

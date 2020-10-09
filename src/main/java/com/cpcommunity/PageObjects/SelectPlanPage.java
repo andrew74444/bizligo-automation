@@ -106,6 +106,7 @@ public class SelectPlanPage extends BasePage {
 	
 	public PayPalPayment paymentByPayPal() {
 		click(payPal, "payPal button");
+		waitForElementToPresent(payPalProceedbtn);
 		click(payPalProceedbtn,"Proceed button");		
 		return (PayPalPayment) openPage(PayPalPayment.class);
 	}
