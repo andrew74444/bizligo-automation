@@ -12,15 +12,15 @@ import com.cpcommunity.PageObjects.*;
 import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.ExcelReader;
 
-public class TC001_Purchase_Pricing_Plan_With_PayPal extends BaseTest {
+public class TC501_Purchase_Pricing_Plan_With_PayPal extends BaseTest {
 
 	PaymentReceipt PaymentReceipt;
 	
 	@Test(dataProviderClass = DataProviders.class, dataProvider = "masterDP")
-	public void TC001(Hashtable<String, String> data) throws Exception {
+	public void TC501(Hashtable<String, String> data) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC001", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC501", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		System.out.println(data.get("duration"));
 		openBrowser(data.get("browser"));
