@@ -213,8 +213,9 @@ public class GroupDetailsPage extends BasePage {
 	public void rejectMember( ) throws Exception {
 		Thread.sleep(5000);
 		updateClass(header, "");
+		scrollToElement(checkbox);
 		clickElementByJavaScript(checkbox);
-		clickElementByJavaScript(Reject);
+		click(Reject,"Reject");
 		waitForElementToPresent(toast);
 		AssertionHelper.verifyText(toast.getText(), "Selected requests Rejected successfully");
 		picture();
