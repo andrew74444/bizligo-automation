@@ -14,12 +14,8 @@
 	<test name="Test 1" preserve-order="true">
 		<classes>
 			
-			<class name="com.cpcommunity.testScripts.loginPage.TC001_Verify_User_Able_Login_With_Valid_Credentials" />
-			<class name="com.cpcommunity.testScripts.loginPage.TC002_Verify_User_Able_Login_With_Invalid_Credentials" />
-			<class name="com.cpcommunity.testScripts.loginPage.TC003_Verify_Alert_Displayed_To_Email_Pending_User" />
-			<class name="com.cpcommunity.testScripts.loginPage.TC004_Verify_Organization_Pending_User_Not_Able_Login" />
-			<class name="com.cpcommunity.testScripts.loginPage.TC005_Verify_Alert_Displayed_To_Suspened_User" />
-			<class name="com.cpcommunity.testScripts.loginPage.TC006_Verify_User_Redirected_To_Select_Plans_For_Payment_Pending" />
+			<class name="com.cpcommunity.testScripts.community.TC105_Group_Admin_Approve_And_Reject_Group_Requests" />
+			
 
 		</classes>
 	</test>
