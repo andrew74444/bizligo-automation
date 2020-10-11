@@ -28,31 +28,52 @@ public class TC175_Verify_Membership_Plan_Is_Not_Available_For_Purchased_Pricing
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
+
 		CreateCommunityPage CreateCommunityPage = MyCommunitiesPage.clickOnCreateCommunity();
-		CreateCommunityPage.CreateCommunity(data.get("communityName"), data.get("Networking"), data.get("Marketing"),data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"),data.get("InvestInBusiness"), data.get("Other"), data.get("About"), data.get("Category"),data.get("type"));
+		try {
+			CreateCommunityPage.CreateCommunity(data.get("communityName"), data.get("Networking"), data.get("Marketing"),data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"),data.get("InvestInBusiness"), data.get("Other"), data.get("About"), data.get("Category"),data.get("type"));
+	
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+				
+		
 		home = EcoSystemPage.logout();
 		home.clickOnLOGINBtn();
 		SystemAdminDashboardPage systemAdminDashboardPage = login.SystemAdminloginToApplication(data.get("email1"),	data.get("password"));
 		PendingCommunitiesPage PendingCommunitiesPage = systemAdminDashboardPage.naviagteToPendingCommunities();
-		PendingCommunitiesPage.approveCommunity(data.get("communityName"));
+
+		try {
+			PendingCommunitiesPage.approveCommunity(data.get("communityName"));
+				
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		home = systemAdminDashboardPage.logout();
 		login = home.clickOnLOGINBtn();
 		EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		EcoSystemPage = EcoSystemPage.goToMyEcosystem();
 		MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		SelectPlanPage SelectPlanPage = MyCommunitiesPage.completeSetup(data.get("communityName"));
-		SelectPlanPage.selectPaidPlan(data.get("planName"));
-		if (data.get("paymentGateway").equalsIgnoreCase("paypal")) 
-		{
-			PayPalPayment PayPalPayment = SelectPlanPage.paymentByPayPal();
-			PaymentReceipt = PayPalPayment.Payment(data.get("email"), data.get("password"));
-		} else if (data.get("paymentGateway").equalsIgnoreCase("authorize")) 
-		{
-			AuthorizeGateway AuthorizeGateway = SelectPlanPage.paymentByauthorize();
-			PaymentReceipt = AuthorizeGateway.payment();
+		CommunityDetailsPage CommunityDetailsPage;
+		try {
+			SelectPlanPage SelectPlanPage = MyCommunitiesPage.completeSetup(data.get("communityName"));
+			SelectPlanPage.selectPaidPlan(data.get("planName"));
+			if (data.get("paymentGateway").equalsIgnoreCase("paypal")) 
+			{
+				PayPalPayment PayPalPayment = SelectPlanPage.paymentByPayPal();
+				PaymentReceipt = PayPalPayment.Payment(data.get("email"), data.get("password"));
+			} else if (data.get("paymentGateway").equalsIgnoreCase("authorize")) 
+			{
+				AuthorizeGateway AuthorizeGateway = SelectPlanPage.paymentByauthorize();
+				PaymentReceipt = AuthorizeGateway.payment();
+			}
+			PaymentReceipt.paymentSuccess();
+			 CommunityDetailsPage = PaymentReceipt.viewCommunity();	
+		} catch (Exception e) {
+			CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		}
-		PaymentReceipt.paymentSuccess();
-		CommunityDetailsPage CommunityDetailsPage = PaymentReceipt.viewCommunity();
+		
 		EditCommunityPage editCommunityPage = CommunityDetailsPage.managecommunity();
 		CommunityDashboardPage communityDashboardPage = editCommunityPage.saveCommunity();
 		communityDashboardPage.checkMembershipPlansNotAvailable();

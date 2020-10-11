@@ -50,7 +50,7 @@ public class AuthorizeMerchanLogin extends BasePage {
 		return ExpectedConditions.visibilityOf(username);
 	}
 
-	public String MerchantLogin() throws Exception {
+	public String getTransactionID() throws Exception {
 
 		
 		
@@ -78,7 +78,7 @@ public class AuthorizeMerchanLogin extends BasePage {
 		return ID;
 	}
 	
-	public PaymentConfirmation confirmation () {
+	public PaymentConfirmation goPaymentConfirmationPage () {
 	
 		return (PaymentConfirmation) openPage(PaymentConfirmation.class);
 	}

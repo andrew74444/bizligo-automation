@@ -63,8 +63,8 @@ public abstract class BasePage<T> {
 	protected String ID;
 	public Logger log = Logger.getLogger(BasePage.class);
 	// private long LOAD_TIMEOUT = 200;
-	private int AJAX_ELEMENT_TIMEOUT = 60;
-	public int expTime = 60;
+	private int AJAX_ELEMENT_TIMEOUT = 5;
+	public int expTime = 5;
 	protected JavascriptExecutor exe;
 	protected Robot robot;
 	protected WebDriverWait wait;
@@ -185,7 +185,7 @@ public abstract class BasePage<T> {
 		// timeOutInSeconds + " seconds");
 
 		wait.until(ExpectedConditions.visibilityOf(element));
-		log.info(element.toString().substring(65) + "is displayed");
+		log.info(element.toString().substring(60) + "is displayed");
 
 		try {
 			Thread.sleep(2000);
@@ -231,11 +231,12 @@ public abstract class BasePage<T> {
 	}
 
 	public void selectByVisibleText(WebElement element, String value, String elementName) {
-		log.info("Selecting the +" + elementName + "+ value as : " + value);
+		log.info("Selecting the " + elementName + "value as : " + value);
 		ExtentListeners.testReport.get().info("Selecting the " + elementName + " value as : " + value);
 		Select sel = new Select(element);
 		highlightElement(element);
 		sel.selectByVisibleText(value);
+		log.info("Selected the " + elementName + "value as : " + value);
 	}
 
 	public void selectUsingIndex(WebElement element, int index, String elementName) {
@@ -763,7 +764,7 @@ public abstract class BasePage<T> {
 		Thread.sleep(10000);	
 	}
 	
-	public void writeInNotePad() throws Exception {
+	public void writeInNotePad(String value, String fileName) throws Exception {
 	
 		try {
 
@@ -781,26 +782,27 @@ public abstract class BasePage<T> {
 			}
 	    
 		
-		File f = new File(System.getProperty("user.dir")+"//src//test//resources//testdata//test//text.txt");
+		File f = new File(System.getProperty("user.dir")+"//src//test//resources//testdata//test//"+fileName+".txt");
 		f.delete();
 		Thread.sleep(3000);
 		FileWriter fw = new FileWriter(f,true);
 		BufferedWriter writer = new BufferedWriter(fw);	
-		writer.write(getDateInDDMMMYYYY()+" 1");
+		writer.write(value);
 		
 		writer.close();
 		
 	}
 	
-	public void readInNotePadFile() throws Exception {
-	File f = new File(System.getProperty("user.dir")+"//src//test//resources//testdata//test//text.txt");
+	public String readInNotePadFile(String fileName) throws Exception {
+	File f = new File(System.getProperty("user.dir")+"//src//test//resources//testdata//test//"+fileName+".txt");
 	
 	FileReader fr = new FileReader(f);
 	
 	BufferedReader reader = new BufferedReader(fr);
-	
-	log.info(reader.readLine());
+	String value = reader.readLine();
+	log.info(value);
 	reader.close();
+	return value;
 	}
 	
 	public void DeleteFolder () throws InterruptedException{

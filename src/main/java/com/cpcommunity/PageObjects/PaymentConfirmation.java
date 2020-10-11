@@ -77,7 +77,7 @@ public class PaymentConfirmation extends BasePage {
 		// new PaymentGatewaysPage(driver, );
 	}
 
-	public AuthorizeMerchanLogin login() {
+	public AuthorizeMerchanLogin gotoMerchanLoginPage() {
 
 		return (AuthorizeMerchanLogin) openPage(AuthorizeMerchanLogin.class);
 	}
@@ -141,6 +141,11 @@ public class PaymentConfirmation extends BasePage {
 	               // new PaymentGatewaysPage(driver, );
 	
 	       }
+
+		public String getAmountPaid() throws Exception {
+			
+			return readInNotePadFile("orderTotalAmount");
+		}
 	
 	
 

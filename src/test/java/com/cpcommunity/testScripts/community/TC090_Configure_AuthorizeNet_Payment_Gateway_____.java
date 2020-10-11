@@ -37,9 +37,9 @@ public class TC090_Configure_AuthorizeNet_Payment_Gateway_____ extends BaseTest 
 		AuthorizeGateway AuthorizeGateway =SetupAuthorizePage.SetUpAuthorizeGateway();
 		String amount = AuthorizeGateway.makePayment();
 		PaymentConfirmation PaymentConfirmation = AuthorizeGateway.paymentConfirmation();
-		AuthorizeMerchanLogin AuthorizeMerchanLogin = PaymentConfirmation.login(); 
-		String TransactionID =AuthorizeMerchanLogin.MerchantLogin();
-		PaymentConfirmation = AuthorizeMerchanLogin.confirmation();		
+		AuthorizeMerchanLogin AuthorizeMerchanLogin = PaymentConfirmation.gotoMerchanLoginPage(); 
+		String TransactionID =AuthorizeMerchanLogin.getTransactionID();
+		PaymentConfirmation = AuthorizeMerchanLogin.goPaymentConfirmationPage();		
 		PaymentGatewaysPage = PaymentConfirmation.EnterTransactionDetails(amount, TransactionID);
 		
 		//Assert.fail("Failing the login test");

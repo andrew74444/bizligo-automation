@@ -69,6 +69,8 @@ public class SetupAuthorizePage extends BasePage{
 	public void SelectCheckBox()
 	 {
 		 String CheckBoxSelected = UseSandboxCheckBox.getAttribute("value");
+		 log.info(CheckBoxSelected);
+		 
 		 if(CheckBoxSelected.equalsIgnoreCase("false"))
 		 {
 			 UseSandboxCheckBox.click();
@@ -79,6 +81,7 @@ public class SetupAuthorizePage extends BasePage{
 	
 	public AuthorizeGateway SetUpAuthorizeGateway() throws Exception
 	{
+		
 		 this.SelectCheckBox();
 		 txtAPILoginID.clear();
 		 txtAPILoginID.sendKeys("5C7yQ3NqTGR");

@@ -177,6 +177,7 @@ public class AuthorizeGateway extends BasePage {
 		Thread.sleep(10000);
 
 		orderTotalAmount = orderTotalAmount.replace("$", "");
+		writeInNotePad(orderTotalAmount, "orderTotalAmount");
 
 		return orderTotalAmount;
 	}
