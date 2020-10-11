@@ -106,6 +106,15 @@ public class PaymentGatewaysPage extends BasePage {
 		// new SetupAuthorizePage(driver, );
 	}
 
+	
+	public PaymentConfirmation gotoConfirmPaymentPage() throws Exception {
+
+		
+		
+		return (PaymentConfirmation) openPage(PaymentConfirmation.class);
+		// new SetupAuthorizePage(driver, );
+	}
+	
 	public void activateCash() throws Exception {
 
 		Cash.click();

@@ -14,7 +14,7 @@
 	<test name="Test 1" preserve-order="true">
 		<classes>
 			
-			<class name="com.cpcommunity.testScripts.community.TC105_Group_Admin_Approve_And_Reject_Group_Requests" />
+			<class name="com.cpcommunity.testScripts.community.TC175_Verify_Membership_Plan_Is_Not_Available_For_Purchased_Pricing_Plan_Without_Membership_Plan_To_CA" />
 			
 
 		</classes>

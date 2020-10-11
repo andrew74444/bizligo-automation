@@ -16,10 +16,10 @@ public class TC174_Verify_CA_Is_Not_Able_Configure_Membership_Plan_More_Than_Pri
 	PaymentReceipt PaymentReceipt;
 	
 	@Test(dataProviderClass = DataProviders.class, dataProvider = "masterDP")
-	public void TC001(Hashtable<String, String> data) throws Exception {
+	public void TC501(Hashtable<String, String> data) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC001", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC501", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
