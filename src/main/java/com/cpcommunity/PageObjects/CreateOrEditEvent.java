@@ -335,12 +335,18 @@ public class CreateOrEditEvent extends BasePage {
 		this.FillEventDetails(data, StartTime, endTime, hour, m, AmPm, endHour);
 		clickElementByJavaScript(SaveEventdetailsBtn);
 		this.AddTicketDetails(data, StartTime, endTime, hour, m, AmPm, endHour);
+		Thread.sleep(1000);
+		
 		click(TicketsSaveAndContinueBtn, "Save And Continue");
 		this.AdditionalInformationDetails(data, StartTime, endTime, hour, m, AmPm, endHour);
 		this.EventResources(data);
 		return (CommunityEventsPage) openPage(CommunityEventsPage.class);
 	}
 
+	@FindBy(xpath="//*[@class='all-tickets']//tbody/tr[1]/td[3]")
+	WebElement addedTicketsQuantity;
+
+	
 	public void eventAvailableTo(String isPrivateCommunityEvent, String isPrivateGroupEvent, String publicGroupName,
 			String privateGroupName) throws Exception {
 
@@ -461,8 +467,11 @@ public class CreateOrEditEvent extends BasePage {
 
 		waitForElementToPresent(AddTicketBtn);
 		Thread.sleep(7000);
+
 		click(AddTicketBtn, "Add Ticket");
 		Thread.sleep(1000);
+		waitForElementToPresent(Ticket);
+		TicketQunatity.click();
 		type(Ticket, data.get("ticketName"), "Ticket");
 
 		if (data.get("isPaidEvent").equalsIgnoreCase("Yes")) {
