@@ -741,6 +741,24 @@ public abstract class BasePage<T> {
 		screen.click(image);
 
 	}
+	
+	public void typeByVisibleScreen(String imagePath, String value) throws FindFailed {
+		// We have to create Screen class object to access method
+		Screen screen = new Screen();
+		// Create object of Pattern class and specify the images path
+		Pattern image = new Pattern(imagePath);
+
+//		screen.wait(image, 10);
+		// using screen object we can call click method which will accept image path and
+		// will perform //action
+		// This will click on gmail image on google home page
+//		screen.type(imagePath);
+		screen.type(image,value);
+
+
+	}
+	
+	
 
 	public String projectFloder(String path) {
 		return System.getProperty("user.dir") + path;
