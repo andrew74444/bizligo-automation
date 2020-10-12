@@ -312,9 +312,34 @@ public class Discussions extends BasePage {
 	}
 
 	public void CheckNonMemberIsNotAbleToPostLikeComment() throws Exception {
+		
+		
 		click(discussions, "discussions");
-		waitForElementToPresent(Filetab);
-		click(Filetab, "Filetab");
+
+		waitForElementToPresent(searchDiscussion);
+		waitForElementToPresent(createNewPost);
+		click(createNewPost, "create New Post");
+		waitForElementToPresent(PostBtn);
+		try {
+			updateClass(header, "");
+		} catch (Exception e) {
+			updateClass(groupPageHeader, "");
+		}
+
+		scrollIntoView(Searchbtn);
+
+		type(discussionTitle, "discussion Title", "discussion Title");
+
+		driver.switchTo().frame(iframe);
+		try {
+			Thread.sleep(10000);
+			click(Postfield, "Post field");
+		} catch (Exception e) {
+			
+		}
+		
+		
+		driver.switchTo().defaultContent();
 
 		waitForElementToPresent(JoinThisCommunityCancelButton);
 		click(JoinThisCommunityCancelButton, "Cancel Button");

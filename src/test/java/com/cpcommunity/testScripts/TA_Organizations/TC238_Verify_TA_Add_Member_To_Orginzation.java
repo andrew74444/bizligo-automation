@@ -11,14 +11,14 @@ import com.cpcommunity.testScripts.community.BaseTest;
 import com.cpcommunity.utilities.*;
 
 
-public class TC203_Verify_TA_Add_Member_To_Orginzation extends BaseTest {
+public class TC238_Verify_TA_Add_Member_To_Orginzation extends BaseTest {
 
 	
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC203(Hashtable<String,String> data) throws Exception {
+	public void TC238(Hashtable<String,String> data) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC203", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC238", data.get("Runmode"), excel);
 		log.info("Inside Login Test");			
 		openBrowser(data.get("browser"));
 		log.info(data);
