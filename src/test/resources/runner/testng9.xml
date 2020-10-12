@@ -14,7 +14,7 @@
 	<test name="Test 1" preserve-order="true">
 		<classes>
 			
-			<class name="com.cpcommunity.testScripts.Create_Free_Event.TC141_Create_Free_Event" />
+			<class name="com.cpcommunity.testScripts.community.TC179_Verify_Member_Is_Able_Update_Membership_Plan" />
 			
 
 		</classes>

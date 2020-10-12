@@ -478,7 +478,7 @@ public class GlobalCommunitesPage extends BasePage {
 	public CommunityDetailsPage navigateToExpiredCommunityDetailsPage(String communityName) throws Exception {
 		Date date = new Date();
 		Date newDate = subtractDays(date, 2);
-		SimpleDateFormat formatter = new SimpleDateFormat("dd MMMM yyyy");
+		SimpleDateFormat formatter = new SimpleDateFormat("dd MMM yyyy");
 		String strDate = formatter.format(newDate);
 		this.searchCommunity(communityName+" "+strDate);
 		WebElement ele = driver.findElement(By.xpath("//a[contains(text(),'" + communityName+" "+strDate + "')]"));

@@ -480,9 +480,11 @@ public class CreateOrEditEvent extends BasePage {
 		selectByVisibleText(availableTo, "All", "All");
 		executeScript("arguments[0].value='" + data.get("totalTickets") + "';", TicketQunatity);
 		TicketQunatity.click();
-		robot.keyPress(KeyEvent.VK_UP);
 		Thread.sleep(2000);
+		robot.keyPress(KeyEvent.VK_UP);
+		Thread.sleep(5000);
 		robot.keyPress(KeyEvent.VK_DOWN);
+		Thread.sleep(5000);
 		selectByVisibleText(TicketType, data.get("ticketType"), "Ticket Type");
 
 		int TableTicket = Integer.parseInt(data.get("noOfTicketPerTable"));

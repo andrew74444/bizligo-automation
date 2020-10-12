@@ -11,15 +11,16 @@ import com.cpcommunity.testScripts.community.BaseTest;
 import com.cpcommunity.utilities.*;
 
 
-public class TC202_Verify_TA_Add_Location_To_Orginzation extends BaseTest {
+public class TC236_Verify_TA_Able_Create_Organization extends BaseTest {
 
 	
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC201(Hashtable<String,String> data) throws Exception {
+	public void TC236(Hashtable<String,String> data) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC201", data.get("Runmode"), excel);
-		log.info("Inside Login Test");			
+		DataUtil.checkExecution("master", "TC236", data.get("Runmode"), excel);
+		log.info("Inside Login Test");
+		log.info(data);
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));		
 		HomePage home = new HomePage().open();

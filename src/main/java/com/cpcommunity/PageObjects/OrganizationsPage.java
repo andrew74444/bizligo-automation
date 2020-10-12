@@ -177,7 +177,7 @@ public class OrganizationsPage extends BasePage {
 
 	public void addMember(String companyNameSearch, String firstName, String LastName, String username, String password,
 			String confirmpassword, String location, String isContactPrimary) throws Exception {
-
+		companyNameSearch = companyNameSearch + getSystemCurrentDate() + getSystemCurrentMonth();
 		organizationSearch(companyNameSearch);
 
 		click(manageMembers, "manage Members");
@@ -242,7 +242,7 @@ public class OrganizationsPage extends BasePage {
 	// table[@id='orgTable']//td[3]
 
 	public void organizationSearch(String companyNameSearch) throws Exception {
-		companyNameSearch = companyNameSearch + getDateInDDMMMYYYY();
+		
 		type(this.companyNameSearch, companyNameSearch, "company Name Search");
 		click(btnSearch, "Search");
 		waitForElementToPresent(showing1To1Of1Entries);
