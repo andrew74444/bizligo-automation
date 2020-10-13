@@ -113,6 +113,8 @@ public abstract class BasePage<T> {
 	public String screenshotName;
 
 	public void aShot() {
+try {
+	
 
 		Screenshot fpScreenshot;
 
@@ -155,6 +157,10 @@ public abstract class BasePage<T> {
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		
+} catch (Exception e) {
+			// TODO: handle exception
 		}
 	}
 
