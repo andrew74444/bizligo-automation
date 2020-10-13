@@ -16,30 +16,13 @@
 	<test name="Test 1" preserve-order="true">
 		<classes>
 			
-			<class name="com.cpcommunity.testScripts.TA_Organizations.TC236_Verify_TA_Able_Create_Organization" />
+			<class name="com.cpcommunity.testScripts.TA_Organizations.loginPage.TC001_Verify_User_Able_Login_With_Valid_Credentials" />
 			
 
 		</classes>
 	</test>
 
 
-	<test name="Test 2" preserve-order="true">
-		<classes>
-			
-			<class name="com.cpcommunity.testScripts.TA_Organizations.TC237_Verify_TA_Add_Location_To_Orginzation" />
-			
-
-		</classes>
-	</test>
-
-	<test name="Test 3" preserve-order="true">
-		<classes>
-			
-			<class name="com.cpcommunity.testScripts.TA_Organizations.TC238_Verify_TA_Add_Member_To_Orginzation" />
-			
-
-		</classes>
-	</test>
 
 
 
