@@ -16,7 +16,7 @@
 	<test name="Test 1" preserve-order="true">
 		<classes>
 			
-			<class name="com.cpcommunity.testScripts.TA_Organizations.loginPage.TC001_Verify_User_Able_Login_With_Valid_Credentials" />
+			<class name="com.cpcommunity.testScripts.loginPage.TC001_Verify_User_Able_Login_With_Valid_Credentials" />
 			
 
 		</classes>
