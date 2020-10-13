@@ -21,6 +21,7 @@ import java.util.concurrent.TimeUnit;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
@@ -404,7 +405,7 @@ public class BaseTest {
 				
 		                // Set the experimental option
 				options.setExperimentalOption("prefs", prefs);
-		
+				options.addArguments("headless");
 		
 		if (DriverFactory.isRemote()) {
 			DesiredCapabilities cap = null;
@@ -472,12 +473,20 @@ public class BaseTest {
 
 			e.printStackTrace();
 		}
-		
+		System.out.println(driver.manage().window().getSize());
+
+        //Create object of Dimensions class
+        Dimension d = new Dimension(1382, 744);
+
+        //Resize the current window to the given dimension
+        driver.manage().window().setSize(d);
+        System.out.println(driver.manage().window().getSize());
 		
 		
 		DriverManager.setWebDriver(driver);
 		log.info("Driver Initialized !!!");
 		DriverManager.getDriver().manage().window().maximize();
+		System.out.println(driver.manage().window().getSize());
 		DriverManager.getDriver().manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 //		SessionId sessionid = ((RemoteWebDriver) driver).getSessionId();
 //		System.out.println(sessionid);
