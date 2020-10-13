@@ -190,7 +190,7 @@ public class OrganizationsPage extends BasePage {
 		type(firstname, firstName, "last Name");
 		type(lastname, LastName, "last Name");
 		if (username.length() == 0) {
-			username = "andrew74444+a" + getSystemCurrentDate() + getSystemCurrentMonth() + "@gmail.com";
+			username = "andrew74444+a" + currentTime()+ "@gmail.com";
 		}
 		System.out.println(username);
 		type(this.username, username, "Email");
@@ -210,12 +210,14 @@ public class OrganizationsPage extends BasePage {
 		click(save, "save");
 		waitForElementToPresent(okBtn);
 		click(okBtn, "Ok Button");
+		waitForElementToPresent(showing1To1Of1Entries);
 		picture();
 	}
 
 	public void addLocation(String companyNameSearch, String locationName, String locationType, String address,
 			String ph, String ext, String fax) throws Exception {
-
+		companyNameSearch = companyNameSearch + getSystemCurrentDate() + getSystemCurrentMonth();
+		
 		organizationSearch(companyNameSearch);
 		waitForElementToPresent(this.manageLocation);
 		Thread.sleep(5000);

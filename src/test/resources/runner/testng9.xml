@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite" parallel="false" thread-count="8">
+<suite name="Suite" parallel="classes" thread-count="8">
 
 	<listeners>
 		<listener
@@ -11,10 +11,31 @@
 
 	<!-- 167 -->
 
+
+
 	<test name="Test 1" preserve-order="true">
 		<classes>
 			
-			<class name="com.cpcommunity.testScripts.community.TC179_Verify_Member_Is_Able_Update_Membership_Plan" />
+			<class name="com.cpcommunity.testScripts.TA_Organizations.TC236_Verify_TA_Able_Create_Organization" />
+			
+
+		</classes>
+	</test>
+
+
+	<test name="Test 2" preserve-order="true">
+		<classes>
+			
+			<class name="com.cpcommunity.testScripts.TA_Organizations.TC237_Verify_TA_Add_Location_To_Orginzation" />
+			
+
+		</classes>
+	</test>
+
+	<test name="Test 3" preserve-order="true">
+		<classes>
+			
+			<class name="com.cpcommunity.testScripts.TA_Organizations.TC238_Verify_TA_Add_Member_To_Orginzation" />
 			
 
 		</classes>

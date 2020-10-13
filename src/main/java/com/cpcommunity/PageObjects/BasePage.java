@@ -823,16 +823,29 @@ public abstract class BasePage<T> {
 	return value;
 	}
 	
-	public void DeleteFolder () throws InterruptedException{
+	public void deleteFile (String path) throws InterruptedException{
 		
 		Thread.sleep(3000);
-		    File myObj = new File(System.getProperty("user.dir")+"//src//test//resources//testdata//test//text.txt"); 
+		    File myObj = new File(path); 
 		    if (myObj.delete()) { 
 		      System.out.println("Deleted the folder: " + myObj.getName());
 		    } else {
 		      System.out.println("Failed to delete the folder.");
 		    } 
-		  } 
+		  }
+	
+	
+	public void getAllFiles() throws InterruptedException {
+		File directoryPath = new File(System.getProperty("user.dir")+"//src//test//resources//testdata//test");
+	      //List of all files and directories
+	      String contents[] = directoryPath.list();
+	      System.out.println("List of files and directories in the specified directory:");
+	      for(int i=0; i<contents.length; i++) {
+	         System.out.println(contents[i]);
+	         deleteFile(System.getProperty("user.dir")+"//src//test//resources//testdata//test//"+contents[i]);
+	      }
+	}
+	
 		
 }
 	
