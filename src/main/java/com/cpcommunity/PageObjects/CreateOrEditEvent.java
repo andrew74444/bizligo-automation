@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -480,11 +481,20 @@ public class CreateOrEditEvent extends BasePage {
 		selectByVisibleText(availableTo, "All", "All");
 		executeScript("arguments[0].value='" + data.get("totalTickets") + "';", TicketQunatity);
 		TicketQunatity.click();
-		Thread.sleep(2000);
-		robot.keyPress(KeyEvent.VK_UP);
+		TicketQunatity.sendKeys(Keys.UP);
+//		Actions ac = new Actions(driver);
+//		ac.keyUp(TicketQunatity, keyu);
+//		Thread.sleep(2000);
+//		robot.keyPress(KeyEvent.VK_UP);
 		Thread.sleep(5000);
-		robot.keyPress(KeyEvent.VK_DOWN);
+//		robot.keyPress(KeyEvent.VK_DOWN);
+//		Thread.sleep(5000);
+		TicketQunatity.sendKeys(Keys.DOWN);
 		Thread.sleep(5000);
+		TicketQunatity.sendKeys(Keys.ARROW_UP);
+		Thread.sleep(5000);
+		TicketQunatity.sendKeys(Keys.ARROW_DOWN);
+		
 		selectByVisibleText(TicketType, data.get("ticketType"), "Ticket Type");
 
 		int TableTicket = Integer.parseInt(data.get("noOfTicketPerTable"));
