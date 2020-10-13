@@ -36,6 +36,7 @@
 			<class name="com.cpcommunity.testScripts.loginPage.TC005_Verify_Alert_Displayed_To_Suspened_User" />
 			<class name="com.cpcommunity.testScripts.loginPage.TC006_Verify_User_Redirected_To_Select_Plans_For_Payment_Pending" />
 			<class	name="com.cpcommunity.testScripts.community.TC205_Tenant_Admin_Create_Community" />
+			<class name="com.cpcommunity.testScripts.TA_Organizations.TC236_Verify_TA_Able_Create_Organization" />
 			
 		</classes>
 	</test>
@@ -54,7 +55,7 @@
 			<class name="com.cpcommunity.testScripts.community.TC206_Tenant_Admin_Add_Member_To_Community" />
 			<class name="com.cpcommunity.testScripts.community.TC214_Verify_Active_Pricing_Plans_Count_is_Same_In_The_Pricing_Plans_Dropdown_While_Creating_A_Community" />
 					
-								
+			<class name="com.cpcommunity.testScripts.TA_Organizations.TC237_Verify_TA_Add_Location_To_Orginzation" />								
 		</classes>
 	</test>
 
@@ -67,6 +68,8 @@
 			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC026_Verify_User_Is_Able_To_Update_Skills" />
 			<class name="com.cpcommunity.testScripts.community.TC207_Tenant_Admin_Make_Admin_Community" />
 			<class name="com.cpcommunity.testScripts.community.TC212_Verify_TA_Created_Community_Is_Not_Displayed_In_Pending_Communities" />
+			<class name="com.cpcommunity.testScripts.TA_Organizations.TC238_Verify_TA_Add_Member_To_Orginzation" />
+			
 		</classes>
 	</test>
 	

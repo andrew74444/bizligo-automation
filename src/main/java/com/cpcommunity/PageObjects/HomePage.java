@@ -52,8 +52,8 @@ public class HomePage extends BasePage {
 		// new GlobalCareers(driver, );
 	}
 
-	public HomePage open() {
-
+	public HomePage open() throws InterruptedException {
+		
 		DriverManager.getDriver().navigate().to("https://multi1.ezysubscribe.com/");
 		
 		return (HomePage) openPage(HomePage.class);
@@ -70,6 +70,8 @@ public class HomePage extends BasePage {
 	
 	public LoginPage clickOnLOGINBtn() throws Exception {
 
+		
+		
 		waitForElementToPresent(LOGINBtn);
 		Thread.sleep(1000);
 		click(LOGINBtn, "LOGIN");
