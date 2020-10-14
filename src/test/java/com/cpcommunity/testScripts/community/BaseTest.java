@@ -34,6 +34,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import com.cpcommunity.ExtentListeners.ExtentListeners;
+import com.cpcommunity.ExtentListeners2.ExtentListeners2;
 import com.cpcommunity.utilities.DriverCapabilities;
 import com.cpcommunity.utilities.DriverFactory;
 import com.cpcommunity.utilities.DriverManager;
@@ -367,6 +368,7 @@ public class BaseTest {
 	public void logInfo(String message) {
 
 		ExtentListeners.testReport.get().info(message);
+		ExtentListeners2.testReport.get().info(message);
 	}
 
 	public void configureLogging() {

@@ -12,7 +12,7 @@ import com.cpcommunity.PageObjects.*;
 import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.ExcelReader;
 
-public class TC501_Purchase_Pricing_Plan_With_PayPal extends BaseTest {
+public class TC501_Purchase_Pricing_Plan_To_Community extends BaseTest {
 
 	PaymentReceipt PaymentReceipt;
 	CommunityDetailsPage communityDetailsPage;
