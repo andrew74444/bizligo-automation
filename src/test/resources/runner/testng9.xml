@@ -5,6 +5,8 @@
 	<listeners>
 		<listener
 			class-name="com.cpcommunity.ExtentListeners.ExtentListeners"></listener>
+			<listener
+			class-name="com.cpcommunity.ExtentListeners2.ExtentListeners2"></listener>
 		<listener
 			class-name="com.uiFramework.pamTen.cpcommunity.helper.listener.RetryListener" />
 	</listeners>
@@ -15,7 +17,7 @@
 
 	<test name="Test 1" preserve-order="true">
 		<classes>
-			<class name="com.cpcommunity.testScripts.loginPage.TC001_Verify_User_Able_Login_With_Valid_Credentials" />
+			<class name="com.cpcommunity.testScripts.community.TC090_Configure_AuthorizeNet_Payment_Gateway_____" />
 			
 			
 

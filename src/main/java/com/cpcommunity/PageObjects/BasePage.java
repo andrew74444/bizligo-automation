@@ -44,8 +44,8 @@ import org.testng.asserts.SoftAssert;
 
 import com.assertthat.selenium_shutterbug.core.Shutterbug;
 import com.aventstack.extentreports.MediaEntityBuilder;
-import com.cpcommunity.ExtentListeners.ExtentListeners;
-import com.cpcommunity.ExtentListeners.ExtentManager;
+import com.cpcommunity.ExtentListeners.*;
+import com.cpcommunity.ExtentListeners2.*;
 import com.cpcommunity.utilities.DriverCapabilities;
 import com.cpcommunity.utilities.DriverManager;
 import com.cpcommunity.utilities.JavaScript;
@@ -211,11 +211,13 @@ try {
 	public void click(WebElement element, String elementName) {
 
 		ExtentListeners.testReport.get().info("Clicking on : " + elementName);
+		ExtentListeners2.testReport.get().info("Clicking on : " + elementName);
 		// System.out.println("Clicking on : "+elementName);
 		log.info("Clicking on : " + elementName);
 		highlightElement(element);
 		element.click();
 		log.info("Clicked on : " + elementName);
+//		ExtentListeners2.testReport.get().info("Clicked on : " + elementName);
 	}
 
 	public void type(WebElement element, String value, String elementName) {
@@ -223,9 +225,11 @@ try {
 		// "+value);
 		log.info("Typing in : " + elementName + " entered the value as : " + value);
 		ExtentListeners.testReport.get().info("Typing in : " + elementName + " entered the value as : " + value);
+		ExtentListeners2.testReport.get().info("Typing in : " + elementName + " entered the value as : " + value);
 		element.clear();
 		highlightElement(element);
 		element.sendKeys(value);
+//		ExtentListeners2.testReport.get().info("Typed in : " + elementName + " entered the value as : " + value);
 	}
 
 	public String getValueFromInputFiled(WebElement ele) {
@@ -240,17 +244,21 @@ try {
 	public void selectByVisibleText(WebElement element, String value, String elementName) {
 		log.info("Selecting the " + elementName + "value as : " + value);
 		ExtentListeners.testReport.get().info("Selecting the " + elementName + " value as : " + value);
+		ExtentListeners2.testReport.get().info("Selecting the " + elementName + " value as : " + value);
 		Select sel = new Select(element);
 		highlightElement(element);
 		sel.selectByVisibleText(value);
 		log.info("Selected the " + elementName + "value as : " + value);
+//		ExtentListeners2.testReport.get().info("Selected the " + elementName + " value as : " + value);
 	}
 
 	public void selectUsingIndex(WebElement element, int index, String elementName) {
 		Select select = new Select(element);
 		ExtentListeners.testReport.get().info("Selecting the " + elementName + " value as : " + index);
+		ExtentListeners2.testReport.get().info("Selecting the " + elementName + " value as : " + index);
 		log.info("selectUsingIndex and index is: " + index);
 		select.selectByIndex(index);
+//		ExtentListeners2.testReport.get().info("Selected the " + elementName + " value as : " + index);
 	}
 
 	public List<String> getAllDropDownData(WebElement element) {

@@ -20,9 +20,10 @@ public class TC090_Configure_AuthorizeNet_Payment_Gateway_____ extends BaseTest 
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC090", data.get("Runmode"), excel);
-		log.info("Inside Login Test");
+		log.info("TC090 Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
@@ -32,6 +33,7 @@ public class TC090_Configure_AuthorizeNet_Payment_Gateway_____ extends BaseTest 
 				.gotoManageCommunity(data.get("communityName"));
 		PaymentGatewaysPage PaymentGatewaysPage = CommunityDashboardPage.navigateToPaymentGateways();
 		SetupAuthorizePage SetupAuthorizePage = null;
+		
 		try {
 			 SetupAuthorizePage = PaymentGatewaysPage.setUpAuthorize();
 
@@ -50,15 +52,21 @@ public class TC090_Configure_AuthorizeNet_Payment_Gateway_____ extends BaseTest 
 		PaymentConfirmation PaymentConfirmation = null;
 		try {
 			amount = AuthorizeGateway.makePayment("TC090");
+			PaymentConfirmation = AuthorizeGateway.paymentConfirmation();
 		} catch (Exception e) {
-			amount = PaymentConfirmation.getAmountPaid("TC090");	 
+			PaymentConfirmation = PaymentGatewaysPage.gotoConfirmPaymentPage();
+			amount = PaymentConfirmation.getAmountPaid("TC090");
+			
 		}
 		
-		PaymentConfirmation = AuthorizeGateway.paymentConfirmation();
+		
+				
+		
+		
+		
 		
 		AuthorizeMerchanLogin AuthorizeMerchanLogin = PaymentConfirmation.gotoMerchanLoginPage();
 		String TransactionID = AuthorizeMerchanLogin.getTransactionID();
-		
 		PaymentGatewaysPage = PaymentConfirmation.EnterTransactionDetails(amount, TransactionID);
 
 		// Assert.fail("Failing the login test");
@@ -67,7 +75,7 @@ public class TC090_Configure_AuthorizeNet_Payment_Gateway_____ extends BaseTest 
 	@AfterMethod
 	public void tearDown() {
 
-		logInfo("Login Test Completed");
+		logInfo("TC090 Test Completed");
 
 		quit();
 

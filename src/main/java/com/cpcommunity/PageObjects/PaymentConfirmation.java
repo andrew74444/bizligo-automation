@@ -72,6 +72,7 @@ public class PaymentConfirmation extends BasePage {
 		SubmitBtn.click();
 		waitForElementToPresent(OkBtn);
 		picture();
+		
 		OkBtn.click();
 		return (PaymentGatewaysPage) openPage(PaymentGatewaysPage.class);
 		// new PaymentGatewaysPage(driver, );

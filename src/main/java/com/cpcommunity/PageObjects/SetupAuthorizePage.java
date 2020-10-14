@@ -68,6 +68,9 @@ public class SetupAuthorizePage extends BasePage{
 
 	public void SelectCheckBox()
 	 {
+		try {
+			
+		
 		 String CheckBoxSelected = UseSandboxCheckBox.getAttribute("value");
 		 log.info(CheckBoxSelected);
 		 
@@ -75,6 +78,9 @@ public class SetupAuthorizePage extends BasePage{
 		 {
 			 UseSandboxCheckBox.click();
 		 }
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	 }
 	 
 	
