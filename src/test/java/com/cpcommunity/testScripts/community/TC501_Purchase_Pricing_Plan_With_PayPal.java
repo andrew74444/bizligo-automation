@@ -99,7 +99,7 @@ public class TC501_Purchase_Pricing_Plan_With_PayPal extends BaseTest {
 		String amount = null;
 		try {
 			AuthorizeGateway = setupAuthorizePage.SetUpAuthorizeGateway();
-			amount = AuthorizeGateway.makePayment();
+			amount = AuthorizeGateway.makePayment("TC501");
 			PaymentConfirmation = AuthorizeGateway.paymentConfirmation();
 			AuthorizeMerchanLogin = PaymentConfirmation.gotoMerchanLoginPage();
 		} catch (Exception e) {
@@ -108,7 +108,7 @@ public class TC501_Purchase_Pricing_Plan_With_PayPal extends BaseTest {
 		
 		
 		try {
-			amount = PaymentConfirmation.getAmountPaid();
+			amount = PaymentConfirmation.getAmountPaid("TC501");
 			AuthorizeMerchanLogin = PaymentConfirmation.gotoMerchanLoginPage();
 		} catch (Exception e) {
 		

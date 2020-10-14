@@ -142,9 +142,9 @@ public class PaymentConfirmation extends BasePage {
 	
 	       }
 
-		public String getAmountPaid() throws Exception {
+		public String getAmountPaid(String name) throws Exception {
 			
-			return readInNotePadFile("orderTotalAmount");
+			return readInNotePadFile(name);
 		}
 	
 	

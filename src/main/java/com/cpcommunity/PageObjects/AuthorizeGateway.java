@@ -74,6 +74,13 @@ public class AuthorizeGateway extends BasePage {
 
 		return (PaymentConfirmation) openPage(PaymentConfirmation.class);
 	}
+	
+	
+	public String makePayment(String name) throws Exception {
+		String amount = this.makePayment();
+		writeInNotePad(amount, "name");
+		return amount;
+	}
 
 	public String makePayment() throws Exception {
 
