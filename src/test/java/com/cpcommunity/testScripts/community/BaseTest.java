@@ -405,7 +405,7 @@ public class BaseTest {
 				
 		                // Set the experimental option
 				options.setExperimentalOption("prefs", prefs);
-				options.addArguments("headless");
+//				options.addArguments("headless");
 		
 		if (DriverFactory.isRemote()) {
 			DesiredCapabilities cap = null;
