@@ -5,6 +5,8 @@
 	<listeners>
 		<listener		
 			class-name="com.cpcommunity.ExtentListeners.ExtentListeners"></listener>
+			<listener		
+			class-name="com.cpcommunity.ExtentListeners2.ExtentListeners2"></listener>
 		<listener
 			class-name="com.uiFramework.pamTen.cpcommunity.helper.listener.RetryListener" />
 	</listeners>
