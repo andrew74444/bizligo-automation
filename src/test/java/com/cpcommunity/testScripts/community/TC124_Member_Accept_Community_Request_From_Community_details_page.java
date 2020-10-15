@@ -26,6 +26,7 @@ public class TC124_Member_Accept_Community_Request_From_Community_details_page e
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
@@ -42,7 +43,7 @@ public class TC124_Member_Accept_Community_Request_From_Community_details_page e
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC124 Test Completed");
 		
 		quit();
 		

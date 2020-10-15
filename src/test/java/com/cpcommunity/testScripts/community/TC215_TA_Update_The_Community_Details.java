@@ -28,6 +28,7 @@ public class TC215_TA_Update_The_Community_Details extends BaseTest {
 		DataUtil.checkExecution("master", "TC215", data.get("Runmode"), excel);
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();	
 		SystemAdminDashboardPage Dashboard_Page = login.SystemAdminloginToApplication(data.get("email"), data.get("password"));
@@ -40,7 +41,7 @@ public class TC215_TA_Update_The_Community_Details extends BaseTest {
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("TC205 Test Completed");
+		logInfo("TC215 Test Completed");
 		
 		quit();
 		

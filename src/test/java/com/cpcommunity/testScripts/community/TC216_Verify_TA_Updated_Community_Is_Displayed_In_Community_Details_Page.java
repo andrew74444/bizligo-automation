@@ -23,6 +23,7 @@ public class TC216_Verify_TA_Updated_Community_Is_Displayed_In_Community_Details
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
@@ -41,7 +42,7 @@ public class TC216_Verify_TA_Updated_Community_Is_Displayed_In_Community_Details
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC216 Test Completed");
 		
 		quit();
 		

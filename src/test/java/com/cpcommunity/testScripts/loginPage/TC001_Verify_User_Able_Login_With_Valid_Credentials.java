@@ -24,6 +24,7 @@ public class TC001_Verify_User_Able_Login_With_Valid_Credentials extends BaseTes
 		log.info("Inside Login Test");			
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));		
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		logInfo("Username entered as "+data.get("email")+" and Password entered as "+data.get("password"));

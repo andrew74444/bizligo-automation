@@ -29,6 +29,7 @@ public class TC117_Send_Connection_From_Member_Directory extends BaseTest {
 		System.out.println(data.get("browser"));
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
@@ -43,7 +44,7 @@ public class TC117_Send_Connection_From_Member_Directory extends BaseTest {
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC117 Test Completed");
 		
 		quit();
 		

@@ -22,6 +22,7 @@ public class TC166_Verify_Rejected_Community_Is_Not_Displayed_In_MyCommunities e
 		DataUtil.checkExecution("master", "TC166", data.get("Runmode"), excel);
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
@@ -34,7 +35,7 @@ public class TC166_Verify_Rejected_Community_Is_Not_Displayed_In_MyCommunities e
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC166 Test Completed");
 		
 		quit();
 		

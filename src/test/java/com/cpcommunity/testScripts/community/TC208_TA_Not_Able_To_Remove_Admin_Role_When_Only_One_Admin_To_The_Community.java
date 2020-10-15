@@ -29,6 +29,7 @@ public class TC208_TA_Not_Able_To_Remove_Admin_Role_When_Only_One_Admin_To_The_C
 		DataUtil.checkExecution("master", "TC208", data.get("Runmode"), excel);
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();	
 		SystemAdminDashboardPage Dashboard_Page = login.SystemAdminloginToApplication(data.get("email"), data.get("password"));
@@ -43,7 +44,7 @@ public class TC208_TA_Not_Able_To_Remove_Admin_Role_When_Only_One_Admin_To_The_C
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("TC205 Test Completed");
+		logInfo("TC208 Test Completed");
 		
 		quit();
 		

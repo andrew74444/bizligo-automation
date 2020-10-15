@@ -26,6 +26,7 @@ public class TC020_Verify_User_is_Able_to_Select_Phone_Private extends BaseTest 
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
@@ -41,7 +42,7 @@ public class TC020_Verify_User_is_Able_to_Select_Phone_Private extends BaseTest 
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC20 Test Completed");
 		
 		quit();
 		

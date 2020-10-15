@@ -23,6 +23,7 @@ public class TC177_Verify_CA_Is_Not_Able_Create_Duplicate_Membership_Plan extend
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
@@ -42,7 +43,7 @@ public class TC177_Verify_CA_Is_Not_Able_Create_Duplicate_Membership_Plan extend
 	@AfterMethod
 	public void tearDown() {
 
-		logInfo("Login Test Completed");
+		logInfo("TC177 Test Completed");
 
 		quit();
 

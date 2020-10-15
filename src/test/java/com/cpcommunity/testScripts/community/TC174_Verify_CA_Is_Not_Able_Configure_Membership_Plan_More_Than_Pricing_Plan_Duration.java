@@ -23,6 +23,7 @@ public class TC174_Verify_CA_Is_Not_Able_Configure_Membership_Plan_More_Than_Pri
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
@@ -42,7 +43,7 @@ public class TC174_Verify_CA_Is_Not_Able_Configure_Membership_Plan_More_Than_Pri
 	@AfterMethod
 	public void tearDown() {
 
-		logInfo("Login Test Completed");
+		logInfo("TC174 Test Completed");
 
 		quit();
 

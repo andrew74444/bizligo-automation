@@ -26,6 +26,7 @@ public class TC100_Activate_Community_By_Community_Admin extends BaseTest {
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
@@ -42,7 +43,7 @@ public class TC100_Activate_Community_By_Community_Admin extends BaseTest {
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("TC099 Test Completed");
+		logInfo("TC100 Test Completed");
 		
 		quit();
 		

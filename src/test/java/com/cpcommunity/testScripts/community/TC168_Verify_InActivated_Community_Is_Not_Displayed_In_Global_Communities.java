@@ -26,6 +26,7 @@ public class TC168_Verify_InActivated_Community_Is_Not_Displayed_In_Global_Commu
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage loginPage = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = loginPage.loginToApplication(data.get("email"), data.get("password"));
@@ -40,7 +41,7 @@ public class TC168_Verify_InActivated_Community_Is_Not_Displayed_In_Global_Commu
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC168 Test Completed");
 		
 		quit();
 		

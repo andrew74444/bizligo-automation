@@ -21,7 +21,8 @@ public class TC237_Verify_TA_Add_Location_To_Orginzation extends BaseTest {
 		DataUtil.checkExecution("master", "TC237", data.get("Runmode"), excel);
 		log.info("Inside Login Test");			
 		openBrowser(data.get("browser"));
-		logInfo("Launched Browser : "+data.get("browser"));		
+		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		logInfo("Username entered as "+data.get("email")+" and Password entered as "+data.get("password"));
@@ -36,7 +37,7 @@ public class TC237_Verify_TA_Add_Location_To_Orginzation extends BaseTest {
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC237 Test Completed");
 		
 		quit();
 		

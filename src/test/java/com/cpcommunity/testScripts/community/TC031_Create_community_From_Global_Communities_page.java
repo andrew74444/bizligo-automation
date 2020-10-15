@@ -23,6 +23,7 @@ public class TC031_Create_community_From_Global_Communities_page extends BaseTes
 		DataUtil.checkExecution("master", "TC031", data.get("Runmode"), excel);
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage loginPage = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = loginPage.loginToApplication(data.get("email"), data.get("password"));
@@ -39,7 +40,7 @@ public class TC031_Create_community_From_Global_Communities_page extends BaseTes
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC031 Test Completed");
 		
 		quit();
 		

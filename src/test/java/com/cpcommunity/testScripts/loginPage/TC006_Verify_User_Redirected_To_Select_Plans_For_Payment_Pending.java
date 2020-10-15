@@ -22,7 +22,8 @@ public class TC006_Verify_User_Redirected_To_Select_Plans_For_Payment_Pending ex
 		DataUtil.checkExecution("master", "TC006", data.get("Runmode"), excel);
 		log.info("Inside Login Test");			
 		openBrowser(data.get("browser"));
-		logInfo("Launched Browser : "+data.get("browser"));		
+		logInfo("Launched Browser : "+data.get("browser"));	
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		logInfo("Username entered as "+data.get("email")+" and Password entered as "+data.get("password"));
@@ -34,7 +35,7 @@ public class TC006_Verify_User_Redirected_To_Select_Plans_For_Payment_Pending ex
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC006 Test Completed");
 		
 		quit();
 		

@@ -23,6 +23,7 @@ public class TC188_Verify_InActive_Group_Is_Accessible_To_Members extends BaseTe
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
@@ -34,7 +35,7 @@ public class TC188_Verify_InActive_Group_Is_Accessible_To_Members extends BaseTe
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC188 Test Completed");
 		
 		quit();
 		

@@ -24,6 +24,7 @@ public class TC033_Complete_Community_Setup extends BaseTest {
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage loginPage = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = loginPage.loginToApplication(data.get("email"), data.get("password"));
@@ -50,7 +51,7 @@ public class TC033_Complete_Community_Setup extends BaseTest {
 	@AfterMethod
 	public void tearDown() {
 
-		logInfo("Login Test Completed");
+		logInfo("TC033 Test Completed");
 
 		quit();
 

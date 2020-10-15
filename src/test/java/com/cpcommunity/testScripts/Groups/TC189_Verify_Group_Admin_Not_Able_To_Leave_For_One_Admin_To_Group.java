@@ -21,6 +21,7 @@ public class TC189_Verify_Group_Admin_Not_Able_To_Leave_For_One_Admin_To_Group e
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
@@ -35,7 +36,7 @@ public class TC189_Verify_Group_Admin_Not_Able_To_Leave_For_One_Admin_To_Group e
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC189 Test Completed");
 		
 		quit();
 		

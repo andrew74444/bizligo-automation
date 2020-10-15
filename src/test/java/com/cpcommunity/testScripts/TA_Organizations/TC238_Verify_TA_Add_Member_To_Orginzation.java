@@ -22,7 +22,8 @@ public class TC238_Verify_TA_Add_Member_To_Orginzation extends BaseTest {
 		log.info("Inside Login Test");			
 		openBrowser(data.get("browser"));
 		log.info(data);
-		logInfo("Launched Browser : "+data.get("browser"));		
+		logInfo("Launched Browser : "+data.get("browser"));	
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		logInfo("Username entered as "+data.get("email")+" and Password entered as "+data.get("password"));
@@ -37,7 +38,7 @@ public class TC238_Verify_TA_Add_Member_To_Orginzation extends BaseTest {
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC238 Test Completed");
 		
 		quit();
 		

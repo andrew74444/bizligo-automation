@@ -27,6 +27,7 @@ public class TC121_Community_Admin_Invite_Members_With_Terms_And_Conditions exte
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
@@ -43,7 +44,7 @@ public class TC121_Community_Admin_Invite_Members_With_Terms_And_Conditions exte
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC121 Test Completed");
 		
 		quit();
 		

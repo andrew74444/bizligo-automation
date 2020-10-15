@@ -26,6 +26,7 @@ public class TC046_Member_Accept_Community_Request_from_My_Communities extends B
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage loginPage = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
@@ -41,7 +42,7 @@ public class TC046_Member_Accept_Community_Request_from_My_Communities extends B
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC046 Test Completed");
 		
 		quit();
 		

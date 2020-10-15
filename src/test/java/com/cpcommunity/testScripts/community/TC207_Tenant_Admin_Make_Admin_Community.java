@@ -29,6 +29,7 @@ public class TC207_Tenant_Admin_Make_Admin_Community extends BaseTest {
 		DataUtil.checkExecution("master", "TC207", data.get("Runmode"), excel);
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();	
 		SystemAdminDashboardPage Dashboard_Page = login.SystemAdminloginToApplication(data.get("email"), data.get("password"));
@@ -41,7 +42,7 @@ public class TC207_Tenant_Admin_Make_Admin_Community extends BaseTest {
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("TC205 Test Completed");
+		logInfo("TC207 Test Completed");
 		
 		quit();
 		

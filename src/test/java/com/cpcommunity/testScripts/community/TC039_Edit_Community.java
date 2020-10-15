@@ -20,9 +20,10 @@ public class TC039_Edit_Community extends BaseTest {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC039", data.get("Runmode"), excel);
-		log.info("Inside Login Test");
+		log.info("TC039 Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
@@ -46,7 +47,7 @@ public class TC039_Edit_Community extends BaseTest {
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC039 Test Completed");
 		
 		quit();
 		

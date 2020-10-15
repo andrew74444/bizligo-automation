@@ -22,9 +22,10 @@ public class TC035_Create_Community_With_Rejected_Community_Name extends BaseTes
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC035", data.get("Runmode"), excel);
-		log.info("Inside Login Test");
+		log.info("Inside TC035 Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
@@ -39,7 +40,7 @@ public class TC035_Create_Community_With_Rejected_Community_Name extends BaseTes
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC035 Test Completed");
 		
 		quit();
 		

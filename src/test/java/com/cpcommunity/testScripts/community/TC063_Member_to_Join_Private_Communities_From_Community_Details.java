@@ -26,6 +26,7 @@ public class TC063_Member_to_Join_Private_Communities_From_Community_Details ext
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
@@ -53,7 +54,7 @@ public class TC063_Member_to_Join_Private_Communities_From_Community_Details ext
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC063 Test Completed");
 		
 		quit();
 		

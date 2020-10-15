@@ -27,6 +27,7 @@ public class TC120_Add_Terms_And_Conditions extends BaseTest {
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
@@ -44,7 +45,7 @@ public class TC120_Add_Terms_And_Conditions extends BaseTest {
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC120 Test Completed");
 		
 		quit();
 		

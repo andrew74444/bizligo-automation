@@ -25,6 +25,7 @@ public class TC053_Community_Admin_Manage_Group_Members extends BaseTest {
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
@@ -43,7 +44,7 @@ public class TC053_Community_Admin_Manage_Group_Members extends BaseTest {
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC053 Test Completed");
 		
 		quit();
 		

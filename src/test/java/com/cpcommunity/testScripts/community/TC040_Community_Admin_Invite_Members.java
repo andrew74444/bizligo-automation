@@ -22,9 +22,10 @@ public class TC040_Community_Admin_Invite_Members extends BaseTest {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC040", data.get("Runmode"), excel);
-		log.info("Inside Login Test");
+		log.info("TC040 Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
@@ -41,7 +42,7 @@ public class TC040_Community_Admin_Invite_Members extends BaseTest {
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC040 Test Completed");
 		
 		quit();
 		

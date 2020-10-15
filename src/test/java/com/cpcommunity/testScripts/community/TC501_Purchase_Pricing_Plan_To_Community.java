@@ -26,6 +26,7 @@ public class TC501_Purchase_Pricing_Plan_To_Community extends BaseTest {
 		System.out.println(data.get("duration"));
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage loginPage = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = loginPage.loginToApplication(data.get("email"), data.get("password"));
@@ -178,7 +179,7 @@ public class TC501_Purchase_Pricing_Plan_To_Community extends BaseTest {
 	@AfterMethod
 	public void tearDown() {
 
-		logInfo("Login Test Completed");
+		logInfo("TC501 Test Completed");
 
 		quit();
 

@@ -22,6 +22,7 @@ public class TC146_PromoCode_Event_Registration_With_Authorize_From_Event_Detail
 		System.out.println(data);
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
@@ -37,7 +38,7 @@ public class TC146_PromoCode_Event_Registration_With_Authorize_From_Event_Detail
 	@AfterMethod
 	public void tearDown() {
 
-		logInfo("TC144 Test Completed");
+		logInfo("TC146 Test Completed");
 
 		quit();
 
