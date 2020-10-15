@@ -22,7 +22,8 @@ public class TC002_Verify_User_Able_Login_With_Invalid_Credentials extends BaseT
 		DataUtil.checkExecution("master", "TC002", data.get("Runmode"), excel);
 		log.info("Inside Test");			
 		openBrowser(data.get("browser"));
-		logInfo("Launched Browser : "+data.get("browser"));		
+		logInfo("Launched Browser : "+data.get("browser"));	
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		logInfo("Username entered as "+data.get("email")+" and Password entered as "+data.get("password"));
@@ -36,7 +37,7 @@ public class TC002_Verify_User_Able_Login_With_Invalid_Credentials extends BaseT
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC002 Test Completed");
 		
 		quit();
 		

@@ -27,6 +27,7 @@ public class TC127_Zoom_Meeting_Configuration extends BaseTest {
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
@@ -45,7 +46,7 @@ public class TC127_Zoom_Meeting_Configuration extends BaseTest {
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC127 Test Completed");
 		
 		quit();
 		

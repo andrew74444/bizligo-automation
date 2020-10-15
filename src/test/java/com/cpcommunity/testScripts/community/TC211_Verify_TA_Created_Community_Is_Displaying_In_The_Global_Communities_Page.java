@@ -26,6 +26,7 @@ public class TC211_Verify_TA_Created_Community_Is_Displaying_In_The_Global_Commu
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"),data.get("password"));
@@ -38,7 +39,7 @@ public class TC211_Verify_TA_Created_Community_Is_Displaying_In_The_Global_Commu
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC211 Test Completed");
 		
 		quit();
 		

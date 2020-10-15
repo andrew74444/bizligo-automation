@@ -21,7 +21,8 @@ public class TC232_Verify_TA_Able_To_Approve_Created_Organization extends BaseTe
 		DataUtil.checkExecution("master", "TC232", data.get("Runmode"), excel);
 		log.info("Inside Login Test");			
 		openBrowser(data.get("browser"));
-		logInfo("Launched Browser : "+data.get("browser"));		
+		logInfo("Launched Browser : "+data.get("browser"));	
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		logInfo("Username entered as "+data.get("email")+" and Password entered as "+data.get("password"));
@@ -36,7 +37,7 @@ public class TC232_Verify_TA_Able_To_Approve_Created_Organization extends BaseTe
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC232 Test Completed");
 		
 		quit();
 		

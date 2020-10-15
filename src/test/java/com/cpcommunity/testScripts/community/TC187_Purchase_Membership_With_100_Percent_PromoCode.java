@@ -24,6 +24,7 @@ public class TC187_Purchase_Membership_With_100_Percent_PromoCode extends BaseTe
 		System.out.println(data.get("duration"));
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
@@ -62,7 +63,7 @@ public class TC187_Purchase_Membership_With_100_Percent_PromoCode extends BaseTe
 	@AfterMethod
 	public void tearDown() {
 
-		logInfo("Login Test Completed");
+		logInfo("TC187 Test Completed");
 
 		quit();
 

@@ -23,6 +23,7 @@ public class TC176_Verify_CA_Is_Able_Create_Free_Membership_Plan extends BaseTes
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
@@ -42,7 +43,7 @@ public class TC176_Verify_CA_Is_Able_Create_Free_Membership_Plan extends BaseTes
 	@AfterMethod
 	public void tearDown() {
 
-		logInfo("Login Test Completed");
+		logInfo("TC176 Test Completed");
 
 		quit();
 

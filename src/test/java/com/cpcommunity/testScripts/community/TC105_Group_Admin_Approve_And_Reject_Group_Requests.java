@@ -24,6 +24,7 @@ public class TC105_Group_Admin_Approve_And_Reject_Group_Requests extends BaseTes
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
@@ -77,7 +78,7 @@ public class TC105_Group_Admin_Approve_And_Reject_Group_Requests extends BaseTes
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC105 Test Completed");
 		
 		quit();
 		

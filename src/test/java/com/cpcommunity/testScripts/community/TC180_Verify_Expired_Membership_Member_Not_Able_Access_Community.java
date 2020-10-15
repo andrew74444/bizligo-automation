@@ -26,6 +26,7 @@ public class TC180_Verify_Expired_Membership_Member_Not_Able_Access_Community ex
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
@@ -40,7 +41,7 @@ public class TC180_Verify_Expired_Membership_Member_Not_Able_Access_Community ex
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC180 Test Completed");
 		
 		quit();
 		

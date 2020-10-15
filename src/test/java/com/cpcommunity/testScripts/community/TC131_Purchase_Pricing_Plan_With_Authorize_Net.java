@@ -23,6 +23,7 @@ public class TC131_Purchase_Pricing_Plan_With_Authorize_Net extends BaseTest {
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
@@ -61,7 +62,7 @@ public class TC131_Purchase_Pricing_Plan_With_Authorize_Net extends BaseTest {
 	@AfterMethod
 	public void tearDown() {
 
-		logInfo("Login Test Completed");
+		logInfo("TC131 Test Completed");
 
 		quit();
 

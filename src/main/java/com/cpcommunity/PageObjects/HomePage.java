@@ -56,6 +56,7 @@ public class HomePage extends BasePage {
 		
 		DriverManager.getDriver().navigate().to("https://multi1.ezysubscribe.com/");
 		
+		
 		return (HomePage) openPage(HomePage.class);
 	}
 

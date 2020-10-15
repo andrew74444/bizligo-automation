@@ -22,6 +22,7 @@ public class TC150_Paid_Event_Registration_With_Authorize_From_Event_CheckIn ext
 		System.out.println(data);
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
@@ -39,7 +40,7 @@ public class TC150_Paid_Event_Registration_With_Authorize_From_Event_CheckIn ext
 	@AfterMethod
 	public void tearDown() {
 
-		logInfo("TC144 Test Completed");
+		logInfo("TC150 Test Completed");
 
 		quit();
 

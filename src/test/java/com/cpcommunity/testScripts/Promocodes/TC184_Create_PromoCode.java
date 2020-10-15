@@ -19,6 +19,7 @@ public class TC184_Create_PromoCode extends BaseTest {
 		System.out.println(data);
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
@@ -43,7 +44,7 @@ public class TC184_Create_PromoCode extends BaseTest {
 	@AfterMethod
 	public void tearDown() {
 
-		logInfo("Login Test Completed");
+		logInfo("TC184 Test Completed");
 
 		quit();
 

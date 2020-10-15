@@ -21,6 +21,7 @@ public class TC042_Member_Reject_community_Request_from_Community_details_page e
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
@@ -35,7 +36,7 @@ public class TC042_Member_Reject_community_Request_from_Community_details_page e
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC042 Test Completed");
 		
 		quit();
 		

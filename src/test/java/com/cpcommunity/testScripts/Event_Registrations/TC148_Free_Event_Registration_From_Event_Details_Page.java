@@ -22,6 +22,7 @@ public class TC148_Free_Event_Registration_From_Event_Details_Page extends BaseT
 		System.out.println(data);
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
@@ -35,7 +36,7 @@ public class TC148_Free_Event_Registration_From_Event_Details_Page extends BaseT
 	@AfterMethod
 	public void tearDown() {
 
-		logInfo("Login Test Completed");
+		logInfo("TC148 Test Completed");
 
 		quit();
 

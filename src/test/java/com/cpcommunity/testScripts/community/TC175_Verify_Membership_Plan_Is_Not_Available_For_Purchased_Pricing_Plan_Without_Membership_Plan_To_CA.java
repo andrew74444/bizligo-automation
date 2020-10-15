@@ -23,6 +23,7 @@ public class TC175_Verify_Membership_Plan_Is_Not_Available_For_Purchased_Pricing
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
@@ -88,7 +89,7 @@ public class TC175_Verify_Membership_Plan_Is_Not_Available_For_Purchased_Pricing
 	@AfterMethod
 	public void tearDown() {
 
-		logInfo("Login Test Completed");
+		logInfo("TC175 Test Completed");
 
 		quit();
 

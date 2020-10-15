@@ -23,10 +23,11 @@ public class TC038_Create_Membership_Plans extends BaseTest {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC038", data.get("Runmode"), excel);
-		log.info("Inside Login Test");
+		log.info("TC038 Test");
 		System.out.println(data.get("browser"));
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
@@ -43,7 +44,7 @@ public class TC038_Create_Membership_Plans extends BaseTest {
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC038 Test Completed");
 		
 		quit();
 		

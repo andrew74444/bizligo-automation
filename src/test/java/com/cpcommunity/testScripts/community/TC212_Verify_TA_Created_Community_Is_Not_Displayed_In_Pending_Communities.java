@@ -26,6 +26,7 @@ public class TC212_Verify_TA_Created_Community_Is_Not_Displayed_In_Pending_Commu
 		DataUtil.checkExecution("master", "TC212", data.get("Runmode"), excel);
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();	
 		SystemAdminDashboardPage Dashboard_Page = login.SystemAdminloginToApplication(data.get("email"), data.get("password"));
@@ -37,7 +38,7 @@ public class TC212_Verify_TA_Created_Community_Is_Not_Displayed_In_Pending_Commu
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC212 Test Completed");
 		
 		quit();
 		

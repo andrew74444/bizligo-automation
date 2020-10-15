@@ -26,6 +26,7 @@ public class TC077_Member_Join_And_Cancel_Community_From_Global_Communities_____
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
@@ -40,7 +41,7 @@ public class TC077_Member_Join_And_Cancel_Community_From_Global_Communities_____
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC077 Test Completed");
 		
 		quit();
 		

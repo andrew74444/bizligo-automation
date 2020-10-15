@@ -26,6 +26,7 @@ public class TC104_Manage_Community_Type extends BaseTest {
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 
@@ -43,7 +44,7 @@ public class TC104_Manage_Community_Type extends BaseTest {
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC104 Test Completed");
 		
 		quit();
 		

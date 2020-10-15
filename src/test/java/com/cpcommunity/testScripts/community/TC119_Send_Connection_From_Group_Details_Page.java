@@ -26,6 +26,7 @@ public class TC119_Send_Connection_From_Group_Details_Page extends BaseTest {
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
@@ -45,7 +46,7 @@ public class TC119_Send_Connection_From_Group_Details_Page extends BaseTest {
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC119 Test Completed");
 		
 		quit();
 		

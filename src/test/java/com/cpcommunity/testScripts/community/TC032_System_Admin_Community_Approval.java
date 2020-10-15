@@ -26,6 +26,7 @@ public class TC032_System_Admin_Community_Approval extends BaseTest {
 		DataUtil.checkExecution("master", "TC032", data.get("Runmode"), excel);
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();	
 		SystemAdminDashboardPage Dashboard_Page = login.SystemAdminloginToApplication(data.get("email"), data.get("password"));
@@ -37,7 +38,7 @@ public class TC032_System_Admin_Community_Approval extends BaseTest {
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC032 Test Completed");
 		
 		quit();
 		

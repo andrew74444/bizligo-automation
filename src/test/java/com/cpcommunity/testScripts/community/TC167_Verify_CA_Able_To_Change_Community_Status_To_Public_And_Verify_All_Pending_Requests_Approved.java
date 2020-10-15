@@ -24,6 +24,7 @@ public class TC167_Verify_CA_Able_To_Change_Community_Status_To_Public_And_Verif
 		log.info("Inside TC167 Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		login = home.clickOnLOGINBtn();

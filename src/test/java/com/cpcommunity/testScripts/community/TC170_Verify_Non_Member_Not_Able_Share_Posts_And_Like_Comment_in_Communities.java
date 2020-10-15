@@ -26,6 +26,7 @@ public class TC170_Verify_Non_Member_Not_Able_Share_Posts_And_Like_Comment_in_Co
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
@@ -40,7 +41,7 @@ public class TC170_Verify_Non_Member_Not_Able_Share_Posts_And_Like_Comment_in_Co
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC170 Test Completed");
 		
 		quit();
 		

@@ -30,6 +30,7 @@ public class TC218_Verify_TA_InActivated_Community_Is_Not_Displaying_In_The_Glob
 		DataUtil.checkExecution("master", "TC218", data.get("Runmode"), excel);
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
@@ -46,7 +47,7 @@ public class TC218_Verify_TA_InActivated_Community_Is_Not_Displaying_In_The_Glob
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("TC205 Test Completed");
+		logInfo("TC218 Test Completed");
 		
 		quit();
 		

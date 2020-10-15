@@ -22,7 +22,8 @@ public class TC003_Verify_Alert_Displayed_To_Email_Pending_User extends BaseTest
 		DataUtil.checkExecution("master", "TC003", data.get("Runmode"), excel);
 		log.info("Inside Login Test");			
 		openBrowser(data.get("browser"));
-		logInfo("Launched Browser : "+data.get("browser"));		
+		logInfo("Launched Browser : "+data.get("browser"));	
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		logInfo("Username entered as "+data.get("email")+" and Password entered as "+data.get("password"));
@@ -34,7 +35,7 @@ public class TC003_Verify_Alert_Displayed_To_Email_Pending_User extends BaseTest
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC003 Test Completed");
 		
 		quit();
 		

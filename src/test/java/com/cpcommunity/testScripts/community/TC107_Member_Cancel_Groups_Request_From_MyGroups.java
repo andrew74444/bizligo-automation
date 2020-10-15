@@ -27,6 +27,7 @@ public class TC107_Member_Cancel_Groups_Request_From_MyGroups extends BaseTest {
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
@@ -47,7 +48,7 @@ public class TC107_Member_Cancel_Groups_Request_From_MyGroups extends BaseTest {
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC107 Test Completed");
 		
 		quit();
 		

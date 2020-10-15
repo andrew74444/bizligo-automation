@@ -21,7 +21,8 @@ public class TC004_Verify_Organization_Pending_User_Not_Able_Login extends BaseT
 		DataUtil.checkExecution("master", "TC004", data.get("Runmode"), excel);
 		log.info("Inside Login Test");			
 		openBrowser(data.get("browser"));
-		logInfo("Launched Browser : "+data.get("browser"));		
+		logInfo("Launched Browser : "+data.get("browser"));	
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		logInfo("Username entered as "+data.get("email")+" and Password entered as "+data.get("password"));
@@ -35,7 +36,7 @@ public class TC004_Verify_Organization_Pending_User_Not_Able_Login extends BaseT
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC004 Test Completed");
 		
 		quit();
 		

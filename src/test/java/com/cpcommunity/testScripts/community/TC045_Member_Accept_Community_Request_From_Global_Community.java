@@ -27,6 +27,7 @@ public class TC045_Member_Accept_Community_Request_From_Global_Community extends
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage loginPage = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = loginPage.loginToApplication(data.get("email1"),data.get("password"));
@@ -39,7 +40,7 @@ public class TC045_Member_Accept_Community_Request_From_Global_Community extends
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC045 Test Completed");
 		
 		quit();
 		

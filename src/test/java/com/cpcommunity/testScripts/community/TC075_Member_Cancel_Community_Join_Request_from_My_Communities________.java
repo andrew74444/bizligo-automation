@@ -25,6 +25,7 @@ public class TC075_Member_Cancel_Community_Join_Request_from_My_Communities_____
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
@@ -43,7 +44,7 @@ public class TC075_Member_Cancel_Community_Join_Request_from_My_Communities_____
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC075 Test Completed");
 		
 		quit();
 		
