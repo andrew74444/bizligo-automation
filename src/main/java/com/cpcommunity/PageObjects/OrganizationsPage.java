@@ -2,6 +2,7 @@ package com.cpcommunity.PageObjects;
 
 import java.awt.event.KeyEvent;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -154,7 +155,9 @@ public class OrganizationsPage extends BasePage {
 		selectByVisibleText(numberOfEmployeesID, noOfEmp, "noOfEmp");
 		type(businessCategories, Categories, "business Categories");
 		Thread.sleep(2000);
-		robot.keyPress(KeyEvent.VK_ENTER);
+		
+		businessCategories.sendKeys(Keys.ENTER);
+//		robot.keyPress(KeyEvent.VK_ENTER);
 
 		type(this.website, website, "website");
 		type(this.email, email, "email");
@@ -230,9 +233,10 @@ public class OrganizationsPage extends BasePage {
 		type(this.locationName, locationName, "location Name");
 		selectByVisibleText(this.locationType, locationType, locationType);
 		type(locationAddress, address, "Address");
-		Thread.sleep(3000);
-		robot.keyPress(KeyEvent.VK_DOWN);
-
+		Thread.sleep(7000);
+//		robot.keyPress(KeyEvent.VK_DOWN);
+		locationAddress.sendKeys(Keys.DOWN);
+		Thread.sleep(5000);
 		type(locationPhone, ph, "ph");
 		type(locationPhoneExtention, ext, "ext");
 		type(locationFax, fax, "fax");

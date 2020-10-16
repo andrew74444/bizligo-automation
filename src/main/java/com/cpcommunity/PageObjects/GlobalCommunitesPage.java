@@ -468,6 +468,7 @@ public class GlobalCommunitesPage extends BasePage {
 	public void checkInActivatedCommunityIsNotDisplayed(String communityName) throws Exception {
 		communityName = communityName + " " + getDateInDDMMMYYYY();
 		type(searchName, communityName, "search");
+		Thread.sleep(10000);
 		click(searchBtn, "search Btn");
 		waitForElementToPresent(noCommunitiesfound);
 

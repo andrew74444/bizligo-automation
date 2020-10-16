@@ -31,8 +31,8 @@ public class TC179_Verify_Member_Is_Able_Update_Membership_Plan extends BaseTest
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
-		CommunityDetailsPage CommunityDetailsPage = GlobalCommunitesPage.navigateToExpiredCommunityDetailsPage(data.get("communityName"));
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
+		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		MembershipPlansPage membershipPlansPage = CommunityDetailsPage.renewMemberShipPlan();
 		membershipPlansPage.renewThePurchasedMembershipPlan();
 

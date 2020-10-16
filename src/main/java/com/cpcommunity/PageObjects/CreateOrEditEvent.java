@@ -457,10 +457,10 @@ public class CreateOrEditEvent extends BasePage {
 
 	private void enterLocation(String Location) throws InterruptedException {
 		type(EventLocation, Location, "Location");
-		Thread.sleep(1000);
+		Thread.sleep(5000);
 		EventLocation.sendKeys(Keys.ARROW_DOWN);
-		Thread.sleep(1000);
-		EventLocation.sendKeys(Keys.ENTER);
+		Thread.sleep(5000);
+//		EventLocation.sendKeys(Keys.ENTER);
 	}
 
 	public void AddTicketDetails(Hashtable<String, String> data, String StartTime, String endTime, int hour, String m,

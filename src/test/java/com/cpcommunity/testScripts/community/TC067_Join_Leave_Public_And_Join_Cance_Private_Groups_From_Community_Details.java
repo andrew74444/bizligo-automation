@@ -31,16 +31,16 @@ public class TC067_Join_Leave_Public_And_Join_Cance_Private_Groups_From_Communit
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 //		int T1 = Dashboard_Page.totalGroupsCount();
-		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
-		CommunityDetailsPage CommunityDetailsPage = GlobalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
+		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		CommunityDetailsPage.PublicGroupJoinedSuccessfully(data.get("name1"));
 		
 //		int T2 = Dashboard_Page.totalGroupsCount();
 //		T1++;		
 //		AssertionHelper.verifyText(String.valueOf(T1), String.valueOf(T2));
 		EcoSystemPage = EcoSystemPage.goToMyEcosystem();
-		GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
-		CommunityDetailsPage = GlobalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));		
+		MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
+		CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));		
 		CommunityDetailsPage.LeaveGroup(data.get("name1"));
 		CommunityDetailsPage.PrivateGroupJoinedSuccessfully(data.get("name2"));
 		CommunityDetailsPage.cancelRequest(data.get("name2"));

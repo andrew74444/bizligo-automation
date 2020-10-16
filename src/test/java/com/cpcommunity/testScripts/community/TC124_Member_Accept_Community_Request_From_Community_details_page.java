@@ -15,7 +15,6 @@ import com.cpcommunity.utilities.ExcelReader;
 
 public class TC124_Member_Accept_Community_Request_From_Community_details_page extends BaseTest {
 
-	String TCID = "TC124";	
 	
 	
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
@@ -33,8 +32,8 @@ public class TC124_Member_Accept_Community_Request_From_Community_details_page e
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
-		CommunityDetailsPage CommunityDetailsPage = GlobalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
+		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		CommunityDetailsPage.acceptCommunityRequest(data.get("termsAndConditions"));
 		
 		//Assert.fail("Failing the login test");
