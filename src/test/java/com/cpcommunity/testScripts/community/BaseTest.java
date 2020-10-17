@@ -2,12 +2,19 @@ package com.cpcommunity.testScripts.community;
 
 import java.awt.AWTException;
 import java.awt.Robot;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -48,10 +55,10 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
 
-//	C:\Users\Sasi Vinod\.jenkins\secrets\initialAdminPassword
-//	18c07d1bca7142788798626b183ac587
-//	http://vimalselvam.com/category/extent-report/
-//	https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html
+	// C:\Users\Sasi Vinod\.jenkins\secrets\initialAdminPassword
+	// 18c07d1bca7142788798626b183ac587
+	// http://vimalselvam.com/category/extent-report/
+	// https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html
 	private WebDriver driver;
 	private Properties Config = new Properties();
 	private FileInputStream fis;
@@ -62,12 +69,12 @@ public class BaseTest {
 	private String saUserName;
 	private String saPassword;
 	private String ExplicitWait;
-//	private String createCommunity;
-//	private String MemberRejectCommunity;
-//	private String approveCommunity;
-//	private String communityName;
-//	private String rejectCommunity;
-//	private String recreateCommunity;
+	// private String createCommunity;
+	// private String MemberRejectCommunity;
+	// private String approveCommunity;
+	// private String communityName;
+	// private String rejectCommunity;
+	// private String recreateCommunity;
 	private String nancykemper;
 	private String nancycarton;
 	private String harley;
@@ -84,7 +91,7 @@ public class BaseTest {
 	private String james;
 	private String andrew;
 	private String curator;
-//	private String password;
+	// private String password;
 	private String payPalAPIUsername;
 	private String payPalAPIPassword;
 	private String payPalAPISignature;
@@ -92,193 +99,191 @@ public class BaseTest {
 	private String payPalPassword;
 	private String payPalMerchantEmailID;
 	private String payPalMerchantPassword;
-//	private String communityName14;
+	// private String communityName14;
 
-//	public String getPassword() {
-//		return password;
-//	}
-//
-//	public void setPassword(String password) {
-//		this.password = password;
-//	}
-//
-//	public String getCreateCommunity() {
-//		return createCommunity;
-//	}
-//
-//	public void setCreateCommunity(String createCommunity) {
-//		this.createCommunity = createCommunity;
-//	}
-//
-//	public String getApproveCommunity() {
-//		return approveCommunity;
-//	}
-//
-//	public void setApproveCommunity(String approveCommunity) {
-//		this.approveCommunity = approveCommunity;
-//	}
-//
-//	public String getRejectCommunity() {
-//		return rejectCommunity;
-//	}
-//
-//	public void setRejectCommunity(String rejectCommunity) {
-//		this.rejectCommunity = rejectCommunity;
-//	}
-//
-//	public String getRecreateCommunity() {
-//		return recreateCommunity;
-//	}
-//
-//	public void setRecreateCommunity(String recreateCommunity) {
-//		this.recreateCommunity = recreateCommunity;
-//	}
-//
-//	public String getCommunityName() {
-//		return communityName;
-//	}
-//
-//	public void setCommunityName(String communityName) {
-//		this.communityName = communityName;
-//	}
-//
-//	public String getCommunityName2() {
-//		return MemberRejectCommunity;
-//	}
-//
-//	public void setMemberRejectCommunity(String MemberRejectCommunity) {
-//		this.MemberRejectCommunity = MemberRejectCommunity;
-//	}
-//
-//	
-//	
-//	public String getCommunityName3() {
-//		return communityName3;
-//	}
-//
-//	public void setCommunityName3(String communityName3) {
-//		this.communityName3 = communityName3;
-//	}
-//	
-//	public String getCommunityName4() {
-//		return communityName4;
-//	}
-//
-//	public void setCommunityName4(String communityName4) {
-//		this.communityName4 = communityName4;
-//	}	
-//
-//	public String getCommunityName6() {
-//		return communityName6;
-//	}
-//
-//	public void setCommunityName6(String communityName6) {
-//		this.communityName6 = communityName6;
-//	}
-//	
-//	public String getCommunityName7() {
-//		return communityName7;
-//	}
-//
-//	public void setCommunityName7(String communityName7) {
-//		this.communityName7 = communityName7;
-//	}
-//	
-//	
-//	public String getCommunityName8() {
-//		return communityName8;
-//	}
-//
-//	public void setCommunityName8(String communityName8) {
-//		this.communityName8 = communityName8;
-//	}
-//	
-//		
-//	public String getCommunityName10() {
-//		return communityName10;
-//	}
-//
-//	public void setCommunityName10(String communityName10) {
-//		this.communityName10 = communityName10;
-//	}	
-//	
-//	public String getCommunityName11() {
-//		return communityName11;
-//	}
-//
-//	public void setCommunityName11(String communityName11) {
-//		this.communityName11 = communityName11;
-//	}	
-//
-//	public String getCommunityName12() {
-//		return communityName12;
-//	}
-//
-//	public void setCommunityName12(String communityName12) {
-//		this.communityName12 = communityName12;
-//	}	
-//	
-//	public String getCommunityName13() {
-//		return communityName13;
-//	}
-//
-//	public void setCommunityName13(String communityName13) {
-//		this.communityName13 = communityName13;
-//	}
-//	
-//	public String getCommunityName14() {
-//		return communityName14;
-//	}
-//
-//	public void setCommunityName14(String communityName14) {
-//		this.communityName14 = communityName14;
-//	}
-//	
-//	public String getCommunityName15() {
-//		return communityName15;
-//	}
-//
-//	public void setCommunityName15(String communityName15) {
-//		this.communityName15 = communityName15;
-//	}
-//	
-//	public String getCommunityName16() {
-//		return communityName16;
-//	}
-//
-//	public void setCommunityName16(String communityName16) {
-//		this.communityName16 = communityName16;
-//	}
-//	
-//	
-//	public String getGroupName1() {
-//		return groupName1;
-//	}
-//
-//	public void setGroupName1(String groupName1) {
-//		this.groupName1 = groupName1;
-//	}
-//	
-//	public String getGroupName() {
-//		return groupName;
-//	}
-//
-//	public void setGroupName(String groupName) {
-//		this.groupName = groupName;
-//	}
-//	
-//	
-//	public String getCommunityName5() {
-//		return communityName5;
-//	}
-//
-//	public void setCommunityName5(String communityName5) {
-//		this.communityName5 = communityName5;
-//	}	
-//	
-	
-	
-	
+	// public String getPassword() {
+	// return password;
+	// }
+	//
+	// public void setPassword(String password) {
+	// this.password = password;
+	// }
+	//
+	// public String getCreateCommunity() {
+	// return createCommunity;
+	// }
+	//
+	// public void setCreateCommunity(String createCommunity) {
+	// this.createCommunity = createCommunity;
+	// }
+	//
+	// public String getApproveCommunity() {
+	// return approveCommunity;
+	// }
+	//
+	// public void setApproveCommunity(String approveCommunity) {
+	// this.approveCommunity = approveCommunity;
+	// }
+	//
+	// public String getRejectCommunity() {
+	// return rejectCommunity;
+	// }
+	//
+	// public void setRejectCommunity(String rejectCommunity) {
+	// this.rejectCommunity = rejectCommunity;
+	// }
+	//
+	// public String getRecreateCommunity() {
+	// return recreateCommunity;
+	// }
+	//
+	// public void setRecreateCommunity(String recreateCommunity) {
+	// this.recreateCommunity = recreateCommunity;
+	// }
+	//
+	// public String getCommunityName() {
+	// return communityName;
+	// }
+	//
+	// public void setCommunityName(String communityName) {
+	// this.communityName = communityName;
+	// }
+	//
+	// public String getCommunityName2() {
+	// return MemberRejectCommunity;
+	// }
+	//
+	// public void setMemberRejectCommunity(String MemberRejectCommunity) {
+	// this.MemberRejectCommunity = MemberRejectCommunity;
+	// }
+	//
+	//
+	//
+	// public String getCommunityName3() {
+	// return communityName3;
+	// }
+	//
+	// public void setCommunityName3(String communityName3) {
+	// this.communityName3 = communityName3;
+	// }
+	//
+	// public String getCommunityName4() {
+	// return communityName4;
+	// }
+	//
+	// public void setCommunityName4(String communityName4) {
+	// this.communityName4 = communityName4;
+	// }
+	//
+	// public String getCommunityName6() {
+	// return communityName6;
+	// }
+	//
+	// public void setCommunityName6(String communityName6) {
+	// this.communityName6 = communityName6;
+	// }
+	//
+	// public String getCommunityName7() {
+	// return communityName7;
+	// }
+	//
+	// public void setCommunityName7(String communityName7) {
+	// this.communityName7 = communityName7;
+	// }
+	//
+	//
+	// public String getCommunityName8() {
+	// return communityName8;
+	// }
+	//
+	// public void setCommunityName8(String communityName8) {
+	// this.communityName8 = communityName8;
+	// }
+	//
+	//
+	// public String getCommunityName10() {
+	// return communityName10;
+	// }
+	//
+	// public void setCommunityName10(String communityName10) {
+	// this.communityName10 = communityName10;
+	// }
+	//
+	// public String getCommunityName11() {
+	// return communityName11;
+	// }
+	//
+	// public void setCommunityName11(String communityName11) {
+	// this.communityName11 = communityName11;
+	// }
+	//
+	// public String getCommunityName12() {
+	// return communityName12;
+	// }
+	//
+	// public void setCommunityName12(String communityName12) {
+	// this.communityName12 = communityName12;
+	// }
+	//
+	// public String getCommunityName13() {
+	// return communityName13;
+	// }
+	//
+	// public void setCommunityName13(String communityName13) {
+	// this.communityName13 = communityName13;
+	// }
+	//
+	// public String getCommunityName14() {
+	// return communityName14;
+	// }
+	//
+	// public void setCommunityName14(String communityName14) {
+	// this.communityName14 = communityName14;
+	// }
+	//
+	// public String getCommunityName15() {
+	// return communityName15;
+	// }
+	//
+	// public void setCommunityName15(String communityName15) {
+	// this.communityName15 = communityName15;
+	// }
+	//
+	// public String getCommunityName16() {
+	// return communityName16;
+	// }
+	//
+	// public void setCommunityName16(String communityName16) {
+	// this.communityName16 = communityName16;
+	// }
+	//
+	//
+	// public String getGroupName1() {
+	// return groupName1;
+	// }
+	//
+	// public void setGroupName1(String groupName1) {
+	// this.groupName1 = groupName1;
+	// }
+	//
+	// public String getGroupName() {
+	// return groupName;
+	// }
+	//
+	// public void setGroupName(String groupName) {
+	// this.groupName = groupName;
+	// }
+	//
+	//
+	// public String getCommunityName5() {
+	// return communityName5;
+	// }
+	//
+	// public void setCommunityName5(String communityName5) {
+	// this.communityName5 = communityName5;
+	// }
+	//
+
 	public String getExplicitWait() {
 		return ExplicitWait;
 	}
@@ -319,8 +324,89 @@ public class BaseTest {
 		this.defaultPassword = defaultPassword;
 	}
 
+	public String getDate() {
+		Date date = new Date();
+		SimpleDateFormat formatter = new SimpleDateFormat("dd MMM yyyy");
+		String strDate = formatter.format(date);
+		return strDate;
+
+	}
+
+	public void createDirectory() throws Exception {
+
+		String p = System.getProperty("user.dir") + "//src//test//resources//testdata//test//" + getDate()
+				+ "//ExecutionRunTime";
+		File file = new File(p);
+
+		if (file.isDirectory()) {
+			if (file.list().length > 0) {
+				System.out.println("Directory is not empty!");
+			} else {
+				System.out.println("Directory is empty!");
+			}
+		} else {
+			System.out.println("This is not a directory");
+			try {
+				Path path = Paths.get(System.getProperty("user.dir") + "//src//test//resources//testdata//test//"
+						+ getDate() + "//ExecutionRunTime");
+
+				// java.nio.file.Files;
+				Files.createDirectories(path);
+				System.out.println("Directory is created!" + path);
+				String pa = System.getProperty("user.dir")+"\\src\\test\\resources\\testdata\\test\\17 Oct 2020\\ExecutionRunTime\\runTime.txt";
+				writeInNotePad("1", pa);
+
+			} catch (IOException e) {
+
+				System.err.println("Failed to create directory!" + e.getMessage());
+			}
+		}
+	}
+
+	public void writeInNotePad(String value, String fileName) throws Exception {
+
+		File f = new File(fileName);
+		// f.delete();
+		Thread.sleep(3000);
+		FileWriter fw = new FileWriter(f, true);
+		BufferedWriter writer = new BufferedWriter(fw);
+		writer.write(value);
+
+		writer.close();
+
+	}
+
+	public String readInNotePadFile(String fileName) throws Exception {
+		File f = new File(fileName);
+
+		FileReader fr = new FileReader(f);
+
+		BufferedReader reader = new BufferedReader(fr);
+		String value = reader.readLine();
+		log.info(value);
+		reader.close();
+		return value;
+	}
+
+	public void deleteFile(String path) throws InterruptedException {
+
+		Thread.sleep(3000);
+		File myObj = new File(path);
+		if (myObj.delete()) {
+			System.out.println("Deleted the folder: " + myObj.getName());
+		} else {
+			System.out.println("Failed to delete the folder.");
+		}
+	}
+
+	public void checkRunTime() throws Exception {
+		createDirectory();
+
+	}
+
 	@BeforeSuite
-	public void setUpFramework() {
+	public void setUpFramework() throws Exception {
+		checkRunTime();
 
 		configureLogging();
 		DriverFactory.setGridPath("http://localhost:4444/wd/hub");
@@ -351,14 +437,14 @@ public class BaseTest {
 		try {
 			fis = new FileInputStream(DriverFactory.getConfigPropertyFilePath());
 		} catch (FileNotFoundException e) {
-			
+
 			e.printStackTrace();
 		}
 		try {
 			Config.load(fis);
 			log.info("Config properties file loaded");
 		} catch (IOException e) {
-			
+
 			e.printStackTrace();
 		}
 		;
@@ -381,7 +467,7 @@ public class BaseTest {
 
 	}
 
-	public void openBrowser(String browser) {
+	public String openBrowser(String browser) throws Exception {
 
 		if (System.getenv("ExecutionType") != null && System.getenv("ExecutionType").equals("Grid")) {
 
@@ -390,25 +476,23 @@ public class BaseTest {
 
 		DriverFactory.setRemote(grid);
 		Capabilities caps;
-		ChromeOptions options = new ChromeOptions(); 
+		ChromeOptions options = new ChromeOptions();
 
-		options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
-		
-		
+		options.setExperimentalOption("excludeSwitches", new String[] { "enable-automation" });
+
 		// Create object of HashMap Class
-				Map<String, Object> prefs = new HashMap<String, Object>();
-		              
-		                // Set the notification setting it will override the default setting
-				prefs.put("profile.default_content_setting_values.notifications", 2);
-		 
-				prefs.put("credentials_enable_service", false);
-				prefs.put("profile.password_manager_enabled", false);
+		Map<String, Object> prefs = new HashMap<String, Object>();
 
-				
-		                // Set the experimental option
-				options.setExperimentalOption("prefs", prefs);
-//				options.addArguments("headless");
-		
+		// Set the notification setting it will override the default setting
+		prefs.put("profile.default_content_setting_values.notifications", 2);
+
+		prefs.put("credentials_enable_service", false);
+		prefs.put("profile.password_manager_enabled", false);
+
+		// Set the experimental option
+		options.setExperimentalOption("prefs", prefs);
+		// options.addArguments("headless");
+
 		if (DriverFactory.isRemote()) {
 			DesiredCapabilities cap = null;
 
@@ -434,7 +518,7 @@ public class BaseTest {
 				caps = ((RemoteWebDriver) driver).getCapabilities();
 				driver = new RemoteWebDriver(new URL(DriverFactory.getGridPath()), cap);
 			} catch (MalformedURLException e) {
-				
+
 				e.printStackTrace();
 			}
 
@@ -443,13 +527,13 @@ public class BaseTest {
 		if (browser.equals("chrome")) {
 			System.out.println("Launching : " + browser);
 			System.setProperty("webdriver.chrome.driver", DriverFactory.getChromeDriverExePath());
-//			WebDriverManager.chromedriver().setup();
-			
-			
+			// WebDriverManager.chromedriver().setup();
+
 			driver = new ChromeDriver(options);
 		} else if (browser.equals("firefox")) {
 			System.out.println("Launching : " + browser);
-//			System.setProperty("webdriver.gecko.driver", DriverFactory.getGeckoDriverExePath());
+			// System.setProperty("webdriver.gecko.driver",
+			// DriverFactory.getGeckoDriverExePath());
 
 			WebDriverManager.firefoxdriver().setup();
 
@@ -460,56 +544,55 @@ public class BaseTest {
 		System.out.println(driver);
 		DriverCapabilities.setCapabilities(caps);
 		String ID = driver.toString();
-		ID = ID.replace("ChromeDriver: chrome on XP (","");
+		ID = ID.replace("ChromeDriver: chrome on XP (", "");
 		ID = ID.replace(")", "");
 		SessionID.setSessionID(ID);
 		System.out.println(ID);
-		JavascriptExecutor js = (JavascriptExecutor)driver;
+		JavascriptExecutor js = (JavascriptExecutor) driver;
 		JavaScript.setJavaScriptObject(js);
 		WebDriverWait wait = new WebDriverWait(driver, 20);
 		waitHelper.setWebDriverWaitObject(wait);
 		try {
 			Robot robot = new Robot();
-			RobotClass.setRobotClassObject(robot);	
+			RobotClass.setRobotClassObject(robot);
 		} catch (AWTException e) {
 
 			e.printStackTrace();
 		}
 		System.out.println(driver.manage().window().getSize());
 
-        //Create object of Dimensions class
-        Dimension d = new Dimension(1382, 744);
+		// Create object of Dimensions class
+		Dimension d = new Dimension(1382, 744);
 
-        //Resize the current window to the given dimension
-        driver.manage().window().setSize(d);
-        System.out.println(driver.manage().window().getSize());
-		
-		
+		// Resize the current window to the given dimension
+		driver.manage().window().setSize(d);
+		System.out.println(driver.manage().window().getSize());
+
 		DriverManager.setWebDriver(driver);
 		log.info("Driver Initialized !!!");
 		DriverManager.getDriver().manage().window().maximize();
 		System.out.println(driver.manage().window().getSize());
 		DriverManager.getDriver().manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-//		SessionId sessionid = ((RemoteWebDriver) driver).getSessionId();
-//		System.out.println(sessionid);
-//		System.out.println(DriverManager.getDriver().toString());
-		
+		// SessionId sessionid = ((RemoteWebDriver) driver).getSessionId();
+		// System.out.println(sessionid);
+		// System.out.println(DriverManager.getDriver().toString());
+
 		setDefaultUserName(Config.getProperty("defaultUserName"));
 		setDefaultPassword(Config.getProperty("defaultPassword"));
-		
+
 		setAndrew(Config.getProperty("andrew"));
-		
+
 		setSaUserName(Config.getProperty("saUserName"));
 		setSaPassword(Config.getProperty("saPassword"));
 		setDefaultPassword(Config.getProperty("ExplicitWait"));
-//		setCommunityName(Config.getProperty("communityName"));
-//		setCreateCommunity(Config.getProperty("createCommunity"));
-//		setApproveCommunity(Config.getProperty("approveCommunity"));
-//		setRejectCommunity(Config.getProperty("rejectCommunity"));
-//		setRecreateCommunity(Config.getProperty("recreateCommunity"));
-		
+		// setCommunityName(Config.getProperty("communityName"));
+		// setCreateCommunity(Config.getProperty("createCommunity"));
+		// setApproveCommunity(Config.getProperty("approveCommunity"));
+		// setRejectCommunity(Config.getProperty("rejectCommunity"));
+		// setRecreateCommunity(Config.getProperty("recreateCommunity"));
+
 		setCurator(Config.getProperty("curator"));
-//		setPassword(Config.getProperty("password"));
+		// setPassword(Config.getProperty("password"));
 		setDefaultPassword(Config.getProperty("payPalAPIUsername"));
 		setDefaultPassword(Config.getProperty("payPalAPIPassword"));
 		setDefaultPassword(Config.getProperty("payPalAPISignature"));
@@ -517,15 +600,19 @@ public class BaseTest {
 		setDefaultPassword(Config.getProperty("payPalPassword"));
 		setDefaultPassword(Config.getProperty("payPalMerchantEmailID"));
 		setDefaultPassword(Config.getProperty("payPalMerchantPassword"));
-//		setCommunityName14(Config.getProperty("communityName14"));
-		
-//		System.out.println(1);
-		
-//		System.out.println(Config.getProperty("communityName14"));
-//		System.out.println(getAndrew());
-		
-//		System.out.println(2);
-		
+		// setCommunityName14(Config.getProperty("communityName14"));
+
+		// System.out.println(1);
+
+		// System.out.println(Config.getProperty("communityName14"));
+		// System.out.println(getAndrew());
+
+		// System.out.println(2);
+		String path = System.getProperty("user.dir")+"\\src\\test\\resources\\testdata\\test\\17 Oct 2020\\ExecutionRunTime\\runTime.txt";
+		log.info(path);
+		String runTime = readInNotePadFile(path);
+
+		return runTime;
 	}
 
 	public void quit() {
@@ -587,7 +674,7 @@ public class BaseTest {
 	}
 
 	public void setPayPalMerchantEmailID(String payPalMerchantEmailID) {
-//		payPalMerchantEmailID = payPalMerchantEmailID;
+		// payPalMerchantEmailID = payPalMerchantEmailID;
 	}
 
 	public String getPayPalMerchantPassword() {
@@ -595,19 +682,17 @@ public class BaseTest {
 	}
 
 	public void setPayPalMerchantPassword(String payPalMerchantPassword) {
-//		payPalMerchantPassword = payPalMerchantPassword;
+		// payPalMerchantPassword = payPalMerchantPassword;
 	}
 
 	public String getAndrew() {
-		
-		
+
 		return andrew;
 	}
 
 	public void setAndrew(String andrew) {
-		
+
 		this.andrew = andrew;
-		
 
 	}
 
@@ -623,8 +708,7 @@ public class BaseTest {
 	//
 	//
 	//
-	
-	
+
 	public String getNancykemper() {
 
 		return nancykemper;
@@ -634,10 +718,7 @@ public class BaseTest {
 		this.nancykemper = nancykemper;
 
 	}
-	
-	
-			
-			
+
 	public String getNancycarton() {
 
 		return nancycarton;
@@ -647,7 +728,7 @@ public class BaseTest {
 		this.nancycarton = nancycarton;
 
 	}
-	
+
 	public String getHarley() {
 
 		return harley;
@@ -657,8 +738,7 @@ public class BaseTest {
 		this.harley = harley;
 
 	}
-	
-			
+
 	public String getBrook() {
 
 		return brook;
@@ -668,7 +748,7 @@ public class BaseTest {
 		this.brook = brook;
 
 	}
-	
+
 	public String getElizabeth() {
 
 		return elizabeth;
@@ -678,8 +758,7 @@ public class BaseTest {
 		this.elizabeth = elizabeth;
 
 	}
-	
-			
+
 	public String getJustin() {
 
 		return justin;
@@ -689,7 +768,7 @@ public class BaseTest {
 		this.nancykemper = justin;
 
 	}
-	
+
 	public String getIndia() {
 
 		return india;
@@ -699,7 +778,7 @@ public class BaseTest {
 		this.india = india;
 
 	}
-	
+
 	public String getEagle() {
 
 		return eagle;
@@ -709,7 +788,7 @@ public class BaseTest {
 		this.eagle = eagle;
 
 	}
-			
+
 	public String getCook() {
 
 		return cook;
@@ -719,7 +798,7 @@ public class BaseTest {
 		this.cook = cook;
 
 	}
-	
+
 	public String getLance() {
 
 		return lance;
@@ -729,7 +808,7 @@ public class BaseTest {
 		this.lance = lance;
 
 	}
-	
+
 	public String getJennings() {
 
 		return jennings;
@@ -739,7 +818,7 @@ public class BaseTest {
 		this.jennings = jennings;
 
 	}
-	
+
 	public String getallen() {
 
 		return allen;
@@ -759,7 +838,7 @@ public class BaseTest {
 		this.james = james;
 
 	}
-	
+
 	public String getAsolly() {
 
 		return asolly;
@@ -769,64 +848,70 @@ public class BaseTest {
 		this.asolly = asolly;
 
 	}
-	
-//	public String getNancykemper() {
-//
-//		return nancykemper;
-//	}
-//
-//	public void setNancykemper(String nancykemper) {
-//		this.nancykemper = nancykemper;
-//
-//	}
-//	
-//	public String getNancykemper() {
-//
-//		return nancykemper;
-//	}
-//
-//	public void setNancykemper(String nancykemper) {
-//		this.nancykemper = nancykemper;
-//
-//	}
-	
-	
+
+	// public String getNancykemper() {
+	//
+	// return nancykemper;
+	// }
+	//
+	// public void setNancykemper(String nancykemper) {
+	// this.nancykemper = nancykemper;
+	//
+	// }
+	//
+	// public String getNancykemper() {
+	//
+	// return nancykemper;
+	// }
+	//
+	// public void setNancykemper(String nancykemper) {
+	// this.nancykemper = nancykemper;
+	//
+	// }
+
 	public String currentTime() {
 
 		DateFormat dateFormat = new SimpleDateFormat("MMddHHmmss");
 		Date date = new Date();
-//		System.out.println(dateFormat.format(date)); //0809190355
-		String d = dateFormat.format(date);		
-		
+		// System.out.println(dateFormat.format(date)); //0809190355
+		String d = dateFormat.format(date);
+
 		return d;
 
 	}
-			
-	
+
 	public String date() {
-		Date date = new Date();  
-	    SimpleDateFormat formatter=new SimpleDateFormat("dd MMMM yyyy");  
-	    String strDate = formatter.format(date);    
-	    System.out.println("Date Format with dd MMMM yyyy : "+strDate);
-	    return strDate;
+		Date date = new Date();
+		SimpleDateFormat formatter = new SimpleDateFormat("dd MMMM yyyy");
+		String strDate = formatter.format(date);
+		System.out.println("Date Format with dd MMMM yyyy : " + strDate);
+		return strDate;
 	}
-	
 
 	@AfterSuite
-	public void sendmail() {
+	public void sendmail() throws Exception {
 		MonitoringMail1 mail = new MonitoringMail1();
 		mail.Sendmail();
+		String path = System.getProperty("user.dir")+"\\src\\test\\resources\\testdata\\test\\17 Oct 2020\\ExecutionRunTime\\runTime.txt";
+		log.info(path);
+		String runTime = readInNotePadFile(path);
+		int i = Integer.parseInt(runTime);
+		i++;
+		runTime = String.valueOf(i);
+		deleteFile(path);
+		writeInNotePad(runTime, path);
+		
 	}
-	
+
 	public Date subtractDays(Date date, int days) {
 		GregorianCalendar cal = new GregorianCalendar();
 		cal.setTime(date);
 		cal.add(Calendar.DATE, -days);
-				System.out.println(cal.getTime());
+		System.out.println(cal.getTime());
 		return cal.getTime();
 	}
-//	Sun Nov 25 11:45:05 PST 2012
-	
+	// Sun Nov 25 11:45:05 PST 2012
+
 	public Date addDays(Date date, int days) {
 		GregorianCalendar cal = new GregorianCalendar();
 		cal.setTime(date);
@@ -834,5 +919,5 @@ public class BaseTest {
 		System.out.println(cal.getTime());
 		return cal.getTime();
 	}
-	
+
 }

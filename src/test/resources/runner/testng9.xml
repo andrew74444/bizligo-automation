@@ -5,7 +5,7 @@
 	<listeners>
 		<listener
 			class-name="com.cpcommunity.ExtentListeners.ExtentListeners"></listener>
-			<listener
+		<listener
 			class-name="com.cpcommunity.ExtentListeners2.ExtentListeners2"></listener>
 		<listener
 			class-name="com.uiFramework.pamTen.cpcommunity.helper.listener.RetryListener" />
@@ -17,9 +17,10 @@
 
 	<test name="Test 1" preserve-order="true">
 		<classes>
-			
-			
-<class name="com.cpcommunity.testScripts.community.TC100_Activate_Community_By_Community_Admin" />
+
+
+			<class
+				name="com.cpcommunity.testScripts.community.TC029_Create_community_From_My_Communites" />
 		</classes>
 	</test>
 
