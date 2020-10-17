@@ -14,7 +14,7 @@ import com.cpcommunity.utilities.ExcelReader;
 public class ValidateCRMTest extends BaseTest  {
 	
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP",enabled=false)
-	public void validateCRMTest(Hashtable<String,String> data) {
+	public void validateCRMTest(Hashtable<String,String> data) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "ValidateCRMTest", data.get("Runmode"), excel);

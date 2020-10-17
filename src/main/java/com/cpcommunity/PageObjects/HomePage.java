@@ -52,7 +52,9 @@ public class HomePage extends BasePage {
 		// new GlobalCareers(driver, );
 	}
 
-	public HomePage open() throws InterruptedException {
+	public HomePage open() throws Exception {
+		
+
 		
 		DriverManager.getDriver().navigate().to("https://multi1.ezysubscribe.com/");
 		
