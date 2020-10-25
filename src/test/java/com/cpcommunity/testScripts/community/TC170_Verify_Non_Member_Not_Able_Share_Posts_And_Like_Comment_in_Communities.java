@@ -24,7 +24,7 @@ public class TC170_Verify_Non_Member_Not_Able_Share_Posts_And_Like_Comment_in_Co
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC170", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -32,7 +32,7 @@ public class TC170_Verify_Non_Member_Not_Able_Share_Posts_And_Like_Comment_in_Co
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
-		CommunityDetailsPage CommunityDetailsPage = GlobalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));
+		CommunityDetailsPage CommunityDetailsPage = GlobalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
 		Discussions discussions =CommunityDetailsPage.CheckNonMemberNotAbleTosharePosts();
 		discussions.CheckNonMemberIsNotAbleToPostLikeComment();
 		//Assert.fail("Failing the login test");

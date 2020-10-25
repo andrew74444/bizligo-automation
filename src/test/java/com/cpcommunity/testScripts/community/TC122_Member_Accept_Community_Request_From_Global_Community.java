@@ -24,7 +24,7 @@ public class TC122_Member_Accept_Community_Request_From_Global_Community extends
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC122", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -34,7 +34,7 @@ public class TC122_Member_Accept_Community_Request_From_Global_Community extends
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
-		GlobalCommunitesPage.acceptCommunity(data.get("communityName"),data.get("termsAndConditions"));
+		GlobalCommunitesPage.acceptCommunity(data.get("communityName")+" "+runTime,data.get("termsAndConditions"));
 		
 		//Assert.fail("Failing the login test");
 	}

@@ -24,7 +24,7 @@ public class TC077_Member_Join_And_Cancel_Community_From_Global_Communities_____
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC077", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -32,8 +32,8 @@ public class TC077_Member_Join_And_Cancel_Community_From_Global_Communities_____
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
-		GlobalCommunitesPage.JoinCommunity(data.get("communityName"));
-		GlobalCommunitesPage.cancelRequest(data.get("communityName"));
+		GlobalCommunitesPage.JoinCommunity(data.get("communityName")+" "+runTime);
+		GlobalCommunitesPage.cancelRequest(data.get("communityName")+" "+runTime);
 		
 		//Assert.fail("Failing the login test");
 	}

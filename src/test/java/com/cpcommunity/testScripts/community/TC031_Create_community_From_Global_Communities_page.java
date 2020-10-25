@@ -21,7 +21,7 @@ public class TC031_Create_community_From_Global_Communities_page extends BaseTes
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC031", data.get("Runmode"), excel);
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -29,7 +29,7 @@ public class TC031_Create_community_From_Global_Communities_page extends BaseTes
 		EcoSystemPage EcoSystemPage = loginPage.loginToApplication(data.get("email"), data.get("password"));
 		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();	
 		CreateCommunityPage CreateCommunityPage = GlobalCommunitesPage.clickOnCreateCommunity();
-		GlobalCommunitesPage = CreateCommunityPage.CreateCommunity(data.get("communityName"), data.get("Networking"), data.get("Marketing"), data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"), data.get("InvestInBusiness"), data.get("Other"), data.get("About"), data.get("Category"), data.get("type"));
+		GlobalCommunitesPage = CreateCommunityPage.CreateCommunity(data.get("communityName")+" "+runTime, data.get("Networking"), data.get("Marketing"), data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"), data.get("InvestInBusiness"), data.get("Other"), data.get("About"), data.get("Category"), data.get("type"));
 
 //		EcoSystemPage = EcoSystemPage.goToMyEcosystem();
 //		MyCommunitiesPage myCommunitiesPage= EcoSystemPage.goToMyCommunities();

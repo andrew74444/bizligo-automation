@@ -53,9 +53,7 @@ public class HomePage extends BasePage {
 	}
 
 	public HomePage open() throws Exception {
-		
-
-		
+			
 		DriverManager.getDriver().navigate().to("https://multi1.ezysubscribe.com/");
 		
 		

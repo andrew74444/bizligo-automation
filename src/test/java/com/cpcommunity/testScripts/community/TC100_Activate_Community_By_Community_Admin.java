@@ -24,7 +24,7 @@ public class TC100_Activate_Community_By_Community_Admin extends BaseTest {
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC099", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -32,9 +32,9 @@ public class TC100_Activate_Community_By_Community_Admin extends BaseTest {
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		MyCommunitiesPage.activateCommunity(data.get("communityName"));
+		MyCommunitiesPage.activateCommunity(data.get("communityName")+" "+runTime);
 //		GlobalCommunitesPage globalCommunitesPage=EcoSystemPage.goToGlobalCommunities();
-		CommunityDetailsPage communityDetailsPage= MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
+		CommunityDetailsPage communityDetailsPage= MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
 		communityDetailsPage.verifyNoEvents();
 		communityDetailsPage.VerifyNoGroups();
 		

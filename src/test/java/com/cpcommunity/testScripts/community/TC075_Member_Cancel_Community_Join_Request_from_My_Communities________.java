@@ -23,7 +23,7 @@ public class TC075_Member_Cancel_Community_Join_Request_from_My_Communities_____
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC075", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -33,10 +33,10 @@ public class TC075_Member_Cancel_Community_Join_Request_from_My_Communities_____
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
-		GlobalCommunitesPage.JoinCommunity(data.get("communityName"));
+		GlobalCommunitesPage.JoinCommunity(data.get("communityName")+" "+runTime);
 		EcoSystemPage = EcoSystemPage.goToMyEcosystem();
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		MyCommunitiesPage.cancelCommunityRequest(data.get("communityName"));
+		MyCommunitiesPage.cancelCommunityRequest(data.get("communityName")+" "+runTime);
 		
 		//Assert.fail("Failing the login test");
 	}

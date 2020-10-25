@@ -24,14 +24,14 @@ public class TC212_Verify_TA_Created_Community_Is_Not_Displayed_In_Pending_Commu
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC212", data.get("Runmode"), excel);
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();	
 		SystemAdminDashboardPage Dashboard_Page = login.SystemAdminloginToApplication(data.get("email"), data.get("password"));
 		PendingCommunitiesPage PendingCommunitiesPage = Dashboard_Page.naviagteToPendingCommunities();
-		PendingCommunitiesPage.checkCommunityNotDisplayed(data.get("communityName"));
+		PendingCommunitiesPage.checkCommunityNotDisplayed(data.get("communityName")+" "+runTime);
 //		Assert.fail("Failing the login test");
 	}
 

@@ -23,7 +23,7 @@ public class TC072_Community_Admin_Approve_And_Reject_Group_Requests extends Bas
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC072", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -34,7 +34,7 @@ public class TC072_Community_Admin_Approve_And_Reject_Group_Requests extends Bas
 		
 
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
+		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
 		CommunityDetailsPage.PrivateGroupJoinedSuccessfully(data.get("groupName"));
 		Thread.sleep(8000);	
 		home = EcoSystemPage.logout();
@@ -46,7 +46,7 @@ public class TC072_Community_Admin_Approve_And_Reject_Group_Requests extends Bas
 		
 //		EcoSystemPage.verifySuccessLogin();
 		MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
+		CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
 		CommunityDetailsPage.PrivateGroupJoinedSuccessfully(data.get("groupName"));
 		Thread.sleep(8000);	
 		home = EcoSystemPage.logout();	
@@ -58,7 +58,7 @@ public class TC072_Community_Admin_Approve_And_Reject_Group_Requests extends Bas
 			
 //		EcoSystemPage.verifySuccessLogin();
 		MyCommunitiesPage = EcoSystemPage.goToMyCommunities();		
-		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));		
+		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName")+" "+runTime);		
 		GroupsPendingRequestsPage GroupsPendingRequestsPage = CommunityDashboardPage.NavigateToCommunitygroupPendingRequets();
 		GroupsPendingRequestsPage.approveMember(data.get("email1"));
 		GroupsPendingRequestsPage.rejectMember(data.get("email2"), data.get("rejectReason"));

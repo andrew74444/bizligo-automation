@@ -752,9 +752,11 @@ public class CommunityDetailsPage extends BasePage {
 	@FindBy(xpath = "//*[contains(text(),'RENEW')]")
 	WebElement renew;
 
-	public MembershipPlansPage renewMemberShipPlan() {
+	public MembershipPlansPage renewMemberShipPlan() throws Exception {
 
-		click(discussion, "");
+		click(discussion, "discussion");
+		updateClass(header, "");
+		Thread.sleep(4000);
 		click(renew, "renew");
 		return (MembershipPlansPage) openPage(MembershipPlansPage.class);
 	}

@@ -25,7 +25,7 @@ public class TC127_Zoom_Meeting_Configuration extends BaseTest {
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC127", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -36,7 +36,7 @@ public class TC127_Zoom_Meeting_Configuration extends BaseTest {
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		DriverManager.getDriver().manage().window().maximize();
-		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
+		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName")+" "+runTime);
 		MeetingAccountsPage MeetingAccountsPage = CommunityDashboardPage.navigateToMeetingAccounts();
 		MeetingAccountsPage.configureZoom(data.get("APIKey"), data.get("APISecret"), data.get("EmailID"));
 		

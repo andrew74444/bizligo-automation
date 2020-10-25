@@ -21,7 +21,7 @@ public class TC221_Tenant_Admin_Create_Community2 extends BaseTest {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC221", data.get("Runmode"), excel);
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -34,9 +34,9 @@ public class TC221_Tenant_Admin_Create_Community2 extends BaseTest {
 		HashMap<String, String> Ftr_list = plansPage.getPricingPlanFeatures(data.get("PlanName"));
 		home = Dashboard_Page.logout();
 		login = home.clickOnLOGINBtn();
-		EcoSystemPage ecoSystemPage = login.loginToApplication(data.get("communityAdminEmail"), data.get("password"));
+		EcoSystemPage ecoSystemPage = login.loginToApplication(data.get("communityAdminEmail")+" "+runTime, data.get("password"));
 		GlobalCommunitesPage globalCommunitesPage = ecoSystemPage.goToGlobalCommunities();
-		CommunityDetailsPage communityDetailsPage = globalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));
+		CommunityDetailsPage communityDetailsPage = globalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
 		EditCommunityPage editCommunityPage = communityDetailsPage.managecommunity();
 		CommunityDashboardPage communityDashboardPage =editCommunityPage.saveCommunity();
 		PricingPlanDetailsPage pricingPlanDetailsPage = communityDashboardPage.navigateToPricingPlansDetailsPage();

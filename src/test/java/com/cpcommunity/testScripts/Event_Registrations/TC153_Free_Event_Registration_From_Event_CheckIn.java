@@ -18,7 +18,7 @@ public class TC153_Free_Event_Registration_From_Event_CheckIn extends BaseTest {
 		DataUtil.checkExecution("master", "TC153", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		System.out.println(data);
-		openBrowser(data.get("browser"));
+		String runTime =openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -26,7 +26,7 @@ public class TC153_Free_Event_Registration_From_Event_CheckIn extends BaseTest {
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage myCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage communityDashboardPage = myCommunitiesPage.gotoManageCommunity(data.get("communityName"));
+		CommunityDashboardPage communityDashboardPage = myCommunitiesPage.gotoManageCommunity(data.get("communityName")+" "+runTime);
 		CommunityEventsPage CommunityEvents = communityDashboardPage.navigateToEvents();
 		CheckInPage checkInPage = CommunityEvents.checkIn(data);
 		checkInPage.registerFreeEvent(data);

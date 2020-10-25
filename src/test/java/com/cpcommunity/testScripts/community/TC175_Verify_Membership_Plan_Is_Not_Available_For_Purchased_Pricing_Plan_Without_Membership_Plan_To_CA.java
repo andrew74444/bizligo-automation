@@ -21,7 +21,7 @@ public class TC175_Verify_Membership_Plan_Is_Not_Available_For_Purchased_Pricing
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC175", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -32,7 +32,7 @@ public class TC175_Verify_Membership_Plan_Is_Not_Available_For_Purchased_Pricing
 
 		CreateCommunityPage CreateCommunityPage = MyCommunitiesPage.clickOnCreateCommunity();
 		try {
-			CreateCommunityPage.CreateCommunity(data.get("communityName"), data.get("Networking"), data.get("Marketing"),data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"),data.get("InvestInBusiness"), data.get("Other"), data.get("About"), data.get("Category"),data.get("type"));
+			CreateCommunityPage.CreateCommunity(data.get("communityName")+" "+runTime, data.get("Networking"), data.get("Marketing"),data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"),data.get("InvestInBusiness"), data.get("Other"), data.get("About"), data.get("Category"),data.get("type"));
 	
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -46,7 +46,7 @@ public class TC175_Verify_Membership_Plan_Is_Not_Available_For_Purchased_Pricing
 		PendingCommunitiesPage PendingCommunitiesPage = systemAdminDashboardPage.naviagteToPendingCommunities();
 
 		try {
-			PendingCommunitiesPage.approveCommunity(data.get("communityName"));
+			PendingCommunitiesPage.approveCommunity(data.get("communityName")+" "+runTime);
 				
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -58,7 +58,7 @@ public class TC175_Verify_Membership_Plan_Is_Not_Available_For_Purchased_Pricing
 		MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CommunityDetailsPage CommunityDetailsPage;
 		try {
-			SelectPlanPage SelectPlanPage = MyCommunitiesPage.completeSetup(data.get("communityName"));
+			SelectPlanPage SelectPlanPage = MyCommunitiesPage.completeSetup(data.get("communityName")+" "+runTime);
 			SelectPlanPage.selectPaidPlan(data.get("planName"));
 			if (data.get("paymentGateway").equalsIgnoreCase("paypal")) 
 			{
@@ -72,7 +72,7 @@ public class TC175_Verify_Membership_Plan_Is_Not_Available_For_Purchased_Pricing
 			PaymentReceipt.paymentSuccess();
 			 CommunityDetailsPage = PaymentReceipt.viewCommunity();	
 		} catch (Exception e) {
-			CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
+			CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
 		}
 		
 		EditCommunityPage editCommunityPage = CommunityDetailsPage.managecommunity();

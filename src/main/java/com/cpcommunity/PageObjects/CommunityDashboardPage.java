@@ -285,12 +285,12 @@ public class CommunityDashboardPage extends BasePage {
 		// new ManageGroupsPage(driver);
 	}
 
-	public CommunityDetailsPage navigateToCommunityDetailsPage(Hashtable<String,String> data) throws Exception {
+	public CommunityDetailsPage navigateToCommunityDetailsPage(String name) throws Exception {
 		
 		scrollUpVertically();
-		String name = data.get("communityName");
+		
 		WebElement ele = driver.findElement(By.xpath("//*[@class='nav_menu']//*[contains(text(),'"+name+"')]"));
-		click(ele, "Community Name " +data.get("communityName"));
+		click(ele, "Community Name " +name);
 		return (CommunityDetailsPage) openPage(CommunityDetailsPage.class);
 		// new ManageGroupsPage(driver);
 	}

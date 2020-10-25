@@ -27,7 +27,7 @@ public class TC030_System_Admin_Community_Rejection extends BaseTest {
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC030", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -35,7 +35,7 @@ public class TC030_System_Admin_Community_Rejection extends BaseTest {
 		logInfo("Username entered as "+data.get("email")+" and Password entered as "+ data.get("password"));
 		SystemAdminDashboardPage Dashboard_Page = login.SystemAdminloginToApplication(data.get("email"), data.get("password"));
 		PendingCommunitiesPage PendingCommunitiesPage = Dashboard_Page.naviagteToPendingCommunities();
-		PendingCommunitiesPage.rejectCommunity(data.get("communityName"), data.get("rejectReason"));
+		PendingCommunitiesPage.rejectCommunity(data.get("communityName")+" "+runTime, data.get("rejectReason"));
 		
 		
 		//Assert.fail("Failing the login test");

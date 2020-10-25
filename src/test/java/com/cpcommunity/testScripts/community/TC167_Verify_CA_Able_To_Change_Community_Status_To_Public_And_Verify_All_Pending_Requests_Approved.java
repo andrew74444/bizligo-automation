@@ -22,7 +22,7 @@ public class TC167_Verify_CA_Able_To_Change_Community_Status_To_Public_And_Verif
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC167", data.get("Runmode"), excel);
 		log.info("Inside TC167 Test");
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -31,13 +31,13 @@ public class TC167_Verify_CA_Able_To_Change_Community_Status_To_Public_And_Verif
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
-		GlobalCommunitesPage.JoinPrivateCommunity(data.get("communityName")+" "+date());
+		GlobalCommunitesPage.JoinPrivateCommunity(data.get("communityName")+" "+date()+" "+runTime);
 		home = EcoSystemPage.logout();
 		login = home.clickOnLOGINBtn();
 		EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
+		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName")+" "+runTime);
 		EditCommunityPage EditCommunityPage = CommunityDashboardPage.navigateToEditCommunityPage();
 		CommunityDashboardPage = EditCommunityPage.updateCommunityType(data.get("type"));
 		CommunityPendingRequestsPage communityPendingRequestsPage =CommunityDashboardPage.NavigateToCommunityPendingRequets();

@@ -42,7 +42,7 @@ public class CreateCommunityPage extends BasePage{
 	
 	public GlobalCommunitesPage CreateCommunity(String Name,String Networking,String Marketing,String BuildingRelationship,String Branding,String GrowMyBusiness,String InvestInBusiness,String Other,String About,String Category,String type ) throws Exception{
 		
-		
+		updateClass(pageheader, "");
 		log.info(Name);
 		new CreateOrEditCommunityPage(driver).FillCommunityDetails(Name+" "+getDateInDDMMMYYYY(), Networking, Marketing, BuildingRelationship, Branding, GrowMyBusiness, InvestInBusiness, Other, About, Category, type);
 		picture();

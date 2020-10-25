@@ -24,14 +24,14 @@ public class TC211_Verify_TA_Created_Community_Is_Displaying_In_The_Global_Commu
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC211", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"),data.get("password"));
 		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
-		GlobalCommunitesPage.checkCommunityIsDisplayed(data.get("communityName"));
+		GlobalCommunitesPage.checkCommunityIsDisplayed(data.get("communityName")+" "+runTime);
 		
 		//Assert.fail("Failing the login test");
 	}

@@ -21,7 +21,7 @@ public class TC090_Configure_AuthorizeNet_Payment_Gateway_____ extends BaseTest 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC090", data.get("Runmode"), excel);
 		log.info("TC090 Login Test");
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -30,7 +30,7 @@ public class TC090_Configure_AuthorizeNet_Payment_Gateway_____ extends BaseTest 
 
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage
-				.gotoManageCommunity(data.get("communityName"));
+				.gotoManageCommunity(data.get("communityName")+" "+runTime);
 		PaymentGatewaysPage PaymentGatewaysPage = CommunityDashboardPage.navigateToPaymentGateways();
 		SetupAuthorizePage SetupAuthorizePage = null;
 		

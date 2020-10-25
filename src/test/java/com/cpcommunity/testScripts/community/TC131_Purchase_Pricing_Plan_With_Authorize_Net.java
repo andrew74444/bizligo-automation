@@ -21,7 +21,7 @@ public class TC131_Purchase_Pricing_Plan_With_Authorize_Net extends BaseTest {
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC131", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -30,8 +30,8 @@ public class TC131_Purchase_Pricing_Plan_With_Authorize_Net extends BaseTest {
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CreateCommunityPage CreateCommunityPage = MyCommunitiesPage.clickOnCreateCommunity();
-		String communityName = data.get("communityName");
-		CreateCommunityPage.CreateCommunity(data.get("communityName"), data.get("Networking"), data.get("Marketing"),
+		String communityName = data.get("communityName")+" "+runTime;
+		CreateCommunityPage.CreateCommunity(communityName, data.get("Networking"), data.get("Marketing"),
 				data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"),
 				data.get("InvestInBusiness"), data.get("Other"), data.get("About"), data.get("Category"),
 				data.get("type"));
