@@ -23,7 +23,7 @@ public class TC130_Apply_Job_Requirement_From_Global_Careers extends BaseTest {
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC130", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -31,7 +31,7 @@ public class TC130_Apply_Job_Requirement_From_Global_Careers extends BaseTest {
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDetailsPage CommunityDetailsPage =MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
+		CommunityDetailsPage CommunityDetailsPage =MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
 		CommunityDetailsPage.applyJob(data.get("JobTitle"),data.get("Resume"),data.get("OptionalMessage"));
 		
 		//Assert.fail("Failing the login test");

@@ -19,7 +19,7 @@ public class Create_Blog extends BaseTest {
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC194", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		HomePage home = new HomePage().open();
 		LoginPage loginpage = home.clickOnLOGINBtn();
@@ -29,10 +29,10 @@ public class Create_Blog extends BaseTest {
 		CommunityDashboardPage communityDashboardPage = mycommunities.gotoManageCommunity(data.get("communityName"));
 		CommunityBlogsPage communityBlogsPage = communityDashboardPage.gotoManageBlogs();
 		communityBlogsPage.createBlog(data);
-		CommunityDetailsPage communityDetailsPage = communityDashboardPage.navigateToCommunityDetailsPage(data);
+		CommunityDetailsPage communityDetailsPage = communityDashboardPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
 		EcoSystemPage = EcoSystemPage.goToMyEcosystem();
 		BlogsPage bolgsPage = EcoSystemPage.goToBlogsPage();
-		bolgsPage.searchPost(data.get("communityName"), data.get("title"));
+		bolgsPage.searchPost(data.get("communityName")+" "+runTime, data.get("title"));
 		
 
 		

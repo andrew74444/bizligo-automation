@@ -20,7 +20,7 @@ public class TC142_Create_Paid_Event extends BaseTest {
 		DataUtil.checkExecution("master", "TC142", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		System.out.println(data);
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -28,7 +28,7 @@ public class TC142_Create_Paid_Event extends BaseTest {
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage myCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage communityDashboardPage = myCommunitiesPage.gotoManageCommunity(data.get("communityName"));
+		CommunityDashboardPage communityDashboardPage = myCommunitiesPage.gotoManageCommunity(data.get("communityName")+" "+runTime);
 		CommunityEventsPage CommunityEvents = communityDashboardPage.navigateToEvents();
 		CreateOrEditEvent CreateOrEditEvent = CommunityEvents.NewEvent();
 		CreateOrEditEvent.createEvent(data);

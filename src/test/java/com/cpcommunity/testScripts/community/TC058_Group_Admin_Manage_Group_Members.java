@@ -24,7 +24,7 @@ public class TC058_Group_Admin_Manage_Group_Members extends BaseTest {
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC058", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();

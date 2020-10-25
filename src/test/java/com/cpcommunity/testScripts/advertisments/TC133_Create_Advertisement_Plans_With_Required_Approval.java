@@ -21,14 +21,14 @@ public class TC133_Create_Advertisement_Plans_With_Required_Approval extends Bas
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC133", data.get("Runmode"), excel);
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 			
 		MyCommunitiesPage myCommunitiesPage=EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage communityDashboardPage =myCommunitiesPage.gotoManageCommunity(data.get("communityName"));
+		CommunityDashboardPage communityDashboardPage =myCommunitiesPage.gotoManageCommunity(data.get("communityName")+" "+runTime);
 		ManageAdPlansPage manageAdPlansPage =communityDashboardPage.goToManageAdPlansPage();
 		manageAdPlansPage.createAdPlan(data.get("name1"), data.get("price"), data.get("planDetails"), data.get("duration"), data.get("durationType"), data.get("adLocation1"), data.get("adType"), data.get("approvalType"));
 		Thread.sleep(5000);

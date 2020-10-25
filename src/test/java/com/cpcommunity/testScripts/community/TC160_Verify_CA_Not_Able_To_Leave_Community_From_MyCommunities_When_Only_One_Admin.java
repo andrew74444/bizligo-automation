@@ -24,7 +24,7 @@ public class TC160_Verify_CA_Not_Able_To_Leave_Community_From_MyCommunities_When
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC160", data.get("Runmode"), excel);
 		log.info("Inside Login Test");			
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));		
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -32,7 +32,7 @@ public class TC160_Verify_CA_Not_Able_To_Leave_Community_From_MyCommunities_When
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage myCommunitiesPage= EcoSystemPage.goToMyCommunities();
-		myCommunitiesPage.checkProperAlertDisplayedWhenOnlyOneAdmin(data.get("communityName"));
+		myCommunitiesPage.checkProperAlertDisplayedWhenOnlyOneAdmin(data.get("communityName")+" "+runTime);
 		
 		
 		//Assert.fail("Failing the login test");

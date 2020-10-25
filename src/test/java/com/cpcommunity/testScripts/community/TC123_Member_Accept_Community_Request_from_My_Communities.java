@@ -26,7 +26,7 @@ public class TC123_Member_Accept_Community_Request_from_My_Communities extends B
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC123", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -36,7 +36,7 @@ public class TC123_Member_Accept_Community_Request_from_My_Communities extends B
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		MyCommunitiesPage.acceptcommunity(data.get("communityName"),data.get("termsAndConditions"));
+		MyCommunitiesPage.acceptcommunity(data.get("communityName")+" "+runTime,data.get("termsAndConditions"));
 		
 		//Assert.fail("Failing the login test");
 	}

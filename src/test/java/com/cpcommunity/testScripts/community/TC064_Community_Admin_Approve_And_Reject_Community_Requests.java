@@ -24,7 +24,7 @@ public class TC064_Community_Admin_Approve_And_Reject_Community_Requests extends
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC064", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -34,7 +34,7 @@ public class TC064_Community_Admin_Approve_And_Reject_Community_Requests extends
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
+		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName")+" "+runTime);
 		CommunityPendingRequestsPage CommunityPendingRequestsPage = CommunityDashboardPage.navigateToPendingRequests();
 		CommunityPendingRequestsPage.approveMember(data.get("email1"));
 		CommunityPendingRequestsPage.rejectMember(data.get("email2"), data.get("rejectReason"));

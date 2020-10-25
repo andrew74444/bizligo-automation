@@ -28,7 +28,7 @@ public class TC218_Verify_TA_InActivated_Community_Is_Not_Displaying_In_The_Glob
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC218", data.get("Runmode"), excel);
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -39,7 +39,7 @@ public class TC218_Verify_TA_InActivated_Community_Is_Not_Displaying_In_The_Glob
 	
 //	
 		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
-		GlobalCommunitesPage.checkInActivatedCommunityIsNotDisplayed(data.get("communityName"));
+		GlobalCommunitesPage.checkInActivatedCommunityIsNotDisplayed(data.get("communityName")+" "+runTime);
 		
 //		Assert.fail("Failing the login test");
 	}

@@ -21,7 +21,7 @@ public class TC172_Verify_Purchased_Membership_Is_Not_Editable_To_CA extends Bas
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC172", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -29,7 +29,7 @@ public class TC172_Verify_Purchased_Membership_Is_Not_Editable_To_CA extends Bas
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage communityDashboardPage= MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
+		CommunityDashboardPage communityDashboardPage= MyCommunitiesPage.gotoManageCommunity(data.get("communityName")+" "+runTime);
 		PlansPage plansPage = communityDashboardPage.navigateToMembershipPlans();
 		plansPage.checkPurchasedMembershipPlanIsNotEditable();	
 	}

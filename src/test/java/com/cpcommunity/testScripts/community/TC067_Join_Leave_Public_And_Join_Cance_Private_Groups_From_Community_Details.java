@@ -23,7 +23,7 @@ public class TC067_Join_Leave_Public_And_Join_Cance_Private_Groups_From_Communit
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC067", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -32,7 +32,7 @@ public class TC067_Join_Leave_Public_And_Join_Cance_Private_Groups_From_Communit
 		
 //		int T1 = Dashboard_Page.totalGroupsCount();
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
+		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
 		CommunityDetailsPage.PublicGroupJoinedSuccessfully(data.get("name1"));
 		
 //		int T2 = Dashboard_Page.totalGroupsCount();
@@ -40,7 +40,7 @@ public class TC067_Join_Leave_Public_And_Join_Cance_Private_Groups_From_Communit
 //		AssertionHelper.verifyText(String.valueOf(T1), String.valueOf(T2));
 		EcoSystemPage = EcoSystemPage.goToMyEcosystem();
 		MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));		
+		CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);		
 		CommunityDetailsPage.LeaveGroup(data.get("name1"));
 		CommunityDetailsPage.PrivateGroupJoinedSuccessfully(data.get("name2"));
 		CommunityDetailsPage.cancelRequest(data.get("name2"));

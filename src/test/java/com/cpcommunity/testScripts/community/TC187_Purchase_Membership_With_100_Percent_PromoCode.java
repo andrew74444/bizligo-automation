@@ -22,7 +22,7 @@ public class TC187_Purchase_Membership_With_100_Percent_PromoCode extends BaseTe
 		DataUtil.checkExecution("master", "TC187", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		System.out.println(data.get("duration"));
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -32,7 +32,7 @@ public class TC187_Purchase_Membership_With_100_Percent_PromoCode extends BaseTe
 				
 		GlobalCommunitesPage globalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
 		
-		MembershipPlansPage membershipPlansPage = globalCommunitesPage.joinCommunityWithMembershipPlan(data.get("communityName"));
+		MembershipPlansPage membershipPlansPage = globalCommunitesPage.joinCommunityWithMembershipPlan(data.get("communityName")+" "+runTime);
 		membershipPlansPage.purchaseMembershipPlan(data.get("membershipPlan"));
 		if (data.get("paymentMethod").equalsIgnoreCase("paypal")) 
 		{

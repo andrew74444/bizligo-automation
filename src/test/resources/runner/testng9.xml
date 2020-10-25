@@ -20,7 +20,7 @@
 
 
 			<class
-				name="com.cpcommunity.testScripts.community.TC029_Create_community_From_My_Communites" />
+				name="com.cpcommunity.testScripts.community.TC179_Verify_Member_Is_Able_Update_Membership_Plan" />
 		</classes>
 	</test>
 

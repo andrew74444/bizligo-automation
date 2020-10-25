@@ -24,7 +24,7 @@ public class TC043_Member_Reject_Community_Request_From_Global_Community extends
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC043", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -33,7 +33,7 @@ public class TC043_Member_Reject_Community_Request_From_Global_Community extends
 //		logInfo("Username entered as "+getHarley()+" and Password entered as "+getPassword());
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email4"),data.get("password"));
 		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
-		GlobalCommunitesPage.rejectCommunity(data.get("communityName"));
+		GlobalCommunitesPage.rejectCommunity(data.get("communityName")+" "+runTime);
 		
 		//Assert.fail("Failing the login test");
 	}

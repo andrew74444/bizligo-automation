@@ -21,7 +21,7 @@ public class TC191_Verify_Back_Button_Is_Redirected_To_Respective_Page_From_Mana
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC191", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -33,7 +33,7 @@ public class TC191_Verify_Back_Button_Is_Redirected_To_Respective_Page_From_Mana
 		MyGroupsPage = ManageGroupMembersPageByGroupAdmin.backToMyGroups();
 		EcoSystemPage = EcoSystemPage.goToMyEcosystem();
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDetailsPage CommunityDetailsPage =MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
+		CommunityDetailsPage CommunityDetailsPage =MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
 		ManageGroupMembersPageByGroupAdmin = CommunityDetailsPage.navigateToManageGroupMembers(data.get("groupName"));
 		CommunityDetailsPage = ManageGroupMembersPageByGroupAdmin.backToCommunityDetailsPage();
 		EditCommunityPage editCommunityPage= CommunityDetailsPage.managecommunity();

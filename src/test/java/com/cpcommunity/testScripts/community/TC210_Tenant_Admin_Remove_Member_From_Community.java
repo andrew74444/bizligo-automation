@@ -22,14 +22,14 @@ public class TC210_Tenant_Admin_Remove_Member_From_Community extends BaseTest {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC210", data.get("Runmode"), excel);
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();	
 		SystemAdminDashboardPage Dashboard_Page = login.SystemAdminloginToApplication(data.get("email"), data.get("password"));
 		TACommunitiesPage tACommunitiesPage =  Dashboard_Page.navigateToCommunitiesPage();
-		ManageCommunityMembersPage manageCommunityMembersPage =tACommunitiesPage.navigateTomanageMembers(data.get("communityName"));
+		ManageCommunityMembersPage manageCommunityMembersPage =tACommunitiesPage.navigateTomanageMembers(data.get("communityName")+" "+runTime);
 		manageCommunityMembersPage.addmember(data.get("removeMemberEMail"));
 		manageCommunityMembersPage.removeMember(data.get("removeMemberEMail"));
 //		Assert.fail("Failing the login test");

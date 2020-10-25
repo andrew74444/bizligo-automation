@@ -24,7 +24,7 @@ public class TC179_Verify_Member_Is_Able_Update_Membership_Plan extends BaseTest
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC179", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -32,7 +32,7 @@ public class TC179_Verify_Member_Is_Able_Update_Membership_Plan extends BaseTest
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
+		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToExpiredCommunityDetailsPage(data.get("communityName")+" "+runTime,runTime);
 		MembershipPlansPage membershipPlansPage = CommunityDetailsPage.renewMemberShipPlan();
 		membershipPlansPage.renewThePurchasedMembershipPlan();
 

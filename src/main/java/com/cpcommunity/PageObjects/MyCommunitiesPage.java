@@ -8,6 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Set;
@@ -251,11 +253,24 @@ public class MyCommunitiesPage extends BasePage {
 		communityName = communityName+" "+getDateInDDMMMYYYY();
 		this.searchCommunity(communityName);
 		WebElement ele = driver.findElement(By.xpath("//a[@tooltip='" + communityName + "']"));
-		click(ele, "CommunityName");
+		click(ele, communityName);
 		return (CommunityDetailsPage) openPage(CommunityDetailsPage.class);
 		// new CommunityDetailsPage(driver, );
 	}
 	
+	
+	
+	public CommunityDetailsPage navigateToExpiredCommunityDetailsPage(String communityName, String runTime) throws Exception {
+		Date date = new Date();
+		
+		Date newDate = subtractDays(date, stringToInt(runTime));
+		SimpleDateFormat formatter = new SimpleDateFormat("dd MMM yyyy");
+		String strDate = formatter.format(newDate);
+		this.searchCommunity(communityName+" "+strDate);
+		WebElement ele = driver.findElement(By.xpath("//a[@tooltip='" + communityName+" "+strDate + "']"));
+		click(ele,communityName+" "+strDate);
+		return (CommunityDetailsPage) openPage(CommunityDetailsPage.class);
+	}
 	
 	public CommunityDetailsPage navigateToCommunityDetailsPageWithoutDate(String communityName) throws Exception {
 		

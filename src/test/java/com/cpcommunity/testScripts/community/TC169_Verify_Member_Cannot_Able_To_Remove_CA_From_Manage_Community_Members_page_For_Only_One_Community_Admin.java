@@ -22,7 +22,7 @@ public class TC169_Verify_Member_Cannot_Able_To_Remove_CA_From_Manage_Community_
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC162", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -30,7 +30,7 @@ public class TC169_Verify_Member_Cannot_Able_To_Remove_CA_From_Manage_Community_
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
+		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName")+" "+runTime);
 		ManageCommunityMembersPage ManageCommunityMembersPage = CommunityDashboardPage.navigateToManageCommunityMembers();
 		ManageCommunityMembersPage.removeAdmin(data.get("email"));
 		

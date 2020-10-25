@@ -20,7 +20,7 @@ public class TC152_Paid_Event_Registration_With_Cash_From_Event_CheckIn extends 
 		DataUtil.checkExecution("master", "TC152", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		System.out.println(data);
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -29,7 +29,7 @@ public class TC152_Paid_Event_Registration_With_Cash_From_Event_CheckIn extends 
 		
 		MyCommunitiesPage myCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CommunityDashboardPage communityDashboardPage = myCommunitiesPage
-				.gotoManageCommunity(data.get("communityName"));
+				.gotoManageCommunity(data.get("communityName")+" "+runTime);
 		CommunityEventsPage CommunityEvents = communityDashboardPage.navigateToEvents();
 		CheckInPage checkInPage = CommunityEvents.checkIn(data);
 		checkInPage.cashPayment(data);

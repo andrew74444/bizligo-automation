@@ -23,9 +23,6 @@ public class TC165_Veirfy_Community_Website_URL_Redirected_To_Configured_Website
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC165", data.get("Runmode"), excel);
 		
-		System.out.println(Constants.SUITE1_XL_PATH);
-		System.out.println(excel);
-		
 //		communityDetailsPage.clickonLogo();
 		//Assert.fail("Failing the login test");
 	}

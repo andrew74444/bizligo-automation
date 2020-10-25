@@ -25,7 +25,7 @@ public class TC125_Member_Cancel_Created_Community_Request extends BaseTest {
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC125", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -35,7 +35,7 @@ public class TC125_Member_Cancel_Created_Community_Request extends BaseTest {
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		MyCommunitiesPage.cancelReviewCommunity(data.get("communityName"));
+		MyCommunitiesPage.cancelReviewCommunity(data.get("communityName")+" "+runTime);
 		
 		//Assert.fail("Failing the login test");
 	}

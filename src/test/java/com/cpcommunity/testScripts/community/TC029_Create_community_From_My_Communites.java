@@ -34,7 +34,7 @@ public class TC029_Create_community_From_My_Communites extends BaseTest {
 		
 		MyCommunitiesPage MyCommunitiesPage= EcoSystemPage.goToMyCommunities();
 		CreateCommunityPage CreateCommunityPage = MyCommunitiesPage.clickOnCreateCommunity();
-		CreateCommunityPage.CreateCommunity(data.get("communityName"), data.get("Networking"), data.get("Marketing"), data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"), data.get("InvestInBusiness"), data.get("Other"), data.get("About"), data.get("Category"), data.get("type"));
+		CreateCommunityPage.CreateCommunity(data.get("communityName")+" "+runTime, data.get("Networking"), data.get("Marketing"), data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"), data.get("InvestInBusiness"), data.get("Other"), data.get("About"), data.get("Category"), data.get("type"));
 		
 		//Assert.fail("Failing the login test");
 	}

@@ -27,14 +27,14 @@ public class TC208_TA_Not_Able_To_Remove_Admin_Role_When_Only_One_Admin_To_The_C
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC208", data.get("Runmode"), excel);
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();	
 		SystemAdminDashboardPage Dashboard_Page = login.SystemAdminloginToApplication(data.get("email"), data.get("password"));
 		TACommunitiesPage tACommunitiesPage =  Dashboard_Page.navigateToCommunitiesPage();
-		ManageCommunityMembersPage manageCommunityMembersPage =tACommunitiesPage.navigateTomanageMembers(data.get("communityName"));
+		ManageCommunityMembersPage manageCommunityMembersPage =tACommunitiesPage.navigateTomanageMembers(data.get("communityName")+" "+runTime);
 //		manageCommunityMembersPage.addmember(data.get("makeAdminMemberEmail"));
 //		manageCommunityMembersPage.makeAdmin(data.get("makeAdminMemberEmail"));
 		manageCommunityMembersPage.checkNotAbleToRemoveAdminOnlyOneAdmin(data.get("notAbleToRemoveEmail"));

@@ -17,7 +17,7 @@ public class TC184_Create_PromoCode extends BaseTest {
 		DataUtil.checkExecution("master", "TC184", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		System.out.println(data);
-		openBrowser(data.get("browser"));
+		String runTime =openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -25,7 +25,7 @@ public class TC184_Create_PromoCode extends BaseTest {
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage myCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage communityDashboardPage = myCommunitiesPage.gotoManageCommunity(data.get("communityName"));
+		CommunityDashboardPage communityDashboardPage = myCommunitiesPage.gotoManageCommunity(data.get("communityName")+" "+runTime);
 		PromoCodePage promoCodePage = communityDashboardPage.goToPromoCodePage();
 		promoCodePage.createPromocode( data.get("promoCode1"),  data.get("promoCodeExpiry"),  data.get("discountByPercent"),
 				data.get("discountByValue"),  data.get("discountByPercentageValue1"),  data.get("maxNumberofUses"),  data.get("appliesToAd"),

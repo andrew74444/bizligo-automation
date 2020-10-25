@@ -20,7 +20,7 @@ public class TC148_Free_Event_Registration_From_Event_Details_Page extends BaseT
 		DataUtil.checkExecution("master", "TC148", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		System.out.println(data);
-		openBrowser(data.get("browser"));
+		String runTime =openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();

@@ -24,7 +24,7 @@ public class TC128_Create_Job_Requirement extends BaseTest {
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC128", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -32,7 +32,7 @@ public class TC128_Create_Job_Requirement extends BaseTest {
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage CommunityDashboardPage =MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
+		CommunityDashboardPage CommunityDashboardPage =MyCommunitiesPage.gotoManageCommunity(data.get("communityName")+" "+runTime);
 		ManageJobsPage manageJobsPage =CommunityDashboardPage.navigateToManageJobsPage();
 		manageJobsPage.postJob(data.get("JobTitle"), data.get("BillingRate"), data.get("JobTypeID"), data.get("Location"), data.get("Description"), data.get("AdditionalDetails"), data.get("remarks"), data.get("makeGlobal"));
 		CommunityDetailsPage cdp = manageJobsPage.navigateToCommunityDetailsPage(data.get("communityName"));

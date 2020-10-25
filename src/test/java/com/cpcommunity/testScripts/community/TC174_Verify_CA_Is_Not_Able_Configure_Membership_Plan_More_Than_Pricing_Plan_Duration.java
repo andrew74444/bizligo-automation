@@ -21,7 +21,7 @@ public class TC174_Verify_CA_Is_Not_Able_Configure_Membership_Plan_More_Than_Pri
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC501", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -29,7 +29,7 @@ public class TC174_Verify_CA_Is_Not_Able_Configure_Membership_Plan_More_Than_Pri
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage communityDashboardPage= MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
+		CommunityDashboardPage communityDashboardPage= MyCommunitiesPage.gotoManageCommunity(data.get("communityName")+" "+runTime);
 		PlansPage plansPage = communityDashboardPage.navigateToMembershipPlans();
 		plansPage.createMembershipPlan(data.get("name"), data.get("price"),	"99", data.get("durationType"), data.get("membershipPlanDescription"));
 		plansPage.checkMembershipPlanDurationCannotExceedThePricingPlanDuration();

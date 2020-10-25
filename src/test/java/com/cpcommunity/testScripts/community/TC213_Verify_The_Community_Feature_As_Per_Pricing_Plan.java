@@ -34,7 +34,7 @@ public class TC213_Verify_The_Community_Feature_As_Per_Pricing_Plan extends Base
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC213", data.get("Runmode"), excel);
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -49,7 +49,7 @@ public class TC213_Verify_The_Community_Feature_As_Per_Pricing_Plan extends Base
 		login = home.clickOnLOGINBtn();
 		EcoSystemPage ecoSystemPage = login.loginToApplication(data.get("communityAdminEmail"), data.get("password"));
 		GlobalCommunitesPage globalCommunitesPage = ecoSystemPage.goToGlobalCommunities();
-		CommunityDetailsPage communityDetailsPage = globalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));
+		CommunityDetailsPage communityDetailsPage = globalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
 		EditCommunityPage editCommunityPage = communityDetailsPage.managecommunity();
 		CommunityDashboardPage communityDashboardPage =editCommunityPage.saveCommunity();
 		PricingPlanDetailsPage pricingPlanDetailsPage = communityDashboardPage.navigateToPricingPlansDetailsPage();

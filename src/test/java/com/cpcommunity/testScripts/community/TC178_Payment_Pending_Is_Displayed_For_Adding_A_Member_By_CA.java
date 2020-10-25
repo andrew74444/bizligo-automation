@@ -22,7 +22,7 @@ public class TC178_Payment_Pending_Is_Displayed_For_Adding_A_Member_By_CA extend
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC178", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -30,7 +30,7 @@ public class TC178_Payment_Pending_Is_Displayed_For_Adding_A_Member_By_CA extend
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage communityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
+		CommunityDashboardPage communityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName")+" "+runTime);
 		ManageCommunityMembersPage manageCommunityMembersPage = communityDashboardPage.navigateToManageCommunityMembers();
 		manageCommunityMembersPage.addmember(data.get("email1"));
 		Thread.sleep(6000);
@@ -39,8 +39,8 @@ public class TC178_Payment_Pending_Is_Displayed_For_Adding_A_Member_By_CA extend
 		EcoSystemPage = login.loginToApplication(data.get("email1"), data.get("password"));
 		
 		MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		MyCommunitiesPage.verifyPaymentPendindDisplayed(data.get("communityName"));
-		CommunityDetailsPage communityDetailsPage= MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
+		MyCommunitiesPage.verifyPaymentPendindDisplayed(data.get("communityName")+" "+runTime);
+		CommunityDetailsPage communityDetailsPage= MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
 		communityDetailsPage.verifyPaymentPendingDisplayed();
 		
 		

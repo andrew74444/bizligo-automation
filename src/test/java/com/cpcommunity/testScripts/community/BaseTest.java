@@ -353,7 +353,7 @@ public class BaseTest {
 				// java.nio.file.Files;
 				Files.createDirectories(path);
 				System.out.println("Directory is created!" + path);
-				String pa = System.getProperty("user.dir")+"\\src\\test\\resources\\testdata\\test\\17 Oct 2020\\ExecutionRunTime\\runTime.txt";
+				String pa = System.getProperty("user.dir")+"\\src\\test\\resources\\testdata\\test\\"+getDate()+"\\ExecutionRunTime\\runTime.txt";
 				writeInNotePad("1", pa);
 
 			} catch (IOException e) {
@@ -608,7 +608,7 @@ public class BaseTest {
 		// System.out.println(getAndrew());
 
 		// System.out.println(2);
-		String path = System.getProperty("user.dir")+"\\src\\test\\resources\\testdata\\test\\17 Oct 2020\\ExecutionRunTime\\runTime.txt";
+		String path = System.getProperty("user.dir")+"\\src\\test\\resources\\testdata\\test\\"+getDate()+"\\ExecutionRunTime\\runTime.txt";
 		log.info(path);
 		String runTime = readInNotePadFile(path);
 
@@ -892,7 +892,7 @@ public class BaseTest {
 	public void sendmail() throws Exception {
 		MonitoringMail1 mail = new MonitoringMail1();
 		mail.Sendmail();
-		String path = System.getProperty("user.dir")+"\\src\\test\\resources\\testdata\\test\\17 Oct 2020\\ExecutionRunTime\\runTime.txt";
+		String path = System.getProperty("user.dir")+"\\src\\test\\resources\\testdata\\test\\"+getDate()+"\\ExecutionRunTime\\runTime.txt";
 		log.info(path);
 		String runTime = readInNotePadFile(path);
 		int i = Integer.parseInt(runTime);

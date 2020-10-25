@@ -24,7 +24,7 @@ public class TC501_Purchase_Pricing_Plan_To_Community extends BaseTest {
 		DataUtil.checkExecution("master", "TC501", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		System.out.println(data.get("duration"));
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -34,7 +34,7 @@ public class TC501_Purchase_Pricing_Plan_To_Community extends BaseTest {
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CreateCommunityPage CreateCommunityPage = MyCommunitiesPage.clickOnCreateCommunity();
 		// String communityName= data.get("communityName")+ currentTime();
-		String communityName = data.get("communityName");
+		String communityName = data.get("communityName")+" "+runTime;
 		try {
 			CreateCommunityPage.CreateCommunity(communityName, data.get("Networking"), data.get("Marketing"),
 					data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"),

@@ -22,7 +22,7 @@ public class TC161_Verify_CA_Not_Able_To_Leave_Community_From_M extends BaseTest
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC151", data.get("Runmode"), excel);
 		log.info("Inside Login Test");			
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));		
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -30,8 +30,8 @@ public class TC161_Verify_CA_Not_Able_To_Leave_Community_From_M extends BaseTest
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage myCommunitiesPage= EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage communityDashboardPage =myCommunitiesPage.gotoManageCommunity(data.get("communityName"));
-		communityDashboardPage.navigateToCommunityDetailsPage(data);
+		CommunityDashboardPage communityDashboardPage =myCommunitiesPage.gotoManageCommunity(data.get("communityName")+" "+runTime);
+		communityDashboardPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
 		EcoSystemPage.goToMyEcosystem();
 		
 		//Assert.fail("Failing the login test");

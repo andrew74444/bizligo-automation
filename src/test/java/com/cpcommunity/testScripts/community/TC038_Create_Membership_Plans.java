@@ -25,7 +25,7 @@ public class TC038_Create_Membership_Plans extends BaseTest {
 		DataUtil.checkExecution("master", "TC038", data.get("Runmode"), excel);
 		log.info("TC038 Test");
 		System.out.println(data.get("browser"));
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -33,7 +33,7 @@ public class TC038_Create_Membership_Plans extends BaseTest {
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("community"));
+		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("community")+" "+runTime);
 		PlansPage PlansPage = CommunityDashboardPage.navigateToMembershipPlans();
 		PlansPage.createMembershipPlan(data.get("name"), data.get("price"), data.get("duration"), data.get("durationType"), data.get("description"));
 		

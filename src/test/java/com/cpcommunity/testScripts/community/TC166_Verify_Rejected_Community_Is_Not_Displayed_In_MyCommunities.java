@@ -20,7 +20,7 @@ public class TC166_Verify_Rejected_Community_Is_Not_Displayed_In_MyCommunities e
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC166", data.get("Runmode"), excel);
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open();
@@ -28,7 +28,7 @@ public class TC166_Verify_Rejected_Community_Is_Not_Displayed_In_MyCommunities e
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage myCommunitiesPage= EcoSystemPage.goToMyCommunities();
-		myCommunitiesPage.verifyRejectCommunityIsNotDisplayedInMyCommunities(data.get("communityName"));
+		myCommunitiesPage.verifyRejectCommunityIsNotDisplayedInMyCommunities(data.get("communityName")+" "+runTime);
 		//Assert.fail("Failing the login test");
 	}
 
