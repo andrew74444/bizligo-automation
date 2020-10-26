@@ -22,7 +22,11 @@ public class TC165_Veirfy_Community_Website_URL_Redirected_To_Configured_Website
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC165", data.get("Runmode"), excel);
-		
+		log.info("Inside Login Test");
+		String runTime = openBrowser(data.get("browser"));
+		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("BizLigo Application Opened");
+		HomePage home = new HomePage().open();
 //		communityDetailsPage.clickonLogo();
 		//Assert.fail("Failing the login test");
 	}
