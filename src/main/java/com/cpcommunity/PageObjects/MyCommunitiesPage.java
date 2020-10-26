@@ -263,7 +263,7 @@ public class MyCommunitiesPage extends BasePage {
 	public CommunityDetailsPage navigateToExpiredCommunityDetailsPage(String communityName, String runTime) throws Exception {
 		Date date = new Date();
 		
-		Date newDate = subtractDays(date, stringToInt(runTime));
+		Date newDate = subtractDays(date, 2);
 		SimpleDateFormat formatter = new SimpleDateFormat("dd MMM yyyy");
 		String strDate = formatter.format(newDate);
 		this.searchCommunity(communityName+" "+strDate);
