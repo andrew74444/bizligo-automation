@@ -87,10 +87,10 @@ public class Discussions extends BasePage {
 	@FindBy(xpath = "//label[@id='ImageUploadLabel']")
 	WebElement ImageUploadLabel;
 
-	@FindBy(xpath = "(//*[@data-placeholder='Add a comment'])[1]")
+	@FindBy(xpath = "(//*[@data-placeholder='Write a comment...'])[1]")
 	WebElement FirstPostComment;
 
-	@FindBy(xpath = "(//*[@class='fa fa-paper-plane icon send-comment'])[1]")
+	@FindBy(xpath = "(//*[@class='btn btn-default']/i)[1]")
 	WebElement SendCommentBtn;
 
 	@FindBy(xpath = "(((//*[@class='post-box ng-scope']//*[@class='like-cont']))//*)[5]")
