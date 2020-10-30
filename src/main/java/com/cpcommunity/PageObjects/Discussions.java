@@ -93,7 +93,7 @@ public class Discussions extends BasePage {
 	@FindBy(xpath = "(//*[@class='btn btn-default']/i)[1]")
 	WebElement SendCommentBtn;
 
-	@FindBy(xpath = "(((//*[@class='post-box ng-scope']//*[@class='like-cont']))//*)[5]")
+	@FindBy(xpath = "(//*[@class='post-box discussions-panel ng-scope'])[1]//*[@class='pull-left like-section']//span[2]")
 	WebElement NoOfPostLikes;
 
 	@FindBy(xpath = "(//*[contains(text(),'Like')])[1]")
@@ -108,7 +108,7 @@ public class Discussions extends BasePage {
 	@FindBy(xpath = "(//*[contains(text(),'Like')])[2]")
 	WebElement clickFirstCommentLike;
 
-	@FindBy(xpath = "((//*[@class='post-box ng-scope'])[1])//div[@class='col-sm-12']//span[3]")
+	@FindBy(xpath = "(//*[@class='post-box discussions-panel ng-scope'])[1]//*[@class='comments-box']//*[@class='for-likes']//a/span[2]")
 	WebElement NoOfFirstCommmentLikes;
 
 	@FindBy(xpath = "(//i[@title='Menu'])[1]")
@@ -181,7 +181,7 @@ public class Discussions extends BasePage {
 		// String Comment = driver.findElement(new
 		// ByAll(By.xpath("//*[@id='MainContainer']/div[9]/div[6]/div[2]/div[3]/div[5]/div[2]/div/div/div"),By.xpath("//*[@id='MainContainer']/div[9]/div[6]/div[2]/div[3]/div[4]/div[2]/div/div/div"),By.xpath("//*[@id='MainContainer']/div[9]/div[6]/div[2]/div[3]/div[3]/div[2]/div/div/div"))).getText();
 		WebElement ele = driver.findElement(
-				By.xpath("(//*[@class='post-box ng-scope'])[1]//*[contains(text(),'" + postComment + "')]"));
+				By.xpath("(//*[@class='comments-box'])[1]//*[contains(text(),'" + postComment + "')]"));
 		if (ele.isDisplayed()) {
 			// log.info(postComment+" Displayed");
 		} else {
