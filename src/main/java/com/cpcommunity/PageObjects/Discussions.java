@@ -300,7 +300,7 @@ public class Discussions extends BasePage {
 		}
 
 		clickElementByJavaScript(postMenu);
-		Thread.sleep(1000);
+//		Thread.sleep(1000);
 
 //		clickElementByJavaScript(deletePost);
 		Thread.sleep(2000);
