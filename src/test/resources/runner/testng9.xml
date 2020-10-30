@@ -20,7 +20,7 @@
 
 
 			<class
-				name="com.cpcommunity.testScripts.community.TC079_Share_Posts_in_Communities" />
+				name="com.cpcommunity.testScripts.community.TC170_Verify_Non_Member_Not_Able_Share_Posts_And_Like_Comment_in_Communities" />
 		</classes>
 	</test>
 

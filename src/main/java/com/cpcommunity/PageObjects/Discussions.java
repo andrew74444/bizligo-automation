@@ -93,7 +93,7 @@ public class Discussions extends BasePage {
 	@FindBy(xpath = "(//*[@class='btn btn-default']/i)[1]")
 	WebElement SendCommentBtn;
 
-	@FindBy(xpath = "(((//*[@class='post-box ng-scope']//*[@class='like-cont']))//*)[5]")
+	@FindBy(xpath = "(//*[@class='post-box discussions-panel ng-scope'])[1]//*[@class='pull-left like-section']//span[2]")
 	WebElement NoOfPostLikes;
 
 	@FindBy(xpath = "(//*[contains(text(),'Like')])[1]")
@@ -108,7 +108,7 @@ public class Discussions extends BasePage {
 	@FindBy(xpath = "(//*[contains(text(),'Like')])[2]")
 	WebElement clickFirstCommentLike;
 
-	@FindBy(xpath = "((//*[@class='post-box ng-scope'])[1])//div[@class='col-sm-12']//span[3]")
+	@FindBy(xpath = "(//*[@class='post-box discussions-panel ng-scope'])[1]//*[@class='comments-box']//*[@class='for-likes']//a/span[2]")
 	WebElement NoOfFirstCommmentLikes;
 
 	@FindBy(xpath = "(//i[@title='Menu'])[1]")
@@ -180,130 +180,130 @@ public class Discussions extends BasePage {
 
 		// String Comment = driver.findElement(new
 		// ByAll(By.xpath("//*[@id='MainContainer']/div[9]/div[6]/div[2]/div[3]/div[5]/div[2]/div/div/div"),By.xpath("//*[@id='MainContainer']/div[9]/div[6]/div[2]/div[3]/div[4]/div[2]/div/div/div"),By.xpath("//*[@id='MainContainer']/div[9]/div[6]/div[2]/div[3]/div[3]/div[2]/div/div/div"))).getText();
-		WebElement ele = driver.findElement(
-				By.xpath("(//*[@class='post-box ng-scope'])[1]//*[contains(text(),'" + postComment + "')]"));
-		if (ele.isDisplayed()) {
-			// log.info(postComment+" Displayed");
-		} else {
-			// log.info(postComment+" Not Displayed");
-		}
-
-		String L = NoOfPostLikes.getText();
-		System.out.println("Total No of Like = " + L);
-		int likes;
-		if (L.equals("")) {
-			likes = 0;
-		} else {
-			likes = Integer.parseInt(L);
-		}
-		likes = likes + 1;
-		clickFirstPostLike.click();
-		Thread.sleep(2000);
-		L = NoOfPostLikes.getText();
-		String UpdatedL = NoOfPostLikes.getText();
-		// log.info(UpdatedL);
-		System.out.println(UpdatedL);
-		int Updatedlikes = Integer.parseInt(UpdatedL);
-		if (Updatedlikes == likes) {
-			// log.info("Like Count Increased");
-		} else {
-			// log.info("Like Count not Increased");
-		}
-
-		L = NoOfPostLikes.getText();
-		// System.out.println("Total No of Like = "+L);
-		int UpdatedlL = Integer.parseInt(L);
-		if (UpdatedlL == 1) {
-			L = "";
-		} else {
-			UpdatedlL = UpdatedlL - 1;
-			L = Integer.toString(UpdatedlL);
-		}
-
-		click(clickFirstPostLike, "unliking First Post "); // Unlikng the Post
-		Thread.sleep(2000);
-
-		String UpdatedLikes = NoOfPostLikes.getText();
-
-		if (L.equals(UpdatedLikes)) {
-			// // log.info("Post Like Count Decreased");
-		} else {
-			// // log.info("Post Like Count not Decreased");
-		}
-
-//		L = NoOfFirstCommmentLikes.getText();
-//		// System.out.println("Total No of Like = "+L);
+//		WebElement ele = driver.findElement(
+//				By.xpath("(//*[@class='comments-box'])[1]//*[contains(text(),'" + postComment + "')]"));
+//		if (ele.isDisplayed()) {
+//			// log.info(postComment+" Displayed");
+//		} else {
+//			// log.info(postComment+" Not Displayed");
+//		}
 //
+//		String L = NoOfPostLikes.getText();
+//		System.out.println("Total No of Like = " + L);
+//		int likes;
 //		if (L.equals("")) {
 //			likes = 0;
 //		} else {
 //			likes = Integer.parseInt(L);
 //		}
 //		likes = likes + 1;
-		click(clickFirstCommentLike, "FirstCommentLike"); // liking first comment
-		Thread.sleep(2000);
-//		L = NoOfFirstCommmentLikes.getText();
-//		UpdatedL = NoOfFirstCommmentLikes.getText();
-//		Updatedlikes = Integer.parseInt(UpdatedL);
+//		clickFirstPostLike.click();
+//		Thread.sleep(2000);
+//		L = NoOfPostLikes.getText();
+//		String UpdatedL = NoOfPostLikes.getText();
+//		// log.info(UpdatedL);
+//		System.out.println(UpdatedL);
+//		int Updatedlikes = Integer.parseInt(UpdatedL);
 //		if (Updatedlikes == likes) {
-//			System.out.println("Pass");
+//			// log.info("Like Count Increased");
 //		} else {
-//			System.out.println("Fail");
+//			// log.info("Like Count not Increased");
 //		}
 //
-//		L = NoOfFirstCommmentLikes.getText();
+//		L = NoOfPostLikes.getText();
 //		// System.out.println("Total No of Like = "+L);
-//		UpdatedlL = Integer.parseInt(L);
+//		int UpdatedlL = Integer.parseInt(L);
 //		if (UpdatedlL == 1) {
 //			L = "";
 //		} else {
 //			UpdatedlL = UpdatedlL - 1;
 //			L = Integer.toString(UpdatedlL);
 //		}
-
-		click(clickFirstCommentLike, "unliking the comment");// unliking the comment
-		Thread.sleep(2000);
-
-//		UpdatedLikes = NoOfFirstCommmentLikes.getText();
+//
+//		click(clickFirstPostLike, "unliking First Post "); // Unlikng the Post
+//		Thread.sleep(2000);
+//
+//		String UpdatedLikes = NoOfPostLikes.getText();
 //
 //		if (L.equals(UpdatedLikes)) {
-//			System.out.println("Pass");
+//			// // log.info("Post Like Count Decreased");
 //		} else {
-//			System.out.println("Fail");
+//			// // log.info("Post Like Count not Decreased");
 //		}
 //
+////		L = NoOfFirstCommmentLikes.getText();
+////		// System.out.println("Total No of Like = "+L);
+////
+////		if (L.equals("")) {
+////			likes = 0;
+////		} else {
+////			likes = Integer.parseInt(L);
+////		}
+////		likes = likes + 1;
+//		click(clickFirstCommentLike, "FirstCommentLike"); // liking first comment
 //		Thread.sleep(2000);
-
-		clickElementByJavaScript(commentMenu);
-		Thread.sleep(1000);
-
-		// Comment =
-		// driver.findElement(By.xpath("//*[@id='MainContainer']/div[9]/div[6]/div[2]/div[3]/div[3]/div[2]/div/div/div")).getText();
-
-//		clickElementByJavaScript(deleteComment);
-		Thread.sleep(6000);
-
-		try {
-
-			if (ele.isDisplayed())
-			// if(Comment.equals(Comment1))
-			{
-				// // log.info("Comment not deleted");
-			}
-
-			else {
-				// // log.info("Comment deleted");
-			}
-
-		} catch (Exception e) {
-			// // log.info("Comment deleted");
-		}
-
-		clickElementByJavaScript(postMenu);
-		Thread.sleep(1000);
-
-//		clickElementByJavaScript(deletePost);
-		Thread.sleep(2000);
+////		L = NoOfFirstCommmentLikes.getText();
+////		UpdatedL = NoOfFirstCommmentLikes.getText();
+////		Updatedlikes = Integer.parseInt(UpdatedL);
+////		if (Updatedlikes == likes) {
+////			System.out.println("Pass");
+////		} else {
+////			System.out.println("Fail");
+////		}
+////
+////		L = NoOfFirstCommmentLikes.getText();
+////		// System.out.println("Total No of Like = "+L);
+////		UpdatedlL = Integer.parseInt(L);
+////		if (UpdatedlL == 1) {
+////			L = "";
+////		} else {
+////			UpdatedlL = UpdatedlL - 1;
+////			L = Integer.toString(UpdatedlL);
+////		}
+//
+//		click(clickFirstCommentLike, "unliking the comment");// unliking the comment
+//		Thread.sleep(2000);
+//
+////		UpdatedLikes = NoOfFirstCommmentLikes.getText();
+////
+////		if (L.equals(UpdatedLikes)) {
+////			System.out.println("Pass");
+////		} else {
+////			System.out.println("Fail");
+////		}
+////
+////		Thread.sleep(2000);
+//
+//		clickElementByJavaScript(commentMenu);
+//		Thread.sleep(1000);
+//
+//		// Comment =
+//		// driver.findElement(By.xpath("//*[@id='MainContainer']/div[9]/div[6]/div[2]/div[3]/div[3]/div[2]/div/div/div")).getText();
+//
+////		clickElementByJavaScript(deleteComment);
+//		Thread.sleep(6000);
+//
+//		try {
+//
+//			if (ele.isDisplayed())
+//			// if(Comment.equals(Comment1))
+//			{
+//				// // log.info("Comment not deleted");
+//			}
+//
+//			else {
+//				// // log.info("Comment deleted");
+//			}
+//
+//		} catch (Exception e) {
+//			// // log.info("Comment deleted");
+//		}
+//
+//		clickElementByJavaScript(postMenu);
+//		Thread.sleep(1000);
+//
+////		clickElementByJavaScript(deletePost);
+//		Thread.sleep(2000);
 
 //		click(okBtn, "OK");
 //		Thread.sleep(7000);
