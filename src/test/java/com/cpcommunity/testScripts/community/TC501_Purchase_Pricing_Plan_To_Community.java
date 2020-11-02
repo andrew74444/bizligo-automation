@@ -104,18 +104,19 @@ public class TC501_Purchase_Pricing_Plan_To_Community extends BaseTest {
 			PaymentConfirmation = AuthorizeGateway.paymentConfirmation();
 			AuthorizeMerchanLogin = PaymentConfirmation.gotoMerchanLoginPage();
 		} catch (Exception e) {
-
+			AuthorizeMerchanLogin = PaymentConfirmation.gotoMerchanLoginPage();
 		}
 		
 		
 		try {
-			amount = PaymentConfirmation.getAmountPaid("TC501");
-			AuthorizeMerchanLogin = PaymentConfirmation.gotoMerchanLoginPage();
+			
+			
 		} catch (Exception e) {
 		
 		}
 
 		try {
+			amount = PaymentConfirmation.getAmountPaid("TC501");
 			String TransactionID = AuthorizeMerchanLogin.getTransactionID();
 			PaymentConfirmation = AuthorizeMerchanLogin.goPaymentConfirmationPage();
 
