@@ -23,16 +23,16 @@ public class TC201_CommunityTagMemberInPost extends BaseTest {
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC201", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
-		openBrowser(data.get("browser"));
+		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		HomePage home = new HomePage().open();
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
-		CommunityDetailsPage CommunityDetailsPage = GlobalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));
+		CommunityDetailsPage CommunityDetailsPage = GlobalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
 		Discussions discussions =CommunityDetailsPage.sharePosts(data.get("PostMessage"), data.get("postFile"), data.get("linkURL"), data.get("linkName"), data.get("postImage"), data.get("postComment"));
-		discussions.tagMemberInPost(data.get("PostMessage"), data.get("tag"));
+		discussions.tagMemberInPost(data.get("PostMessage"), data.get("tag"),data.get("tag"));
 		//Assert.fail("Failing the login test");
 	}
 
