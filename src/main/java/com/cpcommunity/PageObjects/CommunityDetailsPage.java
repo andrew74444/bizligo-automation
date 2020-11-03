@@ -723,7 +723,7 @@ public class CommunityDetailsPage extends BasePage {
 		type(events, data.get("eventName") + " " + getDateInDDMMMYYYY(), "event Search");
 		click(eventsSearchButton, "Events Search Button");
 		String eventName = data.get("eventName") + " " + getDateInDDMMMYYYY();
-		WebElement ele = driver.findElement(By.xpath("//*[contains(text(),'" + eventName + "')]"));
+		WebElement ele = driver.findElement(By.xpath("//*[@id='MainContainer']//*[contains(text(),'" + eventName + "')]"));
 		waitForElementToPresent(ele);
 		ele.isDisplayed();
 

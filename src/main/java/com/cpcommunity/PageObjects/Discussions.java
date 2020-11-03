@@ -31,6 +31,9 @@ public class Discussions extends BasePage {
 	//
 	// return (ZohoCRMPage) openPage(ZohoCRMPage.class);
 
+	@FindBy(xpath="//*[@class='post-date ng-binding']")
+	WebElement postDate;
+	
 	@FindBy(xpath = "//*[@class='header active']")
 	WebElement header;
 
@@ -156,10 +159,6 @@ public class Discussions extends BasePage {
 	// }
 
 	public void addPosts(String postMessage, String postComment) throws Exception {
-
-		
-		
-		
 		
 		addPost(postMessage);
 
@@ -393,9 +392,10 @@ public class Discussions extends BasePage {
 
 	}
 
-	public void tagMemberInPost(String postMessage, String memberName) throws Exception {
+	public void tagMemberInPost(String postMessage, String memberName, String comment) throws Exception {
 
 		addPost(postMessage);
+		memberName = "@"+memberName;
 		type(tagInPost, memberName, "Tag");
 		Thread.sleep(2000);
 		
@@ -404,5 +404,41 @@ public class Discussions extends BasePage {
 		click(PostBtn, "Post");
 		Thread.sleep(20000);
 	}
+	
+	@FindBy(xpath="//*[contains(text(),'View All')]")
+	WebElement viewAll;
+	
+	
+	@FindBy(xpath="//*[@class='fa fa-bell']")
+	WebElement bell;
+	
+	
+	
+	public String getPostDate() {
+		String d =postDate.getText();
+		System.out.println(d);
+		String[] arr1 = splitStringBy(d, "\\s");
+		String[] arr2 = splitStringBy(d, "/");
+		int month = stringToInt(arr2[0]);
+		int day = stringToInt(arr2[1]);
+		
+		String[] arr3 = splitStringBy(arr1[0], ":");
+		int hr = stringToInt(arr3[0]);
+		
+		d=month+"/"+day+"/"+arr2[2]+" "+hr+":"+arr3[1];
+		log.info(d);
+
+		return d;
+	}
+	
+	public NotificationsPage goToAllNotifications() {
+		click(bell, "bell");
+		waitForElementToPresent(viewAll);
+		click(viewAll, "View All");
+		return (NotificationsPage) openPage(NotificationsPage.class);
+	}
+	
+	
+	
 
 }

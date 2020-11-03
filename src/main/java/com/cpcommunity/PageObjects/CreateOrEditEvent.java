@@ -312,7 +312,7 @@ public class CreateOrEditEvent extends BasePage {
 			hour = stringToInt(h) + 1;
 
 		}
-		String AmPm = getPositionAt(getAmPm(), 1);
+		String AmPm = getStringPositionAt(getAmPm(), 1);
 
 		// if (m.equalsIgnoreCase("30") || m.equalsIgnoreCase("45")) {
 		// hour = stringToInt(h)+1;
