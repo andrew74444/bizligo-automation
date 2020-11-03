@@ -341,11 +341,20 @@ try {
 	}
 
 	// https://www.javatpoint.com/java-string-getchars
-	public String getPositionAt(String str, int position) {
+	public String getStringPositionAt(String str, int position) {
 		String[] T = str.split("\\s+");
 		return T[position];
 
 	}
+	
+	
+	public String[] splitStringBy(String str, String by) {
+
+		String[] t = str.split(by);
+		
+	
+		return t;
+		}
 
 	// https://compiler.javatpoint.com/opr/test.jsp?filename=DateToStringExample2
 	public String currentTime() {
