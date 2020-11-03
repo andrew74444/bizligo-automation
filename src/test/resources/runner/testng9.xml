@@ -20,7 +20,7 @@
 
 
 			<class
-				name="com.cpcommunity.testScripts.community.TC239_Verify_Tagging_Member_In_Community_Post" />
+				name="com.cpcommunity.testScripts.notifications.TC201_CommunityTagMemberInPost" />
 		</classes>
 	</test>
 
