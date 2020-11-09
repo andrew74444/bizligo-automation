@@ -63,7 +63,7 @@ public class CustomTestNGReporter implements IReporter {
 			
 		}catch(Exception ex)
 		{
-			ex.printStackTrace();
+			
 		}
 	}
 	
