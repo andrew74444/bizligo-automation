@@ -11,7 +11,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.Augmenter;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
@@ -70,6 +72,11 @@ public class ExtentManager {
 //	}
 	public static void captureScreenshot() {
 
+		
+//		WebDriver augment = new Augmenter().augment(DriverManager.getDriver());
+//		TakesScreenshot shot = (TakesScreenshot) augment;
+//		File screenshot = shot.getScreenshotAs(OutputType.FILE);
+		
 		File scrFile = ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.FILE);
 
 		Date d = new Date();
