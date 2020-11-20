@@ -27,7 +27,7 @@ public class TC116_Accept_And_Reject_Connection extends BaseTest {
 		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
-		HomePage home = new HomePage().open();
+		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));

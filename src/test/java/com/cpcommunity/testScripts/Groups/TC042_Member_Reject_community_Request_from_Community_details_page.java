@@ -22,7 +22,7 @@ public class TC042_Member_Reject_community_Request_from_Community_details_page e
 		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
-		HomePage home = new HomePage().open();
+		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		

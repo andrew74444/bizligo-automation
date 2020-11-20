@@ -26,7 +26,7 @@ public class TC170_Verify_Non_Member_Not_Able_Share_Posts_And_Like_Comment_in_Co
 		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
-		HomePage home = new HomePage().open();
+		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication("andrew74444@gmail.com", data.get("password"));
 

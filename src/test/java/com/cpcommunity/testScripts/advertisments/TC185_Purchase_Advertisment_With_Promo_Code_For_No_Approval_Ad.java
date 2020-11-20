@@ -24,7 +24,7 @@ public class TC185_Purchase_Advertisment_With_Promo_Code_For_No_Approval_Ad exte
 		log.info("Inside Login Test");
 		String runTime=openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
-		HomePage home = new HomePage().open();
+		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 			

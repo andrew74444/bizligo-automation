@@ -51,8 +51,11 @@ public class EcoSystemPage extends BasePage {
 	@FindBy (xpath = "//*[contains(text(),'My Messages')]")
 	WebElement myMessages;
 	
-	@FindBy(xpath="//a[contains(text(),'Member Directory')]")
+	@FindBy(xpath="//a[contains(text(),'Member Directory')] | //a[contains(text(),'Global Members')]")
 	WebElement memberDirectory;
+	
+	
+	//*[@class='fa fa-arrow-left'] | //*[@class='fa fa-tv']
 	
 	@FindBy(xpath="//a[contains(text(),'My Profile')]")
 	WebElement myProfile;

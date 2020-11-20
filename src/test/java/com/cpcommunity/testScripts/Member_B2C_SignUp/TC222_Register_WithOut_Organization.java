@@ -27,7 +27,7 @@ public class TC222_Register_WithOut_Organization extends BaseTest {
 		
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
-		HomePage home = new HomePage().open("");
+		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage loginPage = home.clickOnLOGINBtn();
 		SystemAdminDashboardPage sa =loginPage.SystemAdminloginToApplication(data.get("taEmail"), data.get("taPassword"));
 		TenantAdminMemberShipPlansPage mp = sa.goToMembershipPlansPage();

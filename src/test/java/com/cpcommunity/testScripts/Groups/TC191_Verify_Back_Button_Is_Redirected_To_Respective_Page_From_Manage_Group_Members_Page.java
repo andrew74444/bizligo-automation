@@ -24,7 +24,7 @@ public class TC191_Verify_Back_Button_Is_Redirected_To_Respective_Page_From_Mana
 		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
-		HomePage home = new HomePage().open();
+		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		

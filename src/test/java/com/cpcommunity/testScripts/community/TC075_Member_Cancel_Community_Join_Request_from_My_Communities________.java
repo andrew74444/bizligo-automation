@@ -26,7 +26,7 @@ public class TC075_Member_Cancel_Community_Join_Request_from_My_Communities_____
 		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
-		HomePage home = new HomePage().open();
+		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));

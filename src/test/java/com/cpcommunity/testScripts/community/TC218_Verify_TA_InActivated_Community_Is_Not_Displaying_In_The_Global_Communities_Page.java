@@ -31,7 +31,7 @@ public class TC218_Verify_TA_InActivated_Community_Is_Not_Displaying_In_The_Glob
 		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
-		HomePage home = new HomePage().open();
+		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));

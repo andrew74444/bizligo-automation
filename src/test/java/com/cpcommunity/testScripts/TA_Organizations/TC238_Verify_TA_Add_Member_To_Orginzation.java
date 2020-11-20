@@ -24,7 +24,7 @@ public class TC238_Verify_TA_Add_Member_To_Orginzation extends BaseTest {
 		log.info(data);
 		logInfo("Launched Browser : "+data.get("browser"));	
 		logInfo("BizLigo Application Opened");
-		HomePage home = new HomePage().open();
+		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
 		logInfo("Username entered as "+data.get("email")+" and Password entered as "+data.get("password"));
 		SystemAdminDashboardPage sa = login.SystemAdminloginToApplication(data.get("email"), data.get("password"));

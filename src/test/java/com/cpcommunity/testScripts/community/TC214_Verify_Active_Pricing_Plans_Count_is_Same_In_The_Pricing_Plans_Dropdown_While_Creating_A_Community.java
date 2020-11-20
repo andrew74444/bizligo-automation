@@ -31,7 +31,7 @@ public class TC214_Verify_Active_Pricing_Plans_Count_is_Same_In_The_Pricing_Plan
 		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
-		HomePage home = new HomePage().open();
+		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();	
 		SystemAdminDashboardPage Dashboard_Page = login.SystemAdminloginToApplication(data.get("email"), data.get("password"));
 		TACommunitiesPage tACommunitiesPage =  Dashboard_Page.navigateToCommunitiesPage();

@@ -26,7 +26,7 @@ public class TC235_Verify_Member_Able_To_Register_For_No_MembershipPlans extends
 		log.info(data);		
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
-		HomePage home = new HomePage().open();
+		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage loginPage = home.clickOnLOGINBtn();
 		
 		SignupPage signupPage = loginPage.clickonSignup();

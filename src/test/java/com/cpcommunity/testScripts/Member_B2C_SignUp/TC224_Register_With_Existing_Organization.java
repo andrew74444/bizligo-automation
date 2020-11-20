@@ -26,7 +26,7 @@ public class TC224_Register_With_Existing_Organization extends BaseTest {
 		
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
-		HomePage home = new HomePage().open();
+		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage loginPage = home.clickOnLOGINBtn();
 		SignupPage signupPage = loginPage.clickonSignup();
 		AccountVerificationCodePage accountVerificationCodePage= signupPage.signup(data.get("firstName"), data.get("lastName"), data.get("emailAddress"), data.get("phNo"), data.get("password"), data.get("isB2B"), data.get("isNewOrg"), data.get("corporateAddress"), data.get("organizationName"), data.get("website"), data.get("businessDescription"), data.get("businessCategories"), data.get("isOrgRequired"));

@@ -28,7 +28,7 @@ public class TC120_Add_Terms_And_Conditions extends BaseTest {
 		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
-		HomePage home = new HomePage().open();
+		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));

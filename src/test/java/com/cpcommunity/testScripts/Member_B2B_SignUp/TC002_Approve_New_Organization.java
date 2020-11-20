@@ -25,7 +25,7 @@ public class TC002_Approve_New_Organization extends BaseTest {
 		System.out.println(data.get("duration"));
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
-		HomePage home = new HomePage().open();
+		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage loginPage = home.clickOnLOGINBtn();
 		loginPage.clickonSignup();
 	}

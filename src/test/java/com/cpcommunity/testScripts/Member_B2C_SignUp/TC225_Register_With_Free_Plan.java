@@ -26,7 +26,7 @@ public class TC225_Register_With_Free_Plan extends BaseTest {
 		log.info(data);		
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
-		HomePage home = new HomePage().open("");
+		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage loginPage = home.clickOnLOGINBtn();
 		SystemAdminDashboardPage sa =loginPage.SystemAdminloginToApplication(data.get("taEmail"), data.get("taPassword"));
 		TenantAdminMemberShipPlansPage mp = sa.goToMembershipPlansPage();

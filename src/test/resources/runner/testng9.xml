@@ -19,7 +19,7 @@
 		<classes>
 
 			<class
-				name="com.cpcommunity.testScripts.loginPage.TC001_Verify_User_Able_Login_With_Valid_Credentials" />
+				name="com.cpcommunity.testScripts.community.TC166_Verify_Rejected_Community_Is_Not_Displayed_In_MyCommunities" />
 		</classes>
 	</test>
 

@@ -25,7 +25,7 @@ public class TC033_Complete_Community_Setup extends BaseTest {
 		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
 		logInfo("BizLigo Application Opened");
-		HomePage home = new HomePage().open();
+		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage loginPage = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = loginPage.loginToApplication(data.get("email"), data.get("password"));
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
