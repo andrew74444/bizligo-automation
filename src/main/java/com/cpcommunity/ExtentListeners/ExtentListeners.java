@@ -91,6 +91,7 @@ public class ExtentListeners implements ITestListener {
 		String logText = "<b>" + "Test Case:- " + methodName + " Skipped" + "</b>";
 		Markup m = MarkupHelper.createLabel(logText, ExtentColor.YELLOW);
 		testReport.get().skip(m);
+		ExtentManager.captureScreenshot();
 
 	}
 

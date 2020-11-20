@@ -76,6 +76,13 @@ public class ExtentManager {
 //		WebDriver augment = new Augmenter().augment(DriverManager.getDriver());
 //		TakesScreenshot shot = (TakesScreenshot) augment;
 //		File screenshot = shot.getScreenshotAs(OutputType.FILE);
+		int t = (int) (Math.random()*1000);
+		try {
+			Thread.sleep(t);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		File scrFile = ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.FILE);
 
