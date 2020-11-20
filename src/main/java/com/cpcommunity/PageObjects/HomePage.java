@@ -6,6 +6,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import com.uiFramework.pamTen.cpcommunity.helper.imagediffer.Imagediff;
+import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.markuputils.ExtentColor;
+import com.aventstack.extentreports.markuputils.Markup;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
+import com.cpcommunity.ExtentListeners.ExtentListeners;
+import com.cpcommunity.ExtentListeners2.ExtentListeners2;
 import com.cpcommunity.utilities.DriverManager;
 
 public class HomePage extends BasePage {
@@ -52,19 +58,40 @@ public class HomePage extends BasePage {
 		// new GlobalCareers(driver, );
 	}
 
-	public HomePage open() throws Exception {
+//	public HomePage open() throws Exception {
+//			
+//		DriverManager.getDriver().navigate().to("https://multi1.ezysubscribe.com/");
+//		
+//		
+//		return (HomePage) openPage(HomePage.class);
+//	}
+
+	
+	
+	public HomePage open(String tenantType) {
+		
+		if(tenantType.equalsIgnoreCase("B2B")) {
 			
-		DriverManager.getDriver().navigate().to("https://multi2.ezysubscribe.com/");
+			Markup m = MarkupHelper.createLabel("<b>" + "<font color=" + "White>" + "https://multi1.ezysubscribe.com/" + "</font>" + "</b>", ExtentColor.GREEN);
+			ExtentListeners2.testReport.get().info(m);
+			
+			DriverManager.getDriver().navigate().to("https://multi1.ezysubscribe.com/");
+		}
+		else if(tenantType.equalsIgnoreCase("B2C")) {
+			
+			
+			Markup m = MarkupHelper.createLabel("<b>" + "<font color=" + "White>" + "https://multi2.ezysubscribe.com/" + "</font>" + "</b>", ExtentColor.GREEN);
+			ExtentListeners2.testReport.get().info(m);
+			
+			
+			DriverManager.getDriver().navigate().to("https://multi2.ezysubscribe.com/");
+			
+		}
+		
+
 		
 		
-		return (HomePage) openPage(HomePage.class);
-	}
-
-	
-	
-	public HomePage open(String url) {
-
-		DriverManager.getDriver().navigate().to("https://multi2.ezysubscribe.com/");
+		
 		
 		return (HomePage) openPage(HomePage.class);
 	}

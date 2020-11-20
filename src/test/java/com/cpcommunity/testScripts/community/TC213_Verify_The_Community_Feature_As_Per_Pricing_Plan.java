@@ -37,7 +37,7 @@ public class TC213_Verify_The_Community_Feature_As_Per_Pricing_Plan extends Base
 		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
-		HomePage home = new HomePage().open();
+		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();	
 		SystemAdminDashboardPage Dashboard_Page = login.SystemAdminloginToApplication(data.get("email"), data.get("password"));
 		PlansPage plansPage = Dashboard_Page.NavigateManagePricingPlans();

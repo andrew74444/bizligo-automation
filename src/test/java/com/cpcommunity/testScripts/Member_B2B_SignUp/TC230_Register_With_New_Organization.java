@@ -26,7 +26,7 @@ public class TC230_Register_With_New_Organization extends BaseTest {
 		
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
-		HomePage home = new HomePage().open();
+		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage loginPage = home.clickOnLOGINBtn();
 		SignupPage signupPage = loginPage.clickHereToSignup();
 		signupPage.checkUserAbleToSignUpWithExsitingEmail(data.get("email"));

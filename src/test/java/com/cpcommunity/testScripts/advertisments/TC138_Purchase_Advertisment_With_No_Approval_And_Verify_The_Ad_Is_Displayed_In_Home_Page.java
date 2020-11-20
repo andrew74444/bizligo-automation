@@ -24,7 +24,7 @@ public class TC138_Purchase_Advertisment_With_No_Approval_And_Verify_The_Ad_Is_D
 		log.info("Inside TC138 Test");		
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
-		HomePage home = new HomePage().open();
+		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 			

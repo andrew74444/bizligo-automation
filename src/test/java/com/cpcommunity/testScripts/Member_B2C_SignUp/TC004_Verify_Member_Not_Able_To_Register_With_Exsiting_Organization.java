@@ -25,7 +25,7 @@ public class TC004_Verify_Member_Not_Able_To_Register_With_Exsiting_Organization
 		System.out.println(data.get("duration"));
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
-		HomePage home = new HomePage().open();
+		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage loginPage = home.clickOnLOGINBtn();
 		loginPage.clickonSignup();
 	}

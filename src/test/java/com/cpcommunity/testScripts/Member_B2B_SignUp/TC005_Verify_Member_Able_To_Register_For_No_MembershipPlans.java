@@ -25,7 +25,7 @@ public class TC005_Verify_Member_Able_To_Register_For_No_MembershipPlans extends
 		System.out.println(data.get("duration"));
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
-		HomePage home = new HomePage().open();
+		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage loginPage = home.clickOnLOGINBtn();
 		loginPage.clickonSignup();
 	}

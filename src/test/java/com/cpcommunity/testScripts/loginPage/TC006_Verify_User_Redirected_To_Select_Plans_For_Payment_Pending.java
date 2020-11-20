@@ -24,7 +24,7 @@ public class TC006_Verify_User_Redirected_To_Select_Plans_For_Payment_Pending ex
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));	
 		logInfo("BizLigo Application Opened");
-		HomePage home = new HomePage().open();
+		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
 		logInfo("Username entered as "+data.get("email")+" and Password entered as "+data.get("password"));
 		login.loginWithPaymentPendingUser(data.get("email"), data.get("password"));

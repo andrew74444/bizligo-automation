@@ -24,7 +24,7 @@ public class TC003_Verify_Alert_Displayed_To_Email_Pending_User extends BaseTest
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));	
 		logInfo("BizLigo Application Opened");
-		HomePage home = new HomePage().open();
+		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
 		logInfo("Username entered as "+data.get("email")+" and Password entered as "+data.get("password"));
 		login.ReSend_Email_Verification_Confirmation(data.get("email"), data.get("password"));

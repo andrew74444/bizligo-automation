@@ -26,7 +26,7 @@ public class TC165_Veirfy_Community_Website_URL_Redirected_To_Configured_Website
 		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
-		HomePage home = new HomePage().open();
+		HomePage home = new HomePage().open(data.get("tenantType"));
 //		communityDetailsPage.clickonLogo();
 		//Assert.fail("Failing the login test");
 	}
