@@ -162,7 +162,8 @@ public class EventDetailsPage extends BasePage {
 	WebElement eventAttendeesForm;	
 	@FindBy(xpath = "//*[@id='header']")
 	WebElement header;
-	@FindBy(xpath = "//*[contains(text(),'Your registration has been processed')]")
+//	@FindBy(xpath = "//*[contains(text(),'Your registration has been processed')]")
+	@FindBy(xpath = "//*[contains(text(),'Your tickets have processed')] | //*[contains(text(),'Your registration has been processed')]")
 	WebElement eventRegistrationProcessed;
 	@FindBy(xpath = "(//*[@class='panel panel-default'])[4]")
 	WebElement bookingSummary;
