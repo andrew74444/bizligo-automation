@@ -106,7 +106,7 @@ public class CommunityDashboardPage extends BasePage {
 	@FindBy(xpath = "//*[contains(text(),'Manage Member Advertisements')]")
 	WebElement manageMemberAdvertisements;
 
-	@FindBy(xpath = "(((//*[@class='col-md-3 left_col']//img[@src='/Content/Images/Advertisement-menu.png'])/..)/..)")
+	@FindBy(xpath = "(((//*[@class='col-md-3 left_col']//img[@src='/Content/Images/adprommenu.png'])/..)/..)")
 	WebElement advertisements;
 	
 	@FindBy(xpath = "//a[contains(text(),'Promo Code')]")

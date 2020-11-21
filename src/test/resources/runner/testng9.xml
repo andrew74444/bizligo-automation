@@ -19,7 +19,7 @@
 		<classes>
 
 			<class
-				name="com.cpcommunity.testScripts.community.TC166_Verify_Rejected_Community_Is_Not_Displayed_In_MyCommunities" />
+				name="com.cpcommunity.testScripts.community.TC175_Verify_Membership_Plan_Is_Not_Available_For_Purchased_Pricing_Plan_Without_Membership_Plan_To_CA" />
 		</classes>
 	</test>
 
