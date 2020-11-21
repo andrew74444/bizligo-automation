@@ -27,7 +27,7 @@ public class OrganizationsPage extends BasePage {
 	@FindBy(xpath = "//*[@id='NumberOfEmployeesID']")
 	WebElement numberOfEmployeesID;
 
-	@FindBy(xpath = "//*[@name='BusinessDescription']")
+	@FindBy(xpath = "//*[@name='BusinessDescription'] | //*[@id='BusinessDescription']")
 	WebElement businessDescription;
 
 	@FindBy(xpath = "//*[@name='Website']")
@@ -142,7 +142,7 @@ public class OrganizationsPage extends BasePage {
 		return ExpectedConditions.visibilityOf(addNew);
 	}
 
-	public void createOrganization(String name, String noOfEmp, String description, String Categories, String email,
+	public void createOrganization(String tenantType, String name, String noOfEmp, String description, String Categories, String email,
 			String phone, String extension, String fax, String membershipPlan, String companyLogoImage)
 			throws Exception {
 
@@ -164,12 +164,15 @@ public class OrganizationsPage extends BasePage {
 		type(this.phone, phone, "phone");
 		type(this.extension, extension, "extension");
 		type(this.fax, fax, "fax");
+		if(tenantType.equalsIgnoreCase("B2B")) {
 		selectByVisibleText(this.membershipPlan, membershipPlan, "membership Plan");
-
+		}
 		Thread.sleep(8000);
 		this.companyLogoImage.sendKeys(companyLogoImage);
 		// type(this.companyLogoImage, companyLogoImage, "company Logo Image");
+		if(tenantType.equalsIgnoreCase("B2B")) {
 		selectByVisibleText(this.EntityStatusID, "Active", "Status");
+		}
 		click(btnSave, "Save");
 		waitForElementToPresent(toastMessage);
 		Thread.sleep(1000);

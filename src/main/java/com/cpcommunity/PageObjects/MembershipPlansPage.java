@@ -53,7 +53,7 @@ public class MembershipPlansPage extends BasePage {
 	
 	public void renewThePurchasedMembershipPlan() throws Exception
 	{
-		click(renew,"renew");
+		click(renew,"selecting the same Plan");
 		Thread.sleep(3000);
 		click(Next,"Next");
 		Thread.sleep(2000);

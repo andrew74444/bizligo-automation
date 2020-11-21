@@ -29,7 +29,7 @@ public class TC236_Verify_TA_Able_Create_Organization extends BaseTest {
 		logInfo("Username entered as "+data.get("email")+" and Password entered as "+data.get("password"));
 		SystemAdminDashboardPage sa = login.SystemAdminloginToApplication(data.get("email"), data.get("password"));
 		OrganizationsPage op = sa.goToOrganizationsPage();
-		op.createOrganization(data.get("name"),data.get("noOfEmp"),data.get("description"), data.get("Categories"), data.get("Orgnizationemail"),
+		op.createOrganization(data.get("tenantType"), data.get("name"),data.get("noOfEmp"),data.get("description"), data.get("Categories"), data.get("Orgnizationemail"),
 				data.get("phone"), data.get("extension"), data.get("fax"), data.get("membershipPlan"), data.get("companyLogoImage"));
 		
 		
