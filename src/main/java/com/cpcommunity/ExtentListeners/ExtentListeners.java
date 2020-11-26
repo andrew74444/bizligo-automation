@@ -94,7 +94,7 @@ public class ExtentListeners implements ITestListener {
 		try {
 			String TC = result.getTestClass().getName();
 			ExtentManager.captureScreenshot();
-			testReport.get().fail("<b>" + "<font color=" + "red>" + "Screenshot of failure" + "</font>" + "</b>",
+			testReport.get().info("<b>" + "<font color=" + "blue>" + "Screenshot of failure" + "</font>" + "</b>",
 					MediaEntityBuilder.createScreenCaptureFromPath(ExtentManager.screenshotName).build());
 		} catch (IOException e) {
 
