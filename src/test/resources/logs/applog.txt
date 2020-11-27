@@ -1,0 +1,5 @@
+INFO    2020-11-27 14:58:32,977 [main] com.cpcommunity.testScripts.community.BaseTest  - Config properties file loaded
+INFO    2020-11-27 14:58:34,260 [main] com.cpcommunity.testScripts.community.BaseTest  - Inside Login Test
+INFO    2020-11-27 14:58:41,166 [main] com.cpcommunity.testScripts.community.BaseTest  - Driver Initialized !!!
+INFO    2020-11-27 14:58:41,387 [main] com.cpcommunity.testScripts.community.BaseTest  - D:\workspace\bizligo-automation\src\test\resources\testdata\test\27 Nov 2020\ExecutionRunTime\runTime.txt
+INFO    2020-11-27 14:58:41,387 [main] com.cpcommunity.testScripts.community.BaseTest  - 1
