@@ -46,6 +46,12 @@ public class AuthorizeMerchanLogin extends BasePage {
 		
 		Url = driver.getCurrentUrl();
 		driver.get("https://sandbox.authorize.net/");
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		driver.switchTo().frame(0);
 		return ExpectedConditions.visibilityOf(username);
 	}

@@ -140,6 +140,21 @@ public class ExtentManager {
 		}
 		js1.executeScript("arguments[0].setAttribute('class','navbar-fixed-top');", element);
 
+		
+		File scrFile = ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.FILE);
+
+		Date d1 = new Date();
+		screenshotName = SessionID.getSessionID()+d1.toString().replace(":", "_").replace(" ", "_") + ".jpg";
+
+		try {
+			FileUtils.copyFile(scrFile, new File(System.getProperty("user.dir") + "\\reports\\" + screenshotName));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		
+		
 //		 ((JavascriptExecutor)
 //		 DriverManager.getDriver()).executeScript("arguments[0].style.visibility='hidden'",
 //		 element);
