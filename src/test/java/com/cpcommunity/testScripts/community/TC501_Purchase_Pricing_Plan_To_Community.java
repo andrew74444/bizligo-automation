@@ -77,8 +77,7 @@ public class TC501_Purchase_Pricing_Plan_To_Community extends BaseTest {
 //			communityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(communityName);
 //		}
 
-//		 CommunityDetailsPage CommunityDetailsPage =
-		 MyCommunitiesPage.navigateToCommunityDetailsPage(communityName);
+		 communityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(communityName);
 		EditCommunityPage editCommunityPage = communityDetailsPage.managecommunity();
 		CommunityDashboardPage communityDashboardPage = editCommunityPage.saveCommunity();
 		PaymentGatewaysPage PaymentGatewaysPage = communityDashboardPage.navigateToPaymentGateways();
