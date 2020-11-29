@@ -115,17 +115,14 @@ public class TC501_Purchase_Pricing_Plan_To_Community extends BaseTest {
 		
 		}
 
-		try {
+		
 			amount = PaymentConfirmation.getAmountPaid("TC501");
 			String TransactionID = AuthorizeMerchanLogin.getTransactionID();
 			PaymentConfirmation = AuthorizeMerchanLogin.goPaymentConfirmationPage();
 
 			PaymentGatewaysPage = PaymentConfirmation.EnterTransactionDetails(amount, TransactionID);
 
-		} catch (Exception e) {
-
-		}
-
+		
 		PlansPage plansPage = communityDashboardPage.navigateToMembershipPlans();
 		String membershipPlan = plansPage.createMembershipPlan(data.get("name"), data.get("price"),
 				data.get("duration"), data.get("durationType"), data.get("membershipPlanDescription"));
