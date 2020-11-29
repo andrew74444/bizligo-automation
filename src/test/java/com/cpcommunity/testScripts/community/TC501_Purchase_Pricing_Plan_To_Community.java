@@ -115,7 +115,7 @@ public class TC501_Purchase_Pricing_Plan_To_Community extends BaseTest {
 		}
 
 		
-			amount = PaymentConfirmation.getAmountPaid("TC501");
+			amount = "33";
 			String TransactionID = AuthorizeMerchanLogin.getTransactionID();
 			PaymentConfirmation = AuthorizeMerchanLogin.goPaymentConfirmationPage();
 
