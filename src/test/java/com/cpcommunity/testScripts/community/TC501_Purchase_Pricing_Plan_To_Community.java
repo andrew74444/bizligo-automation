@@ -32,53 +32,52 @@ public class TC501_Purchase_Pricing_Plan_To_Community extends BaseTest {
 		EcoSystemPage EcoSystemPage = loginPage.loginToApplication(data.get("email"), data.get("password"));
 
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CreateCommunityPage CreateCommunityPage = MyCommunitiesPage.clickOnCreateCommunity();
-		// String communityName= data.get("communityName")+ currentTime();
+//		CreateCommunityPage CreateCommunityPage = MyCommunitiesPage.clickOnCreateCommunity();
+//		// String communityName= data.get("communityName")+ currentTime();
 		String communityName = data.get("communityName")+" "+runTime;
-		try {
-			CreateCommunityPage.CreateCommunity(communityName, data.get("Networking"), data.get("Marketing"),
-					data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"),
-					data.get("InvestInBusiness"), data.get("Other"), data.get("About"), data.get("Category"),
-					data.get("type"));
-		} catch (Exception e) {
-
-		}
-
-		home = EcoSystemPage.logout();
-		home.clickOnLOGINBtn();
-		SystemAdminDashboardPage systemAdminDashboardPage = loginPage.SystemAdminloginToApplication(data.get("email1"),
-				data.get("password"));
-		PendingCommunitiesPage PendingCommunitiesPage = systemAdminDashboardPage.naviagteToPendingCommunities();
-		try {
-			PendingCommunitiesPage.approveCommunity(communityName);
-		} catch (Exception e) {
-
-		}
-		home = systemAdminDashboardPage.logout();
-		loginPage = home.clickOnLOGINBtn();
-		EcoSystemPage = loginPage.loginToApplication(data.get("email"), data.get("password"));
-
-		MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
+//		try {
+//			CreateCommunityPage.CreateCommunity(communityName, data.get("Networking"), data.get("Marketing"),
+//					data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"),
+//					data.get("InvestInBusiness"), data.get("Other"), data.get("About"), data.get("Category"),
+//					data.get("type"));
+//		} catch (Exception e) {
+//
+//		}
+//
+//		home = EcoSystemPage.logout();
+//		home.clickOnLOGINBtn();
+//		SystemAdminDashboardPage systemAdminDashboardPage = loginPage.SystemAdminloginToApplication(data.get("email1"),
+//				data.get("password"));
+//		PendingCommunitiesPage PendingCommunitiesPage = systemAdminDashboardPage.naviagteToPendingCommunities();
+//		try {
+//			PendingCommunitiesPage.approveCommunity(communityName);
+//		} catch (Exception e) {
+//
+//		}
+//		home = systemAdminDashboardPage.logout();
+//		loginPage = home.clickOnLOGINBtn();
+//		EcoSystemPage = loginPage.loginToApplication(data.get("email"), data.get("password"));
+//
+//		MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		AuthorizeGateway AuthorizeGateway;
-		try {
+//		try {
+//
+//			SelectPlanPage SelectPlanPage = MyCommunitiesPage.completeSetup(communityName);
+//			SelectPlanPage.selectPaidPlan(data.get("planName"));
+//			if (data.get("paymentGateway").equalsIgnoreCase("paypal")) {
+//				PayPalPayment PayPalPayment = SelectPlanPage.paymentByPayPal();
+//				PaymentReceipt = PayPalPayment.Payment(data.get("email"), data.get("password"));
+//			} else if (data.get("paymentGateway").equalsIgnoreCase("authorize")) {
+//				AuthorizeGateway = SelectPlanPage.paymentByauthorize();
+//				PaymentReceipt = AuthorizeGateway.payment();
+//			}
+//			PaymentReceipt.paymentSuccess();
+//			communityDetailsPage = PaymentReceipt.viewCommunity();
+//		} catch (Exception e) {
+//			communityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(communityName);
+//		}
 
-			SelectPlanPage SelectPlanPage = MyCommunitiesPage.completeSetup(communityName);
-			SelectPlanPage.selectPaidPlan(data.get("planName"));
-			if (data.get("paymentGateway").equalsIgnoreCase("paypal")) {
-				PayPalPayment PayPalPayment = SelectPlanPage.paymentByPayPal();
-				PaymentReceipt = PayPalPayment.Payment(data.get("email"), data.get("password"));
-			} else if (data.get("paymentGateway").equalsIgnoreCase("authorize")) {
-				AuthorizeGateway = SelectPlanPage.paymentByauthorize();
-				PaymentReceipt = AuthorizeGateway.payment();
-			}
-			PaymentReceipt.paymentSuccess();
-			communityDetailsPage = PaymentReceipt.viewCommunity();
-		} catch (Exception e) {
-			communityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(communityName);
-		}
-
-		// CommunityDetailsPage CommunityDetailsPage =
-		// MyCommunitiesPage.navigateToCommunityDetailsPage(communityName);
+		 communityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(communityName);
 		EditCommunityPage editCommunityPage = communityDetailsPage.managecommunity();
 		CommunityDashboardPage communityDashboardPage = editCommunityPage.saveCommunity();
 		PaymentGatewaysPage PaymentGatewaysPage = communityDashboardPage.navigateToPaymentGateways();
@@ -115,17 +114,14 @@ public class TC501_Purchase_Pricing_Plan_To_Community extends BaseTest {
 		
 		}
 
-		try {
-			amount = PaymentConfirmation.getAmountPaid("TC501");
+		
+			amount = "33";
 			String TransactionID = AuthorizeMerchanLogin.getTransactionID();
 			PaymentConfirmation = AuthorizeMerchanLogin.goPaymentConfirmationPage();
 
 			PaymentGatewaysPage = PaymentConfirmation.EnterTransactionDetails(amount, TransactionID);
 
-		} catch (Exception e) {
-
-		}
-
+		
 		PlansPage plansPage = communityDashboardPage.navigateToMembershipPlans();
 		String membershipPlan = plansPage.createMembershipPlan(data.get("name"), data.get("price"),
 				data.get("duration"), data.get("durationType"), data.get("membershipPlanDescription"));
