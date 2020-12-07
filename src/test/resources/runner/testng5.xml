@@ -19,27 +19,7 @@
 			
 			
 			<class name="com.cpcommunity.testScripts.community.TC501_Purchase_Pricing_Plan_To_Community" />
-			<class name="com.cpcommunity.testScripts.community.TC029_Create_community_From_My_Communites" />
-			<class name="com.cpcommunity.testScripts.community.TC031_Create_community_From_Global_Communities_page" />
-			<class name="com.cpcommunity.testScripts.community.TC081_Member_Join_And_Leave_Public_Community_From_Global_Communities" />
-			<class name="com.cpcommunity.testScripts.community.TC084_Member_Leave_community_from_My_Communities________" />
-			<class name="com.cpcommunity.testScripts.community.TC092_InActivate_PayMent_Gateways" />
-			<class name="com.cpcommunity.testScripts.community.TC131_Purchase_Pricing_Plan_With_Authorize_Net" />
-			<class name="com.cpcommunity.testScripts.community.TC115_SendMessages" />
-			<class name="com.cpcommunity.testScripts.community.TC117_Send_Connection_From_Member_Directory" />
-			<class name="com.cpcommunity.testScripts.community.TC118_Send_Connection_From_Community_Details_Page" />
-			<class name="com.cpcommunity.testScripts.community.TC119_Send_Connection_From_Group_Details_Page" />
-			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC015_Verify_User_Is_Able_To_Update_Profile" />
-			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC022_Verify_User_Is_Able_To_Add_Protfolio" />
-			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC027_Verify_User_Is_Able_To_Update_Interests" />	
-			<class name="com.cpcommunity.testScripts.loginPage.TC001_Verify_User_Able_Login_With_Valid_Credentials" />
-			<class name="com.cpcommunity.testScripts.loginPage.TC002_Verify_User_Able_Login_With_Invalid_Credentials" />
-			<class name="com.cpcommunity.testScripts.loginPage.TC003_Verify_Alert_Displayed_To_Email_Pending_User" />
-			<class name="com.cpcommunity.testScripts.loginPage.TC004_Verify_Organization_Pending_User_Not_Able_Login" />
-			<class name="com.cpcommunity.testScripts.loginPage.TC005_Verify_Alert_Displayed_To_Suspened_User" />
-			<class name="com.cpcommunity.testScripts.loginPage.TC006_Verify_User_Redirected_To_Select_Plans_For_Payment_Pending" />
-			<class	name="com.cpcommunity.testScripts.community.TC205_1_Tenant_Admin_Create_Pricing_Plan" />
-			<class name="com.cpcommunity.testScripts.TA_Organizations.TC236_Verify_TA_Able_Create_Organization" />
+
 			
 		</classes>
 	</test>

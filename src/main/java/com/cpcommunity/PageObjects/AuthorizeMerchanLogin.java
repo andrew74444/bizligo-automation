@@ -46,6 +46,12 @@ public class AuthorizeMerchanLogin extends BasePage {
 		
 		Url = driver.getCurrentUrl();
 		driver.get("https://sandbox.authorize.net/");
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		driver.switchTo().frame(0);
 		return ExpectedConditions.visibilityOf(username);
 	}
@@ -62,10 +68,13 @@ public class AuthorizeMerchanLogin extends BasePage {
 		type(password, "Pamten@123", "password");
 		// type(element, value, elementName);
 		click(LogInbtn, "LogInbtn");
+		Thread.sleep(30000);
 		waitForElementToPresent(TransactionSearchLink);
 		click(TransactionSearchLink, "TransactionSearchLink");
+		Thread.sleep(30000);
 		waitForElementToPresent(UnsettledTransactionsLink);
-		click(UnsettledTransactionsLink, "nsettledTransactionsLink");
+		click(UnsettledTransactionsLink, "UnsettledTransactionsLink");
+		Thread.sleep(30000);
 		waitForElementToPresent(UnsettledTransactions);
 		String ID = TransactionID.getText();
 		String Amount = driver.findElement(By.xpath("//*[@id='TranAmount_" + ID + "']")).getText();

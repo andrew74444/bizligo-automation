@@ -64,7 +64,8 @@ public class PaymentConfirmation extends BasePage {
 	public PaymentGatewaysPage EnterTransactionDetails(String AmountPaid, String TransactionID ) throws Exception {
 
 		waitForElementToPresent(TransactionId);
-		TransactionId.sendKeys(TransactionID);
+		type(TransactionId, TransactionID, "TransactionId");
+		
 		Amount.sendKeys(AmountPaid);
 		Thread.sleep(3000);
 		// new TestBase().captureScreen(, driver);

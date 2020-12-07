@@ -184,6 +184,8 @@ public class CommunityDashboardPage extends BasePage {
 
 	public PlansPage navigateToMembershipPlans() throws Exception {
 		Thread.sleep(500);
+		scrollIntoView(pricingPlanDetails);
+		Thread.sleep(500);
 		click(MembershipPlans, "Membership Plans");
 		return (PlansPage) openPage(PlansPage.class);
 		// new MeetingAccountsPage(driver);

@@ -90,15 +90,15 @@ public class SetupAuthorizePage extends BasePage{
 		
 		 this.SelectCheckBox();
 		 txtAPILoginID.clear();
-		 txtAPILoginID.sendKeys("5C7yQ3NqTGR");
+		 type(txtAPILoginID, "5C7yQ3NqTGR", "txtAPILoginID");
 		 txtTransactionKey.clear();
-		 txtTransactionKey.sendKeys("9Ph64P5qS675dSsV");
+		 type(txtTransactionKey, "9Ph64P5qS675dSsV", "txtTransactionKey");
 		 txtContent.clear();
-		 txtContent.sendKeys("Simon");
+		 type(txtContent, "Simon", "txtContent");
 		 Thread.sleep(500);
-		 ValidateBtn.click();
+		 click(ValidateBtn,"ValidateBtn");
 		 waitForElementToPresent(OkBtn);
-		 OkBtn.click();	
+		 click(OkBtn,"Ok Btn");	
 		 return (AuthorizeGateway) openPage(AuthorizeGateway.class);
 //		 new AuthorizeGateway(driver, );
 	}
