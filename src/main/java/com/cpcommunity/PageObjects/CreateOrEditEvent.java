@@ -404,7 +404,8 @@ public class CreateOrEditEvent extends BasePage {
 
 		waitForElementToPresent(browse);
 		click(browse, "browse");
-		uploadImage("D:\\workspace\\bizligo-automation\\src\\test\\resources\\testImages\\ExeFiles\\ChromeImage8.exe");
+		String path = projectFloder("\\src\\test\\resources\\testImages\\ExeFiles\\ChromeImage8.exe");
+		uploadImage(path);
 		click(upload, "upload");
 		// type(Event_img, data.get("imagePath"), "Description");
 
@@ -626,7 +627,8 @@ public class CreateOrEditEvent extends BasePage {
 		waitForElementToPresent(Document_Title);
 		type(Document_Title, data.get("documentTitle"), "Document Title");
 		type(Document_Description, data.get("documentDescription"), "Document Description");
-		DocumentUpload.sendKeys(data.get("uploadDocumentPath"));
+		String path = projectFloder(data.get("uploadDocumentPath"));
+		DocumentUpload.sendKeys(path);
 		// Thread.sleep(3000);
 		// Runtime.getRuntime().exec(UploadDocumentPath);
 		// Thread.sleep(5000);
@@ -685,12 +687,11 @@ public class CreateOrEditEvent extends BasePage {
 		EventDescription.sendKeys(" ");
 		driver.switchTo().defaultContent();
 		scrollIntoView(EventName);
+		type(EventLocation, Location, "Location");
 
-		EventLocation.sendKeys(Location);
 		EventLocation.sendKeys(Keys.ARROW_DOWN);
 		Thread.sleep(1000);
-
-		EventName.sendKeys(EventTitleName);
+		type(EventName, EventTitleName, "Event Title Name");
 
 		startdatetime.click();
 		Thread.sleep(3000);
@@ -698,18 +699,18 @@ public class CreateOrEditEvent extends BasePage {
 
 		EditEventStartDate.sendKeys(EventStartTime);
 		EditEventEndtdate.sendKeys((Keys.CONTROL + "a"));
-		;
+	
 
-		EditEventEndtdate.sendKeys(EventEndTime);
-
-		EditApplyBtn.click();
+		
+		type(EditEventEndtdate, EventEndTime, "Event End Time");
+		click(EditApplyBtn,"Edit Apply Btn");
 		Thread.sleep(2000);
 
 		int i = 0;
 
 		try {
 
-			Okbtn.click();
+			click(Okbtn,"Okbtn");
 		} catch (Exception e) {
 
 		}
@@ -725,10 +726,10 @@ public class CreateOrEditEvent extends BasePage {
 		try {
 			try {
 
-				EditAgendaBtnInEventDetailsPage.click();
+				click(EditAgendaBtnInEventDetailsPage,"EditAgendaBtnInEventDetailsPage");
 			} catch (Exception e) {
 
-				EditAgendaBtnInEventDetails.click();
+				click(EditAgendaBtnInEventDetails,"EditAgendaBtnInEventDetails");
 
 			}
 
@@ -737,12 +738,12 @@ public class CreateOrEditEvent extends BasePage {
 			// AgendaDescription);
 
 			Thread.sleep(2000);
-			SaveEventsDates.click();
+			click(SaveEventsDates,"SaveEventsDates");
 			i = 1;
 
 			try {
 
-				EditTicketInfoBtn.click();
+				click(EditTicketInfoBtn,"EditTicketInfoBtn");
 				Thread.sleep(3000);
 
 			} catch (Exception e) {
@@ -755,7 +756,8 @@ public class CreateOrEditEvent extends BasePage {
 		driver.switchTo().frame(0);
 		Thread.sleep(1000);
 		EventDescription.sendKeys(Keys.CONTROL + "a");
-		EventDescription.sendKeys(Description);
+		type(EventDescription, Description, "EventDescription");
+		
 		driver.switchTo().defaultContent();
 		//
 
@@ -763,7 +765,8 @@ public class CreateOrEditEvent extends BasePage {
 
 		waitForElementToPresent(browse);
 		click(browse, "browse");
-		uploadImage("D:\\workspace\\bizligo-automation\\src\\test\\resources\\testImages\\ExeFiles\\ChromeImage8.exe");
+		String path = projectFloder("/src/test/resources/testImages/ExeFiles/ChromeImage8.exe");
+		uploadImage(path);
 		click(upload, "upload");
 
 		// Runtime.getRuntime().exec(ImagePath);
@@ -806,7 +809,7 @@ public class CreateOrEditEvent extends BasePage {
 
 		Robot robot = new Robot();
 		Thread.sleep(3000);
-		TicketQunatity.click();
+		click(TicketQunatity,"Ticket Qunatity");
 		robot.keyPress(KeyEvent.VK_BACK_SPACE);
 		Thread.sleep(300);
 		robot.keyPress(KeyEvent.VK_BACK_SPACE);
@@ -829,50 +832,51 @@ public class CreateOrEditEvent extends BasePage {
 		Thread.sleep(500);
 		robot.keyPress(KeyEvent.VK_DOWN);
 		Thread.sleep(500);
+		type(Ticket, TicketName, "TicketName");
 
-		Ticket.sendKeys(TicketName);
+
 		Cat.selectByVisibleText(Type);
 		if (Type.contains("Table")) {
 			js.executeScript("arguments[0].value='" + TicketsperTable + "';", NoOfTicketPerTable);
 			TicketsperTable.sendKeys(NoOfTicketPerTable);
 		}
 
-		AvailableDates.click();
+		click(AvailableDates,"Available Dates");
 		Thread.sleep(3000);
 
 		try {
 			waitForElementToPresent(EditTicketStartTime);
 
-			EditTicketStartTime.click();
+			click(EditTicketStartTime,"TicketStartTime");
 			EditTicketStartTime.sendKeys(Keys.CONTROL + "a");
-
-			EditTicketStartTime.sendKeys(TicketAvailablityStartsFrom);
+type(EditTicketStartTime, TicketAvailablityStartsFrom, "TicketAvailablityStartsFrom");
+			
 			EditTicketEndTime.click();
 			EditTicketEndTime.sendKeys(Keys.CONTROL + "a");
-			EditTicketEndTime.sendKeys(TicketAvailablityEndson);
-
-			EditTicketCalendarApplyBtn.click();
+			
+type(EditTicketEndTime, TicketAvailablityEndson, "TicketAvailablityEndson");
+			click(EditTicketCalendarApplyBtn,"EditTicketCalendarApplyBtn");
 
 			// SaveTicketInfoBtn.click();
-
-			UpdateTicketInfoBtn.click();
+			Thread.sleep(2000);
+			click(UpdateTicketInfoBtn,"UpdateTicketInfoBtn");
 			Thread.sleep(3000);
 
 		} catch (Exception e) {
 
-			EditTicketStartTime.click();
+			click(EditTicketStartTime,"TicketStartTime");
 			EditTicketStartTime.sendKeys(Keys.CONTROL + "a");
-
-			EditTicketStartTime.sendKeys(TicketAvailablityStartsFrom);
+type(EditTicketStartTime, TicketAvailablityStartsFrom, "TicketAvailablityStartsFrom");
+			
 			EditTicketEndTime.click();
 			EditTicketEndTime.sendKeys(Keys.CONTROL + "a");
 
-			EditTicketEndTime.sendKeys(TicketAvailablityEndson);
-
-			EditTicketCalendarApplyBtn.click();
+			
+type(EditTicketEndTime, TicketAvailablityEndson, "TicketAvailablityEndson");
+			click(EditTicketCalendarApplyBtn,"TicketCalendarApplyBtn");
 			Thread.sleep(1000);
 
-			UpdateTicketInfoBtn.click();
+			click(UpdateTicketInfoBtn,"UpdateTicketInfoBtn");
 		}
 
 		Thread.sleep(3000);
@@ -893,9 +897,9 @@ public class CreateOrEditEvent extends BasePage {
 
 	public void GoToAddtionalInformation() {
 		try {
-			TicketDetilsPublishContinueBtn.click();
+			click(TicketDetilsPublishContinueBtn,"TicketDetilsPublishContinueBtn");
 		} catch (Exception e) {
-			TicketsSaveAndContinueBtn.click();
+			click(TicketsSaveAndContinueBtn,"TicketsSaveAndContinueBtn");
 		}
 	}
 
@@ -903,27 +907,27 @@ public class CreateOrEditEvent extends BasePage {
 			String AgendaDescription) throws Exception {
 		Thread.sleep(2000);
 
-		AgendaDates.click();
+		click(AgendaDates,"AgendaDates");
 		waitForElementToPresent(EditAgendaStartTime);
-		EditAgendaStartTime.click();
+		click(EditAgendaStartTime,"EditAgendaStartTime");
 		EditAgendaStartTime.sendKeys((Keys.CONTROL + "a"));
-		EditAgendaStartTime.sendKeys(AgendaStartTime);
+		type(EditAgendaStartTime, AgendaStartTime, "AgendaStartTime");
 		EditAgendaEndTime.click();
 		EditAgendaEndTime.sendKeys((Keys.CONTROL + "a"));
-		;
-		EditAgendaEndTime.sendKeys(AgendaEndTime);
+		type(EditAgendaEndTime, AgendaEndTime, "AgendaEndTime");
 
-		EditAgendaApplyBtn.click();
+		click(EditAgendaApplyBtn,"AgendaApplyBtn");
 		Thread.sleep(1000);
 		Agenda_Venue.clear();
 		Agenda_Description.clear();
 
 		Thread.sleep(1000);
-		Agenda_Venue.sendKeys(AgendaVenue);
+		type(Agenda_Venue, AgendaVenue, "AgendaVenue");
+		
 
 		Thread.sleep(1000);
-		Agenda_Description.sendKeys(AgendaDescription);
-		AgendaInfoFormSave.click();
+		type(Agenda_Description, AgendaDescription, "AgendaDescription");
+		click(AgendaInfoFormSave,"AgendaInfoFormSave");
 		scrollToElement(AddAgendaBtn);
 	}
 
@@ -949,44 +953,46 @@ public class CreateOrEditEvent extends BasePage {
 			}
 
 		}
-		AddReminderBtn.click();
+		click(AddReminderBtn,"AddReminderBtn");
 		Select SMS = new Select(NotificationType);
 		SMS.selectByVisibleText("SMS");
-		AddReminderBtn.click();
+		click(AddReminderBtn,"AddReminderBtn");
 
-		EditSpeakerBtn.click();
+		click(EditSpeakerBtn,"EditSpeakerBtn");
 		Thread.sleep(2000);
 		Speaker_Name.clear();
 		SpeakerLinked_Url.clear();
 
 		Thread.sleep(2000);
-
-		Speaker_Name.sendKeys(SpeakerName);
-		Speaker_Image
-				.sendKeys("D:\\Workspace\\CPCommunityQA\\src\\main\\resources\\configfile\\Files\\ChromeImage8.jpg");
+type(Speaker_Name, SpeakerName, "SpeakerName");
+		String path = projectFloder("src/main/resources/configfile/Files/ChromeImage8.jpg");
+		type(Speaker_Image, path, "Speaker_Image");
+		
 		// Thread.sleep(4000);
 		// Runtime.getRuntime().exec(SpeakerImagePath);
 		Thread.sleep(2000);
-		SpeakerLinked_Url.sendKeys(SpeakerLinkedUrl);
+		type(SpeakerLinked_Url, SpeakerLinkedUrl, "SpeakerLinkedUrl");
+		
 
-		SaveSpeakerDetails.click();
+		click(SaveSpeakerDetails,"SaveSpeakerDetails");
 		System.out.println("Agenda= " + i);
 		Thread.sleep(2000);
 		if (i == 0) {
-			EditAgendaBtnInAdditionalInformation.click();
+			click(EditAgendaBtnInAdditionalInformation,"EditAgendaBtnInAdditionalInformation");
 			this.UpdateAddAgenda(AgendaStartTime, AgendaEndTime, AgendaVenue, AgendaDescription);
 		}
 
 		scrollToElement(AddAgendaBtn);
 		Thread.sleep(2000);
-		AddSponsorType.click();
+		click(AddSponsorType,"AddSponsorType");
 
 		Thread.sleep(1000);
 		SponsorTypeName.clear();
-		SponsorTypeName.sendKeys(SponsorType);
-		SponsorTypeSaveBtn.click();
+		type(SponsorTypeName, SponsorType, "SponsorType");
+		
+		click(SponsorTypeSaveBtn,"SponsorTypeSaveBtn");
 		Thread.sleep(1000);
-		EditSponsorBtn.click();
+		click(EditSponsorBtn,"EditSponsorBtn");
 		waitForElementToPresent(Sponsor_Name);
 		Select sponsorTypeDD = new Select(sponsorTypeDropDown);
 		Sponsor_Name.clear();
@@ -994,27 +1000,28 @@ public class CreateOrEditEvent extends BasePage {
 		sponsorTypeDD.selectByVisibleText("-- Choose sponsor --");
 
 		Thread.sleep(1000);
-		Sponsor_Name.sendKeys(SponsorName);
-		Sponsor_Url.sendKeys(SponsorUrl);
+		type(Sponsor_Name, SponsorName, "SponsorName");
+		type(Sponsor_Url, SponsorUrl, "SponsorUrl");
+		
 		sponsorTypeDD.selectByVisibleText(SponsorType);
-
-		Sponsor_Image
-				.sendKeys("D:\\Workspace\\CPCommunityQA\\src\\main\\resources\\configfile\\Files\\ChromeImage9.jpg");
+		path = projectFloder("src/main/resources/configfile/Files/ChromeImage9.jpg");
+		type(Sponsor_Image, path, "Sponsor_Image");
+		
 		// Thread.sleep(4000);
 		// Runtime.getRuntime().exec(SponsorImage);
 		Thread.sleep(2000);
 
-		SaveSponsorBtn.click();
+		click(SaveSponsorBtn,"SaveSponsorBtn");
 		Thread.sleep(4000);
 
 		try {
 			scrollToElement(AddtionalinfomationSaveAndContinueBtn);
 
-			AddtionalinfomationSaveAndContinueBtn.click();
+			click(AddtionalinfomationSaveAndContinueBtn,"AddtionalinfomationSaveAndContinueBtn");
 		} catch (Exception e) {
 			scrollToElement(AdditionalInformationPublishContinueBtn);
 
-			AdditionalInformationPublishContinueBtn.click();
+			click(AdditionalInformationPublishContinueBtn,"AdditionalInformationPublishContinueBtn");
 		}
 
 	}
@@ -1026,7 +1033,7 @@ public class CreateOrEditEvent extends BasePage {
 		waitForElementToPresent(AddAlbumBtn);
 
 		// Thread.sleep(7000);
-		EditAlbumBtn.click();
+		click(EditAlbumBtn,"EditAlbumBtn");
 		Thread.sleep(2000);
 
 		Album_Title.clear();
@@ -1034,36 +1041,37 @@ public class CreateOrEditEvent extends BasePage {
 		Album_URL.clear();
 
 		Thread.sleep(1000);
+type(Album_Title, AlbumTitle, "AlbumTitle");
+		
+		type(Album_Description, AlbumDescription, "AlbumDescription");
+		
+		type(Album_URL, AlbumURL, "AlbumURL");
+		
 
-		Album_Title.sendKeys(AlbumTitle);
-		Album_Description.sendKeys(AlbumDescription);
-		Album_URL.sendKeys(AlbumURL);
-
-		AlbumFormSaveBtn.click();
+		click(AlbumFormSaveBtn,"AlbumFormSaveBtn");
 		Thread.sleep(2000);
 
-		EditDocumentBtn.click();
+		click(EditDocumentBtn,"EditDocumentBtn");
 		Thread.sleep(1000);
 		Document_Title.clear();
 		Document_Description.clear();
-
-		Document_Title.sendKeys(DocumentTitle);
-		Document_Description.sendKeys(DocumentDescription);
+type(Document_Title, DocumentTitle, "Document_Title");
+		type(Document_Description, DocumentDescription, DocumentDescription);
 		// Document_Description.sendKeys(Keys.TAB);
 		// Robot r = new Robot();
 		// Thread.sleep(2000);
 		// r.keyPress(KeyEvent.VK_ENTER);
-		//
-		DocumentUpload
-				.sendKeys("D:\\Workspace\\CPCommunityQA\\src\\main\\resources\\configfile\\Files\\ChromePDF1.pdf");
+		String path = projectFloder("/src/main/resources/configfile/Files/ChromePDF1.pdf");
+		type(DocumentUpload, path, "DocumentUpload");
+		
 		Thread.sleep(2000);
 		// Runtime.getRuntime().exec(UploadDocumentPath);
 		// Thread.sleep(6000);
 
-		DocumentFormSaveBtn.click();
+		click(DocumentFormSaveBtn,"DocumentFormSaveBtn");
 		Thread.sleep(2000);
 
-		EditVideoBtn.click();
+		click(EditVideoBtn,"EditVideoBtn");
 		Thread.sleep(1000);
 
 		Video_Title.clear();

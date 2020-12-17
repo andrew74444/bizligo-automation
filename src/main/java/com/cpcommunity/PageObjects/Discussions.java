@@ -196,7 +196,7 @@ public class Discussions extends BasePage {
 			likes = Integer.parseInt(L);
 		}
 		likes = likes + 1;
-		clickFirstPostLike.click();
+		click(clickFirstPostLike,"clickFirstPostLike");
 		Thread.sleep(2000);
 		L = NoOfPostLikes.getText();
 		String UpdatedL = NoOfPostLikes.getText();

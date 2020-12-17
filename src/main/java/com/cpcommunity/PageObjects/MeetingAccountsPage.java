@@ -70,9 +70,9 @@ public class MeetingAccountsPage extends BasePage{
 	public MeetingAccountsPage inActivateZoom() throws Exception {
 
 		waitForElementToPresent(activeBtn);
-		activeBtn.click();
+		click(activeBtn,"activeBtn");
 		Thread.sleep(500);
-		Update.click();
+		click(Update,"Update");
 		return (MeetingAccountsPage) openPage(MeetingAccountsPage.class);
 //		new MeetingAccountsPage(driver, );
 
@@ -81,24 +81,26 @@ public class MeetingAccountsPage extends BasePage{
 	public MeetingAccountsPage activateZoom() throws Exception {
 
 		waitForElementToPresent(inActiveBtn);
-		inActiveBtn.click();
+		click(inActiveBtn,"inActiveBtn");
 		Thread.sleep(500);
-		Update.click();
+		click(Update,"Update");
 		return (MeetingAccountsPage) openPage(MeetingAccountsPage.class);
 //				new MeetingAccountsPage(driver, );
 
 	}
 	public MeetingAccountsPage configureZoom(String APIKey, String APISecret, String EmailID) {
-		action.click();
+		click(action,"action");
 		waitForElementToPresent(OkBtn);
-		OkBtn.click();
+		click(OkBtn,"OkBtn");
 		waitForElementToPresent(SaveBtn);
-		this.txtAPIKey.sendKeys(APIKey);
-		this.txtAPISecret.sendKeys(APISecret);
-		this.EmailID.sendKeys(EmailID);
-		SaveBtn.click();
+		
+		type(txtAPIKey, APIKey, "txtAPIKey");
+		type(txtAPISecret, APISecret, "txtAPISecret");
+		type(this.EmailID, EmailID, "EmailID");
+	
+		click(SaveBtn,"SaveBtn");
 		waitForElementToPresent(setupsuccessfully);
-		OkBtn.click();
+		click(OkBtn,"OkBtn");
 		return (MeetingAccountsPage) openPage(MeetingAccountsPage.class);
 //		new MeetingAccountsPage(driver, );
 	}

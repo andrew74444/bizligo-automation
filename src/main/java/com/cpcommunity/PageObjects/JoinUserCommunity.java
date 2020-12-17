@@ -77,7 +77,7 @@ public class JoinUserCommunity extends BasePage{
 		this.clickHereToJoin();
 		
 		AssertionHelper.verifyText(content.getText(), "You are successfully added to this Community");
-		OK.click();
+		click(OK,"OK");
 	}
 	
 	
@@ -92,7 +92,7 @@ public class JoinUserCommunity extends BasePage{
 		this.clickHereToJoin(TC);
 
 		AssertionHelper.verifyText(content.getText(), "You are already member of this Community");
-		OK.click();
+		click(OK,"Ok");
 	}
 
 	public void NotInvited(String TC ) throws Exception {
@@ -100,7 +100,7 @@ public class JoinUserCommunity extends BasePage{
 
 		AssertionHelper.verifyText(content.getText(),
 				"You are not invited to this community, you can join the community by clicking on the Join button");
-		OK.click();
+		click(OK,"Ok");
 	}
 	
 	public void NotInvited( ) throws Exception {
@@ -108,7 +108,7 @@ public class JoinUserCommunity extends BasePage{
 
 		AssertionHelper.verifyText(content.getText(),
 				"You are not invited to this community, you can join the community by clicking on the Join button");
-		OK.click();
+		click(OK,"Ok");
 	}
 
 	public void clickHereToJoin( ) throws Exception {
@@ -128,7 +128,7 @@ public class JoinUserCommunity extends BasePage{
 		this.clickHereToJoin();
 		Thread.sleep(2000);
 		AssertionHelper.verifyText(content.getText(), "You are already member of this Community");
-		OK.click();
+		click(OK,"Ok");
 
 	}
 

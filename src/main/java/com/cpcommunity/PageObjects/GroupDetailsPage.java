@@ -94,20 +94,20 @@ public class GroupDetailsPage extends BasePage {
 
 	public void Join( ) {
 
-		Join.click();
+		click(Join,"Join");
 		waitForElementToPresent(YesProceedBtn);
 		picture();
-		YesProceedBtn.click();
+		click(YesProceedBtn,"Yes Proceed");
 		waitForElementToPresent(OkBtn);
 		picture();
-		OkBtn.click();
+		click(OkBtn,"Ok");
 	}
 
 	public void sendconnection( ) {
 
 		int i = 1;
 
-		navbarMembers.click();
+		click(navbarMembers,"Members");
 		waitForElementToPresent(MemberdisplayCard);
 		int totalPages=1;
 //		int totalPages = Pagination.size();
@@ -159,7 +159,7 @@ public class GroupDetailsPage extends BasePage {
 
 				System.out.println(i++);
 				WebElement element = driver.findElement(By.xpath("(//dir-pagination-controls//a[@class])[" + i + "]"));
-				element.click();
+				click(element,"pagination");
 				waitForElementToPresent(MemberdisplayCard);
 			}
 		}
@@ -187,13 +187,13 @@ public class GroupDetailsPage extends BasePage {
 
 	public void Leave( ) {
 
-		Leave.click();
+		click(Leave,"Leave");
 		waitForElementToPresent(YesProceedBtn);
 		picture();
-		YesProceedBtn.click();
+		click(YesProceedBtn,"YesProceed");
 		waitForElementToPresent(OkBtn);
 		picture();
-		OkBtn.click();
+		click(OkBtn,"OkBtn");
 		Join.isDisplayed();
 		picture();
 

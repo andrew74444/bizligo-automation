@@ -153,7 +153,7 @@ public class GlobalMembersPage extends BasePage {
 				System.out.println(i);
 				WebElement element = driver.findElement(By.xpath("(//dir-pagination-controls//a[@class])[" + i + "]"));
 				scrollToElement(element);
-				element.click();
+				click(element,"pagination");
 				waitForElementToPresent(Member);
 				scrollToElement(SearchBtn);
 			}
@@ -162,10 +162,11 @@ public class GlobalMembersPage extends BasePage {
 
 	public void SearchMemberByName(String MemberName) throws Exception {
 
-		membername.sendKeys(MemberName);
+		type(membername, MemberName, "MemberName");
+	
 		Thread.sleep(500);
 
-		SearchBtn.click();
+		click(SearchBtn,"SearchBtn");
 		Thread.sleep(5000);
 		picture();
 	}
@@ -182,7 +183,7 @@ public class GlobalMembersPage extends BasePage {
 
 	public void sendConnection(String MemberName ) throws Exception {
 		this.SearchMemberByName(MemberName);
-		Connect.click();
+		click(Connect,"Connect");
 		waitForElementToPresent(SuccessPopup);
 		AssertionHelper.verifyText(SuccessPopup.getText(), "Connection Request has been sent Successfully.");
 		picture();

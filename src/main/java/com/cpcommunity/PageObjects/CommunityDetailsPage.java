@@ -260,7 +260,7 @@ public class CommunityDetailsPage extends BasePage {
 		waitForElementToPresent(manageCommunity);
 		
 //		click(manageCommunity, "Manage Community");
-		manageCommunity.click();
+		click(manageCommunity,"manage Community");
 			
 		
 		
@@ -278,7 +278,7 @@ public class CommunityDetailsPage extends BasePage {
 		WebElement ele = driver.findElement(By.xpath("//*[contains(text(),'" + JobTitle + "')]"));
 		waitForElementToPresent(ele);
 		ele.isDisplayed();
-		click(ele, "");
+		click(ele, " JobTitle ");
 		Thread.sleep(3000);
 	}
 
@@ -584,7 +584,7 @@ public class CommunityDetailsPage extends BasePage {
 		click(AcceptBtn, "AcceptBtn");
 		waitForElementToPresent(YesProceed);
 		picture();
-		YesProceed.click();
+		click(YesProceed,"Yes Proceed");
 		Thread.sleep(4000);
 		picture();
 		try {

@@ -60,10 +60,10 @@ public class MyGroupsPage extends BasePage{
     	this.searchGroup(groupName);
     	waitForElementToPresent(Menu);
     	picture();
-    	Menu.click();
+    	click(Menu,"Menu");
     	waitForElementToPresent(ManageMembers);
     	picture();
-    	ManageMembers.click();
+    	click(ManageMembers,"ManageMembers");
     	
 		return (ManageGroupMembersPageByGroupAdmin) openPage(ManageGroupMembersPageByGroupAdmin.class);
 //		new ManageGroupMembersPageByGroupAdmin(driver, );
@@ -74,7 +74,7 @@ public class MyGroupsPage extends BasePage{
     	this.searchGroup(GroupName);
     	WebElement ele = driver.findElement(By.xpath("//span[contains(text(),'"+GroupName+"')]"));
     	waitForElementToPresent(ele);
-    	ele.click();
+    	click(ele,"GroupName");
     	return (GroupDetailsPage) openPage(GroupDetailsPage.class);
 //    	new GroupDetailsPage(driver, );
     }

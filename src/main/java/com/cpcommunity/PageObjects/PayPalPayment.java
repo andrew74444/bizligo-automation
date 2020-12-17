@@ -245,14 +245,15 @@ public class PayPalPayment extends BasePage{
 					driver.findElement(By.xpath("//*[@class='css-1pkzf9g eshn35a0']")).click();
 					wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='login_email']")));
 					type(EmailID,PEmail,"EmailID");
-					driver.findElement(By.xpath("//button[@type='submit']")).click();
+					click(driver.findElement(By.xpath("//button[@type='submit']")), "submit");
+					
 					wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@id='btnLogin']")));
 					Thread.sleep(5000);
 					type(PayPalPWd,PPwd,"PayPalPWd");
-					driver.findElement(By.xpath("//button[@id='btnLogin']")).click();
+					click(driver.findElement(By.xpath("//button[@id='btnLogin']")),"btnLogin");
 					wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='payment-submit-btn']")));
 					Thread.sleep(15000);
-					driver.findElement(By.xpath("//*[@id='payment-submit-btn']")).click();
+					click(driver.findElement(By.xpath("//*[@id='payment-submit-btn']")),"payment-submit-btn");
 					Thread.sleep(5000);
 					System.out.println(Amount);
 					return Amount;

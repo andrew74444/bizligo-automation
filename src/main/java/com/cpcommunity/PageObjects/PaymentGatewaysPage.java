@@ -78,7 +78,7 @@ public class PaymentGatewaysPage extends BasePage {
 	// return (ZohoCRMPage) openPage(ZohoCRMPage.class);
 
 	public SetupPayPalPage SetPayPal() throws Exception {
-		PayPal.click();
+		click(PayPal,"PayPal");
 		this.OkBtn();
 		Thread.sleep(2000);
 		return (SetupPayPalPage) openPage(SetupPayPalPage.class);
@@ -86,20 +86,20 @@ public class PaymentGatewaysPage extends BasePage {
 	}
 
 	public SetupPayPalPage navigateToActivatePayPal() {
-		PayPal.click();
+		click(PayPal,"PayPal");
 		return (SetupPayPalPage) openPage(SetupPayPalPage.class);
 		// new SetupPayPalPage(driver, );
 	}
 
 	public SetupAuthorizePage navigateActivateAuthorize() {
-		Authorize.click();
+		click(Authorize,"Authorize");
 		return (SetupAuthorizePage) openPage(SetupAuthorizePage.class);
 		// new SetupAuthorizePage(driver, );
 	}
 
 	public SetupAuthorizePage setUpAuthorize() throws Exception {
 
-		Authorize.click();
+		click(Authorize,"Authorize");
 		this.OkBtn();
 		Thread.sleep(2000);
 		return (SetupAuthorizePage) openPage(SetupAuthorizePage.class);
@@ -117,7 +117,7 @@ public class PaymentGatewaysPage extends BasePage {
 	
 	public void activateCash() throws Exception {
 
-		Cash.click();
+		click(Cash,"Cash");
 		this.ClickonActivate();
 		Thread.sleep(2000);
 
@@ -125,53 +125,53 @@ public class PaymentGatewaysPage extends BasePage {
 
 	public void activateCheque() throws Exception {
 
-		Cheque.click();
+		click(Cheque,"Cheque");
 		this.ClickonActivate();
 		Thread.sleep(2000);
 
 	}
 
 	public void inActivateCheque() {
-		Cheque.click();
+		click(Cheque,"Cheque");
 		this.ClickonInActivate();
 	}
 
 	public void inActivateCash() {
 
-		Cash.click();
+		click(Cash,"Cash");
 		this.ClickonInActivate();
 	}
 
 	public void ClickonInActivate() {
 		waitForElementToPresent(InActivate);
-		InActivate.click();
+		click(InActivate,"InActivate");
 		this.OkBtn();
 	}
 
 	public void ClickonActivate() {
 		waitForElementToPresent(Activate);
-		Activate.click();
+		click(Activate,"Activate");
 		this.OkBtn();
 	}
 
 	public void OkBtn() {
 
 		waitForElementToPresent(OkBtn);
-		OkBtn.click();
+		click(OkBtn,"OkBtn");
 	}
 
 	public PaymentGatewaysPage InactiveAuthorize() throws InterruptedException
 	{
 
-		Authorize.click();
+		click(Authorize,"Authorize");
 
-		toogleButton.click();
+		click(toogleButton,"toogleButton");
 
 		Thread.sleep(1000);
 
-		Activate.click();
+		click(Activate,"Activate");
 
-		cancelBtn.click();
+		click(cancelBtn,"cancelBtn");
 
 		return (PaymentGatewaysPage) openPage(PaymentGatewaysPage.class);
 

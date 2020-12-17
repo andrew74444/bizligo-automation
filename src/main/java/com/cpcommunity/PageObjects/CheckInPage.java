@@ -96,7 +96,7 @@ public class CheckInPage extends BasePage {
 		Thread.sleep(2000);
 		AttendeeEmailID.clear();
 		type(AttendeeEmailID, data.get("attendeeEmailID"), "Attendee Email ID");
-		AttendeePhone.click();
+		click(AttendeePhone,"Attendee Phone");
 		Thread.sleep(2000);
 		FirstName.clear();
 		LastName.clear();
@@ -113,7 +113,7 @@ public class CheckInPage extends BasePage {
 		scrollToElement(BookingInformation);
 		PayerEmailID.clear();
 		type(PayerEmailID, data.get("payerEmailID"), "Payer Email ID");
-		PayerPhone.click();
+		click(PayerPhone," Payer Phone");
 		Thread.sleep(4000);
 		takeScreenshotByShutterBug(payerForm, "Payer Form");
 	}

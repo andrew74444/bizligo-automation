@@ -6,20 +6,18 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.apache.log4j.Logger;
 
-
-
 public class PaymentConfirmation extends BasePage {
 
 	@FindBy(xpath = "//*[@id='header']")
 	WebElement pageheader;
+
 	@Override
-	protected  void getPageScreenSot() {
-	
+	protected void getPageScreenSot() {
+
 		updateClass(pageheader, "");
 		aShot();
 		updateClass(pageheader, "navbar-fixed-top");
 	}
-	
 
 	// @FindBy(xpath="//*[@id='email_create']")
 	// WebElement registrationEmailAddress;
@@ -40,17 +38,16 @@ public class PaymentConfirmation extends BasePage {
 
 	@FindBy(xpath = "//button[contains(.,'Ok')]")
 	WebElement OkBtn;
-	
-	
-	@FindBy(xpath = "//*[@class='btn btn-danger']")
-	WebElement  cancelButton;
 
-    @FindBy(xpath = "//button[contains(text(),'Ok')]")
+	@FindBy(xpath = "//*[@class='btn btn-danger']")
+	WebElement cancelButton;
+
+	@FindBy(xpath = "//button[contains(text(),'Ok')]")
 	WebElement okButton;
 
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
-		
+
 		return ExpectedConditions.visibilityOf(TransactionId);
 	}
 
@@ -61,20 +58,20 @@ public class PaymentConfirmation extends BasePage {
 	// }
 	//
 	// return (ZohoCRMPage) openPage(ZohoCRMPage.class);
-	public PaymentGatewaysPage EnterTransactionDetails(String AmountPaid, String TransactionID ) throws Exception {
+	public PaymentGatewaysPage EnterTransactionDetails(String AmountPaid, String TransactionID) throws Exception {
 
 		waitForElementToPresent(TransactionId);
 		type(TransactionId, TransactionID, "TransactionId");
-		
-		Amount.sendKeys(AmountPaid);
+		type(Amount, AmountPaid, "Amount");
+
 		Thread.sleep(3000);
 		// new TestBase().captureScreen(, driver);
 		picture();
-		SubmitBtn.click();
+		click(SubmitBtn, "SubmitBtn");
 		waitForElementToPresent(OkBtn);
 		picture();
-		
-		OkBtn.click();
+
+		click(OkBtn, "OkBtn");
 		return (PaymentGatewaysPage) openPage(PaymentGatewaysPage.class);
 		// new PaymentGatewaysPage(driver, );
 	}
@@ -88,67 +85,58 @@ public class PaymentConfirmation extends BasePage {
 
 		return (PayPalMerchant) openPage(PayPalMerchant.class);
 	}
-	
-	public PaymentGatewaysPage cancelTransaction()
-		
-	       {
-		
-	               click(cancelButton, "button");
-		
-	               return (PaymentGatewaysPage) openPage(PaymentGatewaysPage.class);
-		
-	       }
-		
-	       
-		
-	       public PaymentGatewaysPage invalidTransactionDetails(String AmountPaid, String TransactionID ) throws Exception {
-		
-		
-	               waitForElementToPresent(TransactionId);
-		
-	               TransactionId.sendKeys(TransactionID);
-		
-	               Amount.sendKeys(AmountPaid);
-		
-	               SubmitBtn.click();
-		
-	               Thread.sleep(4000);
-		
-	               TransactionId.clear();
-		
-	               Thread.sleep(1000);
-		
-	               TransactionId.sendKeys(TransactionID);
-		
-	               SubmitBtn.click();
-		
-	               Thread.sleep(4000);
-		
-	               TransactionId.clear();
-		
-	               Thread.sleep(1000);
-		
-	               TransactionId.sendKeys(TransactionID);
-		
-	               SubmitBtn.click();
-		
-	               Thread.sleep(1000);
-		
-	               okButton.click();
-		
-	               return (PaymentGatewaysPage) openPage(PaymentGatewaysPage.class);
-		
-	               
-		
-	               // new PaymentGatewaysPage(driver, );
-	
-	       }
 
-		public String getAmountPaid(String name) throws Exception {
-			
-			return readInNotePadFile(name);
-		}
-	
-	
+	public PaymentGatewaysPage cancelTransaction()
+
+	{
+
+		click(cancelButton, "button");
+
+		return (PaymentGatewaysPage) openPage(PaymentGatewaysPage.class);
+
+	}
+
+	public PaymentGatewaysPage invalidTransactionDetails(String AmountPaid, String TransactionID) throws Exception {
+
+		waitForElementToPresent(TransactionId);
+		type(TransactionId, TransactionID, "TransactionId");
+
+		type(Amount, AmountPaid, "Amount");
+
+		click(SubmitBtn, "SubmitBtn");
+
+		Thread.sleep(4000);
+
+		TransactionId.clear();
+
+		Thread.sleep(1000);
+		type(TransactionId, TransactionID, "TransactionID");
+
+		click(SubmitBtn, "SubmitBtn");
+
+		Thread.sleep(4000);
+
+		TransactionId.clear();
+
+		Thread.sleep(1000);
+
+		type(TransactionId, TransactionID, "TransactionID");
+
+		click(SubmitBtn, "SubmitBtn");
+
+		Thread.sleep(1000);
+
+		click(okButton, "okButton");
+
+		return (PaymentGatewaysPage) openPage(PaymentGatewaysPage.class);
+
+		// new PaymentGatewaysPage(driver, );
+
+	}
+
+	public String getAmountPaid(String name) throws Exception {
+
+		return readInNotePadFile(name);
+	}
 
 }

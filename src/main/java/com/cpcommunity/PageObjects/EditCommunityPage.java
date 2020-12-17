@@ -91,7 +91,7 @@ public class EditCommunityPage extends BasePage{
 		clickElementByJavaScript(toggleOn);
 		waitForElementToPresent(YesProceed);
 		picture();
-		YesProceed.click();
+		click(YesProceed,"YesProceed");
 		picture();
 		Thread.sleep(1000);
 		clickElementByJavaScript(Save);
@@ -106,7 +106,7 @@ public class EditCommunityPage extends BasePage{
 		
 		clickElementByJavaScript(toggleOff);
 		waitForElementToPresent(YesProceed);
-		YesProceed.click();
+		click(YesProceed,"YesProceed");
 		Thread.sleep(1000);
 		clickElementByJavaScript(Save);
 		

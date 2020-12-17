@@ -67,15 +67,16 @@ public class ProfilePage extends BasePage{
 //			logExtentReport("Clicking on Endorsement Button...");	
 			waitForElementToPresent(addEndorsementBtn);
 			picture();
-			addEndorsementBtn.click();
+			click(addEndorsementBtn,"addEndorsementBtn");
 			waitForElementToPresent(sendBtn);		
 //			log.info("entering email address...."+Endorsement);
 //			logExtentReport("entering email address...."+Endorsement);
-			EndorsementFiled.sendKeys(Endorsement);
+			type(EndorsementFiled, Endorsement, "Endorsement");
+			
 //			log.info("Clicking on send Button...");
 			
 			picture();
-			sendBtn.click();		
+			click(sendBtn,"sendBtn");		
 			AssertionHelper.verifyText(SuccessPopup.getText(), "Endorsement Sent Successfully");
 			String Message = SuccessPopup.getText();
 			picture();

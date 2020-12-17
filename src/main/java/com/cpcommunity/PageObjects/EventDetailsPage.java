@@ -320,14 +320,14 @@ public class EventDetailsPage extends BasePage {
 		WebDriverWait wait = new WebDriverWait(driver, 20);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(.,'Attendees')]")));
 		Thread.sleep(3000);
-		AttendeesMenu.click();
+		click(AttendeesMenu,"AttendeesMenu");
 		Thread.sleep(1000);
-		ViewAll.click();
+		click(ViewAll,"ViewAll");
 		Thread.sleep(2000);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@type='search']")));
 		String AttendeeName = attendeeFirstName + " " + attendeelastName;
 		AttendeesSearch.clear();
-		AttendeesSearch.sendKeys(AttendeeName);
+		type(AttendeesSearch, AttendeeName, "AttendeeName");
 		
 		WebElement Scrolldown = driver.findElement(By.xpath("//a[contains(.,'Previous')]"));
 		executeScript("arguments[0].scrollIntoView(true);", Scrolldown);
@@ -338,20 +338,21 @@ public class EventDetailsPage extends BasePage {
 	public void ResendRegistrationEmailConfirmation(String EmailID) throws Exception {
 		
 
-		RegisterBtn.click();
+		click(RegisterBtn,"RegisterBtn");
 		Thread.sleep(2000);
-		ResendConfirmationBtn.click();
+		click(ResendConfirmationBtn,"ResendConfirmationBtn");
 		
 		// Vertical scroll - down by 150 pixels
 		executeScript("window.scrollBy(0,0)");
 		Thread.sleep(2000);
-		Email.sendKeys(EmailID);
-		SubmitBtn.click();
+		type(Email, EmailID, "EmailID");
+		
+		click(SubmitBtn,"SubmitBtn");
 		Thread.sleep(3000);
 		AssertionHelper.verifyText(driver.findElement(By.xpath("//div[@class='bootbox-body']")).getText(),
 				"Confirmation Email has been sent successfully");
 		picture();
-		OKBtn.click();
+		click(OKBtn,"OKBtn");
 		Thread.sleep(5000);
 
 	}
@@ -386,7 +387,7 @@ public class EventDetailsPage extends BasePage {
 				.getAttribute("");
 		AssertionHelper.verifyText(ActualCompanyName, ExpectedCompanyName);
 
-		BacktoEventDetailsPage.click();
+		click(BacktoEventDetailsPage,"BacktoEventDetailsPage");
 	}
 
 	public void PaymentAbortedAttendee(String AFName, String AFname, String ExpectedCompanyName) throws Exception {
@@ -397,26 +398,26 @@ public class EventDetailsPage extends BasePage {
 		String ActualCompanyName = driver.findElement(By.xpath("//*[@id='AttendeesTable']/tbody/tr[1]/td[3]"))
 				.getAttribute("");
 		AssertionHelper.verifyText(ActualCompanyName, ExpectedCompanyName);
-		BacktoEventDetailsPage.click();
+		click(BacktoEventDetailsPage,"BacktoEventDetailsPage");
 	}
 
 	public void GuestInvite(String firstName, String lastName, String guestEmailID, String phoneNo) throws Exception {
 
 		
 		scrollIntoView(ResendConfirmationBtn);
-		AddGuestBtn.click();
-		GuestFirstName.sendKeys(firstName);
-		GuestLastName.sendKeys(lastName);
-		GuestEmailID.sendKeys(guestEmailID);
-		GuestPhone.sendKeys(phoneNo);
+		click(AddGuestBtn,"AddGuestBtn");
+		type(GuestFirstName, firstName, "firstName");
+		type(GuestLastName, lastName, "lastName");
+		type(GuestEmailID, guestEmailID, "guestEmailID");
+		type(GuestPhone, phoneNo, "phoneNo");
 		scrollIntoView(InviteGuestBtn);
 		picture();
-		InviteGuestBtn.click();
+		click(InviteGuestBtn,"InviteGuestBtn");
 		waitForElementToPresent(driver.findElement(By.xpath("//*[contains(text(),'Guest Invitation has been sent successfully')]")));
 		String text = driver.findElement(By.xpath("//*[contains(text(),'Guest Invitation has been sent successfully')]")).getText();
 		AssertionHelper.verifyText(text,"Guest Invitation has been sent successfully");
 		picture();
-		OKBtn.click();
+		click(OKBtn,"OKBtn");
 		Thread.sleep(5000);
 
 	}

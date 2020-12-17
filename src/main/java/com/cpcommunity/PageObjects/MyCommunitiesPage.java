@@ -150,7 +150,7 @@ public class MyCommunitiesPage extends BasePage {
 	WebElement makeAnotherAdminAlertPopUp;
 
 	public CreateCommunityPage clickOnCreateCommunity() {
-		CreateCommunityBtn.click();
+		click(CreateCommunityBtn,"CreateCommunityBtn");
 		return (CreateCommunityPage) openPage(CreateCommunityPage.class);
 		// new CreateCommunityPage(driver);
 	}
@@ -192,7 +192,7 @@ public class MyCommunitiesPage extends BasePage {
 		this.searchCommunity(CommunityName+" "+getDateInDDMMMYYYY());
 		click(Cancel, "Cancel");
 		waitForElementToPresent(YesProceed);
-		YesProceed.click();
+		click(YesProceed,"YesProceed");
 		waitForElementToPresent(SuccessPopUp);
 		AssertionHelper.verifyText(SuccessPopUp.getText(), "Your request processed successfully");
 		Thread.sleep(3000);
@@ -206,14 +206,14 @@ public class MyCommunitiesPage extends BasePage {
 
 	public void activateCommunity(String communityName) throws Exception {
 		this.searchCommunity(communityName+" "+getDateInDDMMMYYYY());
-		Activate.click();
+		click(Activate,"Activate");
 		picture();
 		waitForElementToPresent(YesProceed);
 		picture();
-		YesProceed.click();
+		click(YesProceed,"YesProceed");
 		waitForElementToPresent(Okbtn);
 		picture();
-		Okbtn.click();
+		click(Okbtn,"Okbtn");
 		waitForElementToPresent(LeaveBtn);
 		LeaveBtn.isDisplayed();
 		picture();
@@ -224,9 +224,9 @@ public class MyCommunitiesPage extends BasePage {
 
 	public boolean leaveCommunity(String communityName) throws Exception {
 		this.searchCommunity(communityName+" "+getDateInDDMMMYYYY());
-		LeaveBtn.click();
+		click(LeaveBtn,"LeaveBtn");
 		waitForElementToPresent(YesProceed);
-		YesProceed.click();
+		click(YesProceed,"YesProceed");
 		Thread.sleep(5000);
 		AssertionHelper.verifyText(noResultsFound.getText(), "No results found matching your search criteria");
 		if (noresultfound.isDisplayed()) {
@@ -237,9 +237,9 @@ public class MyCommunitiesPage extends BasePage {
 	}
 	public boolean leaveCommunityWithName(String communityName) throws Exception {
 		this.searchCommunity(communityName);
-		LeaveBtn.click();
+		click(LeaveBtn,"LeaveBtn");
 		waitForElementToPresent(YesProceed);
-		YesProceed.click();
+		click(YesProceed,"YesProceed");
 		Thread.sleep(5000);
 		AssertionHelper.verifyText(noResultsFound.getText(), "No results found matching your search criteria");
 		if (noresultfound.isDisplayed()) {
@@ -285,11 +285,11 @@ public class MyCommunitiesPage extends BasePage {
 
 		this.searchCommunity(CommunityName+" "+getDateInDDMMMYYYY());
 		Zero.isDisplayed();
-		Cancel.click();
+		click(Cancel,"Cancel");
 		waitForElementToPresent(YesProceed);
-		YesProceed.click();
+		click(YesProceed,"YesProceed");
 		waitForElementToPresent(Okbtn);
-		Okbtn.click();
+		click(Okbtn,"Okbtn");
 		waitForElementToPresent(noResultsFound);
 		Thread.sleep(2000);
 		AssertionHelper.verifyText(noResultsFound.getText(), "No results found matching your search criteria");
@@ -303,9 +303,9 @@ public class MyCommunitiesPage extends BasePage {
 	public void cancelJoinCommunity(String CommunityName) throws Exception {
 
 		this.searchCommunity(CommunityName+" "+getDateInDDMMMYYYY());
-		Cancel.click();
+		click(Cancel,"Cancel");
 		waitForElementToPresent(YesProceed);
-		YesProceed.click();
+		click(YesProceed,"YesProceed");
 		waitForElementToPresent(toastMessage);
 		AssertionHelper.verifyText(toastMessage.getText(), "Your request is successfully processed");
 		Thread.sleep(2000);
@@ -315,9 +315,9 @@ public class MyCommunitiesPage extends BasePage {
 	public boolean rejectcommunity(String CommunityName) throws Exception {
 
 		this.searchCommunity(CommunityName+" "+getDateInDDMMMYYYY());
-		RejectBtn.click();
+		click(RejectBtn,"RejectBtn");
 		waitForElementToPresent(YesProceed);
-		YesProceed.click();
+		click(YesProceed,"YesProceed");
 		waitForElementToPresent(toastMessage);
 		AssertionHelper.verifyText(toastMessage.getText(), "Your request is successfully processed");
 		Thread.sleep(2000);
@@ -335,12 +335,12 @@ public class MyCommunitiesPage extends BasePage {
 	public void acceptcommunity(String CommunityName) throws Exception {
 		this.searchCommunity(CommunityName+" "+getDateInDDMMMYYYY());
 
-		AcceptBtn.click();
+		click(AcceptBtn,"");
 		waitForElementToPresent(YesProceed);
 		String parent = driver.getWindowHandle();
 		picture();
 		// picture();
-		YesProceed.click();
+		click(YesProceed,"YesProceed");
 		waitForElementToPresent(toastMessage);
 		AssertionHelper.verifyText(toastMessage.getText(), "Your request is successfully processed");
 		Thread.sleep(2000);
@@ -352,12 +352,12 @@ public class MyCommunitiesPage extends BasePage {
 	public void acceptcommunity(String CommunityName, String TC) throws Exception {
 		this.searchCommunity(CommunityName+" "+getDateInDDMMMYYYY());
 
-		AcceptBtn.click();
+		click(AcceptBtn,"AcceptBtn");
 		waitForElementToPresent(YesProceed);
 		String parent = driver.getWindowHandle();
 		picture();
 		// picture();
-		termsAndConditions.click();
+		click(termsAndConditions,"termsAndConditions");
 		Set<String> s1 = driver.getWindowHandles();
 		Iterator<String> I1 = s1.iterator();
 		while (I1.hasNext()) {
@@ -372,10 +372,10 @@ public class MyCommunitiesPage extends BasePage {
 				// picture();
 				driver.close();
 				driver.switchTo().window(parent);
-				checkbox.click();
+				click(checkbox,"");
 			}
 		}
-		YesProceed.click();
+		click(YesProceed,"YesProceed");
 		waitForElementToPresent(toastMessage);
 		AssertionHelper.verifyText(toastMessage.getText(), "Your request is successfully processed");
 		Thread.sleep(2000);
