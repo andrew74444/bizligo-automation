@@ -217,6 +217,8 @@ try {
 		highlightElement(element);
 		element.click();
 		log.info("Clicked on : " + elementName);
+		ExtentListeners.testReport.get().info("Clicked on : " + elementName);
+		ExtentListeners2.testReport.get().info("Clicked on : " + elementName);
 //		ExtentListeners2.testReport.get().info("Clicked on : " + elementName);
 	}
 
