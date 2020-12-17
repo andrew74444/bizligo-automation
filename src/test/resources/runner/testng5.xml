@@ -5,6 +5,8 @@
 	<listeners>
 		<listener		
 			class-name="com.cpcommunity.ExtentListeners.ExtentListeners"></listener>
+			<listener		
+			class-name="com.cpcommunity.ExtentListeners2.ExtentListeners2"></listener>
 		<listener
 			class-name="com.uiFramework.pamTen.cpcommunity.helper.listener.RetryListener" />
 	</listeners>
@@ -13,7 +15,7 @@
 	
 	<test name="Test1" preserve-order="true">
 		<classes>
-			<class name="com.cpcommunity.testScripts.community.TC501_Purchase_Pricing_Plan_With_PayPal" />
+			<class name="com.cpcommunity.testScripts.community.TC501_Purchase_Pricing_Plan_To_Community" />
 			<class name="com.cpcommunity.testScripts.community.TC029_Create_community_From_My_Communites" />
 			<class name="com.cpcommunity.testScripts.community.TC031_Create_community_From_Global_Communities_page" />
 			<class name="com.cpcommunity.testScripts.community.TC081_Member_Join_And_Leave_Public_Community_From_Global_Communities" />
