@@ -1,0 +1,5 @@
+INFO    2020-12-17 20:11:24,528 [main] com.cpcommunity.testScripts.community.BaseTest  - Config properties file loaded
+INFO    2020-12-17 20:11:26,272 [TestNG-test=Test1-1] com.cpcommunity.testScripts.community.BaseTest  - Inside Login Test
+INFO    2020-12-17 20:11:33,217 [TestNG-test=Test1-1] com.cpcommunity.testScripts.community.BaseTest  - Driver Initialized !!!
+INFO    2020-12-17 20:11:33,346 [TestNG-test=Test1-1] com.cpcommunity.testScripts.community.BaseTest  - D:\workspace\bizligo-automation\src\test\resources\testdata\test\17 Dec 2020\ExecutionRunTime\runTime.txt
+INFO    2020-12-17 20:11:33,346 [TestNG-test=Test1-1] com.cpcommunity.testScripts.community.BaseTest  - 1
