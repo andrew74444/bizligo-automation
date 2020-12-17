@@ -189,12 +189,12 @@ public class ManageJobsPage extends BasePage {
 
 		driver.switchTo().frame(0);
 		enterTextInframe.clear();
-		enterTextInframe.sendKeys(Description);
+		type(enterTextInframe, Description, "Description");
 		driver.switchTo().defaultContent();
 
 		driver.switchTo().frame(1);
 		enterTextInframe.clear();
-		enterTextInframe.sendKeys(AdditionalDetails);
+		type(enterTextInframe, AdditionalDetails, "AdditionalDetails");
 		driver.switchTo().defaultContent();
 
 		type(this.Location, Location, "Location");

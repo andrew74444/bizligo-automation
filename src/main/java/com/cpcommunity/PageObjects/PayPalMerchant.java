@@ -250,14 +250,14 @@ public class PayPalMerchant extends BasePage{
 					driver.findElement(By.className("baslLoginButtonContainer")).click();
 					wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='login_email']")));
 					type(EmailID,PEmail,"EmailID");
-					driver.findElement(By.xpath("//button[@type='submit']")).click();
+					click(driver.findElement(By.xpath("//button[@type='submit']")),"submit");
 					wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@id='btnLogin']")));
 					Thread.sleep(5000);
 					type(PayPalPWd,PPwd,"PayPalPWd");
-					driver.findElement(By.xpath("//button[@id='btnLogin']")).click();
+					click(driver.findElement(By.xpath("//button[@id='btnLogin']")),"btnLogin");
 					wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@type='submit']")));
 					Thread.sleep(15000);
-					driver.findElement(By.xpath("//input[@type='submit']")).click();
+					click(driver.findElement(By.xpath("//input[@type='submit']")),"submit");
 					Thread.sleep(5000);
 					System.out.println(Amount);
 					return Amount;
@@ -269,18 +269,18 @@ public class PayPalMerchant extends BasePage{
 					  {
 						  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='login_email']")));
 							 type(EmailID,PEmail,"EmailID");
-							 driver.findElement(By.xpath("//button[@type='submit']")).click();
+							 click(driver.findElement(By.xpath("//button[@type='submit']")),"submit");
 							 wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@id='btnLogin']")));
 							 Thread.sleep(5000);
 							 type(PayPalPWd,PPwd,"PayPalPWd");
-							 driver.findElement(By.xpath("//button[@id='btnLogin']")).click();
+							 click(driver.findElement(By.xpath("//button[@id='btnLogin']")),"btnLogin");
 							 wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@type='submit']")));
 							 Thread.sleep(20000);
 							 Amount = driver.findElement(By.xpath(".//*[@id='transactionCart']/span[2]/format-currency/span")).getText();
 								
 								Amount = Amount.replace("$","");
 								Amount = Amount.replace(" USD","");
-							 driver.findElement(By.xpath("//input[@type='submit']")).click();
+							 click(driver.findElement(By.xpath("//input[@type='submit']")),"submit");
 							 Thread.sleep(10000);
 							 System.out.println(Amount);
 							 return Amount;

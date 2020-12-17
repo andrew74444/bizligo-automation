@@ -76,7 +76,7 @@ public class SetupAuthorizePage extends BasePage{
 		 
 		 if(CheckBoxSelected.equalsIgnoreCase("false"))
 		 {
-			 UseSandboxCheckBox.click();
+			 click(UseSandboxCheckBox,"UseSandboxCheckBox");
 		 }
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -110,16 +110,16 @@ public class SetupAuthorizePage extends BasePage{
 		click(toggleOn,"toggle On");
 		Update.click();
 		waitForElementToPresent(OkBtn);
-		OkBtn.click();
+		click(OkBtn,"OkBtn");
 		return (PaymentGatewaysPage) openPage(PaymentGatewaysPage.class);
 //		new PaymentGatewaysPage(driver, );
 	}
 	
 	public PaymentGatewaysPage ActiveAuthorizeGateway() {
-		toggleOff.click();
-		Update.click();
+		click(toggleOff,"toggleOff");
+		click(Update,"Update");
 		waitForElementToPresent(OkBtn);
-		OkBtn.click();
+		click(OkBtn,"OkBtn");
 		return (PaymentGatewaysPage) openPage(PaymentGatewaysPage.class);
 //		new PaymentGatewaysPage(driver, );
 		

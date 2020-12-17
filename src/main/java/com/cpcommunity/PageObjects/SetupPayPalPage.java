@@ -100,15 +100,18 @@ public class SetupPayPalPage extends BasePage{
 	{
 		 this.SelectCheckBox();
 		 txtAPIUsername.clear();
-		 txtAPIUsername.sendKeys(APIUsername);
+		 type(txtAPIUsername, APIUsername, "txtAPIUsername");
+		 
 		 txtAPIPassword.clear();
-		 txtAPIPassword.sendKeys(APIPassword);
+		 type(txtAPIPassword, APIPassword, "txtAPIPassword");
+		 
 		 txtAPISignature.clear();
-		 txtAPISignature.sendKeys(APISignature);
+		 type(txtAPISignature, APISignature, "txtAPISignature");
+		 
 		 Thread.sleep(500);
-		 ValidateBtn.click();
+		 click(ValidateBtn,"ValidateBtn");
 		 waitForElementToPresent(OkBtn);
-		 OkBtn.click();	
+		 click(OkBtn,"OkBtn");	
 		 return (PayPalPayment) openPage(PayPalPayment.class);
 //				 new PayPalGateway(driver, );
 	}
@@ -117,20 +120,20 @@ public class SetupPayPalPage extends BasePage{
 	
 	public PaymentGatewaysPage inActiavtePayPalPaymentGateway()
 	{
-		toggleOn.click();
-		Update.click();
+		click(toggleOn,"toggleOn");
+		click(Update,"Update");
 		waitForElementToPresent(OkBtn);
-		OkBtn.click();
+		click(OkBtn,"OkBtn");
 		 return (PaymentGatewaysPage) openPage(PaymentGatewaysPage.class);
 //				 new PaymentGatewaysPage(driver, );
 	}
 	
 	
 	public PaymentGatewaysPage ActiavtePayPalPaymentGateway() {
-		toggleOff.click();
-		Update.click();
+		click(toggleOff,"toggleOff");
+		click(Update,"Update");
 		waitForElementToPresent(OkBtn);
-		OkBtn.click();
+		click(OkBtn,"OkBtn");
 		 return (PaymentGatewaysPage) openPage(PaymentGatewaysPage.class);
 //				 new PaymentGatewaysPage(driver, );
 		

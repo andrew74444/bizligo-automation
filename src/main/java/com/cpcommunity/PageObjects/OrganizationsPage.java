@@ -168,7 +168,8 @@ public class OrganizationsPage extends BasePage {
 		selectByVisibleText(this.membershipPlan, membershipPlan, "membership Plan");
 		}
 		Thread.sleep(8000);
-		this.companyLogoImage.sendKeys(companyLogoImage);
+		String path = projectFloder(companyLogoImage);
+		this.companyLogoImage.sendKeys(path);
 		// type(this.companyLogoImage, companyLogoImage, "company Logo Image");
 		if(tenantType.equalsIgnoreCase("B2B")) {
 		selectByVisibleText(this.EntityStatusID, "Active", "Status");

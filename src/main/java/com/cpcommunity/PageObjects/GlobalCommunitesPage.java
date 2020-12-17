@@ -122,7 +122,7 @@ public class GlobalCommunitesPage extends BasePage {
 
 	public void joinsuggestedCommunity() {
 
-		joinInsuggestedCommunities.click();
+		click(joinInsuggestedCommunities,"joinInsuggestedCommunities");
 
 	}
 
@@ -234,7 +234,7 @@ public class GlobalCommunitesPage extends BasePage {
 		waitForElementToPresent(OKbtn);
 		// AssertionHelper.verifyText(waitingForApproval.getText(), "Your join request
 		// is waiting for approval");
-		OKbtn.click();
+		click(OKbtn,"OKbtn");
 		Thread.sleep(7000);
 
 	}
@@ -310,7 +310,7 @@ public class GlobalCommunitesPage extends BasePage {
 		this.searchCommunity(communityName);
 		click(acceptBtn, "Accept Btn");
 		waitForElementToPresent(YesProceed);
-		YesProceed.click();
+		click(YesProceed,"YesProceed");
 		picture();
 		waitForElementToPresent(toastMessage);
 		String Message = toastMessage.getText();
@@ -460,7 +460,7 @@ public class GlobalCommunitesPage extends BasePage {
 		communityName = communityName + " " + getDateInDDMMMYYYY();
 		this.searchCommunity(communityName);
 
-		driver.findElement(By.xpath("//a[@tooltip='" + communityName + "']")).click();
+		click(driver.findElement(By.xpath("//a[@tooltip='" + communityName + "']")),"Community Name");
 		return (CommunityDetailsPage) openPage(CommunityDetailsPage.class);
 		// CommunityDetailsPage(driver);
 	}

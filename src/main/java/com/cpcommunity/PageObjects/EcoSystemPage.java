@@ -95,10 +95,10 @@ public class EcoSystemPage extends BasePage {
 	}
 
 	public HomePage logout() throws Exception {
-		Toggledropdownmenu.click();
+		click(Toggledropdownmenu,"Toggledropdownmenu");
 		Thread.sleep(500);
 		waitForElementToPresent(Logout);
-		Logout.click();
+		click(Logout,"Logout");
 		return (HomePage) openPage(HomePage.class);
 		// new HomePage(driver, );
 	}
@@ -147,7 +147,7 @@ public class EcoSystemPage extends BasePage {
 	}
 
 	public Messages goToMyMessages() {
-		myMessages.click();
+		click(myMessages,"myMessages");
 		return (Messages) openPage(Messages.class);
 		// new Messages(driver, );
 	}
@@ -175,9 +175,9 @@ public class EcoSystemPage extends BasePage {
 
 	public ChangePasswordPage goToManagePassword() throws Exception {
 
-		Toggledropdownmenu.click();
+		click(Toggledropdownmenu,"Toggledropdownmenu");
 		Thread.sleep(1000);
-		ManagePassword.click();
+		click(ManagePassword,"ManagePassword");
 		return (ChangePasswordPage) openPage(ChangePasswordPage.class);
 		// new ChangePasswordPage(driver, );
 
@@ -199,9 +199,9 @@ public class EcoSystemPage extends BasePage {
 
 	public MyProfilePage goToMyProfilePage() throws Exception {
 
-		Toggledropdownmenu.click();
+		click(Toggledropdownmenu,"Toggledropdownmenu");
 		Thread.sleep(1000);
-		myProfile.click();
+		click(myProfile,"myProfile");
 		return (MyProfilePage) openPage(MyProfilePage.class);
 		// new MyProfilePage(driver, );
 
@@ -209,13 +209,13 @@ public class EcoSystemPage extends BasePage {
 
 	public GlobalMembersPage goToMembersPage() {
 
-		memberDirectory.click();
+		click(memberDirectory,"memberDirectory");
 		return (GlobalMembersPage) openPage(GlobalMembersPage.class);
 		// new GlobalMembersPage(driver, );
 	}
 
 	public ConnectionsPage goToMyConnections() {
-		myConnections.click();
+		click(myConnections,"myConnections");
 		return (ConnectionsPage) openPage(ConnectionsPage.class);
 		// new ConnectionsPage(driver, );
 	}

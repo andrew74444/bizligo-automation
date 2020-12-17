@@ -168,31 +168,31 @@ public class CreateOrEditCommunityPage extends BasePage{
 	        driver.switchTo().defaultContent();
 	        if ("Networking".equalsIgnoreCase(Networking)) {
 	        	
-	            PNetworking.click();
+	            click(PNetworking,"Networking");
 	        }
 	        if ("Marketing".equalsIgnoreCase(Marketing)) {
 	        	
-	            PMarketing.click();
+	            click(PMarketing,"Marketing");
 	        }
 	        if ("BuildingRelationship".equalsIgnoreCase(BuildingRelationship)) {
 	        	
-	        	PBuildingRelationship.click();
+	        	click(PBuildingRelationship,"BuildingRelationship");
 	        }
 	        if ("Branding".equalsIgnoreCase(Branding)) {
 	        	
-	            PBranding.click();
+	            click(PBranding,"Branding");
 	        }
 	        if ("GrowMyBusiness".equalsIgnoreCase(GrowMyBusiness)) {
 	        	
-	            PGrowMyBusiness.click();
+	            click(PGrowMyBusiness,"GrowMyBusiness");
 	        }
 	        if ("InvestInBusiness".equalsIgnoreCase(InvestInBusiness)) {
 	        	
-	            PInvestInBusiness.click();
+	            click(PInvestInBusiness,"PInvestInBusiness");
 	        }
 	        if ("Other".equalsIgnoreCase(Other)) {
 	        	
-	            POther.click();
+	            click(POther,"Other");
 	        }
 	        
 	        
@@ -255,35 +255,35 @@ public class CreateOrEditCommunityPage extends BasePage{
 	        Thread.sleep(2000);
 	        if (PNetworking.isSelected()) {
 	        	
-	            PNetworking.click();
+	            click(PNetworking,"Networking");
 	        }
 	        if (PMarketing.isSelected()) {
 	        	
-	            PMarketing.click();
+	            click(PMarketing,"Marketing");
 	        }
 	        if (PBuildingRelationship.isSelected()) {
 	        	
-	            PBuildingRelationship.click();
+	            click(PBuildingRelationship,"BuildingRelationship");
 	        }
 	        if (PBranding.isSelected()) {
 	        	
-	            PBranding.click();
+	            click(PBranding,"Branding");
 	        }
 	        if (PBuildingRelationship.isSelected()) {
 	        	
-	            PBuildingRelationship.click();
+	            click(PBuildingRelationship,"BuildingRelationship");
 	        }
 	        if (PGrowMyBusiness.isSelected()) {
 	        	
-	            PGrowMyBusiness.click();
+	            click(PGrowMyBusiness,"GrowMyBusiness");
 	        }
 	        if (PInvestInBusiness.isSelected()) {
 	        	
-	            PInvestInBusiness.click();
+	            click(PInvestInBusiness,"InvestInBusiness");
 	        }
 	        if (POther.isSelected()) {
 	        	
-	            POther.click();
+	            click(POther,"Other");
 	        }
 	        driver.switchTo().frame(iframe);
 	        enterTextInframe.clear();   
@@ -300,11 +300,13 @@ public class CreateOrEditCommunityPage extends BasePage{
 	        Select Cat = new Select(CommunityCategory);
 		       
 	        Cat.selectByVisibleText(Category);
-	        Facebook.sendKeys(FacebookUrl);
 	        
-	        Twitter.sendKeys(TwitterUrl);
+	        type(Facebook,FacebookUrl,"Facebook Url");
+	        type(Twitter,TwitterUrl,"Twitter Url");
+	        
+	        type(LinkedIn,LinkedInUrl,"LinkedIn Url");
 	       
-	        LinkedIn.sendKeys(LinkedInUrl);
+	       
 	        
 	        type(website,websiteUrl,"Website Url");
 	      
@@ -339,43 +341,43 @@ public class CreateOrEditCommunityPage extends BasePage{
 	        driver.switchTo().frame(iframe);
 	        enterTextInframe.clear();
 	        Thread.sleep(3000);
-	      
-	        enterTextInframe.sendKeys(About);
+	        type(this.enterTextInframe, About,"About");
+	       
 	        driver.switchTo().defaultContent();
 	        driver.switchTo().frame(1);
 	        enterTextInframe.clear();
 	       Thread.sleep(3000);
-	        enterTextInframe.sendKeys(communityUpdate);
+	       type(this.enterTextInframe, communityUpdate,"communityUpdate");
 	        
 	        driver.switchTo().defaultContent();
 	        
 	        if ("Networking".equalsIgnoreCase(Networking)) {
 	        	
-	            PNetworking.click();
+	            click(PNetworking,"Networking");
 	        }
 	        if ("Marketing".equalsIgnoreCase(Marketing)) {
 	        	
-	            PMarketing.click();
+	            click(PMarketing,"Marketing");
 	        }
 	        if ("BuildingRelationship".equalsIgnoreCase(BuildingRelationship)) {
 	        	
-	        	PBuildingRelationship.click();
+	        	click(PBuildingRelationship,"BuildingRelationship");
 	        }
 	        if ("Branding".equalsIgnoreCase(Branding)) {
 	        	
-	            PBranding.click();
+	            click(PBranding,"Branding");
 	        }
 	        if ("GrowMyBusiness".equalsIgnoreCase(GrowMyBusiness)) {
 	        	
-	            PGrowMyBusiness.click();
+	            click(PGrowMyBusiness,"GrowMyBusiness");
 	        }
 	        if ("InvestInBusiness".equalsIgnoreCase(InvestInBusiness)) {
 	        	
-	            PInvestInBusiness.click();
+	            click(PInvestInBusiness,"InvestInBusiness");
 	        }
 	        if ("Other".equalsIgnoreCase(OtherName)) {
 	        	
-	            POther.click();
+	            click(POther,"Other");
 	        }
 	        
 	        scrollToElement(ChangeLogo);
@@ -390,7 +392,7 @@ public class CreateOrEditCommunityPage extends BasePage{
 	        Type.selectByVisibleText(type);
 	        try {
 			
-				YesProceedBtn.click();
+				click(YesProceedBtn,"Yes Proceed");
 				Thread.sleep(2000);
 			} catch (Exception e) {
 				
@@ -433,10 +435,7 @@ public class CreateOrEditCommunityPage extends BasePage{
 	    
 	    
 	    
-		public void InActiavteCommunity()  throws Exception {
-			
-			
-			
+		public void InActiavteCommunity()  throws Exception {		
 			
 	       
 	        waitForElementToPresent(CommunityName);
@@ -444,13 +443,13 @@ public class CreateOrEditCommunityPage extends BasePage{
 			scrollToElement(website);
 	       
 			Thread.sleep(1000);
-	        ActiveToggeleBtn.click();
+	        click(ActiveToggeleBtn,"Active Toggele");
 	        waitForElementToPresent(YesProceedBtn);
 			
-			YesProceedBtn.click();			
+			click(YesProceedBtn,"Yes Proceed");			
 			Thread.sleep(1000);
 			scrollToElement(Createbtn);
-			Createbtn.click();		
+			click(Createbtn,"Create");		
 			Thread.sleep(4000);	
 		}
 		

@@ -54,7 +54,7 @@ public EndorsementPage Approve(){
 		
 		//log.info("Clicking on Approve button....");
 				
-		this.Approve.click();
+		click(this.Approve,"Approve");
 		return (EndorsementPage) openPage(EndorsementPage.class);
 //				new EndorsementPage(driver, TCID);
 	}
@@ -71,7 +71,7 @@ public EndorsementPage Approve(){
 		
 		//log.info("Clicking on Reject button....");
 				
-		Reject.click();
+		click(Reject,"Reject");
 		return (EndorsementPage) openPage(EndorsementPage.class);
 //		new (driver, TCID);
 	}

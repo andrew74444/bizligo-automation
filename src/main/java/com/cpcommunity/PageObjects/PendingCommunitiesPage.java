@@ -111,7 +111,7 @@ public class PendingCommunitiesPage extends BasePage{
 		waitForElementToPresent(this.ApproveYesProceed);
 		click(ApproveYesProceed,"Yes Proceed"); 
 		waitForElementToPresent(this.OkBtn);
-		click( OkBtn,"Ok Btn"); 
+		click(OkBtn,"Ok Btn"); 
 		Thread.sleep(6000);
 		picture();
 	}

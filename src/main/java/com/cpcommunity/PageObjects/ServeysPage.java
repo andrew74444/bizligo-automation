@@ -54,8 +54,10 @@ public class ServeysPage extends BasePage
 		waitForElementToPresent(name);
 		click(addBtn,"Add Question");
 		waitForElementToPresent(title);
-		title.sendKeys("hgjh");
-		Save.click();
+		type(title, "", "title");
+			
+		
+		click(Save,"Save");
 		
 		
 		Thread.sleep(1000);
