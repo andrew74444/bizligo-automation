@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" thread-count="6" parallel="classes">
+	
+	<listeners>
+		<listener		
+			class-name="com.cpcommunity.ExtentListeners.ExtentListeners"></listener>
+			<listener		
+			class-name="com.cpcommunity.ExtentListeners2.ExtentListeners2"></listener>
+		<listener
+			class-name="com.uiFramework.pamTen.cpcommunity.helper.listener.RetryListener" />
+	</listeners>
+
+<!-- 167 -->
+	
+	<test name="Test1" preserve-order="true">
+		<classes>
+		
+			
+			
+			<class name="com.cpcommunity.testScripts.community.TC501_Purchase_Pricing_Plan_To_Community" />
+
+			
+		</classes>
+	</test>
+
+	
+
+
+
+
+<!--<class name="com.cpcommunity.testScripts.community.TC160_Verify_CA_Not_Able_To_Leave_Community_From_MyCommunities_When_Only_One_Admin" />
+ TC180_Verify_Expired_Membership_Member_Not_Able_Access_Community-->
+</suite> <!-- Suite -->
