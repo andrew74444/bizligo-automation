@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite" thread-count="6" parallel="classes">
+<suite name="Suite" thread-count="5" parallel="classes">
 	
 	<listeners>
 		<listener		
 			class-name="com.cpcommunity.ExtentListeners.ExtentListeners"></listener>
-			<listener		
-			class-name="com.cpcommunity.ExtentListeners2.ExtentListeners2"></listener>
 		<listener
 			class-name="com.uiFramework.pamTen.cpcommunity.helper.listener.RetryListener" />
 	</listeners>
@@ -15,15 +13,256 @@
 	
 	<test name="Test1" preserve-order="true">
 		<classes>
-		
-			
-			
-			<class name="com.cpcommunity.testScripts.community.TC501_Purchase_Pricing_Plan_To_Community" />
+			<class name="com.cpcommunity.testScripts.community.TC501_Purchase_Pricing_Plan_With_PayPal" />
+			<class name="com.cpcommunity.testScripts.community.TC029_Create_community_From_My_Communites" />
+			<class name="com.cpcommunity.testScripts.community.TC031_Create_community_From_Global_Communities_page" />
+			<class name="com.cpcommunity.testScripts.community.TC081_Member_Join_And_Leave_Public_Community_From_Global_Communities" />
+			<class name="com.cpcommunity.testScripts.community.TC084_Member_Leave_community_from_My_Communities________" />
+			<class name="com.cpcommunity.testScripts.community.TC092_InActivate_PayMent_Gateways" />
+			<class name="com.cpcommunity.testScripts.community.TC131_Purchase_Pricing_Plan_With_Authorize_Net" />
 
+			<class name="com.cpcommunity.testScripts.community.TC115_SendMessages" />
+			<class name="com.cpcommunity.testScripts.community.TC117_Send_Connection_From_Member_Directory" />
+			<class name="com.cpcommunity.testScripts.community.TC118_Send_Connection_From_Community_Details_Page" />
+			<class name="com.cpcommunity.testScripts.community.TC119_Send_Connection_From_Group_Details_Page" />
+			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC015_Verify_User_Is_Able_To_Update_Profile" />
+			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC022_Verify_User_Is_Able_To_Add_Protfolio" />
+			
+			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC027_Verify_User_Is_Able_To_Update_Interests" />	
+			<class name="com.cpcommunity.testScripts.loginPage.TC001_Verify_User_Able_Login_With_Valid_Credentials" />
+			<class name="com.cpcommunity.testScripts.loginPage.TC002_Verify_User_Able_Login_With_Invalid_Credentials" />
+			<class name="com.cpcommunity.testScripts.loginPage.TC003_Verify_Alert_Displayed_To_Email_Pending_User" />
+			<class name="com.cpcommunity.testScripts.loginPage.TC004_Verify_Organization_Pending_User_Not_Able_Login" />
+			<class name="com.cpcommunity.testScripts.loginPage.TC005_Verify_Alert_Displayed_To_Suspened_User" />
+			<class name="com.cpcommunity.testScripts.loginPage.TC006_Verify_User_Redirected_To_Select_Plans_For_Payment_Pending" />
+			<class	name="com.cpcommunity.testScripts.community.TC205_Tenant_Admin_Create_Community" />
+			<class name="com.cpcommunity.testScripts.TA_Organizations.TC236_Verify_TA_Able_Create_Organization" />
 			
 		</classes>
 	</test>
 
+	<test name="Test2" preserve-order="true">
+		<classes>
+			<class name="com.cpcommunity.testScripts.community.TC175_Verify_Membership_Plan_Is_Not_Available_For_Purchased_Pricing_Plan_Without_Membership_Plan_To_CA" />
+			<class name="com.cpcommunity.testScripts.community.TC030_System_Admin_Community_Rejection" />
+			<class name="com.cpcommunity.testScripts.community.TC032_System_Admin_Community_Approval" />
+			<class name="com.cpcommunity.testScripts.community.TC094_Activate_PayMent_Gateways" />
+			<!--<class name="com.cpcommunity.testScripts.community.TC116_Accept_And_Reject_Connection" /> -->	
+			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC023_Verify_User_Is_Able_To_Update_Protfolio" />
+			
+			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC028_Verify_User_Is_Able_To_Delete_Interests" />
+					
+			<class name="com.cpcommunity.testScripts.community.TC206_Tenant_Admin_Add_Member_To_Community" />
+			<class name="com.cpcommunity.testScripts.community.TC214_Verify_Active_Pricing_Plans_Count_is_Same_In_The_Pricing_Plans_Dropdown_While_Creating_A_Community" />
+					
+			<class name="com.cpcommunity.testScripts.TA_Organizations.TC237_Verify_TA_Add_Location_To_Orginzation" />								
+		</classes>
+	</test>
+
+	<test name="Test3" preserve-order="true">
+		<classes>
+			<class	name="com.cpcommunity.testScripts.community.TC033_Complete_Community_Setup" />
+			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC024_Verify_User_Is_Able_To_Delete_Protfolio" />
+			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC016_Verify_User_is_Able_to_Select_Private_Radio_Button" />
+			<class	name="com.cpcommunity.testScripts.community.TC166_Verify_Rejected_Community_Is_Not_Displayed_In_MyCommunities" />
+			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC026_Verify_User_Is_Able_To_Update_Skills" />
+			<class name="com.cpcommunity.testScripts.community.TC207_Tenant_Admin_Make_Admin_Community" />
+			<class name="com.cpcommunity.testScripts.community.TC212_Verify_TA_Created_Community_Is_Not_Displayed_In_Pending_Communities" />
+			<class name="com.cpcommunity.testScripts.TA_Organizations.TC238_Verify_TA_Add_Member_To_Orginzation" />
+			
+		</classes>
+	</test>
+	
+	<test name="Test4" preserve-order="true">
+		<classes>
+			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC017_Verify_User_is_Able_to_Select_Public_Radio_Button" />
+			<class name="com.cpcommunity.testScripts.advertisments.TC183_Verify_CA_Is_Not_Able_To_Create_Advertisment_Plan_Without_PG_Configuration" />
+			<class name="com.cpcommunity.testScripts.community.TC182_Verify_CA_Is_Not_Able_To_Create_Paid_Membership_Plan_Without_PG_Configuration" />
+			<class name="com.cpcommunity.testScripts.community.TC035_Create_Community_With_Rejected_Community_Name" />
+			<class name="com.cpcommunity.testScripts.community.TC039_Edit_Community" />
+			<class name="com.cpcommunity.testScripts.community.TC040_Community_Admin_Invite_Members" />
+			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC025_Verify_User_Is_Able_To_Delete_Skills" />
+			<class name="com.cpcommunity.testScripts.community.TC052_Community_Admin_Create_Groups" />
+			<class name="com.cpcommunity.testScripts.community.TC079_Share_Posts_in_Communities" />
+			<class name="com.cpcommunity.testScripts.community.TC128_Create_Job_Requirement" />
+			
+			<class name="com.cpcommunity.testScripts.community.TC169_Verify_Member_Cannot_Able_To_Remove_CA_From_Manage_Community_Members_page_For_Only_One_Community_Admin" />
+			<class name="com.cpcommunity.testScripts.community.TC163_Member_Invite_Friends_To_Community" />
+
+			
+			<class name="com.cpcommunity.testScripts.community.TC171_Verify_Total_Communities_Count_And_In_My_Communities_Are_Same" />
+			<class name="com.cpcommunity.testScripts.community.TC172_Verify_Purchased_Membership_Is_Not_Editable_To_CA" />
+			<class name="com.cpcommunity.testScripts.community.TC174_Verify_CA_Is_Not_Able_Configure_Membership_Plan_More_Than_Pricing_Plan_Duration" />
+			
+			
+			<class name="com.cpcommunity.testScripts.community.TC208_TA_Not_Able_To_Remove_Admin_Role_When_Only_One_Admin_To_The_Community" />
+
+			<class name="com.cpcommunity.testScripts.community.TC213_Verify_The_Community_Feature_As_Per_Pricing_Plan" />
+			
+		</classes>
+	</test>
+	
+
+	<test name="Test5" preserve-order="true">
+		<classes>
+			<class name="com.cpcommunity.testScripts.community.TC162_Verify_Member_Able_To_Access_Manage_Community_When_The_CA_Role_Is_Assigned" />
+			
+			<class name="com.cpcommunity.testScripts.community.TC087_Configure_Cash_Payment" />
+			<class name="com.cpcommunity.testScripts.community.TC088_Configure_Cheque_Payment" />
+			<class name="com.cpcommunity.testScripts.community.TC089_Configure_Paypal_Payment_Gateway" />
+			<class name="com.cpcommunity.testScripts.community.TC090_Configure_AuthorizeNet_Payment_Gateway_____" />
+			<class name="com.cpcommunity.testScripts.community.TC127_Zoom_Meeting_Configuration" />
+			<class name="com.cpcommunity.testScripts.community.TC165_Veirfy_Community_Website_URL_Redirected_To_Configured_Website" />
+			<class name="com.cpcommunity.testScripts.Promocodes.TC184_Create_PromoCode" />
+			<class name="com.cpcommunity.testScripts.community.TC047_Community_Admin_Able_To_Manage_Community_Members" />
+			<class name="com.cpcommunity.testScripts.community.TC209_Tenant_Admin_Remove_Admin_To_Community" />
+			<class name="com.cpcommunity.testScripts.community.TC210_Tenant_Admin_Remove_Member_From_Community" />
+			<class name="com.cpcommunity.testScripts.community.TC211_Verify_TA_Created_Community_Is_Displaying_In_The_Global_Communities_Page" />				
+		</classes>
+	</test>
+	
+	<test name="Test6" preserve-order="true">
+		<classes>
+			<class name="com.cpcommunity.testScripts.Create_Free_Event.TC141_Create_Free_Event" />
+			<class name="com.cpcommunity.testScripts.Create_Paid_Event.TC142_Create_Paid_Event" />
+			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC018_Verify_User_is_Able_to_Select_Email_As_Private" />
+			<class name="com.cpcommunity.testScripts.community.TC041_Member_Reject_Community_request_from_My_Communities" />
+			<class name="com.cpcommunity.testScripts.community.TC042_Member_Reject_community_Request_from_Community_details_page" />
+			<class name="com.cpcommunity.testScripts.community.TC043_Member_Reject_Community_Request_From_Global_Community" />
+			<class name="com.cpcommunity.testScripts.community.TC044_Member_Accept_Community_Request_From_Community_details_page" />
+			<class name="com.cpcommunity.testScripts.community.TC045_Member_Accept_Community_Request_From_Global_Community" />
+			<class name="com.cpcommunity.testScripts.community.TC046_Member_Accept_Community_Request_from_My_Communities" />
+			<class name="com.cpcommunity.testScripts.community.TC063_Member_to_Join_Private_Communities_From_Community_Details" />
+			<class name="com.cpcommunity.testScripts.community.TC075_Member_Cancel_Community_Join_Request_from_My_Communities________" />
+			<class name="com.cpcommunity.testScripts.community.TC077_Member_Join_And_Cancel_Community_From_Global_Communities_______" />
+			<class name="com.cpcommunity.testScripts.community.TC125_Member_Cancel_Created_Community_Request" />	
+			<class name="com.cpcommunity.testScripts.advertisments.TC132_Create_Advertisement_Plans_With_No_Approval" />
+			<class name="com.cpcommunity.testScripts.advertisments.TC133_Create_Advertisement_Plans_With_Required_Approval" />
+			<class name="com.cpcommunity.testScripts.community.TC164_Search_Event_In_Community_Details_Page" />
+			<class name="com.cpcommunity.testScripts.community.TC215_TA_Update_The_Community_Details"/>			
+		</classes>
+	</test>
+	
+	<test name="Test7" preserve-order="true">
+		<classes>
+			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC019_Verify_User_is_Able_to_Un_Select_Email_Private" />
+			<class name="com.cpcommunity.testScripts.community.TC120_Add_Terms_And_Conditions" />
+			<class name="com.cpcommunity.testScripts.advertisments.TC134_Verify_Member_Is_Able_Purchased_Required_Approval_Ad" />
+			<class name="com.cpcommunity.testScripts.advertisments.TC135_Verify_Member_Is_Able_Purchased_Required_Approval_Global_Members_Ad" />			
+		</classes>
+	</test>
+
+	<test name="Test8" preserve-order="true">
+		<classes>
+			
+			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC020_Verify_User_is_Able_to_Select_Phone_Private" />
+			<class name="com.cpcommunity.testScripts.community.TC121_Community_Admin_Invite_Members_With_Terms_And_Conditions" />
+			<class name="com.cpcommunity.testScripts.community.TC216_Verify_TA_Updated_Community_Is_Displayed_In_Community_Details_Page" />
+			<class name="com.cpcommunity.testScripts.Event_Registrations.TC153_Free_Event_Registration_From_Event_CheckIn" />
+		</classes>
+	</test>	
+	
+	<test name="Test9" preserve-order="true">
+			<classes>
+			<class name="com.cpcommunity.testScripts.Event_Registrations.TC150_Paid_Event_Registration_With_Authorize_From_Event_CheckIn" />
+			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC021_Verify_User_is_Able_to_Un_Select_Phone_Private" />	
+			<class name="com.cpcommunity.testScripts.community.TC122_Member_Accept_Community_Request_From_Global_Community" />
+			<class name="com.cpcommunity.testScripts.community.TC123_Member_Accept_Community_Request_from_My_Communities" />
+			<class name="com.cpcommunity.testScripts.community.TC217_TA_InActivate_The_Community" />
+			<class name="com.cpcommunity.testScripts.community.TC124_Member_Accept_Community_Request_From_Community_details_page" />
+		</classes>
+	</test>
+
+		<test name="Test10" preserve-order="true">
+			<classes>
+				
+				<class name="com.cpcommunity.testScripts.Event_Registrations.TC151_Paid_Event_Registration_With_Cheque_From_Event_CheckIn" />
+				<class name="com.cpcommunity.testScripts.community.TC067_Join_Leave_Public_And_Join_Cance_Private_Groups_From_Community_Details" />
+				<class name="com.cpcommunity.testScripts.community.TC053_Community_Admin_Manage_Group_Members" />
+			<class name="com.cpcommunity.testScripts.community.TC058_Group_Admin_Manage_Group_Members" />			
+			
+			<class name="com.cpcommunity.testScripts.community.TC108_Share_Posts_in_Group" />
+		
+		    <class name="com.cpcommunity.testScripts.community.TC129_Apply_Job_Requirement_From_Community_Details_Page" />
+		    <class name="com.cpcommunity.testScripts.community.TC130_Apply_Job_Requirement_From_Global_Careers" />
+		    <class name="com.cpcommunity.testScripts.community.TC179_Verify_Member_Is_Able_Update_Membership_Plan" />
+		    <class name="com.cpcommunity.testScripts.community.TC218_Verify_TA_InActivated_Community_Is_Not_Displaying_In_The_Global_Communities_Page" />			
+			</classes>
+		</test>
+	
+		<test name="Test11" preserve-order="true">
+		<classes>
+			<class name="com.cpcommunity.testScripts.community.TC072_Community_Admin_Approve_And_Reject_Group_Requests" />
+			<class name="com.cpcommunity.testScripts.community.TC170_Verify_Non_Member_Not_Able_Share_Posts_And_Like_Comment_in_Communities" />
+			<class name="com.cpcommunity.testScripts.community.TC106_Join_And_Leave_Public_Group_From_My_Groups_Page" />
+			
+			<class name="com.cpcommunity.testScripts.Event_Registrations.TC143_Paid_Event_Registration_With_PayPal_From_Event_Details_Page" />
+			<class name="com.cpcommunity.testScripts.Event_Registrations.TC144_Paid_Event_Registration_With_Authorize_From_Event_Details_Page" />
+			<class name="com.cpcommunity.testScripts.Event_Registrations.TC145_PromoCode_Event_Registration_With_PayPal_From_Event_Details_Page" />
+			<class name="com.cpcommunity.testScripts.Event_Registrations.TC146_PromoCode_Event_Registration_With_Authorize_From_Event_Details_Page" />
+			<class name="com.cpcommunity.testScripts.Event_Registrations.TC147_100_Percent_PromoCode_Event_Registration_From_Event_Details_Page" />
+			<class name="com.cpcommunity.testScripts.Event_Registrations.TC148_Free_Event_Registration_From_Event_Details_Page" />
+			
+			<class name="com.cpcommunity.testScripts.Event_Registrations.TC152_Paid_Event_Registration_With_Cash_From_Event_CheckIn" />
+					
+		</classes>
+	</test>
+		
+	<test name="Test12" preserve-order="true">
+		<classes>
+	
+						
+			<class name="com.cpcommunity.testScripts.Event_Registrations.TC149_Paid_Event_Registration_With_PayPal_From_Event_CheckIn" />
+			
+		</classes>
+	</test>
+
+	<test name="Test13" preserve-order="true">
+		<classes>
+								
+		</classes>
+	</test>
+	
+	<test name="Test14" preserve-order="true">
+		<classes>
+		
+			<class name="com.cpcommunity.testScripts.community.TC105_Group_Admin_Approve_And_Reject_Group_Requests" />
+			<class name="com.cpcommunity.testScripts.community.TC064_Community_Admin_Approve_And_Reject_Community_Requests" /> 
+							 
+		</classes>
+	</test>	
+
+
+	<test name="Test15" preserve-order="true">
+		<classes>
+			<class name="com.cpcommunity.testScripts.community.TC107_Member_Cancel_Groups_Request_From_MyGroups" />			
+
+		</classes>
+	</test>	
+	
+	<test name="Test16" preserve-order="true">
+	    <classes>
+	    	
+	        <class name="com.cpcommunity.testScripts.community.TC099_InActivate_Community_By_Community_Admin" />
+	    </classes>
+	</test>
+
+
+
+	<test name="Test17" preserve-order="true">
+		<classes>
+			<class name="com.cpcommunity.testScripts.community.TC168_Verify_InActivated_Community_Is_Not_Displayed_In_Global_Communities" />
+			
+		</classes>
+	</test>	
+
+	<test name="Test18" preserve-order="true">
+		<classes>
+			
+			<class name="com.cpcommunity.testScripts.community.TC178_Payment_Pending_Is_Displayed_For_Adding_A_Member_By_CA" />		
+			<class name="com.cpcommunity.testScripts.community.TC100_Activate_Community_By_Community_Admin" />
+		</classes>
+	</test>	
 	
 
 
