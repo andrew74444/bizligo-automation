@@ -99,6 +99,7 @@ public class SetupAuthorizePage extends BasePage{
 		 click(ValidateBtn,"ValidateBtn");
 		 waitForElementToPresent(OkBtn);
 		 click(OkBtn,"Ok Btn");	
+		 Thread.sleep(10000);
 		 return (AuthorizeGateway) openPage(AuthorizeGateway.class);
 //		 new AuthorizeGateway(driver, );
 	}
