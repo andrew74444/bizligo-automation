@@ -33,7 +33,7 @@ public class GlobalCommunitesPage extends BasePage {
 
 		updateClass(pageheader, "");
 		aShot();
-		updateClass(pageheader, "navbar-fixed-top");
+//		updateClass(pageheader, "navbar-fixed-top");
 	}
 
 	// public ZohoCRMPage gotoCRM() {

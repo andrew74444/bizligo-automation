@@ -18,7 +18,7 @@
 		
 			
 			
-			<class name="com.cpcommunity.testScripts.community.TC029_Create_community_From_My_Communites" />
+			<class name="com.cpcommunity.testScripts.community.TC115_SendMessages" />
 
 			
 		</classes>
