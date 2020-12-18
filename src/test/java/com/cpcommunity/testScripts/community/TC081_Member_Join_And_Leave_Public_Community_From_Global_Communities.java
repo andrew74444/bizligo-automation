@@ -30,10 +30,17 @@ public class TC081_Member_Join_And_Leave_Public_Community_From_Global_Communitie
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
+		
+		try {
+			
+			GlobalCommunitesPage.communityJoinWithOutDate(data.get("communityName"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		
 //		String T1 = Dashboard_Page.totalCommunitiesCount();
-		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
-		GlobalCommunitesPage.communityJoinWithOutDate(data.get("communityName"));
+		
 		
 //		String T2 = Dashboard_Page.totalCommunitiesCount();
 //		int TotalCommunities=  Integer.parseInt(T1);

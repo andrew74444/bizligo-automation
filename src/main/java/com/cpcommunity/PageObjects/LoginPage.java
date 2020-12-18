@@ -83,7 +83,9 @@ public class LoginPage extends BasePage {
 	public void login(String enterEmailAddress, String password) {
 		type(this.emailAddress, enterEmailAddress, "email address");
 		type(this.password, password, "password");
+		picture();
 		click(LoginBtn, "Login");
+		
 	}
 
 	// public MyDashboardPage loginToApplication(String enterEmailAddress, String

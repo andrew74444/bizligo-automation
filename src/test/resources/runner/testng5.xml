@@ -37,14 +37,16 @@
 			<class name="com.cpcommunity.testScripts.loginPage.TC004_Verify_Organization_Pending_User_Not_Able_Login" />
 			<class name="com.cpcommunity.testScripts.loginPage.TC005_Verify_Alert_Displayed_To_Suspened_User" />
 			<class name="com.cpcommunity.testScripts.loginPage.TC006_Verify_User_Redirected_To_Select_Plans_For_Payment_Pending" />
-			<class	name="com.cpcommunity.testScripts.community.TC205_Tenant_Admin_Create_Community" />
+			<class	name="com.cpcommunity.testScripts.community.TC205_1_Tenant_Admin_Create_Pricing_Plan" />
 			<class name="com.cpcommunity.testScripts.TA_Organizations.TC236_Verify_TA_Able_Create_Organization" />
+			
 			
 		</classes>
 	</test>
 
 	<test name="Test2" preserve-order="true">
 		<classes>
+		<class	name="com.cpcommunity.testScripts.community.TC205_Tenant_Admin_Create_Community" />
 			<class name="com.cpcommunity.testScripts.community.TC175_Verify_Membership_Plan_Is_Not_Available_For_Purchased_Pricing_Plan_Without_Membership_Plan_To_CA" />
 			<class name="com.cpcommunity.testScripts.community.TC030_System_Admin_Community_Rejection" />
 			<class name="com.cpcommunity.testScripts.community.TC032_System_Admin_Community_Approval" />
@@ -54,7 +56,7 @@
 			
 			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC028_Verify_User_Is_Able_To_Delete_Interests" />
 					
-			<class name="com.cpcommunity.testScripts.community.TC206_Tenant_Admin_Add_Member_To_Community" />
+			
 			<class name="com.cpcommunity.testScripts.community.TC214_Verify_Active_Pricing_Plans_Count_is_Same_In_The_Pricing_Plans_Dropdown_While_Creating_A_Community" />
 					
 			<class name="com.cpcommunity.testScripts.TA_Organizations.TC237_Verify_TA_Add_Location_To_Orginzation" />								
@@ -68,7 +70,8 @@
 			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC016_Verify_User_is_Able_to_Select_Private_Radio_Button" />
 			<class	name="com.cpcommunity.testScripts.community.TC166_Verify_Rejected_Community_Is_Not_Displayed_In_MyCommunities" />
 			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC026_Verify_User_Is_Able_To_Update_Skills" />
-			<class name="com.cpcommunity.testScripts.community.TC207_Tenant_Admin_Make_Admin_Community" />
+			<class name="com.cpcommunity.testScripts.community.TC206_Tenant_Admin_Add_Member_To_Community" />
+			
 			<class name="com.cpcommunity.testScripts.community.TC212_Verify_TA_Created_Community_Is_Not_Displayed_In_Pending_Communities" />
 			<class name="com.cpcommunity.testScripts.TA_Organizations.TC238_Verify_TA_Add_Member_To_Orginzation" />
 			
@@ -96,8 +99,8 @@
 			<class name="com.cpcommunity.testScripts.community.TC172_Verify_Purchased_Membership_Is_Not_Editable_To_CA" />
 			<class name="com.cpcommunity.testScripts.community.TC174_Verify_CA_Is_Not_Able_Configure_Membership_Plan_More_Than_Pricing_Plan_Duration" />
 			
+			<class name="com.cpcommunity.testScripts.community.TC207_Tenant_Admin_Make_Admin_Community" />
 			
-			<class name="com.cpcommunity.testScripts.community.TC208_TA_Not_Able_To_Remove_Admin_Role_When_Only_One_Admin_To_The_Community" />
 
 			<class name="com.cpcommunity.testScripts.community.TC213_Verify_The_Community_Feature_As_Per_Pricing_Plan" />
 			
@@ -117,8 +120,8 @@
 			<class name="com.cpcommunity.testScripts.community.TC165_Veirfy_Community_Website_URL_Redirected_To_Configured_Website" />
 			<class name="com.cpcommunity.testScripts.Promocodes.TC184_Create_PromoCode" />
 			<class name="com.cpcommunity.testScripts.community.TC047_Community_Admin_Able_To_Manage_Community_Members" />
-			<class name="com.cpcommunity.testScripts.community.TC209_Tenant_Admin_Remove_Admin_To_Community" />
-			<class name="com.cpcommunity.testScripts.community.TC210_Tenant_Admin_Remove_Member_From_Community" />
+			<class name="com.cpcommunity.testScripts.community.TC208_TA_Not_Able_To_Remove_Admin_Role_When_Only_One_Admin_To_The_Community" />
+			
 			<class name="com.cpcommunity.testScripts.community.TC211_Verify_TA_Created_Community_Is_Displaying_In_The_Global_Communities_Page" />				
 		</classes>
 	</test>
@@ -141,7 +144,9 @@
 			<class name="com.cpcommunity.testScripts.advertisments.TC132_Create_Advertisement_Plans_With_No_Approval" />
 			<class name="com.cpcommunity.testScripts.advertisments.TC133_Create_Advertisement_Plans_With_Required_Approval" />
 			<class name="com.cpcommunity.testScripts.community.TC164_Search_Event_In_Community_Details_Page" />
-			<class name="com.cpcommunity.testScripts.community.TC215_TA_Update_The_Community_Details"/>			
+			
+			<class name="com.cpcommunity.testScripts.community.TC209_Tenant_Admin_Remove_Admin_To_Community" />
+			<class name="com.cpcommunity.testScripts.community.TC210_Tenant_Admin_Remove_Member_From_Community" />			
 		</classes>
 	</test>
 	
@@ -150,7 +155,8 @@
 			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC019_Verify_User_is_Able_to_Un_Select_Email_Private" />
 			<class name="com.cpcommunity.testScripts.community.TC120_Add_Terms_And_Conditions" />
 			<class name="com.cpcommunity.testScripts.advertisments.TC134_Verify_Member_Is_Able_Purchased_Required_Approval_Ad" />
-			<class name="com.cpcommunity.testScripts.advertisments.TC135_Verify_Member_Is_Able_Purchased_Required_Approval_Global_Members_Ad" />			
+			<class name="com.cpcommunity.testScripts.advertisments.TC135_Verify_Member_Is_Able_Purchased_Required_Approval_Global_Members_Ad" />
+			<class name="com.cpcommunity.testScripts.community.TC215_TA_Update_The_Community_Details"/>			
 		</classes>
 	</test>
 
