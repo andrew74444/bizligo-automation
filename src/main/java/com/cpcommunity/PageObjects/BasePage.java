@@ -231,17 +231,17 @@ try {
 		element.clear();
 		highlightElement(element);
 		element.sendKeys(value);
-		String val = element.getAttribute("value");
-		int i = 0;
-		while(val!=(value))
-		{
-			element.clear();
-			element.sendKeys(value);
-			i++;
-			if(i==5) {
-			break;
-			}
-		}
+//		String val = element.getAttribute("value");
+//		int i = 0;
+//		while(val!=(value))
+//		{
+//			element.clear();
+//			element.sendKeys(value);
+//			i++;
+//			if(i==5) {
+//			break;
+//			}
+//		}
 //		ExtentListeners2.testReport.get().info("Typed in : " + elementName + " entered the value as : " + value);
 	}
 

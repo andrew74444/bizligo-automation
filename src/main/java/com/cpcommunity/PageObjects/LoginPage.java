@@ -81,8 +81,26 @@ public class LoginPage extends BasePage {
 	}
 
 	public void login(String enterEmailAddress, String password) {
+		int t = (int) (Math.random()*10000);
+		try {
+			Thread.sleep(t);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		wait.until(ExpectedConditions.elementToBeClickable(LoginBtn));
 		type(this.emailAddress, enterEmailAddress, "email address");
 		type(this.password, password, "password");
+		
+//		this.emailAddress.clear();
+//		this.emailAddress.sendKeys(enterEmailAddress);
+//		this.password.clear();
+//		this.password.sendKeys(password);
+//		this.emailAddress.clear();
+//		this.emailAddress.sendKeys(enterEmailAddress);
+//		this.password.clear();
+//		this.password.sendKeys(password);
+	
 		picture();
 		click(LoginBtn, "Login");
 		

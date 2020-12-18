@@ -526,8 +526,8 @@ public class BaseTest {
 
 		if (browser.equals("chrome")) {
 			System.out.println("Launching : " + browser);
-			System.setProperty("webdriver.chrome.driver", DriverFactory.getChromeDriverExePath());
-//			 WebDriverManager.chromedriver().setup();
+//			System.setProperty("webdriver.chrome.driver", DriverFactory.getChromeDriverExePath());
+			 WebDriverManager.chromedriver().setup();
 
 			driver = new ChromeDriver(options);
 		} else if (browser.equals("firefox")) {
