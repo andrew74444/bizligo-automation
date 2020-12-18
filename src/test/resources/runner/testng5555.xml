@@ -18,7 +18,7 @@
 		
 			
 			
-			<class name="com.cpcommunity.testScripts.community.TC501_Purchase_Pricing_Plan_To_Community" />
+			<class name="com.cpcommunity.testScripts.community.TC029_Create_community_From_My_Communites" />
 
 			
 		</classes>
