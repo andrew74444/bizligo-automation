@@ -24,7 +24,7 @@ public class MyProfilePage extends BasePage{
 	
 		updateClass(pageheader, "");
 		aShot();
-		updateClass(pageheader, "navbar-fixed-top");
+//		updateClass(pageheader, "navbar-fixed-top");
 	}
 	
 
