@@ -577,7 +577,8 @@ public class CreateOrEditEvent extends BasePage {
 		selectByVisibleText(sponsorTypeDropDown, data.get("sponsorType"), "SponsorType");
 		type(Sponsor_Name, data.get("sponsorName"), "Sponsor Name");
 		type(Sponsor_Url, data.get("sponsorUrl"), "Sponsor Url");
-		type(Sponsor_Image, data.get("sponsorImage"), "Sponsor Image");
+		String path = projectFloder(data.get("sponsorImage"));
+		type(Sponsor_Image, path, "Sponsor Image");
 
 		// Thread.sleep(3000);
 		//
