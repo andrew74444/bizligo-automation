@@ -102,7 +102,7 @@
 			<class name="com.cpcommunity.testScripts.community.TC207_Tenant_Admin_Make_Admin_Community" />
 			
 
-			<class name="com.cpcommunity.testScripts.community.TC213_Verify_The_Community_Feature_As_Per_Pricing_Plan" />
+			
 			
 		</classes>
 	</test>
@@ -114,14 +114,14 @@
 			
 			<class name="com.cpcommunity.testScripts.community.TC087_Configure_Cash_Payment" />
 			<class name="com.cpcommunity.testScripts.community.TC088_Configure_Cheque_Payment" />
-			<class name="com.cpcommunity.testScripts.community.TC089_Configure_Paypal_Payment_Gateway" />
+			
 			<class name="com.cpcommunity.testScripts.community.TC090_Configure_AuthorizeNet_Payment_Gateway_____" />
 			<class name="com.cpcommunity.testScripts.community.TC127_Zoom_Meeting_Configuration" />
 			<class name="com.cpcommunity.testScripts.community.TC165_Veirfy_Community_Website_URL_Redirected_To_Configured_Website" />
 			<class name="com.cpcommunity.testScripts.Promocodes.TC184_Create_PromoCode" />
 			<class name="com.cpcommunity.testScripts.community.TC047_Community_Admin_Able_To_Manage_Community_Members" />
 			<class name="com.cpcommunity.testScripts.community.TC208_TA_Not_Able_To_Remove_Admin_Role_When_Only_One_Admin_To_The_Community" />
-			
+			<class name="com.cpcommunity.testScripts.community.TC213_Verify_The_Community_Feature_As_Per_Pricing_Plan" />
 			<class name="com.cpcommunity.testScripts.community.TC211_Verify_TA_Created_Community_Is_Displaying_In_The_Global_Communities_Page" />				
 		</classes>
 	</test>
@@ -129,7 +129,7 @@
 	<test name="Test6" preserve-order="true">
 		<classes>
 			<class name="com.cpcommunity.testScripts.Create_Free_Event.TC141_Create_Free_Event" />
-			<class name="com.cpcommunity.testScripts.Create_Paid_Event.TC142_Create_Paid_Event" />
+			
 			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC018_Verify_User_is_Able_to_Select_Email_As_Private" />
 			<class name="com.cpcommunity.testScripts.community.TC041_Member_Reject_Community_request_from_My_Communities" />
 			<class name="com.cpcommunity.testScripts.community.TC042_Member_Reject_community_Request_from_Community_details_page" />
@@ -143,7 +143,7 @@
 			<class name="com.cpcommunity.testScripts.community.TC125_Member_Cancel_Created_Community_Request" />	
 			<class name="com.cpcommunity.testScripts.advertisments.TC132_Create_Advertisement_Plans_With_No_Approval" />
 			<class name="com.cpcommunity.testScripts.advertisments.TC133_Create_Advertisement_Plans_With_Required_Approval" />
-			<class name="com.cpcommunity.testScripts.community.TC164_Search_Event_In_Community_Details_Page" />
+			
 			
 			<class name="com.cpcommunity.testScripts.community.TC209_Tenant_Admin_Remove_Admin_To_Community" />
 			<class name="com.cpcommunity.testScripts.community.TC210_Tenant_Admin_Remove_Member_From_Community" />			
@@ -152,6 +152,7 @@
 	
 	<test name="Test7" preserve-order="true">
 		<classes>
+		<class name="com.cpcommunity.testScripts.Create_Paid_Event.TC142_Create_Paid_Event" />
 			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC019_Verify_User_is_Able_to_Un_Select_Email_Private" />
 			<class name="com.cpcommunity.testScripts.community.TC120_Add_Terms_And_Conditions" />
 			<class name="com.cpcommunity.testScripts.advertisments.TC134_Verify_Member_Is_Able_Purchased_Required_Approval_Ad" />
@@ -162,7 +163,7 @@
 
 	<test name="Test8" preserve-order="true">
 		<classes>
-			
+			<class name="com.cpcommunity.testScripts.community.TC164_Search_Event_In_Community_Details_Page" />
 			<class name="com.cpcommunity.testScripts.myprofiletestcases.TC020_Verify_User_is_Able_to_Select_Phone_Private" />
 			<class name="com.cpcommunity.testScripts.community.TC121_Community_Admin_Invite_Members_With_Terms_And_Conditions" />
 			<class name="com.cpcommunity.testScripts.community.TC216_Verify_TA_Updated_Community_Is_Displayed_In_Community_Details_Page" />
@@ -204,9 +205,9 @@
 			<class name="com.cpcommunity.testScripts.community.TC170_Verify_Non_Member_Not_Able_Share_Posts_And_Like_Comment_in_Communities" />
 			<class name="com.cpcommunity.testScripts.community.TC106_Join_And_Leave_Public_Group_From_My_Groups_Page" />
 			
-			<class name="com.cpcommunity.testScripts.Event_Registrations.TC143_Paid_Event_Registration_With_PayPal_From_Event_Details_Page" />
+			
 			<class name="com.cpcommunity.testScripts.Event_Registrations.TC144_Paid_Event_Registration_With_Authorize_From_Event_Details_Page" />
-			<class name="com.cpcommunity.testScripts.Event_Registrations.TC145_PromoCode_Event_Registration_With_PayPal_From_Event_Details_Page" />
+			
 			<class name="com.cpcommunity.testScripts.Event_Registrations.TC146_PromoCode_Event_Registration_With_Authorize_From_Event_Details_Page" />
 			<class name="com.cpcommunity.testScripts.Event_Registrations.TC147_100_Percent_PromoCode_Event_Registration_From_Event_Details_Page" />
 			<class name="com.cpcommunity.testScripts.Event_Registrations.TC148_Free_Event_Registration_From_Event_Details_Page" />
@@ -220,7 +221,7 @@
 		<classes>
 	
 						
-			<class name="com.cpcommunity.testScripts.Event_Registrations.TC149_Paid_Event_Registration_With_PayPal_From_Event_CheckIn" />
+			
 			
 		</classes>
 	</test>
