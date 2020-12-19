@@ -228,8 +228,8 @@ public class CommunityDetailsPage extends BasePage {
 
 		updateClass(header, "");
 		aShot();
-		String n = "header";
-		updateClass(header, n);
+//		String n = "header";
+//		updateClass(header, n);
 	}
 
 	public AdvertismentPurchasePage clickOnAdvertisements() throws Exception {
