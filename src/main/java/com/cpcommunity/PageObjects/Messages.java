@@ -27,7 +27,7 @@ public class Messages extends BasePage{
 	
 		updateClass(pageheader, "");
 		aShot();
-		updateClass(pageheader, "navbar-fixed-top");
+//		updateClass(pageheader, "navbar-fixed-top");
 	}
 
 	

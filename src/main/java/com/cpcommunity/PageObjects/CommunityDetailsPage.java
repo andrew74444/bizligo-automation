@@ -236,7 +236,7 @@ public class CommunityDetailsPage extends BasePage {
 
 		click(navbarMembers, "Members");
 		Thread.sleep(5000);
-		updateClass(header, "");
+//		updateClass(header, "");
 		scrollToElement(inviteFriends);
 
 		clickElementByJavaScript(Advertisements);
@@ -678,7 +678,7 @@ public class CommunityDetailsPage extends BasePage {
 	public void verifyAdImage(String expectedImgFileName) throws Exception {
 		click(navbarMembers, "Members");
 		Thread.sleep(5000);
-		updateClass(header, "");
+//		updateClass(header, "");
 
 		takeScreenshotByShutterBug(ad, "communityAdImage");
 		Imagediff.check(expectedImgFileName, "\\screenshots\\communityAdImage.png");
@@ -755,7 +755,7 @@ public class CommunityDetailsPage extends BasePage {
 	public MembershipPlansPage renewMemberShipPlan() throws Exception {
 
 		click(discussion, "discussion");
-		updateClass(header, "");
+//		updateClass(header, "");
 		Thread.sleep(4000);
 		click(renew, "renew");
 		return (MembershipPlansPage) openPage(MembershipPlansPage.class);
