@@ -555,7 +555,7 @@ public class ExcelReader {
 
 				switch (cell.getCellType()) {
 				case Cell.CELL_TYPE_STRING:
-					if (cell.getStringCellValue().equalsIgnoreCase("second Cell 56")) {
+					{
 						System.out.println(cell.getStringCellValue() + "\t");
 					}
 					break;

@@ -135,6 +135,9 @@ public class LoginPage extends BasePage {
 		picture();
 		// new LoginPage(driver, );
 	}
+	
+	
+	
 
 	public JoinUserCommunity joinUserCommunityLogin(String emailAddress, String password) {
 
@@ -214,5 +217,19 @@ public class LoginPage extends BasePage {
 		this.login(email, password);
 		return (AccountSelectPlansPage) openPage(AccountSelectPlansPage.class);
 	}
-
+	public MyDashboardPage loginToMemberdashboard(String enterEmailAddress, String password) {
+        this.login(enterEmailAddress, password);
+        return (MyDashboardPage) openPage(MyDashboardPage.class);
+//        new MyDashboardPage(driver, );        
+	}
+	
+	public ChangePasswordPage loginToChangePassword(String enterEmailAddress, String password) {
+        type(this.emailAddress, enterEmailAddress, "email address");
+        type(this.password, password, "password");
+        click(LoginBtn, "Login");
+        return (ChangePasswordPage) openPage(ChangePasswordPage.class);
+	
+	
+	
+	}
 }
