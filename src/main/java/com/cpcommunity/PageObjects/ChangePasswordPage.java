@@ -85,5 +85,28 @@ public class ChangePasswordPage extends BasePage{
 	}
 	
 	
+	@FindBy(xpath = "//*[contains(@name,'OldPassword')]")
+	WebElement currentPassword;
+	
+	@FindBy(xpath = "//*[contains(@name,'NewPassword')]")
+	WebElement newPassword;
+	
+	@FindBy(xpath = "//*[contains(@name,'ConfirmPassword')]")
+	WebElement confirmPassword;
+	
+	@FindBy(xpath = "//button[contains(text(),'Change Password')]")
+	WebElement changePasswordbtn;
+	
+	
+	public void passwordForceChanged(String currentPassword,String newPassword,String confirmPassword ) throws Throwable
+	{
+		type(this.currentPassword,currentPassword,"CurrentPassword");
+		Thread.sleep(1000);
+		type(this.newPassword,newPassword,"NewPassword");
+		Thread.sleep(1000);
+		type(this.confirmPassword,confirmPassword,"confirmPassword");
+		click(changePasswordbtn,"ChangePasswordButton");
+		Thread.sleep(2000);
+	}
 	
 }

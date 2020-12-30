@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -183,10 +184,9 @@ public class CommunityDetailsPage extends BasePage {
 	@FindBy(xpath = "//*[@value='Invite Friends']")
 	WebElement inviteFriends;
 
-	
 	@FindBy(xpath = "//*[@id='inviteMembersForm']//*[@name='FirstName']")
 	WebElement firstName;
-	
+
 	@FindBy(xpath = "//*[@id='inviteMembersForm']//*[@name='LastName']")
 	WebElement lastName;
 
@@ -255,17 +255,12 @@ public class CommunityDetailsPage extends BasePage {
 
 		Thread.sleep(1000);
 		Thread.sleep(1000);
-		
-		
+
 		waitForElementToPresent(manageCommunity);
-		
+
 //		click(manageCommunity, "Manage Community");
-		click(manageCommunity,"manage Community");
-			
-		
-		
-		
-		
+		click(manageCommunity, "manage Community");
+
 		return (EditCommunityPage) openPage(EditCommunityPage.class);
 	}
 
@@ -307,7 +302,7 @@ public class CommunityDetailsPage extends BasePage {
 		waitForElementToPresent(Apply);
 		click(Apply, "Apply");
 		waitForElementToPresent(this.Resume);
-		
+
 		type(this.Resume, projectFloder(Resume), "Resume");
 		type(this.OptionalMessage, OptionalMessage, "Optional Message");
 		click(Submit, "Submit");
@@ -492,17 +487,15 @@ public class CommunityDetailsPage extends BasePage {
 
 	}
 
-	
 	public GroupDetailsPage navigateToGroupDetailsPageWithoutDate(String groupName) throws Exception {
-		
+
 		this.searchGroup(groupName);
 		driver.findElement(By.xpath("//*[@tooltip='" + groupName + "']")).click();
 		return (GroupDetailsPage) openPage(GroupDetailsPage.class);
 		// new GroupDetailsPage(driver);
 
 	}
-	
-	
+
 	public void JoinGroups(String groupName) throws Exception {
 		groupName = groupName + " " + getDateInDDMMMYYYY();
 		this.searchGroup(groupName);
@@ -584,7 +577,7 @@ public class CommunityDetailsPage extends BasePage {
 		click(AcceptBtn, "AcceptBtn");
 		waitForElementToPresent(YesProceed);
 		picture();
-		click(YesProceed,"Yes Proceed");
+		click(YesProceed, "Yes Proceed");
 		Thread.sleep(4000);
 		picture();
 		try {
@@ -652,7 +645,7 @@ public class CommunityDetailsPage extends BasePage {
 	}
 
 	public GlobalCommunitesPage NavigateToGlobalCommunities() {
-		
+
 		return (GlobalCommunitesPage) openPage(GlobalCommunitesPage.class);
 		// new GlobalCommunitesPage(driver);
 	}
@@ -723,7 +716,8 @@ public class CommunityDetailsPage extends BasePage {
 		type(events, data.get("eventName") + " " + getDateInDDMMMYYYY(), "event Search");
 		click(eventsSearchButton, "Events Search Button");
 		String eventName = data.get("eventName") + " " + getDateInDDMMMYYYY();
-		WebElement ele = driver.findElement(By.xpath("//*[@id='MainContainer']//*[contains(text(),'" + eventName + "')]"));
+		WebElement ele = driver
+				.findElement(By.xpath("//*[@id='MainContainer']//*[contains(text(),'" + eventName + "')]"));
 		waitForElementToPresent(ele);
 		ele.isDisplayed();
 
@@ -803,6 +797,182 @@ public class CommunityDetailsPage extends BasePage {
 		picture();
 		ManageMembers.click();
 		return (ManageGroupMembersPageByGroupAdmin) openPage(ManageGroupMembersPageByGroupAdmin.class);
+	}
+
+	@FindBy(xpath = "(//*[contains(text(),'Members')])[1]")
+	WebElement members;
+
+	@FindBy(xpath = "//span[@title='Toggle dropdown menu']")
+	WebElement Toggledropdownmenu;
+
+	@FindBy(xpath = "(//*[contains(text(),'Business A - 158')])[1]")
+
+	WebElement servicesMatched;
+
+	@FindBy(xpath = "(//*[contains(text(),'Business A - 154')])[1]")
+
+	WebElement companiesInterested;
+
+	@FindBy(xpath = "//h4[contains(text(),'There are no Organizations seekin')]")
+
+	WebElement noServicessetup;
+
+	@FindBy(xpath = "//h4[contains(text(),'Your Organizationa')]")
+
+	WebElement noCompaniesinterested;
+
+	@FindBy(xpath = "(//*[contains(text(),'Professional Matches')])[1]")
+
+	WebElement professionalMatches;
+
+	@FindBy(xpath = "//*[contains(text(),'secondary')]")
+
+	WebElement locationVerifying;
+
+	@FindBy(xpath = "//*[contains(text(),'Additional Information')]")
+
+	WebElement additionalInfo;
+
+	@FindBy(xpath = "(//*[contains(text(),'SA Carnals')])[1]")
+
+	WebElement memberCard;
+
+	@FindBy(xpath = "//button[contains(text(),'Search')]")
+
+	WebElement searchBtn;
+
+	@FindBy(xpath = "//*[contains(@id,'member')]")
+
+	WebElement memberSearch;
+
+	@FindBy(xpath = "//a[@data-toggle='tab'][contains(text(),'My Profile')]")
+
+	WebElement MyProfile;
+	
+	
+	public void matchedProfessional(String memberSearch) throws Throwable
+		
+	        
+		
+	        {
+		
+	           click(members,"Members");
+	
+	           Thread.sleep(2000);
+		
+	                type(this.memberSearch,memberSearch,"MemberSearch");
+		
+	                Thread.sleep(1000);
+		
+	                click(searchBtn,"SearchButton");
+		
+	                Thread.sleep(6000);
+		
+	                click(memberCard,"MemberCard");
+		
+	                Thread.sleep(5000);
+	
+	                click(professionalMatches,"Professional Matches");
+	
+	                Thread.sleep(5000);
+		
+	        }
+		
+		
+	public void additionalInfo(String memberSearch) throws Throwable
+		
+	{
+		
+	        click(members,"Members");
+		
+	           Thread.sleep(2000);
+	
+	                type(this.memberSearch,memberSearch,"MemberSearch");
+		
+	                Thread.sleep(1000);
+		
+	                click(searchBtn,"SearchButton");
+		
+	                Thread.sleep(6000);
+	
+	                click(memberCard,"MemberCard");
+		
+	                Thread.sleep(5000);
+		
+	                click(additionalInfo,"AdditionalInformation");
+		
+	                Thread.sleep(3000);
+		
+	}
+		
+		
+		
+	public MyProfilePage navigateToMyProfilePage() throws Throwable {
+		
+	        Thread.sleep(5000);
+		
+	        click(Toggledropdownmenu, "Toggledropdownmenu");
+		
+	        Thread.sleep(1000);
+		
+	        click(MyProfile,"My ProfilePage");
+		
+	        return (MyProfilePage) openPage(MyProfilePage.class);
+	}
+	        // new MyGroupsPage(driver, );
+	
+	
+	public void communityDetailsMembers(String memberSearch,String actual) throws Throwable
+		
+	        {
+	
+	                click(members,"Members");
+		
+	                Thread.sleep(2000);
+	
+	                type(this.memberSearch,memberSearch,"MemberSearch");
+		
+	                Thread.sleep(1000);
+		
+	                click(searchBtn,"SearchButton");
+		
+	                Thread.sleep(4000);
+	
+	                click(memberCard,"MemberCard");
+		
+	                Thread.sleep(5000);
+		
+	                click(additionalInfo,"AdditionalInfo");
+	
+	                Thread.sleep(5000);
+	
+	                String expected = locationVerifying.getText();
+	
+	                Assert.assertEquals(actual, expected);        
+		
+	        }
+	
+	
+	
+
+	public void memberDetailsPage(String memberSearch, String actualServices, String actualInterested)
+			throws Throwable {
+		click(members, "Members");
+		Thread.sleep(2000);
+		type(this.memberSearch, memberSearch, "MemberSearch");
+		Thread.sleep(1000);
+		click(searchBtn, "SearchButton");
+		Thread.sleep(6000);
+		click(memberCard, "MemberCard");
+		Thread.sleep(5000);
+		click(professionalMatches, "Professional Matches");
+		Thread.sleep(5000);
+		String expected1 = noServicessetup.getText();
+		String expected2 = noCompaniesinterested.getText();
+		Assert.assertEquals(actualServices, expected1);
+		Assert.assertEquals(actualInterested, expected2);
+		Thread.sleep(8000);
+
 	}
 
 	// public ZohoCRMPage gotoCRM() {

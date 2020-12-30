@@ -57,6 +57,11 @@ public class SystemAdminDashboardPage extends BasePage {
 	//
 	// return (ZohoCRMPage) openPage(ZohoCRMPage.class);
 
+	
+	
+	
+	
+	
 	public PendingCommunitiesPage naviagteToPendingCommunities() {
 		clickElementByJavaScript(CommunitiesNavSideMenu);
 		// click(CommunitiesNavSideMenu,"Communities");
@@ -102,5 +107,69 @@ public class SystemAdminDashboardPage extends BasePage {
 	}
 	
 	
+	public SATestimonials navigatetoTestimonials() throws Exception
 	
+	        {
+		
+	                click(testimonials,"Testimonials");
+	
+	                waitForElementToPresent(websiteTestimonial);
+		
+	                Thread.sleep(5000);
+	
+	                return (SATestimonials) openPage(SATestimonials.class);
+		
+	        }
+	
+	@FindBy(xpath = "//h2[contains(text(),'Websit')]")
+	WebElement websiteTestimonial;
+	
+	@FindBy(xpath="//a[contains(text(),'Testimonials')]")
+	WebElement testimonials;
+	
+	@FindBy(xpath = "//a[contains(text(),'Blogs')]//span")
+	WebElement blogs;
+	
+	@FindBy(xpath = "//div[@id='sidebar-menu']//div//a[contains(text(),'Posts')]")
+	WebElement posts;
+	
+	@FindBy(xpath = "(//*[contains(text(),'Catego')])[1]")
+	WebElement categorie;
+	
+		
+	        public BlogsBySystemAdmin navigateToSystemAdminBlogs() throws Exception
+		
+	        {
+	
+	                click(blogs,"Blogs");
+	
+	                Thread.sleep(5000);
+		
+	                click(posts,"posts");
+		
+	                Thread.sleep(5000);
+	
+	                return (BlogsBySystemAdmin) openPage(BlogsBySystemAdmin.class);
+		
+	        }
+	
+	        
+	
+	        
+	
+	        public BlogsBySystemAdmin navigateToSystemAdminBlogs1() throws Exception
+	
+	        {
+		
+	                click(blogs,"Blogs");
+	
+	                Thread.sleep(5000);
+		
+	                click(categorie,"Categorie");
+		
+	                Thread.sleep(2000);
+		
+	                return (BlogsBySystemAdmin) openPage(BlogsBySystemAdmin.class);
+		
+	        }
 }

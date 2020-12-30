@@ -5,6 +5,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
+
 import com.uiFramework.pamTen.cpcommunity.helper.imagediffer.Imagediff;
 import com.cpcommunity.utilities.DriverManager;
 
@@ -77,7 +79,12 @@ public class EcoSystemPage extends BasePage {
 	@FindBy(xpath="//a[contains(text(),'Global Careers')]")
 	WebElement GlobalCareers;
 	
+	@FindBy(xpath = "//*[contains(text(),'No matches right')]")
+    WebElement textMessage;
+	        
 	
+	@FindBy(xpath = "//*[contains(text(),'My Matches')]")
+	WebElement myMatches;
 	
 	
 	@Override
@@ -113,6 +120,26 @@ public class EcoSystemPage extends BasePage {
 
 	}
 
+	
+	public void myMatches(String actual) throws Throwable
+		
+	        {
+		
+	                Thread.sleep(5000);
+		
+	                click(myMatches,"MyMatches");
+		
+	                Thread.sleep(8000);
+		
+	                String expected = textMessage.getText();
+		
+	                Assert.assertEquals(expected, actual);
+		
+	                
+		
+	        }
+	
+	
 	public MyCommunitiesPage goToMyCommunities() throws Exception {
 		
 		try {
