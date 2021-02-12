@@ -13,22 +13,22 @@ import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.MyDashboardPage;
 import com.cpcommunity.PageObjects.MyProfilePage;
-import com.cpcommunity.PageObjects.ProfessionalServicesPage;
+
 import com.cpcommunity.testScripts.community.BaseTest;
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.DataUtil;
 import com.cpcommunity.utilities.ExcelReader;
 
-public class TC313_Verify_if_member_is_able_to_update_organization_services_you_offer_and_need extends BaseTest {
+public class TC613_Verify_Primary_Contact_Member_Can_Able_to_Add_Location extends BaseTest {
 
 	
 	
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC313(Hashtable<String,String> data) throws Throwable {
+	public void TC613(Hashtable<String,String> data) throws Throwable {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC313", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC613", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
@@ -36,13 +36,11 @@ public class TC313_Verify_if_member_is_able_to_update_organization_services_you_
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
-		MyDashboardPage dashboard = login.loginToMemberdashboard(data.get("email"), data.get("password"));
+		MyDashboardPage dashboard = login.loginToMemberdashboard(data.get("email"),data.get("password"));
 		MyProfilePage profile = dashboard.NaviagtingToMyProfilePage();
-		profile.professionalMatchesPage();
-		profile.UpdateserviceYouOfferandNeed();
-	
-		
-		
+		profile.additionalInformation(data.get("locationName"),data.get("locationAddress"),data.get("addressLine1"),data.get("locationStreetAddress2"),data.get("locationCity"),data.get("locationState"),data.get("locationZip"),data.get("country"),data.get("Phone"),data.get("fax"));
+		//GlobalCommunitesPage globalcommunities = profile.NavigateToGlobalcommunities();
+		//CommunityDetailsPage community = globalcommunities.navigateToCommunityDetailsPage(data.get("communityName"));
 		
 		
 		

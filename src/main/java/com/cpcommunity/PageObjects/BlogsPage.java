@@ -1,5 +1,7 @@
 package com.cpcommunity.PageObjects;
 
+import static org.testng.Assert.assertEquals;
+
 import java.util.Hashtable;
 
 import org.openqa.selenium.By;
@@ -36,7 +38,7 @@ public class BlogsPage extends BasePage {
 	
 	@FindBy(xpath = "//input[@id='term']")
 	WebElement search;
-	@FindBy(xpath = "(//*[contains(text(),'updating the new')])[1]")
+	@FindBy(xpath = "(//*[contains(text(),'Really an in')])")
 	WebElement verifyBlog;
 	
 	@FindBy(xpath = "//*[contains(text(),'No Posts found')]")
@@ -44,6 +46,9 @@ public class BlogsPage extends BasePage {
 	
 	@FindBy(xpath = "(//*[contains(text(),'This page isn’t working')])[1]")
 	WebElement blogpageisnotWorking;
+	
+	@FindBy(xpath = "//*[contains(text(),'No Posts found')]")
+	WebElement noPost;
 	
 
 	public void searchPost(String communityName, String blogName) {
@@ -70,8 +75,11 @@ public class BlogsPage extends BasePage {
 			System.out.println("Both are equals");
 			
 		}
+		
+		System.out.println("Failed");
 		Thread.sleep(4000);
 	}
+	
 	
 	public void inactiveBlogPost(String Search) throws Throwable
 	{

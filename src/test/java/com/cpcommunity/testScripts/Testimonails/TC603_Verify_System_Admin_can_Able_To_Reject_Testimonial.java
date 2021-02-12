@@ -13,40 +13,38 @@ import com.cpcommunity.PageObjects.SystemAdminDashboardPage;
 import com.cpcommunity.PageObjects.TestimonialsPage;
 import com.cpcommunity.PageObjects.TestimonialsVerifyPage;
 import com.cpcommunity.testScripts.community.BaseTest;
+import com.cpcommunity.utilities.Constants;
+import com.cpcommunity.utilities.DataProviders;
+import com.cpcommunity.utilities.DataUtil;
+import com.cpcommunity.utilities.ExcelReader;
 
-import com.cpcommunity.utilities.*;
 
 
-public class TC251_Verify_System_Admin_can_Able_To_Approve_Testimonial extends BaseTest
+public class TC603_Verify_System_Admin_can_Able_To_Reject_Testimonial extends BaseTest
 {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC251(Hashtable<String,String> data) throws Exception {
+	public void TC603(Hashtable<String,String> data) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC251", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC603", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
-		HomePage home = new HomePage().open("https://multi1.ezysubscribe.com/account/login");
+		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
 		SystemAdminDashboardPage SA = login.SystemAdminloginToApplication(data.get("email"), data.get("password"));
 		SATestimonials Edit= SA.navigatetoTestimonials();
 		Edit.searchTestimonial(data.get("search"));
-		Edit.approveTestimonial(data.get("notes"));
-		HomePage home1 = new HomePage().open("https://multi1.ezysubscribe.com/account/login");
+		Edit.rejectTestimonial(data.get("notes"));
+		HomePage home1 = new HomePage().open(data.get("tenantType"));
 		LoginPage login1 = home.clickOnLOGINBtn();
-		MyDashboardPage dashboard = login1.loginToMemberdashboard(data.get("email"),data.get("password"));
+		MyDashboardPage dashboard = login1.loginToMemberdashboard(data.get("email1"),data.get("password1"));
 		dashboard.navigateToMyDashBoard();
 		TestimonialsVerifyPage testimonial1 = dashboard.NavigateTotestimonials();
-		testimonial1.TestimonialisVisible(data.get("actual"));
+		testimonial1.TestimonialisnotVisible(data.get("actual"));
 		
 		
-		
-		
-		
-	
-		
-		
+       
 		
 		
 		

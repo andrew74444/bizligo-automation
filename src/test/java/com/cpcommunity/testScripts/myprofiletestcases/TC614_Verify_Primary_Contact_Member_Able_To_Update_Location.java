@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
+import com.cpcommunity.PageObjects.MyDashboardPage;
 import com.cpcommunity.PageObjects.MyProfilePage;
 
 import com.cpcommunity.testScripts.community.BaseTest;
@@ -17,15 +18,15 @@ import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.DataUtil;
 import com.cpcommunity.utilities.ExcelReader;
 
-public class TC308_Verify_Primary_Contact_Member_can_able_To_Inactive_The_location extends BaseTest {
+public class TC614_Verify_Primary_Contact_Member_Able_To_Update_Location extends BaseTest {
 
 	
 	
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC306(Hashtable<String,String> data) throws Throwable {
+	public void TC614(Hashtable<String,String> data) throws Throwable {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC308", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC614", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
@@ -33,9 +34,9 @@ public class TC308_Verify_Primary_Contact_Member_can_able_To_Inactive_The_locati
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
-		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
-		MyProfilePage profile = EcoSystemPage.goToMyProfilePage();
-		profile.inactiveLocation();
+		MyDashboardPage dashboard = login.loginToMemberdashboard(data.get("email"),data.get("password"));
+		MyProfilePage profile = dashboard.NaviagtingToMyProfilePage();
+		profile.updateLocation(data.get("locationName"),data.get("locationAddress"),data.get("addressLine1"),data.get("locationStreetAddress2"),data.get("locationCity"),data.get("locationState"),data.get("locationZip"),data.get("country"),data.get("Phone"),data.get("fax"));
 		
 		//Assert.fail("Failing the login test");
 	}

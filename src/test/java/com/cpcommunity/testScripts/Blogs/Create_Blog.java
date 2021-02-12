@@ -24,7 +24,6 @@ public class Create_Blog extends BaseTest {
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage loginpage = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = loginpage.loginToApplication(data.get("email"), data.get("password"));
-		
 		MyCommunitiesPage mycommunities = EcoSystemPage.goToMyCommunities();
 		CommunityDashboardPage communityDashboardPage = mycommunities.gotoManageCommunity(data.get("communityName"));
 		CommunityBlogsPage communityBlogsPage = communityDashboardPage.gotoManageBlogs();

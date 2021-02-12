@@ -56,7 +56,7 @@ public class CommunityBlogsPage extends BasePage {
 	@FindBy(xpath = "//*[@id=\"btnCancel\"]")
 	WebElement cancel;
 	
-	@FindBy(xpath = "//*[@id=\"row_93\"]/td[2]/a")
+	@FindBy(xpath = "//*[@id=\"row_40\"]/td[2]/a")
 	WebElement editBlog;
 	
 	@FindBy(xpath = "//body/div/div/div/div/nav/div/ul/li/a[1]")
@@ -65,7 +65,7 @@ public class CommunityBlogsPage extends BasePage {
 	@FindBy(xpath = "//a[contains(text(),'Logout')]")
 	WebElement logOut;
 	
-	@FindBy(xpath = "//*[@id=\"row_93\"]/td[2]/a")
+	@FindBy(xpath = "//*[@id=\"row_29\"]/td[2]/a")
 	WebElement editBlogdetails;
 	
 	@FindBy(xpath = "(//input[@type='search'])[1]")
@@ -117,7 +117,7 @@ public class CommunityBlogsPage extends BasePage {
 	   Thread.sleep(2000);
 	   this.shortdescription.clear();
 	   Thread.sleep(2000);
-	   this.createBlog(title, shortDescription, content);
+	   this.createBlog(title+date, shortDescription, content);
 	}
 	
 	public void canceledBlog(String title, String shortDescription, String content) throws Throwable

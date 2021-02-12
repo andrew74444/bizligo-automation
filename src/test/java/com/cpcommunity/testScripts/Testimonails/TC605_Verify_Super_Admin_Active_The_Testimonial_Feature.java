@@ -17,24 +17,24 @@ import com.cpcommunity.utilities.DataUtil;
 import com.cpcommunity.utilities.ExcelReader;
 
 
-public class TC254_Verify_Super_Admin_Can_Disable_The_Testimonial extends BaseTest
+public class TC605_Verify_Super_Admin_Active_The_Testimonial_Feature extends BaseTest
 {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC254(Hashtable<String,String> data) throws Throwable {
+	public void TC605(Hashtable<String,String> data) throws Throwable {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC254", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC605", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		AdminHomePage home = new AdminHomePage().open("https://admin.ezysubscribe.com/account/login");
 		AdminLogin login =home.navigateToAdminLogin();
 		AdminPage admin = login.adminloginToApplication(data.get("email"), data.get("password"));
-		admin.testimonialsDisabled();
-		HomePage home1 = new HomePage().open("https://multi1.ezysubscribe.com/account/login");
+		admin.testimonialEnabled();
+		HomePage home1 = new HomePage().open(data.get("tenantType"));
 		LoginPage login1 = home1.clickOnLOGINBtn();
-		MyDashboardPage dashboard = login1.loginToMemberdashboard(data.get("email"),data.get("password"));
-	    dashboard.testimonialDisabled();
+		MyDashboardPage dashboard = login1.loginToMemberdashboard(data.get("email1"),data.get("password1"));
+		dashboard.testimonialEnabled();
 		
 		
 		
