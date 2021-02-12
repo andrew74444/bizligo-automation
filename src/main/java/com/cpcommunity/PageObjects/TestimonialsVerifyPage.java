@@ -19,16 +19,16 @@ public class TestimonialsVerifyPage extends BasePage {
 	@FindBy(xpath="//h2[contains(text(),'Testimonials')]")
 	WebElement testimonials;
 	
-	@FindBy(xpath = "//*[contains(text(),'I have worked')]")
+	@FindBy(xpath = "//*[contains(text(),'I have')]")
 	WebElement textVerify1;
 	
 	@FindBy(xpath = "//*[contains(text(),'Submitting test')]")
 	WebElement testimonialContent;
 	
-	@FindBy(xpath = "//*[contains(text(),'The application is too good')]")
+	@FindBy(xpath = "//*[contains(text(),'Success,')]")
 	WebElement contentVerfying1;
 	
-	@FindBy(xpath = "//*[contains(text(),'Please check your im')]")
+	@FindBy(xpath = "//*[contains(text(),'WOW')]")
 	WebElement contentVerfying2;
 	
 	@FindBy(xpath = "//*[contains(text(),'Alex in')]")
@@ -56,7 +56,6 @@ public class TestimonialsVerifyPage extends BasePage {
 		Thread.sleep(5000);
 		Assert.assertEquals(expected, actual+date);
 		Thread.sleep(5000);
-	
 	}
 	
 
@@ -66,13 +65,11 @@ public class TestimonialsVerifyPage extends BasePage {
 		String date = ": "+getSystemCurrentDate()+"-"+getSystemCurrentMonth()+"-"+getSystemCurrentYear();
 		String expected = contentVerfying1.getText();
 		String expected1 = contentVerfying2.getText();
-		String expected2 = contentVerfying3.getText();
 		Thread.sleep(5000);
 		Assert.assertNotSame(expected,actual+date);
 		Thread.sleep(2000);
 		Assert.assertNotSame(expected1,actual+date);
 		Thread.sleep(2000);
-		Assert.assertNotSame(expected2,actual+date);
 		driver.close();
 		
 	}
