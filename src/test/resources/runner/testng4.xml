@@ -5,23 +5,190 @@
 
 	<listeners>
 		<listener class-name="com.cpcommunity.ExtentListeners.ExtentListeners"></listener>
-		<listener class-name="com.uiFramework.pamTen.cpcommunity.helper.listener.RetryListener" />
-		<listener class-name="com.cpcommunity.utilities.CustomTestNGReporter" />
+		<listener class-name="com.uiFramework.pamTen.cpcommunity.helper.listener.RetryListener" /><listener
+		class-name="com.cpcommunity.ExtentListeners2.ExtentListeners2"></listener>
 			
 	</listeners>
 
 	<test name="Test1">
 
-		<!--<packages> <package name="com.w2a.zoho.testcases" /> </packages> -->
-		<classes>
-			 
+		<!--<packages> <package name="com.cpcommunity.testScripts.Testimonails" /> </packages> -->
+		<classes> 
 			<class
-				name="com.cpcommunity.testScripts.community.TC165_Veirfy_Community_Website_URL_Redirected_To_Configured_Website" />
-				
+				name="com.cpcommunity.testScripts.Blogs.TC606_Verify_System_Admin_Can_Able_To_Create_a_Blog"/>	
 		</classes>
 	</test> <!-- Test -->
+	
+	
+	<test name="Test2">
 
+		<!--<packages> <package name="com.cpcommunity.testScripts.Testimonails" /> </packages> -->
+		<classes> 
+			<class
+				name="com.cpcommunity.testScripts.Blogs.TC607_Verifying_The_Blog_Form_Is_Closed_And_Then_Clicked_On_The_Cancelled_Button"/>	
+		</classes>
+	</test> <!-- Test -->
+	
+		<test name="Test3">
 
+		<!--<packages> <package name="com.cpcommunity.testScripts.Testimonails" /> </packages> -->
+		<classes> 
+			<class
+				name="com.cpcommunity.testScripts.Blogs.TC608_Verify_System_Admin_Can_Able_To_Update_the_Blog"/>	
+		</classes>
+	</test> <!-- Test -->
+	
+	
+				<test name="Test4">
 
+		<!--<packages> <package name="com.cpcommunity.testScripts.Testimonails" /> </packages> -->
+		<classes> 
+			<class
+				name="com.cpcommunity.testScripts.Blogs.TC609_Verify_System_Admin_Created_Blogs_Are_Displaying_in_Blogs_Page"/>	
+		</classes>
+	</test> <!-- Test -->
+	
+	
+		
+				<test name="Test5">
 
-</suite> <!-- Suite -->
+		<!--<packages> <package name="com.cpcommunity.testScripts.Testimonails" /> </packages> -->
+		<classes> 
+			<class
+				name="com.cpcommunity.testScripts.Blogs.TC610_Verify_System_Admin_Inactive_Blogs_Are_Not_Displaying_in_Blogs_Page"/>	
+		</classes>
+	</test> <!-- Test -->
+	
+				<test name="Test6">
+
+		<!--<packages> <package name="com.cpcommunity.testScripts.Testimonails" /> </packages> -->
+		<classes> 
+			<class
+				name="com.cpcommunity.testScripts.Blogs.TC611_Verify_Super_Admin_Inactive_The_Blogs_Feature"/>	
+		</classes>
+	</test> <!-- Test -->
+	
+		<test name="Test7">
+        <!--<packages> <package name="com.cpcommunity.testScripts.Testimonails" /> </packages> -->
+		<classes> 
+			<class
+				name="com.cpcommunity.testScripts.Blogs.TC612_Verify_Super_Admin_Active_The_Blogs_Feature"/>	
+		</classes>
+	</test> <!-- Test -->
+	
+			<test name="Test8">
+        <!--<packages> <package name="com.cpcommunity.testScripts.Testimonails" /> </packages> -->
+		<classes> 
+			<class
+				name="com.cpcommunity.testScripts.Testimonails.TC600_Verify_Member_can_able_to_create_a_Testimonial"/>	
+		</classes>
+	</test> <!-- Test -->
+	
+				<test name="Test9">
+        <!--<packages> <package name="com.cpcommunity.testScripts.Testimonails" /> </packages> -->
+		<classes> 
+			<class
+				name="com.cpcommunity.testScripts.Testimonails.TC601_Verify_Member_can_able_to_Reset_a_Testimonial"/>	
+		</classes>
+	</test> <!-- Test -->
+	
+					<test name="Test10">
+        <!--<packages> <package name="com.cpcommunity.testScripts.Testimonails" /> </packages> -->
+		<classes> 
+			<class
+				name="com.cpcommunity.testScripts.Testimonails.TC602_Verify_System_Admin_can_Able_To_Approve_Testimonial"/>	
+		</classes>
+	</test> <!-- Test -->
+	
+					<test name="Test11">
+        <!--<packages> <package name="com.cpcommunity.testScripts.Testimonails" /> </packages> -->
+		<classes> 
+			<class
+				name="com.cpcommunity.testScripts.Testimonails.TC603_Verify_System_Admin_can_Able_To_Reject_Testimonial"/>	
+		</classes>
+	</test> <!-- Test -->
+	
+	
+					<test name="Test12">
+        <!--<packages> <package name="com.cpcommunity.testScripts.Testimonails" /> </packages> -->
+		<classes> 
+			<class
+				name="com.cpcommunity.testScripts.Testimonails.TC604_Verify_Super_Admin_Inactive_The_Testimonial_Feature"/>	
+		</classes>
+	</test> <!-- Test -->
+	
+						<test name="Test13">
+        <!--<packages> <package name="com.cpcommunity.testScripts.Testimonails" /> </packages> -->
+		<classes> 
+			<class
+				name="com.cpcommunity.testScripts.Testimonails.TC605_Verify_Super_Admin_Active_The_Testimonial_Feature"/>	
+		</classes>
+	</test> <!-- Test -->
+	
+	
+		<test name="Test14">
+        <!--<packages> <package name="com.cpcommunity.testScripts.Testimonails" /> </packages> -->
+		<classes> 
+			<class
+				name="com.cpcommunity.testScripts.myprofiletestcases.TC613_Verify_Primary_Contact_Member_Can_Able_to_Add_Location"/>	
+		</classes>
+	</test> <!-- Test -->
+	
+	
+			<test name="Test15">
+        <!--<packages> <package name="com.cpcommunity.testScripts.Testimonails" /> </packages> -->
+		<classes> 
+			<class
+				name="com.cpcommunity.testScripts.myprofiletestcases.TC614_Verify_Primary_Contact_Member_Able_To_Update_Location"/>	
+		</classes>
+	</test> <!-- Test -->
+	
+	
+				<test name="Test16">
+        <!--<packages> <package name="com.cpcommunity.testScripts.Testimonails" /> </packages> -->
+		<classes> 
+			<class
+				name="com.cpcommunity.testScripts.myprofiletestcases.TC615_Verify_Primary_Contact_Member_can_able_To_Inactive_The_location"/>	
+		</classes>
+	</test> <!-- Test -->
+	
+	
+					<test name="Test17">
+        <!--<packages> <package name="com.cpcommunity.testScripts.Testimonails" /> </packages> -->
+		<classes> 
+			<class
+				name="com.cpcommunity.testScripts.myprofiletestcases.TC616_Verify_Primary_Contact_Able_to_Add_Member"/>	
+		</classes>
+	</test> <!-- Test -->
+	
+	
+		<test name="Test18">
+        <!--<packages> <package name="com.cpcommunity.testScripts.Testimonails" /> </packages> -->
+		<classes> 
+			<class
+				name="com.cpcommunity.testScripts.myprofiletestcases.TC617_Verify_Added_Member_is_Forced_to_Update_the_Password"/>	
+		</classes>
+	</test> <!-- Test -->
+	
+	
+			<test name="Test19">
+        <!--<packages> <package name="com.cpcommunity.testScripts.Testimonails" /> </packages> -->
+		<classes> 
+			<class
+				name="com.cpcommunity.testScripts.myprofiletestcases.TC618_Verify_Whether_member_is_able_to_add_organization_services_you_offer_and_need"/>	
+		</classes>
+	</test> <!-- Test -->
+	
+	
+				<test name="Test20">
+        <!--<packages> <package name="com.cpcommunity.testScripts.Testimonails" /> </packages> -->
+		<classes> 
+			<class
+				name="com.cpcommunity.testScripts.myprofiletestcases.TC619_Verify_if_member_is_able_to_update_organization_services_you_offer_and_need"/>	
+		</classes>
+	</test> <!-- Test -->
+	
+	
+	
+	
+	</suite> <!-- Suite -->

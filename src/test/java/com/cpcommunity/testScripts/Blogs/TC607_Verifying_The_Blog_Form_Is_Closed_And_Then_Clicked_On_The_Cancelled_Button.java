@@ -10,26 +10,25 @@ import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.SystemAdminDashboardPage;
 import com.cpcommunity.testScripts.community.BaseTest;
-
 import com.cpcommunity.utilities.*;
 
 
-public class TC256_Verify_System_Admin_Can_Able_To_Create_Blog extends BaseTest
+public class TC607_Verifying_The_Blog_Form_Is_Closed_And_Then_Clicked_On_The_Cancelled_Button extends BaseTest
 {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC256(Hashtable<String,String> data) throws Throwable {
+	public void TC607(Hashtable<String,String> data) throws Throwable {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC256", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC607", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
-		HomePage home = new HomePage().open("https://multi2.ezysubscribe.com/account/login");
+		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
 		SystemAdminDashboardPage SA = login.SystemAdminloginToApplication(data.get("email"), data.get("password"));
 		BlogsBySystemAdmin blogs = SA.navigateToSystemAdminBlogs();
 		CommunityBlogsPage create= blogs.navigateToCommunityBlogsPage();
-		create.createBlog(data.get("title"), data.get("shortdescription"), data.get("content"));
+		create.canceledBlog(data.get("title"), data.get("shortdescription"), data.get("content"));
 	
 		
 		//blogs.AddnewPost(data.get("title"), data.get("shortdescription"), data.get("description"));

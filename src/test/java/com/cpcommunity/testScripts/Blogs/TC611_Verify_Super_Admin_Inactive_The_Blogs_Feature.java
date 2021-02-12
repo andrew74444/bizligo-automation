@@ -1,4 +1,4 @@
-package com.cpcommunity.testScripts.Testimonails;
+package com.cpcommunity.testScripts.Blogs;
 import java.util.Hashtable;
 
 import org.testng.annotations.AfterMethod;
@@ -11,28 +11,38 @@ import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.MyDashboardPage;
 import com.cpcommunity.testScripts.community.BaseTest;
-
 import com.cpcommunity.utilities.*;
 
 
-public class TC255_Verify_Super_Admin_Can_Enable_The_Testimonial extends BaseTest
+public class TC611_Verify_Super_Admin_Inactive_The_Blogs_Feature extends BaseTest
 {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC255(Hashtable<String,String> data) throws Throwable {
+	public void TC611(Hashtable<String,String> data) throws Throwable {
 
+
+		
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC255", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC611", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		AdminHomePage home = new AdminHomePage().open("https://admin.ezysubscribe.com/account/login");
 		AdminLogin login =home.navigateToAdminLogin();
 		AdminPage admin = login.adminloginToApplication(data.get("email"), data.get("password"));
-		admin.testimonialEnabled();
-		HomePage home1 = new HomePage().open("https://multi1.ezysubscribe.com/account/login");
+		admin.blogsdisabled();
+		HomePage home1 = new HomePage().open(data.get("tenantType"));
 		LoginPage login1 = home1.clickOnLOGINBtn();
-		MyDashboardPage dashboard = login1.loginToMemberdashboard(data.get("email"),data.get("password"));
-	    dashboard.testimonialEnabled();
+		MyDashboardPage dashboard = login1.loginToMemberdashboard(data.get("email1"),data.get("password1"));
+		dashboard.blogPageisnotWorking();
+		
+		
+		
+		
+		
+		
+	
+		
+		//blogs.AddnewPost(data.get("title"), data.get("shortdescription"), data.get("description"));
 		
 		
 	

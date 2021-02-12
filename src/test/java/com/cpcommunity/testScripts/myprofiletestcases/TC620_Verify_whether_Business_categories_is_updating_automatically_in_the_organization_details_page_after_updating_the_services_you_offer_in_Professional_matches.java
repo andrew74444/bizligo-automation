@@ -20,15 +20,15 @@ import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.DataUtil;
 import com.cpcommunity.utilities.ExcelReader;
 
-public class TC314_Verify_whether_Business_categories_is_updating_automatically_in_the_organization_details_page_after_updating_the_services_you_offer_in_Professional_matches extends BaseTest {
+public class TC620_Verify_whether_Business_categories_is_updating_automatically_in_the_organization_details_page_after_updating_the_services_you_offer_in_Professional_matches extends BaseTest {
 
 	
 	
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC314(Hashtable<String,String> data) throws Throwable {
+	public void TC620(Hashtable<String,String> data) throws Throwable {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC314", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC620", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));

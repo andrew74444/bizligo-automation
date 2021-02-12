@@ -20,28 +20,28 @@ public class AdminPage extends BasePage {
 	@FindBy(xpath = "//a[contains(text(),'Features Configuration')]")
 	WebElement featuresconfiguration;
 	
-	@FindBy(xpath = "//div[14]//div[1]//div[1]//h4[1]")
+	@FindBy(xpath = "(//*[@id=\"accordion\"]/div/div[1]/h4)[15]")
 	WebElement testimonials;
 	
-	@FindBy(xpath = "//div[@id='TESTMONIALS_13_13']//div//div//div//div//div//div//label[contains(text(),'Enabled')]")
+	@FindBy(xpath = "//*[@id=\"TESTMONIALS_14_14\"]/div/div/div/div[1]/div[1]/div/span")
 	WebElement disabled;
 	
-	@FindBy(xpath = "//div[@id='TESTMONIALS_13_13']//div//div//div//div//div//button[@id='btnSave']")
+	@FindBy(xpath = "(//*[contains(text(),'Save')])[15]")
 	WebElement save;
 	
-	@FindBy(xpath = "//div[@id='TESTMONIALS_13_13']//div//div//div//div//div//div//label[contains(text(),'Disabled')]")
+	@FindBy(xpath = "//*[@id=\"TESTMONIALS_14_14\"]/div/div/div/div[1]/div[1]/div/span")
 	WebElement enabled;
 	
 	@FindBy(xpath = "(//*[contains(text(),'Blog')])[1]")
 	WebElement blogs;
 	
-	@FindBy(xpath = "//*[@id=\"BLOG_0_0\"]/div/div/div/div[1]/div/div/label[2]")
+	@FindBy(xpath = "//*[@id=\"BLOG_1_1\"]/div/div/div/div[1]/div[1]/div/span")
 	WebElement disabledBlog;
 	
-	@FindBy(xpath = "//*[@id=\"BLOG_0_0\"]/div/div/div/div[1]/div/div/span")
+	@FindBy(xpath = "//*[@id=\"BLOG_1_1\"]/div/div/div/div[1]/div[1]/div/span")
 	WebElement enabledBlog;
 	
-	@FindBy(xpath = "(//*[@id=\"btnSave\"])[1]")
+	@FindBy(xpath = "(//*[contains(text(),'Save')])[2]")
 	WebElement saveButton;
 
 	@Override
@@ -52,6 +52,8 @@ public class AdminPage extends BasePage {
 	
 	public void testimonialsDisabled() throws Exception
 	{
+		Select s = new Select(tenantIndividual);
+		s.selectByIndex(1);
 		click(configuration, "Configuration");
 		Thread.sleep(3000);
 		click(featuresconfiguration, "FeaturesConfiguration");
@@ -66,6 +68,8 @@ public class AdminPage extends BasePage {
 	
 	public void testimonialEnabled() throws Exception 
 	{
+		Select s = new Select(tenantIndividual);
+		s.selectByIndex(1);
 		click(configuration, "Configuration");
 		Thread.sleep(10000);
 		click(featuresconfiguration, "FeaturesConfiguration");

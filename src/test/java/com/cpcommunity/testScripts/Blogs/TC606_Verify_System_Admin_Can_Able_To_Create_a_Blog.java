@@ -10,26 +10,26 @@ import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.SystemAdminDashboardPage;
 import com.cpcommunity.testScripts.community.BaseTest;
+
 import com.cpcommunity.utilities.*;
 
 
-public class TC258_Verify_System_Admin_Can_Able_To_Update_the_Blog extends BaseTest
+public class TC606_Verify_System_Admin_Can_Able_To_Create_a_Blog extends BaseTest
 {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC258(Hashtable<String,String> data) throws Throwable {
+	public void TC606(Hashtable<String,String> data) throws Throwable {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC258", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC606", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
-		HomePage home = new HomePage().open("https://multi2.ezysubscribe.com/account/login");
+		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
 		SystemAdminDashboardPage SA = login.SystemAdminloginToApplication(data.get("email"), data.get("password"));
 		BlogsBySystemAdmin blogs = SA.navigateToSystemAdminBlogs();
-		CommunityBlogsPage update= blogs.navigateToCommunityBlogsPage();
-		update.Updateblog(data.get("search"),data.get("title"), data.get("shortdescription"), data.get("content"));
-		
+		CommunityBlogsPage create= blogs.navigateToCommunityBlogsPage();
+		create.createBlog(data.get("title"), data.get("shortdescription"), data.get("content"));
 	
 		
 		//blogs.AddnewPost(data.get("title"), data.get("shortdescription"), data.get("description"));

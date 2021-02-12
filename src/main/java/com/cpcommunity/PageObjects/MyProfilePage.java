@@ -753,7 +753,7 @@ public class MyProfilePage extends BasePage {
 
 	WebElement locationStatus;
 
-	@FindBy(xpath = "(//button[@type = 'button'])[6]")
+	@FindBy(xpath = "(//button[@type = 'button'])[7]")
 
 	WebElement addLocation;
 
@@ -769,7 +769,7 @@ public class MyProfilePage extends BasePage {
 
 	WebElement locationAddress;
 
-	@FindBy(xpath = "//*[@id=\"AdditionalInfoCtrl\"]/div[2]/div/div[2]/div/div[1]/div/div[2]/button")
+	@FindBy(xpath = "//*[@id=\"AdditionalInfoCtrl\"]/div[2]/div/div[3]/div/div[1]/div/div[2]/button/i")
 
 	WebElement editLocation;
 

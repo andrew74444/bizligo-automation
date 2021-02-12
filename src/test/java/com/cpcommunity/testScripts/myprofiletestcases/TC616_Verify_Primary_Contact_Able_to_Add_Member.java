@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
+import com.cpcommunity.PageObjects.MyDashboardPage;
 import com.cpcommunity.PageObjects.MyProfilePage;
 
 import com.cpcommunity.testScripts.community.BaseTest;
@@ -17,15 +18,15 @@ import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.DataUtil;
 import com.cpcommunity.utilities.ExcelReader;
 
-public class TC306_Verify_Primary_Contact_Able_to_Add_Member extends BaseTest {
+public class TC616_Verify_Primary_Contact_Able_to_Add_Member extends BaseTest {
 
 	
 	
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC306(Hashtable<String,String> data) throws Throwable {
+	public void TC616(Hashtable<String,String> data) throws Throwable {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC306", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC616", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
@@ -33,8 +34,8 @@ public class TC306_Verify_Primary_Contact_Able_to_Add_Member extends BaseTest {
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
-		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
-		MyProfilePage profile = EcoSystemPage.goToMyProfilePage();
+		MyDashboardPage dashboard = login.loginToMemberdashboard(data.get("email"),data.get("password"));
+		MyProfilePage profile = dashboard.NaviagtingToMyProfilePage();
 		profile.addnewMember(data.get("firstName"), data.get("lastName"), data.get("job"), data.get("emailAddress"), data.get("password"), data.get("confirmPassword"));
 		
 		//Assert.fail("Failing the login test");

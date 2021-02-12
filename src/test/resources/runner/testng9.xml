@@ -19,13 +19,9 @@
 		<classes>
 
 			<class
-				name="com.cpcommunity.testScripts.community.TC046_Member_Accept_Community_Request_from_My_Communities" />
+				name="com.cpcommunity.testScripts.myprofiletestcases.TC617_Verify_Added_Member_is_Forced_to_Update_the_Password" />
 		</classes>
+		
 	</test>
-
-
-
-
-
 
 </suite> <!-- Suite -->

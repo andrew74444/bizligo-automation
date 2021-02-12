@@ -32,7 +32,7 @@ public class MyDashboardPage extends BasePage{
 	@FindBy(xpath="//*[contains(text(),'Blog')]")
 	WebElement blog;
 	
-	@FindBy(xpath = "//a[contains(text(),'Testimonials')]")
+	@FindBy(xpath = "//a[contains(text(),'testimonials')]")
 	WebElement testimonialsPage;
 	
 	@FindBy(xpath = "//h2[contains(text(),'Sorry, the page or event you are looking for was n')]")

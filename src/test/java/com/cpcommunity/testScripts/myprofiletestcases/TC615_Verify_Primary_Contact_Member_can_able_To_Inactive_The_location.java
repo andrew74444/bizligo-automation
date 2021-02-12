@@ -6,12 +6,11 @@ import java.util.Hashtable;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
-import com.cpcommunity.PageObjects.ChangePasswordPage;
-
-
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
-
+import com.cpcommunity.PageObjects.MyDashboardPage;
+import com.cpcommunity.PageObjects.MyProfilePage;
 
 import com.cpcommunity.testScripts.community.BaseTest;
 import com.cpcommunity.utilities.Constants;
@@ -19,15 +18,15 @@ import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.DataUtil;
 import com.cpcommunity.utilities.ExcelReader;
 
-public class TC309_Verify_Added_Member_is_Forced_to_Update_the_Password extends BaseTest {
+public class TC615_Verify_Primary_Contact_Member_can_able_To_Inactive_The_location extends BaseTest {
 
 	
 	
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC309(Hashtable<String,String> data) throws Throwable {
+	public void TC615(Hashtable<String,String> data) throws Throwable {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC308", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC615", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
@@ -35,11 +34,9 @@ public class TC309_Verify_Added_Member_is_Forced_to_Update_the_Password extends 
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
-		//ForceChangePasswordPage Password = login.loginToChangePassword(data.get("email"), data.get("password"));
-		//Password.passwordForceChanged(data.get("currentPassword"), data.get("newPassword"), data.get("confirmPassword"));
-		ChangePasswordPage password = login.loginToChangePassword(data.get("email"), data.get("password"));
-		password.passwordForceChanged(data.get("currentPassword"),data.get("newPassword"), data.get("confirmPassword"));
-		
+		MyDashboardPage dashboard = login.loginToMemberdashboard(data.get("email"),data.get("password"));
+		MyProfilePage profile = dashboard.NaviagtingToMyProfilePage();
+		profile.inactiveLocation();
 		
 		//Assert.fail("Failing the login test");
 	}

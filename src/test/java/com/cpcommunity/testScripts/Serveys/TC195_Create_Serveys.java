@@ -21,7 +21,7 @@ public class TC195_Create_Serveys extends BaseTest {
 		logInfo("Launched Browser : " + data.get("browser"));
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
-		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));//testing
 		
 		MyCommunitiesPage myCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CommunityDashboardPage communityDashboardPage = myCommunitiesPage.gotoManageCommunity(data.get("communityName"));
