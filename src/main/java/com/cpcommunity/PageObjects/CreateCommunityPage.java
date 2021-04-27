@@ -10,7 +10,7 @@ import org.apache.log4j.Logger;
 
 public class CreateCommunityPage extends BasePage{
 	
-	@FindBy(xpath = "//*[@id='header']")
+	@FindBy(xpath = "//*[@id='global-nav']")
 	WebElement pageheader;
 	@Override
 	protected  void getPageScreenSot() {
@@ -44,7 +44,7 @@ public class CreateCommunityPage extends BasePage{
 		
 		updateClass(pageheader, "");
 		log.info(Name);
-		new CreateOrEditCommunityPage(driver).FillCommunityDetails(Name+" "+getDateInDDMMMYYYY(), Networking, Marketing, BuildingRelationship, Branding, GrowMyBusiness, InvestInBusiness, Other, About, Category, type);
+		new CreateOrEditCommunityPage(driver).FillCommunityDetails(Name+getDateInDDMMMYYYY(), Networking, Marketing, BuildingRelationship, Branding, GrowMyBusiness, InvestInBusiness, Other, About, Category, type);
 		picture();
 		
 		
@@ -57,7 +57,7 @@ public class CreateCommunityPage extends BasePage{
 		
 		String d = getDateInDDMMMYYYY();
 		
-		communityName = communityName +" "+ d;
+		communityName = communityName+d;
 		return communityName;
 		
 		

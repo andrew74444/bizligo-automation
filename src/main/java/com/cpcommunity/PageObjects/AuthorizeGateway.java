@@ -49,7 +49,7 @@ public class AuthorizeGateway extends BasePage {
 	@FindBy(xpath = "//*[@id='orderTotalAmount']")
 	WebElement orderTotalAmount;
 
-	@FindBy(xpath = "//*[@id='header']")
+	@FindBy(xpath = "//*[@id='global-nav']")
 	WebElement pageheader;
 
 	@Override

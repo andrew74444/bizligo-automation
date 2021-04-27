@@ -17,7 +17,7 @@ public class SATestimonials extends BasePage {
 	@FindBy(xpath = "//h2[contains(text(),'Websit')]")
 	WebElement websiteTestimonial;
 	
-	@FindBy(xpath = "//*[@id=\"row_19\"]/td[2]/a")
+	@FindBy(xpath = "//*[@id=\"row_1200\"]/td[2]/a")
 	WebElement approved;
 	
 	@FindBy(xpath = "//*[@id=\"row_19\"]/td[2]/a")

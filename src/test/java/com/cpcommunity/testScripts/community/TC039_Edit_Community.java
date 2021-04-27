@@ -31,14 +31,14 @@ public class TC039_Edit_Community extends BaseTest {
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName")+" "+runTime);
+		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
 		EditCommunityPage EditCommunityPage = CommunityDashboardPage.navigateToEditCommunityPage();
-		EditCommunityPage.editcommunity(data.get("communityName")+" "+runTime, data.get("Networking"), data.get("Marketing"), data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"), data.get("InvestInBusiness"), data.get("OtherName"), data.get("About"), data.get("Category"), data.get("type"), data.get("StateName"), data.get("CityName"), data.get("FacebookUrl"), data.get("TwitterUrl"), data.get("LinkedInUrl"), data.get("LogoImagePath"),data.get("website"), data.get("ImagePath"), data.get("CommunityUpdate"),data.get("communityName")+" "+runTime);
+		EditCommunityPage.editcommunity(data.get("communityName"), data.get("Networking"), data.get("Marketing"), data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"), data.get("InvestInBusiness"), data.get("OtherName"), data.get("About"), data.get("Category"), data.get("type"), data.get("StateName"), data.get("CityName"), data.get("FacebookUrl"), data.get("TwitterUrl"), data.get("LinkedInUrl"), data.get("LogoImagePath"),data.get("website"), data.get("ImagePath"), data.get("CommunityUpdate"),data.get("communityName"));
 		home.open(data.get("tenantType"));
 		EcoSystemPage = EcoSystemPage.goToMyEcosystem();
 		MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
-		CommunityDetailsPage.verifycommunityDetails(data.get("communityName")+" "+runTime, data.get("About"), data.get("StateName"), data.get("CityName"), data.get("FacebookUrl"), data.get("LinkedInUrl"), data.get("TwitterUrl"), data.get("type"));
+		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
+		CommunityDetailsPage.verifycommunityDetails(data.get("communityName"), data.get("About"), data.get("StateName"), data.get("CityName"), data.get("FacebookUrl"), data.get("LinkedInUrl"), data.get("TwitterUrl"), data.get("type"));
 //		CommunityDetailsPage.clickonLogo();
 		//Assert.fail("Failing the login test");
 	}

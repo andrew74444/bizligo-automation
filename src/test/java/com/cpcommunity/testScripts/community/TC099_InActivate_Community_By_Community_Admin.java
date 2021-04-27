@@ -33,11 +33,11 @@ public class TC099_InActivate_Community_By_Community_Admin extends BaseTest {
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage CommunityDashboardPage  = MyCommunitiesPage.gotoManageCommunity(data.get("communityName")+" "+runTime);
+		CommunityDashboardPage CommunityDashboardPage  = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
 		EditCommunityPage EditCommunityPage = CommunityDashboardPage.navigateToEditCommunityPage();
 		EcoSystemPage = EditCommunityPage.inActiveCommunity();
 		GlobalCommunitesPage globalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
-		globalCommunitesPage.checkInActivatedCommunityIsNotDisplayed(data.get("communityName")+" "+runTime);
+		globalCommunitesPage.checkInActivatedCommunityIsNotDisplayed(data.get("communityName"));
 //		//Assert.fail("Failing the login test");
 	}
 	

@@ -13,6 +13,9 @@ public class SelectPlanPage extends BasePage {
 	@FindBy(xpath = "//*[contains(text(),'Next')]")
 	WebElement next;
 
+	@FindBy(xpath = "//button[@id='pricing_plan_20']")
+	WebElement selectPlan;
+	
 	@FindBy(xpath = "//span[contains(text(),'Submit')]")
 	WebElement Submit;
 
@@ -35,7 +38,7 @@ public class SelectPlanPage extends BasePage {
 	@FindBy(xpath = "(//button[@type='submit'])[1] | (//button[@type='submit'])[2]")
 	WebElement proceedToPaymentGateway;
 	
-	@FindBy(xpath = "//*[@id='header']")
+	@FindBy(xpath = "//*[@id='global-nav']")
 	WebElement pageheader;
 	@Override
 	protected  void getPageScreenSot() {
@@ -94,6 +97,7 @@ public class SelectPlanPage extends BasePage {
 
 	public void selectPaidPlan(String planName) throws Exception {
 		this.selectAPlan(planName);
+		Thread.sleep(2000);		
 		click(next, "Next button");
 		Thread.sleep(5000);
 		picture();

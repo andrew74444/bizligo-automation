@@ -1,27 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite" parallel="false" thread-count="8">
-
+<suite name="Suite" thread-count="5" >  
+	
 	<listeners>
-		<listener
+		<listener		
 			class-name="com.cpcommunity.ExtentListeners.ExtentListeners"></listener>
-		<listener
+			<listener		
 			class-name="com.cpcommunity.ExtentListeners2.ExtentListeners2"></listener>
 		<listener
 			class-name="com.uiFramework.pamTen.cpcommunity.helper.listener.RetryListener" />
 	</listeners>
 
-	<!-- 167 -->
-
-
-
 	<test name="Test 1" preserve-order="true">
 		<classes>
-
-			<class
-				name="com.cpcommunity.testScripts.myprofiletestcases.TC617_Verify_Added_Member_is_Forced_to_Update_the_Password" />
+<class name="com.cpcommunity.testScripts.loginPage.TC006_Verify_User_Redirected_To_Select_Plans_For_Payment_Pending" />
 		</classes>
 		
 	</test>
 
 </suite> <!-- Suite -->
+ 

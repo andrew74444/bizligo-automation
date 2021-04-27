@@ -89,9 +89,8 @@ public class PendingCommunitiesPage extends BasePage{
 	
 	
 	public void rejectCommunity(String communityName, String rejectReason ) throws Exception{
-		this.Searchcommmunity(communityName);
+		this.Searchcommmunity(communityName+getDateInDDMMMYYYY());
 		this.viewCommunityDetails();
-		
 		clickElementByJavaScript(btnReject);
 		waitForElementToPresent(this.rejectReason); 
 		type(this.rejectReason, rejectReason,"Reject Reason");
@@ -105,7 +104,7 @@ public class PendingCommunitiesPage extends BasePage{
 	}
 	
 	public void approveCommunity(String communityName ) throws Exception{
-		this.Searchcommmunity(communityName+" "+getDateInDDMMMYYYY());
+		this.Searchcommmunity(communityName+getDateInDDMMMYYYY());
 		this.viewCommunityDetails();
 		clickElementByJavaScript(btnApprove);	
 		waitForElementToPresent(this.ApproveYesProceed);

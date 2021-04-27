@@ -84,8 +84,8 @@ public class ManageGroupsPage extends BasePage{
 	
 	
 	public Create_UpdateGroupPage clickOnCreateBtn(){
-		scrollToElement(Createbtn);
-		click(Createbtn," Create Btn");
+		//scrollToElement(Createbtn);
+			click(Createbtn," Create Btn");
 		return (Create_UpdateGroupPage) openPage(Create_UpdateGroupPage.class);
 //		new Create_UpdateGroupPage(driver, );
 		

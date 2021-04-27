@@ -29,7 +29,7 @@ public class TC033_Complete_Community_Setup extends BaseTest {
 		LoginPage loginPage = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = loginPage.loginToApplication(data.get("email"), data.get("password"));
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		SelectPlanPage SelectPlanPage = MyCommunitiesPage.completeSetup(data.get("communityName")+" "+runTime);
+		SelectPlanPage SelectPlanPage = MyCommunitiesPage.completeSetup(data.get("communityName"));
 
 		SelectPlanPage.selectPaidPlan(data.get("planName"));
 

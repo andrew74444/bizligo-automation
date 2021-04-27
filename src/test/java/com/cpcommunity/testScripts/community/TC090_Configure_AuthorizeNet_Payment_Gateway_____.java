@@ -29,8 +29,7 @@ public class TC090_Configure_AuthorizeNet_Payment_Gateway_____ extends BaseTest 
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage
-				.gotoManageCommunity(data.get("communityName")+" "+runTime);
+		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
 		PaymentGatewaysPage PaymentGatewaysPage = CommunityDashboardPage.navigateToPaymentGateways();
 		SetupAuthorizePage SetupAuthorizePage = null;
 		

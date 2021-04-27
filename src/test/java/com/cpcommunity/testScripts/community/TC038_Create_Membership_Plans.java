@@ -33,7 +33,7 @@ public class TC038_Create_Membership_Plans extends BaseTest {
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("community")+" "+runTime);
+		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("community"));
 		PlansPage PlansPage = CommunityDashboardPage.navigateToMembershipPlans();
 		PlansPage.createMembershipPlan(data.get("name"), data.get("price"), data.get("duration"), data.get("durationType"), data.get("description"));
 		

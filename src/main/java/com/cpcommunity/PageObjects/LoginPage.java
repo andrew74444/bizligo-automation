@@ -19,10 +19,10 @@ public class LoginPage extends BasePage {
 
 	}
 
-	@FindBy(xpath = "//*[@id='header']")
+	@FindBy(xpath = "//*[@id='global-nav']")
 	WebElement pageheader;
 
-	@FindBy(xpath = "//*[@name='Email']")
+	@FindBy(xpath = "(//*[@name='Email'])[1]")
 	WebElement emailAddress;
 
 	@FindBy(xpath = "//input[@name='Password']")

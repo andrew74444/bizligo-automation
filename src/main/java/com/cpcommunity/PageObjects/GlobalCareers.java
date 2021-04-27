@@ -24,7 +24,7 @@ import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
  */
 public class GlobalCareers extends BasePage {
 
-	@FindBy(xpath = "//*[@id='header']")
+	@FindBy(xpath = "//*[@id='global-nav']")
 	WebElement pageheader;
 	@Override
 	protected  void getPageScreenSot() {

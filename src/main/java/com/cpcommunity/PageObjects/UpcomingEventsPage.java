@@ -17,7 +17,7 @@ import org.apache.log4j.Logger;
 
 public class UpcomingEventsPage extends BasePage{
 	
-	@FindBy(xpath = "//*[@id='header']")
+	@FindBy(xpath = "//*[@id='global-nav']")
 	WebElement pageheader;
 	@Override
 	protected  void getPageScreenSot() {	

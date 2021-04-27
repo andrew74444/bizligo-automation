@@ -18,6 +18,9 @@ public class HomePage extends BasePage {
 
 	@FindBy(xpath = "//a[contains(.,'Login')]")
 	WebElement LOGINBtn;
+	
+	@FindBy(xpath = "(//*[contains(text(),'advertise your business')])[1]")
+	WebElement Business;
 
 	@FindBy(xpath = "//*[contains(text(),'building communities')]")
 	WebElement buildingcommunities;
@@ -32,10 +35,16 @@ public class HomePage extends BasePage {
 	@FindBy(xpath = "//span[contains(.,'Events')]")
 	WebElement Events;
 
-	@FindBy(xpath = "//*[@id='navbar']//*[contains(text(),'Home')]")
+	
+	
+	@FindBy(xpath = "//*[@id='myNavbar']//*[contains (text(),'Home')]")
 	WebElement home;
+	
 
-	@FindBy(xpath = "//*[@id='header']")
+	
+	
+
+	@FindBy(xpath = "//*[@id='global-nav']")
 	WebElement pageheader;
 	@Override
 	protected  void getPageScreenSot() {
@@ -48,7 +57,7 @@ public class HomePage extends BasePage {
 
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
-		
+
 		return ExpectedConditions.visibilityOf(home);
 	}
 
@@ -72,26 +81,21 @@ public class HomePage extends BasePage {
 		
 		if(tenantType.equalsIgnoreCase("B2B")) {
 			
-			Markup m = MarkupHelper.createLabel("<b>" + "<font color=" + "White>" + "https://multi1.ezysubscribe.com/" + "</font>" + "</b>", ExtentColor.GREEN);
+			Markup m = MarkupHelper.createLabel("<b>" + "<font color=" + "White>" + "https://tenant1.bizligotest.com/"+ "</font>" + "</b>", ExtentColor.GREEN);
 			ExtentListeners2.testReport.get().info(m);
 			
-			DriverManager.getDriver().navigate().to("https://multi1.ezysubscribe.com/");
+			DriverManager.getDriver().navigate().to("https://tenant1.bizligotest.com/");
 		}
 		else if(tenantType.equalsIgnoreCase("B2C")) {
 			
 			
-			Markup m = MarkupHelper.createLabel("<b>" + "<font color=" + "White>" + "https://multi2.ezysubscribe.com/" + "</font>" + "</b>", ExtentColor.GREEN);
+			Markup m = MarkupHelper.createLabel("<b>" + "<font color=" + "White>" + "https://tenant2.bizligotest.com/"+ "</font>" + "</b>", ExtentColor.GREEN);
 			ExtentListeners2.testReport.get().info(m);
 			
 			
-			DriverManager.getDriver().navigate().to("https://multi2.ezysubscribe.com/");
+			DriverManager.getDriver().navigate().to("https://tenant2.bizligotest.com/");
 			
-		}
-		
-
-		
-		
-		
+		}	
 		
 		return (HomePage) openPage(HomePage.class);
 	}
@@ -99,7 +103,7 @@ public class HomePage extends BasePage {
 	public LoginPage clickOnLOGINBtn() throws Exception {
 		
 		waitForElementToPresent(LOGINBtn);
-		Thread.sleep(1000);
+		Thread.sleep(8000);
 		click(LOGINBtn, "LOGIN");
 		return (LoginPage) openPage(LoginPage.class);
 		// new LoginPage(driver, );

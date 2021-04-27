@@ -28,7 +28,7 @@ public class TC141_Create_Free_Event extends BaseTest {
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage myCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage communityDashboardPage = myCommunitiesPage.gotoManageCommunity(data.get("communityName")+" "+runTime);
+		CommunityDashboardPage communityDashboardPage = myCommunitiesPage.gotoManageCommunity(data.get("communityName"));
 		CommunityEventsPage CommunityEvents = communityDashboardPage.navigateToEvents();
 		CreateOrEditEvent CreateOrEditEvent = CommunityEvents.NewEvent();
 		CreateOrEditEvent.createEvent(data);

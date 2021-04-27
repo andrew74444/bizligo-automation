@@ -18,7 +18,7 @@ import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
 
 public class MyProfilePage extends BasePage {
 
-	@FindBy(xpath = "//*[@id='header']")
+	@FindBy(xpath = "//*[@id='global-nav']")
 	WebElement pageheader;
 
 	@Override
