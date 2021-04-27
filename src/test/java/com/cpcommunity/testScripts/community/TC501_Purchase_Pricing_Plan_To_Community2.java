@@ -137,7 +137,7 @@ public class TC501_Purchase_Pricing_Plan_To_Community2 extends BaseTest {
 		ManageGroupsPage ManageGroupsPage = communityDashboardPage.navigateToManageGroupsPage();
 		Create_UpdateGroupPage Create_UpdateGroupPage = ManageGroupsPage.clickOnCreateBtn();
 		Create_UpdateGroupPage.createGroup(data.get("groupName"), data.get("groupDescription"), data.get("city"),
-				data.get("state"), data.get("groupCategory"), data.get("groupType"), data.get("logoImagePath"));
+				data.get("state"), data.get("groupCategory"), data.get("groupType"));
 		// Add Create Ad method
 		home = communityDashboardPage.logout();
 		loginPage = home.clickOnLOGINBtn();

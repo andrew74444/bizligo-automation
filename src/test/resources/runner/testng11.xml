@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite" thread-count="5" parallel="classes">
-	
+<suite name="Suite" thread-count="5" >
+
 	<listeners>
 		<listener		
 			class-name="com.cpcommunity.ExtentListeners.ExtentListeners"></listener>
@@ -13,13 +13,15 @@
 
 <!-- 167 -->
 	
-	<test name="Test1" preserve-order="true">
-		<classes>
-		
-			<class name="com.cpcommunity.testScripts.loginPage.TC001_Verify_User_Able_Login_With_Valid_Credentials" />
-			
-		</classes>
-	</test>
+<test name="Test1" preserve-order="true">  <!--SignUp-->
+<classes>
+<class name="com.cpcommunity.testScripts.Member_B2B_SignUp.TC230_Register_With_New_Organization"/>
+<class name="com.cpcommunity.testScripts.Member_B2B_SignUp.TC231_Register_With_Existing_Organization"/>
+<class name="com.cpcommunity.testScripts.Member_B2B_SignUp.TC233_Verify_TA_Able_To_Created_MembershipPlan"/>
+<class name="com.cpcommunity.testScripts.Member_B2B_SignUp.TC234_Verify_Member_Able_To_Signup_For_MembershipPlan_Disabled"/>
+
+</classes>
+</test>
 
 	
 
