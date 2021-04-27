@@ -36,7 +36,7 @@ public class TC127_Zoom_Meeting_Configuration extends BaseTest {
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		DriverManager.getDriver().manage().window().maximize();
-		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName")+" "+runTime);
+		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
 		MeetingAccountsPage MeetingAccountsPage = CommunityDashboardPage.navigateToMeetingAccounts();
 		MeetingAccountsPage.configureZoom(data.get("APIKey"), data.get("APISecret"), data.get("EmailID"));
 		

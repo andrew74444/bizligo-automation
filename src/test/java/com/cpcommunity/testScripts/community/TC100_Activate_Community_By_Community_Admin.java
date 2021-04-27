@@ -18,11 +18,11 @@ public class TC100_Activate_Community_By_Community_Admin extends BaseTest {
 		
 	
 	
-	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
+	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP",priority=1)
 	public void TC099(Hashtable<String,String> data) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC099", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC100", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
@@ -32,11 +32,8 @@ public class TC100_Activate_Community_By_Community_Admin extends BaseTest {
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		MyCommunitiesPage.activateCommunity(data.get("communityName")+" "+runTime);
-//		GlobalCommunitesPage globalCommunitesPage=EcoSystemPage.goToGlobalCommunities();
-		CommunityDetailsPage communityDetailsPage= MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
-		communityDetailsPage.verifyNoEvents();
-		communityDetailsPage.VerifyNoGroups();
+		MyCommunitiesPage.activateCommunity(data.get("communityName"));
+
 		
 	}
 
