@@ -196,7 +196,7 @@ public class CommunityDetailsPage extends BasePage {
 	@FindBy(xpath = "//*[@id='btnInvites']")
 	WebElement invitebtn;
 
-	@FindBy(xpath = "//*[@id='navbar']//*[contains(text(),'Events')]")
+	@FindBy(xpath = "//li/a/span[contains(text(),'Events')]")
 	WebElement eventsMenu;
 
 	@FindBy(xpath = "//*[@ng-bind='appData.jsResourcesErrorHandler.Community.ThereArentAnyEvents']")
@@ -208,7 +208,7 @@ public class CommunityDetailsPage extends BasePage {
 	@FindBy(xpath = "//*[@id='eventsController']//button[contains(text(),'Search')]")
 	WebElement eventsSearchButton;
 
-	@FindBy(xpath = "//*[@class='top-strip']/..")
+	@FindBy(xpath = "//*[@class='top-header2 top-strip']/..")
 	WebElement header;
 
 	@FindBy(xpath = "//*[@class='ads-cont']")
@@ -248,7 +248,7 @@ public class CommunityDetailsPage extends BasePage {
 	protected ExpectedCondition getPageLoadCondition() {
 
 		scrollUpVertically();
-		return ExpectedConditions.visibilityOf(eventsMenu);
+		return ExpectedConditions.visibilityOf(Groups);
 	}
 
 	public EditCommunityPage managecommunity() throws InterruptedException {

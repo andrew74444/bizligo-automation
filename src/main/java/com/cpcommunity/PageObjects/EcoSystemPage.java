@@ -19,10 +19,10 @@ public class EcoSystemPage extends BasePage {
 	WebElement myEcosystemInMenu;
 	
 	
-	@FindBy(xpath = "//*[@id='header']")
+	@FindBy(xpath = "//*[@id='global-nav']")
 	WebElement pageheader;
 
-	@FindBy(xpath = "//*[@id='navbar']//*[contains(text(),'Global Communities')]")
+	@FindBy(xpath = "(//*[contains(text(),'Global Communities')])[2]")
 	WebElement globalCommunities;
 
 	@FindBy(xpath = "//span[@title='Toggle dropdown menu']")
@@ -76,7 +76,7 @@ public class EcoSystemPage extends BasePage {
 	@FindBy(xpath="//a[contains(text(),'Past Events')]")
 	WebElement PastEvents;
 	
-	@FindBy(xpath="//a[contains(text(),'Global Careers')]")
+	@FindBy(xpath="//a[contains(text(),'Careers')]")
 	WebElement GlobalCareers;
 	
 	@FindBy(xpath = "//*[contains(text(),'No matches right')]")

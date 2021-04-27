@@ -72,10 +72,10 @@ public class Create_UpdateGroupPage extends BasePage {
 	//
 	// return (ZohoCRMPage) openPage(ZohoCRMPage.class);
 
-	public ManageGroupsPage createGroup(String name, String Description, String City, String State,
-			String GroupCategory, String GroupType, String LogoImagePath ) throws Exception {
-		name = name+" "+getDateInDDMMMYYYY();
-		this.fillGroupDetails(name, Description, City, State, GroupType, LogoImagePath);
+	public ManageGroupsPage createGroup(String name, String Description, String City, String State, String CategoryName,
+			String GroupCategory) throws Exception {
+		name = name+getDateInDDMMMYYYY();
+		this.fillGroupDetails(name, Description, City, State, CategoryName, GroupCategory);
 		waitForElementToPresent(Create);
 		scrollToElement(Create);
 		click(Create, "Create");

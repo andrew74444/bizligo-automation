@@ -25,7 +25,7 @@ public class GlobalCommunitesPage extends BasePage {
 		return ExpectedConditions.visibilityOf(CreateCommunityBtn);
 	}
 
-	@FindBy(xpath = "//*[@id='header']")
+	@FindBy(xpath = "//*[@id='global-nav']")
 	WebElement pageheader;
 
 	@Override
@@ -271,7 +271,7 @@ public class GlobalCommunitesPage extends BasePage {
 	}
 
 	public boolean rejectCommunity(String communityName) throws Exception {
-		communityName = communityName+" "+getDateInDDMMMYYYY();
+		communityName = communityName+getDateInDDMMMYYYY();
 		this.searchCommunity(communityName);
 		click(rejectBtn, "reject Btn");
 		waitForElementToPresent(YesProceed);
@@ -306,7 +306,7 @@ public class GlobalCommunitesPage extends BasePage {
 	}
 
 	public boolean acceptCommunity(String communityName) throws Exception {
-		communityName = communityName+" "+getDateInDDMMMYYYY();
+		communityName = communityName+getDateInDDMMMYYYY();
 		this.searchCommunity(communityName);
 		click(acceptBtn, "Accept Btn");
 		waitForElementToPresent(YesProceed);
