@@ -34,7 +34,7 @@ public class TC046_Member_Accept_Community_Request_from_My_Communities extends B
 		EcoSystemPage EcoSystemPage = loginPage.loginToApplication(data.get("email2"), data.get("password"));
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		MyCommunitiesPage.acceptcommunity(data.get("communityName")+" "+runTime);
+		MyCommunitiesPage.acceptcommunity(data.get("communityName"));
 		
 		//Assert.fail("Failing the login test");
 	}

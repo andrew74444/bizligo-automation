@@ -33,7 +33,7 @@ public class TC043_Member_Reject_Community_Request_From_Global_Community extends
 //		logInfo("Username entered as "+getHarley()+" and Password entered as "+getPassword());
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email4"),data.get("password"));
 		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
-		GlobalCommunitesPage.rejectCommunity(data.get("communityName")+" "+runTime);
+		GlobalCommunitesPage.rejectCommunity(data.get("communityName"));
 		
 		//Assert.fail("Failing the login test");
 	}

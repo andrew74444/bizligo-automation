@@ -32,7 +32,7 @@ public class TC042_Member_Reject_community_Request_from_Community_details_page e
 //		logInfo("Username entered as "+getElizabeth()+" and Password entered as "+getPassword());
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email6"),data.get("password"));
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
+		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		CommunityDetailsPage.rejectCommunityRequest();
 		
 		//Assert.fail("Failing the login test");

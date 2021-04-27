@@ -32,7 +32,7 @@ public class TC045_Member_Accept_Community_Request_From_Global_Community extends
 		LoginPage loginPage = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = loginPage.loginToApplication(data.get("email1"),data.get("password"));
 		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
-		GlobalCommunitesPage.acceptCommunity(data.get("communityName")+" "+runTime);
+		GlobalCommunitesPage.acceptCommunity(data.get("communityName"));
 		
 		//Assert.fail("Failing the login test");
 	}
