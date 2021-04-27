@@ -61,7 +61,7 @@ public class SignupPage extends BasePage {
 	@FindBy(xpath = "//*[contains(text(),'Save & Continue ')]")
 	WebElement saveAndContinue;
 
-	@FindBy(xpath = "//*[@id='header']")
+	@FindBy(xpath = "//*[@id='global-nav']")
 	WebElement pageheader;
 
 	@FindBy(xpath = "//*[contains(text(),'Email address already exists. Please enter a new Email address')]")

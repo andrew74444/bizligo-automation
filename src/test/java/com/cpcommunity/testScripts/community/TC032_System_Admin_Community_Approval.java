@@ -31,7 +31,7 @@ public class TC032_System_Admin_Community_Approval extends BaseTest {
 		LoginPage login = home.clickOnLOGINBtn();	
 		SystemAdminDashboardPage Dashboard_Page = login.SystemAdminloginToApplication(data.get("email"), data.get("password"));
 		PendingCommunitiesPage PendingCommunitiesPage = Dashboard_Page.naviagteToPendingCommunities();
-		PendingCommunitiesPage.approveCommunity(data.get("communityName")+" "+runTime);
+		PendingCommunitiesPage.approveCommunity(data.get("communityName"));
 //		Assert.fail("Failing the login test");
 	}
 

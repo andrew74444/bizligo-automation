@@ -14,10 +14,13 @@ public class SystemAdminDashboardPage extends BasePage {
 		aShot();
 	}
 
-	@FindBy(xpath = "//h3[contains(text(),'Admin Dashboard')]")
+	@FindBy(xpath = "//*[@id='global-nav']")
 	WebElement SystemAdminDashboardHeader;
 
-	@FindBy(xpath = "(//*[@class='fa fa-chevron-down'])[2]")
+	//@FindBy(xpath = "(//*[@class='fa fa-chevron-down'])[2]")
+	//WebElement CommunitiesNavSideMenu;
+	
+	@FindBy(xpath = "//*[@id='sidebar-menu']/div/ul/li[5]/a[1]")
 	WebElement CommunitiesNavSideMenu;
 
 	@FindBy(xpath = "//a[@title='Pending Communities']")
@@ -26,7 +29,7 @@ public class SystemAdminDashboardPage extends BasePage {
 	@FindBy(xpath = "//a[contains(text(),'Pricing Plans')]")
 	WebElement PricingPlans;
 
-	@FindBy(xpath = "")
+	@FindBy(xpath = "//*[@id='sidebar-menu']/div/ul/li[5]/a[1]")
 	WebElement communities;
 
 	@FindBy(xpath = "//*[text()='Manage Communities']")

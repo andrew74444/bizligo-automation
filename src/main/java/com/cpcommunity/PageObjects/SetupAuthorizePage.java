@@ -90,9 +90,9 @@ public class SetupAuthorizePage extends BasePage{
 		
 		 this.SelectCheckBox();
 		 txtAPILoginID.clear();
-		 type(txtAPILoginID, "5C7yQ3NqTGR", "txtAPILoginID");
+		 type(txtAPILoginID, "3u9A3Hx6Qwq", "txtAPILoginID");
 		 txtTransactionKey.clear();
-		 type(txtTransactionKey, "9Ph64P5qS675dSsV", "txtTransactionKey");
+		 type(txtTransactionKey, "9B5eQP236vdWe85p", "txtTransactionKey");
 		 txtContent.clear();
 		 type(txtContent, "Simon", "txtContent");
 		 Thread.sleep(500);
