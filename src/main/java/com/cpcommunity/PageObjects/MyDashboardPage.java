@@ -19,7 +19,7 @@ import com.uiFramework.pamTen.cpcommunity.helper.calendar.DateManager;
 
 public class MyDashboardPage extends BasePage{
 	
-	@FindBy(xpath = "//*[@id='header']")
+	@FindBy(xpath = "//*[@id='global-nav']")
 	WebElement pageheader;
 	@Override
 	protected  void getPageScreenSot() {

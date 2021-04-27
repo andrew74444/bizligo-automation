@@ -20,7 +20,7 @@ import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
 
 public class MyCommunitiesPage extends BasePage {
 
-	@FindBy(xpath = "//*[@id='header']")
+	@FindBy(xpath = "//*[@id='global-nav']")
 	WebElement pageheader;
 
 	@Override
@@ -156,7 +156,7 @@ public class MyCommunitiesPage extends BasePage {
 	}
 
 	public SelectPlanPage completeSetup(String communityName) throws Exception {
-		this.searchCommunity(communityName+" "+getDateInDDMMMYYYY());
+		this.searchCommunity(communityName+getDateInDDMMMYYYY());
 		click(completeSetup, "complete Set up Community");
 		return (SelectPlanPage) openPage(SelectPlanPage.class);
 	}// button
@@ -205,7 +205,7 @@ public class MyCommunitiesPage extends BasePage {
 	}
 
 	public void activateCommunity(String communityName) throws Exception {
-		this.searchCommunity(communityName+" "+getDateInDDMMMYYYY());
+		this.searchCommunity(communityName+getDateInDDMMMYYYY());
 		click(Activate,"Activate");
 		picture();
 		waitForElementToPresent(YesProceed);
@@ -250,7 +250,7 @@ public class MyCommunitiesPage extends BasePage {
 	}
 
 	public CommunityDetailsPage navigateToCommunityDetailsPage(String communityName) throws Exception {
-		communityName = communityName+" "+getDateInDDMMMYYYY();
+		communityName = communityName+getDateInDDMMMYYYY();
 		this.searchCommunity(communityName);
 		WebElement ele = driver.findElement(By.xpath("//a[@tooltip='" + communityName + "']"));
 		click(ele, communityName);
@@ -283,7 +283,7 @@ public class MyCommunitiesPage extends BasePage {
 
 	public boolean cancelReviewCommunity(String CommunityName) throws Exception {
 
-		this.searchCommunity(CommunityName+" "+getDateInDDMMMYYYY());
+		this.searchCommunity(CommunityName+getDateInDDMMMYYYY());
 		Zero.isDisplayed();
 		click(Cancel,"Cancel");
 		waitForElementToPresent(YesProceed);
@@ -314,7 +314,7 @@ public class MyCommunitiesPage extends BasePage {
 
 	public boolean rejectcommunity(String CommunityName) throws Exception {
 
-		this.searchCommunity(CommunityName+" "+getDateInDDMMMYYYY());
+		this.searchCommunity(CommunityName+getDateInDDMMMYYYY());
 		click(RejectBtn,"RejectBtn");
 		waitForElementToPresent(YesProceed);
 		click(YesProceed,"YesProceed");
@@ -333,7 +333,7 @@ public class MyCommunitiesPage extends BasePage {
 	}
 
 	public void acceptcommunity(String CommunityName) throws Exception {
-		this.searchCommunity(CommunityName+" "+getDateInDDMMMYYYY());
+		this.searchCommunity(CommunityName+getDateInDDMMMYYYY());
 
 		click(AcceptBtn,"");
 		waitForElementToPresent(YesProceed);
@@ -386,7 +386,7 @@ public class MyCommunitiesPage extends BasePage {
 
 	public CommunityDashboardPage gotoManageCommunity(String communityName) throws Exception {
 
-		this.searchCommunity(communityName+" "+getDateInDDMMMYYYY());
+		this.searchCommunity(communityName+getDateInDDMMMYYYY());
 		click(MANAGEbtn, "Manage");
 		return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
 		// new CommunityDashboardPage(driver, );
@@ -399,7 +399,7 @@ public class MyCommunitiesPage extends BasePage {
 		// new CommunityDashboardPage(driver, );
 	}
 	public void verifyWaitForReviewIsDisplayed(String communityName) throws Exception {
-		this.searchCommunity(communityName+" "+getDateInDDMMMYYYY());
+		this.searchCommunity(communityName+getDateInDDMMMYYYY());
 		waitingForReview.isDisplayed();		
 	}
 

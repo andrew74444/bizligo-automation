@@ -8,7 +8,7 @@ import org.testng.asserts.SoftAssert;
 
 public class PaymentReceipt extends BasePage {
 
-	@FindBy(xpath = "//*[@id='header']")
+	@FindBy(xpath = "//*[@id='global-nav']")
 	WebElement pageheader;
 	@Override
 	protected  void getPageScreenSot() {
