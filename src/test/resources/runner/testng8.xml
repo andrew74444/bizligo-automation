@@ -13,6 +13,7 @@
 	<test name="Test1" preserve-order="true">
 		<classes>
 			<class name="com.cpcommunity.testScripts.community.TC031_Create_community_From_Global_Communities_page" />
+			<class name="com.cpcommunity.testScripts.community.TC032_System_Admin_Community_Approval" />
 			
 						
 		</classes>
