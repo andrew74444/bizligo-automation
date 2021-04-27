@@ -103,6 +103,8 @@ public abstract class BasePage<T> {
 		// WebDriverWait wait = new WebDriverWait(driver, LOAD_TIMEOUT);
 	log.info("waiting for "+ pageLoadCondition);
 		wait.until(pageLoadCondition);
+		log.info("pageLoad "+ pageLoadCondition);
+	
 
 	}
 
