@@ -1,0 +1,502 @@
+<html>
+<head>
+<title>TestNG:  Test10</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Test10</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>0/9/0</td>
+</tr><tr>
+<td>Started on:</td><td>Mon Apr 26 00:01:34 IST 2021</td>
+</tr>
+<tr><td>Total time:</td><td>27 seconds (27942 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.cpcommunity.testScripts.community.TC053_Community_Admin_Manage_Group_Members.TC053()'><b>TC053</b><br>Test class: com.cpcommunity.testScripts.community.TC053_Community_Admin_Manage_Group_Members<br>Parameters: {Test Descrption=TC053_Community_Admin_Manage_Group_Members, email1=yogesh.bhor@pamten.com, Runmode=Y, browser=chrome, communityName=KKTY, email=viswanadh.ms@gmail.com, password=B!zliG0#T@s1, groupName=Public Group, tenantType=B2B}</td>
+<td><div><pre>java.io.FileNotFoundException: D:\WorkSpace\bizligo-automation\src\test\resources\testdata\test\26 Apr 2021\ExecutionRunTime\runTime.txt (The system cannot find the path specified)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:211)
+	at java.base/java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:153)
+	at java.base/java.io.FileReader.&lt;init&gt;(FileReader.java:75)
+	at com.cpcommunity.testScripts.community.BaseTest.readInNotePadFile(BaseTest.java:382)
+	at com.cpcommunity.testScripts.community.BaseTest.openBrowser(BaseTest.java:613)
+	at com.cpcommunity.testScripts.community.TC053_Community_Admin_Manage_Group_Members.TC053(TC053_Community_Admin_Manage_Group_Members.java:26)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace465508120", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace465508120'><pre>java.io.FileNotFoundException: D:\WorkSpace\bizligo-automation\src\test\resources\testdata\test\26 Apr 2021\ExecutionRunTime\runTime.txt (The system cannot find the path specified)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:211)
+	at java.base/java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:153)
+	at java.base/java.io.FileReader.&lt;init&gt;(FileReader.java:75)
+	at com.cpcommunity.testScripts.community.BaseTest.readInNotePadFile(BaseTest.java:382)
+	at com.cpcommunity.testScripts.community.BaseTest.openBrowser(BaseTest.java:613)
+	at com.cpcommunity.testScripts.community.TC053_Community_Admin_Manage_Group_Members.TC053(TC053_Community_Admin_Manage_Group_Members.java:26)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:108)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:661)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:869)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1193)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:126)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:744)
+	at org.testng.TestRunner.run(TestRunner.java:602)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:380)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:375)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:340)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:289)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1226)
+	at org.testng.TestNG.runSuites(TestNG.java:1144)
+	at org.testng.TestNG.run(TestNG.java:1115)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>1</td>
+<td>com.cpcommunity.testScripts.community.TC053_Community_Admin_Manage_Group_Members@125290e5</td></tr>
+<tr>
+<td title='com.cpcommunity.testScripts.community.TC058_Group_Admin_Manage_Group_Members.TC058()'><b>TC058</b><br>Test class: com.cpcommunity.testScripts.community.TC058_Group_Admin_Manage_Group_Members<br>Parameters: {Test Descrption=TC058_Group_Admin_Manage_Group_Members, email1=yogesh.bhor@pamten.com, Runmode=Y, browser=chrome, communityName=KKTY, email=viswanadh.ms@gmail.com, password=B!zliG0#T@s1, groupName=Public Group, tenantType=B2B}</td>
+<td><div><pre>java.io.FileNotFoundException: D:\WorkSpace\bizligo-automation\src\test\resources\testdata\test\26 Apr 2021\ExecutionRunTime\runTime.txt (The system cannot find the path specified)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:211)
+	at java.base/java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:153)
+	at java.base/java.io.FileReader.&lt;init&gt;(FileReader.java:75)
+	at com.cpcommunity.testScripts.community.BaseTest.readInNotePadFile(BaseTest.java:382)
+	at com.cpcommunity.testScripts.community.BaseTest.openBrowser(BaseTest.java:613)
+	at com.cpcommunity.testScripts.community.TC058_Group_Admin_Manage_Group_Members.TC058(TC058_Group_Admin_Manage_Group_Members.java:27)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace356519494", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace356519494'><pre>java.io.FileNotFoundException: D:\WorkSpace\bizligo-automation\src\test\resources\testdata\test\26 Apr 2021\ExecutionRunTime\runTime.txt (The system cannot find the path specified)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:211)
+	at java.base/java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:153)
+	at java.base/java.io.FileReader.&lt;init&gt;(FileReader.java:75)
+	at com.cpcommunity.testScripts.community.BaseTest.readInNotePadFile(BaseTest.java:382)
+	at com.cpcommunity.testScripts.community.BaseTest.openBrowser(BaseTest.java:613)
+	at com.cpcommunity.testScripts.community.TC058_Group_Admin_Manage_Group_Members.TC058(TC058_Group_Admin_Manage_Group_Members.java:27)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:108)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:661)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:869)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1193)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:126)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:744)
+	at org.testng.TestRunner.run(TestRunner.java:602)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:380)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:375)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:340)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:289)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1226)
+	at org.testng.TestNG.runSuites(TestNG.java:1144)
+	at org.testng.TestNG.run(TestNG.java:1115)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>1</td>
+<td>com.cpcommunity.testScripts.community.TC058_Group_Admin_Manage_Group_Members@6fa34d52</td></tr>
+<tr>
+<td title='com.cpcommunity.testScripts.community.TC067_Join_Leave_Public_And_Join_Cance_Private_Groups_From_Community_Details.TC067()'><b>TC067</b><br>Test class: com.cpcommunity.testScripts.community.TC067_Join_Leave_Public_And_Join_Cance_Private_Groups_From_Community_Details<br>Parameters: {Test Descrption=TC067_Join_Leave_Public_And_Join_Cance_Private_Groups_From_Community_Details, Runmode=Y, browser=chrome, name2=Private group, name1=Public Group, communityName=KKTY, email=yogesh.bhor@pamten.com, password=Viswanadh@123, tenantType=B2B}</td>
+<td><div><pre>java.io.FileNotFoundException: D:\WorkSpace\bizligo-automation\src\test\resources\testdata\test\26 Apr 2021\ExecutionRunTime\runTime.txt (The system cannot find the path specified)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:211)
+	at java.base/java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:153)
+	at java.base/java.io.FileReader.&lt;init&gt;(FileReader.java:75)
+	at com.cpcommunity.testScripts.community.BaseTest.readInNotePadFile(BaseTest.java:382)
+	at com.cpcommunity.testScripts.community.BaseTest.openBrowser(BaseTest.java:613)
+	at com.cpcommunity.testScripts.community.TC067_Join_Leave_Public_And_Join_Cance_Private_Groups_From_Community_Details.TC067(TC067_Join_Leave_Public_And_Join_Cance_Private_Groups_From_Community_Details.java:25)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1247083097", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1247083097'><pre>java.io.FileNotFoundException: D:\WorkSpace\bizligo-automation\src\test\resources\testdata\test\26 Apr 2021\ExecutionRunTime\runTime.txt (The system cannot find the path specified)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:211)
+	at java.base/java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:153)
+	at java.base/java.io.FileReader.&lt;init&gt;(FileReader.java:75)
+	at com.cpcommunity.testScripts.community.BaseTest.readInNotePadFile(BaseTest.java:382)
+	at com.cpcommunity.testScripts.community.BaseTest.openBrowser(BaseTest.java:613)
+	at com.cpcommunity.testScripts.community.TC067_Join_Leave_Public_And_Join_Cance_Private_Groups_From_Community_Details.TC067(TC067_Join_Leave_Public_And_Join_Cance_Private_Groups_From_Community_Details.java:25)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:108)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:661)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:869)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1193)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:126)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:744)
+	at org.testng.TestRunner.run(TestRunner.java:602)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:380)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:375)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:340)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:289)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1226)
+	at org.testng.TestNG.runSuites(TestNG.java:1144)
+	at org.testng.TestNG.run(TestNG.java:1115)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>1</td>
+<td>com.cpcommunity.testScripts.community.TC067_Join_Leave_Public_And_Join_Cance_Private_Groups_From_Community_Details@61eaec38</td></tr>
+<tr>
+<td title='com.cpcommunity.testScripts.community.TC108_Share_Posts_in_Group.TC108()'><b>TC108</b><br>Test class: com.cpcommunity.testScripts.community.TC108_Share_Posts_in_Group<br>Parameters: {linkURL=https://www.pamten.com/, Test Descrption=TC108_Share_Posts_in_Group, postComment=Hi Nice to see you back ….. !!!!!, Runmode=Y, linkName=Pamten, postImage=\src\main\resources\configfile\ExeFiles\ChromeImage6.exe, browser=chrome, communityName=SSTVR, email=viswanadh.ms@gmail.com, postMessage=Hi…Glad to see you all again…..!!!!, password=Admin@123, postFile=\src\main\resources\configfile\ExeFiles\ChromePDF1.exe, groupName=Public Group, tenantType=B2B}</td>
+<td><div><pre>java.io.FileNotFoundException: D:\WorkSpace\bizligo-automation\src\test\resources\testdata\test\26 Apr 2021\ExecutionRunTime\runTime.txt (The system cannot find the path specified)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:211)
+	at java.base/java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:153)
+	at java.base/java.io.FileReader.&lt;init&gt;(FileReader.java:75)
+	at com.cpcommunity.testScripts.community.BaseTest.readInNotePadFile(BaseTest.java:382)
+	at com.cpcommunity.testScripts.community.BaseTest.openBrowser(BaseTest.java:613)
+	at com.cpcommunity.testScripts.community.TC108_Share_Posts_in_Group.TC108(TC108_Share_Posts_in_Group.java:25)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1548645170", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1548645170'><pre>java.io.FileNotFoundException: D:\WorkSpace\bizligo-automation\src\test\resources\testdata\test\26 Apr 2021\ExecutionRunTime\runTime.txt (The system cannot find the path specified)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:211)
+	at java.base/java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:153)
+	at java.base/java.io.FileReader.&lt;init&gt;(FileReader.java:75)
+	at com.cpcommunity.testScripts.community.BaseTest.readInNotePadFile(BaseTest.java:382)
+	at com.cpcommunity.testScripts.community.BaseTest.openBrowser(BaseTest.java:613)
+	at com.cpcommunity.testScripts.community.TC108_Share_Posts_in_Group.TC108(TC108_Share_Posts_in_Group.java:25)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:108)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:661)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:869)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1193)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:126)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:744)
+	at org.testng.TestRunner.run(TestRunner.java:602)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:380)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:375)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:340)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:289)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1226)
+	at org.testng.TestNG.runSuites(TestNG.java:1144)
+	at org.testng.TestNG.run(TestNG.java:1115)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>1</td>
+<td>com.cpcommunity.testScripts.community.TC108_Share_Posts_in_Group@57576994</td></tr>
+<tr>
+<td title='com.cpcommunity.testScripts.community.TC129_Apply_Job_Requirement_From_Community_Details_Page.TC129()'><b>TC129</b><br>Test class: com.cpcommunity.testScripts.community.TC129_Apply_Job_Requirement_From_Community_Details_Page<br>Parameters: {Test Descrption=TC129_Apply_Job_Requirement_From_Community_Details_Page, Runmode=Y, browser=chrome, OptionalMessage=Ready to join in 5 days, Resume=\src\test\resources\testImages\Files\ChromePDF1.pdf, communityName=KKTY, JobTitle=Business Analyst, email=viswanadh.ms@gmail.com, password=B!zliG0#T@s1, tenantType=B2B}</td>
+<td><div><pre>java.io.FileNotFoundException: D:\WorkSpace\bizligo-automation\src\test\resources\testdata\test\26 Apr 2021\ExecutionRunTime\runTime.txt (The system cannot find the path specified)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:211)
+	at java.base/java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:153)
+	at java.base/java.io.FileReader.&lt;init&gt;(FileReader.java:75)
+	at com.cpcommunity.testScripts.community.BaseTest.readInNotePadFile(BaseTest.java:382)
+	at com.cpcommunity.testScripts.community.BaseTest.openBrowser(BaseTest.java:613)
+	at com.cpcommunity.testScripts.community.TC129_Apply_Job_Requirement_From_Community_Details_Page.TC129(TC129_Apply_Job_Requirement_From_Community_Details_Page.java:27)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1625211542", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1625211542'><pre>java.io.FileNotFoundException: D:\WorkSpace\bizligo-automation\src\test\resources\testdata\test\26 Apr 2021\ExecutionRunTime\runTime.txt (The system cannot find the path specified)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:211)
+	at java.base/java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:153)
+	at java.base/java.io.FileReader.&lt;init&gt;(FileReader.java:75)
+	at com.cpcommunity.testScripts.community.BaseTest.readInNotePadFile(BaseTest.java:382)
+	at com.cpcommunity.testScripts.community.BaseTest.openBrowser(BaseTest.java:613)
+	at com.cpcommunity.testScripts.community.TC129_Apply_Job_Requirement_From_Community_Details_Page.TC129(TC129_Apply_Job_Requirement_From_Community_Details_Page.java:27)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:108)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:661)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:869)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1193)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:126)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:744)
+	at org.testng.TestRunner.run(TestRunner.java:602)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:380)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:375)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:340)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:289)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1226)
+	at org.testng.TestNG.runSuites(TestNG.java:1144)
+	at org.testng.TestNG.run(TestNG.java:1115)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>1</td>
+<td>com.cpcommunity.testScripts.community.TC129_Apply_Job_Requirement_From_Community_Details_Page@616ac46a</td></tr>
+<tr>
+<td title='com.cpcommunity.testScripts.community.TC130_Apply_Job_Requirement_From_Global_Careers.TC130()'><b>TC130</b><br>Test class: com.cpcommunity.testScripts.community.TC130_Apply_Job_Requirement_From_Global_Careers<br>Parameters: {Test Descrption=TC130_Apply_Job_Requirement_From_Global_Careers, Runmode=Y, browser=chrome, OptionalMessage=Ready to join in 5 days, Resume=\src\test\resources\testImages\Files\ChromePDF1.pdf, communityName=KKTY, JobTitle=Business Analyst, email=yogesh.bhor@pamten.com, password=Viswanadh@123, tenantType=B2B}</td>
+<td><div><pre>java.io.FileNotFoundException: D:\WorkSpace\bizligo-automation\src\test\resources\testdata\test\26 Apr 2021\ExecutionRunTime\runTime.txt (The system cannot find the path specified)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:211)
+	at java.base/java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:153)
+	at java.base/java.io.FileReader.&lt;init&gt;(FileReader.java:75)
+	at com.cpcommunity.testScripts.community.BaseTest.readInNotePadFile(BaseTest.java:382)
+	at com.cpcommunity.testScripts.community.BaseTest.openBrowser(BaseTest.java:613)
+	at com.cpcommunity.testScripts.community.TC130_Apply_Job_Requirement_From_Global_Careers.TC130(TC130_Apply_Job_Requirement_From_Global_Careers.java:26)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1013296540", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1013296540'><pre>java.io.FileNotFoundException: D:\WorkSpace\bizligo-automation\src\test\resources\testdata\test\26 Apr 2021\ExecutionRunTime\runTime.txt (The system cannot find the path specified)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:211)
+	at java.base/java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:153)
+	at java.base/java.io.FileReader.&lt;init&gt;(FileReader.java:75)
+	at com.cpcommunity.testScripts.community.BaseTest.readInNotePadFile(BaseTest.java:382)
+	at com.cpcommunity.testScripts.community.BaseTest.openBrowser(BaseTest.java:613)
+	at com.cpcommunity.testScripts.community.TC130_Apply_Job_Requirement_From_Global_Careers.TC130(TC130_Apply_Job_Requirement_From_Global_Careers.java:26)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:108)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:661)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:869)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1193)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:126)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:744)
+	at org.testng.TestRunner.run(TestRunner.java:602)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:380)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:375)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:340)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:289)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1226)
+	at org.testng.TestNG.runSuites(TestNG.java:1144)
+	at org.testng.TestNG.run(TestNG.java:1115)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>1</td>
+<td>com.cpcommunity.testScripts.community.TC130_Apply_Job_Requirement_From_Global_Careers@67b9b51a</td></tr>
+<tr>
+<td title='com.cpcommunity.testScripts.Event_Registrations.TC151_Paid_Event_Registration_With_Cheque_From_Event_CheckIn.TC151()'><b>TC151</b><br>Test class: com.cpcommunity.testScripts.Event_Registrations.TC151_Paid_Event_Registration_With_Cheque_From_Event_CheckIn<br>Parameters: {attendeeFirstName=Andrew, Test Descrption=TC151_Paid_Event_Registration_With_Cheque_From_Event_CheckIn, Runmode=Y, browser=chrome, eventName=Paid event -, communityName=SSTVR, email=viswanadh.ms@gmail.com, attendeLastName=Thomson, password=B!zliG0#T@s1, companyName=PamTen, tenantType=B2B, payerEmailID=viswanadh.ms@gmail.com, attendeeEmailID=viswanadh.ms@gmail.com}</td>
+<td><div><pre>java.io.FileNotFoundException: D:\WorkSpace\bizligo-automation\src\test\resources\testdata\test\26 Apr 2021\ExecutionRunTime\runTime.txt (The system cannot find the path specified)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:211)
+	at java.base/java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:153)
+	at java.base/java.io.FileReader.&lt;init&gt;(FileReader.java:75)
+	at com.cpcommunity.testScripts.community.BaseTest.readInNotePadFile(BaseTest.java:382)
+	at com.cpcommunity.testScripts.community.BaseTest.openBrowser(BaseTest.java:613)
+	at com.cpcommunity.testScripts.Event_Registrations.TC151_Paid_Event_Registration_With_Cheque_From_Event_CheckIn.TC151(TC151_Paid_Event_Registration_With_Cheque_From_Event_CheckIn.java:23)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1349873836", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1349873836'><pre>java.io.FileNotFoundException: D:\WorkSpace\bizligo-automation\src\test\resources\testdata\test\26 Apr 2021\ExecutionRunTime\runTime.txt (The system cannot find the path specified)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:211)
+	at java.base/java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:153)
+	at java.base/java.io.FileReader.&lt;init&gt;(FileReader.java:75)
+	at com.cpcommunity.testScripts.community.BaseTest.readInNotePadFile(BaseTest.java:382)
+	at com.cpcommunity.testScripts.community.BaseTest.openBrowser(BaseTest.java:613)
+	at com.cpcommunity.testScripts.Event_Registrations.TC151_Paid_Event_Registration_With_Cheque_From_Event_CheckIn.TC151(TC151_Paid_Event_Registration_With_Cheque_From_Event_CheckIn.java:23)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:108)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:661)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:869)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1193)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:126)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:744)
+	at org.testng.TestRunner.run(TestRunner.java:602)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:380)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:375)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:340)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:289)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1226)
+	at org.testng.TestNG.runSuites(TestNG.java:1144)
+	at org.testng.TestNG.run(TestNG.java:1115)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>1</td>
+<td>com.cpcommunity.testScripts.Event_Registrations.TC151_Paid_Event_Registration_With_Cheque_From_Event_CheckIn@2a225dd7</td></tr>
+<tr>
+<td title='com.cpcommunity.testScripts.community.TC179_Verify_Member_Is_Able_Update_Membership_Plan.TC179()'><b>TC179</b><br>Test class: com.cpcommunity.testScripts.community.TC179_Verify_Member_Is_Able_Update_Membership_Plan<br>Parameters: {paymentMethod=authorize, tenantType=B2B, Test Descrption=TC179_Verify_Member_Is_Able_Update_Membership_Plan, password=Admin@123, email=curatora99@gmail.com, browser=chrome, Runmode=Y, communityName=community B -}</td>
+<td><div><pre>java.io.FileNotFoundException: D:\WorkSpace\bizligo-automation\src\test\resources\testdata\test\26 Apr 2021\ExecutionRunTime\runTime.txt (The system cannot find the path specified)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:211)
+	at java.base/java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:153)
+	at java.base/java.io.FileReader.&lt;init&gt;(FileReader.java:75)
+	at com.cpcommunity.testScripts.community.BaseTest.readInNotePadFile(BaseTest.java:382)
+	at com.cpcommunity.testScripts.community.BaseTest.openBrowser(BaseTest.java:613)
+	at com.cpcommunity.testScripts.community.TC179_Verify_Member_Is_Able_Update_Membership_Plan.TC179(TC179_Verify_Member_Is_Able_Update_Membership_Plan.java:27)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2078311415", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2078311415'><pre>java.io.FileNotFoundException: D:\WorkSpace\bizligo-automation\src\test\resources\testdata\test\26 Apr 2021\ExecutionRunTime\runTime.txt (The system cannot find the path specified)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:211)
+	at java.base/java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:153)
+	at java.base/java.io.FileReader.&lt;init&gt;(FileReader.java:75)
+	at com.cpcommunity.testScripts.community.BaseTest.readInNotePadFile(BaseTest.java:382)
+	at com.cpcommunity.testScripts.community.BaseTest.openBrowser(BaseTest.java:613)
+	at com.cpcommunity.testScripts.community.TC179_Verify_Member_Is_Able_Update_Membership_Plan.TC179(TC179_Verify_Member_Is_Able_Update_Membership_Plan.java:27)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:108)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:661)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:869)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1193)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:126)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:744)
+	at org.testng.TestRunner.run(TestRunner.java:602)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:380)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:375)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:340)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:289)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1226)
+	at org.testng.TestNG.runSuites(TestNG.java:1144)
+	at org.testng.TestNG.run(TestNG.java:1115)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>1</td>
+<td>com.cpcommunity.testScripts.community.TC179_Verify_Member_Is_Able_Update_Membership_Plan@1205bd62</td></tr>
+<tr>
+<td title='com.cpcommunity.testScripts.community.TC218_Verify_TA_InActivated_Community_Is_Not_Displaying_In_The_Global_Communities_Page.TC218()'><b>TC218</b><br>Test class: com.cpcommunity.testScripts.community.TC218_Verify_TA_InActivated_Community_Is_Not_Displaying_In_The_Global_Communities_Page<br>Parameters: {tenantType=B2B, Test Descrption=TC218_Verify_TA_InActivated_Community_Is_Not_Displaying_In_The_Global_Communities_Page, password=B!zliG0#T@s1, email=viswanadh.ms@gmail.com, browser=chrome, Runmode=Y, communityName=Update - Community TA -}</td>
+<td><div><pre>java.io.FileNotFoundException: D:\WorkSpace\bizligo-automation\src\test\resources\testdata\test\26 Apr 2021\ExecutionRunTime\runTime.txt (The system cannot find the path specified)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:211)
+	at java.base/java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:153)
+	at java.base/java.io.FileReader.&lt;init&gt;(FileReader.java:75)
+	at com.cpcommunity.testScripts.community.BaseTest.readInNotePadFile(BaseTest.java:382)
+	at com.cpcommunity.testScripts.community.BaseTest.openBrowser(BaseTest.java:613)
+	at com.cpcommunity.testScripts.community.TC218_Verify_TA_InActivated_Community_Is_Not_Displaying_In_The_Global_Communities_Page.TC218(TC218_Verify_TA_InActivated_Community_Is_Not_Displaying_In_The_Global_Communities_Page.java:31)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1086730080", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1086730080'><pre>java.io.FileNotFoundException: D:\WorkSpace\bizligo-automation\src\test\resources\testdata\test\26 Apr 2021\ExecutionRunTime\runTime.txt (The system cannot find the path specified)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:211)
+	at java.base/java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:153)
+	at java.base/java.io.FileReader.&lt;init&gt;(FileReader.java:75)
+	at com.cpcommunity.testScripts.community.BaseTest.readInNotePadFile(BaseTest.java:382)
+	at com.cpcommunity.testScripts.community.BaseTest.openBrowser(BaseTest.java:613)
+	at com.cpcommunity.testScripts.community.TC218_Verify_TA_InActivated_Community_Is_Not_Displaying_In_The_Global_Communities_Page.TC218(TC218_Verify_TA_InActivated_Community_Is_Not_Displaying_In_The_Global_Communities_Page.java:31)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:108)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:661)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:869)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1193)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:126)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:744)
+	at org.testng.TestRunner.run(TestRunner.java:602)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:380)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:375)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:340)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:289)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1226)
+	at org.testng.TestNG.runSuites(TestNG.java:1144)
+	at org.testng.TestNG.run(TestNG.java:1115)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>1</td>
+<td>com.cpcommunity.testScripts.community.TC218_Verify_TA_InActivated_Community_Is_Not_Displaying_In_The_Global_Communities_Page@7ef27d7f</td></tr>
+</table><p>
+</body>
+</html>
