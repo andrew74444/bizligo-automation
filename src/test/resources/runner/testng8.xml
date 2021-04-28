@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite" thread-count="4" parallel="classes">
+<suite name="Suite" thread-count="4" >
 
 
 	<listeners>
-		<listener class-name="com.cpcommunity.ExtentListeners.ExtentListeners"></listener>
-		
-				<listener class-name="com.cpcommunity.utilities.CustomTestNGReporter" />
+		<listener		
+			class-name="com.cpcommunity.ExtentListeners.ExtentListeners"></listener>
+			<listener		
+			class-name="com.cpcommunity.ExtentListeners2.ExtentListeners2"></listener>
+		<listener
+			class-name="com.uiFramework.pamTen.cpcommunity.helper.listener.RetryListener" />
 	</listeners>
 
 
-	<test name="Test1" preserve-order="true">
-		<classes>
-			<class name="com.cpcommunity.testScripts.community.TC031_Create_community_From_Global_Communities_page" />
-			<class name="com.cpcommunity.testScripts.community.TC032_System_Admin_Community_Approval" />
-			
-						
-		</classes>
-	</test>
-
+<test name="Test1" preserve-order="true">  <!-- Edit community,Manage Members, CA Creating Membership Plans, and Invite Members -->
+<classes>
+<class name="com.cpcommunity.testScripts.community.TC239_Verify_Tagging_Member_In_Community_Post"/>
+</classes>
+</test>
 
 	
 	

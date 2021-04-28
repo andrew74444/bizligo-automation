@@ -64,7 +64,7 @@ public class AuthorizeMerchanLogin extends BasePage {
 		
 		waitForElementToPresent(username);
 		Thread.sleep(10000);
-		type(username, "Brooks2018", "user name");
+		type(username, "Brooks2018", "username");
 		type(password, "P@ssw0rd", "password");
 		// type(element, value, elementName);
 		click(LogInbtn, "LogInbtn");

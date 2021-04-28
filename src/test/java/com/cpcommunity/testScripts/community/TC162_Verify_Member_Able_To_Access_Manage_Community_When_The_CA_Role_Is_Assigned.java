@@ -28,7 +28,7 @@ public class TC162_Verify_Member_Able_To_Access_Manage_Community_When_The_CA_Rol
 
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage
-				.gotoManageCommunity(data.get("communityName") + " " + runTime);
+				.gotoManageCommunity(data.get("communityName"));
 		ManageCommunityMembersPage ManageCommunityMembersPage = CommunityDashboardPage
 				.navigateToManageCommunityMembers();
 		try {
@@ -48,10 +48,10 @@ public class TC162_Verify_Member_Able_To_Access_Manage_Community_When_The_CA_Rol
 		Thread.sleep(2000);
 		home = CommunityDashboardPage.logout();
 		login = home.clickOnLOGINBtn();
-		EcoSystemPage = login.loginToApplication(data.get("email1"), data.get("password"));
+		EcoSystemPage = login.loginToApplication(data.get("email1"), data.get("password1"));
 
 		MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		MyCommunitiesPage.gotoManageCommunity(data.get("communityName") + " " + runTime);
+		MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
 
 		// Assert.fail("Failing the login test");
 	}

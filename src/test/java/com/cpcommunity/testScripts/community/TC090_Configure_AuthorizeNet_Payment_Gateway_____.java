@@ -56,14 +56,8 @@ public class TC090_Configure_AuthorizeNet_Payment_Gateway_____ extends BaseTest 
 			PaymentConfirmation = PaymentGatewaysPage.gotoConfirmPaymentPage();
 			amount = PaymentConfirmation.getAmountPaid("TC090");
 			
-		}
-		
-		
-				
-		
-		
-		
-		
+		}	
+	
 		AuthorizeMerchanLogin AuthorizeMerchanLogin = PaymentConfirmation.gotoMerchanLoginPage();
 		String TransactionID = AuthorizeMerchanLogin.getTransactionID();
 		PaymentGatewaysPage = PaymentConfirmation.EnterTransactionDetails(amount, TransactionID);

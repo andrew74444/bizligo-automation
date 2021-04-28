@@ -32,7 +32,7 @@ public class TC160_Verify_CA_Not_Able_To_Leave_Community_From_MyCommunities_When
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage myCommunitiesPage= EcoSystemPage.goToMyCommunities();
-		myCommunitiesPage.checkProperAlertDisplayedWhenOnlyOneAdmin(data.get("communityName")+" "+runTime);
+		myCommunitiesPage.checkProperAlertDisplayedWhenOnlyOneAdmin(data.get("communityName"));
 		
 		
 		//Assert.fail("Failing the login test");

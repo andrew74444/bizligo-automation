@@ -64,10 +64,10 @@ public class TACommunitiesPage extends BasePage{
 		click(createCommunity,"create Community");
 		waitForElementToPresent(this.pricingPlan);
 		scrollToElement(this.pricingPlan);
-		pricingPlan = pricingPlan+" "+getDateInDDMMMYYYY();
+		pricingPlan = pricingPlan+getDateInDDMMMYYYY();
 		selectByVisibleText(this.pricingPlan, pricingPlan, "pricing Plan");
 		scrollToElement(showing);
-		name = name+" "+getDateInDDMMMYYYY();
+		name = name+getDateInDDMMMYYYY();
 		new CreateOrEditCommunityPage(driver).FillCommunityDetails(name, Networking, Marketing, BuildingRelationship, Branding, GrowMyBusiness, InvestInBusiness, Other, About, Category, type);
 		searchCommunity(name);
 		

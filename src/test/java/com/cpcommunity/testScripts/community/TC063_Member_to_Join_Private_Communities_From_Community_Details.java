@@ -34,7 +34,7 @@ public class TC063_Member_to_Join_Private_Communities_From_Community_Details ext
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
-		CommunityDetailsPage CommunityDetailsPage = GlobalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
+		CommunityDetailsPage CommunityDetailsPage = GlobalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		CommunityDetailsPage.joinCommunity();
 		Thread.sleep(4000);
 		home = EcoSystemPage.logout();
@@ -44,7 +44,7 @@ public class TC063_Member_to_Join_Private_Communities_From_Community_Details ext
 		EcoSystemPage = login.loginToApplication(data.get("email1"),data.get("password"));
 		
 		GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
-		CommunityDetailsPage = GlobalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
+		CommunityDetailsPage = GlobalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		CommunityDetailsPage.joinCommunity();
 		
 		

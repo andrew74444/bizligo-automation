@@ -8,7 +8,7 @@ import org.apache.log4j.Logger;
 
 public class PaymentConfirmation extends BasePage {
 
-	@FindBy(xpath = "//*[@id='header']")
+	@FindBy(xpath = "//*[@id='global-nav']")
 	WebElement pageheader;
 
 	@Override

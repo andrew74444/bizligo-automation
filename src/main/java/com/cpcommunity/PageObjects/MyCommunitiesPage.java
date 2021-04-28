@@ -175,7 +175,7 @@ public class MyCommunitiesPage extends BasePage {
 	}
 
 	public void checkProperAlertDisplayedWhenOnlyOneAdmin(String communityName) throws Exception {
-		this.searchCommunity(communityName+" "+getDateInDDMMMYYYY());
+		this.searchCommunity(communityName+getDateInDDMMMYYYY());
 		click(LeaveBtn, "leave");
 		takeScreenshotByShutterBug(LeaveBtn, "Leave Btn");
 		waitForElementToPresent(YesProceed);
@@ -393,7 +393,7 @@ public class MyCommunitiesPage extends BasePage {
 	}
 	public CommunityDashboardPage goToManageCommunity(String communityName) throws Exception {
 
-		this.searchCommunity(communityName);
+		this.searchCommunity(communityName+getDateInDDMMMYYYY());
 		click(MANAGEbtn, "Manage");
 		return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
 		// new CommunityDashboardPage(driver, );
