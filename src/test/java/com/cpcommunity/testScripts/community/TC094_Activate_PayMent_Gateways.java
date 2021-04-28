@@ -38,8 +38,8 @@ public class TC094_Activate_PayMent_Gateways extends BaseTest {
 		PaymentGatewaysPage PaymentGatewaysPage = CommunityDashboardPage.navigateToPaymentGateways();
 		PaymentGatewaysPage.activateCheque();
 		PaymentGatewaysPage.activateCash();
-		SetupPayPalPage SetupPayPalPage = PaymentGatewaysPage.navigateToActivatePayPal();
-		SetupPayPalPage.ActiavtePayPalPaymentGateway();
+		//SetupPayPalPage SetupPayPalPage = PaymentGatewaysPage.navigateToActivatePayPal();
+		//SetupPayPalPage.ActiavtePayPalPaymentGateway();
 		SetupAuthorizePage SetupAuthorizePage =PaymentGatewaysPage.navigateActivateAuthorize();
 		SetupAuthorizePage.ActiveAuthorizeGateway();
 		

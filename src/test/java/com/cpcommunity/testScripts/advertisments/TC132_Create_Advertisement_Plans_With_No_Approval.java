@@ -24,7 +24,7 @@ public class TC132_Create_Advertisement_Plans_With_No_Approval extends BaseTest 
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 				
 		MyCommunitiesPage myCommunitiesPage=EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage communityDashboardPage =myCommunitiesPage.gotoManageCommunity(data.get("communityName")+" "+runTime);
+		CommunityDashboardPage communityDashboardPage =myCommunitiesPage.gotoManageCommunity(data.get("communityName"));
 		ManageAdPlansPage manageAdPlansPage =communityDashboardPage.goToManageAdPlansPage();
 		manageAdPlansPage.createAdPlan(data.get("name1"), data.get("price"), data.get("planDetails"), data.get("duration"), data.get("durationType"), data.get("adLocation1"), data.get("adType"),data.get("approvalType"));
 		Thread.sleep(5000);

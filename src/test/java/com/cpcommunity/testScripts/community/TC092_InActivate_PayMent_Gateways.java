@@ -38,8 +38,8 @@ public class TC092_InActivate_PayMent_Gateways extends BaseTest {
 		PaymentGatewaysPage PaymentGatewaysPage = CommunityDashboardPage.navigateToPaymentGateways();
 		PaymentGatewaysPage.inActivateCheque();
 		PaymentGatewaysPage.inActivateCash();
-		SetupPayPalPage SetupPayPalPage = PaymentGatewaysPage.navigateToActivatePayPal();
-		SetupPayPalPage.inActiavtePayPalPaymentGateway();
+		//SetupPayPalPage SetupPayPalPage = PaymentGatewaysPage.navigateToActivatePayPal();
+		//SetupPayPalPage.inActiavtePayPalPaymentGateway();
 		SetupAuthorizePage SetupAuthorizePage =PaymentGatewaysPage.navigateActivateAuthorize();
 		SetupAuthorizePage.inActiveAuthorizeGateway();
 		

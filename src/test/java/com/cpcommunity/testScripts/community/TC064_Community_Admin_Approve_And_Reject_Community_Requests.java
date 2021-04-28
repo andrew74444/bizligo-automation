@@ -34,7 +34,7 @@ public class TC064_Community_Admin_Approve_And_Reject_Community_Requests extends
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName")+" "+runTime);
+		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
 		CommunityPendingRequestsPage CommunityPendingRequestsPage = CommunityDashboardPage.navigateToPendingRequests();
 		CommunityPendingRequestsPage.approveMember(data.get("email1"));
 		CommunityPendingRequestsPage.rejectMember(data.get("email2"), data.get("rejectReason"));

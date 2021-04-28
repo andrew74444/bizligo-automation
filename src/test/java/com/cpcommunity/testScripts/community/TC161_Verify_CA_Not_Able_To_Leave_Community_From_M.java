@@ -31,7 +31,7 @@ public class TC161_Verify_CA_Not_Able_To_Leave_Community_From_M extends BaseTest
 		
 		MyCommunitiesPage myCommunitiesPage= EcoSystemPage.goToMyCommunities();
 		CommunityDashboardPage communityDashboardPage =myCommunitiesPage.gotoManageCommunity(data.get("communityName")+" "+runTime);
-		communityDashboardPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
+		communityDashboardPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		EcoSystemPage.goToMyEcosystem();
 		
 		//Assert.fail("Failing the login test");

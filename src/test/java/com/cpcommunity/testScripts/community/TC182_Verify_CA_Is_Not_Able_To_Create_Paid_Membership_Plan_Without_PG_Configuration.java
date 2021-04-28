@@ -27,9 +27,8 @@ public class TC182_Verify_CA_Is_Not_Able_To_Create_Paid_Membership_Plan_Without_
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
-		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage communityDashboardPage= MyCommunitiesPage.gotoManageCommunity(data.get("communityName")+" "+runTime);
+		CommunityDashboardPage communityDashboardPage= MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
 		PlansPage plansPage = communityDashboardPage.navigateToMembershipPlans();
 		plansPage.verifyCANotAbleToCreatePaidPlanForPayMentGatewayNotConfigured(data.get("price"));
 	}

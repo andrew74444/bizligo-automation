@@ -32,7 +32,7 @@ public class TC239_Verify_Tagging_Member_In_Community_Post extends BaseTest {
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
+		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		Discussions discussions =CommunityDetailsPage.sharePosts(data.get("PostMessage"), data.get("postFile"), data.get("linkURL"), data.get("linkName"), data.get("postImage"), data.get("postComment"));
 		discussions.tagMemberInPost(data.get("postMessage"),data.get("postComment"), data.get("memberName"));
 		String d = discussions.getPostDate();

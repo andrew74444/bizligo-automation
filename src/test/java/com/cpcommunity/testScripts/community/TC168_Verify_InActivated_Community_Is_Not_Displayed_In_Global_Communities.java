@@ -30,10 +30,8 @@ public class TC168_Verify_InActivated_Community_Is_Not_Displayed_In_Global_Commu
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage loginPage = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = loginPage.loginToApplication(data.get("email"), data.get("password"));
-
-		
-		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
-		GlobalCommunitesPage.checkInActivatedCommunityIsNotDisplayed(data.get("communityName")+" "+runTime);
+        GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
+		GlobalCommunitesPage.checkInActivatedCommunityIsNotDisplayed(data.get("communityName"));
 		
 		//Assert.fail("Failing the login test");
 	}

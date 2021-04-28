@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.apache.log4j.Logger;
 
 
@@ -58,6 +59,9 @@ public class Create_UpdateGroupPage extends BasePage {
 	@FindBy(xpath = "//*[contains(text(),'Save')]")
 	WebElement Save;
 
+	@FindBy(xpath = "//select[@id='GroupTypeID']")
+	WebElement groupType;
+	
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 		 
@@ -77,8 +81,7 @@ public class Create_UpdateGroupPage extends BasePage {
 		name = name+getDateInDDMMMYYYY();
 		this.fillGroupDetails(name, Description, City, State, CategoryName, GroupCategory);
 		waitForElementToPresent(Create);
-		scrollToElement(Create);
-		click(Create, "Create");
+	    scrollToElement(Create);
 		return (ManageGroupsPage) openPage(ManageGroupsPage.class);
 		// new ManageGroupsPage(driver, );
 	}
