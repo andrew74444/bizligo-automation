@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" thread-count="5" >
+
+	<listeners>
+		<listener		
+			class-name="com.cpcommunity.ExtentListeners.ExtentListeners"></listener>
+			<listener		
+			class-name="com.cpcommunity.ExtentListeners2.ExtentListeners2"></listener>
+		<listener
+			class-name="com.uiFramework.pamTen.cpcommunity.helper.listener.RetryListener" />
+	</listeners>
+
+<!-- 167 -->
+	
+<test name="Test1" preserve-order="true">  <!--SignUp-->
+<classes>
+  <!-- <class name="com.cpcommunity.testScripts.Groups.TC881_Verify_Member_Cansearch_Group_MyGroupPage"/>
+  <class name="com.cpcommunity.testScripts.Groups.TC882_Verify_Admin_canEdit_Group"/>-->
+   <!-- <class name="com.cpcommunity.testScripts.Groups.TC883_Verify_Number_OfMembers_And_GroupName_Is_Dispalyed"/> -->
+       <!-- <class name="com.cpcommunity.testScripts.Groups.TC880_Verify_Admin_Can_Search_Group_WithName_Status"/> 
+  
+  <class name="com.cpcommunity.testScripts.Groups.TC882_Verify_Admin_canEdit_Group"/>
+     <class name="com.cpcommunity.memberDirectoryTestCases.TC700_Verify_MemberDirectory_Page"/>
+    <class name="com.cpcommunity.memberDirectoryTestCases.TC701_Verify_Profile_Category"/>
+  <class name="com.cpcommunity.memberDirectoryTestCases.TC702_Verify_Search_By_Communities"/>
+ <class name="com.cpcommunity.memberDirectoryTestCases.TC703_Verify_MemberPendingApproval_NotDisplayed_MemberDirectory"/>
+ <class name="com.cpcommunity.memberDirectoryTestCases.TC704_Verify_TenantAdmin_CanDownload_Excel_from_MemberDirectory"/>
+   <class name="com.cpcommunity.memberDirectoryTestCases.TC705_Verify_DetailsDispalyed_MemberDir_When_All_FieldsFilled"/> -->
+  <!-- <class name="com.cpcommunity.testScripts.Endorsments.TC750_Verify_approval_pending_endorsements_not_listed_in_memberprofile"/>-->
+ <!-- <class name="com.cpcommunity.testScripts.Endorsments.TC751_Verify_rejected_endorsements_notlisted_if_rejected_by_member"/> -->
+ <!--<class name="com.cpcommunity.testScripts.Endorsments.TC752_Verify_endorsements_listed_if_accepted_by_member"/>  -->
+  <!--  <class name="com.cpcommunity.testScripts.manageCampaign.TC800_Verify_errorMsg_when_sent_without_recipientDetails"/> --> 
+  <!--  <class name="com.cpcommunity.testScripts.manageCampaign.TC806_Verify_emails_canbe_dispatched_at_particular_time"/> --> 
+  <class name="com.cpcommunity.testScripts.manageCampaign.TC807_Verify_only_registeredattendee_are_listed_inToField"/>  
+  
+  
+
+</classes>
+
+</test>
+
+	
+
+
+
+
+<!--<class name="com.cpcommunity.testScripts.community.TC160_Verify_CA_Not_Able_To_Leave_Community_From_MyCommunities_When_Only_One_Admin" />
+ TC180_Verify_Expired_Membership_Member_Not_Able_Access_Community-->
+</suite> <!-- Suite -->

@@ -47,7 +47,14 @@ public class MyCommunitiesPage extends BasePage {
 
 	@FindBy(xpath = "//h3[@class='MyCommunitiesHeader text-uppercase']")
 	WebElement myCommunitiesHeader;
-
+	
+	@FindBy(xpath = "//span[normalize-space()='Directory']")
+	WebElement directory;
+	
+	@FindBy(xpath = "//a[normalize-space()='Member Directory']")
+	WebElement memberDirectory;
+	
+	
 	@FindBy(xpath = "//button[contains(text(),'Search')]")
 	WebElement btnSearch;
 
@@ -148,6 +155,61 @@ public class MyCommunitiesPage extends BasePage {
 
 	@FindBy(xpath = "//*[@class='swal2-container swal2-center swal2-fade swal2-shown']/div")
 	WebElement makeAnotherAdminAlertPopUp;
+	
+	@FindBy(xpath = "//span[@title='Toggle dropdown menu']")
+	WebElement Toggledropdownmenu;
+	
+	@FindBy(xpath = "//a[contains(text(),'Logout')]")
+	WebElement Logout;
+	
+	@FindBy(xpath="//a[contains(text(),'My Profile')]")
+	WebElement myProfile;
+	
+	@FindBy(xpath="//*[@class='col-sm-12 cm-group-name']/div")
+	WebElement Bizligo1;
+	
+	@FindBy(xpath="//a[contains(text(),'Careers')]")
+	WebElement GlobalCareers;
+	
+	@FindBy(xpath="//div[@id='body']//div[@class='row']//a[1]")
+	WebElement dashboardBtn;
+	
+	public GlobalCareers goToGlobalCareers() {
+		click(GlobalCareers, "click");
+		return (GlobalCareers) openPage(GlobalCareers.class);
+		// new GlobalCareers(driver, );
+	}
+	
+
+	public MemberDirectoryPage goToMemberDirectory() throws InterruptedException {
+		click(directory,"directory");
+		Thread.sleep(3000);
+		//moveToElement(directory);
+		click(memberDirectory,"member directory");
+		//click(memberDirectory,"member directory");
+		Thread.sleep(3000);
+		return (MemberDirectoryPage) openPage(MemberDirectoryPage.class);
+		
+	}
+	
+	public HomePage logout() throws Exception {
+		click(Toggledropdownmenu,"Toggledropdownmenu");
+		Thread.sleep(5000);
+		waitForElementToPresent(Logout);
+		click(Logout,"Logout");
+		return (HomePage) openPage(HomePage.class);
+		// new HomePage(driver, );
+	}
+	
+	public MyProfilePage goToMyProfilePage() throws Exception {
+
+		click(Toggledropdownmenu,"Toggledropdownmenu");
+		Thread.sleep(1000);
+		click(myProfile,"myProfile");
+		return (MyProfilePage) openPage(MyProfilePage.class);
+	}
+		// new MyProfilePage(driver, );
+
 
 	public CreateCommunityPage clickOnCreateCommunity() {
 		click(CreateCommunityBtn,"CreateCommunityBtn");
@@ -383,10 +445,18 @@ public class MyCommunitiesPage extends BasePage {
 		// picture();
 		picture();
 	}
+	
+	public MyDashboardPage gotoMyDashboard() throws Exception {
+
+		//this.searchCommunity(communityName+getDateInDDMMMYYYY());
+		click(dashboardBtn, "Dashboard");
+		return (MyDashboardPage) openPage(MyDashboardPage.class);
+		// new CommunityDashboardPage(driver, );
+	}
 
 	public CommunityDashboardPage gotoManageCommunity(String communityName) throws Exception {
 
-		this.searchCommunity(communityName+getDateInDDMMMYYYY());
+		//this.searchCommunity(communityName+getDateInDDMMMYYYY());
 		click(MANAGEbtn, "Manage");
 		return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
 		// new CommunityDashboardPage(driver, );

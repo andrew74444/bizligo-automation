@@ -9,10 +9,14 @@ import org.apache.log4j.Logger;
 
 import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
 
+import junit.framework.Assert;
+
 
 
 public class ProfilePage extends BasePage{
-	@FindBy(xpath = "//*[@id='header']")
+	@FindBy(xpath = "//div[@id='myNavbar']")
+	
+	//*[@id='header']
 	WebElement pageheader;
 	@Override
 	protected  void getPageScreenSot() {
@@ -28,15 +32,71 @@ public class ProfilePage extends BasePage{
 	WebElement addEndorsementBtn;
 	@FindBy(xpath = "//textarea[@placeholder='Enter Content']")
 	WebElement EndorsementFiled;	
-	@FindBy(xpath = "(//button[contains(.,'Send')])[2]")
+	@FindBy(xpath = "//button[@type='submit'][normalize-space()='Send']")
 	WebElement sendBtn;	
 	@FindBy(xpath = "//li[@class='active']//a[@data-toggle='tab'][contains(text(),'Profile')]")
 	WebElement profilePage;	
 	@FindBy(xpath = "//*[@id='toast-container']/div/div[3]")
 	WebElement SuccessPopup;
 	
+	@FindBy(xpath = "//div[normalize-space()='PROFILE CATEGORY']")
+	WebElement ProfileCategory;
 	
-	public boolean IsEndoremsnetNotDisplayed(String EndormentMessage){
+	@FindBy(xpath = "//span[@title='Toggle dropdown menu']")
+	WebElement Toggledropdownmenu;
+	
+	@FindBy(xpath = "//a[normalize-space()='Logout']")
+	WebElement Logout;
+
+	@FindBy(xpath = "//span[normalize-space()='Directory']")
+	WebElement directory;
+	
+	@FindBy(xpath = "//a[normalize-space()='Member Directory']")
+	WebElement memberDirectory;
+	
+	
+	
+	public void  IsEndoremsnetNotDisplayed(String EndormentMessage){
+		
+		try {
+			if(driver.findElement(By.xpath("//div[contains(text(),'"+EndormentMessage+"')]")).isDisplayed()){
+				System.out.println("Pending Msg Is displaying");
+				Assert.assertTrue(true);
+			}
+			
+		} catch (Exception e) {
+			System.out.println("Pending message is not displaying");
+		}
+		
+	}
+		
+		public void  IsEndorsementtDisplayed(String EndormentMessage){
+			
+			try {
+				if(driver.findElement(By.xpath("//div[contains(text(),'"+EndormentMessage+"')]")).isDisplayed()){
+					System.out.println("Approved Msg Is displaying");
+					Assert.assertTrue(true);
+				}
+				
+			} catch (Exception e) {
+				System.out.println("Approved message is not displaying");
+			
+		}
+		
+	}
+
+	public MemberDirectoryPage goToMemberDirectory() throws InterruptedException {
+		click(directory,"directory");
+		Thread.sleep(3000);
+		//moveToElement(directory);
+		click(memberDirectory,"member directory");
+		//click(memberDirectory,"member directory");
+		Thread.sleep(3000);
+		return (MemberDirectoryPage) openPage(MemberDirectoryPage.class);
+		
+	}
+	
+	/*public boolean IsEndoremsnetNotDisplayed(String EndormentMessage){
 		
 		try {
 			if(driver.findElement(By.xpath("//div[contains(text(),'"+EndormentMessage+"')]")).isDisplayed()){
@@ -47,7 +107,7 @@ public class ProfilePage extends BasePage{
 			return true;
 		}
 		return true;
-	}
+	}*/
 		public boolean IsEndoremsnetDisplayed(String EndormentMessage){
 			
 			try {
@@ -61,7 +121,7 @@ public class ProfilePage extends BasePage{
 			return false;		
 		
 	}
-		public boolean AddEndorsement(String Endorsement ){
+		public void AddEndorsement(String Endorsement ){
 			
 //			log.info("Clicking on Endorsement Button...");
 //			logExtentReport("Clicking on Endorsement Button...");	
@@ -82,16 +142,26 @@ public class ProfilePage extends BasePage{
 			picture();
 			System.out.println(Message);
 			if(Message.equals("Endorsement Sent Successfully")){
-				return true;
+				Assert.assertTrue(true);;
 			}
 			else{ 
-				return false;
+				Assert.assertFalse(false);
 			}
+		}
+		public HomePage logout() throws Exception {
+			Thread.sleep(9000);
+			click(Toggledropdownmenu,"Toggledropdownmenu");
+			Thread.sleep(2000);
+			waitForElementToPresent(Logout);
+			click(Logout,"Logout");
+			return (HomePage) openPage(HomePage.class);
+			// new HomePage(driver, );
 		}
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 		// TODO Auto-generated method stub
-		return ExpectedConditions.visibilityOf(profilePage);
+		//return ExpectedConditions.visibilityOf(profilePage);
+		return ExpectedConditions.visibilityOf(ProfileCategory);
 	}
 
 	

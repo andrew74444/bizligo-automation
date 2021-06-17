@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <listeners>
+    <listener class-name="com.cpcommunity.ExtentListeners.ExtentListeners"/>
+    <listener class-name="com.cpcommunity.ExtentListeners2.ExtentListeners2"/>
+    <listener class-name="com.uiFramework.pamTen.cpcommunity.helper.listener.RetryListener"/>
+  </listeners>
+  <test name="Test1(failed)">
+    <classes>
+      <class name="com.cpcommunity.testScripts.manageCampaign.TC807_Verify_only_registeredattendee_are_listed_inToField">
+        <methods>
+          <include name="setUpFramework"/>
+          <include name="TC806" invocation-numbers="0"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testScripts.manageCampaign.TC807_Verify_only_registeredattendee_are_listed_inToField -->
+    </classes>
+  </test> <!-- Test1(failed) -->
+</suite> <!-- Failed suite [Suite] -->

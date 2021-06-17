@@ -5,9 +5,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.util.List;
+
 import org.apache.log4j.Logger;
 
 import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
+
+import junit.framework.Assert;
 
 
 
@@ -35,6 +40,12 @@ public class ManageJobsPage extends BasePage {
 
 	@FindBy(xpath = "(//select[@id='JobTypeID'])[2]")
 	WebElement JobTypeID;
+	
+	@FindBy(xpath = "//div[@class='form-group']//select[@id='JobTypeID']")
+	WebElement SearchJobTypeID;
+	
+	@FindBy(xpath = "//select[@id='IsActiveSearch']")
+	WebElement SearchByStatus;
 
 	@FindBy(xpath = "//div[@class='col-sm-8']//input[@id='Location']")
 	WebElement Location;
@@ -77,7 +88,28 @@ public class ManageJobsPage extends BasePage {
 	@FindBy(xpath = "//label[contains(text(),'In-Active')]")
 	WebElement InActive;
 
+
+	@FindBy(xpath = "//div[@class='form-group']//input[@id='Location']")
+	WebElement searchByLocation;
 	
+	@FindBy(xpath = "//tr[@class='odd']//td[contains(text(),'texas')]")
+	WebElement locationSearch;
+	
+	
+	@FindBy(xpath = "//div[@id='manageJobsTable_info']")
+	WebElement showingEntries;
+	
+	 @FindBy(xpath = "//tbody/tr/td[3]")
+	 List<WebElement> totalJobResult;
+     
+	 @FindBy(xpath = "//tbody/tr/td[4]")
+	 List<WebElement> totalJobLocationResult;
+
+	 @FindBy(xpath = "//tbody/tr/td[6]")
+	 List<WebElement> totalJobtypeIDResult;
+
+	 @FindBy(xpath = "//tbody/tr/td[12]")
+	 List<WebElement> totalJobStatusResult;
 
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
@@ -136,6 +168,76 @@ public class ManageJobsPage extends BasePage {
 		Thread.sleep(7000);
 
 	}
+	
+	public void searchByJobTitle(String JobTitle,String Location,String JobTypeID,String Status) throws InterruptedException {
+		waitForElementToPresent(this.searchWithJobTitle);
+		type(this.searchWithJobTitle, JobTitle, "JobTitle");		
+		CheckSearchResult(this.totalJobResult,JobTitle);
+		this.searchWithJobTitle.clear();
+		
+		waitForElementToPresent(this.searchByLocation);
+		type(this.searchByLocation, Location, "Location");		
+		CheckSearchResult(this.totalJobLocationResult,Location);
+		this.searchByLocation.clear();
+		
+		waitForElementToPresent(this.SearchJobTypeID);
+		selectByVisibleText(this.SearchJobTypeID,JobTypeID , "JobType");		
+		CheckSearchResult(this.totalJobtypeIDResult,JobTypeID);
+		selectByVisibleText(this.SearchJobTypeID, "Search by Job Type","Search job id ");
+		
+		waitForElementToPresent(this.SearchByStatus);
+		selectByVisibleText(this.SearchByStatus, Status, "Status");		
+		CheckSearchResult(this.totalJobStatusResult,Status);
+		selectByVisibleText(this.SearchByStatus, Status,"Status");
+		
+		/*System.out.println(totalJobResult.size());
+		for(int i =0;i<totalJobResult.size();i++) {
+			 String elementText = totalJobResult.get(i).getText(); 
+			 System.out.println("value of jobsearch:"+elementText);
+			 Assert.assertEquals(JobTitle,elementText);
+			}*/
+		
+		
+		
+		/*type(this.searchByLocation,Location,"Location");
+		click(btnSearch, "Search");
+		Thread.sleep(3000);
+		String Loc=locationSearch.getText();
+		System.out.println(Loc);
+		Assert.assertEquals(Location.toLowerCase(), Loc.toLowerCase());		
+		searchByLocation.clear();
+		Thread.sleep(2000);
+		
+		selectByVisibleText(this.SearchJobTypeID, JobTypeID,"JobTypeID");
+		click(btnSearch, "Search");
+		Thread.sleep(3000);
+		WebElement jobSearch= driver.findElement(By.xpath("//td[normalize-space()='Part Time']"));
+		String jobSear=jobSearch.getText();
+		System.out.println(jobSear);
+		System.out.println(JobTypeID);
+		Assert.assertEquals(JobTypeID, jobSear);
+		selectByVisibleText(this.SearchJobTypeID, "Search by Job Type","Search job id ");
+		Thread.sleep(3000);
+		
+		selectByVisibleText(this.SearchByStatus, Status,"Status");
+		click(btnSearch, "Search");
+		Thread.sleep(3000);
+		*/
+		
+		
+	}
+	public void CheckSearchResult(List<WebElement> totalJobResult, String controlValue) throws InterruptedException {
+		click(btnSearch, "Search");
+		Thread.sleep(5000);
+		System.out.println(totalJobResult.size());
+		for(int i =0;i<totalJobResult.size();i++) {
+			 String elementText = totalJobResult.get(i).getText(); 
+			 //System.out.println("value of jobsearch:"+elementText);
+			 Assert.assertEquals(controlValue.toLowerCase(),elementText.toLowerCase());
+			}
+		
+		
+	}
 
 	public void makeGlobalJob(String JobTitle, String makeGlobal) throws Exception {
 		type(this.searchWithJobTitle, JobTitle, "JobTitle");
@@ -158,7 +260,7 @@ public class ManageJobsPage extends BasePage {
 
 		type(this.searchWithJobTitle, JobTitle, "searchWithJobTitle");
 		click(btnSearch, "Search");
-		Thread.sleep(6000);
+		Thread.sleep(4000);
 		click(Edit, "Edit");
 		waitForElementToPresent(this.JobTitle);
 		this.JobTitle.clear();
@@ -170,34 +272,34 @@ public class ManageJobsPage extends BasePage {
 		// } catch (Exception e) {
 		//
 		// }
-		
-		selectByVisibleText(this.BillingRate, "Select Job Billing Rate","BillingRate");
-		selectByVisibleText(this.JobTypeID, "Select Job Type","JobTypeID");
-
-		driver.switchTo().frame(0);
+		/*driver.switchTo().frame(0);
 		enterTextInframe.clear();
 		driver.switchTo().defaultContent();
 
 		driver.switchTo().frame(1);
 		enterTextInframe.clear();
-		driver.switchTo().defaultContent();
+		driver.switchTo().defaultContent();*/
 
 		type(this.JobTitle, UpdateTitle, "JobTitle");
+		Thread.sleep(3000);
 		// DropDownHelper = new DropDownHelper(driver);
 		selectByVisibleText(this.BillingRate, BillingRate,"BillingRate");
 		selectByVisibleText(this.JobTypeID, JobTypeID,"JobTypeID");
+		type(this.Location, Location, "Location");
+		Thread.sleep(3000);
 
 		driver.switchTo().frame(0);
 		enterTextInframe.clear();
+		Thread.sleep(3000);
 		type(enterTextInframe, Description, "Description");
 		driver.switchTo().defaultContent();
 
 		driver.switchTo().frame(1);
 		enterTextInframe.clear();
+		Thread.sleep(3000);
 		type(enterTextInframe, AdditionalDetails, "AdditionalDetails");
 		driver.switchTo().defaultContent();
 
-		type(this.Location, Location, "Location");
 		type(this.reMarks, reMarks, "reMarks");
 		if (makeGlobal.equalsIgnoreCase("Yes")) {
 			click(this.makeGlobal, "makeGlobal");

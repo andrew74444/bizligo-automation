@@ -192,7 +192,106 @@ public class MyProfilePage extends BasePage {
 
 	@FindBy(xpath = "//a[contains(.,' Apply LinkedIn Profile')]")
 	WebElement ApplyLinkedInProfileBtn;
+	
+	@FindBy(xpath="//div[@class='progress custom-progress']")
+	WebElement progressBar;
+	
+	@FindBy(xpath="//div[@class='col-lg-3 pc-percentage ng-binding']")
+	WebElement progressBarPercent;
+	
+	
+	
+	
+	public int currentProfilePercent() {
+		String percentProgress = progressBarPercent.getText();
+		System.out.println(" Percent progress=" + percentProgress);
 
+		int perStr = percentProgress.indexOf("%");
+
+		int percentValue = Integer.parseInt(percentProgress.substring(0, perStr));
+		System.out.println("After Percent progress conversion=" + percentValue);
+		return percentValue;
+	}
+	
+	public boolean validate_Progress(int intialProgressPercent, int finalProgressPercent) {
+
+		if (intialProgressPercent < finalProgressPercent)
+
+			return true;
+
+		else
+			return false;
+
+	}
+	/*public boolean validate_ProgressDecrease(int intialProgressPercent, int finalProgressPercent) {
+
+		if (intialProgressPercent > finalProgressPercent)
+
+			return true;
+
+		else
+			return false;
+
+	}
+	public boolean validate_NoProgress(int intialProgressPercent, int finalProgressPercent) {
+
+		if (intialProgressPercent == finalProgressPercent)
+
+			return true;
+
+		else
+			return false;
+		
+
+	}
+	public void validate_progress(boolean x) {
+		Assert.assertTrue(x);
+		
+	
+	}*/
+	
+	
+	
+	/*public String compareProgressPercentage(String FName, String LName, String jtitle, String PPhone, String PExt,
+			String PSummary, String Ytube, String LUrl, String FUrl, String TUrl)
+	{
+		int initialPercentVal=currentProfilePercent();
+		this.clickOnEditButton();
+		JobTitle.clear();
+		ProfessionalSummary.clear();
+		YouTubeUrl.clear();
+		LinkedInUrl.clear();
+		FacebookUrl.clear();
+		TwitterUrl.clear();
+		FirstName.clear();
+
+		System.out.println(FName);
+		LastName.clear();
+		Phone.clear();
+		Ext.clear();
+		picture();
+//		new TestBase().captureScreen(, driver);
+		scrollIntoView(FirstName);
+		Thread.sleep(3000);
+		type(FirstName, FName, "FirstName");
+		type(LastName, LName, "LastName");
+		type(JobTitle, jtitle, "JobTitle");
+		type(ProfessionalSummary, PSummary, "ProfessionalSummary");
+		executeScript("arguments[0].value='" + PPhone + "';", Phone);
+		executeScript("arguments[0].value='" + PExt + "';", Ext);
+		type(YouTubeUrl, Ytube, "YouTubeUrl");
+		type(LinkedInUrl, LUrl, "LinkedInUrl");
+		type(FacebookUrl, FUrl, "FacebookUrl");
+		type(TwitterUrl, TUrl, "TwitterUrl");
+		click(PublicRdnBtn, "Public Radio Btn");
+		picture();
+//		new TestBase().captureScreen(, driver);
+		boolean result=this.UpdateProfile();
+		
+		
+		
+		return "";
+	}*/
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 
@@ -225,6 +324,30 @@ public class MyProfilePage extends BasePage {
 //		type("Name", this.CompanyName, CompanyName);
 
 		return true;
+	}
+	public boolean DeleteProfileDetails() throws Exception {
+
+		this.clickOnEditButton();
+		JobTitle.clear();
+		ProfessionalSummary.clear();
+		YouTubeUrl.clear();
+		LinkedInUrl.clear();
+		FacebookUrl.clear();
+		TwitterUrl.clear();
+		//FirstName.clear();
+
+		//System.out.println(FName);
+		//LastName.clear();
+		Phone.clear();
+		Ext.clear();
+		picture();
+//		new TestBase().captureScreen(, driver);
+		scrollIntoView(FirstName);
+		
+		click(PublicRdnBtn, "Public Radio Btn");
+		picture();
+//		new TestBase().captureScreen(, driver);
+		return this.UpdateProfile();
 	}
 
 	public boolean UpdateProfileDetails(String FName, String LName, String jtitle, String PPhone, String PExt,
@@ -268,7 +391,7 @@ public class MyProfilePage extends BasePage {
 		Thread.sleep(1000);
 		clickElementByJavaScript(MyProfileSaveBtn);
 		// *[contains(text(),'Save')]
-		Thread.sleep(4000);
+		Thread.sleep(6000);
 		picture();
 //		new TestBase().captureScreen(, driver);
 //		waitHelper.waitForElementToPresent(profileSuccessPopup, 100);

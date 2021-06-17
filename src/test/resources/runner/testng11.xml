@@ -16,10 +16,10 @@
 <test name="Test1" preserve-order="true">  <!--SignUp-->
 <classes>
 <class name="com.cpcommunity.testScripts.Member_B2B_SignUp.TC230_Register_With_New_Organization"/>
-<class name="com.cpcommunity.testScripts.Member_B2B_SignUp.TC231_Register_With_Existing_Organization"/>
+<!--  <class name="com.cpcommunity.testScripts.Member_B2B_SignUp.TC231_Register_With_Existing_Organization"/>
 <class name="com.cpcommunity.testScripts.Member_B2B_SignUp.TC233_Verify_TA_Able_To_Created_MembershipPlan"/>
 <class name="com.cpcommunity.testScripts.Member_B2B_SignUp.TC234_Verify_Member_Able_To_Signup_For_MembershipPlan_Disabled"/>
-
+-->
 </classes>
 </test>
 

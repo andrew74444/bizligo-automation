@@ -17,16 +17,18 @@ import org.apache.log4j.Logger;
 import com.uiFramework.pamTen.cpcommunity.helper.assertion.VerificationHelper;
 import com.uiFramework.pamTen.cpcommunity.helper.calendar.DateManager;
 
+import junit.framework.Assert;
+
 public class MyDashboardPage extends BasePage{
 	
-	@FindBy(xpath = "//*[@id='global-nav']")
+	@FindBy(xpath = "//div[@id='myNavbar']") //*[@id='global-nav']
 	WebElement pageheader;
 	@Override
 	protected  void getPageScreenSot() {
 	
 		updateClass(pageheader, "");
 		aShot();
-		updateClass(pageheader, "navbar-fixed-top");
+		//updateClass(pageheader, "navbar-fixed-top");
 	}
 		
 	@FindBy(xpath="//*[contains(text(),'Blog')]")
@@ -38,7 +40,7 @@ public class MyDashboardPage extends BasePage{
 	@FindBy(xpath = "//h2[contains(text(),'Sorry, the page or event you are looking for was n')]")
 	WebElement errorPage;
 	
-	@FindBy(xpath = "(//*[contains(text(),'My Dash')])[2]")
+	@FindBy(xpath = "//h2[normalize-space()='MY ECOSYSTEM']")
 	WebElement myDashboard;
 	
 	
@@ -66,7 +68,7 @@ public class MyDashboardPage extends BasePage{
     WebElement myEndorsements;
 	
 	//*************************************Groups****************************************
-	@FindBy (xpath = "//*[contains(text(),'My Groups')]")
+	@FindBy (xpath = "//div[normalize-space()='My Groups']")
     WebElement myGroups;
 	@FindBy(xpath="//div[@class='huge'])[2]")
 	WebElement myGroupsCount;
@@ -213,6 +215,20 @@ public class MyDashboardPage extends BasePage{
 	@FindBy(xpath = "(//*[contains(text(),'Blog')])[3]")
 	WebElement blogpageisWorking;
 	
+	@FindBy(xpath = "//a[@href='/jobs/myjobs']//div[@class='panel panel-warning']//div[@class='panel-footer']//div[@class='clearfix']")
+	WebElement myJobs;
+	
+	@FindBy(xpath = "//button[contains(.,'Search')]")
+    WebElement searchbtn;
+	
+
+	@FindBy(xpath = "//input[@placeholder='Search by Group Name']")
+    WebElement SearchGroup;
+	
+	@FindBy(xpath = "//span[normalize-space()='My Endorsements']")
+    WebElement endorsementBtn;
+	
+	
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 		
@@ -230,6 +246,32 @@ public class MyDashboardPage extends BasePage{
 //	
 //	return (ZohoCRMPage) openPage(ZohoCRMPage.class);
 	
+	@FindBy(xpath="//span[@ng-bind='GroupData.MemberCount']")
+	WebElement NumberOnCommunityDisplayCard;
+	
+	@FindBy(xpath="//span[@ng-bind='GroupData.GroupName']")
+	WebElement NameOnDisplayCard;
+	
+	@FindBy(xpath="//select[@ng-model='data.SearchData.StatusID']")
+	WebElement SearchByStatus;
+	
+	public void numberOfMembers(String Groupname) throws InterruptedException {
+		click(myGroups,"myGroups");
+		Thread.sleep(4000);
+		type( SearchGroup,Groupname,"Search by Group Name");
+    	click(searchbtn,"search btn");
+    	Thread.sleep(2000);
+    	WebElement ele = driver.findElement(By.xpath("//span[normalize-space()='"+Groupname+"']"));
+    	waitForElementToPresent(ele);
+    	String el=ele.getText();
+		//waitForElementToPresent(this.SearchByStatus);
+		if (NameOnDisplayCard.isDisplayed()){
+			System.out.println("Name Of the community="+ NameOnDisplayCard.getText());
+			System.out.println("Total Number of active members displayed="+ NumberOnCommunityDisplayCard.getText());			
+			Assert.assertTrue(true);
+		}
+	}
+	
 	public int MyGroupsCount() {		
 		   String C = myGroupsCount.getText();
 	      int TC=Integer.parseInt(C);
@@ -240,6 +282,13 @@ public class MyDashboardPage extends BasePage{
 		click(GlobalCareers,"click");
 		return (GlobalCareers) openPage(GlobalCareers.class);
 //				new GlobalCareers(driver, );
+	}
+	
+	public MyJobPage navigateToMyJobs() throws InterruptedException {
+		myJobs.click();
+		Thread.sleep(5000);
+		return (MyJobPage) openPage(MyJobPage.class);
+		
 	}
 	
 	public Messages NavigateToMyMessages(){
@@ -307,10 +356,20 @@ public class MyDashboardPage extends BasePage{
 	}
 	
 	
-	public MyGroupsPage NavigatingToMyGroups()
+	public void NavigatingToMyGroups(String Groupname) throws InterruptedException
 	{
 		click(myGroups,"myGroups");
-		return (MyGroupsPage) openPage(MyGroupsPage.class);
+		Thread.sleep(4000);
+		type( SearchGroup,Groupname,"Search by Group Name");
+    	click(searchbtn,"search btn");
+    	Thread.sleep(2000);
+    	WebElement ele = driver.findElement(By.xpath("//span[normalize-space()='"+Groupname+"']"));
+    	waitForElementToPresent(ele);
+    	String el=ele.getText();
+    	System.out.println(el);//span[contains(text(),'"+Groupname+"')]
+    	System.out.println(Groupname);
+    	Assert.assertEquals(Groupname, el);
+		//return (MyGroupsPage) openPage(MyGroupsPage.class);
 //		new MyGroupsPage(driver, );		
 	}
 	
@@ -359,6 +418,15 @@ public class MyDashboardPage extends BasePage{
 		Thread.sleep(1000);
 		click(GlobalCommunities,"Global Communities");
 		return (GlobalCommunitesPage) openPage(GlobalCommunitesPage.class);
+//		new ChangePasswordPage(driver, );
+		
+	}
+	public EndorsementPage goToMyEndorsements() throws Exception
+	{
+	
+		
+		click(endorsementBtn,"My Endorsements");
+		return (EndorsementPage) openPage(EndorsementPage.class);
 //		new ChangePasswordPage(driver, );
 		
 	}

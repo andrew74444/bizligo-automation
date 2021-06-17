@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" thread-count="5" >
+
+	<listeners>
+		<listener		
+			class-name="com.cpcommunity.ExtentListeners.ExtentListeners"></listener>
+			<listener		
+			class-name="com.cpcommunity.ExtentListeners2.ExtentListeners2"></listener>
+		<listener
+			class-name="com.uiFramework.pamTen.cpcommunity.helper.listener.RetryListener" />
+	</listeners>
+
+<!-- 167 -->
+	
+<test name="Test1" preserve-order="true">  <!--SignUp-->
+<classes>
+  <class name="com.cpcommunity.testScripts.loginPage.TC900_Verify_loginpage_validcredentials"/>
+<class name="com.cpcommunity.testScripts.loginPage.TC901_Verify_loginpage_invalidcredentials"/>
+ <class name="com.cpcommunity.testScripts.MyJobsTestCases.TC991_Verify_Admin_Can_UpdateApplication_Remarks"/>
+ <class name="com.cpcommunity.testScripts.MyJobsTestCases.TC889_Verify_CA_Download_Resume_From_ManageApplications"/> 
+   <class name="com.cpcommunity.testScripts.MyJobsTestCases.TC992_Verify_Admin_Can_SearchjobApplication_JobTitle"/>
+ <class name="com.cpcommunity.testScripts.MyJobsTestCases.TC993_Verify_User_Cannot_Reapply_To_JobsApplied_Again"/>
+  <class name="com.cpcommunity.testScripts.MyJobsTestCases.TC994_Verify_GlobalJobs_Visible_from_Globalcareers"/>
+ <class name="com.cpcommunity.testScripts.MyJobsTestCases.TC995_Verify_Admin_Can_EditJobs"/>      
+    <class name="com.cpcommunity.testScripts.MyJobsTestCases.TC996_Verify_Admin_Can_SearchJobs_From_JobTitle"/>
+         <class name="com.cpcommunity.testScripts.myprofiletestcases.TC997_Verify_Profileprogress_When_Search_fromBusinessDirectory"/> 
+   <class name="com.cpcommunity.testScripts.myprofiletestcases.TC998_Verify_Profilepage_updatedetails"/>
+       <class name="com.cpcommunity.testScripts.myprofiletestcases.TC999_Verify_Profileprogress_whenDeleteDetails"/> 
+      <class name="com.cpcommunity.testScripts.myprofiletestcases.TC010_Verify_Profilepage_Progressbar"/>         
+<class name="com.cpcommunity.testScripts.myprofiletestcases.TC015_Verify_User_Is_Able_To_Update_Profile"/>
+ <class name="com.cpcommunity.testScripts.Groups.TC880_Verify_Admin_Can_Search_Group_WithName_Status"/>
+  <class name="com.cpcommunity.testScripts.Groups.TC883_Verify_Number_OfMembers_And_GroupName_Is_Dispalyed"/>
+  <class name="com.cpcommunity.testScripts.Groups.TC881_Verify_Member_Cansearch_Group_MyGroupPage"/>
+  <class name="com.cpcommunity.testScripts.Groups.TC882_Verify_Admin_canEdit_Group"/>
+   <class name="com.cpcommunity.memberDirectoryTestCases.TC700_Verify_MemberDirectory_Page"/>
+    <class name="com.cpcommunity.memberDirectoryTestCases.TC701_Verify_Profile_Category"/>
+  <class name="com.cpcommunity.memberDirectoryTestCases.TC702_Verify_Search_By_Communities"/>
+ <class name="com.cpcommunity.memberDirectoryTestCases.TC703_Verify_MemberPendingApproval_NotDisplayed_MemberDirectory"/>
+ <class name="com.cpcommunity.memberDirectoryTestCases.TC704_Verify_TenantAdmin_CanDownload_Excel_from_MemberDirectory"/>
+   <class name="com.cpcommunity.memberDirectoryTestCases.TC705_Verify_DetailsDispalyed_MemberDir_When_All_FieldsFilled"/>
+      
+    
+
+
+</classes>
+
+</test>
+
+	
+
+
+
+
+<!--<class name="com.cpcommunity.testScripts.community.TC160_Verify_CA_Not_Able_To_Leave_Community_From_MyCommunities_When_Only_One_Admin" />
+ TC180_Verify_Expired_Membership_Member_Not_Able_Access_Community-->
+</suite> <!-- Suite -->

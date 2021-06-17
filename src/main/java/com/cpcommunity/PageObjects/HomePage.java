@@ -40,7 +40,12 @@ public class HomePage extends BasePage {
 	@FindBy(xpath = "//*[@id='myNavbar']//*[contains (text(),'Home')]")
 	WebElement home;
 	
-
+	@FindBy(xpath = "//span[normalize-space()='Directory']")
+	WebElement directory;
+	
+	@FindBy(xpath = "//a[normalize-space()='Member Directory']")
+	WebElement memberDirectory;
+	
 	
 	
 
@@ -74,6 +79,19 @@ public class HomePage extends BasePage {
 //		
 //		return (HomePage) openPage(HomePage.class);
 //	}
+	public MemberDirectoryPage goToMemberDirectory() throws InterruptedException {
+		
+		//click(directory,"directory");
+		Thread.sleep(3000);
+		moveToElement(directory);
+		click(memberDirectory,"member directory");
+		//click(memberDirectory,"member directory");
+		Thread.sleep(3000);
+		return (MemberDirectoryPage) openPage(MemberDirectoryPage.class);
+		
+	}
+	
+	
 
 	
 	

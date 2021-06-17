@@ -86,8 +86,7 @@ public class Create_UpdateGroupPage extends BasePage {
 		// new ManageGroupsPage(driver, );
 	}
 
-	public ManageGroupsPage editGroup(String Name, String Description, String City, String State, String GroupCategory,
-			String GroupType, String LogoImagePath ) throws Exception {
+	public ManageGroupsPage editGroup(String Name, String Description, String City, String State, String GroupType, String LogoImagePath ) throws Exception {
 
 		this.fillGroupDetails(Name, Description, City, State,  GroupType, LogoImagePath);
 		click(Save, "Save");
@@ -107,11 +106,11 @@ public class Create_UpdateGroupPage extends BasePage {
 		type(this.State, state, "State");
 		
 		
-		 int index = stringToInt(getSystemCurrentDate());
+		/* int index = stringToInt(getSystemCurrentDate());
 	        if(index>25) {
 	        	index = 1;
 	        }
-	    selectUsingIndex(this.GroupCategory, index,"Group Category");
+	    selectUsingIndex(this.GroupCategory, index,"Group Category");*/
 		
 		selectByVisibleText(this.GroupType, groupType,"GroupType");
 		

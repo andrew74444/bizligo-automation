@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2021-06-17T01:37:51Z" name="Suite" finished-at="2021-06-17T01:39:32Z" duration-ms="100930">
+    <groups>
+    </groups>
+    <test started-at="2021-06-17T01:37:51Z" name="Test1" finished-at="2021-06-17T01:39:32Z" duration-ms="100930">
+      <class name="com.cpcommunity.testScripts.manageCampaign.TC807_Verify_only_registeredattendee_are_listed_inToField">
+        <test-method is-config="true" signature="setUpFramework()[pri:0, instance:com.cpcommunity.testScripts.manageCampaign.TC807_Verify_only_registeredattendee_are_listed_inToField@1ebd319f]" started-at="2021-06-16T21:37:51Z" name="setUpFramework" finished-at="2021-06-16T21:37:51Z" duration-ms="39" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpFramework -->
+        <test-method signature="TC806(java.util.Hashtable)[pri:0, instance:com.cpcommunity.testScripts.manageCampaign.TC807_Verify_only_registeredattendee_are_listed_inToField@1ebd319f]" started-at="2021-06-16T21:37:53Z" name="TC806" data-provider="masterDP" finished-at="2021-06-16T21:39:31Z" duration-ms="98569" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{tenantType=B2B, Test Descrption=TC806_Verify_emails_canbe_dispatched_at_particular_time, password=John@240, email=john.adams.pt240@gmail.com, browser=chrome, Runmode=Y}]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.NullPointerException">
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException
+	at org.openqa.selenium.support.ui.Quotes.escape(Quotes.java:42)
+	at org.openqa.selenium.support.ui.Select.selectByVisibleText(Select.java:116)
+	at com.cpcommunity.PageObjects.BasePage.selectByVisibleText(BasePage.java:265)
+	at com.cpcommunity.PageObjects.ComposeCampaignPage.upcomingEvents(ComposeCampaignPage.java:163)
+	at com.cpcommunity.testScripts.manageCampaign.TC807_Verify_only_registeredattendee_are_listed_inToField.TC806(TC807_Verify_only_registeredattendee_are_listed_inToField.java:33)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:108)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:661)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:869)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1193)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:126)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:744)
+	at org.testng.TestRunner.run(TestRunner.java:602)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:380)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:375)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:340)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:289)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1226)
+	at org.testng.TestNG.runSuites(TestNG.java:1144)
+	at org.testng.TestNG.run(TestNG.java:1115)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC806 -->
+        <test-method is-config="true" signature="sendmail()[pri:0, instance:com.cpcommunity.testScripts.manageCampaign.TC807_Verify_only_registeredattendee_are_listed_inToField@1ebd319f]" started-at="2021-06-16T21:39:34Z" name="sendmail" finished-at="2021-06-16T21:39:42Z" duration-ms="8096" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- sendmail -->
+      </class> <!-- com.cpcommunity.testScripts.manageCampaign.TC807_Verify_only_registeredattendee_are_listed_inToField -->
+    </test> <!-- Test1 -->
+  </suite> <!-- Suite -->
+</testng-results>

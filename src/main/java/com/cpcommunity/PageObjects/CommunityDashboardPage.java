@@ -112,6 +112,13 @@ public class CommunityDashboardPage extends BasePage {
 	@FindBy(xpath = "//a[contains(text(),'Promo Code')]")
 	WebElement promoCode;
 	
+	@FindBy(xpath = "//a[normalize-space()='Manage Campaign']")
+	WebElement ManageCampaign;
+	
+	@FindBy(xpath = "//a[normalize-space()='Compose Campaign']")
+	WebElement composeCampaign;
+	
+	
 	
 
 	public PromoCodePage goToPromoCodePage() {
@@ -211,6 +218,16 @@ public class CommunityDashboardPage extends BasePage {
 		waitForElementToPresent(groupPendingRequest);
 		click(groupPendingRequest, "group Pending Request");
 		return (GroupsPendingRequestsPage) openPage(GroupsPendingRequestsPage.class);
+		// new GroupsPendingRequestsPage(driver);
+
+	}
+	
+	public ComposeCampaignPage NavigatetoComposeCampaignPage() {
+
+		click(ManageCampaign, "ManageCampaign");
+		waitForElementToPresent(composeCampaign);
+		click(composeCampaign, "compose campaign");
+		return (ComposeCampaignPage) openPage(ComposeCampaignPage.class);
 		// new GroupsPendingRequestsPage(driver);
 
 	}

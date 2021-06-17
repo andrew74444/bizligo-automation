@@ -101,9 +101,10 @@ public class EcoSystemPage extends BasePage {
 		return ExpectedConditions.visibilityOf(myEcosystem);
 	}
 
+	
 	public HomePage logout() throws Exception {
 		click(Toggledropdownmenu,"Toggledropdownmenu");
-		Thread.sleep(500);
+		Thread.sleep(5000);
 		waitForElementToPresent(Logout);
 		click(Logout,"Logout");
 		return (HomePage) openPage(HomePage.class);
@@ -271,13 +272,12 @@ public class EcoSystemPage extends BasePage {
 	// new PastEventsPage(driver, );
 	// }
 
-	// public EndorsementPage NaviagtingToMyEndorsements()
-	// {
-	//
-	// myEndorsements.click();
-	// return (EndorsementPage) openPage(EndorsementPage.class);
-	//// new EndorsementPage(driver, );
-	// }
+	 public EndorsementPage NaviagtingToMyEndorsements()
+	 {
+	
+	 myEndorsements.click();
+	 return (EndorsementPage) openPage(EndorsementPage.class);
+	 }
 
 	public MyAdvertisements goToMyAdvertisements() {
 		scrollToElement(myAdvertisements);

@@ -24,10 +24,10 @@ public class MyGroupsPage extends BasePage{
 	}
 	
 	
-	@FindBy(xpath = "//h3[contains(.,'My Groups')]")
+	@FindBy(xpath = "//span[contains(text(),'My Groups')]")
     WebElement myGroups;
 
-	@FindBy(xpath = "//*[@type='text']")
+	@FindBy(xpath = "//input[@placeholder='Search by Group Name']")
     WebElement SearchGroup;
     
     @FindBy(xpath = "//button[@id='CreateCommunity']")
@@ -81,6 +81,7 @@ public class MyGroupsPage extends BasePage{
     
     
     public void searchGroup(String groupName) throws Exception{
+    	System.out.println("i am inside group page");
     	SearchGroup.clear();
     	log.info(groupName);
     	type( SearchGroup, groupName,"Search by Group Name");
@@ -125,7 +126,7 @@ public class MyGroupsPage extends BasePage{
     
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
-		
+		log.info("---> MyGroupPage");
 		return ExpectedConditions.visibilityOf(myGroups);
 	}
 

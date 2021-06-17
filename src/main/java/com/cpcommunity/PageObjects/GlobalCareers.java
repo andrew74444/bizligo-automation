@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -15,6 +16,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
+
+import junit.framework.Assert;
 
 
 
@@ -46,6 +49,12 @@ public class GlobalCareers extends BasePage {
 
 	@FindBy(xpath = "(//button[contains(text(),'View and Apply')])[1]")
 	WebElement ViewandApply;
+	
+	@FindBy(xpath = "//div[@infinite-scroll='data.LoadGlobalJobsOnScroll()']//div[1]//div[1]//div[3]//button[2]")
+	WebElement AlreadyApplied;
+	
+	@FindBy(xpath = "//button[@class='apply-success nocursorPoint']")
+	WebElement AlreadyAppliedJobRequirement;
 
 	@FindBy(xpath = "//*[contains(text(),'Job Requirement Details')]")
 	WebElement JobRequirementDetails;
@@ -65,7 +74,13 @@ public class GlobalCareers extends BasePage {
 	@FindBy(xpath = "//*[contains(text(),'no results found matching your search criteria.')]")
 	WebElement noResultsFound;
 
-	
+	@FindBy(xpath = "//select[@id='JobTypeID']")
+	WebElement JobTypeID;
+
+
+	@FindBy(xpath = "//input[@placeholder='Search by Location']")
+	WebElement Location;
+
 
 	// public HomePage(WebDriver driver,ExtentTest test) throws
 	// IOException {
@@ -91,7 +106,46 @@ public class GlobalCareers extends BasePage {
 		waitForElementToPresent(noResultsFound);
 		picture();
 	}
+	
+	public void searchJobAlreadyApplied(String jobTitle,String jobType,String Location) {
+		type(SearchbyJobTitle, jobTitle, "job Title");
+		
+		selectByVisibleText(this.JobTypeID, jobType,"JobTypeID");
+		type(this.Location, Location, "Location");
+		click(Searchbtn, "Searchbtn");
+		waitForElementToPresent(CurrentJobOpenings);
+		WebElement ele = driver.findElement(By.xpath("//*[contains(text(),'" + jobTitle + "')]"));
+		waitForElementToPresent(ele);
+		picture();
+		click(AlreadyApplied, "AlreadyApplied");
+		waitForElementToPresent(JobRequirementDetails);		
+		click(AlreadyAppliedJobRequirement, "AlreadyApplied");
+		AssertionHelper.verifyText(this.AlreadyAppliedJobRequirement.getText(),"AlreadyApplied");
+		clickElementByJavaScript(AlreadyAppliedJobRequirement);
+		//JavascriptExecutor ex=(JavascriptExecutor)driver;
+		//ex.executeScript("arguments[0].click()",AlreadyAppliedJobRequirement );
+		boolean val=AlreadyAppliedJobRequirement.isSelected();
+		System.out.println(val);
+		//Assert.assertEquals(true, val);
+		//String Attribute=AlreadyAppliedJobRequirement.getAttribute("class");
+		//System.out.println(Attribute);
+		//AssertionHelper.
+	}
 
+	
+	public void searchJobGlobal(String jobTitle,String jobType,String Location) {
+		type(SearchbyJobTitle, jobTitle, "job Title");
+		
+		selectByVisibleText(this.JobTypeID, jobType,"JobTypeID");
+		type(this.Location, Location, "Location");
+		click(Searchbtn, "Searchbtn");
+		waitForElementToPresent(CurrentJobOpenings);
+		WebElement ele = driver.findElement(By.xpath("//*[contains(text(),'" + jobTitle + "')]"));
+		waitForElementToPresent(ele);
+		picture();
+	}
+	
+	
 	public void searchJob(String jobTitle) {
 		type(SearchbyJobTitle, jobTitle, "job Title");
 		click(Searchbtn, "Searchbtn");
@@ -100,7 +154,6 @@ public class GlobalCareers extends BasePage {
 		waitForElementToPresent(ele);
 		picture();
 	}
-
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 		// TODO Auto-generated method stub

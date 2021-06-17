@@ -113,6 +113,17 @@ public class LoginPage extends BasePage {
 		return (EcoSystemPage) openPage(EcoSystemPage.class);
 		// new MyDashboardPage(driver, );
 	}
+	public MyCommunitiesPage loginToApplicationMcp(String enterEmailAddress, String password) {
+		this.login(enterEmailAddress, password);
+		return (MyCommunitiesPage) openPage(MyCommunitiesPage.class);
+		// new MyDashboardPage(driver, );
+	}
+	
+	public TA_DashboardPage loginToApplicationTDP(String enterEmailAddress, String password) {
+		this.login(enterEmailAddress, password);
+		return (TA_DashboardPage) openPage(TA_DashboardPage.class);
+		// new MyDashboardPage(driver, );
+	}
 
 	public SystemAdminDashboardPage SystemAdminloginToApplication(String EmailAddress, String password) {
 		this.login(EmailAddress, password);
@@ -133,7 +144,7 @@ public class LoginPage extends BasePage {
 		waitForElementToPresent(Invalidlogin);
 		Invalidlogin.isDisplayed();
 		picture();
-		// new LoginPage(driver, );
+		
 	}
 	
 	
