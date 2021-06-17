@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" thread-count="5">
+
+
+	<listeners>
+		<listener
+			class-name="com.cpcommunity.ExtentListeners.ExtentListeners"></listener>
+		<listener
+			class-name="com.cpcommunity.ExtentListeners2.ExtentListeners2"></listener>
+		<listener
+			class-name="com.uiFramework.pamTen.cpcommunity.helper.listener.RetryListener"/>
+	</listeners>
+
+	<test name="Test99" preserve-order="true">
+	
+		<classes>
+		
+			<!--<class name="com.cpcommunity.testScripts.loginPage.TC999_Verify_Login_with_Valid_Credential" />
+			<class name="com.cpcommunity.testScripts.loginPage.TC_1000_Verify_Invalid_Login_Credential" />
+			<class name="com.cpcommunity.testScripts.loginPage.TC1001_Verify_Alert_To_Email" />
+			<class name="com.cpcommunity.testScripts.loginPage.TC1002_Organization_pendingUser_NotAble_Login" />
+			<class name="com.cpcommunity.testScripts.loginPage.TC1003_Alert_Display_for_SuspendedUser" />
+			<class name="com.cpcommunity.testScripts.loginPage.TC1004_User_Redirect_SelectPlan" />
+			<class name="com.cpcommunity.testScripts.loginPage.TC1005_LoginWithout_Credentials" />
+            <class name="com.cpcommunity.testScripts.loginPage.TC1006_LoginWithout_Password" />
+            <class name="com.cpcommunity.testScripts.loginPage.TC_1008"/>		
+			<class name="com.cpcommunity.testScripts.loginPage.TC1007_Check_Logout" />-->
+			 <!--<class name="com.cpcommunity.ProfileCompleteness.TC1012_Clear_ProfileDetails"/>
+		    <class name="com.cpcommunity.ProfileCompleteness.TC_1010_Check_Profile_CompletenessStatus_ByProviding_JobTitle"/>
+			 <class name="com.cpcommunity.ProfileCompleteness.TC1011_Check_ProgressBar_NotChange_AfterUpdating_withSame_Details"/>
+		     <class name="com.cpcommunity.ProfileCompleteness.TC1013_Verify_ProgressBar_NotDisplaying_WhenViewing_BissinessDirectory"/> 
+		     <class name="com.cpcommunity.ProfileCompleteness.TC1030_Verify_Updating_PhoneNumb_SocialMedia_NoImpact_onprofileCompleteness"/> -->
+		    <!-- <class name="com.cpcommunity.ProfileCompleteness.TC1030_Verify_Updating_PhoneNumb_SocialMedia_NoImpact_onprofileCompleteness"/>-->
+		    <!-- <class name="com.cpcommunitytestScripts.Job.TC1015_verifyJob_Displayed_GlobalCareer_ifMake_Global"/>-->
+			<!-- <class name="com.cpcommunitytestScripts.Job.TC1014_admin_canSearch_Job_with_Title_Location_Status_Type"/>-->
+			<!--<class name="com.cpcommunitytestScripts.Job.TC1016_Verify_GlobalCareerMenu_AllJob_ViewAndApply_Displaying"/>-->
+			<class name="com.cpcommunitytestScripts.Job.TC1017_admin_ableTo_searchJobApplication"/>
+		    <!-- <class name="com.cpcommunitytestScripts.Job.TC1018_CA_ableto_changeJobApplication_withRemark"/> -->
+		    <!--<class name="com.cpcommunitytestScripts.Job.TC1019_User_cannotReapply_toSameJob"/>-->
+		    <!--<class name="com.cpcommunitytestScripts.Job.TC1021_serachJob_InDashboard_ByCommunity"/>-->
+		   <!--  <class name="com.cpcommunitytestScripts.Job.TC1020_Admin_ableTo_downloadResume"/> --> 
+		    <!-- <class name="com.cpcommunity.testScripts.Groups.TC1023_Verify_CA_ableTo_Edit_Group"/> --> 
+	   	    <!-- <class name="com.cpcommunity.testScripts.Groups.TC1024_CA_canSearch_GRoup_withGroupName_inPendingRequestPage"/> -->
+		      <!-- <class name="com.cpcommunity.testScripts.Groups.TC1025_Verify_ManageGroupIcon_Display_ToGroupAdmin"/> -->
+			 <!-- <class name="com.cpcommunity.testScripts.Groups.TC1026_Verify_GroupCount_Displaying_onGroupdisplayCar"/>-->
+		     <!-- <class name="com.cpcommunity.testScripts.Groups.TC1027_Verify_Proper_LeaveErrorMessage_DisplayedTo_OnlyGroupAdmin"/>-->
+			    <!--  <class name="com.cpcommunitytestScripts.Job.TC1022_ListOf_Applied_Job_Displaying"/>-->
+			   <!-- <class name="com.cpcommunitytestScripts.Job.TC1029_Verify_admin_ableTo_Edid_Job"/>-->
+			    
+			    
+		</classes>
+	</test>
+</suite>
+	

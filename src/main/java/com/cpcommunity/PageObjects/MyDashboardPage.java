@@ -40,9 +40,7 @@ public class MyDashboardPage extends BasePage{
 	
 	@FindBy(xpath = "(//*[contains(text(),'My Dash')])[2]")
 	WebElement myDashboard;
-	
-	
-	
+		
 	@FindBy(xpath="//*[contains(text(),'My Advertisements')]")
 	WebElement myAdvertisements;
 	
@@ -212,6 +210,9 @@ public class MyDashboardPage extends BasePage{
 	
 	@FindBy(xpath = "(//*[contains(text(),'Blog')])[3]")
 	WebElement blogpageisWorking;
+	
+	@FindBy (xpath="//*[contains(text(),'My Jobs')]")
+	WebElement myJobs;
 	
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
@@ -505,11 +506,17 @@ public void blogPageWorking() throws Throwable
 //		new ConnectionsPage(driver, );
 	}
 	
+	public MyJobsPage navigateToMyJobsPage() {
+		myJobs.click();		
+		return (MyJobsPage) openPage(MyJobsPage.class);
+	}
+	
 	public void ClickOnGlobalEvents()
 	{				
 		moveToElement(globalEvents);
 //		click(globalEvents,"Global Events");		
 	}
+	
 	public UpcomingEventsPage GoToUpComingEvents()
 	{
 		
@@ -771,31 +778,6 @@ public void blogPageWorking() throws Throwable
 //		AllCommunities.click();
 //	}
 
- 
- 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	public boolean verifySuccessLogin(){
 		return new VerificationHelper(driver).isDisplayed(Toggledropdownmenu);
 	}

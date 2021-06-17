@@ -40,7 +40,7 @@ public class MonitoringMail1 {
 	public void Sendmail() {
 	
 	  final String username = "andrew74444@gmail.com";
-      final String password = "Pamten@123";
+      final String password = "Pamten@12345";
 
       Properties prop = new Properties();
 		prop.put("mail.smtp.host", "smtp.gmail.com");

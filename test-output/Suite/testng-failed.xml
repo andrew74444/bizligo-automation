@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <listeners>
+    <listener class-name="com.cpcommunity.ExtentListeners.ExtentListeners"/>
+    <listener class-name="com.cpcommunity.ExtentListeners2.ExtentListeners2"/>
+    <listener class-name="com.uiFramework.pamTen.cpcommunity.helper.listener.RetryListener"/>
+  </listeners>
+  <test name="Test99(failed)">
+    <classes>
+      <class name="com.cpcommunity.testMemberDirectory.TC1036_Verify_BusinessCategory_Is_Displaying">
+        <methods>
+          <include name="setUpFramework"/>
+          <include name="TC1036" invocation-numbers="0"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.testMemberDirectory.TC1036_Verify_BusinessCategory_Is_Displaying -->
+    </classes>
+  </test> <!-- Test99(failed) -->
+</suite> <!-- Failed suite [Suite] -->

@@ -60,6 +60,8 @@ public class LoginPage extends BasePage {
 
 	@FindBy(xpath = "//*[contains(text(),'Not a member? Click here to Signup')]")
 	WebElement clickHereToSignup;
+	
+	
 
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
@@ -105,7 +107,17 @@ public class LoginPage extends BasePage {
 		click(LoginBtn, "Login");
 		
 	}
-
+	
+	public MyProfilePage loginToMyProfilePage(String enterEmailAddress, String password) {
+		this.login(enterEmailAddress, password);
+		return (MyProfilePage) openPage(MyProfilePage.class);
+	}
+	
+	public MyCommunitiesPage loginToMyCommunitiesPage(String enterEmailAddress, String password) {
+		this.login(enterEmailAddress, password);
+		return (MyCommunitiesPage) openPage(MyCommunitiesPage.class);
+	}
+	
 	// public MyDashboardPage loginToApplication(String enterEmailAddress, String
 	// password) {
 	public EcoSystemPage loginToApplication(String enterEmailAddress, String password) {
@@ -219,7 +231,7 @@ public class LoginPage extends BasePage {
 	}
 	public MyDashboardPage loginToMemberdashboard(String enterEmailAddress, String password) {
         this.login(enterEmailAddress, password);
-        return (MyDashboardPage) openPage(MyDashboardPage.class);
+         return (MyDashboardPage) openPage(MyDashboardPage.class);
 //        new MyDashboardPage(driver, );        
 	}
 	
@@ -232,4 +244,5 @@ public class LoginPage extends BasePage {
 	
 	
 	}
-}
+
+	}

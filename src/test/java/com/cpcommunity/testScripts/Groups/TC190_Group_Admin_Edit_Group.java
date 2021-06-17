@@ -19,8 +19,8 @@ public class TC190_Group_Admin_Edit_Group extends BaseTest {
 		DataUtil.checkExecution("master", "TC190", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		String runTime = openBrowser(data.get("browser"));
-		logInfo("Launched Browser : "+data.get("browser"));
-		logInfo("BizLigo Application Opened");
+		//logInfo("Launched Browser : "+data.get("browser"));
+		//logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));

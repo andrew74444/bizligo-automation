@@ -7,8 +7,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.asserts.Assertion;
 
 import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
+
+import junit.framework.Assert;
 
 
 
@@ -50,6 +53,10 @@ public class CommunityDashboardPage extends BasePage {
 
 	@FindBy(xpath = "(//*[contains(text(),'Groups')])[1]")
 	WebElement Groups;
+	@FindBy(xpath = "//a[@ng-click=\"data.RedirectToPageBasedOnRole('groups', '')\"]")
+	WebElement TotalGroup;
+	@FindBy(xpath = "//a[@ng-click=\"data.RedirectToPageBasedOnRole('groups', '')\"]//div//div[2]//h3")
+	WebElement TotalGroupCount;
 
 	@FindBy(xpath = "(//*[contains(text(),'Pending Requests')])[1]")
 	WebElement CommunityPendingRequest;
@@ -71,6 +78,7 @@ public class CommunityDashboardPage extends BasePage {
 
 	@FindBy(xpath = "(((//*[@class='col-md-3 left_col']//img[@src='/Content/Images/Jobs/Jobs-active.png'])/..)/..)")
 	WebElement Jobs;
+	
 	@FindBy(xpath = "(//*[@class='col-md-3 left_col']//*[@title='Manage Jobs'])")
 	WebElement ManageJobs;
 
@@ -112,6 +120,14 @@ public class CommunityDashboardPage extends BasePage {
 	@FindBy(xpath = "//a[contains(text(),'Promo Code')]")
 	WebElement promoCode;
 	
+	@FindBy(xpath = "//*[contains(@class,'user.text')]")
+	WebElement Toggledropdownmenu;
+	
+	@FindBy(xpath="//a[@ng-click=\"data.RedirectToPageBasedOnRole('events', 'published')\"]")
+	WebElement publishedEvents;
+	
+	
+	
 	
 
 	public PromoCodePage goToPromoCodePage() {
@@ -151,6 +167,15 @@ public class CommunityDashboardPage extends BasePage {
 		waitForElementToPresent(Dashboard);
 		return ExpectedConditions.visibilityOf(Dashboard);
 	}
+
+public PublishedEventsPage gotoPublishedEventsPage() throws Exception {
+	waitForElementToPresent(publishedEvents);
+	//this.searchCommunity(communityName+getDateInDDMMMYYYY());
+	//this.searchCommunity(communityName);
+	click(publishedEvents, "Published Events");
+	return (PublishedEventsPage) openPage(PublishedEventsPage.class);
+	// new CommunityDashboardPage(driver, );
+}
 
 	public HomePage logout() {
 		click(angleDown, "Community Admin Menu Drop down");
@@ -259,6 +284,7 @@ public class CommunityDashboardPage extends BasePage {
 		click(Jobs, "Jobs");
 		waitForElementToPresent(ManageApplications);
 		click(ManageApplications, "ManageApplications");
+		//click(ManageApplications, "ManageApplications");
 		return (ManageApplications) openPage(ManageApplications.class);
 		// new ManageApplications(driver);
 	}
@@ -285,6 +311,27 @@ public class CommunityDashboardPage extends BasePage {
 		click(ManageGroups, "Manage Groups"); 
 		return (ManageGroupsPage) openPage(ManageGroupsPage.class);
 		// new ManageGroupsPage(driver);
+	}
+	public void displayManageGroupsPage() throws Exception {
+		boolean varExists = false;
+		click(Groups, "Groups");
+		Thread.sleep(1000);
+		waitForElementToPresent(ManageGroups);		
+		if(ManageGroups.isDisplayed()) {
+			varExists = true;
+			System.out.println("ManageGroup is Displayed");
+		}
+		Assert.assertEquals(varExists, true);
+	}
+	public void TotalGroups() throws Exception {
+		//boolean varExists = false;
+		Thread.sleep(1000);
+		waitForElementToPresent(this.TotalGroup);
+		if(this.TotalGroup.isDisplayed()) {
+			
+			System.out.println("Total count is " + TotalGroupCount.getText());
+			Assert.assertTrue(true);
+		}
 	}
 
 	public CommunityDetailsPage navigateToCommunityDetailsPage(String name) throws Exception {
@@ -317,6 +364,7 @@ public class CommunityDashboardPage extends BasePage {
 		return (CategoriesPage) openPage(CategoriesPage.class);
 	}
 
+	
 	public TagsPage gotoTags() {
 		click(blogs, "Tags");
 		waitForElementToPresent(tags);

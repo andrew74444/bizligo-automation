@@ -31,7 +31,7 @@ public class TC613_Verify_Primary_Contact_Member_Can_Able_to_Add_Location extend
 		DataUtil.checkExecution("master", "TC613", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
-		logInfo("Launched Browser : "+data.get("browser"));
+		//logInfo("Launched Browser : "+data.get("browser"));
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));

@@ -24,7 +24,7 @@ public class TC001_Register_With_New_Organization extends BaseTest {
 		log.info("Inside TC222 Test");
 		System.out.println(data.get("duration"));
 		openBrowser(data.get("browser"));
-		logInfo("Launched Browser : " + data.get("browser"));
+		//logInfo("Launched Browser : " + data.get("browser"));
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage loginPage = home.clickOnLOGINBtn();
 		SignupPage signupPage = loginPage.clickonSignup();

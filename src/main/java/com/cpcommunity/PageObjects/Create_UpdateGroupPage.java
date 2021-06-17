@@ -114,7 +114,8 @@ public class Create_UpdateGroupPage extends BasePage {
 	    selectUsingIndex(this.GroupCategory, index,"Group Category");
 		
 		selectByVisibleText(this.GroupType, groupType,"GroupType");
-		
+		if(logoImagePath!=null) {
+			
 		click(changeImageLink,"change Image Link");
 
 		 waitForElementToPresent(Browse);
@@ -126,6 +127,7 @@ public class Create_UpdateGroupPage extends BasePage {
 		click(Upload, "Upload");
 		Thread.sleep(10000);
 		picture();
+		}
 	}
 
 	public GroupDetailsPage updateGroup(String Name, String Description, String City, String State,

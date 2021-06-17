@@ -1,0 +1,9 @@
+INFO    2021-06-10 08:50:36,426 [main] com.cpcommunity.testScripts.community.BaseTest  - Config properties file loaded
+INFO    2021-06-10 08:50:37,819 [main] com.cpcommunity.testScripts.community.BaseTest  - Inside Login Test
+INFO    2021-06-10 08:50:38,519 [main] io.github.bonigarcia.wdm.WebDriverManager  - Using chromedriver 91.0.4472.19 (resolved driver for Chrome 91)
+INFO    2021-06-10 08:50:38,560 [main] io.github.bonigarcia.wdm.WebDriverManager  - Exporting webdriver.chrome.driver as C:\Users\sorat\.cache\selenium\chromedriver\win32\91.0.4472.19\chromedriver.exe
+INFO    2021-06-10 08:50:40,713 [main] com.cpcommunity.testScripts.community.BaseTest  - Driver Initialized !!!
+INFO    2021-06-10 08:50:40,864 [main] com.cpcommunity.testScripts.community.BaseTest  - C:\Roshani\Bizligo_Work\bizligo-automation\src\test\resources\testdata\test\10 Jun 2021\ExecutionRunTime\runTime.txt
+INFO    2021-06-10 08:50:40,865 [main] com.cpcommunity.testScripts.community.BaseTest  - 1
+INFO    2021-06-10 08:50:41,775 [main] com.cpcommunity.testScripts.community.BaseTest  - C:\Roshani\Bizligo_Work\bizligo-automation\src\test\resources\testdata\test\10 Jun 2021\ExecutionRunTime\runTime.txt
+INFO    2021-06-10 08:50:41,776 [main] com.cpcommunity.testScripts.community.BaseTest  - 1

@@ -34,7 +34,8 @@ public class ProfilePage extends BasePage{
 	WebElement profilePage;	
 	@FindBy(xpath = "//*[@id='toast-container']/div/div[3]")
 	WebElement SuccessPopup;
-	
+	@FindBy(xpath = "//*[@id=\"Skill_InterestController\"]/div[2]/div/div[2]")
+	WebElement profileCompletenessBar;
 	
 	public boolean IsEndoremsnetNotDisplayed(String EndormentMessage){
 		
@@ -91,9 +92,22 @@ public class ProfilePage extends BasePage{
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 		// TODO Auto-generated method stub
+		waitForElementToPresent(profilePage);
 		return ExpectedConditions.visibilityOf(profilePage);
 	}
-
+	
+	public boolean profileComplenessViibility() throws InterruptedException {
+		Thread.sleep(1000);
+	
+	if(!profileCompletenessBar.isDisplayed()) {
+		System.out.println("ProfileCompletenessBar is not displaying");
+	
+	}
+	return true;
+		
+	}
+	
+	
 	
 //	public ZohoCRMPage gotoCRM() {
 //		

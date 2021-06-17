@@ -40,18 +40,33 @@ public class GlobalCareers extends BasePage {
 
 	@FindBy(xpath = "//input[@placeholder='Search by Job Title']")
 	WebElement SearchbyJobTitle;
+	@FindBy(xpath = "//input[@placeholder='Search by Location']")
+	WebElement SearchbyLocation;
 
 	@FindBy(xpath = "//button[contains(.,' Search')]")
 	WebElement Searchbtn;
 
-	@FindBy(xpath = "(//button[contains(text(),'View and Apply')])[1]")
-	WebElement ViewandApply;
-
+	@FindBy(xpath = "(//button[contains(text(),'Already Applied')])")
+	WebElement AlreadyAppliied;
+	
+	@FindBy(xpath = "(//button[contains(text(),'Apply')])")
+	WebElement Apply;
+	@FindBy(xpath = "(//button[contains(text(),'Submit')])")
+	WebElement Submit;
+	
 	@FindBy(xpath = "//*[contains(text(),'Job Requirement Details')]")
 	WebElement JobRequirementDetails;
 
 	@FindBy(xpath = "//strong[@class='ng-binding']")
 	WebElement JobTitle;
+
+	@FindBy(xpath = "//strong[@class='job-location ng-binding']")
+	WebElement Location;
+	@FindBy(xpath = "(//select[@id='JobTypeID'])[2]")
+	WebElement JobTypeID;
+	
+	@FindBy(xpath = "//div[@class='col-sm-8']//input[@id='Location']")
+    WebElement location;
 
 	@FindBy(xpath = "(//div[@class='job-right-heading ng-binding'])[1]")
 	WebElement JobDescription;
@@ -77,7 +92,7 @@ public class GlobalCareers extends BasePage {
 		waitForElementToPresent(CurrentJobOpenings);
 		WebElement ele = driver.findElement(By.xpath("//*[contains(text(),'" + JobTitle + "')]"));
 		waitForElementToPresent(ele);
-		click(ViewandApply, "ViewandApply");
+		//click(ViewandApply, "ViewandApply");
 		waitForElementToPresent(JobRequirementDetails);
 		AssertionHelper.verifyText(this.JobTitle.getText(), JobTitle);
 		AssertionHelper.verifyText(this.AdditionalDetails.getText(), AdditionalDetails);
@@ -92,12 +107,32 @@ public class GlobalCareers extends BasePage {
 		picture();
 	}
 
-	public void searchJob(String jobTitle) {
+	public void ApplyJobs() {
+		waitForElementToPresent(AlreadyAppliied);
+		click(AlreadyAppliied, "AlreadyAppliied");
+			
+		//click(Submit, "Submit");
+		
+		
+	}
+	public void searchJob(String jobTitle ) {
 		type(SearchbyJobTitle, jobTitle, "job Title");
 		click(Searchbtn, "Searchbtn");
 		waitForElementToPresent(CurrentJobOpenings);
 		WebElement ele = driver.findElement(By.xpath("//*[contains(text(),'" + jobTitle + "')]"));
 		waitForElementToPresent(ele);
+		picture();
+	}
+	public void searchJobfromCareer(String jobTitle,String JobTypeID, String Location  ) {
+		type(SearchbyJobTitle, jobTitle, "job Title");
+		//selectByVisibleText(this.JobTypeID, JobTypeID, "JobTypeID");
+		type(SearchbyLocation, Location, "Location");
+		click(Searchbtn, "Searchbtn");
+		waitForElementToPresent(CurrentJobOpenings);
+		WebElement ele = driver.findElement(By.xpath("//*[contains(text(),'" + jobTitle + "')]"));
+		waitForElementToPresent(ele);
+		WebElement ele1 = driver.findElement(By.xpath("//*[contains(text(),'" + Location + "')]"));
+		waitForElementToPresent(ele1);
 		picture();
 	}
 

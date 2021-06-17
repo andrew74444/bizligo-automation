@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" thread-count="5">
+
+
+	<listeners>
+		<listener
+			class-name="com.cpcommunity.ExtentListeners.ExtentListeners"></listener>
+		<listener
+			class-name="com.cpcommunity.ExtentListeners2.ExtentListeners2"></listener>
+		<listener
+			class-name="com.uiFramework.pamTen.cpcommunity.helper.listener.RetryListener"/>
+	</listeners>
+
+	<test name="Test99" preserve-order="true">
+		<classes>
+		
+			  <!--<class name="com.cpcommunity.testScripts.Create_Free_Event.TC1028_Verify_CA_ableTo_CopyEvents_ANDCreate_NewEvents_OfItsContents"/>--> 
+			  <!--<class name="com.cpcommunity.testMemberDirectory.TC1031_Verify_MemberDirectoryPage"/>-->
+			   <class name="com.cpcommunity.testMemberDirectory.TC1032_Verify_MemberDirectory"/>
+			   <class name="com.cpcommunity.testMemberDirectory.TC1033_Verify_MemberDirectory"/>
+			   <class name="com.cpcommunity.testMemberDirectory.TC1034_Verify_ListOfValue_Displaying_In_SkillAndInterest"/>
+			    <class name="com.cpcommunity.testMemberDirectory.TC1035_Verify_ListOfValue_Displaying_In_OrganisationField"/>
+			    <class name="com.cpcommunity.testMemberDirectory.TC1037_Verify_LocationLiost_Displaying"/>
+			     <class name="com.cpcommunity.testMemberDirectory.TC1036_Verify_BusinessCategory_Is_Displaying"/>
+			    
+		</classes>
+	</test>
+</suite>
+	

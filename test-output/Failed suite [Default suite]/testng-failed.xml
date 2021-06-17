@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Failed suite [Default suite]]" guice-stage="DEVELOPMENT">
+  <test name="Default test(failed)(failed)">
+    <classes>
+      <class name="com.cpcommunity.ProfileCompleteness.TC_1010_Check_Profile_CompletenessStatus_ByProviding_JobTitle">
+        <methods>
+          <include name="TC1010" invocation-numbers="0"/>
+          <include name="setUpFramework"/>
+          <include name="sendmail"/>
+        </methods>
+      </class> <!-- com.cpcommunity.ProfileCompleteness.TC_1010_Check_Profile_CompletenessStatus_ByProviding_JobTitle -->
+    </classes>
+  </test> <!-- Default test(failed)(failed) -->
+</suite> <!-- Failed suite [Failed suite [Default suite]] -->

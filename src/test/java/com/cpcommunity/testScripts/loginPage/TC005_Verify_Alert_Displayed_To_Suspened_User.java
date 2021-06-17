@@ -21,11 +21,11 @@ public class TC005_Verify_Alert_Displayed_To_Suspened_User extends BaseTest {
 		DataUtil.checkExecution("master", "TC005", data.get("Runmode"), excel);
 		log.info("Inside Login Test");			
 		openBrowser(data.get("browser"));
-		logInfo("Launched Browser : "+data.get("browser"));		
-		logInfo("BizLigo Application Opened");
+		//logInfo("Launched Browser : "+data.get("browser"));		
+		//logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
-		logInfo("Username entered as "+data.get("email")+" and Password entered as "+data.get("password"));
+		//logInfo("Username entered as "+data.get("email")+" and Password entered as "+data.get("password"));
 		login.suspended(data.get("email"), data.get("password"));
 				
 		//Assert.fail("Failing the login test");

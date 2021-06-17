@@ -29,7 +29,7 @@ public class TC614_Verify_Primary_Contact_Member_Able_To_Update_Location extends
 		DataUtil.checkExecution("master", "TC614", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
-		logInfo("Launched Browser : "+data.get("browser"));
+		//logInfo("Launched Browser : "+data.get("browser"));
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));

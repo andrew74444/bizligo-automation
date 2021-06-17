@@ -82,7 +82,7 @@ public class HomePage extends BasePage {
 		if(tenantType.equalsIgnoreCase("B2B")) {
 			
 			Markup m = MarkupHelper.createLabel("<b>" + "<font color=" + "White>" + "https://tenant1.bizligotest.com/"+ "</font>" + "</b>", ExtentColor.GREEN);
-			ExtentListeners2.testReport.get().info(m);
+			//ExtentListeners2.testReport.get().info(m);
 			
 			DriverManager.getDriver().navigate().to("https://tenant1.bizligotest.com/");
 		}

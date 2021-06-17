@@ -1,6 +1,7 @@
 package com.cpcommunity.PageObjects;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.apache.commons.lang.StringUtils;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,11 +10,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
+import static org.testng.Assert.assertEquals;
+
 import java.io.IOException;
 
 import org.apache.log4j.Logger;
 
-
+import com.sun.xml.bind.v2.model.core.Element;
 import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
 
 public class MyProfilePage extends BasePage {
@@ -175,7 +178,14 @@ public class MyProfilePage extends BasePage {
 	WebElement CompanyGPlus;
 	@FindBy(xpath = "//form[@id='EditCompanyProfileForm']//div[@class='form-group']//button[@type='submit']")
 	WebElement CompanyProfileSaveBtn;
-
+	@FindBy(xpath = "//*[@id=\"Skill_InterestController\"]/div[2]/div/div[2]")
+	WebElement profileCompletenessBar;
+	
+	
+	//Job Title
+	@FindBy(xpath = "//form[@id='EditWhoAmIForm']//div[@class='modal-footer']//button[@type='submit']")
+	WebElement JobTitleFieldSaveBtn;
+	
 	/*
 	 * 
 	 * Profile Category
@@ -192,7 +202,8 @@ public class MyProfilePage extends BasePage {
 
 	@FindBy(xpath = "//a[contains(.,' Apply LinkedIn Profile')]")
 	WebElement ApplyLinkedInProfileBtn;
-
+	
+	
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 
@@ -227,6 +238,8 @@ public class MyProfilePage extends BasePage {
 		return true;
 	}
 
+	
+	
 	public boolean UpdateProfileDetails(String FName, String LName, String jtitle, String PPhone, String PExt,
 			String PSummary, String Ytube, String LUrl, String FUrl, String TUrl) throws Exception {
 
@@ -262,7 +275,27 @@ public class MyProfilePage extends BasePage {
 //		new TestBase().captureScreen(, driver);
 		return this.UpdateProfile();
 	}
+	
+	public boolean ClearProfileDetails(String FName, String LName, String jtitle, String PPhone, String PExt,
+			String PSummary, String Ytube, String LUrl, String FUrl, String TUrl) throws Exception {
 
+		this.clickOnEditButton();
+		JobTitle.clear();
+		ProfessionalSummary.clear();
+		YouTubeUrl.clear();
+		LinkedInUrl.clear();
+		FacebookUrl.clear();
+		TwitterUrl.clear();
+		Phone.clear();
+		Ext.clear();
+		click(PublicRdnBtn, "Public Radio Btn");
+		return this.UpdateProfile();
+	}
+
+	
+	
+	
+	
 	public boolean UpdateProfile() throws Exception {
 		scrollIntoView(MyProfileSaveBtn);
 		Thread.sleep(1000);
@@ -283,7 +316,10 @@ public class MyProfilePage extends BasePage {
 //		}
 
 	}
-
+	
+	
+	
+	
 	public boolean SelectEmailPrivate() throws Exception {
 
 		this.clickOnEditButton();
@@ -482,6 +518,7 @@ public class MyProfilePage extends BasePage {
 //		return false;
 
 	}
+	
 
 	public void ClickOnEditSkillsBtn() {
 
@@ -641,11 +678,29 @@ public class MyProfilePage extends BasePage {
 		clickElementByJavaScript(profileCategory);
 		Thread.sleep(2000);
 	}
-
+	public void clickonJobTitle() throws Exception {
+		clickElementByJavaScript(profileCategory);
+		Thread.sleep(2000);
+	}
 	public void clickOnSaveProfileCatogories() throws Exception {
 		click(profileCategoryFieldSaveBtn, "profile Category Field SaveBtn");
 		waitForElementToPresent(SuccessPopup);
 		AssertionHelper.verifyText(SuccessPopup.getText(), "Profile Categories Saved Successfully");
+		Thread.sleep(2000);
+	}
+	public void addJobTitle(String myDetails) throws Exception {
+		this.clickonJobTitle();
+		type(JobTitle, myDetails, "JobTitle");
+
+		profileCategory.sendKeys(Keys.ENTER);
+		Thread.sleep(2000);
+		this.clickOnSaveProfileCatogories();
+	}
+	
+	public void clickOnSaveJobTitle() throws Exception {
+		click(JobTitleFieldSaveBtn, "Job Title Field SaveBtn");
+		waitForElementToPresent(SuccessPopup);
+		AssertionHelper.verifyText(SuccessPopup.getText(), "Job Title Saved Successfully");
 		Thread.sleep(2000);
 	}
 
@@ -1337,7 +1392,54 @@ public class MyProfilePage extends BasePage {
 	     		Thread.sleep(8000);
 	     	}
 	     	
-	         
-	         
-	         
-}
+	     	public int GetProfileProgress() {
+				String profileProgress=profileCompletenessBar.getText();
+				profileProgress = StringUtils.stripEnd(profileProgress, "%");	
+				System.out.println("ProgressBar status is " + profileProgress);
+				int i = Integer.parseInt(profileProgress);				
+				return i;
+	     	}
+	     	
+	    
+
+			public boolean CompareProgressBars(int prevProgress,int afterProgress){
+				if(prevProgress <= afterProgress) {
+				   return true;
+				} 
+				else return false;
+			}
+
+         public void valid_Progress(boolean x) {
+        	 Assert.assertTrue(x);
+         }
+         public void Validate_progress_ToClearDetails(boolean x) {
+        	 Assert.assertFalse(x);
+        	 }
+
+     	public boolean UpdatePhoneMediaVideo( String PPhone , String Ytube, String LUrl, String FUrl, String TUrl) throws Exception {
+
+     		this.clickOnEditButton();
+     		YouTubeUrl.clear();
+     		LinkedInUrl.clear();
+     		FacebookUrl.clear();
+     		TwitterUrl.clear();
+     		Phone.clear();
+     		
+     		picture();
+//     		new TestBase().captureScreen(, driver);
+     		scrollIntoView(CompanyPhone);
+     		Thread.sleep(3000);
+     		
+     		executeScript("arguments[0].value='" + PPhone + "';", Phone);
+     		//executeScript("arguments[0].value='" + PExt + "';", Ext);
+     		type(YouTubeUrl, Ytube, "YouTubeUrl");
+     		type(LinkedInUrl, LUrl, "LinkedInUrl");
+     		type(FacebookUrl, FUrl, "FacebookUrl");
+     		type(TwitterUrl, TUrl, "TwitterUrl");
+     		click(PublicRdnBtn, "Public Radio Btn");
+     		picture();
+//     		new TestBase().captureScreen(, driver);
+     		return this.UpdateProfile();
+     	}
+         }
+         

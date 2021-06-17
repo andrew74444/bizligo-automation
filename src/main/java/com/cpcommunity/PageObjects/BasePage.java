@@ -212,15 +212,18 @@ try {
 
 	public void click(WebElement element, String elementName) {
 
-		ExtentListeners.testReport.get().info("Clicking on : " + elementName);
-		ExtentListeners2.testReport.get().info("Clicking on : " + elementName);
+		//ExtentListeners.testReport.get().info("Clicking on : " + elementName);
+		//ExtentListeners2.testReport.get().info("Clicking on : " + elementName);
+		
 		// System.out.println("Clicking on : "+elementName);
 		log.info("Clicking on : " + elementName);
 		highlightElement(element);
 		element.click();
 		log.info("Clicked on : " + elementName);
-		ExtentListeners.testReport.get().info("Clicked on : " + elementName);
-		ExtentListeners2.testReport.get().info("Clicked on : " + elementName);
+		
+		//ExtentListeners.testReport.get().info("Clicked on : " + elementName);
+		//ExtentListeners2.testReport.get().info("Clicked on : " + elementName);
+		
 //		ExtentListeners2.testReport.get().info("Clicked on : " + elementName);
 	}
 
@@ -228,8 +231,8 @@ try {
 		// System.out.println("Typing in : "+elementName+" entered the value as :
 		// "+value);
 		log.info("Typing in : " + elementName + " entered the value as : " + value);
-		ExtentListeners.testReport.get().info("Typing in : " + elementName + " entered the value as : " + value);
-		ExtentListeners2.testReport.get().info("Typing in : " + elementName + " entered the value as : " + value);
+		//ExtentListeners.testReport.get().info("Typing in : " + elementName + " entered the value as : " + value);
+		//ExtentListeners2.testReport.get().info("Typing in : " + elementName + " entered the value as : " + value);
 		element.clear();
 		highlightElement(element);
 		element.sendKeys(value);
