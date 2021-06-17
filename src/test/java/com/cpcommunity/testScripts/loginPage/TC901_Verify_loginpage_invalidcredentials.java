@@ -5,39 +5,42 @@ import java.util.Hashtable;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
+import com.cpcommunity.PageObjects.HomePage;
+import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.testScripts.community.BaseTest;
-import com.cpcommunity.utilities.*;
-import com.cpcommunity.PageObjects.*;
-/**
- * 
- * @author Sasi Vinod Akula
- */
-public class TC003_Verify_Alert_Displayed_To_Email_Pending_User extends BaseTest {
-	
-	
+import com.cpcommunity.utilities.Constants;
+import com.cpcommunity.utilities.DataProviders;
+import com.cpcommunity.utilities.DataUtil;
+import com.cpcommunity.utilities.ExcelReader;
+
+public class TC901_Verify_loginpage_invalidcredentials extends BaseTest{
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC003(Hashtable<String,String> data) throws Exception {
+	public void TC901(Hashtable<String,String> data) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC003", data.get("Runmode"), excel);
-		log.info("Inside Login Test");			
+		DataUtil.checkExecution("master", "TC901", data.get("Runmode"), excel);
+		log.info("Inside Test");			
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));	
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
 		logInfo("Username entered as "+data.get("email")+" and Password entered as "+data.get("password"));
-		login.ReSend_Email_Verification_Confirmation(data.get("email"), data.get("password"));
-			
+		login.InvalidloginToApplication(data.get("email"), data.get("password"));
+		
+		
+		
 		//Assert.fail("Failing the login test");
 	}
 
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("TC003 Test Completed");
+		logInfo("TC902 Test Completed");
 		
 		quit();
 		
 	}
+
+
 }

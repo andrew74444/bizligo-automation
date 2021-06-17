@@ -1,26 +1,27 @@
 package com.cpcommunity.testScripts.loginPage;
 
-
 import java.util.Hashtable;
 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
-
-import com.cpcommunity.utilities.*;
-import com.cpcommunity.PageObjects.*;
+import com.cpcommunity.PageObjects.EcoSystemPage;
+import com.cpcommunity.PageObjects.HomePage;
+import com.cpcommunity.PageObjects.LoginPage;
+import com.cpcommunity.PageObjects.MyCommunitiesPage;
 import com.cpcommunity.testScripts.community.BaseTest;
+import com.cpcommunity.utilities.Constants;
+import com.cpcommunity.utilities.DataProviders;
+import com.cpcommunity.utilities.DataUtil;
+import com.cpcommunity.utilities.ExcelReader;
 
-public class TC001_Verify_User_Able_Login_With_Valid_Credentials extends BaseTest {
-
-	
-	
+public class TC900_Verify_loginpage_validcredentials extends BaseTest{
 	
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC001(Hashtable<String,String> data) throws Exception {
+	public void TC900(Hashtable<String,String> data) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC001", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC900", data.get("Runmode"), excel);
 		log.info("Inside Login Test");			
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));		
@@ -28,10 +29,10 @@ public class TC001_Verify_User_Able_Login_With_Valid_Credentials extends BaseTes
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
 		logInfo("Username entered as "+data.get("email")+" and Password entered as "+data.get("password"));
-		EcoSystemPage ecosys=login.loginToApplication(data.get("email"), data.get("password"));
+		MyCommunitiesPage mCP=login.loginToApplicationMcp(data.get("email"), data.get("password"));
 		
-
-	    ecosys.logout();
+//		MyCommunitiesPage mCP= ecosys.goToMyCommunities();
+		mCP.logout();
 				
 		//Assert.fail("Failing the login test");
 	}
@@ -39,13 +40,12 @@ public class TC001_Verify_User_Able_Login_With_Valid_Credentials extends BaseTes
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("TC001 Test Completed");
+		logInfo("TC900 Test Completed");
 		
 		quit();
 		
 	}
 
-	
 	
 
 }
