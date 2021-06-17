@@ -284,6 +284,9 @@ public class BaseTest {
 	// }
 	//
 
+	public WebDriver getDriver() {
+		return driver;
+	}
 	public String getExplicitWait() {
 		return ExplicitWait;
 	}
@@ -409,7 +412,7 @@ public class BaseTest {
 		checkRunTime();
 
 		configureLogging();
-		DriverFactory.setGridPath("http://localhost:4444/wd/hub");
+		DriverFactory.setGridPath("http://www.google.com");
 		DriverFactory.setConfigPropertyFilePath(
 				System.getProperty("user.dir") + "//src//test//resources//properties//Config.properties");
 
@@ -619,6 +622,17 @@ public class BaseTest {
 
 		DriverManager.getDriver().quit();
 		log.info("Test Execution Completed !!!");
+	}
+	
+	public void close() {
+
+		DriverManager.getDriver().close();
+		log.info("Test Execution Completed !!!");
+	}
+	
+	public void navigateToRefresh() {
+		DriverManager.getDriver().navigate().refresh();
+		//DriverManager.getDriver().navigate().refresh();
 	}
 
 	public String getCurator() {
