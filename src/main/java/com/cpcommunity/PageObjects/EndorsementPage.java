@@ -12,14 +12,14 @@ import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
 
 public class EndorsementPage extends BasePage{
 	
-	@FindBy(xpath = "//*[@id='header']")
+	@FindBy(xpath = "//div[@id='myNavbar']")
 	WebElement pageheader;
 	@Override
 	protected  void getPageScreenSot() {
 	
 		updateClass(pageheader, "");
 		aShot();
-		updateClass(pageheader, "navbar-fixed-top");
+		//updateClass(pageheader, "navbar-fixed-top");
 	}
 	
 		
