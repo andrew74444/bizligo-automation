@@ -124,6 +124,13 @@ public class LoginPage extends BasePage {
 		return (TA_DashboardPage) openPage(TA_DashboardPage.class);
 		// new MyDashboardPage(driver, );
 	}
+	
+	public TenantAdminDashboardPage loginToApplicationTADP(String enterEmailAddress, String password) {
+		this.login(enterEmailAddress, password);
+		return (TenantAdminDashboardPage) openPage(TenantAdminDashboardPage.class);
+		// new MyDashboardPage(driver, );
+	}
+
 
 	public SystemAdminDashboardPage SystemAdminloginToApplication(String EmailAddress, String password) {
 		this.login(EmailAddress, password);

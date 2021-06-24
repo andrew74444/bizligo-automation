@@ -27,12 +27,10 @@ public class TC750_Verify_approval_pending_endorsements_not_listed_in_memberprof
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
-//		login.login(data.get("username"), data.get("password"));
-//		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
 		MyCommunitiesPage MyCP = login.loginToApplicationMcp(data.get("email"), data.get("password"));
 		MemberDirectoryPage MDP=MyCP.goToMemberDirectory();
 		ProfilePage PP=MDP.MemberWithPendingEndorsement(data.get("Name"));
-	PP.IsEndoremsnetNotDisplayed(data.get("EndorsementMessage"));
+	    PP.IsEndoremsnetNotDisplayed(data.get("EndorsementMessage"));
 
 }
 }

@@ -1,55 +1,62 @@
-INFO    2021-06-16 21:37:51,952 [main] com.cpcommunity.testScripts.community.BaseTest  - Config properties file loaded
-INFO    2021-06-16 21:37:53,368 [main] com.cpcommunity.testScripts.community.BaseTest  - Inside Login Test
-INFO    2021-06-16 21:37:53,863 [main] io.github.bonigarcia.wdm.WebDriverManager  - Using chromedriver 91.0.4472.101 (resolved driver for Chrome 91)
-INFO    2021-06-16 21:37:53,889 [main] io.github.bonigarcia.wdm.WebDriverManager  - Exporting webdriver.chrome.driver as C:\Users\rugup\.cache\selenium\chromedriver\win32\91.0.4472.101\chromedriver.exe
-INFO    2021-06-16 21:37:56,927 [main] com.cpcommunity.testScripts.community.BaseTest  - Driver Initialized !!!
-INFO    2021-06-16 21:37:57,057 [main] com.cpcommunity.testScripts.community.BaseTest  - C:\Users\rugup\git\bizligo-automation\src\test\resources\testdata\test\16 Jun 2021\ExecutionRunTime\runTime.txt
-INFO    2021-06-16 21:37:57,058 [main] com.cpcommunity.testScripts.community.BaseTest  - 28
-INFO    2021-06-16 21:38:03,433 [main] com.cpcommunity.PageObjects.BasePage  - waiting for visibility of [[ChromeDriver: chrome on WINDOWS (4839d495185a378ea5384114f339c609)] -> xpath: //*[@id='myNavbar']//*[contains (text(),'Home')]]
-INFO    2021-06-16 21:38:03,522 [main] com.cpcommunity.PageObjects.BasePage  - pageLoad visibility of [[ChromeDriver: chrome on WINDOWS (4839d495185a378ea5384114f339c609)] -> xpath: //*[@id='myNavbar']//*[contains (text(),'Home')]]
-INFO    2021-06-16 21:38:08,037 [main] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
-INFO    2021-06-16 21:38:13,208 [main] com.cpcommunity.PageObjects.BasePage  - waiting for :09)] -> xpath: //a[contains(.,'Login')]] for :20 seconds
-INFO    2021-06-16 21:38:13,262 [main] com.cpcommunity.PageObjects.BasePage  - 339c609)] -> xpath: //a[contains(.,'Login')]]is displayed
-INFO    2021-06-16 21:38:23,266 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : LOGIN
-INFO    2021-06-16 21:38:26,885 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : LOGIN
-INFO    2021-06-16 21:38:26,985 [main] com.cpcommunity.PageObjects.BasePage  - waiting for visibility of [[ChromeDriver: chrome on WINDOWS (4839d495185a378ea5384114f339c609)] -> xpath: //button[contains(.,'Login')]]
-INFO    2021-06-16 21:38:27,040 [main] com.cpcommunity.PageObjects.BasePage  - pageLoad visibility of [[ChromeDriver: chrome on WINDOWS (4839d495185a378ea5384114f339c609)] -> xpath: //button[contains(.,'Login')]]
-INFO    2021-06-16 21:38:30,233 [main] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
-INFO    2021-06-16 21:38:38,213 [main] com.cpcommunity.PageObjects.BasePage  - Typing in : email address entered the value as : john.adams.pt240@gmail.com
-INFO    2021-06-16 21:38:38,763 [main] com.cpcommunity.PageObjects.BasePage  - Typing in : password entered the value as : John@240
-INFO    2021-06-16 21:38:40,208 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : Login
-INFO    2021-06-16 21:38:40,395 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : Login
-INFO    2021-06-16 21:38:45,234 [main] com.cpcommunity.PageObjects.BasePage  - waiting for visibility of [[ChromeDriver: chrome on WINDOWS (4839d495185a378ea5384114f339c609)] -> xpath: //h3[@class='MyCommunitiesHeader text-uppercase']]
-INFO    2021-06-16 21:38:45,334 [main] com.cpcommunity.PageObjects.BasePage  - pageLoad visibility of [[ChromeDriver: chrome on WINDOWS (4839d495185a378ea5384114f339c609)] -> xpath: //h3[@class='MyCommunitiesHeader text-uppercase']]
-INFO    2021-06-16 21:38:48,589 [main] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
-INFO    2021-06-16 21:38:53,613 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : Manage
-INFO    2021-06-16 21:38:55,722 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : Manage
-INFO    2021-06-16 21:38:55,779 [main] com.cpcommunity.PageObjects.BasePage  - waiting for :09)] -> xpath: //h2[contains(text(),'Dashboard')]] for :20 seconds
-INFO    2021-06-16 21:38:55,838 [main] com.cpcommunity.PageObjects.BasePage  - 339c609)] -> xpath: //h2[contains(text(),'Dashboard')]]is displayed
-INFO    2021-06-16 21:38:57,879 [main] com.cpcommunity.PageObjects.BasePage  - waiting for visibility of [[ChromeDriver: chrome on WINDOWS (4839d495185a378ea5384114f339c609)] -> xpath: //h2[contains(text(),'Dashboard')]]
-INFO    2021-06-16 21:38:57,988 [main] com.cpcommunity.PageObjects.BasePage  - pageLoad visibility of [[ChromeDriver: chrome on WINDOWS (4839d495185a378ea5384114f339c609)] -> xpath: //h2[contains(text(),'Dashboard')]]
-INFO    2021-06-16 21:39:01,107 [main] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
-INFO    2021-06-16 21:39:06,143 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : ManageCampaign
-INFO    2021-06-16 21:39:06,534 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : ManageCampaign
-INFO    2021-06-16 21:39:06,592 [main] com.cpcommunity.PageObjects.BasePage  - waiting for :09)] -> xpath: //a[normalize-space()='Compose Campaign']] for :20 seconds
-INFO    2021-06-16 21:39:06,651 [main] com.cpcommunity.PageObjects.BasePage  - 339c609)] -> xpath: //a[normalize-space()='Compose Campaign']]is displayed
-INFO    2021-06-16 21:39:08,655 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : compose campaign
-INFO    2021-06-16 21:39:11,640 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : compose campaign
-INFO    2021-06-16 21:39:11,718 [main] com.cpcommunity.PageObjects.BasePage  - waiting for visibility of [[ChromeDriver: chrome on WINDOWS (4839d495185a378ea5384114f339c609)] -> xpath: //h3[normalize-space()='Compose Campaign']]
-INFO    2021-06-16 21:39:11,767 [main] com.cpcommunity.PageObjects.BasePage  - pageLoad visibility of [[ChromeDriver: chrome on WINDOWS (4839d495185a378ea5384114f339c609)] -> xpath: //h3[normalize-space()='Compose Campaign']]
-INFO    2021-06-16 21:39:14,800 [main] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
-INFO    2021-06-16 21:39:19,867 [main] com.cpcommunity.PageObjects.BasePage  - waiting for :09)] -> xpath: //a[normalize-space()='Add Contacts']] for :20 seconds
-INFO    2021-06-16 21:39:19,991 [main] com.cpcommunity.PageObjects.BasePage  - 339c609)] -> xpath: //a[normalize-space()='Add Contacts']]is displayed
-INFO    2021-06-16 21:39:21,993 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : add contacts
-INFO    2021-06-16 21:39:22,325 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : add contacts
-INFO    2021-06-16 21:39:24,331 [main] com.cpcommunity.PageObjects.BasePage  - Selecting the nullvalue as : Upcoming Events RSVP ed users
-INFO    2021-06-16 21:39:24,655 [main] com.cpcommunity.PageObjects.BasePage  - Selected the nullvalue as : Upcoming Events RSVP ed users
-INFO    2021-06-16 21:39:26,670 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : name check box
-INFO    2021-06-16 21:39:26,938 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : name check box
-INFO    2021-06-16 21:39:26,939 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : save button
-INFO    2021-06-16 21:39:27,123 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : save button
-INFO    2021-06-16 21:39:29,136 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : add contacts
-INFO    2021-06-16 21:39:29,441 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : add contacts
-INFO    2021-06-16 21:39:31,447 [main] com.cpcommunity.PageObjects.BasePage  - Selecting the nullvalue as : null
-INFO    2021-06-16 21:39:36,101 [main] com.cpcommunity.testScripts.community.BaseTest  - C:\Users\rugup\git\bizligo-automation\src\test\resources\testdata\test\16 Jun 2021\ExecutionRunTime\runTime.txt
-INFO    2021-06-16 21:39:36,104 [main] com.cpcommunity.testScripts.community.BaseTest  - 28
+INFO    2021-06-23 23:09:04,969 [main] com.cpcommunity.testScripts.community.BaseTest  - Config properties file loaded
+INFO    2021-06-23 23:09:06,744 [main] com.cpcommunity.testScripts.community.BaseTest  - Inside Login Test
+INFO    2021-06-23 23:09:07,281 [main] io.github.bonigarcia.wdm.WebDriverManager  - Using chromedriver 91.0.4472.101 (resolved driver for Chrome 91)
+INFO    2021-06-23 23:09:07,310 [main] io.github.bonigarcia.wdm.WebDriverManager  - Exporting webdriver.chrome.driver as C:\Users\rugup\.cache\selenium\chromedriver\win32\91.0.4472.101\chromedriver.exe
+INFO    2021-06-23 23:09:10,562 [main] com.cpcommunity.testScripts.community.BaseTest  - Driver Initialized !!!
+INFO    2021-06-23 23:09:10,731 [main] com.cpcommunity.testScripts.community.BaseTest  - C:\Users\rugup\git\bizligo-automation\src\test\resources\testdata\test\23 Jun 2021\ExecutionRunTime\runTime.txt
+INFO    2021-06-23 23:09:10,732 [main] com.cpcommunity.testScripts.community.BaseTest  - 15
+INFO    2021-06-23 23:09:14,048 [main] com.cpcommunity.PageObjects.BasePage  - waiting for visibility of [[ChromeDriver: chrome on WINDOWS (cf3276d551e991822549241fa34d31dd)] -> xpath: //*[@id='myNavbar']//*[contains (text(),'Home')]]
+INFO    2021-06-23 23:09:14,159 [main] com.cpcommunity.PageObjects.BasePage  - pageLoad visibility of [[ChromeDriver: chrome on WINDOWS (cf3276d551e991822549241fa34d31dd)] -> xpath: //*[@id='myNavbar']//*[contains (text(),'Home')]]
+INFO    2021-06-23 23:09:19,060 [main] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2021-06-23 23:09:24,168 [main] com.cpcommunity.PageObjects.BasePage  - waiting for :dd)] -> xpath: //a[contains(.,'Login')]] for :20 seconds
+INFO    2021-06-23 23:09:24,288 [main] com.cpcommunity.PageObjects.BasePage  - 34d31dd)] -> xpath: //a[contains(.,'Login')]]is displayed
+INFO    2021-06-23 23:09:34,312 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : LOGIN
+INFO    2021-06-23 23:09:47,289 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : LOGIN
+INFO    2021-06-23 23:09:47,546 [main] com.cpcommunity.PageObjects.BasePage  - waiting for visibility of [[ChromeDriver: chrome on WINDOWS (cf3276d551e991822549241fa34d31dd)] -> xpath: //button[contains(.,'Login')]]
+INFO    2021-06-23 23:09:47,618 [main] com.cpcommunity.PageObjects.BasePage  - pageLoad visibility of [[ChromeDriver: chrome on WINDOWS (cf3276d551e991822549241fa34d31dd)] -> xpath: //button[contains(.,'Login')]]
+INFO    2021-06-23 23:09:51,557 [main] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2021-06-23 23:10:03,740 [main] com.cpcommunity.PageObjects.BasePage  - Typing in : email address entered the value as : john.adams.pt240@gmail.com
+INFO    2021-06-23 23:10:04,491 [main] com.cpcommunity.PageObjects.BasePage  - Typing in : password entered the value as : John@240
+INFO    2021-06-23 23:10:06,185 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : Login
+INFO    2021-06-23 23:10:06,386 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : Login
+INFO    2021-06-23 23:10:10,882 [main] com.cpcommunity.PageObjects.BasePage  - waiting for visibility of [[ChromeDriver: chrome on WINDOWS (cf3276d551e991822549241fa34d31dd)] -> xpath: //h3[@class='MyCommunitiesHeader text-uppercase']]
+INFO    2021-06-23 23:10:10,975 [main] com.cpcommunity.PageObjects.BasePage  - pageLoad visibility of [[ChromeDriver: chrome on WINDOWS (cf3276d551e991822549241fa34d31dd)] -> xpath: //h3[@class='MyCommunitiesHeader text-uppercase']]
+INFO    2021-06-23 23:10:15,076 [main] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2021-06-23 23:10:20,108 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : Manage
+INFO    2021-06-23 23:10:23,034 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : Manage
+INFO    2021-06-23 23:10:23,296 [main] com.cpcommunity.PageObjects.BasePage  - waiting for :dd)] -> xpath: //h2[contains(text(),'Dashboard')]] for :20 seconds
+INFO    2021-06-23 23:10:23,387 [main] com.cpcommunity.PageObjects.BasePage  - 34d31dd)] -> xpath: //h2[contains(text(),'Dashboard')]]is displayed
+INFO    2021-06-23 23:10:25,422 [main] com.cpcommunity.PageObjects.BasePage  - waiting for visibility of [[ChromeDriver: chrome on WINDOWS (cf3276d551e991822549241fa34d31dd)] -> xpath: //h2[contains(text(),'Dashboard')]]
+INFO    2021-06-23 23:10:25,535 [main] com.cpcommunity.PageObjects.BasePage  - pageLoad visibility of [[ChromeDriver: chrome on WINDOWS (cf3276d551e991822549241fa34d31dd)] -> xpath: //h2[contains(text(),'Dashboard')]]
+INFO    2021-06-23 23:10:29,457 [main] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2021-06-23 23:10:34,492 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : ManageCampaign
+INFO    2021-06-23 23:10:34,797 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : ManageCampaign
+INFO    2021-06-23 23:10:34,864 [main] com.cpcommunity.PageObjects.BasePage  - waiting for :dd)] -> xpath: //a[normalize-space()='Import Contacts']] for :20 seconds
+INFO    2021-06-23 23:10:35,047 [main] com.cpcommunity.PageObjects.BasePage  - 34d31dd)] -> xpath: //a[normalize-space()='Import Contacts']]is displayed
+INFO    2021-06-23 23:10:37,064 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : Import Contacts
+INFO    2021-06-23 23:10:39,957 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : Import Contacts
+INFO    2021-06-23 23:10:40,028 [main] com.cpcommunity.PageObjects.BasePage  - waiting for visibility of [[ChromeDriver: chrome on WINDOWS (cf3276d551e991822549241fa34d31dd)] -> xpath: //h3[normalize-space()='Import Contacts']]
+INFO    2021-06-23 23:10:40,100 [main] com.cpcommunity.PageObjects.BasePage  - pageLoad visibility of [[ChromeDriver: chrome on WINDOWS (cf3276d551e991822549241fa34d31dd)] -> xpath: //h3[normalize-space()='Import Contacts']]
+INFO    2021-06-23 23:10:43,851 [main] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2021-06-23 23:10:48,921 [main] com.cpcommunity.PageObjects.BasePage  - waiting for :dd)] -> xpath: //input[@id='csvEmailFile']] for :20 seconds
+INFO    2021-06-23 23:10:49,039 [main] com.cpcommunity.PageObjects.BasePage  - 34d31dd)] -> xpath: //input[@id='csvEmailFile']]is displayed
+INFO    2021-06-23 23:10:54,189 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : Import File
+INFO    2021-06-23 23:10:54,446 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : Import File
+INFO    2021-06-23 23:10:57,552 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : ManageCampaign
+INFO    2021-06-23 23:10:57,663 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : ManageCampaign
+INFO    2021-06-23 23:10:57,696 [main] com.cpcommunity.PageObjects.BasePage  - waiting for :dd)] -> xpath: //a[normalize-space()='Compose Campaign']] for :20 seconds
+INFO    2021-06-23 23:10:57,779 [main] com.cpcommunity.PageObjects.BasePage  - 34d31dd)] -> xpath: //a[normalize-space()='Compose Campaign']]is displayed
+INFO    2021-06-23 23:10:59,790 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : compose campaign
+INFO    2021-06-23 23:11:11,767 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : compose campaign
+INFO    2021-06-23 23:11:11,860 [main] com.cpcommunity.PageObjects.BasePage  - waiting for visibility of [[ChromeDriver: chrome on WINDOWS (cf3276d551e991822549241fa34d31dd)] -> xpath: //h3[normalize-space()='Compose Campaign']]
+INFO    2021-06-23 23:11:11,932 [main] com.cpcommunity.PageObjects.BasePage  - pageLoad visibility of [[ChromeDriver: chrome on WINDOWS (cf3276d551e991822549241fa34d31dd)] -> xpath: //h3[normalize-space()='Compose Campaign']]
+INFO    2021-06-23 23:11:15,819 [main] com.cpcommunity.PageObjects.BasePage  - scrolling up vertically...
+INFO    2021-06-23 23:11:20,895 [main] com.cpcommunity.PageObjects.BasePage  - waiting for :dd)] -> xpath: //a[normalize-space()='Add Contacts']] for :20 seconds
+INFO    2021-06-23 23:11:21,022 [main] com.cpcommunity.PageObjects.BasePage  - 34d31dd)] -> xpath: //a[normalize-space()='Add Contacts']]is displayed
+INFO    2021-06-23 23:11:23,029 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : add contacts
+INFO    2021-06-23 23:11:23,297 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : add contacts
+INFO    2021-06-23 23:11:25,303 [main] com.cpcommunity.PageObjects.BasePage  - Selecting the Import Contactsvalue as : Imported Contacts
+INFO    2021-06-23 23:11:25,648 [main] com.cpcommunity.PageObjects.BasePage  - Selected the Import Contactsvalue as : Imported Contacts
+INFO    2021-06-23 23:11:32,677 [main] com.cpcommunity.PageObjects.BasePage  - Typing in : duplicate entered the value as : Duplicate1
+INFO    2021-06-23 23:11:36,519 [main] com.cpcommunity.testScripts.community.BaseTest  - C:\Users\rugup\git\bizligo-automation\src\test\resources\testdata\test\23 Jun 2021\ExecutionRunTime\runTime.txt
+INFO    2021-06-23 23:11:36,521 [main] com.cpcommunity.testScripts.community.BaseTest  - 15

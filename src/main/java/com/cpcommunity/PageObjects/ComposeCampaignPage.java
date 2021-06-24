@@ -1,5 +1,9 @@
 package com.cpcommunity.PageObjects;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -31,7 +35,7 @@ public class ComposeCampaignPage extends BasePage {
 	WebElement composeCampaign;
 	
 	@FindBy(xpath = "//button[normalize-space()='Send']")
-	WebElement sendBtn;
+	WebElement sendBtn;//button[@class='btn-primary btn btn-close']//i[@class='fa fa-paper-plane']
 	
 	@FindBy(xpath = "//span[normalize-space()='To Email Required']")
 	WebElement emailrequiredError;
@@ -85,17 +89,42 @@ public class ComposeCampaignPage extends BasePage {
 	WebElement saveBtn;
 	
 	@FindBy(xpath = "//*[@id='toast-container']/div/div[3]")
-	WebElement SuccessPopup;
+	WebElement SuccessPopup; //div[contains(@class,'toast-message')and contains(text(),'Bulk Mail sent.')]
 	
+	@FindBy(xpath = "//input[@ng-model='colFilter.term']")
+	WebElement nameTextBox;
+	//div[@id='1623937804998-0-uiGrid-0004-cell']//div[@class='ui-grid-selection-row-header-buttons ui-grid-icon-ok ng-scope']
 	
+	@FindBy(xpath="//div[@ng-click='selectButtonClick(row, $event)']")
+	WebElement nameFirstBox;
 	
-
+	@FindBy(xpath="//ul[@class='tag-list']")
+	WebElement toEmailList;
 	
+	@FindBy(xpath="//i[@class='mce-ico mce-i-emoticons']")
+	WebElement emailEmoticon;
 	
+	@FindBy(xpath="//a[@aria-label='cool']//img[@role='presentation']")
+	WebElement smileyEmoticon;	
 	
+	@FindBy(xpath="//*[@id=\"1624407060051-0-uiGrid-0004-cell\"]/div/div/div")
+	WebElement member1;
 	
-
-
+	@FindBy(xpath="//div[@id='1624407060051-1-uiGrid-0004-cell']")
+	WebElement member2;
+	
+	@FindBy(xpath="//div[@id='1624407060051-3-uiGrid-0004-cell']")
+	WebElement member3;
+	
+	@FindBy(xpath="//div[@class='ui-grid-selection-row-header-buttons ui-grid-icon-ok ng-scope'][1]")
+	List<WebElement> members;//C:\Users\rugup\OneDrive\Documents\testing class.txt
+	
+	@FindBy(xpath="//input[@id='MultiFileUpload']")
+	WebElement fileUpload;
+	
+	@FindBy(xpath="//div[@ng-click='selectButtonClick(row, $event)']")
+	WebElement csvFileResult;
+	
 	
 	
 	
@@ -133,7 +162,8 @@ public class ComposeCampaignPage extends BasePage {
 		picture();
 		String x=dateSchedular.getText();
 		System.out.println("the text on date schedular is:"+ x);
-		click(sendBtn,"save button");
+		click(sendBtn,"send button");
+		
 		
 		//AssertionHelper.verifyText(SuccessPopup.getText(), "Endorsement Sent Successfully");
 		/*String Message = SuccessPopup.getText();
@@ -148,40 +178,186 @@ public class ComposeCampaignPage extends BasePage {
 		
 		
 	}
+	public void addAllActiveOrganization(String communityName) throws InterruptedException {
+		//waitForElementToPresent(mailScheduleCheck);
+        waitForElementToPresent(addContacts);		
+		click(addContacts,"add contacts");
+		Thread.sleep(2000);
+	    selectByVisibleText(communityDropdown,communityName,"Groups");
+	    Thread.sleep(2000);
+	    click(nameCheckbox,"name check box");
+	    click(SaveBtn,"save button");
+	    Thread.sleep(3000);
+	    System.out.println(toEmailList.getText());
+	    Assert.assertTrue(true);
+	    
+	 
+	}
+	
+	public void addSelectCommunity(String communityName,String subCommunity) throws InterruptedException {
+		//waitForElementToPresent(mailScheduleCheck);
+        waitForElementToPresent(addContacts);		
+		click(addContacts,"add contacts");
+		Thread.sleep(2000);
+	    selectByVisibleText(communityDropdown,communityName,"Community");
+	    Thread.sleep(2000);
+	    waitForElementToPresent(nameTextBox);
+	    type(nameTextBox,subCommunity,subCommunity);
+	    Thread.sleep(2000);
+	    nameFirstBox.click();
+	    //click(nameCheckbox,"name check box");
+	    click(SaveBtn,"save button");
+	    Thread.sleep(3000);
+	    if(toEmailList.isDisplayed()) {
+	    	Assert.assertTrue(true);
+	    }
+	    
+	    System.out.println(toEmailList.getText());
+	    //if(toEmailList.getSize()>0) {
+	    Assert.assertTrue(true);
+	    
+	 
+	}
 	public void upcomingEvents(String communityName,String community2) throws InterruptedException {
 		//waitForElementToPresent(mailScheduleCheck);
         waitForElementToPresent(addContacts);		
 		click(addContacts,"add contacts");
 		Thread.sleep(2000);
-	    selectByVisibleText(communityDropdown,"Upcoming Events RSVP ed users",communityName);
+		System.out.println(communityName);
+	    selectByVisibleText(communityDropdown,communityName,communityName);
 	    Thread.sleep(2000);
 	    click(nameCheckbox,"name check box");
 	    click(SaveBtn,"save button");
-	    Thread.sleep(2000);
+	    Thread.sleep(4000);
 	    click(addContacts,"add contacts");
 		Thread.sleep(2000);
 	    selectByVisibleText(communityDropdown,community2,community2);
 	    Thread.sleep(2000);
 	    click(nameCheckbox,"name check box");
+	    waitForElementToPresent(nameTextBox);
+	    type(nameTextBox,"BDMAI","BDMAI");
+	    Thread.sleep(2000);
+	    nameFirstBox.click();
+	   // click(nameCheckbox,"name check box");
+	    Thread.sleep(2000);
+	    //click(nameCheckbox,"name check box");
 	    click(SaveBtn,"save button");
+	    if(toEmailList.isDisplayed()) {
+	    	Assert.assertTrue(true);
+	    }
+	    System.out.println(toEmailList.getText());
+	    waitForElementToPresent(selectCampaign);
 	    selectByVisibleText(selectCampaign,"chamber of commerce","chamber of commerce");
-	
-	
+	    click(sendBtn,"send email");
+	    Thread.sleep(2000);
+	   /* String Message = SuccessPopup.getText();
+	    * 
+	   
+		picture();
+		System.out.println(Message); */
 	
 	}
 	
+	public void emailWithEditor(String communityName) throws InterruptedException{
+		waitForElementToPresent(addContacts);		
+		click(addContacts,"add contacts");
+		Thread.sleep(2000);
+		System.out.println(communityName);
+	    selectByVisibleText(communityDropdown,communityName,communityName);
+	    Thread.sleep(2000);
+	    click(nameCheckbox,"name check box");
+	    click(SaveBtn,"save button");
+	    Thread.sleep(2000);
+	    waitForElementToPresent(selectCampaign);
+	    selectByVisibleText(selectCampaign,"chamber of commerce","chamber of commerce");
+	    Thread.sleep(2000);
+	    click(emailEmoticon,"emoticons");
+	    click(smileyEmoticon,"smiley");
+	    click(sendBtn,"send email");
+	    Thread.sleep(4000);
+	    /*String Message = SuccessPopup.getText();
+	    
+	    
+		picture();
+		System.out.println(Message);
+		*/
 	
+		
+	}
+	public void saveDraft(String communityName) throws InterruptedException{
+		waitForElementToPresent(addContacts);		
+		click(addContacts,"add contacts");
+		Thread.sleep(2000);
+		System.out.println(communityName);
+	    selectByVisibleText(communityDropdown,communityName,communityName);
+	    Thread.sleep(2000);
+	    click(nameCheckbox,"name check box");
+	    click(SaveBtn,"save button");
+	    Thread.sleep(2000);
+	    waitForElementToPresent(selectCampaign);
+	    selectByVisibleText(selectCampaign,"chamber of commerce","chamber of commerce");
+	    Thread.sleep(2000);
+	    click(saveBtn,"saving the draft");
+	    Thread.sleep(2000);
+	   // String actual = driver.switchTo().alert().getText();
+	   // System.out.println(actual);
+	}
 	
+	public void selectAllMembers(String communityName) throws InterruptedException{
+		waitForElementToPresent(addContacts);
+		fileUpload.sendKeys("C:\\Users\\rugup\\OneDrive\\Documents\\testing class.txt");
+		/*click(addContacts,"add contacts");
+		Thread.sleep(2000);
+		System.out.println(communityName);
+	    selectByVisibleText(communityDropdown,communityName,communityName);
+	    Thread.sleep(4000);
+	    click(member1,"member1");
+	    click(member2,"member2");
+	    click(member3,"member3");
+	    //click(nameCheckbox,"name check box");
+	    click(SaveBtn,"save button");
+	    Thread.sleep(2000);
+	    waitForElementToPresent(selectCampaign);
+	    selectByVisibleText(selectCampaign,"chamber of commerce","chamber of commerce");
+	    Thread.sleep(2000);
+	    click(sendBtn,"send email");
+	    Thread.sleep(4000);
+	   // String actual = driver.switchTo().alert().getText();
+	   // System.out.println(actual);*/
+	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public void checkImportContacts(String communityName, String typeName) throws InterruptedException {
+		//waitForElementToPresent(mailScheduleCheck);
+        waitForElementToPresent(addContacts);		
+		click(addContacts,"add contacts");
+		Thread.sleep(2000);
+	    selectByVisibleText(communityDropdown,communityName,"Import Contacts");
+	    Thread.sleep(2000);
+	    //click(nameCheckbox,"name check box");
+	    //click(SaveBtn,"save button");
+	    Thread.sleep(5000);
+	    type(nameTextBox,typeName,"duplicate");
+	    if(csvFileResult.isDisplayed()) {
+	    	Assert.assertTrue(true);
+	    	System.out.println("Contact from CSV file is there in Import Contacts list");
+	    }
+	    
+	    }
+	   
+	/*public String getDateInDDMMYYYY() {
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		Date date = new Date();
+		System.out.println(formatter.format(date));
+	}*/
+	public String getDateInDDMMMYYYY() {
 
-}
+		// SimpleDateFormat formatter = new SimpleDateFormat("dd MMMM yyyy");
+		SimpleDateFormat formatter = new SimpleDateFormat("ddMMMyyyy");
+		String strDate = formatter.format(getDate());
+		System.out.println("Date Format with dd MMMM yyyy : " + strDate);
+		return strDate;
+	}
+	    
+	 
+	}
+	

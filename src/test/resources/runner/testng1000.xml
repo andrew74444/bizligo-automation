@@ -39,6 +39,31 @@
  <class name="com.cpcommunity.memberDirectoryTestCases.TC703_Verify_MemberPendingApproval_NotDisplayed_MemberDirectory"/>
  <class name="com.cpcommunity.memberDirectoryTestCases.TC704_Verify_TenantAdmin_CanDownload_Excel_from_MemberDirectory"/>
    <class name="com.cpcommunity.memberDirectoryTestCases.TC705_Verify_DetailsDispalyed_MemberDir_When_All_FieldsFilled"/>
+   <class name="com.cpcommunity.testScripts.Endorsments.TC750_Verify_approval_pending_endorsements_not_listed_in_memberprofile"/>
+  <class name="com.cpcommunity.testScripts.Endorsments.TC751_Verify_rejected_endorsements_notlisted_if_rejected_by_member"/> 
+ <class name="com.cpcommunity.testScripts.Endorsments.TC752_Verify_endorsements_listed_if_accepted_by_member"/> 
+ 
+    <class name="com.cpcommunity.testScripts.Groups.TC881_Verify_Member_Cansearch_Group_MyGroupPage"/>
+  <class name="com.cpcommunity.testScripts.Groups.TC882_Verify_Admin_canEdit_Group"/>
+   <class name="com.cpcommunity.testScripts.Groups.TC883_Verify_Number_OfMembers_And_GroupName_Is_Dispalyed"/> 
+    <class name="com.cpcommunity.testScripts.Groups.TC880_Verify_Admin_Can_Search_Group_WithName_Status"/> 
+     <class name="com.cpcommunity.testScripts.manageCampaign.TC800_Verify_errorMsg_when_sent_without_recipientDetails"/> 
+   <class name="com.cpcommunity.testScripts.manageCampaign.TC806_Verify_emails_canbe_dispatched_at_particular_time"/> 
+  <class name="com.cpcommunity.testScripts.manageCampaign.TC807_Verify_only_registeredattendee_are_listed_inToField"/>
+   <class name="com.cpcommunity.testScripts.manageCampaign.TC808_Verify_email_canBeFormatted_using_editor"/>  
+    <class name="com.cpcommunity.testScripts.manageCampaign.TC809_Verify_CAcan_draft_email_adding_recipient"/>  
+  <class name="com.cpcommunity.testScripts.manageCampaign.TC810_Verify_Statistical_Analysis_Report"/> 
+   <class name="com.cpcommunity.testScripts.manageCampaign.TC812_Verify_TA_able_add_ActiveMembers_from_ActiveOrgnization"/>  
+   <class name="com.cpcommunity.testScripts.manageCampaign.TC813_Verify_TA_able_add_PendingMembers_from_PendingOrgnization"/> 
+   <class name="com.cpcommunity.testScripts.manageCampaign.TC814_Verify_TA_add_Valid_Membership_members_from_ActiveGroups"/>  
+  <class name="com.cpcommunity.testScripts.manageCampaign.TC815_Verify_TA_add_UpcomingEvents_RSVPedUsers"/>  
+  <class name="com.cpcommunity.testScripts.manageCampaign.TC816_Verify_TA_add_PastEvents_RSVPedUsers"/>  
+  <class name="com.cpcommunity.testScripts.manageCampaign.TC817_Verify_TA_able_add_ActiveMembers"/>  
+  <class name="com.cpcommunity.testScripts.manageCampaign.TC818_Verify_TA_able_add_CancelledEvents_RSVPedUsers"/>  
+    
+  <class name="com.cpcommunity.testScripts.manageCampaign.TC819_Verify_TA_Able_Add_Active_Organization_By_Selecting_Communities"/>  
+  
+  
       
     
 

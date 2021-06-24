@@ -118,6 +118,12 @@ public class CommunityDashboardPage extends BasePage {
 	@FindBy(xpath = "//a[normalize-space()='Compose Campaign']")
 	WebElement composeCampaign;
 	
+	@FindBy(xpath = "//a[normalize-space()='Statistics']")
+	WebElement statistics;
+	
+	@FindBy(xpath = "//a[normalize-space()='Import Contacts']")
+	WebElement ImportContacts;
+	
 	
 	
 
@@ -231,6 +237,27 @@ public class CommunityDashboardPage extends BasePage {
 		// new GroupsPendingRequestsPage(driver);
 
 	}
+	
+	public ImportContactsPage NavigatetoImportContactsPage() {
+
+		click(ManageCampaign, "ManageCampaign");
+		waitForElementToPresent(ImportContacts);
+		click(ImportContacts, "Import Contacts");
+		return (ImportContactsPage) openPage(ImportContactsPage.class);
+		// new GroupsPendingRequestsPage(driver);
+
+	}
+	
+	public StatisticsManageCampaign NavigatetoStatistics() {
+
+		click(ManageCampaign, "ManageCampaign");
+		waitForElementToPresent(statistics);
+		click(statistics, "statistics");
+		return (StatisticsManageCampaign) openPage(StatisticsManageCampaign.class);
+		// new GroupsPendingRequestsPage(driver);
+
+	}
+
 
 	public ManageCommunityMembersPage navigateToManageCommunityMembers() throws Exception {
 
@@ -367,8 +394,10 @@ public class CommunityDashboardPage extends BasePage {
 		click(serveys,"serveys");
 		return (ServeysPage) openPage(ServeysPage.class);
 	}
+	
 	@FindBy(xpath="//*[contains(text(),'Pricing Plan Details')]")
 	WebElement pricingPlanDetails;
+	
 	public PricingPlanDetailsPage navigateToPricingPlansDetailsPage() {
 		
 		

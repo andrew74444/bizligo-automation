@@ -2,6 +2,7 @@ package com.cpcommunity.testScripts.manageCampaign;
 
 import java.util.Hashtable;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.CommunityDashboardPage;
@@ -32,5 +33,13 @@ public class TC806_Verify_emails_canbe_dispatched_at_particular_time extends Bas
 		ComposeCampaignPage CC=CDP.NavigatetoComposeCampaignPage();
 		CC.emailsAtParticularTime();
 	
+	}
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("TC806 Test Completed");
+		
+		quit();
+		
 	}
 }

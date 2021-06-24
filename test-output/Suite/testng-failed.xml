@@ -8,13 +8,13 @@
   </listeners>
   <test name="Test1(failed)">
     <classes>
-      <class name="com.cpcommunity.testScripts.manageCampaign.TC807_Verify_only_registeredattendee_are_listed_inToField">
+      <class name="com.cpcommunity.testScripts.ImportContacts.TC827_Verify_CSVfile_contains_duplicate_emails_only1record_should_import_in_contactList">
         <methods>
+          <include name="TC827" invocation-numbers="0"/>
           <include name="setUpFramework"/>
-          <include name="TC806" invocation-numbers="0"/>
           <include name="sendmail"/>
         </methods>
-      </class> <!-- com.cpcommunity.testScripts.manageCampaign.TC807_Verify_only_registeredattendee_are_listed_inToField -->
+      </class> <!-- com.cpcommunity.testScripts.ImportContacts.TC827_Verify_CSVfile_contains_duplicate_emails_only1record_should_import_in_contactList -->
     </classes>
   </test> <!-- Test1(failed) -->
 </suite> <!-- Failed suite [Suite] -->
