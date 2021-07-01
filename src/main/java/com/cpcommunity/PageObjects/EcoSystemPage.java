@@ -12,12 +12,14 @@ import com.cpcommunity.utilities.DriverManager;
 
 public class EcoSystemPage extends BasePage {
 
-	@FindBy(xpath = "//*[contains(text(),'MY ECOSYSTEM')]")
+	@FindBy(xpath = "//a[normalize-space()='My Ecosystem']")
 	WebElement myEcosystem;
 
 	@FindBy(xpath = "//*[@class='dropdown-menu']//*[contains(text(),'My Ecosystem')] | //*[@class='dropdown-menu gretdrpmenu']//*[contains(text(),'My Ecosystem')]")
 	WebElement myEcosystemInMenu;
 	
+	@FindBy(xpath = "//a[contains(.,'Dashboard')]")
+	WebElement DashBoard;
 	
 	@FindBy(xpath = "//*[@id='global-nav']")
 	WebElement pageheader;
@@ -46,9 +48,12 @@ public class EcoSystemPage extends BasePage {
 	// *************************************Groups****************************************
 	@FindBy(xpath = "//*[contains(text(),'My Groups')]")
 	WebElement myGroups;
-
+	@FindBy(xpath = "//*[contains(text(),'My Jobs')]")
+	WebElement myJobs;
 	@FindBy (xpath="//*[contains(text(),'My Connections')]")
 	WebElement myConnections;
+	@FindBy(xpath = "(//*[@class='col-md-3 left_col']//*[@title='Manage Applications'])")
+	WebElement ManageApplications;
 	
 	@FindBy (xpath = "//*[contains(text(),'My Messages')]")
 	WebElement myMessages;
@@ -64,12 +69,11 @@ public class EcoSystemPage extends BasePage {
 	
 	@FindBy(xpath="//a[contains(text(),'Manage Password')]")
 	WebElement ManagePassword;
-	
-	@FindBy(xpath="//a[contains(.,' Dashboard')]")
-	WebElement Dashboard;
+
 	@FindBy(xpath="//span[contains(text(),'Global Events')]")
 	WebElement globalEvents;
-	
+	@FindBy(xpath = "//*[contains(text(),'MANAGE')]")
+	WebElement MANAGEbtn;
 	
 	@FindBy(xpath="//a[contains(text(),'Upcoming Events')]")
 	WebElement upcomingEvents;
@@ -78,13 +82,18 @@ public class EcoSystemPage extends BasePage {
 	
 	@FindBy(xpath="//a[contains(text(),'Careers')]")
 	WebElement GlobalCareers;
-	
+	@FindBy(xpath = "(((//*[@class='col-md-3 left_col']//img[@src='/Content/Images/Jobs/Jobs-active.png'])/..)/..)")
+	WebElement Jobs;
 	@FindBy(xpath = "//*[contains(text(),'No matches right')]")
     WebElement textMessage;
-	        
+	@FindBy(xpath = "//div[@class='pull-right text-right endorse-color']")
+	WebElement TotalendorsCount;      
 	
 	@FindBy(xpath = "//*[contains(text(),'My Matches')]")
 	WebElement myMatches;
+	@FindBy(xpath = "//a[contains(text(),'Home')]")
+	WebElement Home;
+	
 	
 	
 	@Override
@@ -98,7 +107,7 @@ public class EcoSystemPage extends BasePage {
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 
-		return ExpectedConditions.visibilityOf(myEcosystem);
+		return ExpectedConditions.visibilityOf(Home);
 	}
 
 	public HomePage logout() throws Exception {
@@ -108,6 +117,23 @@ public class EcoSystemPage extends BasePage {
 		click(Logout,"Logout");
 		return (HomePage) openPage(HomePage.class);
 		// new HomePage(driver, );
+	}
+	public MyDashboardPage gotoMyDashboardPage() throws Exception {
+		waitForElementToPresent(Toggledropdownmenu);
+		click(Toggledropdownmenu,"Toggledropdownmenu");
+		Thread.sleep(500);
+		waitForElementToPresent(DashBoard);
+		click(DashBoard,"DashBoard");
+		return (MyDashboardPage) openPage(MyDashboardPage.class);
+	}	
+	
+	public void Totalendorsments() throws Exception {
+		//boolean varExists = false;
+		scrollToElement(TotalendorsCount);
+		waitForElementToPresent(this.TotalendorsCount);
+		 String C = TotalendorsCount.getText();
+	      int TC=Integer.parseInt(C);
+			System.out.println("Total count is " + TC);
 	}
 
 	public GlobalCommunitesPage goToGlobalCommunities() throws Exception {
@@ -119,8 +145,34 @@ public class EcoSystemPage extends BasePage {
 		// new GlobalCommunitesPage(driver, );
 
 	}
+	public CommunityDashboardPage gotoManageCommunity(String communityName) throws Exception {
 
-	
+		//this.searchCommunity(communityName+getDateInDDMMMYYYY());
+		//this.searchCommunity(communityName);
+		click(MANAGEbtn, "Manage");
+		return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
+		// new CommunityDashboardPage(driver, );
+	}
+	public CommunityDashboardPage navigateToManageCommunityPage() throws Exception {
+
+		click(MANAGEbtn, "Manage");
+		return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
+		
+	}
+
+	public MyJobsPage navigateToMyJobsPage() {
+		scrollIntoView(myJobs);
+		myJobs.click();		
+		return (MyJobsPage) openPage(MyJobsPage.class);
+	}
+	public MyEcosystemPage gotoMyEcosystemPage() throws Exception {
+		waitForElementToPresent(Toggledropdownmenu);
+		click(Toggledropdownmenu,"Toggledropdownmenu");
+		Thread.sleep(1000);
+		waitForElementToPresent(myEcosystem);
+		click(myEcosystem,"myEcosystem");
+		return (MyEcosystemPage) openPage(MyEcosystemPage.class);
+	}	
 	public void myMatches(String actual) throws Throwable
 		
 	        {
@@ -295,6 +347,16 @@ public class EcoSystemPage extends BasePage {
 		return (BlogsPage) openPage(BlogsPage.class);
 
 	}
+	public ManageApplications navigateToManageApplicationsPage() {
+		scrollDownVertically();
+		scrollToElement(Jobs);
+		click(Jobs, "Jobs");
+		waitForElementToPresent(ManageApplications);
+		click(ManageApplications, "ManageApplications");
+		//click(ManageApplications, "ManageApplications");
+		return (ManageApplications) openPage(ManageApplications.class);
+		// new ManageApplications(driver);
+	}
 
 //	public MyProfilePage NaviagtingToMyProfilePage1() {
 //
@@ -310,5 +372,10 @@ public class EcoSystemPage extends BasePage {
 	// }
 	//
 	// return (ZohoCRMPage) openPage(ZohoCRMPage.class);
-
+	public EndorsementPage NaviagtingToMyEndorsements()
+	 {
+	
+	 myEndorsements.click();
+	 return (EndorsementPage) openPage(EndorsementPage.class);
+	 }
 }
