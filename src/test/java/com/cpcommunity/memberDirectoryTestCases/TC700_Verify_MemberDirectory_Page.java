@@ -15,32 +15,33 @@ import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.DataUtil;
 import com.cpcommunity.utilities.ExcelReader;
 
-public class TC703_Verify_MemberPendingApproval_NotDisplayed_MemberDirectory extends BaseTest {
+public class TC700_Verify_MemberDirectory_Page extends BaseTest {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC703(Hashtable<String,String> data) throws Exception {
+	public void TC700(Hashtable<String,String> data) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC703", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC700", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
+//		login.login(data.get("username"), data.get("password"));
+//		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
 		MyCommunitiesPage MyCP = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
 		MemberDirectoryPage MDP=MyCP.gotoMemberDirectoryPage();
-		MDP.searchPendingMember(data.get("Member Name"));
-		
+		MDP.searchMember(data.get("First Name"),data.get("Last Name"));
+		MDP.profileCategoryList();
 
 }
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("TC703 Test Completed");
+		logInfo("TC700 Test Completed");
 		
 		quit();
 		
 	}
-
 
 }

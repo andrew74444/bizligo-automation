@@ -27,8 +27,8 @@ public class TC701_Verify_Profile_Category extends BaseTest{
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
-		MyCommunitiesPage MyCP = login.loginToApplicationMcp(data.get("email"), data.get("password"));
-		MemberDirectoryPage MDP=MyCP.goToMemberDirectory();
+		MyCommunitiesPage MyCP = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
+		MemberDirectoryPage MDP=MyCP.gotoMemberDirectoryPage();
 		//MDP.searchMember(data.get("First Name"),data.get("Last Name"));
 		MDP.profileCategoryList();
 
