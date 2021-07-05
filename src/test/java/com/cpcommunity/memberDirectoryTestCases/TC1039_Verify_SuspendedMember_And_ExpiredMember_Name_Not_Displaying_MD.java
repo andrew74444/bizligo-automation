@@ -15,32 +15,29 @@ import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.DataUtil;
 import com.cpcommunity.utilities.ExcelReader;
 
-public class TC703_Verify_MemberPendingApproval_NotDisplayed_MemberDirectory extends BaseTest {
+public class TC1039_Verify_SuspendedMember_And_ExpiredMember_Name_Not_Displaying_MD extends BaseTest{
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC703(Hashtable<String,String> data) throws Exception {
-
+	public void TC1039(Hashtable<String,String> data) throws Exception {
+ 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC703", data.get("Runmode"), excel);
-		log.info("Inside Login Test");
+		DataUtil.checkExecution("master", "TC1039", data.get("Runmode"), excel);
+		log.info("Inside Login Test");			
 		openBrowser(data.get("browser"));
-		logInfo("Launched Browser : "+data.get("browser"));
+		logInfo("Launched Browser : "+ data.get("browser"));		
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
-		MyCommunitiesPage MyCP = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
-		MemberDirectoryPage MDP=MyCP.gotoMemberDirectoryPage();
-		MDP.searchPendingMember(data.get("Member Name"));
-		
-
+		MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
+		//BusinessDirectoryPage bussinessdirectory= myCommunity.gotoBusinessDirectoryPage();
+		MemberDirectoryPage memberdirectory= myCommunity.gotoMemberDirectoryPage();
+        memberdirectory.SearchSuspendedAndExpiredMembers(data.get("SuspendedName"), data.get("ExpiredName"));
 }
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("TC703 Test Completed");
+		logInfo("TC1039 Test Completed");
 		
 		quit();
 		
 	}
-
-
 }

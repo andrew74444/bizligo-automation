@@ -6,6 +6,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+
+import java.util.List;
+
 import org.apache.log4j.Logger;
 
 import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
@@ -38,6 +41,8 @@ public class ProfilePage extends BasePage{
 	WebElement sendBtn;	
 	@FindBy(xpath = "//a[normalize-space()='Profile']")
 	WebElement profilePage;	
+	 @FindBy(xpath = "//div[@class='progress custom-progress']")
+		List<WebElement> profileCompletenessBardisplay;
 	@FindBy(xpath = "//*[@id='toast-container']/div/div[3]")
 	WebElement SuccessPopup;
 	@FindBy(xpath = "//*[@id=\"Skill_InterestController\"]/div[2]/div/div[2]")
@@ -221,4 +226,11 @@ public class ProfilePage extends BasePage{
 		
 	}
 }
+	public void profileComplenessViibility() throws InterruptedException {
+		Thread.sleep(1000);
+		Assert.assertEquals(0, profileCompletenessBardisplay.size());
+	
+		System.out.println("ProfileCompletenessBar not is displaying");
+	//Assert.assertTrue(true);
+	}
 }
