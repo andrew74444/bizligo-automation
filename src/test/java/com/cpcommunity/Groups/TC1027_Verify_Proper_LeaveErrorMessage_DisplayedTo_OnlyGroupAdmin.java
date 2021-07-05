@@ -1,4 +1,4 @@
-package com.cpcommunity.testScripts.Groups;
+package com.cpcommunity.Groups;
 
 import java.util.Hashtable;
 
@@ -33,10 +33,11 @@ public class TC1027_Verify_Proper_LeaveErrorMessage_DisplayedTo_OnlyGroupAdmin e
 	logInfo("BizLigo Application Opened");
 	HomePage home = new HomePage().open(data.get("tenantType"));
 	LoginPage login = home.clickOnLOGINBtn();
-	EcoSystemPage ecosystemp = login.loginToApplication(data.get("email"), data.get("password"));
-	MyEcosystemPage myeco=ecosystemp.gotoMyEcosystemPage();
-	MyGroupsPage mygroup=myeco.navigateToMyGroupsPage();
-	mygroup.checkProperAlertDisplayedWhenOnlyOneAdmin(data.get("communityName"));
+	MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
+	MyDashboardPage mydash=myCommunity.gotoMyDashboardPage();
+	//MyEcosystemPage myeco=ecosystemp.gotoMyEcosystemPage();
+	MyGroupsPage mygroup=mydash.NavigatingToMyGroups();
+	//mygroup.checkProperAlertDisplayedWhenOnlyOneAdmin(data.get("communityName"));
 	
 }
 	

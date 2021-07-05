@@ -10,19 +10,19 @@ import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.ManageGroupsPage;
 import com.cpcommunity.PageObjects.MyCommunitiesPage;
-import com.cpcommunity.PageObjects.MyDashboardPage;
 import com.cpcommunity.testScripts.community.BaseTest;
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.DataUtil;
 import com.cpcommunity.utilities.ExcelReader;
 
-public class TC883_Verify_Number_OfMembers_And_GroupName_Is_Dispalyed extends BaseTest{
+public class TC880_Verify_Admin_Can_Search_Group_WithName_Status extends BaseTest
+{
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC883(Hashtable<String,String> data) throws Exception {
+	public void TC880(Hashtable<String,String> data) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC883", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC880", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
@@ -31,18 +31,15 @@ public class TC883_Verify_Number_OfMembers_And_GroupName_Is_Dispalyed extends Ba
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
-		MyCommunitiesPage MyCP = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
-		MyDashboardPage mydash=MyCP.gotoMyDashboardPage();
-		//CommunityDashboardPage CDP= MyCP.gotoManageCommunity(data.get("communityName"));
-		//ManageGroupsPage MGP=CDP.navigateToManageGroupsPage();
-		
-		mydash.numberOfMembers(data.get("GroupName"));
-
+		MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
+		CommunityDashboardPage CDP= myCommunity.gotoManageCommunity(data.get("communityName"));
+		ManageGroupsPage MGP=CDP.navigateToManageGroupsPage();
+		MGP.searchGroup1(data.get("Group Name"),data.get("Status"));
 }
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("TC883 Test Completed");
+		logInfo("TC880 Test Completed");
 		
 		quit();
 		
