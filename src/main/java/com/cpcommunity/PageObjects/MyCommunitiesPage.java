@@ -434,7 +434,7 @@ public class MyCommunitiesPage extends BasePage {
 
 	public CommunityDashboardPage gotoManageCommunity(String communityName) throws Exception {
 
-		this.searchCommunity(communityName+getDateInDDMMMYYYY());
+		//this.searchCommunity(communityName+getDateInDDMMMYYYY());
 		click(MANAGEbtn, "Manage");
 		return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
 		// new CommunityDashboardPage(driver, );
