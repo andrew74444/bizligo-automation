@@ -45,6 +45,8 @@ public class HomePage extends BasePage {
 	@FindBy(xpath = "//*[@id='global-nav']")
 	WebElement pageheader;
 	
+	@FindBy(xpath = "//a[normalize-space()='Global Communities']")
+	WebElement GlobalCommunities;
 	
 	@Override
 	protected  void getPageScreenSot() {
@@ -177,4 +179,10 @@ public MemberDirectoryPage goToMemberDirectory() throws InterruptedException {
 		return (MemberDirectoryPage) openPage(MemberDirectoryPage.class);
 		
 	}
+public GlobalCommunitesPage NavigateToGlobalCommunities() throws Exception {
+	Thread.sleep(5000);
+	click(GlobalCommunities, "Global Communities");
+	return (GlobalCommunitesPage) openPage(GlobalCommunitesPage.class);
+	
+}
 }
