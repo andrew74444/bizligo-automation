@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 
 import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
 
@@ -99,6 +100,18 @@ public class GlobalCommunitesPage extends BasePage {
 
 	@FindBy(xpath = "//*[contains(text(),'Category')]//*")
 	WebElement communitiesCategory;
+	
+	@FindBy(xpath = "//a[normalize-space()='Accer Community']")
+	WebElement acerCommunity;
+	
+	@FindBy(xpath = "//span[normalize-space()='Resources']")
+	WebElement ResourcesAcer;
+	
+	@FindBy(xpath = "//p[@class='ng-binding ng-scope']")
+	WebElement msgIfNotMember;
+	
+	@FindBy(xpath="//a[normalize-space()='BizLigo1']")
+	WebElement bizligo1;
 
 	public void checkTotalCommunities(Hashtable<String, String> data) throws Exception {
 		String name = "";
@@ -486,5 +499,29 @@ public class GlobalCommunitesPage extends BasePage {
 		click(ele,communityName+" "+strDate);
 		return (CommunityDetailsPage) openPage(CommunityDetailsPage.class);
 	}
-
+	public Bizligo1CommunityPage goToMyCommunity() {
+		//click(viewAllBtn,"view all");
+		waitForElementToPresent(bizligo1);
+		click(bizligo1,"Bizligo 1");
+		return (Bizligo1CommunityPage) openPage(Bizligo1CommunityPage.class);
+	}
+	
+	public void checkResources() {
+		waitForElementToPresent(acerCommunity);
+		click(acerCommunity,"Acer community");
+		waitForElementToPresent(ResourcesAcer);
+		click(ResourcesAcer,"Resources");
+		waitForElementToPresent(msgIfNotMember);
+		String x=msgIfNotMember.getText();
+		System.out.println(x);
+		if(x.equalsIgnoreCase("Join the community to view the community information")) {
+			System.out.println("Member who is not part of community cannot see the resources.");
+			Assert.assertTrue(true);
+			
+		}else {
+			Assert.assertTrue(false);
+		}
+		
+	}
+	
 }
