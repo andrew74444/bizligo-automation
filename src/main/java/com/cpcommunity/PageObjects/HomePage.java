@@ -48,6 +48,10 @@ public class HomePage extends BasePage {
 	@FindBy(xpath = "//a[normalize-space()='Global Communities']")
 	WebElement GlobalCommunities;
 	
+	@FindBy(xpath = "//a[normalize-space()='Careers']")
+	WebElement careers;
+	
+	
 	@Override
 	protected  void getPageScreenSot() {
 	
@@ -133,6 +137,12 @@ public class HomePage extends BasePage {
 		// return (GlobalCommunitesPage) openPage(GlobalCommunitesPage.class,"Global
 		// Communites Page");
 		// new GlobalCommunitesPage(driver, );
+	}
+	public GlobalCareers NavigateToCareers() throws Exception {
+		Thread.sleep(1000);
+		click(careers, "careers");
+		return (GlobalCareers) openPage(GlobalCareers.class);
+	
 	}
 
 	@FindBy(xpath = "//*[@id='header']")

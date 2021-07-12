@@ -145,8 +145,26 @@ public class CommunityDashboardPage extends BasePage {
 
 	@FindBy(xpath="//a[normalize-space()='Statistics']")
 	WebElement Staticcampaign;
-	
-	
+	@FindBy(xpath = "//div[@class='panel panel-info']//a[3]")
+	WebElement totakJobs;
+    @FindBy(xpath = "//div[@class='panel panel-info']//a[3]//div[1]//div[2]")
+	WebElement totakJobscounts;
+    @FindBy(xpath = "//a[@ng-click=\"data.RedirectToPageBasedOnRole('jobs', 'inactive')\"]")
+	WebElement totakinactiveJobs;
+    @FindBy(xpath = "//div[@class='panel panel-info']//a[2]//div[1]//div[2]")
+    WebElement totakInactiveJobscounts;
+    @FindBy(xpath = "//div[@class='panel panel-info']//a[4]")
+	WebElement totakJobsapplication;
+    @FindBy(xpath = "//div[@class='panel panel-info']//a[4]//div[1]//div[2]")
+    WebElement totakjobsapplicationcounts;
+    @FindBy(xpath = "//a[normalize-space()='Email Templates']")
+    WebElement emailtemplate;
+    @FindBy(xpath = " //a[normalize-space()='Pricing Plan Details']")
+    WebElement pricingplan;@FindBy(xpath = "//div[@class='panel panel-info']//a[3]//div[1]//div[2]")
+	WebElement totalJobsCount;
+    
+ 
+  
 	public void displayManageGroupsPage() throws Exception {
 		boolean varExists = false;
 		click(Groups, "Groups");
@@ -310,6 +328,12 @@ public class CommunityDashboardPage extends BasePage {
 
 		click(Events, "Events");
 		return (CommunityEventsPage) openPage(CommunityEventsPage.class);
+		// new CommunityEvents(driver);
+	}
+	public EmailTemplatePage navigateToEmailTemplate() {
+
+		click(emailtemplate, "Email Template");
+		return (EmailTemplatePage) openPage(EmailTemplatePage.class);
 		// new CommunityEvents(driver);
 	}
 
@@ -479,4 +503,49 @@ public class CommunityDashboardPage extends BasePage {
 		return (ManageResourcesPage) openPage(ManageResourcesPage.class);
 		
 	}
+	public PricingPlanDetailsPage navigateToPricingPlanDetailsPage() throws Exception {
+		
+		click(pricingplan, "Pricing Plan");
+		return (PricingPlanDetailsPage) openPage(PricingPlanDetailsPage.class);
+		
+	}
+	public int TotalJobs() throws Exception {
+		//boolean varExists = false;
+		scrollIntoView(totakJobs);
+		String C = totakJobscounts.getText();
+        int TC=Integer.parseInt(C);
+        System.out.println("Total count is " + TC);
+     	Assert.assertTrue(true);  
+	      return TC;	
+			
+	}
+	 public void totalJobsCount() {
+			
+		   String C = totalJobsCount.getText();
+	      int TC=Integer.parseInt(C);
+	      System.out.println(TC);
+	      System.out.println("CA can check total number of jobs on Statistics of Jobs on Dashboard");
+	}
+	 public int TotalJobsApplications() throws Exception {
+ 		//boolean varExists = false;
+ 		scrollIntoView(totakJobsapplication);
+ 		String C = totakjobsapplicationcounts.getText();
+        int TC=Integer.parseInt(C);
+        System.out.println("Total count is " + TC);
+     	Assert.assertTrue(true);  
+	      return TC;	
+ 			
+ 
+ 	}
+	 public int TotalInactiveJobs() throws Exception {
+			//boolean varExists = false;
+			scrollIntoView(totakinactiveJobs);
+			String C = totakInactiveJobscounts.getText();
+	        int TC=Integer.parseInt(C);
+	        System.out.println("Total count is " + TC);
+	     	Assert.assertTrue(true);  
+		      return TC;
+			
+		}
 }
+

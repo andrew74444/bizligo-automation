@@ -1,5 +1,7 @@
 package com.cpcommunity.PageObjects;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.openqa.selenium.WebElement;
@@ -38,6 +40,8 @@ public class MyJobsPage extends BasePage {
 	WebElement SearchBtn;
 	@FindBy(xpath = "//button[contains(@ng-click,'data.ResetJobs()')]")
 	WebElement ResetBtn;
+	@FindBy(xpath = "//button[normalize-space()='View']")
+	WebElement view;
 	
 	@FindBy(xpath = "(//div[@class='Job-title']//h4)")
 	List<WebElement> totalJobTitleResult;
@@ -47,7 +51,22 @@ public class MyJobsPage extends BasePage {
 	List<WebElement> totalJobTypeResult;
 	@FindBy(xpath = "(//div[@class='col-lg-6 col-xs-6 text-right']")
 	List<WebElement> totalJobs;
-		
+	@FindBy(xpath = "//span[@title='Toggle dropdown menu']")
+	WebElement angleDown;
+	@FindBy(xpath = "//input[@placeholder='Search by Job Title']")
+	WebElement searchJobTitle;
+	@FindBy(xpath = "//a[normalize-space()='Logout']")
+	WebElement logout;
+	@FindBy(xpath = "//h5[contains(text(),'Last Updated Date:')]")
+	WebElement jobUpdates;
+	@FindBy(xpath = "//button[normalize-space()='Search']")
+	WebElement btnSearch;
+	 @FindBy(xpath = "//div[@id='removeinnercss']//div[1]//div[2]//div[1]//h4") 
+	 List<WebElement> searchJobTitleResult;
+
+	
+	
+	
 	public void searchJob(String jobTitle, String Location, String jobTypeID,
 			String Community ) throws InterruptedException {
 		
@@ -94,13 +113,65 @@ public class MyJobsPage extends BasePage {
          public void ListOfJobs() {
         	 waitForElementToPresent(totalJobs);
         	 totalJobs.indexOf(totalJobs);
-        	 
-			
+    	
 		}
-
+         public void FindappliedJobs(String Jobtitle) throws InterruptedException {
+        	 waitForElementToPresent(searchByjobTitle);
+        	type(searchByjobTitle, Jobtitle, "Job TItle");
+        	click(SearchBtn, "Search button");
+			Thread.sleep(3000);
+			click(view, "View");
+			waitForElementToPresent(jobUpdates);
+		String Value=this.jobUpdates.getText();
+			System.out.println(Value);
+		}
+         public String getSystemCurrentDate() {
+     		Date date = new Date();
+     		SimpleDateFormat formatter = new SimpleDateFormat("d");
+     		String strDate = formatter.format(date);
+     		return strDate;
+     	}
 		private void waitForElementToPresent(List<WebElement> totalJobs2) {
 			// TODO Auto-generated method stub
 			
 		}
-		
+		public HomePage logout() {
+			clickElementByJavaScript(angleDown);
+			//click(angleDown, "Community Admin Menu Drop down");
+			waitForElementToPresent(logout);
+			click(logout, "logout");
+			return (HomePage) openPage(HomePage.class);
+		}
+		public void searchJobs(String JobTitle,String Jobtype, String location, String community) throws InterruptedException {
+			Thread.sleep(3000);
+			waitForElementToPresent(this.searchJobTitle);
+			type(this.searchJobTitle, JobTitle, "JobTitle");
+			//type(this.searchLocation,location,"Location");
+			click(btnSearch, "Search");
+			Thread.sleep(6000);
+			System.out.println(searchJobTitleResult.size());
+			for(int i =0;i<searchJobTitleResult.size();i++) {
+				 String elementText = searchJobTitleResult.get(i).getText(); 
+				 System.out.println("value of jobsearch:"+elementText);
+				 Assert.assertEquals(JobTitle,elementText);
+				}
+			searchJobTitle.clear();
+			
+		}
+		public void searchJob(String JobTitle) throws InterruptedException {
+			Thread.sleep(3000);
+			waitForElementToPresent(this.searchJobTitle);
+			type(this.searchJobTitle, JobTitle, "JobTitle");
+			//type(this.searchLocation,location,"Location");
+			click(btnSearch, "Search");
+			Thread.sleep(4000);
+			System.out.println(searchJobTitleResult.size());
+			for(int i =0;i<searchJobTitleResult.size();i++) {
+				 String elementText = searchJobTitleResult.get(i).getText(); 
+				 System.out.println("value of jobsearch:"+elementText);
+				 Assert.assertEquals(JobTitle,elementText);
+				}
+			searchJobTitle.clear();
+			
+		}
 }
