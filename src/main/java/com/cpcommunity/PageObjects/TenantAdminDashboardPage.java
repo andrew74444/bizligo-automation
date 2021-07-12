@@ -5,6 +5,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import junit.framework.Assert;
+
 public class TenantAdminDashboardPage extends BasePage{
 
 	@Override
@@ -34,9 +36,53 @@ public class TenantAdminDashboardPage extends BasePage{
 	WebElement manageresource;
 	@FindBy(xpath="//a[normalize-space()='Compose Campaign']")
 	WebElement composeCampaign;
-	 @FindBy(xpath="//a[@title='Go to Member site home']")
-	 WebElement bizligoBtn;
-
+	@FindBy(xpath="//a[@title='Go to Member site home']")
+	WebElement bizligoBtn;
+	@FindBy(xpath = "(//*[@class='col-md-3 left_col']//*[@title='Manage Jobs'])")
+	WebElement ManageJobs;
+    @FindBy(xpath = "(((//*[@class='col-md-3 left_col']//img[@src='/Content/Images/Jobs/Jobs-active.png'])/..)/..)")
+	WebElement Jobs;
+    @FindBy(xpath = "//a[@title='Manage Applications']")
+	WebElement ManageApplication;
+    @FindBy(xpath = "//div[@class='panel panel-info']//a[3]")
+	WebElement totakJobs;
+    @FindBy(xpath = "//div[@class='panel panel-info']//a[3]//div[1]//div[2]")
+   	WebElement totakJobscounts;
+    @FindBy(xpath = "//a[@href='/eventmanager/jobs/index/inactive']")
+   	WebElement totakinactiveJobs;
+    @FindBy(xpath = "//div[@class='panel panel-info']//a[2]//div[1]//div[2]")
+    WebElement totakInactiveJobscounts;
+    @FindBy(xpath = "//div[@class='panel panel-info']//a[4]")
+   	WebElement totakJobsapplication;
+    @FindBy(xpath = "//div[@class='panel panel-info']//a[4]//div[1]//div[2]")
+    WebElement totakjobsapplicationcounts;
+    @FindBy(xpath = "//a[@href='/eventmanager/jobs/index/active']")
+   	WebElement activeJobs;
+    @FindBy(xpath = "//div[@class='panel panel-info']//a[1]//div[1]//div[2]")
+    WebElement activejobscounts;
+  
+  
+   
+    
+    
+	 public ManageApplications navigateToManageApplication() {
+			scrollDownVertically();
+			scrollToElement(Jobs);
+			click(Jobs, "Jobs");
+			waitForElementToPresent(ManageApplication);
+			click(ManageApplication, "ManageJobs");
+			return (ManageApplications) openPage(ManageApplications.class);
+			// new ManageJobs(driver);
+		}
+	 public ManageJobsPage navigateToManageJobsPage() {
+			scrollDownVertically();
+			scrollToElement(Jobs);
+			click(Jobs, "Jobs");
+			waitForElementToPresent(ManageJobs);
+			click(ManageJobs, "ManageJobs");
+			return (ManageJobsPage) openPage(ManageJobsPage.class);
+			// new ManageJobs(driver);
+		}
 public ComposeCampaign navigateToComposeCampaignPage() throws Exception {
 	scrollDownVertically();
 	scrollToElement(manageCampaign);
@@ -84,4 +130,45 @@ public HomePage goToHomePage() {
 	return (HomePage) openPage(HomePage.class);
 
 }
+   public int TotalJobs() throws Exception {
+	//boolean varExists = false;
+	    scrollIntoView(totakJobs);
+	    String C = totakJobscounts.getText();
+        int TC=Integer.parseInt(C);
+        System.out.println("Total count is " + TC);
+		Assert.assertTrue(true);  
+        return TC;
+	
+}
+     public int TotalInactiveJobs() throws Exception {
+	//boolean varExists = false;
+	      scrollIntoView(totakinactiveJobs);
+	      String C = totakInactiveJobscounts.getText();
+          int TC=Integer.parseInt(C);
+          System.out.println("Total count is " + TC);
+       	  Assert.assertTrue(true);  
+	      return TC;	
+
+}
+     public int TotalJobsApplications() throws Exception {
+    		//boolean varExists = false;
+    		scrollIntoView(totakJobsapplication);
+    		String C = totakjobsapplicationcounts.getText();
+  	        int TC=Integer.parseInt(C);
+  	        System.out.println("Total count is " + TC);
+  			Assert.assertTrue(true);  
+  	        return TC;
+    		
+    	}
+     public int ActiveJobs() throws Exception {
+ 		//boolean varExists = false;
+ 		    scrollIntoView(activeJobs);
+ 		    String C = activejobscounts.getText();
+	        int TC=Integer.parseInt(C);
+	        System.out.println("Total count is " + TC);
+			Assert.assertTrue(true);  
+	        return TC;
+ 			
+ 		
+ 	}
 }

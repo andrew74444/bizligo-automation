@@ -71,9 +71,10 @@ public class MyDashboardPage extends BasePage{
 	WebElement myGroupsCount;
 	@FindBy(xpath="//*[contains(text(),'My Communities')]")
 	WebElement myCommunities;
-	
-	 @FindBy (xpath = "//div[normalize-space()='My Groups']")
-	    WebElement myGroups;
+	@FindBy (xpath = "//div[normalize-space()='My Groups']")
+    WebElement myGroups;
+	 @FindBy (xpath = "//div[normalize-space()='My Jobs']")
+	    WebElement myjobs;
 	//*************************************Connections***********************************
 	@FindBy (xpath="//*[contains(text(),'My Connections')]")
 	WebElement myConnections;
@@ -146,7 +147,7 @@ public class MyDashboardPage extends BasePage{
 	@FindBy(xpath="//a[contains(text(),'Past Events')]")
 	WebElement PastEvents;
 	
-	@FindBy(xpath="//a[contains(text(),'Global Careers')]")
+	@FindBy(xpath="//a[contains(text(),'Careers')]")
 	WebElement GlobalCareers;
 	
 	@FindBy(xpath = "//*[contains(text(),'My Reminders')]")
@@ -261,6 +262,10 @@ public class MyDashboardPage extends BasePage{
 	    WebElement SearchGroup;
 	    @FindBy(xpath="//span[@ng-bind='GroupData.GroupName']")
 		WebElement NameOnDisplayCard;
+	    @FindBy(xpath="//div[@class='pull-right text-right jobs-color']")
+		WebElement myJobsCount;
+	    
+	    
 	    
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
@@ -296,7 +301,13 @@ public class MyDashboardPage extends BasePage{
 		return (Messages) openPage(Messages.class);
 //		new Messages(driver, );
 	}
-
+	public void  MyJobsCount() {		
+		   String C = myJobsCount.getText();
+	      int TC=Integer.parseInt(C);
+	      System.out.println("The number of jobs count visible on Dashboard is:"+ TC);
+	      	System.out.println("Members can see number of Job Counts on Dashboard");      
+	      		
+	}
 
 public void checkProperAlertDisplayedWhenOnlyOneAdmin(String GroupName) throws Exception {
 	//this.searchCommunity(communityName+getDateInDDMMMYYYY());
@@ -393,6 +404,12 @@ public void checkProperAlertDisplayedWhenOnlyOneAdmin(String GroupName) throws E
 		return (MyGroupsPage) openPage(MyGroupsPage.class);
 //		new MyGroupsPage(driver, );		
 	}
+	public MyJobsPage NavigatingToMyJobs()
+	{
+		click(myjobs,"myjobs");
+		return (MyJobsPage) openPage(MyJobsPage.class);
+//		new MyGroupsPage(driver, );		
+	}
 	
 	public TestimonialsVerifyPage NavigateTotestimonials() throws InterruptedException
 	{
@@ -435,8 +452,8 @@ public void checkProperAlertDisplayedWhenOnlyOneAdmin(String GroupName) throws E
 	public GlobalCommunitesPage NaviagtingToGlobalCommunities() throws Exception
 	{
 	
-		click(Toggledropdownmenu,"Toggle drop down menu");
-		Thread.sleep(1000);
+		//click(Toggledropdownmenu,"Toggle drop down menu");
+		//Thread.sleep(1000);
 		click(GlobalCommunities,"Global Communities");
 		return (GlobalCommunitesPage) openPage(GlobalCommunitesPage.class);
 //		new ChangePasswordPage(driver, );

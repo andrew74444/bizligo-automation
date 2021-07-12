@@ -477,5 +477,9 @@ public class MyCommunitiesPage extends BasePage {
 		paymentPending.isDisplayed();
 		
 	}
-
+	public GlobalCareers goToGlobalCareers() {
+		click(GlobalCareers, "click");
+		return (GlobalCareers) openPage(GlobalCareers.class);
+		// new GlobalCareers(driver, );
+	}
 }

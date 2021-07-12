@@ -112,6 +112,39 @@ public class GlobalCommunitesPage extends BasePage {
 	
 	@FindBy(xpath="//a[normalize-space()='BizLigo1']")
 	WebElement bizligo1;
+	@FindBy(xpath="//a[normalize-space()='Animal Lovers']")
+	WebElement animalLovercommunity;
+	@FindBy(xpath="//div[@id='myNavbar']")
+	WebElement headermenu;
+	@FindBy(xpath="//a[normalize-space()='ActionEdge']")
+	WebElement actionEdge;
+	
+	@FindBy(xpath="//span[normalize-space()='Careers']")
+	WebElement careers;
+	
+	@FindBy(xpath="//input[@placeholder='Search by Job Title']")
+	WebElement searchByJobTitle;
+	
+	@FindBy(xpath="//select[@id='JobTypeID']")
+	WebElement searchByJobType;
+	
+	@FindBy(xpath="//input[@placeholder='Search by Location']")
+	WebElement location;
+	
+	@FindBy(xpath="//button[normalize-space()='Search']")
+	WebElement searchCareer;
+	
+	@FindBy(xpath = "//a[normalize-space()='View and Apply']")
+	WebElement ViewandApply;
+	
+	@FindBy(xpath = "//button[normalize-space()='Apply']")
+	WebElement Apply;
+	
+	@FindBy(xpath = "//div[@class='swal-text']")
+	WebElement msgCannotApply;
+	
+	//div[@id='myNavbar']
+	
 
 	public void checkTotalCommunities(Hashtable<String, String> data) throws Exception {
 		String name = "";
@@ -316,6 +349,16 @@ public class GlobalCommunitesPage extends BasePage {
 		Thread.sleep(2000);
 		waitForElementToPresent(driver.findElement(By.xpath("//a[contains(text(),'" + CommunityName + "')]")));
 
+	}
+	public void CheckcareerMenuNotPresent() {
+		waitForElementToPresent(animalLovercommunity);
+		click(animalLovercommunity, "Animal Lover Community");
+		String expected=this.headermenu.getText();
+    	String actual="Careers";
+    	System.out.println("Careers is not Present for Member  without Joining Private Community ");
+    	Assert.assertNotEquals(actual, expected, "Career is not present");
+		
+		
 	}
 
 	public boolean acceptCommunity(String communityName) throws Exception {
@@ -523,5 +566,35 @@ public class GlobalCommunitesPage extends BasePage {
 		}
 		
 	}
+	public void checkCareerPage() throws InterruptedException {
+		waitForElementToPresent(actionEdge);
+		click(actionEdge,"Action Edge Community");
+		Thread.sleep(3000);
+		//waitForElementToPresent(actionEdge);
+		click(careers,"Careers");	
+		if(searchByJobTitle.isDisplayed() && searchByJobType.isDisplayed() && location.isDisplayed()) {
+			System.out.println("Member can see careers of community even if not a part of it.");
+		}
+	}
 	
+	public void nonMemberApplyJob(String JobTitle) throws InterruptedException {
+		waitForElementToPresent(actionEdge);
+		click(actionEdge,"Action Edge Community");
+		Thread.sleep(3000);
+		//waitForElementToPresent(actionEdge);
+		click(careers,"Careers");
+		type(searchByJobTitle,JobTitle,JobTitle);
+		click(searchCareer,"Search");
+		Thread.sleep(2000);
+		click(ViewandApply,"view and apply");
+		Thread.sleep(2000);
+		click(Apply,"Apply");
+		Thread.sleep(2000);
+		System.out.println(msgCannotApply.getText());
+		if(msgCannotApply.getText().equalsIgnoreCase("Please join this community to apply for these jobs.")) {
+			Assert.assertTrue(true);
+		}else Assert.assertTrue(false);
+		
+		
+	}	
 }
