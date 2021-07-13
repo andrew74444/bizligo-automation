@@ -160,9 +160,13 @@ public class CommunityDashboardPage extends BasePage {
     @FindBy(xpath = "//a[normalize-space()='Email Templates']")
     WebElement emailtemplate;
     @FindBy(xpath = " //a[normalize-space()='Pricing Plan Details']")
-    WebElement pricingplan;@FindBy(xpath = "//div[@class='panel panel-info']//a[3]//div[1]//div[2]")
+    WebElement pricingplan;
+    @FindBy(xpath = "//div[@class='panel panel-info']//a[3]//div[1]//div[2]")
 	WebElement totalJobsCount;
-    
+   // @FindBy(xpath = "//body/div[@class='container body']/div[@class='main_container']/div[@class='col-md-3 left_col']/div[@class='left_col scroll-view']/div[@id='sidebar-menu']/div[@class='menu_section']/ul[@class='nav side-menu']/li[3]/a[1]")
+  //	WebElement manage;
+    @FindBy(xpath = " //a[normalize-space()='Edit']")
+   	WebElement edit; 
  
   
 	public void displayManageGroupsPage() throws Exception {
@@ -190,6 +194,16 @@ public class CommunityDashboardPage extends BasePage {
 		click(advertisements, "advertisements");
 	}
 
+	public ManageCommunityPage goToManagecommunityPage() {
+
+		this.clickOnAdvertisments();
+		waitForElementToPresent(manage);
+		click(manage, "Manage");
+		waitForElementToPresent(edit);
+		click(edit, "Edit");
+		return (ManageCommunityPage) openPage(ManageCommunityPage.class);
+		// new CommunityPendingRequestsPage(driver);
+	}
 	public ManageAdPlansPage goToManageAdPlansPage() {
 
 		this.clickOnAdvertisments();
@@ -198,7 +212,6 @@ public class CommunityDashboardPage extends BasePage {
 		return (ManageAdPlansPage) openPage(ManageAdPlansPage.class);
 		// new CommunityPendingRequestsPage(driver);
 	}
-
 	public ManageMemberAdvertisementsPage navigateToMemberAdvertisements() {
 
 		this.clickOnAdvertisments();

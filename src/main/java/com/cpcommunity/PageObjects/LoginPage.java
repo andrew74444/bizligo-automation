@@ -18,7 +18,7 @@ public class LoginPage extends BasePage {
 		aShot();
 
 	}
-
+//change
 	@FindBy(xpath = "//*[@id='global-nav']")
 	WebElement pageheader;
 
@@ -60,7 +60,18 @@ public class LoginPage extends BasePage {
 
 	@FindBy(xpath = "//*[contains(text(),'Not a member? Click here to Signup')]")
 	WebElement clickHereToSignup;
+	
+	@FindBy(xpath = "//span[@title='Toggle dropdown menu']")
+	WebElement Toggledropdownmenu;
+	
+	@FindBy(xpath = "//a[normalize-space()='My Ecosystem']")
+	WebElement ecosystem;
 
+	@FindBy(xpath = "//div[normalize-space()='My Advertisements']")
+	WebElement myads;
+	@FindBy(xpath = "//img[@src='/Content/Images/connectpro_logo.png']")
+	WebElement bizligo;
+	
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 		System.out.println(driver + "Login Page");
@@ -80,6 +91,7 @@ public class LoginPage extends BasePage {
 		return (MyDashboardPage) openPage(MyDashboardPage.class);
 		 
 	 }
+	
 	public MyProfilePage loginToMyProfilePage(String enterEmailAddress, String password) {
 		this.login(enterEmailAddress, password);
 		return (MyProfilePage) openPage(MyProfilePage.class);
@@ -158,9 +170,6 @@ public class LoginPage extends BasePage {
 		// new LoginPage(driver, );
 	}
 	
-	
-	
-
 	public JoinUserCommunity joinUserCommunityLogin(String emailAddress, String password) {
 
 		this.login(emailAddress, password);
@@ -251,7 +260,13 @@ public class LoginPage extends BasePage {
         click(LoginBtn, "Login");
         return (ChangePasswordPage) openPage(ChangePasswordPage.class);
 	
-	
-	
 	}
+	public MyDashboardPage gotoMyDashboardPage() throws Exception {
+		waitForElementToPresent(Toggledropdownmenu);
+		click(Toggledropdownmenu,"Toggledropdownmenu");
+		Thread.sleep(500);
+		waitForElementToPresent(ecosystem);
+		click(ecosystem,"Ecosystem");
+		return (MyDashboardPage) openPage(MyDashboardPage.class);
+	}	
 }
