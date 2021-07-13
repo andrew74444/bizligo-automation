@@ -215,9 +215,12 @@ public class MyProfilePage extends BasePage {
 	
 	public boolean validate_Progress(int intialProgressPercent, int finalProgressPercent) {
 
-		if (intialProgressPercent < finalProgressPercent)
+		if (intialProgressPercent < finalProgressPercent) {
 
 			return true;
+			
+		}
+		
 
 		else
 			return false;
