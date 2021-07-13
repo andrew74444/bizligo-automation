@@ -23,7 +23,7 @@ public class ComposeCampaign extends BasePage {
 		waitForElementToPresent(panelTitle);
 		return ExpectedConditions.visibilityOf(panelTitle);
 	}
-
+//change
 	@Override
 	protected void getPageScreenSot() {
 		// TODO Auto-generated method stub

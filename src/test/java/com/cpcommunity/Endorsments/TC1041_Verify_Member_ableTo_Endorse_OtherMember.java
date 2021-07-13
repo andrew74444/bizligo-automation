@@ -33,7 +33,7 @@ public class TC1041_Verify_Member_ableTo_Endorse_OtherMember extends BaseTest{
 		//BusinessDirectoryPage bussinessdirectory= myCommunity.gotoBusinessDirectoryPage();
 		MemberDirectoryPage memberdirectory= myCommunity.gotoMemberDirectoryPage();
 		memberdirectory.clickOnsearchByName(data.get("Name"));
-		ProfilePage profilep = memberdirectory.gotoProfilePage();
+		ProfilePage profilep = memberdirectory.goToProfilePage();
 		profilep.AddEndorsement(data.get("Endorsement"),data.get("Endorsement2"),data.get("Endorsement3"),data.get("Endorsement4"));
 	}
 	@AfterMethod
