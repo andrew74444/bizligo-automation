@@ -40,8 +40,11 @@ public class LoginPage extends BasePage {
 	@FindBy(xpath = "//a[contains(text(),'click here')]")
 	WebElement ClickHere;
 
-	@FindBy(xpath = "//*[contains(text(),'Your organization license is pending for approval. Please contact administrator.')]")
+	@FindBy(xpath = "//*[contains(text(),'Your request is pending for organiza')]")
 	WebElement pendingForApproval;
+	
+@FindBy(xpath = "//*[contains(text(),'Your organization license is pending')]")
+WebElement OrgByTA;
 
 	@FindBy(xpath = "//div[@class='col-xs-12 text-right']//button[@type='submit']")
 	WebElement submitBtn;
@@ -74,33 +77,11 @@ public class LoginPage extends BasePage {
 	//// new FaceBookPage(driver, );
 	// }
 	//
-	public MyDashboardPage loginToDashboard(String enterEmailAddress, String  password)
-	 {
-		this.login(enterEmailAddress, password);
-		return (MyDashboardPage) openPage(MyDashboardPage.class);
-		 
-	 }
-	public MyProfilePage loginToMyProfilePage(String enterEmailAddress, String password) {
-		this.login(enterEmailAddress, password);
-		return (MyProfilePage) openPage(MyProfilePage.class);
-	}
-	
-	public MyCommunitiesPage loginToMyCommunitiesPage(String enterEmailAddress, String password) {
-		this.login(enterEmailAddress, password);
-		return (MyCommunitiesPage) openPage(MyCommunitiesPage.class);
-	}
-	
 	public ForgotPasswordPage clickOnForgotpassword() {
 		click(forgotPassword, "forgot Password");
 		return (ForgotPasswordPage) openPage(ForgotPasswordPage.class);
 
 	}
-	public TenantAdminDashboardPage loginToTADashboard(String enterEmailAddress, String  password)
-	 {
-		this.login(enterEmailAddress, password);
-		return (TenantAdminDashboardPage) openPage(TenantAdminDashboardPage.class);
-		 
-	 }
 
 	public void login(String enterEmailAddress, String password) {
 		int t = (int) (Math.random()*10000);
@@ -222,6 +203,14 @@ public class LoginPage extends BasePage {
 	}
 
 	public void waitingForApproval(String email, String password) {
+
+		this.login(email, password);
+		waitForElementToPresent(OrgByTA);
+		picture();
+
+	}
+	
+	public void waitingForTAApproval(String email, String password) {
 
 		this.login(email, password);
 		waitForElementToPresent(pendingForApproval);
