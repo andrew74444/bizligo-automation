@@ -9,11 +9,14 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 import java.util.Calendar;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
 import com.uiFramework.pamTen.cpcommunity.helper.assertion.VerificationHelper;
 import com.uiFramework.pamTen.cpcommunity.helper.calendar.DateManager;
 
@@ -38,25 +41,21 @@ public class MyDashboardPage extends BasePage{
 	@FindBy(xpath = "//h2[contains(text(),'Sorry, the page or event you are looking for was n')]")
 	WebElement errorPage;
 	
-	@FindBy(xpath = "(//*[contains(text(),'My Dash')])[2]")
+	@FindBy(xpath = "//h2[normalize-space()='MY ECOSYSTEM']")
 	WebElement myDashboard;
-	
-	
 	
 	@FindBy(xpath="//*[contains(text(),'My Advertisements')]")
 	WebElement myAdvertisements;
 	
 	@FindBy(xpath = "//img[@class='img-circle']")
 	WebElement menu;
-	
-	
-	
+	@FindBy(xpath = "//button[contains(.,'Search')]")
+    WebElement searchbtn;
 	//@FindBy(xpath="")
 	@FindBy(xpath = "//body//div[@id='header']//div//div//div//div//div//div//div[1]")
 	WebElement Toggledropdownmenu;
 	@FindBy (xpath="//*[@id='toast-container']/div/div[3]")
 	WebElement SuccessPopup;
-	
 	@FindBy(xpath = "//*[contains(text(),'MY')]")
 	WebElement MyEco;
 	
@@ -66,14 +65,16 @@ public class MyDashboardPage extends BasePage{
     WebElement myEndorsements;
 	
 	//*************************************Groups****************************************
-	@FindBy (xpath = "//*[contains(text(),'My Groups')]")
-    WebElement myGroups;
+	//@FindBy (xpath = "//*[contains(text(),'My Groups')]")
+   // WebElement myGroups;
 	@FindBy(xpath="//div[@class='huge'])[2]")
 	WebElement myGroupsCount;
 	@FindBy(xpath="//*[contains(text(),'My Communities')]")
 	WebElement myCommunities;
-	
-
+	@FindBy (xpath = "//div[normalize-space()='My Groups']")
+    WebElement myGroups;
+	 @FindBy (xpath = "//div[normalize-space()='My Jobs']")
+	    WebElement myjobs;
 	//*************************************Connections***********************************
 	@FindBy (xpath="//*[contains(text(),'My Connections')]")
 	WebElement myConnections;
@@ -107,8 +108,6 @@ public class MyDashboardPage extends BasePage{
 	@FindBy(xpath = "//span[contains(text(),'Others')]")
 	WebElement others;
 	
-	
-	
 	@FindBy(xpath="//a[contains(text(),'My Profile')]")
 	WebElement myProfile;
 	
@@ -140,14 +139,15 @@ public class MyDashboardPage extends BasePage{
 	WebElement MyEcosystem1;
 	@FindBy(xpath="//span[contains(text(),'Global Events')]")
 	WebElement globalEvents;
-	
+	@FindBy(xpath="//span[@ng-bind='GroupData.MemberCount']")
+	WebElement NumberOnCommunityDisplayCard;
 	
 	@FindBy(xpath="//a[contains(text(),'Upcoming Events')]")
 	WebElement upcomingEvents;
 	@FindBy(xpath="//a[contains(text(),'Past Events')]")
 	WebElement PastEvents;
 	
-	@FindBy(xpath="//a[contains(text(),'Global Careers')]")
+	@FindBy(xpath="//a[contains(text(),'Careers')]")
 	WebElement GlobalCareers;
 	
 	@FindBy(xpath = "//*[contains(text(),'My Reminders')]")
@@ -213,6 +213,60 @@ public class MyDashboardPage extends BasePage{
 	@FindBy(xpath = "(//*[contains(text(),'Blog')])[3]")
 	WebElement blogpageisWorking;
 	
+	 @FindBy(xpath = "//button[contains(.,'Yes,Proceed')]")
+	 WebElement YesProceed;
+	   
+	
+	 @FindBy(xpath = "//div[@class='my-communities']//div[2]//div[1]//div[1]//div[1]//div[1]//div[1]//div[2]//div[3]//button[1]")
+	 WebElement LeaveBtn;
+	 @FindBy(xpath = "//button[normalize-space()='OK']")
+	 WebElement BtnOK;
+	 
+	 @FindBy(xpath="//span[normalize-space()='18-02-2021 -Testing']")
+		WebElement Testingcommunity;
+		
+		@FindBy(xpath="//span[normalize-space()='Resources']")
+		WebElement resources;
+		
+		@FindBy(xpath="//input[@id='searchName']")
+		WebElement serachCommunity ;
+		
+		@FindBy(xpath="//div[@class='communities-box ng-scope col-lg-4 col-md-12 col-sm-12']//div[@class='category-background']")
+		WebElement CommunityName ;
+		
+		@FindBy(xpath="//a[normalize-space()='BizLigo1']")
+	    WebElement bizligo1;
+		@FindBy(xpath="//a[@title='Go to My Communities']")
+		WebElement viewAllBtn;
+		@FindBy(xpath="//span[normalize-space()='Groups']")
+		WebElement group ;
+		@FindBy(xpath="//span[@ng-bind='group.GroupName'][normalize-space()='Group 3']")
+		WebElement group3 ;
+		@FindBy(xpath="//span[normalize-space()='test123']")
+		WebElement test123 ;
+
+		@FindBy(xpath="//div[@class='post-box']//div[2]//div[1]//div[1]//div[1]//div[1]//div[1]//div[1]//div[2]//button[1]//strong[1]")
+		WebElement join ;
+		@FindBy(xpath="//div[@class='cmt-groups']//div[@class='clearfix']")
+		WebElement joinedMessage ;
+	    @FindBy(xpath = "//div[@class='swal-text']")
+	   	WebElement LeaveToastMessage;
+	    @FindBy(xpath="//ul[@class='nav navbar-nav navbar-right']//a[normalize-space()='Global Communities']")
+		WebElement Globalcommunities;
+	    @FindBy(xpath="//a[@title='Go to My Communities']")
+		WebElement viewAll;
+	    
+	    @FindBy(xpath="//button[@ng-click='data.SearchCommunities()']")
+		WebElement search;
+	    @FindBy(xpath = "//input[@placeholder='Search by Group Name']")
+	    WebElement SearchGroup;
+	    @FindBy(xpath="//span[@ng-bind='GroupData.GroupName']")
+		WebElement NameOnDisplayCard;
+	    @FindBy(xpath="//div[@class='pull-right text-right jobs-color']")
+		WebElement myJobsCount;
+	    
+	    
+	    
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 		
@@ -247,7 +301,44 @@ public class MyDashboardPage extends BasePage{
 		return (Messages) openPage(Messages.class);
 //		new Messages(driver, );
 	}
+	public void  MyJobsCount() {		
+		   String C = myJobsCount.getText();
+	      int TC=Integer.parseInt(C);
+	      System.out.println("The number of jobs count visible on Dashboard is:"+ TC);
+	      	System.out.println("Members can see number of Job Counts on Dashboard");      
+	      		
+	}
+
+public void checkProperAlertDisplayedWhenOnlyOneAdmin(String GroupName) throws Exception {
+	//this.searchCommunity(communityName+getDateInDDMMMYYYY());
+	//waitForElementToPresent(CommunityBox);
+	//click(CommunityBox, "Community Box");
+	//scrollIntoView(LeaveBtn);
+	waitForElementToPresent(myGroups);
+	myGroups.click();		
+	//waitForElementToPresent(test123);
+	//click(test123, "Test123");
+	waitForElementToPresent(LeaveBtn);
+	click(LeaveBtn, "leave");
+	takeScreenshotByShutterBug(LeaveBtn, "Leave Btn");
+	//waitForElementToPresent(YesProceed);
+	//takeScreenshotByShutterBug(YesProceed, "Yes Proceed");
+	//click(YesProceed, "Yes Proceed");
+	waitForElementToPresent(LeaveToastMessage);
+	waitForElementToPresent(BtnOK);
+	takeScreenshotByShutterBug(BtnOK, "Ok");
+	click(BtnOK, "Ok");
+	picture();
+	//System.out.println("Leave click");
 	
+
+			//"Please make another member as Group Admin to leave from this Group.");
+	AssertionHelper.verifyText(LeaveToastMessage.getText(),
+			"Please make another member as Group Admin to leave from this Group");
+	System.out.println("Assertion done");
+}
+
+
 	public void NavigateToMyReminders(String Title) throws Exception{
 		click(myReminders,"MyReminders");
 		Thread.sleep(2000);
@@ -313,6 +404,12 @@ public class MyDashboardPage extends BasePage{
 		return (MyGroupsPage) openPage(MyGroupsPage.class);
 //		new MyGroupsPage(driver, );		
 	}
+	public MyJobsPage NavigatingToMyJobs()
+	{
+		click(myjobs,"myjobs");
+		return (MyJobsPage) openPage(MyJobsPage.class);
+//		new MyGroupsPage(driver, );		
+	}
 	
 	public TestimonialsVerifyPage NavigateTotestimonials() throws InterruptedException
 	{
@@ -355,8 +452,8 @@ public class MyDashboardPage extends BasePage{
 	public GlobalCommunitesPage NaviagtingToGlobalCommunities() throws Exception
 	{
 	
-		click(Toggledropdownmenu,"Toggle drop down menu");
-		Thread.sleep(1000);
+		//click(Toggledropdownmenu,"Toggle drop down menu");
+		//Thread.sleep(1000);
 		click(GlobalCommunities,"Global Communities");
 		return (GlobalCommunitesPage) openPage(GlobalCommunitesPage.class);
 //		new ChangePasswordPage(driver, );
@@ -578,10 +675,93 @@ public void blogPageWorking() throws Throwable
 //		new MyProfilePage(driver, );
 	}
 	
+	public ResourcesPage  gotoResourcesPage() throws Exception {
+		Thread.sleep(2000);
+		waitForElementToPresent(Testingcommunity);
+		click(Testingcommunity,"18-02-2021Testing community");
+		Thread.sleep(5000);
+		waitForElementToPresent(resources);
+		click(resources,"Resources");
+		Thread.sleep(5000);
+		return (ResourcesPage) openPage(ResourcesPage.class);
+			}
 	
+	public ResourcesPage goToBDMAIResouces(String Community) {
+		waitForElementToPresent(Globalcommunities);
+		click(Globalcommunities, "Global Communities");
+		waitForElementToPresent(serachCommunity);
+		type(serachCommunity, Community, "Communities");
+		waitForElementToPresent(search);
+		click(search, "Search");
+		waitForElementToPresent(CommunityName);
+		click(CommunityName, "BDMAI Community");
+		waitForElementToPresent(resources);
+		click(resources, "Resources");
+		return (ResourcesPage) openPage(ResourcesPage.class);
+	}
+	public void joinGroup(String Community) throws InterruptedException {
+		waitForElementToPresent(viewAll);
+		click(viewAll, "Global Communities");
+		//waitForElementToPresent(serachCommunity);
+		//type(serachCommunity, Community, "Communities");
+		waitForElementToPresent(bizligo1);
+		click(bizligo1, "Bizligo1 Community");
+		//waitForElementToPresent(search);
+		//click(search, "Search");
+		waitForElementToPresent(group);
+		click(group, "Group");
+		waitForElementToPresent(join);
+		click(join, "Join");
+		click(YesProceed, "Yes Proceed");
+		AssertionHelper.verifyText(joinedMessage.getText(),
+				"You have joined the group successfully.");
+		System.out.println("Assertion done");
 	
-	
- 
+	}
+	 public ResourcesPage gotoResource() {
+		 waitForElementToPresent(resources);
+			click(resources, "Resources");
+		 
+		 return (ResourcesPage) openPage(ResourcesPage.class); 
+	 }
+	 public void NavigatingToMyGroups(String Groupname) throws InterruptedException
+		{
+			click(myGroups,"myGroups");
+			Thread.sleep(4000);
+			type( SearchGroup,Groupname,"Search by Group Name");
+	    	click(searchbtn,"search btn");
+	    	Thread.sleep(2000);
+	    	WebElement ele = driver.findElement(By.xpath("//span[normalize-space()='"+Groupname+"']"));
+	    	waitForElementToPresent(ele);
+	    	String el=ele.getText();
+	    	System.out.println(el);//span[contains(text(),'"+Groupname+"')]
+	    	System.out.println(Groupname);
+	    	Assert.assertEquals(Groupname, el);
+			//return (MyGroupsPage) openPage(MyGroupsPage.class);
+//			new MyGroupsPage(driver, );		
+		}
+	 public void numberOfMembers(String Groupname) throws InterruptedException {
+			click(myGroups,"myGroups");
+			Thread.sleep(4000);
+			type( SearchGroup,Groupname,"Search by Group Name");
+	    	click(searchbtn,"search btn");
+	    	Thread.sleep(2000);
+	    	WebElement ele = driver.findElement(By.xpath("//span[normalize-space()='"+Groupname+"']"));
+	    	waitForElementToPresent(ele);
+	    	String el=ele.getText();
+			//waitForElementToPresent(this.SearchByStatus);
+			if (NameOnDisplayCard.isDisplayed()){
+				System.out.println("Name Of the community="+ NameOnDisplayCard.getText());
+				System.out.println("Total Number of active members displayed="+ NumberOnCommunityDisplayCard.getText());			
+				Assert.assertTrue(true);
+			}
+		}
+	 public Bizligo1CommunityPage goToMyCommunity() {
+			click(viewAllBtn,"view all");
+			waitForElementToPresent(bizligo1);
+			click(bizligo1,"Bizligo 1");
+			return (Bizligo1CommunityPage) openPage(Bizligo1CommunityPage.class);
+		}
 // public void Groups(ExtentTest logger) throws InterruptedException
 // {
 // 	JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -770,31 +950,6 @@ public void blogPageWorking() throws Throwable
 // 	Utility.highLightElement(driver, AllCommunities);
 //		AllCommunities.click();
 //	}
-
- 
- 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	public boolean verifySuccessLogin(){
 		return new VerificationHelper(driver).isDisplayed(Toggledropdownmenu);
@@ -819,7 +974,6 @@ public void blogPageWorking() throws Throwable
 		
 	}
 
-
 //	public void naviagtingToTestimonials() {
 //		// TODO Auto-generated method stub
 //		
@@ -838,7 +992,4 @@ public void blogPageWorking() throws Throwable
 ////		new CommunityDetailsPage(driver, );
 //	}
 
-	
-	
-	
 }

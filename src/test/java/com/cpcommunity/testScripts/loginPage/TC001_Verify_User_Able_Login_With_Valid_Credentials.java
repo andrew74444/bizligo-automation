@@ -15,7 +15,7 @@ public class TC001_Verify_User_Able_Login_With_Valid_Credentials extends BaseTes
 
 	
 	
-	
+	//change
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC001(Hashtable<String,String> data) throws Exception {
 
@@ -28,7 +28,10 @@ public class TC001_Verify_User_Able_Login_With_Valid_Credentials extends BaseTes
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
 		logInfo("Username entered as "+data.get("email")+" and Password entered as "+data.get("password"));
-		login.loginToApplication(data.get("email"), data.get("password"));
+		EcoSystemPage ecosys=login.loginToApplication(data.get("email"), data.get("password"));
+		
+
+	    ecosys.logout();
 				
 		//Assert.fail("Failing the login test");
 	}

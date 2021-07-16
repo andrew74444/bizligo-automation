@@ -30,22 +30,28 @@ public class HomePage extends BasePage {
 	@FindBy(xpath = "//*[contains(text(),'join communities')]")
 	WebElement joinCommunities;
 	
-	
-	
 	@FindBy(xpath = "//span[contains(.,'Events')]")
 	WebElement Events;
 
-	
-	
 	@FindBy(xpath = "//*[@id='myNavbar']//*[contains (text(),'Home')]")
 	WebElement home;
 	
-
+	@FindBy(xpath = "//span[normalize-space()='Directory']")
+	WebElement directory;
 	
+	@FindBy(xpath = "//a[normalize-space()='Member Directory']")
+	WebElement memberDirectory;
 	
-
 	@FindBy(xpath = "//*[@id='global-nav']")
 	WebElement pageheader;
+	
+	@FindBy(xpath = "//a[normalize-space()='Global Communities']")
+	WebElement GlobalCommunities;
+	
+	@FindBy(xpath = "//a[normalize-space()='Careers']")
+	WebElement careers;
+	
+	
 	@Override
 	protected  void getPageScreenSot() {
 	
@@ -132,6 +138,12 @@ public class HomePage extends BasePage {
 		// Communites Page");
 		// new GlobalCommunitesPage(driver, );
 	}
+	public GlobalCareers NavigateToCareers() throws Exception {
+		Thread.sleep(1000);
+		click(careers, "careers");
+		return (GlobalCareers) openPage(GlobalCareers.class);
+	
+	}
 
 	@FindBy(xpath = "//*[@id='header']")
 	WebElement header;
@@ -166,5 +178,21 @@ public class HomePage extends BasePage {
 	// }
 	//
 	// return (ZohoCRMPage) openPage(ZohoCRMPage.class);
-
+public MemberDirectoryPage goToMemberDirectory() throws InterruptedException {
+		
+		//click(directory,"directory");
+		Thread.sleep(3000);
+		moveToElement(directory);
+		click(memberDirectory,"member directory");
+		//click(memberDirectory,"member directory");
+		Thread.sleep(3000);
+		return (MemberDirectoryPage) openPage(MemberDirectoryPage.class);
+		
+	}
+public GlobalCommunitesPage NavigateToGlobalCommunities() throws Exception {
+	Thread.sleep(5000);
+	click(GlobalCommunities, "Global Communities");
+	return (GlobalCommunitesPage) openPage(GlobalCommunitesPage.class);
+	
+}
 }

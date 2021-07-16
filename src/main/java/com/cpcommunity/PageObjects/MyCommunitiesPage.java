@@ -45,15 +45,13 @@ public class MyCommunitiesPage extends BasePage {
 	//
 	// return (ZohoCRMPage) openPage(ZohoCRMPage.class);
 
+
 	@FindBy(xpath = "//h3[@class='MyCommunitiesHeader text-uppercase']")
 	WebElement myCommunitiesHeader;
-
 	@FindBy(xpath = "//button[contains(text(),'Search')]")
 	WebElement btnSearch;
-
 	@FindBy(xpath = "//button[@id='CreateCommunity']")
 	WebElement CreateCommunityBtn;
-
 	@FindBy(xpath = "//button[contains(.,' Yes, Proceed')]")
 	WebElement YesProceedBtn;
 	@FindBy(xpath = "//*[@id='toast-container']/div/div[3]")
@@ -64,9 +62,10 @@ public class MyCommunitiesPage extends BasePage {
 	WebElement CommunityDashboardMenu;
 	@FindBy(xpath = "//a[contains(.,'Manage Community')]")
 	WebElement ManageCommunityLink;
-	@FindBy(xpath = "//h2[contains(.,'Dashboard')]")
+	@FindBy(xpath = "//a[normalize-space()='My Ecosystem']")
 	WebElement DashBoard;
-
+	@FindBy(xpath = "//span[contains(.,'My Jobs')]")
+	WebElement mYjOBS;
 	@FindBy(xpath = "//a[contains(.,' Invite People')]")
 	WebElement InvitePeople;
 	@FindBy(xpath = "//button[@id='btnInvite']")
@@ -75,7 +74,8 @@ public class MyCommunitiesPage extends BasePage {
 	WebElement SearchMember;
 	@FindBy(xpath = "//input[@type='checkbox']")
 	WebElement checkbox;
-
+	@FindBy(xpath = "//*[@id=\"myNavbar\"]/ul/li[2]/a")
+	WebElement MemberDirectory;
 	@FindBy(xpath = "//button[contains(text(),'Ok')]")
 	WebElement BtnOK;
 	@FindBy(xpath = "//a[contains(.,'Invited')]")
@@ -92,7 +92,6 @@ public class MyCommunitiesPage extends BasePage {
 	WebElement JoinedTab;
 	@FindBy(xpath = "//a[contains(.,'Created')]")
 	WebElement CreatedTab;
-
 	@FindBy(xpath = "//input[@ng-model='data.UserCreatedData.CommunityName']")
 	WebElement SearchCreatedCommunity;
 	@FindBy(xpath = "//button[@ng-click='data.SearchCreatedCommunities()']")
@@ -103,7 +102,6 @@ public class MyCommunitiesPage extends BasePage {
 	WebElement Activatebtn;
 	@FindBy(xpath = "(//*[@class='btn btn-danger btn-sm btn-remove'])[1]")
 	WebElement Cancel;
-
 	@FindBy(xpath = "//a[contains(.,'Rejected')]")
 	WebElement RejectedTab;
 	@FindBy(xpath = "//button[contains(.,'Search')]")
@@ -112,43 +110,93 @@ public class MyCommunitiesPage extends BasePage {
 	WebElement SearchbyCommunityName;
 	@FindBy(xpath = "//*[contains(text(),'Waiting for Review')]")
 	WebElement waitingForReview;
-
 	@FindBy(xpath = "//button[contains(.,'Yes, Proceed')]")
 	WebElement YesProceed;
-
 	@FindBy(xpath = "//*[contains(text(),'PAYMENT PENDING')]")
 	WebElement paymentPending;
-	
-	
 	@FindBy(xpath = "//*[contains(text(),'No results found matching your search criteria')]")
 	WebElement noresultfound;
-
 	@FindBy(xpath = "//*[contains(text(),'Activate')]")
 	WebElement Activate;
-
 	@FindBy(xpath = "//button[contains(text(),'Ok')]")
 	WebElement Okbtn;
-
 	@FindBy(xpath = "//u[contains(.,'Terms and Conditions')]")
 	WebElement termsAndConditions;
-
 	@FindBy(xpath = "//*[@class='toast-message']")
 	WebElement toastMessage;
-
 	@FindBy(xpath = "//*[contains(text(),'No results found matching your search criteria')]")
 	WebElement noResultsFound;
-
 	@FindBy(xpath = "//*[contains(text(),'0')]")
 	WebElement Zero;
 	@FindBy(xpath = "//*[contains(text(),'COMPLETE SETUP')]")
 	WebElement completeSetup;
-
 	@FindBy(xpath = "//*[contains(text(),'Please make another member as Community Admin to remove this member as Community Admin')]")
 	WebElement makeAnotherAdminAlertMeassge;
-
 	@FindBy(xpath = "//*[@class='swal2-container swal2-center swal2-fade swal2-shown']/div")
 	WebElement makeAnotherAdminAlertPopUp;
+	@FindBy(xpath = "//span[@title='Toggle dropdown menu']")
+	WebElement Toggledropdownmenu;
+	//@FindBy(xpath = "//*[@id=\"logoutForm\"]/li/a")
+	@FindBy(xpath = "//a[contains(text(),'Logout')]")
+	WebElement Logout;	
+	@FindBy(xpath="//a[contains(text(),'My Profile')]")
+	WebElement myProfile;
+	@FindBy(xpath="//span[contains(text(),'Directory')]")
+	WebElement Directory;
+	@FindBy(xpath="//a[contains(text(),'Careers')]")
+	WebElement GlobalCareers;
+	@FindBy(xpath="//a[contains(text(),'Business Directory')]")
+	WebElement businessDirectory;
+	@FindBy(xpath="//a[contains(text(),'Member Directory')]")
+	WebElement memberDirectory;
+	@FindBy(xpath="//*[@class='manage-button ng-scope']")
+	WebElement manageButton;
+	@FindBy(xpath="//span[normalize-space()='18-02-2021 -Testing']")
+	WebElement Testingcommunity;
+	@FindBy(xpath="//span[normalize-space()='Resources']")
+	WebElement resources;
 
+	
+	
+	public MyDashboardPage gotoMyDashboardPage() throws Exception {
+		waitForElementToPresent(Toggledropdownmenu);
+		click(Toggledropdownmenu,"Toggledropdownmenu");
+		Thread.sleep(500);
+		waitForElementToPresent(DashBoard);
+		click(DashBoard,"DashBoard");
+		return (MyDashboardPage) openPage(MyDashboardPage.class);
+	}	
+	public MyProfilePage goToMyProfilePage() throws Exception {
+
+		click(Toggledropdownmenu,"Toggledropdownmenu");
+		Thread.sleep(1000);
+		click(myProfile,"myProfile");
+		return (MyProfilePage) openPage(MyProfilePage.class);
+		// new MyProfilePage(driver, );
+	}
+
+	public BusinessDirectoryPage gotoBusinessDirectoryPage() throws Exception {
+		click(Directory,"Directory");
+		Thread.sleep(5000);
+		
+		click(businessDirectory,"BusinessDirectory");
+		Thread.sleep(5000);
+		return (BusinessDirectoryPage) openPage(BusinessDirectoryPage.class);
+		// new MyProfilePage(driver, );
+
+	}
+	public MemberDirectoryPage gotoMemberDirectoryPage() throws Exception {
+		click(Directory,"Directory");
+		Thread.sleep(5000);
+		waitForElementToPresent(memberDirectory);
+		click(memberDirectory,"MemberDirectory");
+		Thread.sleep(5000);
+		return (MemberDirectoryPage) openPage(MemberDirectoryPage.class);
+		// new MyProfilePage(driver, );
+
+	}
+	
+	
 	public CreateCommunityPage clickOnCreateCommunity() {
 		click(CreateCommunityBtn,"CreateCommunityBtn");
 		return (CreateCommunityPage) openPage(CreateCommunityPage.class);
@@ -386,7 +434,7 @@ public class MyCommunitiesPage extends BasePage {
 
 	public CommunityDashboardPage gotoManageCommunity(String communityName) throws Exception {
 
-		this.searchCommunity(communityName+getDateInDDMMMYYYY());
+		//this.searchCommunity(communityName+getDateInDDMMMYYYY());
 		click(MANAGEbtn, "Manage");
 		return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
 		// new CommunityDashboardPage(driver, );
@@ -429,5 +477,9 @@ public class MyCommunitiesPage extends BasePage {
 		paymentPending.isDisplayed();
 		
 	}
-
+	public GlobalCareers goToGlobalCareers() {
+		click(GlobalCareers, "click");
+		return (GlobalCareers) openPage(GlobalCareers.class);
+		// new GlobalCareers(driver, );
+	}
 }

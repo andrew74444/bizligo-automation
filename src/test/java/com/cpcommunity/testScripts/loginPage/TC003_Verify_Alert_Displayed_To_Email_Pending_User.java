@@ -28,7 +28,7 @@ public class TC003_Verify_Alert_Displayed_To_Email_Pending_User extends BaseTest
 		LoginPage login = home.clickOnLOGINBtn();
 		logInfo("Username entered as "+data.get("email")+" and Password entered as "+data.get("password"));
 		login.ReSend_Email_Verification_Confirmation(data.get("email"), data.get("password"));
-				
+			
 		//Assert.fail("Failing the login test");
 	}
 

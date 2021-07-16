@@ -10,17 +10,21 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
 
+import junit.framework.Assert;
+
 
 
 public class CommunityDashboardPage extends BasePage {
 
 	@Override
 	protected void getPageScreenSot() {
-
+		updateClass(pageheader, "");
 		aShot();
 
 	}
-
+	@FindBy(xpath = "//div[@class='nav_menu']")
+	WebElement pageheader;
+	
 	@FindBy(xpath = "(//*[contains(text(),'Posts')])[1]")
 	WebElement posts;
 	
@@ -112,8 +116,71 @@ public class CommunityDashboardPage extends BasePage {
 	@FindBy(xpath = "//a[contains(text(),'Promo Code')]")
 	WebElement promoCode;
 	
+	@FindBy(xpath = "//h4[normalize-space()='Total Groups']")
+	WebElement TotalGroup;
 	
+	@FindBy(css = "a[ng-click=\"data.RedirectToPageBasedOnRole('groups', '')\"] h3")
+	WebElement TotalGroupCount;
+	
+	@FindBy(xpath="//a[normalize-space()='Manage Campaign']")
+	WebElement manageCampaign;
+	
+	@FindBy(xpath="//a[normalize-space()='Compose Campaign']")
+	WebElement composeCampaign;
+	
+	@FindBy(xpath="//a[normalize-space()='Campaign Report']")
+	WebElement CampaignReport;
+	
+	@FindBy(xpath="//a[normalize-space()='Campaign Template']")
+	WebElement campaignTemplate;
+	
+	@FindBy(xpath="//a[normalize-space()='Import Contacts']")
+	WebElement importcampaign;
+	//a[normalize-space()='Statistics']
+	@FindBy(xpath="//a[normalize-space()='Manage Resources']")
+	WebElement manageresource;
+	
+	@FindBy(xpath = "//a[normalize-space()='Draft Campaign']")
+	WebElement DraftCampaign;
 
+	@FindBy(xpath="//a[normalize-space()='Statistics']")
+	WebElement Staticcampaign;
+	@FindBy(xpath = "//div[@class='panel panel-info']//a[3]")
+	WebElement totakJobs;
+    @FindBy(xpath = "//div[@class='panel panel-info']//a[3]//div[1]//div[2]")
+	WebElement totakJobscounts;
+    @FindBy(xpath = "//a[@ng-click=\"data.RedirectToPageBasedOnRole('jobs', 'inactive')\"]")
+	WebElement totakinactiveJobs;
+    @FindBy(xpath = "//div[@class='panel panel-info']//a[2]//div[1]//div[2]")
+    WebElement totakInactiveJobscounts;
+    @FindBy(xpath = "//div[@class='panel panel-info']//a[4]")
+	WebElement totakJobsapplication;
+    @FindBy(xpath = "//div[@class='panel panel-info']//a[4]//div[1]//div[2]")
+    WebElement totakjobsapplicationcounts;
+    @FindBy(xpath = "//a[normalize-space()='Email Templates']")
+    WebElement emailtemplate;
+    @FindBy(xpath = " //a[normalize-space()='Pricing Plan Details']")
+    WebElement pricingplan;
+    @FindBy(xpath = "//div[@class='panel panel-info']//a[3]//div[1]//div[2]")
+	WebElement totalJobsCount;
+   // @FindBy(xpath = "//body/div[@class='container body']/div[@class='main_container']/div[@class='col-md-3 left_col']/div[@class='left_col scroll-view']/div[@id='sidebar-menu']/div[@class='menu_section']/ul[@class='nav side-menu']/li[3]/a[1]")
+  //	WebElement manage;
+    @FindBy(xpath = " //a[normalize-space()='Edit']")
+   	WebElement edit; 
+ 
+  
+	public void displayManageGroupsPage() throws Exception {
+		boolean varExists = false;
+		click(Groups, "Groups");
+		Thread.sleep(1000);
+		waitForElementToPresent(ManageGroups);		
+		if(ManageGroups.isDisplayed()) {
+			varExists = true;
+			System.out.println("ManageGroup is Displayed");
+		}
+		Assert.assertEquals(varExists, true);
+	}
+	
 	public PromoCodePage goToPromoCodePage() {
 
 		scrollToElement(Events);
@@ -127,6 +194,16 @@ public class CommunityDashboardPage extends BasePage {
 		click(advertisements, "advertisements");
 	}
 
+	public ManageCommunityPage goToManagecommunityPage() {
+
+		this.clickOnAdvertisments();
+		waitForElementToPresent(manage);
+		click(manage, "Manage");
+		waitForElementToPresent(edit);
+		click(edit, "Edit");
+		return (ManageCommunityPage) openPage(ManageCommunityPage.class);
+		// new CommunityPendingRequestsPage(driver);
+	}
 	public ManageAdPlansPage goToManageAdPlansPage() {
 
 		this.clickOnAdvertisments();
@@ -135,7 +212,6 @@ public class CommunityDashboardPage extends BasePage {
 		return (ManageAdPlansPage) openPage(ManageAdPlansPage.class);
 		// new CommunityPendingRequestsPage(driver);
 	}
-
 	public ManageMemberAdvertisementsPage navigateToMemberAdvertisements() {
 
 		this.clickOnAdvertisments();
@@ -212,7 +288,6 @@ public class CommunityDashboardPage extends BasePage {
 		click(groupPendingRequest, "group Pending Request");
 		return (GroupsPendingRequestsPage) openPage(GroupsPendingRequestsPage.class);
 		// new GroupsPendingRequestsPage(driver);
-
 	}
 
 	public ManageCommunityMembersPage navigateToManageCommunityMembers() throws Exception {
@@ -230,7 +305,6 @@ public class CommunityDashboardPage extends BasePage {
 		click(invitePeople, "invitePeople");
 		return (CommunityInviteMembersPage) openPage(CommunityInviteMembersPage.class);
 		// new CommunityInviteMembersPage(driver);
-
 	}
 
 	public CommunityPendingRequestsPage navigateToPendingRequests() {
@@ -268,7 +342,12 @@ public class CommunityDashboardPage extends BasePage {
 		click(Events, "Events");
 		return (CommunityEventsPage) openPage(CommunityEventsPage.class);
 		// new CommunityEvents(driver);
+	}
+	public EmailTemplatePage navigateToEmailTemplate() {
 
+		click(emailtemplate, "Email Template");
+		return (EmailTemplatePage) openPage(EmailTemplatePage.class);
+		// new CommunityEvents(driver);
 	}
 
 	// public CommunityPendingRequestsPage navigateToPendingInvitations(){
@@ -288,9 +367,7 @@ public class CommunityDashboardPage extends BasePage {
 	}
 
 	public CommunityDetailsPage navigateToCommunityDetailsPage(String name) throws Exception {
-		
 		scrollUpVertically();
-		
 		WebElement ele = driver.findElement(By.xpath("//*[@class='nav_menu']//*[contains(text(),'"+name+"')]"));
 		click(ele, "Community Name " +name);
 		return (CommunityDetailsPage) openPage(CommunityDetailsPage.class);
@@ -323,7 +400,6 @@ public class CommunityDashboardPage extends BasePage {
 		click(tags, "Tags");
 
 		return (TagsPage) openPage(TagsPage.class);
-
 	}
 
 	public void checkMembershipPlansNotAvailable() {
@@ -353,13 +429,136 @@ public class CommunityDashboardPage extends BasePage {
 	@FindBy(xpath="//*[contains(text(),'Pricing Plan Details')]")
 	WebElement pricingPlanDetails;
 	public PricingPlanDetailsPage navigateToPricingPlansDetailsPage() {
-		
-		
-		
 		click(pricingPlanDetails,"pricingPlanDetails");
-		
-		
 		return (PricingPlanDetailsPage) openPage(PricingPlanDetailsPage.class);
 	}
-
+	public void TotalGroups() throws Exception {
+		//boolean varExists = false;
+		scrollIntoView(TotalGroup);
+		Thread.sleep(1000);
+		
+		//waitForElementToPresent(this.TotalGroup);
+		if(this.TotalGroup.isDisplayed()) {
+			
+			System.out.println("Total count is " + TotalGroupCount.getText());
+			Assert.assertTrue(true);
+		}
+	}
+	public ComposeCampaign navigateToComposeCampaignPage() throws Exception {
+		scrollDownVertically();
+		scrollToElement(manageCampaign);
+		click(manageCampaign, "manageCampaign");
+		Thread.sleep(500);
+		waitForElementToPresent(composeCampaign);
+		this.composeCampaign.click();	
+		//click(composeCampaign, "composeCampaign");
+		return (ComposeCampaign) openPage(ComposeCampaign.class);
+		
+	}
+	public CampaignTemplatePage navigateToCampaignTemplate() throws Exception {
+		scrollDownVertically();
+		scrollToElement(manageCampaign);
+		click(manageCampaign, "manageCampaign");
+		Thread.sleep(500);
+		waitForElementToPresent(campaignTemplate);
+		this.campaignTemplate.click();	
+		//click(composeCampaign, "composeCampaign");
+		return (CampaignTemplatePage) openPage(CampaignTemplatePage.class);
+		
+	}public StatisticsManageCampaign NavigatetoStatistics() throws Exception {
+		scrollDownVertically();
+		scrollToElement(manageCampaign);
+		click(manageCampaign, "manageCampaign");
+		Thread.sleep(500);
+		waitForElementToPresent(Staticcampaign);
+		this.Staticcampaign.click();	
+		//click(composeCampaign, "composeCampaign");
+		return (StatisticsManageCampaign) openPage(StatisticsManageCampaign.class);
+	}
+		
+	public CampaignReportPage navigateToCampaignReportPage() throws Exception {
+		
+		scrollToElement(manageCampaign);
+		click(manageCampaign, "manageCampaign");
+		Thread.sleep(500);
+		waitForElementToPresent(CampaignReport);
+		this.CampaignReport.click();	
+		//click(composeCampaign, "composeCampaign");
+		return (CampaignReportPage) openPage(CampaignReportPage.class);
+		
+	}
+	public DraftCampaignPage navigateToDraftCampaignPage() throws Exception {
+		scrollDownVertically();
+		scrollToElement(manageCampaign);
+		click(manageCampaign, "manageCampaign");
+		Thread.sleep(500);
+		waitForElementToPresent(DraftCampaign);
+		this.DraftCampaign.click();	
+		//click(composeCampaign, "composeCampaign");
+		return (DraftCampaignPage) openPage(DraftCampaignPage.class);
+		
+	}
+	public ImportContactsPage navigateToImportContactsPage() throws Exception {
+		scrollDownVertically();
+		scrollToElement(manageCampaign);
+		click(manageCampaign, "manageCampaign");
+		Thread.sleep(500);
+		waitForElementToPresent(importcampaign);
+		this.importcampaign.click();	
+		//click(composeCampaign, "composeCampaign");
+		return (ImportContactsPage) openPage(ImportContactsPage.class);
+		
+	}
+	public ManageResourcesPage navigateToManageResourcesPage() throws Exception {
+		scrollDownVertically();
+		scrollToElement(manageresource);
+		click(manageresource, "manageresource");
+		return (ManageResourcesPage) openPage(ManageResourcesPage.class);
+		
+	}
+	public PricingPlanDetailsPage navigateToPricingPlanDetailsPage() throws Exception {
+		
+		click(pricingplan, "Pricing Plan");
+		return (PricingPlanDetailsPage) openPage(PricingPlanDetailsPage.class);
+		
+	}
+	public int TotalJobs() throws Exception {
+		//boolean varExists = false;
+		scrollIntoView(totakJobs);
+		String C = totakJobscounts.getText();
+        int TC=Integer.parseInt(C);
+        System.out.println("Total count is " + TC);
+     	Assert.assertTrue(true);  
+	      return TC;	
+			
+	}
+	 public void totalJobsCount() {
+			
+		   String C = totalJobsCount.getText();
+	      int TC=Integer.parseInt(C);
+	      System.out.println(TC);
+	      System.out.println("CA can check total number of jobs on Statistics of Jobs on Dashboard");
+	}
+	 public int TotalJobsApplications() throws Exception {
+ 		//boolean varExists = false;
+ 		scrollIntoView(totakJobsapplication);
+ 		String C = totakjobsapplicationcounts.getText();
+        int TC=Integer.parseInt(C);
+        System.out.println("Total count is " + TC);
+     	Assert.assertTrue(true);  
+	      return TC;	
+ 			
+ 
+ 	}
+	 public int TotalInactiveJobs() throws Exception {
+			//boolean varExists = false;
+			scrollIntoView(totakinactiveJobs);
+			String C = totakInactiveJobscounts.getText();
+	        int TC=Integer.parseInt(C);
+	        System.out.println("Total count is " + TC);
+	     	Assert.assertTrue(true);  
+		      return TC;
+			
+		}
 }
+

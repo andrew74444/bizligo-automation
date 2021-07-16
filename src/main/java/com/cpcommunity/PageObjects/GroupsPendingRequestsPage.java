@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 import org.apache.log4j.Logger;
 
 import com.aventstack.extentreports.Status;
@@ -21,6 +22,10 @@ public class GroupsPendingRequestsPage extends BasePage{
 	}
 	
 	
+	@FindBy(xpath="//input[@placeholder='Search by Group Name']")
+	WebElement searchGroupName;
+	@FindBy(xpath="//td[@class='sorting_1']")
+	WebElement GroupName;
 	
 	@FindBy(xpath="//*[contains(text(),'Manage Pending Group Requests')]")
 	WebElement ManagePendingGroupRequestsTitle;
@@ -46,5 +51,15 @@ public class GroupsPendingRequestsPage extends BasePage{
 	public void rejectMember(String rejectEmail,String rejectReason) throws Exception {
 		new ManageRequests(driver).rejectRequest(rejectEmail, rejectReason);
 		
+	}
+	public void serachGroup(String Group) {
+		waitForElementToPresent(searchGroupName);
+		type(searchGroupName, Group, "Group");
+		if(GroupName.isDisplayed()) {
+			Assert.assertTrue(true);
+		}
+		else {
+			Assert.assertTrue(false);
+		}
 	}
 }

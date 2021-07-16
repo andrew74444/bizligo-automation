@@ -66,7 +66,7 @@ public EndorsementPage Approve(){
 		}
 		return false;
 	}	
-	
+	//changes
 	public EndorsementPage Reject(){
 		
 		//log.info("Clicking on Reject button....");
