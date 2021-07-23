@@ -139,19 +139,76 @@ public class GlobalCommunitesPage extends BasePage {
 	
 	@FindBy(xpath = "//button[normalize-space()='Apply']")
 	WebElement Apply;
+	@FindBy(xpath = "//a[@title='Manage Community']")
+	WebElement managetocommunity;
 	
 	@FindBy(xpath = "//div[@class='swal-text']")
 	WebElement msgCannotApply;
 	
-	//div[@id='myNavbar']
+	@FindBy(xpath = "//div[@class='communities-box ng-scope col-lg-4 col-md-12 col-sm-12']//h4")
+	WebElement BDMAIcomm;
+	@FindBy(xpath = "//span[normalize-space()='Advertisements']")
+	WebElement advertisement;
+	@FindBy(xpath = "//div[@ng-show='PromotionPlans.length']//div[@class='row']")
+	WebElement adPlans;
+	@FindBy(xpath = "//ng-repeat[2]//div[1]//div[1]//div[1]//div[3]//a[1]")
+	WebElement selectPlans;
+	@FindBy(xpath = "//button[normalize-space()='Next']")
+	WebElement next;
+	@FindBy(xpath = "//input[@id='AdName']")
+	WebElement adname;
+	@FindBy(xpath = "//td[normalize-space()='17']")
+	WebElement dateselect;
+	@FindBy(xpath = "//input[@id='AdStartDate']")
+	WebElement date;
+	@FindBy(xpath = "//input[@id='AdImageId']")
+	WebElement choosefile;
+	@FindBy(xpath = "//button[normalize-space()='Save']")
+	WebElement save;
+	@FindBy(xpath = "//span[@title='Toggle dropdown menu']")
+	WebElement Toggledropdownmenu;
 	
-
+	@FindBy(xpath = "//a[normalize-space()='My Ecosystem']")
+	WebElement ecosystem;
+	@FindBy(xpath = "//ng-repeat[7]//div[1]//div[1]//div[1]//div[3]//a[1]")
+	WebElement selectPlan2;
+	
+	@FindBy(xpath = "//button[@class='btn btn-danger padding-space']")
+	WebElement cancel;
+	
+	@FindBy(xpath = "//button[normalize-space()='Yes, Proceed']")
+	WebElement yesProceed;
+	
+	@FindBy(xpath = "(((//*[@class='col-md-3 left_col']//img[@src='/Content/Images/adprommenu.png'])/..)/..)")
+	WebElement advertisements;
+    @FindBy(xpath = "//img[@src='/Content/Images/setting-icon.png']/../..")
+	WebElement manage;
+    @FindBy(xpath = "//a[contains(text(),'Manage Plans')]")
+	WebElement managePlans;
+	
 	public void checkTotalCommunities(Hashtable<String, String> data) throws Exception {
 		String name = "";
 		this.searchCommunity(data.get("Name"));
 
 	}
+	public ManageAdPlansPage goToManageAdPlansPage() {
 
+		click(advertisements, "advertisements");
+ 		waitForElementToPresent(managePlans);
+ 		click(managePlans, "Manage Plans");
+ 		return (ManageAdPlansPage) openPage(ManageAdPlansPage.class);
+ 		// new CommunityPendingRequestsPage(driver);
+ 	}
+	public ManageCommunityPage goToManagecommunity() {
+
+		waitForElementToPresent(BDMAIcomm);
+		click(BDMAIcomm, "BDMAI");
+		waitForElementToPresent(managetocommunity);
+		click(managetocommunity, ID);
+		
+ 		return (ManageCommunityPage) openPage(ManageCommunityPage.class);
+ 		// new CommunityPendingRequestsPage(driver);
+ 	}
 	public void joinCommunitytermsandconditions(String communityName) throws Exception {
 		communityName = communityName+" "+getDateInDDMMMYYYY();
 		this.searchCommunity(communityName);
@@ -340,7 +397,89 @@ public class GlobalCommunitesPage extends BasePage {
 
 	}
 	
-	
+	public void checkInactiveAdvertisementNotPresent() throws InterruptedException {
+		waitForElementToPresent(BDMAIcomm);
+		click(BDMAIcomm, "BDMAI");
+		//clickElementByJavaScript(BDMAIcomm);
+		Thread.sleep(4000);
+		scrollToElementAndClick(advertisement);
+		waitForElementToPresent(adPlans);
+		String Allplans=this.adPlans.getText();
+    	String Notpresent="Test@1122";
+    	System.out.println("Inactive Plan is not present");
+    	Assert.assertNotEquals(Notpresent, Allplans, "Inactive Plan is not present");
+		
+	}
+	public void checkAdPresent() throws InterruptedException {
+		waitForElementToPresent(BDMAIcomm);
+		click(BDMAIcomm, "BDMAI");
+		scrollDownVertically();
+		waitForElementToPresent(advertisement);
+		click(advertisement, "Advertisement");
+		waitForElementToPresent(adPlans);
+		String Allplans=this.adPlans.getText();
+    	String present="Goldengold";
+    	System.out.println(" Plan is  present");
+		//Assert.assertEquals(Allplans, present);
+	}
+	public void checkPendingadvertisement(String AdName, String  path) throws InterruptedException {
+		waitForElementToPresent(BDMAIcomm);
+		click(BDMAIcomm, "BDMAI");
+		//clickElementByJavaScript(BDMAIcomm);
+		//Thread.sleep(2000);
+		scrollDownVertically();
+		waitForElementToPresent(advertisement);
+		click(advertisement, "Advertisement");
+		waitForElementToPresent(selectPlans);
+		click(selectPlans, "Select TestSilver Plan");
+		waitForElementToPresent(next);
+		click(next, "Next");
+		waitForElementToPresent(adname);
+		type(adname, AdName, "Advertisement name");
+		click(date, "Select Date");
+		waitForElementToPresent(dateselect);
+		click(dateselect, "Date 17 july");
+		waitForElementToPresent(choosefile);
+		type(choosefile, path, "Image Path");
+		scrollDownVertically();
+		click(save, "Save");
+		//waitForElementToPresent(toastMessage);
+		//AssertionHelper.verifyText(toastMessage.getText(), "Advertisement details saved.");
+		Thread.sleep(2000);
+		
+	}
+	public void clickCancel(String AdName, String  path) {
+		waitForElementToPresent(BDMAIcomm);
+		click(BDMAIcomm, "BDMAI");
+		//clickElementByJavaScript(BDMAIcomm);
+		//Thread.sleep(2000);
+		scrollIntoViewAndClick(advertisement);
+		//click(advertisement, "Advertisement");
+		waitForElementToPresent(selectPlans);
+		click(selectPlan2, "Select TestSilver Plan");
+		waitForElementToPresent(next);
+		click(next, "Next");
+		waitForElementToPresent(adname);
+		type(adname, AdName, "Advertisement name");
+		click(date, "Select Date");
+		waitForElementToPresent(date);
+		click(dateselect, "Date 17 july");
+		waitForElementToPresent(choosefile);
+		type(choosefile, path, "Image Path");
+		scrollDownVertically();
+		click(cancel, "Cancel");
+		waitForElementToPresent(yesProceed);
+		click(yesProceed, "Yes Proceed");
+		
+	}
+	public MyDashboardPage gotoMyDashboardPage() throws Exception {
+		waitForElementToPresent(Toggledropdownmenu);
+		click(Toggledropdownmenu,"Toggledropdownmenu");
+		Thread.sleep(500);
+		waitForElementToPresent(ecosystem);
+		click(ecosystem,"Ecosystem");
+		return (MyDashboardPage) openPage(MyDashboardPage.class);
+	}	
 	
 	public void searchCommunity(String CommunityName) throws Exception {
 		searchName.clear();
@@ -350,6 +489,33 @@ public class GlobalCommunitesPage extends BasePage {
 		waitForElementToPresent(driver.findElement(By.xpath("//a[contains(text(),'" + CommunityName + "')]")));
 
 	}
+	
+	public SelectPlanPage navigatetoselectPlanPage() throws InterruptedException {
+		waitForElementToPresent(BDMAIcomm);
+		click(BDMAIcomm, "BDMAI");
+		Thread.sleep(2000);
+		scrollDownVertically();
+		clickElementByJavaScript(advertisement);
+		//click(advertisement, "Advertisement");
+		
+	return (SelectPlanPage) openPage(SelectPlanPage.class);	
+}
+	public CreateAdPage gotoCreateAdPage() throws InterruptedException {
+		waitForElementToPresent(BDMAIcomm);
+		click(BDMAIcomm, "BDMAI");
+		Thread.sleep(5000);
+		scrollDownVertically();
+		//scrollIntoViewAndClick(advertisement);
+		clickElementByJavaScript(advertisement);
+		//click(advertisement, "Advertisement");
+		waitForElementToPresent(selectPlans);
+		click(selectPlans, "Select TestSilver Plan");
+		waitForElementToPresent(next);
+		click(next, "Next");
+		
+		return (CreateAdPage) openPage(CreateAdPage.class);	
+	}
+	
 	public void CheckcareerMenuNotPresent() {
 		waitForElementToPresent(animalLovercommunity);
 		click(animalLovercommunity, "Animal Lover Community");

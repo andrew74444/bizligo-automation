@@ -19,6 +19,11 @@ public class ManageCommunitiesPage extends BasePage {
 		updateClass(pageheader, "");
 		aShot();
 	}
+	
+	@FindBy(xpath = "//a[normalize-space()='Dashboard Reports']")
+	WebElement dashboardreport;
+	@FindBy(xpath = "//a[normalize-space()='Dashboard Reports']")
+	WebElement revenuereport;
 	@FindBy(xpath = "//div[@class='nav_menu']")
 	WebElement pageheader;
 	@FindBy(xpath = "//h2[normalize-space()='Manage Communities']")
@@ -93,6 +98,13 @@ public GlobalCommunitesPage navigateToglobalcommunities() {
 	return (GlobalCommunitesPage) openPage(GlobalCommunitesPage.class);	
 }
 
-
+public RevenueReportPage navigateToRevenueReport() {
+	
+	waitForElementToPresent(dashboardreport);
+	click(dashboardreport, "Dashboard Reports");
+	waitForElementToPresent(revenuereport);
+	click(revenuereport, "Revenue Report");
+	return (RevenueReportPage) openPage(RevenueReportPage.class);	
+}
 
 }
