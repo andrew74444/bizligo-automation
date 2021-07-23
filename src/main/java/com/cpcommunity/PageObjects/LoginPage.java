@@ -71,6 +71,16 @@ public class LoginPage extends BasePage {
 	WebElement myads;
 	@FindBy(xpath = "//img[@src='/Content/Images/connectpro_logo.png']")
 	WebElement bizligo;
+	@FindBy(xpath="//a[contains(text(),'Global Communities')]")
+	WebElement globalCommunities;
+	@FindBy(xpath="//a[normalize-space()='BizLigo1']")
+    WebElement bizligo1;
+	@FindBy(xpath="//a[@title='Manage Community']")
+    WebElement manageCommunity;
+	@FindBy(xpath = "//button[@class='btn btn-info']")
+	WebElement searchbtn;
+	@FindBy(xpath = "//input[@id='searchName']")
+	WebElement SearchcommunityName;
 	
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
@@ -248,8 +258,9 @@ public class LoginPage extends BasePage {
 		this.login(email, password);
 		return (AccountSelectPlansPage) openPage(AccountSelectPlansPage.class);
 	}
-	public MyDashboardPage loginToMemberdashboard(String enterEmailAddress, String password) {
+	public MyDashboardPage loginToMemberdashboard(String enterEmailAddress, String password) throws InterruptedException {
         this.login(enterEmailAddress, password);
+        Thread.sleep(3000);
         return (MyDashboardPage) openPage(MyDashboardPage.class);
 //        new MyDashboardPage(driver, );        
 	}
@@ -263,10 +274,24 @@ public class LoginPage extends BasePage {
 	}
 	public MyDashboardPage gotoMyDashboardPage() throws Exception {
 		waitForElementToPresent(Toggledropdownmenu);
-		click(Toggledropdownmenu,"Toggledropdownmenu");
-		Thread.sleep(500);
+		//click(Toggledropdownmenu,"Toggledropdownmenu");
+		clickElementByJavaScript(Toggledropdownmenu);
+		Thread.sleep(2000);
 		waitForElementToPresent(ecosystem);
 		click(ecosystem,"Ecosystem");
 		return (MyDashboardPage) openPage(MyDashboardPage.class);
-	}	
+	}
+	public Bizligo1CommunityPage goToMyCommunity(String communityName ) throws InterruptedException {
+		Thread.sleep(4000);
+		clickElementByJavaScript(globalCommunities);
+		waitForElementToPresent(SearchcommunityName);
+		picture();
+		type(SearchcommunityName, communityName, "Search by Community");
+		click(searchbtn, "search btn");
+		Thread.sleep(6000);
+		//WebElement ele = driver.findElement(By.xpath("//a[@tooltip='" + communityName + "']"));
+		waitForElementToPresent(bizligo1);
+		click(bizligo1,"Bizligo 1");
+		return (Bizligo1CommunityPage) openPage(Bizligo1CommunityPage.class);
+	}
 }

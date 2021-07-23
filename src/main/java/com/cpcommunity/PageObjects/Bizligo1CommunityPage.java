@@ -52,6 +52,13 @@ public class Bizligo1CommunityPage extends BasePage {
 	
 	@FindBy(xpath="//div[@ng-show='appData.showLoginOrJoinMessage']")
 	WebElement msgWhenNotMember;
+	//a[@title='Manage Community']
+	@FindBy(xpath="//a[@title='Manage Community']")//a[@title='Manage Community']
+	WebElement manage;
+	@FindBy(xpath = "(((//*[@class='col-md-3 left_col']//img[@src='/Content/Images/adprommenu.png'])/..)/..)")
+	WebElement advertisements;
+	@FindBy(xpath = "//a[contains(text(),'Manage Plans')]")
+	WebElement managePlans;
 	
 	
 	public void resourceForGuestMember() throws InterruptedException {
@@ -118,5 +125,15 @@ public class Bizligo1CommunityPage extends BasePage {
 		click(yesProceed,"yes proceed");
 		
 	}
-	
+	public ManageAdPlansPage gotoManageAdsplan() {
+		waitForElementToPresent(manage);
+		click(manage, "Manage Icon button");
+		scrollIntoView(advertisements);
+		click(advertisements, "advertisements");
+		waitForElementToPresent(managePlans);
+		click(managePlans, "Manage Plans");
+		return (ManageAdPlansPage) openPage(ManageAdPlansPage.class);
+	}
 }
+	
+

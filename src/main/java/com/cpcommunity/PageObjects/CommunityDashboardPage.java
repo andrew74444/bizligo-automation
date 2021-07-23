@@ -22,6 +22,13 @@ public class CommunityDashboardPage extends BasePage {
 		aShot();
 
 	}
+	
+	@Override
+	protected ExpectedCondition getPageLoadCondition() {
+
+		waitForElementToPresent(Dashboard);
+		return ExpectedConditions.visibilityOf(Dashboard);
+	}
 	@FindBy(xpath = "//div[@class='nav_menu']")
 	WebElement pageheader;
 	
@@ -153,6 +160,10 @@ public class CommunityDashboardPage extends BasePage {
 	WebElement totakinactiveJobs;
     @FindBy(xpath = "//div[@class='panel panel-info']//a[2]//div[1]//div[2]")
     WebElement totakInactiveJobscounts;
+    @FindBy(xpath = "//a[@ng-click=\"data.RedirectToPageBasedOnRole('promotions', 'rejected')\"]")
+   	WebElement rejectedAds;
+    @FindBy(xpath = "//div[@class='panel panel-warning g-statistics']//a[2]//div[1]//div[2]")
+    WebElement rejectedAdConts;
     @FindBy(xpath = "//div[@class='panel panel-info']//a[4]")
 	WebElement totakJobsapplication;
     @FindBy(xpath = "//div[@class='panel panel-info']//a[4]//div[1]//div[2]")
@@ -167,7 +178,20 @@ public class CommunityDashboardPage extends BasePage {
   //	WebElement manage;
     @FindBy(xpath = " //a[normalize-space()='Edit']")
    	WebElement edit; 
- 
+    @FindBy(xpath="//a[contains(text(),'Global Communities')]")
+	WebElement globalCommunities;
+    @FindBy(xpath = "//a[normalize-space()='Advertisements']")
+	WebElement advertisement;
+	@FindBy(xpath = "//a[normalize-space()='Dashboard Reports']")
+	WebElement dashboardreport;
+	@FindBy(xpath = "//a[normalize-space()='Revenue Reports']")
+	WebElement revenuereport;
+	@FindBy(xpath = "//a[@title='Manage Community']")
+	WebElement managecommunity;
+	@FindBy(xpath = "//div[@class='panel panel-warning g-statistics']//div[@class='panel-body']")
+	WebElement adstatics;
+    
+    
   
 	public void displayManageGroupsPage() throws Exception {
 		boolean varExists = false;
@@ -221,12 +245,6 @@ public class CommunityDashboardPage extends BasePage {
 		// new CommunityPendingRequestsPage(driver);
 	}
 
-	@Override
-	protected ExpectedCondition getPageLoadCondition() {
-
-		waitForElementToPresent(Dashboard);
-		return ExpectedConditions.visibilityOf(Dashboard);
-	}
 
 	public HomePage logout() {
 		click(angleDown, "Community Admin Menu Drop down");
@@ -385,6 +403,15 @@ public class CommunityDashboardPage extends BasePage {
 
 		return (CommunityBlogsPage) openPage(CommunityBlogsPage.class);
 	}
+	public GlobalCommunitesPage naviagtingToGlobalCommunities() throws Exception
+	{
+		
+		clickElementByJavaScript(globalCommunities);
+		Thread.sleep(1000);
+		return (GlobalCommunitesPage) openPage(GlobalCommunitesPage.class);
+//		new GlobalCommunitesPage(driver, );
+		
+	}
 
 	public CategoriesPage gotoCategories() {
 		click(blogs, "Categories");
@@ -532,6 +559,14 @@ public class CommunityDashboardPage extends BasePage {
 	      return TC;	
 			
 	}
+	public void pendingAdNotDisplaying() throws Exception {
+		waitForElementToPresent(adstatics);
+		String AllAds=adstatics.getText();
+		String notPresent="Pending Ads";
+		System.out.println("AllAds");
+		Assert.assertNotSame(AllAds, notPresent);
+			
+	}
 	 public void totalJobsCount() {
 			
 		   String C = totalJobsCount.getText();
@@ -559,6 +594,35 @@ public class CommunityDashboardPage extends BasePage {
 	     	Assert.assertTrue(true);  
 		      return TC;
 			
+		}
+	 public int RejectedAdcounts() {
+		 scrollIntoView(rejectedAds);
+			String C = rejectedAdConts.getText();
+	        int TC=Integer.parseInt(C);
+	        System.out.println("Total count is " + TC);
+	     	Assert.assertTrue(true); 
+		 return TC;
+	 }
+	 
+	 public RevenueReportPage navigateToRevenueReport() {
+			waitForElementToPresent(advertisement);
+			click(advertisement, "Advertisement");
+			waitForElementToPresent(managecommunity);
+			scrollUpVertically();
+			click(managecommunity, "Manage button");
+			waitForElementToPresent(dashboardreport);
+			click(dashboardreport, "Dashboard Reports");
+			waitForElementToPresent(revenuereport);
+			click(revenuereport, "Revenue Report");
+			return (RevenueReportPage) openPage(RevenueReportPage.class);	
+		}
+	 
+	 public RevenueReportPage goToRevenueReport() {
+			//waitForElementToPresent(dashboardreport);
+			click(dashboardreport, "Dashboard Reports");
+			waitForElementToPresent(revenuereport);
+			click(revenuereport, "Revenue Report");
+			return (RevenueReportPage) openPage(RevenueReportPage.class);	
 		}
 }
 

@@ -44,8 +44,10 @@ public class MyDashboardPage extends BasePage{
 	@FindBy(xpath = "//h2[normalize-space()='MY ECOSYSTEM']")
 	WebElement myDashboard;
 	
-	@FindBy(xpath="//*[contains(text(),'My Advertisements')]")
+	@FindBy(xpath="//div[normalize-space()='My Advertisements']")
 	WebElement myAdvertisements;
+	@FindBy(xpath="//div[@class='pull-right text-right Ads-color']")
+	WebElement adcounts;
 	
 	@FindBy(xpath = "//img[@class='img-circle']")
 	WebElement menu;
@@ -244,7 +246,8 @@ public class MyDashboardPage extends BasePage{
 		WebElement group3 ;
 		@FindBy(xpath="//span[normalize-space()='test123']")
 		WebElement test123 ;
-
+		@FindBy(xpath="//tr[@class='odd']//span[@title='For this plan payment is pending'][normalize-space()='PAYMENT PENDING']")
+		WebElement inactivestatus ;
 		@FindBy(xpath="//div[@class='post-box']//div[2]//div[1]//div[1]//div[1]//div[1]//div[1]//div[1]//div[2]//button[1]//strong[1]")
 		WebElement join ;
 		@FindBy(xpath="//div[@class='cmt-groups']//div[@class='clearfix']")
@@ -255,7 +258,8 @@ public class MyDashboardPage extends BasePage{
 		WebElement Globalcommunities;
 	    @FindBy(xpath="//a[@title='Go to My Communities']")
 		WebElement viewAll;
-	    
+	    @FindBy(xpath = "//*[contains(text(),'MANAGE')]")
+		WebElement MANAGEbtn;
 	    @FindBy(xpath="//button[@ng-click='data.SearchCommunities()']")
 		WebElement search;
 	    @FindBy(xpath = "//input[@placeholder='Search by Group Name']")
@@ -264,9 +268,15 @@ public class MyDashboardPage extends BasePage{
 		WebElement NameOnDisplayCard;
 	    @FindBy(xpath="//div[@class='pull-right text-right jobs-color']")
 		WebElement myJobsCount;
-	    
-	    
-	    
+	    @FindBy(xpath="//div[@class='pull-right text-right Ads-color']")
+		WebElement myAdCount;
+	    @FindBy(xpath = "//input[@placeholder='Search by Community Name']")
+		WebElement SearchbyCommunityName;
+	    @FindBy(xpath = "(((//*[@class='col-md-3 left_col']//img[@src='/Content/Images/adprommenu.png'])/..)/..)")
+		WebElement advertisements;
+	    @FindBy(xpath = "//a[contains(text(),'Manage Plans')]")
+		WebElement managePlans;
+	  
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 		
@@ -308,6 +318,14 @@ public class MyDashboardPage extends BasePage{
 	      	System.out.println("Members can see number of Job Counts on Dashboard");      
 	      		
 	}
+	public void  MyAdCount() throws InterruptedException {	
+		Thread.sleep(2000);
+		   String C = myAdCount.getText();
+	      int TC=Integer.parseInt(C);
+	      System.out.println("The number of Ads count visible on Dashboard is:"+ TC);
+	      	System.out.println("Members can see number of Ads Counts on Dashboard");      
+	      		
+	}
 
 public void checkProperAlertDisplayedWhenOnlyOneAdmin(String GroupName) throws Exception {
 	//this.searchCommunity(communityName+getDateInDDMMMYYYY());
@@ -337,8 +355,38 @@ public void checkProperAlertDisplayedWhenOnlyOneAdmin(String GroupName) throws E
 			"Please make another member as Group Admin to leave from this Group");
 	System.out.println("Assertion done");
 }
+public void searchCommunity(String communityName) throws Exception {
+	waitForElementToPresent(viewAll);
+	click(viewAll, "Global Communities");
+	waitForElementToPresent(SearchbyCommunityName);
+	picture();
+	type(SearchbyCommunityName, communityName, "Search by Community");
+	click(searchbtn, "search btn");
+	Thread.sleep(6000);
+	WebElement ele = driver.findElement(By.xpath("//a[@tooltip='" + communityName + "']"));
+	waitForElementToPresent(ele);
+	picture();
 
+}
 
+public CommunityDashboardPage gotoManageCommunity(String communityName) throws Exception {
+
+	//this.searchCommunity(communityName+getDateInDDMMMYYYY());
+	click(MANAGEbtn, "Manage");
+	return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
+	// new CommunityDashboardPage(driver, );
+}public void clickOnAdvertisments() {
+	click(advertisements, "advertisements");
+}
+
+public ManageAdPlansPage goToManageAdPlansPage() {
+
+	this.clickOnAdvertisments();
+	waitForElementToPresent(managePlans);
+	click(managePlans, "Manage Plans");
+	return (ManageAdPlansPage) openPage(ManageAdPlansPage.class);
+	// new CommunityPendingRequestsPage(driver);
+}
 	public void NavigateToMyReminders(String Title) throws Exception{
 		click(myReminders,"MyReminders");
 		Thread.sleep(2000);
@@ -516,7 +564,12 @@ public void checkProperAlertDisplayedWhenOnlyOneAdmin(String GroupName) throws E
 		
 	}
 	
-	
+	public void checkplanstatus() {
+		this.inactivestatus.isDisplayed();
+		String status=inactivestatus.getText();
+		System.out.println(status);
+		
+	}
 	
 public GlobalCommunitesPage naviagtingToGlobalCommunities() throws Exception
 	{
@@ -593,7 +646,12 @@ public void blogPageWorking() throws Throwable
 //		new GlobalMembersPage(driver, );
 	}
 	
-	
+	public void checkAdcounts() {
+		waitForElementToPresent(myAdvertisements);
+		String count=adcounts.getText();
+		System.out.println("Advertisement counts :" + count);
+		
+	}
 	
 	public ConnectionsPage navigateToMyConnections()
 	{				
@@ -658,15 +716,14 @@ public void blogPageWorking() throws Throwable
 ////		new EndorsementPage(driver, );
 //	}
 	
-	public MyAdvertisements NaviagtingToMyAdvertisements()
+	public MyAdvertisements NaviagtingToMyAdvertisements() throws InterruptedException
 	{		
 		scrollToElement(myAdvertisements);
-		click(myAdvertisements,"My Advertisements");	
+		clickElementByJavaScript(myAdvertisements);
+		//click(myAdvertisements,"My Advertisements");	
 		return (MyAdvertisements) openPage(MyAdvertisements.class);
 //		new MyProfilePage(driver, );
 	}
-	
-	
 	
 	public MyProfilePage NaviagtingToMyProfilePage1()
 	{
