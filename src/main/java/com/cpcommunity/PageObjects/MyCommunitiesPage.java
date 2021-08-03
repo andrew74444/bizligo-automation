@@ -520,7 +520,7 @@ public class MyCommunitiesPage extends BasePage {
 	
 	
 	public Bizligo1CommunityPage goToMyCommunity(String communityName ) throws InterruptedException {
-		clickElementByJavaScript(globalCommunities);
+		//clickElementByJavaScript(globalCommunities);
 		waitForElementToPresent(SearchbyCommunityName);
 		picture();
 		type(SearchbyCommunityName, communityName, "Search by Community");

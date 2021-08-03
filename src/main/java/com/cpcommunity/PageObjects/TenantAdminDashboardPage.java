@@ -68,9 +68,14 @@ public class TenantAdminDashboardPage extends BasePage{
 	WebElement managePlans;
     @FindBy(xpath = "//*[contains(text(),'Manage Member Advertisements')]")
 	WebElement manageMemberAdvertisements;
-  
-   
-    
+    @FindBy(xpath = "//a[normalize-space()='Donations']")
+	WebElement Donations;
+    @FindBy(xpath = "//div[@id='sidebar-menu']")
+	WebElement sideBarMenu;
+    @FindBy(xpath = "//a[normalize-space()='Payment Gateways']")
+	WebElement paymentGateway;
+	
+ 
     
 	 public ManageApplications navigateToManageApplication() {
 			scrollDownVertically();
@@ -101,6 +106,14 @@ public ComposeCampaign navigateToComposeCampaignPage() throws Exception {
 	return (ComposeCampaign) openPage(ComposeCampaign.class);
 	
 }
+public ManageDonationsPage NavigatetoManageDonationsPage() {
+	
+	waitForElementToPresent(Donations);
+	click( Donations, "Donations");
+	return (ManageDonationsPage) openPage(ManageDonationsPage.class);
+	// new ManageJobs(driver);
+}
+
 public ImportContactsPage navigateToImportContactsPagePage() throws Exception {
 	scrollDownVertically();
 	scrollToElement(manageCampaign);
@@ -195,5 +208,37 @@ public HomePage goToHomePage() {
  		return (ManageMemberAdvertisementsPage) openPage(ManageMemberAdvertisementsPage.class);
  		// new CommunityPendingRequestsPage(driver);
  	}
+     public void checkDonationsWhenDisabled() {
+ 		System.out.println(sideBarMenu.getText());
+ 		if(sideBarMenu.getText().contains("Donations")) {
+ 			Assert.assertTrue(false);
+ 			System.out.println("Donations visible in side menu when disabled by Super Admin");
+ 		}else {
+ 			Assert.assertTrue(true);
+ 			System.out.println("Donations not visible in side menu when disabled by Super Admin");
+ 		}
+ 		
+ 	}
+     public void checkDonationsWhenEnabled() {
+ 		System.out.println(sideBarMenu.getText());
+ 		if(sideBarMenu.getText().contains("Donations")) {
+ 			Assert.assertTrue(true);
+ 			System.out.println("Donations visible in side menu when enabled by Super Admin");
+ 		}else {
+ 			Assert.assertTrue(false);
+ 			System.out.println("Donations not visible in side menu when enabled by Super Admin");
+ 		}
+ 		
+ 	}
+     public PaymentGatewaysPage NavigatetoPaymentGatewayPage() {
+ 		
+ 		waitForElementToPresent(paymentGateway);
+ 		click( paymentGateway, "paymentGateway");
+ 		return (PaymentGatewaysPage) openPage(PaymentGatewaysPage.class);
+ 		// new ManageJobs(driver);
+ 	}
+
+
+
 
 }

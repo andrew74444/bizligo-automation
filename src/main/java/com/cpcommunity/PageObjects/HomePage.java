@@ -50,6 +50,11 @@ public class HomePage extends BasePage {
 	
 	@FindBy(xpath = "//a[normalize-space()='Careers']")
 	WebElement careers;
+	@FindBy(xpath = "//span[@title='Toggle dropdown menu']")
+	WebElement toggleDropDown;
+	@FindBy(xpath = "//a[normalize-space()='Logout']")
+	WebElement logoutBtn;
+
 	
 	
 	@Override
@@ -115,6 +120,14 @@ public class HomePage extends BasePage {
 		// new LoginPage(driver, );
 
 	}
+	public HomePage logout() {
+		toggleDropDown.click();
+		logoutBtn.click();
+		return (HomePage) openPage(HomePage.class);
+		
+	}
+
+
 
 	public UpcomingEventsPage clickOnupComingEvents() {
 
