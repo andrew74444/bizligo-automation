@@ -68,9 +68,31 @@ public class TenantAdminDashboardPage extends BasePage{
 	WebElement managePlans;
     @FindBy(xpath = "//*[contains(text(),'Manage Member Advertisements')]")
 	WebElement manageMemberAdvertisements;
-  
+    @FindBy(xpath = "(//*[contains(text(),'Blogs')])[1]")
+	WebElement blogs;
+	@FindBy(xpath = "(//*[contains(text(),'Categories')])[1]")
+	WebElement categories;
+	@FindBy(xpath = "(//*[contains(text(),'Tags')])[1]")
+	WebElement tags;
+	@FindBy(xpath = "//a[@title='Manage Organizations/Companies']")
+	WebElement organisations;
+	@FindBy(xpath = "//a[@class='display-none'][normalize-space()='Communities']")
+	WebElement communities;
+	@FindBy(xpath = "//a[normalize-space()='Manage Communities']")
+	WebElement Managecommunities;
+	
+	
+	
+
    
-    
+	public ManageCommunitiesPage navigatetomanageCommunities() throws Exception {
+        waitForElementToPresent(communities);
+		click(communities, "Members");
+		Thread.sleep(2000);
+		click(Managecommunities, "Manage Members");
+		return (ManageCommunitiesPage) openPage(ManageCommunitiesPage.class);
+		// new ManageCommunityMembersPage(driver);
+	}
     
 	 public ManageApplications navigateToManageApplication() {
 			scrollDownVertically();
@@ -91,10 +113,11 @@ public class TenantAdminDashboardPage extends BasePage{
 			// new ManageJobs(driver);
 		}
 public ComposeCampaign navigateToComposeCampaignPage() throws Exception {
+	Thread.sleep(4000);
 	scrollDownVertically();
 	scrollToElement(manageCampaign);
 	click(manageCampaign, "manageCampaign");
-	Thread.sleep(500);
+	Thread.sleep(1000);
 	waitForElementToPresent(composeCampaign);
 	this.composeCampaign.click();	
 	//click(composeCampaign, "composeCampaign");
@@ -105,7 +128,7 @@ public ImportContactsPage navigateToImportContactsPagePage() throws Exception {
 	scrollDownVertically();
 	scrollToElement(manageCampaign);
 	click(manageCampaign, "manageCampaign");
-	Thread.sleep(500);
+	Thread.sleep(1000);
 	waitForElementToPresent(ImportContacts);
 	this.ImportContacts.click();	
 	//click(composeCampaign, "composeCampaign");
@@ -116,7 +139,7 @@ public CampaignTemplatePage navigateToCampaignTemplate() throws Exception {
 	scrollDownVertically();
 	scrollToElement(manageCampaign);
 	click(manageCampaign, "manageCampaign");
-	Thread.sleep(500);
+	Thread.sleep(1000);
 	waitForElementToPresent(campaignTemplate);
 	this.campaignTemplate.click();	
 	//click(composeCampaign, "composeCampaign");
@@ -195,5 +218,15 @@ public HomePage goToHomePage() {
  		return (ManageMemberAdvertisementsPage) openPage(ManageMemberAdvertisementsPage.class);
  		// new CommunityPendingRequestsPage(driver);
  	}
+     public CategoriesPage gotoCategories() {
+ 		click(blogs, "Categories");
+ 		waitForElementToPresent(categories);
+ 		click(categories, "Categories");
 
+ 		return (CategoriesPage) openPage(CategoriesPage.class);
+ 	}
+     public OrganizationsPage goToOrganizationsPage() {
+ 		click(organisations, "Organizations");
+ 		return (OrganizationsPage) openPage(OrganizationsPage.class);
+ 	}
 }

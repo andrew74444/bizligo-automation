@@ -35,7 +35,10 @@ public class ResourcesPage  extends BasePage{
 	WebElement YesProceed;
 	@FindBy(xpath = "//div[@class='bootbox-body']")
 	WebElement Message;
-	
+	@FindBy(xpath = "//div[@class='post-box']//div[2]//div[1]//div[1]//div[1]//div[1]//div[1]//div[1]//div[2]//button[1]")
+    WebElement leaveGroup3;
+	@FindBy(xpath="//span[normalize-space()='Groups']")
+    WebElement group ;
 	
 	public void checkResources1() {
 		waitForElementToPresent(resource1);
@@ -46,7 +49,8 @@ public class ResourcesPage  extends BasePage{
 			Assert.assertTrue(false);
 		}
 	}
-	public void checkResources2() {
+	public void checkResources2() throws InterruptedException {
+		Thread.sleep(8000);
 		waitForElementToPresent(resource2);
 		if(this.resource2.isDisplayed()) {
 			Assert.assertTrue(true);
@@ -54,6 +58,11 @@ public class ResourcesPage  extends BasePage{
 		else {
 			Assert.assertTrue(false);
 		}
+		 Thread.sleep(2000);
+		    click(group,"Groups");
+		    Thread.sleep(5000);
+		    waitForElementToPresent(leaveGroup3);
+		    click(leaveGroup3, "Leave3");
 	}
 	
 	

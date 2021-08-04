@@ -47,6 +47,9 @@ public class Bizligo1CommunityPage extends BasePage {
 	@FindBy(xpath = "//i[@class='fa fa-check']")
 	WebElement yesProceed;
 	
+	@FindBy(xpath = "//button[normalize-space()='Yes,Proceed']")
+	WebElement yesProceed4;
+	
 	@FindBy(xpath="//button[@ng-click='appData.closeModel()']")
 	WebElement cancelPopup;
 	
@@ -107,10 +110,10 @@ public class Bizligo1CommunityPage extends BasePage {
 		click(leaveGroup4,"leaveGroup4");
 		Thread.sleep(3000);
 		//click(yesProceed,"yes proceed");
-		Thread.sleep(5000);
+		//Thread.sleep(3000);
 		//waitForElementToPresent(resources);
 		click(resources,"Resources");
-		Thread.sleep(5000);
+		Thread.sleep(8000);
 		waitForElementToPresent(photos);
 		System.out.println(photos.getAttribute("href"));
 		if(photos.getAttribute("href").equals("https://tenant1.bizligotest.com/Content/Uploads/tenant1/1/Resources/Images/c057d593-6929-4e3e-bd52-5de7d77be6ba.png")) {

@@ -117,9 +117,10 @@ public class LoginPage extends BasePage {
 		return (ForgotPasswordPage) openPage(ForgotPasswordPage.class);
 
 	}
-	public TenantAdminDashboardPage loginToTADashboard(String enterEmailAddress, String  password)
-	 {
+	public TenantAdminDashboardPage loginToTADashboard(String enterEmailAddress, String  password) throws InterruptedException
+	 {   
 		this.login(enterEmailAddress, password);
+		Thread.sleep(2000);
 		return (TenantAdminDashboardPage) openPage(TenantAdminDashboardPage.class);
 		 
 	 }

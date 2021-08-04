@@ -145,7 +145,21 @@ public class ManageJobsPage extends BasePage {
 	//
 	// return (ZohoCRMPage) openPage(ZohoCRMPage.class);
 
-	
+	public void UpdateJobName(String Job, String jobTitle) throws Exception {
+
+		type(this.searchWithJobTitle, Job, "searchWithJobTitle");
+		click(btnSearch, "Search");
+		Thread.sleep(6000);
+		click(Edit, "Edit");
+		waitForElementToPresent(this.JobTitle);
+		this.JobTitle.clear();
+		type(this.JobTitle, jobTitle, "JobTitle");
+		click(Update, "Update");
+		Thread.sleep(2000);
+		waitForElementToPresent(toastMessage);
+		AssertionHelper.verifyText(toastMessage.getText(), "Job updated.");
+		Thread.sleep(7000);
+	}
 	public GlobalCareers navigateToCareerPage() {
 		waitForElementToPresent(BDMAIHomePage);
 		click(BDMAIHomePage, "HomePage");
@@ -171,7 +185,8 @@ public class ManageJobsPage extends BasePage {
 		return (CommunityDetailsPage) openPage(CommunityDetailsPage.class);
 	}
 
-	public ManageCommunitiesPage navigateToManageCommunitiesPage() {
+	public ManageCommunitiesPage navigateToManageCommunitiesPage() throws InterruptedException {
+		Thread.sleep(3000);
 		click(communities, "Communities");
 		waitForElementToPresent(manageCommuties);
 		click(manageCommuties, "Manage communities");
@@ -262,7 +277,7 @@ public class ManageJobsPage extends BasePage {
 		click(Update, "Post");
 		waitForElementToPresent(toastMessage);
 		AssertionHelper.verifyText(toastMessage.getText(), "Job posted.");
-		Thread.sleep(7000);
+		Thread.sleep(10000);
 
 	}
 

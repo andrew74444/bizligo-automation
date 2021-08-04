@@ -215,8 +215,10 @@ public class MyDashboardPage extends BasePage{
 	@FindBy(xpath = "(//*[contains(text(),'Blog')])[3]")
 	WebElement blogpageisWorking;
 	
-	 @FindBy(xpath = "//button[contains(.,'Yes,Proceed')]")
+	 @FindBy(xpath = "//button[normalize-space()='Yes,Proceed']")
 	 WebElement YesProceed;
+	 @FindBy(xpath = "//div[@class='post-box']//div[2]//div[1]//div[1]//div[1]//div[1]//div[1]//div[1]//div[2]//button[1]")
+	 WebElement leaveGroup3;
 	   
 	
 	 @FindBy(xpath = "//div[@class='my-communities']//div[2]//div[1]//div[1]//div[1]//div[1]//div[1]//div[2]//div[3]//button[1]")
@@ -249,7 +251,7 @@ public class MyDashboardPage extends BasePage{
 		@FindBy(xpath="//tr[@class='odd']//span[@title='For this plan payment is pending'][normalize-space()='PAYMENT PENDING']")
 		WebElement inactivestatus ;
 		@FindBy(xpath="//div[@class='post-box']//div[2]//div[1]//div[1]//div[1]//div[1]//div[1]//div[1]//div[2]//button[1]//strong[1]")
-		WebElement join ;
+		WebElement join3 ;
 		@FindBy(xpath="//div[@class='cmt-groups']//div[@class='clearfix']")
 		WebElement joinedMessage ;
 	    @FindBy(xpath = "//div[@class='swal-text']")
@@ -276,6 +278,10 @@ public class MyDashboardPage extends BasePage{
 		WebElement advertisements;
 	    @FindBy(xpath = "//a[contains(text(),'Manage Plans')]")
 		WebElement managePlans;
+	    @FindBy(xpath = "//span[normalize-space()='18-02-2021 -Testing']")
+		WebElement Testingcomm;
+	    @FindBy(xpath = "//a[normalize-space()='Discussions']")
+	  	WebElement discussion;
 	  
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
@@ -511,7 +517,6 @@ public ManageAdPlansPage goToManageAdPlansPage() {
 	
 	public ChangePasswordPage NaviagtingToManagePassword() throws Exception
 	{
-	
 		Toggledropdownmenu.click();
 		Thread.sleep(1000);
 		ManagePassword.click();
@@ -571,9 +576,8 @@ public ManageAdPlansPage goToManageAdPlansPage() {
 		
 	}
 	
-public GlobalCommunitesPage naviagtingToGlobalCommunities() throws Exception
+   public GlobalCommunitesPage naviagtingToGlobalCommunities() throws Exception
 	{
-		
 		clickElementByJavaScript(globalCommunities);
 		Thread.sleep(1000);
 		return (GlobalCommunitesPage) openPage(GlobalCommunitesPage.class);
@@ -581,7 +585,7 @@ public GlobalCommunitesPage naviagtingToGlobalCommunities() throws Exception
 		
 	}
 
-public void blogPageisnotWorking() throws Throwable
+  public void blogPageisnotWorking() throws Throwable
 {
 	Thread.sleep(5000);
 	Actions action = new Actions(driver);
@@ -592,7 +596,8 @@ public void blogPageisnotWorking() throws Throwable
 	waitForElementToPresent(blogpageisnotWorking);
 }
 
-public void blogPageWorking() throws Throwable
+
+     public void blogPageWorking() throws Throwable
 {
 	Thread.sleep(5000);
 	Actions action = new Actions(driver);
@@ -757,25 +762,28 @@ public void blogPageWorking() throws Throwable
 		return (ResourcesPage) openPage(ResourcesPage.class);
 	}
 	public void joinGroup(String Community) throws InterruptedException {
+		Thread.sleep(3000);
 		waitForElementToPresent(viewAll);
 		click(viewAll, "Global Communities");
 		//waitForElementToPresent(serachCommunity);
 		//type(serachCommunity, Community, "Communities");
+		Thread.sleep(5000);
 		waitForElementToPresent(bizligo1);
 		click(bizligo1, "Bizligo1 Community");
 		//waitForElementToPresent(search);
 		//click(search, "Search");
 		waitForElementToPresent(group);
 		click(group, "Group");
-		waitForElementToPresent(join);
-		click(join, "Join");
+		waitForElementToPresent(join3);
+		click(join3, "Join");
 		click(YesProceed, "Yes Proceed");
 		AssertionHelper.verifyText(joinedMessage.getText(),
 				"You have joined the group successfully.");
 		System.out.println("Assertion done");
-	
+	   
 	}
-	 public ResourcesPage gotoResource() {
+	 public ResourcesPage gotoResource() throws InterruptedException {
+		 Thread.sleep(4000);
 		 waitForElementToPresent(resources);
 			click(resources, "Resources");
 		 
@@ -813,7 +821,8 @@ public void blogPageWorking() throws Throwable
 				Assert.assertTrue(true);
 			}
 		}
-	 public Bizligo1CommunityPage goToMyCommunity() {
+	 public Bizligo1CommunityPage goToMyCommunity() throws InterruptedException {
+		 Thread.sleep(3000);
 			click(viewAllBtn,"view all");
 			waitForElementToPresent(bizligo1);
 			click(bizligo1,"Bizligo 1");
@@ -1030,7 +1039,14 @@ public void blogPageWorking() throws Throwable
 		// TODO Auto-generated method stub
 		
 	}
+	public Discussions GotoDiscussionPage() throws InterruptedException {
+		waitForElementToPresent(Testingcomm);
+		click(Testingcomm, "18-02-2021 -testing");	
+		Thread.sleep(3000);
+		click(discussion, "Discussion");
 
+	return (Discussions) openPage(Discussions.class);	
+}
 //	public void naviagtingToTestimonials() {
 //		// TODO Auto-generated method stub
 //		

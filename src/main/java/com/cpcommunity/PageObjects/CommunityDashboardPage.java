@@ -489,7 +489,7 @@ public class CommunityDashboardPage extends BasePage {
 		scrollDownVertically();
 		scrollToElement(manageCampaign);
 		click(manageCampaign, "manageCampaign");
-		Thread.sleep(500);
+		Thread.sleep(1000);
 		waitForElementToPresent(composeCampaign);
 		this.composeCampaign.click();	
 		//click(composeCampaign, "composeCampaign");
@@ -500,7 +500,7 @@ public class CommunityDashboardPage extends BasePage {
 		scrollDownVertically();
 		scrollToElement(manageCampaign);
 		click(manageCampaign, "manageCampaign");
-		Thread.sleep(500);
+		Thread.sleep(1000);
 		waitForElementToPresent(campaignTemplate);
 		this.campaignTemplate.click();	
 		//click(composeCampaign, "composeCampaign");
@@ -510,7 +510,7 @@ public class CommunityDashboardPage extends BasePage {
 		scrollDownVertically();
 		scrollToElement(manageCampaign);
 		click(manageCampaign, "manageCampaign");
-		Thread.sleep(500);
+		Thread.sleep(1000);
 		waitForElementToPresent(Staticcampaign);
 		this.Staticcampaign.click();	
 		//click(composeCampaign, "composeCampaign");
@@ -521,7 +521,7 @@ public class CommunityDashboardPage extends BasePage {
 		
 		scrollToElement(manageCampaign);
 		click(manageCampaign, "manageCampaign");
-		Thread.sleep(500);
+		Thread.sleep(1000);
 		waitForElementToPresent(CampaignReport);
 		this.CampaignReport.click();	
 		//click(composeCampaign, "composeCampaign");
@@ -532,7 +532,7 @@ public class CommunityDashboardPage extends BasePage {
 		scrollDownVertically();
 		scrollToElement(manageCampaign);
 		click(manageCampaign, "manageCampaign");
-		Thread.sleep(500);
+		Thread.sleep(1000);
 		waitForElementToPresent(DraftCampaign);
 		this.DraftCampaign.click();	
 		//click(composeCampaign, "composeCampaign");
