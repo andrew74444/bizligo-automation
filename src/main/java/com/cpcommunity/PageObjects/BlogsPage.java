@@ -3,19 +3,22 @@ package com.cpcommunity.PageObjects;
 import static org.testng.Assert.assertEquals;
 
 import java.util.Hashtable;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 public class BlogsPage extends BasePage {
 
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 
-		return ExpectedConditions.visibilityOf(SearchBtn);
+		return ExpectedConditions.visibilityOf(Searchs);
 	}
 
 	@Override
@@ -26,20 +29,28 @@ public class BlogsPage extends BasePage {
 		updateClass(pageheader, "navbar-fixed-top");
 	}
 
-	@FindBy(xpath = "//*[@id='header']")
+	@FindBy(xpath = "//header[@id='global-nav']")
 	WebElement pageheader;
-
+	@FindBy(xpath = "//select[@id='CategoryID']")
+	WebElement selectCategories;
+	@FindBy(xpath = "//select[@id='CategoryID']")
+	List<WebElement> Categories;
 	@FindBy(xpath = "//select")
 	WebElement selectCommuntiy;
 	@FindBy(xpath = "//*[@id='term']")
 	WebElement blogsPostName;
 	@FindBy(xpath = "//button[contains(.,' Search')]")
 	WebElement SearchBtn;
-	
+	@FindBy(xpath = "//button[normalize-space()='Search']")
+	WebElement Searchs;
 	@FindBy(xpath = "//input[@id='term']")
 	WebElement search;
 	@FindBy(xpath = "(//*[contains(text(),'Really an in')])")
 	WebElement verifyBlog;
+	@FindBy(xpath = "//article[1]//header[1]//div[1]//div[1]//div[1]")
+	WebElement verifyname;
+	@FindBy(xpath = "//div[@class='panel panel-warning']//div[@class='panel-body']")
+	WebElement checkname;
 	
 	@FindBy(xpath = "//*[contains(text(),'No Posts found')]")
 	WebElement noPosts;
@@ -50,7 +61,28 @@ public class BlogsPage extends BasePage {
 	@FindBy(xpath = "//*[contains(text(),'No Posts found')]")
 	WebElement noPost;
 	
+	@FindBy(xpath = "//div[@class='col-md-8']//article//header//h3")
+	WebElement categoryName;
 
+	@FindBy(xpath = "//span[@title='Toggle dropdown menu']")
+	WebElement Toggledropdownmenu;
+	
+	@FindBy(xpath = "//a[normalize-space()='My Ecosystem']")
+	WebElement ecosystem;
+	
+	@FindBy(css = "div[class='panel panel-primary'] a:nth-child(1)")
+	WebElement firstpost;
+	
+	@FindBy(css = "/html[1]/body[1]/div[3]/div[1]/div[1]/section[1]/div[1]/div[2]/div[2]/article[1]/header[1]/h3[1]/a[1]")
+	WebElement post;
+	
+	 @FindBy(xpath = "//*[contains(text(),'MANAGE')]")
+	WebElement MANAGEbtn;
+	 
+	 @FindBy(xpath = "//a[@class='edit-page ng-scope']")
+		WebElement manageBtn;
+	 
+	 
 	public void searchPost(String communityName, String blogName) {
 		communityName = communityName + " " + getDateInDDMMMYYYY();
 		selectByVisibleText(selectCommuntiy, communityName, "selecting Communtiy");
@@ -88,7 +120,31 @@ public class BlogsPage extends BasePage {
 		Thread.sleep(1000);
 		waitForElementToPresent(noPosts);	
 	}
+	public void inactiveBlog(String Search) throws Throwable
+	{ Thread.sleep(5000);
+		Select dropdown = new Select(selectCategories);
+	 //Get all options
+      List<WebElement> dd = dropdown.getOptions();
+      System.out.println(dd.size());
+      for (int j = 0; j < dd.size(); j++) {
+          System.out.println(dd.get(j).getText());
+
+      }
+      String biz="Bizligo";
+		Assert.assertNotSame(biz, dd);
+		System.out.println("Bizligo is InActive");
+	}
 	
+	private void waitForElementToPresent(List<WebElement> categories2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void click(String search2, String elementName) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	public void pageIsNotWorking()
 	{
 		waitForElementToPresent(blogpageisnotWorking);
@@ -113,6 +169,69 @@ public class BlogsPage extends BasePage {
 
 	}
 	
-	
+	public void searchPost(String category) throws InterruptedException {
+				Thread.sleep(5000);
+		Select dropdown = new Select(selectCategories);
+		 //Get all options
+	      List<WebElement> dd = dropdown.getOptions();
+	      System.out.println(dd.size());
+	      for (int j = 0; j < dd.size(); j++) {
+	          System.out.println(dd.get(j).getText());
 
+	      }
+	      String biz="Bizligo";
+	if(dd.contains(biz)) {
+			System.out.println("Category is active and present");
+			Assert.assertTrue(true);
+		}
+	}
+	
+ public CommunityDashboardPage gotoCommunityDashboard() throws InterruptedException {
+	 waitForElementToPresent(Toggledropdownmenu);
+		clickElementByJavaScript(Toggledropdownmenu);
+		Thread.sleep(3000);
+		waitForElementToPresent(ecosystem);
+		click(ecosystem,"Ecosystem");
+		Thread.sleep(18000);
+		click(MANAGEbtn, "Manage");
+	 Thread.sleep(5000);
+	 return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);	 
+ }
+ 
+  public void verifychanges() throws InterruptedException {
+		Thread.sleep(5000);
+		Select dropdown = new Select(selectCategories);
+		 //Get all options
+	      List<WebElement> dd = dropdown.getOptions();
+	      System.out.println(dd.size());
+	      for (int j = 0; j < dd.size(); j++) {
+	          System.out.println(dd.get(j).getText());
+
+	      }
+	      String biz="NewCat";
+	      String notpresent="Atest";
+	      if(dd.contains(biz)) {
+			System.out.println("Category is present");
+			Assert.assertNotSame(notpresent, dd);
+		}
+	  
+  }
+  public void verifytagchanges() {
+	  waitForElementToPresent(checkname);
+	  
+	  String Name=this.checkname.getText();
+	  System.out.println(Name);
+	 
+  }
+  
+  public void CheckFirstPost(String title) {
+  	waitForElementToPresent(firstpost);
+  	String Post=this.firstpost.getText();
+  	System.out.println("First line of Latest post section showing Post is " +Post);
+  	String date =getDateInDDMMMYYYY();
+  	String expected=title+date;
+  	Assert.assertEquals(expected, Post);
+  	
+  	
+  }
 }
