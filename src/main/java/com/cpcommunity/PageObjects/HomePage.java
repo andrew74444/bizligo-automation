@@ -5,6 +5,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
+
 import com.uiFramework.pamTen.cpcommunity.helper.imagediffer.Imagediff;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.markuputils.ExtentColor;
@@ -54,6 +56,12 @@ public class HomePage extends BasePage {
 	WebElement toggleDropDown;
 	@FindBy(xpath = "//a[normalize-space()='Logout']")
 	WebElement logoutBtn;
+	@FindBy(xpath = "//a[normalize-space()='Contact Us']")
+	WebElement contactUs;
+	@FindBy(xpath = "//h2[normalize-space()='Feature Not Available']")
+	WebElement featureNotAvailable;
+
+
 
 	
 	
@@ -77,6 +85,12 @@ public class HomePage extends BasePage {
 		return (HomePage) openPage(HomePage.class);
 		// new GlobalCareers(driver, );
 	}
+	public ContactUsPage NavigateToContactUsPage() {
+		click(contactUs, "Contact Us");
+		return (ContactUsPage) openPage(ContactUsPage.class);
+		// new GlobalCareers(driver, );
+	}
+
 
 //	public HomePage open() throws Exception {
 //			
@@ -208,4 +222,13 @@ public GlobalCommunitesPage NavigateToGlobalCommunities() throws Exception {
 	return (GlobalCommunitesPage) openPage(GlobalCommunitesPage.class);
 	
 }
+public void verifyContactPageWhenSuperAdminDisable() {
+	click(contactUs, "Contact Us");
+	if(featureNotAvailable.isDisplayed()) {
+		Assert.assertTrue(true);
+		System.out.println("Contact Us Feature not available when Super Admin Disable it");
+	}else Assert.assertTrue(false);
+	
+}
+
 }

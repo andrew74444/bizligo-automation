@@ -1,5 +1,7 @@
 package com.cpcommunity.PageObjects;
 
+import java.util.List;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -74,6 +76,23 @@ public class TenantAdminDashboardPage extends BasePage{
 	WebElement sideBarMenu;
     @FindBy(xpath = "//a[normalize-space()='Payment Gateways']")
 	WebElement paymentGateway;
+    @FindBy(xpath = "//a[normalize-space()='Website Inquiries']")
+	WebElement websiteEnquiries;
+    @FindBy(xpath = "//a[normalize-space()='Website Inquiries']")
+	List<WebElement> websiteEnquiry;
+    @FindBy(xpath = "//*[@id='sidebar-menu']/div/ul/li[5]/a[1]")
+	WebElement CommunitiesNavSideMenu;
+ 
+	@FindBy(xpath = "//a[normalize-space()='Manage Communities']")
+	WebElement manageCommunity;
+	@FindBy(xpath = "//a[@title='Pending Communities']")
+	WebElement pendingCommunities;
+	
+
+	
+	
+
+
 	
  
     
@@ -237,6 +256,40 @@ public HomePage goToHomePage() {
  		return (PaymentGatewaysPage) openPage(PaymentGatewaysPage.class);
  		// new ManageJobs(driver);
  	}
+     public WebsiteInquiryPage NavigatetoWebsiteInquiryPage() {
+
+ 		click(websiteEnquiries, "website Enquiries");
+ 		
+ 		return (WebsiteInquiryPage) openPage(WebsiteInquiryPage.class);
+ 		// new GroupsPendingRequestsPage(driver);
+
+ 	}
+     public void websiteEnquiryNotPresentWhenSAdisable() {
+ 		if
+ 		(websiteEnquiry.size()>0)
+ 		{
+ 			System.out.println("Website enquiry not disabled when inactivated by Super Admin");
+ 		}else System.out.println("Website enquiry disabled when inactivated by Super Admin");
+ 	}
+     public TACommunitiesPage navigateToCommunitiesPage() {
+ 		click(CommunitiesNavSideMenu, "Communities");
+ 		waitForElementToPresent(manageCommunity);
+ 		clickElementByJavaScript(manageCommunity);
+ 		return (TACommunitiesPage) openPage(TACommunitiesPage.class);
+ 	}
+     public PendingCommunitiesPage naviagteToPendingCommunities() {
+ 		click(CommunitiesNavSideMenu, "Communities");
+ 		waitForElementToPresent(pendingCommunities);
+ 		clickElementByJavaScript(pendingCommunities);
+ 		// click(pendingCommunities,"pendingCommunities");
+
+ 		return (PendingCommunitiesPage) openPage(PendingCommunitiesPage.class);
+ 		
+ 	}
+
+
+
+
 
 
 

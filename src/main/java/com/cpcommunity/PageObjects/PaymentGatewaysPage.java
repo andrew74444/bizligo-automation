@@ -199,7 +199,7 @@ public class PaymentGatewaysPage extends BasePage {
 	}
 	public void inactiveAuthorizeGateway() throws InterruptedException {
 		selectByVisibleText(selectCommunity,"BizLigo1","Bizligo1");
-		Thread.sleep(1000);
+		Thread.sleep(3000);
 		Authorize.click();
 		Thread.sleep(3000);
 		click(active,"Active");
@@ -211,7 +211,7 @@ public class PaymentGatewaysPage extends BasePage {
 	}
 	public void activeAuthorizeGateway() throws InterruptedException {
 		selectByVisibleText(selectCommunity,"BizLigo1","Bizligo1");
-		Thread.sleep(1000);
+		Thread.sleep(3000);
 		Authorize.click();
 		Thread.sleep(3000);
 		click(inactive,"In Active");
@@ -223,7 +223,7 @@ public class PaymentGatewaysPage extends BasePage {
 	}
 	public void inactivePaypalGateway() throws InterruptedException {
 		selectByVisibleText(selectCommunity,"BizLigo1","Bizligo1");
-		Thread.sleep(1000);
+		Thread.sleep(3000);
 		PayPal.click();
 		Thread.sleep(3000);
 		click(active,"Active");
@@ -235,7 +235,7 @@ public class PaymentGatewaysPage extends BasePage {
 	}
 	public void activePayPalGateway() throws InterruptedException {
 		selectByVisibleText(selectCommunity,"BizLigo1","Bizligo1");
-		Thread.sleep(1000);
+		Thread.sleep(3000);
 		PayPal.click();
 		Thread.sleep(3000);
 		click(inactive,"In Active");
