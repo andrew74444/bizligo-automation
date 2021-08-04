@@ -170,6 +170,17 @@ public class MyCommunitiesPage extends BasePage {
     WebElement managetoadpage;
 	@FindBy(xpath = "//span[normalize-space()='Advertisements']")
 	WebElement advertisement;
+	@FindBy(xpath = "//a[normalize-space()='Contact Us']")
+	WebElement contactUs;
+	@FindBy(xpath="//div[@id='body']//div[@class='row']//a[1]")
+	WebElement dashboardBtn;
+	@FindBy(xpath = "//span[normalize-space()='Directory']")
+	WebElement directory;
+	
+
+	
+
+
 	
 	public MyDashboardPage gotoMyDashboardPage() throws Exception {
 		waitForElementToPresent(Toggledropdownmenu);
@@ -520,7 +531,7 @@ public class MyCommunitiesPage extends BasePage {
 	
 	
 	public Bizligo1CommunityPage goToMyCommunity(String communityName ) throws InterruptedException {
-		clickElementByJavaScript(globalCommunities);
+		//clickElementByJavaScript(globalCommunities);
 		waitForElementToPresent(SearchbyCommunityName);
 		picture();
 		type(SearchbyCommunityName, communityName, "Search by Community");
@@ -538,4 +549,29 @@ public class MyCommunitiesPage extends BasePage {
 		
 		return (MyAdvertisements) openPage(MyAdvertisements.class);	
 	}
+	public ContactUsPage NavigateToContactUsPage() {
+		click(contactUs, "Contact Us");
+		return (ContactUsPage) openPage(ContactUsPage.class);
+		// new GlobalCareers(driver, );
+	}
+	public MyDashboardPage gotoMyDashboard() throws Exception {
+
+		//this.searchCommunity(communityName+getDateInDDMMMYYYY());
+		click(dashboardBtn, "Dashboard");
+		return (MyDashboardPage) openPage(MyDashboardPage.class);
+		// new CommunityDashboardPage(driver, );
+	}
+	public MemberDirectoryPage goToMemberDirectory() throws InterruptedException {
+		click(directory,"directory");
+		Thread.sleep(3000);
+		//moveToElement(directory);
+		click(memberDirectory,"member directory");
+		//click(memberDirectory,"member directory");
+		Thread.sleep(3000);
+		return (MemberDirectoryPage) openPage(MemberDirectoryPage.class);
+		
+	}
+
+
+
 }

@@ -5,7 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
+
+import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
+
 import org.apache.log4j.Logger;
 
 
@@ -45,6 +49,42 @@ public class TACommunitiesPage extends BasePage{
 	
 	@FindBy(xpath="((//tbody/tr[1]/td[2])/a[2])")
 	WebElement manageMembers;
+	@FindBy(xpath = "//input[@id='Name']")
+    WebElement CommunityName;
+    @FindBy(xpath = "//select[@name='CommunityCategory']")
+    WebElement CommunityCategory;
+    @FindBy(xpath = "//select[@id='CommunityTypeID']")
+    WebElement CommunityType;
+    @FindBy(xpath = "//input[@value='1']")
+    WebElement PNetworking;
+    @FindBy(xpath = "//input[@value='2']")
+    WebElement PMarketing;
+    @FindBy(xpath = "//input[@value='3']")
+    WebElement PBranding;
+    @FindBy(xpath = "//input[@value='4']")
+    WebElement PBuildingRelationship;
+    @FindBy(xpath = "//input[@value='5']")
+    WebElement PGrowMyBusiness;
+    @FindBy(xpath = "//input[@value='6']")
+    WebElement PInvestInBusiness;
+    @FindBy(xpath = "//input[@value='7']")
+    WebElement POther;
+    @FindBy(tagName = "body")
+    WebElement enterTextInframe;
+    @FindBy(tagName = "iframe")
+    WebElement iframe;
+    @FindBy(xpath = "//button[@id='btnSave']")
+    WebElement Createbtn;
+    @FindBy(xpath = "//span[@class='fa fa-edit']")
+    WebElement Editbtn;
+    @FindBy(xpath = "//button[@id='btnSave']//i[@class='fa fa-floppy-o']")
+    WebElement saveBtn;
+    @FindBy(xpath = "//*[@id=\"CommunityForm\"]/div[1]/div/small[4]")
+    WebElement errorMsgOfDuplicateCommunity;
+    @FindBy(xpath = "//img[@class='img-responsive select-img focused']")
+    WebElement themeReadable;
+    
+
 //		Community created successfully
 
 	
@@ -118,6 +158,16 @@ public class TACommunitiesPage extends BasePage{
 		clickElementByJavaScript(manageMembers);
 		return (ManageCommunityMembersPage) openPage(ManageCommunityMembersPage.class);
 	}
+    public ManageCommunityMembersPage navigateToManageMembers(String name) {
+		
+		//name = name+" "+getDateInDDMMMYYYY();
+		searchCommunity(name);
+		clickElementByJavaScript(manageMembers);
+		return (ManageCommunityMembersPage) openPage(ManageCommunityMembersPage.class);
+	}
+
+
+	 
 
 
 
@@ -142,6 +192,119 @@ public class TACommunitiesPage extends BasePage{
 		
 	}
 
+
+    public void createCommunity(String Name,String About,String Networking, String Marketing, String BuildingRelationship,
+	    		String Branding, String GrowMyBusiness, String InvestInBusiness, String Other,String Category,String type,String PricingPlan ) throws InterruptedException  {
+    	click(createCommunity,"create Community");
+    	CommunityName.clear();
+    	Name = Name+getDateInDDMMMYYYY();
+		type(CommunityName, Name,"Name");       
+        driver.switchTo().frame(iframe);
+        enterTextInframe.clear();
+        type(enterTextInframe, About,"CommunityAbout");       
+        driver.switchTo().defaultContent();
+        if ("Networking".equalsIgnoreCase(Networking)) {
+        	
+            click(PNetworking,"Networking");
+        }
+        if ("Marketing".equalsIgnoreCase(Marketing)) {
+        	
+            click(PMarketing,"Marketing");
+        }
+        if ("Building Relationship".equalsIgnoreCase(BuildingRelationship)) {
+        	
+        	click(PBuildingRelationship,"BuildingRelationship");
+        }
+        if ("Branding".equalsIgnoreCase(Branding)) {
+        	
+            click(PBranding,"Branding");
+        }
+        if ("Grow My Business".equalsIgnoreCase(GrowMyBusiness)) {
+        	
+            click(PGrowMyBusiness,"GrowMyBusiness");
+        }
+        if ("Invest In Business".equalsIgnoreCase(InvestInBusiness)) {
+        	
+            click(PInvestInBusiness,"PInvestInBusiness");
+        }
+        if ("Other".equalsIgnoreCase(Other)) {
+        	
+            click(POther,"Other");
+        }
+        //selectUsingIndex(CommunityCategory, index,"Community Category");
+        selectByVisibleText(CommunityCategory, Category, "CommunityCategory");
+        selectByVisibleText(CommunityType, type, "CommunityType");
+        selectByVisibleText(this.pricingPlan, PricingPlan, "pricing Plan");
+		
+        picture();
+        click(Createbtn,"Create btn");
+        Thread.sleep(3000);
+        System.out.println( toastMessage.getText());
+        if(toastMessage.getText().equalsIgnoreCase("Community created successfully")) 
+        		{
+        	Assert.assertTrue(true);
+        		}
+    }
+        public void TA_editCommunity(String Name,String EditedName,String About,String Other,String Category) throws InterruptedException {
+    		Name = Name+getDateInDDMMMYYYY(); 
+    		type(nameSearch, Name, "Community Name Search");
+    		click(searchBtn, "search Button");
+    		Thread.sleep(5000);
+    		click(Editbtn,"Edit Community");
+    		EditedName=EditedName+getDateInDDMMMYYYY(); 
+    		type(CommunityName, EditedName,"Name");
+    		click(saveBtn,"Save");
+    		System.out.println( toastMessage.getText());
+            if(toastMessage.getText().equalsIgnoreCase("Community details updated successfully")) 
+            		{
+            	Assert.assertTrue(true);
+            		}
+           
+    	}
+        public void checkPaymentPlan(String ActivePlan,String InactivePlan){
+    		click(createCommunity,"create Community");
+    		waitForElementToPresent(pricingPlan);
+    		scrollIntoView(pricingPlan);
+    		System.out.println(pricingPlan.getText());
+    		System.out.println(ActivePlan);
+    		if(pricingPlan.getText().contains(ActivePlan)) {
+    			System.out.println("Active Payment plans visible in dropdown");
+    			Assert.assertTrue(true);
+    		}else {
+    			System.out.println("Active Payment plans not visible");
+    			Assert.assertTrue(false);
+    		}
+    		if(pricingPlan.getText().contains(InactivePlan)) {
+    			System.out.println("Inactive Plans visible in dropdown");
+    			Assert.assertTrue(false);
+    		}else {System.out.println("Inactive plans not visible in dropdown");
+    		Assert.assertTrue(true);
+    		}
+    		
+    		 //selectByVisibleText(this.pricingPlan, ActivePlan, "pricing Plan");
+    			
+    	}
+        public void createCommunityWithExistingName(String Name) throws InterruptedException {
+    		click(createCommunity,"create Community");
+        	CommunityName.clear();
+        	type(CommunityName, Name,"Name");
+        	CommunityName.click();
+        	PNetworking.click();
+        	Thread.sleep(7000);
+        	System.out.println(errorMsgOfDuplicateCommunity.getText());
+        	AssertionHelper.verifyText(errorMsgOfDuplicateCommunity.getText(), "Community already exists. Please enter a different community name");
+    	}
+       
+
+
+
+
+       
+        
+    	
+    }
+
+
 	
 //	public ZohoCRMPage gotoCRM() {
 //		
@@ -152,4 +315,4 @@ public class TACommunitiesPage extends BasePage{
 //	return (ZohoCRMPage) openPage(ZohoCRMPage.class);
 	
 	
-}
+

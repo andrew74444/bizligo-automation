@@ -11,10 +11,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
+//import com.cpcommunity.utilities.DateManager;
 import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
 
-import junit.framework.Assert;
+import com.uiFramework.pamTen.cpcommunity.helper.calendar.DateManager;
+
 
 public class MemberDirectoryPage extends BasePage{
 	@FindBy(xpath = "//*[@id='global-nav']")
@@ -89,8 +92,9 @@ public class MemberDirectoryPage extends BasePage{
     List<WebElement> wordDownload;
     @FindBy(xpath = "//div[@class='progress custom-progress']")
 	List<WebElement> profileCompletenessBar;
-	@FindBy(xpath ="//*[@id=\"removeinnercss\"]/div[2]/div[1]/div[2]/div/div[3]/div[3]/button")
+    @FindBy(xpath = "//button[normalize-space()='Search']")
 	WebElement searchBtn;
+
 	@FindBy(xpath = "//*[@ng-bind='member.MemberName']")
 	List<WebElement> totalResult;
 	@FindBy(xpath = "//span[@class='select2-selection__choice__remove']")
@@ -148,7 +152,60 @@ public class MemberDirectoryPage extends BasePage{
 	@FindBy(xpath = "//p[normalize-space()=\"There aren't any members here.\"]")
 	WebElement errorBtnWhenMemberNotShowing2;
 	@FindBy(xpath = "//h3[normalize-space()='Member Directory']")
-	WebElement memberDirectoryHeader;
+	WebElement memberDirectoryHeader;	
+	@FindBy(xpath = "//input[@id='membername']")
+	WebElement searchMemberName;
+	@FindBy(xpath = "//button[normalize-space()='Add Note']")
+	WebElement addNote;
+	
+	@FindBy(xpath = "//input[@placeholder='Enter Title']")
+	WebElement titleOfAddNote;
+	
+	@FindBy(xpath = "//textarea[@placeholder='Enter Note']")
+	WebElement Note;
+	
+	@FindBy(xpath = "//input[@name='IsReminder']")
+	WebElement setReminder;
+	
+	@FindBy(xpath = "//input[@id='ReminderDate']")
+	WebElement reminderDate;
+	
+	@FindBy(xpath = "/html/body/div[5]/div[3]/table")
+	WebElement selectReminder;
+	@FindBy(xpath = "/html/body/div[5]/div[2]/table/tbody/tr/td/span[@class=\"hour active\"]")
+	WebElement currentHour;
+	@FindBy(xpath = "/html/body/div[5]/div[1]/table/tbody/tr/td/span[@class=\"minute\"]")
+	WebElement currentMinutes;
+	@FindBy(xpath = "/html/body/div[5]/div[1]/table/tbody/tr/td/span[@class=\"minute\"]")
+	List<WebElement> CurrentMinutes;
+	
+	@FindBy(xpath = "//div[@class='datetimepicker-minutes']//th[@class='next']")
+	WebElement arrowButton;
+	
+	
+	//@FindBy(xpath = "//*[@id = 'ReminderDate']")
+	//WebElement reminderDate;/html/body/div[5]/div[2]/table/tbody/tr/td/span[@class="hour active"]
+	
+	@FindBy(xpath = "//span[@ng-show='profile.IsSaveNoteMode']")
+	WebElement saveNote;
+	
+	@FindBy(xpath = "//a[@class='text-primary note-edit']")
+	WebElement editNote;
+	
+	@FindBy(xpath = "//div[@class='col-lg-12']//div//div[1]//div[2]//div[2]//a[2]//i[1]")
+	WebElement deleteNote;
+	
+	@FindBy(xpath = "//span[contains(text(),'Update')]")
+	WebElement updateNote;
+	
+	@FindBy(xpath="//div[@class='toast toast-success']")
+	WebElement toastMsg;
+	@FindBy(xpath = "//div[@class='directory-name firstletterCap ng-binding']")
+	WebElement memberSelected;
+
+	
+
+
 	
 	
 	
@@ -753,6 +810,94 @@ public class MemberDirectoryPage extends BasePage{
 				searchByName.clear();//clear out the last name
 				Thread.sleep(3000);
 			}
+			public void editNoteOfAMember(String Name,String NewTitle) throws Exception {
+				type(searchMemberName,Name,Name);
+				click(searchBtn,"Search");
+				Thread.sleep(2000);
+				click(memberSelected,Name);
+				Thread.sleep(3000);
+				click(editNote,"Edit Notes");
+				type(titleOfAddNote,NewTitle,NewTitle);
+				Thread.sleep(2000);
+				click(setReminder,"Set reminder");
+				click(this.reminderDate, "reminderDate");
+			    waitForElementToPresent(selectReminder);
+			    
+			    DateManager d3 = new DateManager(driver);
+			    String date3 = d3.getCurrentDateString();
+			    date3=date3+1;
+			    d3.selectDate("/html/body/div[5]/div[3]/table",date3);
+			    Thread.sleep(2000);
+			    click(currentHour,"current hour");
+			    if(CurrentMinutes.size()>0) {
+			    click(currentMinutes,"current time");
+			    }else {
+			    	click(arrowButton,"Click next");
+			    	click(currentMinutes,"current time");
+			    }	    
+			   Thread.sleep(2000);
+			   click(updateNote,"Update");
+			
+			}
+			public void deleteNoteOfAMember(String Name) throws InterruptedException {
+				type(searchMemberName,Name,Name);
+				click(searchBtn,"Search");
+				Thread.sleep(2000);
+				click(memberSelected,Name);
+				Thread.sleep(3000);
+				click(deleteNote,"Delete Notes");
+				Thread.sleep(2000);
+				System.out.println(toastMsg.getText());
+			    if(toastMsg.getText().equalsIgnoreCase("Success!"+"\n"+"Note deleted.")) {	    	
+			    	System.out.println("Note deleted!!");
+			    	Assert.assertTrue(true);
+			    }else {
+			    	System.out.println("Unable to create new reminder");
+			    	Assert.assertTrue(false);
+			    }	
+				
+				
+			}
+			public void searchMemberToAddReminder(String Name,String Title,String Notes) throws Exception {
+				type(searchMemberName,Name,Name);
+				click(searchBtn,"Search");
+				Thread.sleep(2000);
+				click(memberSelected,Name);
+				Thread.sleep(3000);
+				click(addNote,"Add note");
+				type(titleOfAddNote,Title,Title);
+				type(Note,Notes,Notes);
+				click(setReminder,"Set reminder");
+				click(this.reminderDate, "reminderDate");
+			    waitForElementToPresent(selectReminder);
+			    
+			    DateManager d3 = new DateManager(driver);
+			    String date3 = d3.getCurrentDateString();
+			    //date3=date3+1;
+			    d3.selectDate("/html/body/div[5]/div[3]/table",date3);
+			    Thread.sleep(2000);
+			    click(currentHour,"current hour");
+			    if(CurrentMinutes.size()>0) {
+			    click(currentMinutes,"current time");
+			    }else {
+			    	click(arrowButton,"Click next");
+			    	click(currentMinutes,"current time");
+			    }	    
+			   Thread.sleep(2000);
+			    click(saveNote,"Save note with reminder");
+			    Thread.sleep(2000);
+			    System.out.println(toastMsg.getText());
+			    if(toastMsg.getText().equalsIgnoreCase("Success!"+"\n"+"Note saved.")) {	    	
+			    	System.out.println("New Reminder Created!!");
+			    	Assert.assertTrue(true);
+			    }else {
+			    	System.out.println("Unable to create new reminder");
+			    	Assert.assertTrue(false);
+			    }	
+			}
+
+
+
 			
 			}
 			
