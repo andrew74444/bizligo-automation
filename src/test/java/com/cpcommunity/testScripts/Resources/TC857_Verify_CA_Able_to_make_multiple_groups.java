@@ -2,6 +2,7 @@ package com.cpcommunity.testScripts.Resources;
 
 import java.util.Hashtable;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.CommunityDashboardPage;
@@ -32,4 +33,12 @@ public class TC857_Verify_CA_Able_to_make_multiple_groups extends BaseTest{
 	CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
 	ManageResourcesPage manageres=communityDashboard.navigateToManageResourcesPage();
 }
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("TC857 Test Completed");
+		
+		quit();
+		
+	}
 }

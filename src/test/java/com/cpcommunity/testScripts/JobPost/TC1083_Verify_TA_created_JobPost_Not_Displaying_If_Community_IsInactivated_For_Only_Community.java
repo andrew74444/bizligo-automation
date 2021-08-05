@@ -37,14 +37,19 @@ public class TC1083_Verify_TA_created_JobPost_Not_Displaying_If_Community_IsInac
 	MCP.EditCommunities(data.get("About"), data.get("Category"), data.get("type"));
 	GlobalCommunitesPage GCP=MCP.navigateToglobalcommunities();
 	GCP.checkInActivatedCommunityIsNotDisplayed(data.get("Community1"));
+	TenantAdminDashboardPage TAdash=GCP.navigateToTenantAdminDashboardPage();
+	ManageCommunitiesPage managecomm=TAdash.navigatetomanageCommunities();
+	managecomm.ActivateCommunities(data.get("community3"),data.get("About3"),data.get("Category3"),data.get("type3"));
+	
 	
 	}
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("TC1083 Test Completed");
+		logInfo("TC1183 Test Completed");
 		
 		quit();
 		
 	}
+	
 }

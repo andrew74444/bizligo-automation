@@ -26,6 +26,10 @@ public class CommunityEventsPage extends BasePage {
 	WebElement firstEventRowCheckBox;
 	@FindBy(xpath = "//*/tbody/tr[1]/td[4]")
 	WebElement FirstEventTitleName;
+	@FindBy(xpath = "//a[normalize-space()='Testing Event 1']")
+	WebElement searchEventName;
+	@FindBy(xpath = "//a[normalize-space()='TestingToday']")
+	WebElement searchEventName1;
 	@FindBy(xpath = "//*/tbody/tr[2]")
 	WebElement SecondRow;
 	@FindBy(xpath = "//*/tbody/tr[2]/td[4]")
@@ -45,7 +49,26 @@ public class CommunityEventsPage extends BasePage {
 	@FindBy(xpath="//*[@id='btnCheckinEvent']")
 	WebElement btnCheckinEvent;
 	
-	
+	public CreateOrEditEvent searchEventName(String eventname) throws InterruptedException {
+		waitForElementToPresent(EventNameSearch);
+		type(EventNameSearch, eventname, "Event Name");
+		click(btnSearch, "Search");
+		Thread.sleep(4000);
+		waitForElementToPresent(searchEventName);
+		click(searchEventName, "Eventname");
+		return (CreateOrEditEvent) openPage(CreateOrEditEvent.class);
+		
+	}
+	public CreateOrEditEvent searchEventName1(String eventname) throws InterruptedException {
+		waitForElementToPresent(EventNameSearch);
+		type(EventNameSearch, eventname, "Event Name");
+		click(btnSearch, "Search");
+		Thread.sleep(4000);
+		waitForElementToPresent(searchEventName1);
+		click(searchEventName1, "Eventname");
+		return (CreateOrEditEvent) openPage(CreateOrEditEvent.class);
+		
+	}
 	
 
 	public CreateOrEditEvent NewEvent() {

@@ -256,23 +256,7 @@ public class ManageResourcesPage  extends BasePage{
 			System.out.println("Admin able to update resource");
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	
 	}	
