@@ -14,7 +14,7 @@ public class PaymentGatewaysPage extends BasePage {
 	@Override
 	protected void getPageScreenSot() {
 
-		aShot();
+		aShot();//
 
 	}
 

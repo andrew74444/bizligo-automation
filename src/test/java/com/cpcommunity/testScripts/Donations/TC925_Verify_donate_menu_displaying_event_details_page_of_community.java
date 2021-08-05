@@ -29,7 +29,7 @@ public class TC925_Verify_donate_menu_displaying_event_details_page_of_community
 		LoginPage login = home.clickOnLOGINBtn();
 		MyCommunitiesPage MyCP = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
         Bizligo1CommunityPage BCP=MyCP.goToMyCommunity(data.get("Community"));
-        BCP.donationInEventsPage();
+        BCP.donationInEventsPage();//
 
 }
 	@AfterMethod

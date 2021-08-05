@@ -27,7 +27,7 @@ public class MyCommunitiesPage extends BasePage {
 	protected void getPageScreenSot() {
 
 		updateClass(pageheader, "");
-		aShot();
+		aShot();//
 //		updateClass(pageheader, "navbar-fixed-top");
 	}
 

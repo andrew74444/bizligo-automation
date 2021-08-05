@@ -52,7 +52,7 @@ public class TC921_Verify_member_making_payment_simultaneously_SuperAdmin_disabl
 		AdminLogin login2=home2.navigateToAdminLogin();
 		superAdminDashboardPage SADP1=login2.superAdminloginToApplication(data.get("email1"), data.get("password1"));
 		SuperAdminFeatureConfigurationPage SFCP2=SADP1.goToFeatureConfigurationsPage();
-		SFCP2.enableFeature(data.get("Feature"));
+		SFCP2.enableFeature(data.get("Feature"));//
 
 }
 	@AfterMethod

@@ -46,7 +46,7 @@ public class TC915_Verify_DonationsMenu_notDisplaying_TA_dashboardPage_SuperAdmi
 		AdminLogin login2=home2.navigateToAdminLogin();
 		superAdminDashboardPage SADP1=login2.superAdminloginToApplication(data.get("email"), data.get("password"));
 		SuperAdminFeatureConfigurationPage SFCP2=SADP1.goToFeatureConfigurationsPage();
-		SFCP2.enableFeature(data.get("Feature"));
+		SFCP2.enableFeature(data.get("Feature"));//
 }
 	@AfterMethod
 	public void tearDown() {

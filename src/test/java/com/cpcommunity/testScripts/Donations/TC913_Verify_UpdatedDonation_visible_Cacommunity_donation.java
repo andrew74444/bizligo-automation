@@ -30,7 +30,7 @@ public class TC913_Verify_UpdatedDonation_visible_Cacommunity_donation extends B
 		LoginPage login = home.clickOnLOGINBtn();
 		MyCommunitiesPage MyCP = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
         Bizligo1CommunityPage BCP=MyCP.goToMyCommunity(data.get("Community"));
-        BCP.checkUpdatedDonation(data.get("UpdatedPurpose"));
+        BCP.checkUpdatedDonation(data.get("UpdatedPurpose"));//
 }
 	@AfterMethod
 	public void tearDown() {

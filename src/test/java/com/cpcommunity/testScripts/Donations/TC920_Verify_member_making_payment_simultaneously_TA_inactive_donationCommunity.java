@@ -49,7 +49,7 @@ public class TC920_Verify_member_making_payment_simultaneously_TA_inactive_donat
 		LoginPage login4 = home4.clickOnLOGINBtn();	
 		TenantAdminDashboardPage TDP1 = login4.loginToTADashboard(data.get("email1"), data.get("password1"));
 	    ManageDonationsPage MDP1=TDP1.NavigatetoManageDonationsPage();
-	    MDP1.activateDonation(data.get("Community"));
+	    MDP1.activateDonation(data.get("Community"));//
 
 }
 	@AfterMethod

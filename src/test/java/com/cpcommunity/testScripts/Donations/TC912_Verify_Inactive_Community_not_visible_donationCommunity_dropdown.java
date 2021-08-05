@@ -28,7 +28,7 @@ public class TC912_Verify_Inactive_Community_not_visible_donationCommunity_dropd
 		LoginPage login = home.clickOnLOGINBtn();	
 		TenantAdminDashboardPage TDP = login.loginToTADashboard(data.get("email"), data.get("password"));
 	    ManageDonationsPage MDP=TDP.NavigatetoManageDonationsPage();
-	    //MDP.inactiveCommunity(data.get("Inactive Community"));
+	    //MDP.inactiveCommunity(data.get("Inactive Community"));//
 
 
 }

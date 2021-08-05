@@ -15,7 +15,7 @@ public class Bizligo1CommunityPage extends BasePage {
 	@Override
 	protected void getPageScreenSot() {
 
-		aShot();
+		aShot();//
 
 	}//checking github
 	@Override
