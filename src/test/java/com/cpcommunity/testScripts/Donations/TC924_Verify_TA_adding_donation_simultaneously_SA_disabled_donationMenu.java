@@ -45,7 +45,7 @@ public class TC924_Verify_TA_adding_donation_simultaneously_SA_disabled_donation
 		AdminLogin login2=home2.navigateToAdminLogin();
 		superAdminDashboardPage SADP1=login2.superAdminloginToApplication(data.get("email"), data.get("password"));
 		SuperAdminFeatureConfigurationPage SFCP2=SADP1.goToFeatureConfigurationsPage();
-		SFCP2.enableFeature(data.get("Feature"));
+		SFCP2.enableFeature(data.get("Feature"));//
 }
 	@AfterMethod
 	public void tearDown() {

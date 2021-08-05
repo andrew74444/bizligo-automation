@@ -14,7 +14,7 @@ public class superAdminDashboardPage extends BasePage {
 	}
 	@Override
 	protected void getPageScreenSot() {
-		aShot();
+		aShot();//
 	}
 
 	@FindBy(xpath="//*[contains(text(),'Welcome')]")

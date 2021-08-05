@@ -17,7 +17,7 @@ public class AdminLogin extends BasePage
 	WebElement password;
 	
 	@FindBy(xpath = "//button[contains(.,'Login')]")
-	WebElement LoginBtn;
+	WebElement LoginBtn;//
 	
 	
 	

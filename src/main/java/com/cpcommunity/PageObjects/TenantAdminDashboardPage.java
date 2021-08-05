@@ -22,7 +22,7 @@ public class TenantAdminDashboardPage extends BasePage{
 	protected void getPageScreenSot() {
 		// TODO Auto-generated method stub
 		updateClass(pageheader, "");
-		aShot();
+		aShot();//
 	}
 	@FindBy(xpath = "//div[@class='nav_menu']")
 	WebElement pageheader;
@@ -85,6 +85,8 @@ public class TenantAdminDashboardPage extends BasePage{
  
 	@FindBy(xpath = "//a[normalize-space()='Manage Communities']")
 	WebElement manageCommunity;
+	@FindBy(xpath = "//a[normalize-space()='Manage Communities']")
+	WebElement manageCommunities;
 	@FindBy(xpath = "//a[@title='Pending Communities']")
 	WebElement pendingCommunities;
 	

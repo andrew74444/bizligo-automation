@@ -19,7 +19,7 @@ public class SuperAdminFeatureConfigurationPage extends BasePage {
 
 	@Override
 	protected void getPageScreenSot() {
-		aShot();
+		aShot();//
 	}
 	
 	
