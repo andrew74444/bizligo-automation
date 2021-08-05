@@ -83,7 +83,8 @@ public class TenantAdminDashboardPage extends BasePage{
 	WebElement communities;
 	@FindBy(xpath = "//a[normalize-space()='Manage Communities']")
 	WebElement Managecommunities;
-	WebElement Donations;
+	  @FindBy(xpath = "//a[normalize-space()='Donations']")
+		WebElement Donations;
 	@FindBy(xpath = "//div[@id='sidebar-menu']")
 	WebElement sideBarMenu;
 	@FindBy(xpath = "//a[normalize-space()='Payment Gateways']")

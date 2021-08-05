@@ -18,13 +18,17 @@ public class AdminHomePage extends BasePage
 	
 	@FindBy(xpath = "(//a[contains(.,'Login')])[1]")
 	WebElement LOGINBtn;
+	@FindBy(xpath = "//img[@src='/Content/Images/connectpro_logo.png']")
+	WebElement header;//
+	
+
 	
 	
 	
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 		// TODO Auto-generated method stub
-		return ExpectedConditions.visibilityOf(login);
+		return ExpectedConditions.visibilityOf(header);
 	}
 
 	@Override

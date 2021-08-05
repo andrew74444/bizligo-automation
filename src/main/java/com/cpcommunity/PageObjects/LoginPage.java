@@ -15,7 +15,7 @@ public class LoginPage extends BasePage {
 	protected void getPageScreenSot() {
 		updateClass(pageheader, "");
 
-		aShot();
+		aShot();//
 
 	}
 //change

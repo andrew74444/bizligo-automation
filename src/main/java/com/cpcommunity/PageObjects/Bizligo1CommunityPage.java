@@ -1,5 +1,9 @@
 package com.cpcommunity.PageObjects;
 
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -11,9 +15,9 @@ public class Bizligo1CommunityPage extends BasePage {
 	@Override
 	protected void getPageScreenSot() {
 
-		aShot();
+		aShot();//
 
-	}
+	}//checking github
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 
@@ -62,6 +66,61 @@ public class Bizligo1CommunityPage extends BasePage {
 	WebElement advertisements;
 	@FindBy(xpath = "//a[contains(text(),'Manage Plans')]")
 	WebElement managePlans;
+	@FindBy(xpath = "//a[normalize-space()='Donate']")
+	WebElement donateBtn;
+	
+	@FindBy(xpath = "//a[normalize-space()='Proceed']")
+	WebElement proceed;
+	
+	@FindBy(xpath = "//a[normalize-space()='Donate']")
+	List<WebElement> donateBtns;
+	
+	@FindBy(xpath = "//p[@ng-bind-html='data.DonationConfigInfo.DonationPurpose | renderHTMLCorrectly | addTargetBlank']")
+	WebElement purpose;
+	@FindBy(xpath="//span[normalize-space()='$ 20']")
+	WebElement $20;
+	
+	@FindBy(xpath="//span[normalize-space()='$ 10']")
+	WebElement $10;
+	
+	@FindBy(xpath="//button[normalize-space()='Other Amount']")
+	WebElement otherAmount;
+	
+	@FindBy(xpath="//input[@value='2']")
+	WebElement authorizeBtn;
+	 
+	@FindBy(xpath="//input[@value='2']")
+	List<WebElement> authorizeBtns;
+	
+	@FindBy(xpath="//ng-repeat[1]//li[1]//label[1]//input[1]")
+	List<WebElement> paypalBtns;
+	
+	@FindBy(xpath = "//*[@id=\"email\"]")
+	WebElement emailID;
+	
+	@FindBy(xpath="//input[@id=\"cardNum\"]")
+	WebElement CCnumber;
+	
+	@FindBy(xpath="//*[@id=\"expiryDate\"]")
+	WebElement expDate;
+	
+	@FindBy(xpath="//*[@id=\"PaymentController\"]/div/div[1]/div/h4")//h4[normalize-space()='Success!']
+	WebElement successUponPayment;
+		
+	@FindBy(xpath = "//button[normalize-space()='Pay through Checkout']")
+	WebElement payThroughCheckout;
+	
+	@FindBy(xpath="//*[@id=\"payBtn\"]")
+	WebElement payBtn;
+	@FindBy(xpath="//span[normalize-space()='Events']")
+	WebElement events;
+	
+	@FindBy(xpath="//strong[normalize-space()='CSS - Training']")
+	WebElement eventName;
+
+	
+
+
 	
 	
 	public void resourceForGuestMember() throws InterruptedException {
@@ -137,6 +196,137 @@ public class Bizligo1CommunityPage extends BasePage {
 		click(managePlans, "Manage Plans");
 		return (ManageAdPlansPage) openPage(ManageAdPlansPage.class);
 	}
+	public void checkUpdatedDonation(String Purpose) throws InterruptedException {
+		click(donateBtn,"Donation");
+		Thread.sleep(3000);
+		if(purpose.getText().equalsIgnoreCase(Purpose)) {
+			Assert.assertTrue(true);
+			System.out.println("Updated Purpose visible on CA donation page");
+		}
+	}
+	public void CAcanMakeDonation() throws InterruptedException {
+		click(donateBtn,"Donation");
+		Thread.sleep(3000);
+		click($10,"$10");
+		click(authorizeBtn,"pay through Authorize.net");
+		click(payThroughCheckout,"Pay");
+		Thread.sleep(6000);
+		switchToFrameByID(0);
+		waitForElementToPresent(CCnumber);
+		type(CCnumber,"4111 1111 1111 1111","card number");
+		type(expDate,"12/222","Expiry date of CC");
+		type(emailID,"ravi.pujari@xyz.com","email");
+		Thread.sleep(2000);
+		click(payBtn,"Pay");
+		Thread.sleep(10000);
+		System.out.println(successUponPayment.getText());
+		if(successUponPayment.getText().equalsIgnoreCase("Success!")) {
+			Assert.assertTrue(true);
+		}
+	}
+	public void otherOptionAvailable() throws InterruptedException {
+		click(donateBtn,"Donation");
+		Thread.sleep(3000);
+		if(otherAmount.getText().equalsIgnoreCase("Other amount")) {
+			Assert.assertTrue(true);
+			System.out.println("Other amount visible if TA made custom payment available");
+		}
+		
+	}
+	public void makeDonationWhenTAdisablePayment() throws InterruptedException{
+		click(donateBtn,"Donation");
+		Thread.sleep(3000);
+		click($10,"$10");
+	
+	}
+	public void checkAuthorizeGatewayWhenInactivate() throws InterruptedException {
+		click(donateBtn,"Donation");
+		Thread.sleep(3000);
+		click($10,"$10");
+		if(authorizeBtns.size()>0) {
+			System.out.println("Authorize.net payment gateway  displayed when TA inactivate it");
+		}else System.out.println("Authorize.net payment gateway not displayed when TA inactivate it");
+		
+	}
+	public void checkDonationWhenInactivated() {
+		if(donateBtns.size()>0) {
+			System.out.println("Donation button still available");
+			
+		}else System.out.println("Donation button not available when donation disabled byTA ");
+	}
+	public void checkDonationWhenActivated() {
+		if(donateBtns.size()>0) {
+			System.out.println("Donation button available when TA activate donations");
+			Assert.assertTrue(true);			
+		}
+		else {
+			System.out.println("Donation button not available when donation disabled byTA ");
+		Assert.assertTrue(false);
+		}
+		
+	}
+	public void donationInEventsPage() throws InterruptedException {
+		click(events,"Events");
+		Thread.sleep(4000);
+		click(eventName,"Event upcoming");
+		if(donateBtns.size()>0) {
+			System.out.println("Donation button available on events page when TA activate donations for a particular community ");
+			Assert.assertTrue(true);			
+		}
+		else {
+			System.out.println("Donation button not available on events page when donation disabled byTA ");
+		Assert.assertTrue(false);
+		}
+		
+		}
+	public void checkNewTabForExternalDonation() throws InterruptedException {
+		click(donateBtn,"Donation");
+		Thread.sleep(3000);
+		waitForElementToPresent(proceed);
+		click(proceed,"Proceed");
+		String parent=driver.getWindowHandle();
+        System.out.println(parent);
+		Set<String>s=driver.getWindowHandles();
+		Iterator<String> I1= s.iterator();
+
+		while(I1.hasNext())
+		{
+
+		String child_window=I1.next();
+		if(!parent.equals(child_window))
+		{
+		driver.switchTo().window(child_window);
+        String childwindow=driver.switchTo().window(child_window).getTitle();
+		System.out.println(driver.switchTo().window(child_window).getTitle());
+		if(childwindow.contains("PayPal")) {
+			System.out.println("New Tab for Payment opens up");
+			Assert.assertTrue(true);
+		}
+
+		driver.close();
+		}
+
+		}
+		//switch to the parent window
+		driver.switchTo().window(parent);//Send Money, Pay Online or Set Up a Merchant Account - PayPal CA
+			
+	}
+	public void checkPaypalGatewayWhenInactivate() throws InterruptedException {
+		click(donateBtn,"Donation");
+		Thread.sleep(3000);
+		click($10,"$10");
+		if(paypalBtns.size()>0) {
+			System.out.println("PayPal payment gateway  displayed when TA inactivate it");
+		}else System.out.println("PayPal payment gateway not displayed when TA inactivate it");
+		
+	}
+	
+
+
+
+
+
+
 }
 	
 
