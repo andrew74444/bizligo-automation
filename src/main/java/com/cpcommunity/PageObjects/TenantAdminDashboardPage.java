@@ -1,4 +1,6 @@
 package com.cpcommunity.PageObjects;
+
+
 import java.util.List;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -68,6 +70,7 @@ public class TenantAdminDashboardPage extends BasePage{
 	WebElement managePlans;
     @FindBy(xpath = "//*[contains(text(),'Manage Member Advertisements')]")
 	WebElement manageMemberAdvertisements;
+
     @FindBy(xpath = "(//*[contains(text(),'Blogs')])[1]")
 	WebElement blogs;
 	@FindBy(xpath = "(//*[contains(text(),'Categories')])[1]")
@@ -109,6 +112,7 @@ public class TenantAdminDashboardPage extends BasePage{
 		return (ManageCommunitiesPage) openPage(ManageCommunitiesPage.class);
 		// new ManageCommunityMembersPage(driver);
 	}
+   
     
 	 public ManageApplications navigateToManageApplication() {
 			scrollDownVertically();
@@ -140,6 +144,14 @@ public ComposeCampaign navigateToComposeCampaignPage() throws Exception {
 	return (ComposeCampaign) openPage(ComposeCampaign.class);
 	
 }
+public ManageDonationsPage NavigatetoManageDonationsPage() {
+	
+	waitForElementToPresent(Donations);
+	click( Donations, "Donations");
+	return (ManageDonationsPage) openPage(ManageDonationsPage.class);
+	// new ManageJobs(driver);
+}
+
 public ImportContactsPage navigateToImportContactsPagePage() throws Exception {
 	scrollDownVertically();
 	scrollToElement(manageCampaign);
@@ -234,6 +246,7 @@ public HomePage goToHomePage() {
  		return (ManageMemberAdvertisementsPage) openPage(ManageMemberAdvertisementsPage.class);
  		// new CommunityPendingRequestsPage(driver);
  	}
+
      public CategoriesPage gotoCategories() {
  		click(blogs, "Categories");
  		waitForElementToPresent(categories);
@@ -245,12 +258,7 @@ public HomePage goToHomePage() {
  		click(organisations, "Organizations");
  		return (OrganizationsPage) openPage(OrganizationsPage.class);
  	}
-     public ManageDonationsPage NavigatetoManageDonationsPage() {
-    	 waitForElementToPresent(Donations);
-    	 click( Donations, "Donations");
-    	 return (ManageDonationsPage) openPage(ManageDonationsPage.class);
-    	 // new ManageJobs(driver);
-    	 }
+   
      public void checkDonationsWhenDisabled() {
     	 System.out.println(sideBarMenu.getText());
     	 if(sideBarMenu.getText().contains("Donations")) {
@@ -302,7 +310,8 @@ public HomePage goToHomePage() {
     	 waitForElementToPresent(pendingCommunities);
     	 clickElementByJavaScript(pendingCommunities);
     	 // click(pendingCommunities,"pendingCommunities");
-
-    	  return (PendingCommunitiesPage) openPage(PendingCommunitiesPage.class);
+    	 return (PendingCommunitiesPage) openPage(PendingCommunitiesPage.class);
     	 }
+    
+
 }
