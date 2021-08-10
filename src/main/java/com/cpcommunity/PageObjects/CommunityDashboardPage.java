@@ -374,12 +374,13 @@ public class CommunityDashboardPage extends BasePage {
 		return (CommunityEventsPage) openPage(CommunityEventsPage.class);
 		// new CommunityEvents(driver);
 	}
-	public EmailTemplatePage navigateToEmailTemplate() {
+	
+	//public EmailTemplatePage navigateToEmailTemplate() {
 
-		click(emailtemplate, "Email Template");
-		return (EmailTemplatePage) openPage(EmailTemplatePage.class);
+		//click(emailtemplate, "Email Template");
+		//return (EmailTemplatePage) openPage(EmailTemplatePage.class);
 		// new CommunityEvents(driver);
-	}
+	//}
 
 	// public CommunityPendingRequestsPage navigateToPendingInvitations(){
 	// ClickOn.button("manage", manage);

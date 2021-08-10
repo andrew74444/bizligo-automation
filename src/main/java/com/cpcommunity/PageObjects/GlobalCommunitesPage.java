@@ -185,6 +185,10 @@ public class GlobalCommunitesPage extends BasePage {
 	WebElement manage;
     @FindBy(xpath = "//a[contains(text(),'Manage Plans')]")
 	WebElement managePlans;
+    @FindBy(xpath = "//h2[@id=\"swal2-title\"]")
+	WebElement successJoinMsg;
+	
+
 	
 	public void checkTotalCommunities(Hashtable<String, String> data) throws Exception {
 		String name = "";
@@ -763,4 +767,41 @@ public class GlobalCommunitesPage extends BasePage {
 		
 		
 	}	
+	public void searchCommunityTA(String CommunityName) throws Exception {
+		searchName.clear();
+		type(searchName, CommunityName, "search");
+		click(searchBtn, "search Btn");
+		Thread.sleep(2000);
+		waitForElementToPresent(driver.findElement(By.xpath("//a[contains(text(),'" + CommunityName + "')]")));
+		Assert.assertTrue(true);
+
+	}
+	public void searchInactiveCommunityTA(String CommunityName) throws Exception {
+		searchName.clear();
+		type(searchName, CommunityName, "search");
+		click(searchBtn, "search Btn");
+		Thread.sleep(2000);
+		if(noCommunitiesfound.getText().equalsIgnoreCase("no communities found")) {
+			System.out.println("Inactive communities are not visible in Global Communities");
+		}else System.out.println("Inactive communities are visible in Global Communities");
+	}
+    public void communityJoin(String communityName) throws Exception {
+		
+		this.searchCommunity(communityName);
+		this.clickOnJoin();
+		waitForElementToPresent(YesProceed);
+		click(YesProceed, "Yes Proceed");
+		waitForElementToPresent(OKbtn);
+		System.out.println(successJoinMsg.getText());
+		// AssertionHelper.verifyText(waitingForApproval.getText(), "Your join request
+		// is waiting for approval");
+		OKbtn.click();
+		Thread.sleep(7000);
+
+	}
+
+
+
+
+
 }

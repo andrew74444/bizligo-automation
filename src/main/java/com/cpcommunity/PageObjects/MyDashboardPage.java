@@ -152,8 +152,12 @@ public class MyDashboardPage extends BasePage{
 	@FindBy(xpath="//a[contains(text(),'Careers')]")
 	WebElement GlobalCareers;
 	
-	@FindBy(xpath = "//*[contains(text(),'My Reminders')]")
-	WebElement myReminders;
+	//@FindBy(xpath = "//*[contains(text(),'My Reminders')]")
+	//WebElement myReminders;
+	
+	@FindBy(xpath = "//a[@title='Go to My Reminders']//div[@class='clearfix']")
+	WebElement myReminders;//div[normalize-space()='My Reminders']
+
 	
 	@FindBy(xpath = "//*[contains(text(),'Create')]")
 	WebElement createTask;
@@ -828,6 +832,15 @@ public ManageAdPlansPage goToManageAdPlansPage() {
 			click(bizligo1,"Bizligo 1");
 			return (Bizligo1CommunityPage) openPage(Bizligo1CommunityPage.class);
 		}
+	 public RemindersPage NaviagtingToRemindersPage()
+		{		
+			waitForElementToPresent(myReminders);
+			click(myReminders,"My reminders");	
+			return (RemindersPage) openPage(RemindersPage.class);
+//			new MyProfilePage(driver, );
+		}
+		
+
 // public void Groups(ExtentTest logger) throws InterruptedException
 // {
 // 	JavascriptExecutor js = (JavascriptExecutor) driver;

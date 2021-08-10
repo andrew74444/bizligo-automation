@@ -17,7 +17,7 @@ public class AdminLogin extends BasePage
 	WebElement password;
 	
 	@FindBy(xpath = "//button[contains(.,'Login')]")
-	WebElement LoginBtn;
+	WebElement LoginBtn;//
 	
 	
 	
@@ -43,6 +43,16 @@ public class AdminLogin extends BasePage
 		return (AdminPage) openPage(AdminPage.class);
 		
 	}
+	public superAdminDashboardPage superAdminloginToApplication(String emailAddress, String password) throws InterruptedException 
+	{
+		Thread.sleep(5000);
+		type(this.emailAddress, emailAddress, "email address");
+		type(this.password, password, "password");
+		click(LoginBtn, "Login");
+		return (superAdminDashboardPage) openPage(superAdminDashboardPage.class);
+		
+	}
+
 
 
 	
