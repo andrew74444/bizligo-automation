@@ -334,7 +334,7 @@ public class MyDashboardPage extends BasePage{
 	      		
 	}
 	public void  MyAdCount() throws InterruptedException {	
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		   String C = myAdCount.getText();
 	      int TC=Integer.parseInt(C);
 	      System.out.println("The number of Ads count visible on Dashboard is:"+ TC);
@@ -588,7 +588,7 @@ public ManageAdPlansPage goToManageAdPlansPage() {
    public GlobalCommunitesPage naviagtingToGlobalCommunities() throws Exception
 	{
 		clickElementByJavaScript(globalCommunities);
-		Thread.sleep(1000);
+		Thread.sleep(4000);
 		return (GlobalCommunitesPage) openPage(GlobalCommunitesPage.class);
 //		new GlobalCommunitesPage(driver, );
 		
