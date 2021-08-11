@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import junit.framework.Assert;
 
 public class TenantAdminDashboardPage extends BasePage{
-
+//bjkj
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 		// TODO Auto-generated method stub
