@@ -5,9 +5,12 @@ import java.util.Hashtable;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
+import com.cpcommunity.PageObjects.CommunityDashboardPage;
 import com.cpcommunity.PageObjects.GlobalCommunitesPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
+import com.cpcommunity.PageObjects.MyAdvertisements;
+import com.cpcommunity.PageObjects.MyCommunitiesPage;
 import com.cpcommunity.PageObjects.MyDashboardPage;
 import com.cpcommunity.testScripts.community.BaseTest;
 import com.cpcommunity.utilities.Constants;
@@ -28,8 +31,16 @@ public class TC1123_Verify_Countnot_Increment_InAdvertisementPage_When_Planis_Pe
 	logInfo("BizLigo Application Opened");
 	HomePage home1 = new HomePage().open(data.get("tenantType"));
 	LoginPage login1 = home1.clickOnLOGINBtn();
-	 MyDashboardPage MDP=login1.loginToMemberdashboard(data.get("email"), data.get("password"));
-	 MDP.checkAdcounts();
+	MyCommunitiesPage myCommunity = login1.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
+	MyDashboardPage mydash=myCommunity.gotoMyDashboardPage();
+	mydash.checkAdcounts();
+	 MyAdvertisements A=mydash.NaviagtingToMyAdvertisements();
+	 A.createAd(data.get("planName"), data.get("AdName"),data.get("path"));
+	MyDashboardPage dash=A.gotoMyDashboardPage();
+	dash.checkAdcounts();
+	
+	 
+	 
 	}
 	@AfterMethod
 	public void tearDown() {

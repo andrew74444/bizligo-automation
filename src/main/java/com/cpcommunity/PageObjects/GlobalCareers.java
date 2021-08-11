@@ -2,6 +2,7 @@ package com.cpcommunity.PageObjects;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.ListIterator;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -91,17 +92,16 @@ public class GlobalCareers extends BasePage {
 	WebElement viewandApplySE;
 	@FindBy(xpath = "//input[@placeholder='Search by Location']")
 	WebElement Location;
-
 	@FindBy(xpath = "//div[@class='ng-scope']")
 	WebElement sorryMsg;
 	@FindBy(xpath = "//input[@placeholder='Search by Job Title']")
 	WebElement SearchbyJobTitle;
-
 	@FindBy(xpath = "//button[contains(.,' Search')]")
 	WebElement Searchbtn;
 	@FindBy(xpath = "//select[@id='JobTypeID']")
 	WebElement JobTypeID;
-
+	@FindBy(xpath = "//a[@class='edit-page ng-scope']")
+	WebElement manageBtn;
 	@FindBy(xpath = "//button[normalize-space()='Apply']")
 	WebElement Apply;
 	@FindBy(xpath = "//input[@id='Resume']")
@@ -114,14 +114,76 @@ public class GlobalCareers extends BasePage {
 	WebElement AlreadyApplied;
 	@FindBy(xpath = "//button[@class='apply-success']")
 	WebElement AlreadyApplied1;
-	
+	@FindBy(xpath = "//div[@ng-if=\"appData.CurrentModuleName == 'careers' && data.YourAppliedJobsWidgetConfigured.IsEnabled\"]//div[@class='panel-body ng-scope']")
+	WebElement GuestJobs;
+	@FindBy(xpath = "//strong[@class='ng-binding']")
+	WebElement SDET;
 	@FindBy(xpath = "//button[@class='apply-success nocursorPoint']")
 	WebElement AlreadyAppliedJobRequirement;
+	@FindBy(xpath = "//a[@class='btn btn-default top-btn1 btn-sm dropdown-toggle']")
+	WebElement Toggledropdownmenu;
+	@FindBy(xpath = "//a[normalize-space()='My Ecosystem']")
+	WebElement ecosystem;
+	@FindBy(xpath = "//div[@class='row text-center my-eco-page']//div[2]//div[1]//div[1]//div[1]//div[1]//div[2]//div[1]//button[2]")
+	WebElement MANAGE;
+	@FindBy(xpath = "//div[@ng-repeat='MostAppliedJobs in data.GetMostAppliedJobs']")
+	List<WebElement> NumJobs;
+	@FindBy(xpath = "//div[@ng-repeat='UserAppliedJobs in data.UserAppliedJobs']")
+	List<WebElement> NumbersJobs;
+	@FindBy(xpath = "//span[@ng-if='data.MostAppliedJobsWidgetConfigured.CommunityWidgetEditedName.length == 0']")
+	List<WebElement> mostappliedJob;
+	@FindBy(xpath = "//span[@ng-if='data.YourAppliedJobsWidgetConfigured.CommunityWidgetEditedName.length == 0']")
+	List<WebElement> YourappliedJobs;
+	@FindBy(xpath = "//span[@class='ng-binding ng-scope']")
+	WebElement appliedJob;
+	
 	
 	// public HomePage(WebDriver driver,ExtentTest test) throws
 	// IOException {
 	
+	
+	 public void checkNumbersOfMostJobs() throws InterruptedException {
+	     
+	    	waitForElementToPresent(NumJobs);
+	    	ListIterator<WebElement> Job=this.NumJobs.listIterator();
+	    	int JobCount=NumJobs.size();
+	    	System.out.println("Number of Most applied Jobs Displaying is: " +JobCount);
+	    	Assert.assertEquals(JobCount, 5);
+	    }
+	 public void checkNumbersOfYourAppliedJobs() throws InterruptedException {
+	     
+	    	waitForElementToPresent(NumbersJobs);
+	    	ListIterator<WebElement> Job=this.NumbersJobs.listIterator();
+	    	int JobCount=NumbersJobs.size();
+	    	System.out.println("Number of Your applied Jobs Displaying is: " +JobCount);
+	    	Assert.assertEquals(JobCount, 5);
+	    }
+	
+	private void waitForElementToPresent(List<WebElement> numJobs2) {
+		// TODO Auto-generated method stub
+		
+	}
 
+	public void verifyNameJobchange() {
+		waitForElementToPresent(SDET);
+		String changed=this.SDET.getText();
+		String expected="SDET staff1";
+		System.out.println(changed);
+        Assert.assertEquals(changed, expected);		
+		
+	}
+	 public void GuestMessage() {
+	    	waitForElementToPresent(GuestJobs);
+	    	String msg=this.GuestJobs.getText();
+	    	System.out.println("msg");
+	    	if(GuestJobs.isDisplayed()) {
+	    		Assert.assertTrue(true);
+			}
+			else {
+				Assert.assertTrue(false);
+	    	}
+	    }
+	
 	public void verifyTheDetails(String JobTitle, String AdditionalDetails, String Remarks) {
 		type(searchByJobTitle, JobTitle, "JobTitle");
 		click(search, "Searchbtn");
@@ -192,8 +254,8 @@ public void CheckAdditionaltitleAndRemarkNotDisplaying(String Title1) throws Int
 }
 	
 	public LoginPage viewAndApply() throws InterruptedException {
-	waitForElementToPresent(ViewandApply);
-	clickElementByJavaScript(ViewandApply);
+	waitForElementToPresent(ViewandApply1);
+	clickElementByJavaScript(ViewandApply1);
 		//click(ViewandApply, "Apply");
 		
 		return (LoginPage) openPage(LoginPage.class);
@@ -266,5 +328,37 @@ public void CheckAdditionaltitleAndRemarkNotDisplaying(String Title1) throws Int
 	// public void logExtentReport(String s1){
 	// TestBase.test.log(Status.INFO, s1);
 	// }
-
+	public CommunityDashboardPage gotocommunitydashPage() throws Exception {
+		waitForElementToPresent(Toggledropdownmenu);
+		click(Toggledropdownmenu,"Toggledropdownmenu");
+		Thread.sleep(500);
+		waitForElementToPresent(ecosystem);
+		click(ecosystem,"Ecosystem");
+		Thread.sleep(15000);
+		click(MANAGE, "Manage");
+		return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
+	}	
+	public void VerifyJobsNotDisplaying() throws InterruptedException {
+		Thread.sleep(500);
+		Assert.assertEquals(0, mostappliedJob.size());
+		Assert.assertEquals(0, YourappliedJobs.size());
+		System.out.println("Most applied Jobs and Your applied Jobs are Not Displaying");
+		
+	}
+	public void verifyJobTabNamechanged() throws InterruptedException {
+		waitForElementToPresent(appliedJob);
+		String changeevent=this.appliedJob.getText();
+		System.out.println(changeevent);
+	    String Expected="APPLIED JOBS ARE";
+	    Thread.sleep(3000);
+	    Assert.assertEquals(changeevent, Expected);
+	    
+		
+	}
+	public ManageCommunityPage gotoDashboardpage() throws InterruptedException {
+		Thread.sleep(3000);
+		waitForElementToPresent(manageBtn);
+		click(manageBtn, "Manage Button");
+		return (ManageCommunityPage) openPage(ManageCommunityPage.class);		
+	}
 }

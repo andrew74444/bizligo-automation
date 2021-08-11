@@ -1,10 +1,16 @@
 package com.cpcommunity.PageObjects;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
@@ -41,7 +47,17 @@ public class Gmail extends BasePage {
 
 	@FindBy(xpath = "(//*[@data-saferedirecturl])[2]")
 	WebElement termsandConditions;
-
+	
+	@FindBy(xpath = "//span[@id='inbox-id']")
+	WebElement boxId;
+	@FindBy(xpath = "//input[@value='nancy']")
+	WebElement emailName;
+	@FindBy(xpath = "//button[normalize-space()='Set']")
+	WebElement setBtn;
+	
+	
+	
+	
 	int j = 0;
 
 	@Override
@@ -204,7 +220,38 @@ try {
 		log.info(otp);
 		return otp;
 	}
-
+ public void openGuerillamail(String emailName) throws InterruptedException, AWTException {
+	 Thread.sleep(5000);
+     //((JavascriptExecutor)driver).executeScript("window.open()");
+     //Thread.sleep(2500);
+    // ArrayList<String>wins = new ArrayList<String>(driver.getWindowHandles());
+    // driver.switchTo().window(wins.get(1));
+     //driver.get("https://www.guerrillamail.com/");
+     Thread.sleep(5000);
+     click(boxId,"BoxID");
+     Thread.sleep(5000);
+     type(this.emailName, emailName, "emailName");
+     Thread.sleep(5000);
+     click(setBtn,"set Button");
+     Thread.sleep(180000);
+     Actions ac = new Actions(driver);
+     ac.contextClick().build().perform();
+     Thread.sleep(5000);
+     Robot r = new Robot();
+     r.keyPress(KeyEvent.VK_DOWN);
+     Thread.sleep(5000);
+     r.keyPress(KeyEvent.VK_DOWN);
+     Thread.sleep(5000);
+     r.keyPress(KeyEvent.VK_ENTER);
+     Thread.sleep(1000);
+     /*click(emailVerify,"passwordVerify");
+     Thread.sleep(1500);
+     String password = passWord.getText();
+     Thread.sleep(2000);
+     ArrayList<String>wins1 = new ArrayList<String>(driver.getWindowHandles());
+     driver.switchTo().window(wins1.get(0));
+     Thread.sleep(2000);*/
+ }
 	// public ZohoCRMPage gotoCRM() {
 	//
 	// click(crm,"CRM Link");

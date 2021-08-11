@@ -51,7 +51,7 @@ public class TC1164_verify_Revenueamt_NotUpdated__inTotalRevenueTimePeriod_whenC
 		CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
 		 RevenueReportPage RRP=AG.navigateToRevenueReport();
 		 MemberRevenueReport MRR=RRP.goTomemberReport();
-		 MRR.checkRevenue();	
+		 MRR.checkRevenue(data.get("member"));	
 
 }
 	@AfterMethod

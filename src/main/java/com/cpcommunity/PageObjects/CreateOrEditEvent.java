@@ -206,6 +206,8 @@ public class CreateOrEditEvent extends BasePage {
 	WebElement VideoFormSaveBtn;
 	@FindBy(xpath = "//button[@type='button'][contains(text(),'Publish')]")
 	WebElement Publishbtn;
+	@FindBy(xpath = "//button[@class='btn btn-primary space-bottom'][normalize-space()='Publish Changes']")
+	WebElement Publish;
 
 	@FindBy(xpath = "//*/tbody/tr[1]/td[4]/i")
 	WebElement EditEvent;
@@ -284,10 +286,36 @@ public class CreateOrEditEvent extends BasePage {
 	WebElement PrivateEventsSaveBtn;
 	@FindBy(xpath = "//input[@name='TicketPrice']")
 	WebElement TicketPrice;
+	@FindBy(xpath = "//a[@class='btn btn-default top-btn1 btn-sm dropdown-toggle']	")
+	WebElement Toggledropdownmenu;
+	
+	//a[@class='btn btn-default top-btn1 btn-sm dropdown-toggle']
+	@FindBy(xpath = "//*[contains(text(),'MANAGE')]")
+	WebElement MANAGEbtn;
+	@FindBy(xpath = "//a[normalize-space()='My Ecosystem']")
+	WebElement ecosystem;
 
 	@FindBy(xpath = "//*[@id='validate-dates-form']/div[1]/div[2]/div[1]/div/table/tbody/tr/td[3]/button")
 	WebElement EditAgendaBtnInEventDetails;
 
+	public MyDashboardPage gotomyEcosystem() throws InterruptedException {
+		 waitForElementToPresent(Toggledropdownmenu);
+			clickElementByJavaScript(Toggledropdownmenu);
+			Thread.sleep(3000);
+			waitForElementToPresent(ecosystem);
+			click(ecosystem,"Ecosystem");
+			Thread.sleep(16000);
+		
+		 return (MyDashboardPage) openPage(MyDashboardPage.class);	 
+	 }
+     public void editEventName(String eventtitle) throws InterruptedException {
+    	 waitForElementToPresent(EventName);
+    	 type(EventName, eventtitle , "Event Name");
+    	// click(Publish, "Publish");
+    	 clickElementByJavaScript(Publish);
+    	 Thread.sleep(6000);
+     }
+	
 	public CommunityEventsPage createEvent(Hashtable<String, String> data) throws Exception {
 		String h = getSystemCurrentHourIn12Hour();
 		String m = getSystemCurrentMintues();
