@@ -30,7 +30,7 @@ public class MyCommunitiesPage extends BasePage {
 		aShot();//
 //		updateClass(pageheader, "navbar-fixed-top");
 	}
-
+//
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 

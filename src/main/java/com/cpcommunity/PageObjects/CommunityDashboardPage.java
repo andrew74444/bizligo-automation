@@ -640,5 +640,12 @@ public class CommunityDashboardPage extends BasePage {
 			click(revenuereport, "Revenue Report");
 			return (RevenueReportPage) openPage(RevenueReportPage.class);	
 		}
+	 
+	 public EmailTemplatePage navigateToEmailTemplate() {
+
+			click(emailtemplate, "Email Template");
+			return (EmailTemplatePage) openPage(EmailTemplatePage.class);
+			// new CommunityEvents(driver);
+		}
 }
 

@@ -18,7 +18,7 @@ public class ResourcesPage  extends BasePage{
 	@Override
 	protected void getPageScreenSot() {
 		// TODO Auto-generated method stub
-		updateClass(pageheader, "");
+		//updateClass(pageheader, "");
 		aShot();
 	}
 	@FindBy(xpath = "//strong[normalize-space()='Resources']")
@@ -39,6 +39,10 @@ public class ResourcesPage  extends BasePage{
     WebElement leaveGroup3;
 	@FindBy(xpath="//span[normalize-space()='Groups']")
     WebElement group ;
+	@FindBy(xpath = "//span[normalize-space()='Advertisements']")
+	WebElement advertisement;
+	@FindBy(xpath = "//div[@ng-show='PromotionPlans.length']//div[@class='row']")
+	WebElement adPlans;
 	
 	public void checkResources1() {
 		waitForElementToPresent(resource1);
@@ -75,11 +79,23 @@ public void checkResourceNotDisplaying() throws InterruptedException {
 		System.out.println(message);
 		takeScreenshotByShutterBug(YesProceed, "Yes Proceed");
 		click(YesProceed, "Yes Proceed");
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		
 	}
 	
+public void checkInactiveAdvertisementNotPresent() throws InterruptedException {
+	//waitForElementToPresent(BDMAIcomm);
+	//click(BDMAIcomm, "BDMAI");
+	//clickElementByJavaScript(BDMAIcomm);
+
+	scrollToElementAndClick(advertisement);
+	waitForElementToPresent(adPlans);
+	String Allplans=this.adPlans.getText();
+	String Notpresent="Test@1122";
+	System.out.println("Inactive Plan is not present");
+	Assert.assertNotSame(Notpresent, Allplans, "Inactive Plan is not present");
 	
+}
 	
 	
 	

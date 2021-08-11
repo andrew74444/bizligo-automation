@@ -66,7 +66,7 @@ public class ManageCommunitiesPage extends BasePage {
 	waitForElementToPresent(searchByName);
 	type(searchByName, Community, "Community Name");
 	click(search, "Search");
-	Thread.sleep(4000);
+	Thread.sleep(8000);
          }
 
 
@@ -89,9 +89,33 @@ public class ManageCommunitiesPage extends BasePage {
 	    click(YesProceed, "Yes Proceed");
 	    Thread.sleep(2000);
 	    click(save, "Save");
+	    Thread.sleep(6000);
+     }
+   
+   public void ActivateCommunities(String Community , String About, String Category,String type) throws InterruptedException {
+	   waitForElementToPresent(searchByName);
+		type(searchByName, Community, "Community Name");
+		click(search, "Search");
+		Thread.sleep(4000);
+	   waitForElementToPresent(edit);
+		click(edit, "Edit");
+		Thread.sleep(3000);
+		waitForElementToPresent(networking);
+		click(networking, "Networking");
+		driver.switchTo().frame(0);
+		enterTextInframe.clear();
+		enterTextInframe.sendKeys(About);
+		driver.switchTo().defaultContent();
+		selectByVisibleText(categoryType, Category, "Category");
+	    selectByVisibleText(Type, type, "Type");
+	    click(inactive, "active");
+	    Thread.sleep(1000);
+	    
+	    click(save, "Save");
 	    Thread.sleep(4000);
      }
-public GlobalCommunitesPage navigateToglobalcommunities() {
+public GlobalCommunitesPage navigateToglobalcommunities() throws InterruptedException {
+	Thread.sleep(8000);
 	click(homePage, "Bizligo Home page");
 	waitForElementToPresent(globalcommunties);
 	click(globalcommunties, "Global communities");

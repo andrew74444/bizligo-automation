@@ -4,6 +4,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import java.util.List;
+
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -66,6 +69,7 @@ public class Bizligo1CommunityPage extends BasePage {
 	WebElement advertisements;
 	@FindBy(xpath = "//a[contains(text(),'Manage Plans')]")
 	WebElement managePlans;
+
 	@FindBy(xpath = "//a[normalize-space()='Donate']")
 	WebElement donateBtn;
 	
@@ -120,6 +124,19 @@ public class Bizligo1CommunityPage extends BasePage {
 
 	
 
+
+
+	@FindBy(xpath = "//span[@ng-if='data.IsMembershipPlanDetailsWidgetConfigured.CommunityWidgetEditedName.length == 0']")
+	List<WebElement> membership;
+	@FindBy(xpath = "//a[@title='Manage Community']")
+	WebElement manageBtn;
+	@FindBy(xpath = "//span[@ng-if='data.IsAdminWidgetConfigured.CommunityWidgetEditedName.length == 0']")
+	List<WebElement> champions;
+	@FindBy(css = "div[class='col-sm-12 col-xs-12'] span[class='ng-scope']")
+	WebElement membershipName;
+	@FindBy(css = "div[class='col-sm-8 col-xs-6'] span[class='ng-binding ng-scope']")
+	WebElement championName;
+	
 
 	
 	
@@ -187,15 +204,18 @@ public class Bizligo1CommunityPage extends BasePage {
 		click(yesProceed,"yes proceed");
 		
 	}
-	public ManageAdPlansPage gotoManageAdsplan() {
+	public ManageAdPlansPage gotoManageAdsplan() throws InterruptedException {
 		waitForElementToPresent(manage);
 		click(manage, "Manage Icon button");
-		scrollIntoView(advertisements);
+		Thread.sleep(4000);
+		scrollUpVertically();
+		//scrollIntoView(advertisements);
 		click(advertisements, "advertisements");
 		waitForElementToPresent(managePlans);
 		click(managePlans, "Manage Plans");
 		return (ManageAdPlansPage) openPage(ManageAdPlansPage.class);
 	}
+
 	public void checkUpdatedDonation(String Purpose) throws InterruptedException {
 		click(donateBtn,"Donation");
 		Thread.sleep(3000);
@@ -326,6 +346,44 @@ public class Bizligo1CommunityPage extends BasePage {
 
 
 
+
+
+	
+	 public void VerifyMembershipplanNotDisplaying() throws InterruptedException {
+			Thread.sleep(500);
+			Assert.assertEquals(0, membership.size());
+			System.out.println("MembershipPlan is Not Displaying");
+			
+		}
+	 public void VerifychampionsNotDisplaying() throws InterruptedException {
+			Thread.sleep(500);
+			Assert.assertEquals(0, champions.size());
+			System.out.println("Champions is Not Displaying");
+			
+		}
+	 
+	 public ManageCommunityPage gotoDashboardpage() {
+			waitForElementToPresent(manageBtn);
+			click(manageBtn, "Manage Button");
+			return (ManageCommunityPage) openPage(ManageCommunityPage.class);		
+		}
+	 
+	 public void verifychampionTitleChanged() throws InterruptedException {
+			scrollIntoView(championName);
+			String changead=this.championName.getText();
+			System.out.println(changead);
+		    String Expected="TOP MOST CHAMPIONS";
+		    Assert.assertEquals(changead, Expected);
+		    
+		}
+	 public void verifyMembershiptitleChanged() throws InterruptedException {
+			waitForElementToPresent(membershipName);
+			String changead=this.membershipName.getText();
+			System.out.println(changead);
+		    String Expected="MEMBERSHIP";
+		    Assert.assertEquals(changead, Expected);
+		    
+		}
 
 }
 	

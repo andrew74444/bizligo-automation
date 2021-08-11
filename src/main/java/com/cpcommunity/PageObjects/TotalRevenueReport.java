@@ -31,7 +31,7 @@ public class TotalRevenueReport extends BasePage{
 	public void checkTotalRevenuebasedOnTimePeriod() throws InterruptedException {
 		System.out.println("total");
 		Thread.sleep(2000);
-		scrollDownByPixel(60);
+		//scrollDownByPixel(60);
 		String amt=adRevenue.getText();
 		System.out.println(amt);
 		/*JavascriptExecutor jse = (JavascriptExecutor) driver;
