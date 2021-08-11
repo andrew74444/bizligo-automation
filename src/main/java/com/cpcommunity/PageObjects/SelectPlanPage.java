@@ -189,10 +189,10 @@ public class SelectPlanPage extends BasePage {
 		click(nextMonth, "Next");
 		waitForElementToPresent(dateselect);
 		click(dateselect, "Date");
-		click(this.adEndDate, "Ad End Date");
-		waitForElementToPresent(adEndDatecalendar);
-		Thread.sleep(1000);
-		click(enddate, "EndDate");
+		//click(this.adEndDate, "Ad End Date");
+		//waitForElementToPresent(adEndDatecalendar);
+		//Thread.sleep(1000);
+		//click(enddate, "EndDate");
 		Thread.sleep(4000);
 		waitForElementToPresent(choosefile);
 		type(choosefile, path, "Image Path");

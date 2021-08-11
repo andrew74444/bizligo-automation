@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 
 import java.util.List;
 
@@ -55,6 +56,9 @@ public class MyGroupsPage extends BasePage{
 	WebElement ManageMembers;
     @FindBy(xpath = "//*[contains(text(),'\"Please make another member as Group Admin to leave from this Group.')]")
    	WebElement makeAnothergroupAdminAlertMeassge;
+	
+    
+    
     @Override
 	protected ExpectedCondition getPageLoadCondition() {
 		
@@ -69,6 +73,8 @@ public class MyGroupsPage extends BasePage{
 	
 	@FindBy(xpath="//*[contains(text(),'My Groups')]")
 	WebElement myGroupsbutton;
+	
+	
 
    
     
@@ -87,6 +93,7 @@ public class MyGroupsPage extends BasePage{
 		
 	}
     
+   
     public GroupDetailsPage NaviagtingToGroupDetailsPage(String GroupName) throws Exception {
     	this.searchGroup(GroupName);
     	WebElement ele = driver.findElement(By.xpath("//span[contains(text(),'"+GroupName+"')]"));
@@ -105,7 +112,7 @@ public class MyGroupsPage extends BasePage{
     	Thread.sleep(6000); 
     	
     }
-    
+
     
     public boolean cancel(String groupName) throws Exception {
     	groupName = groupName+" "+getDateInDDMMMYYYY();

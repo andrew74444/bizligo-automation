@@ -238,6 +238,8 @@ public class MyDashboardPage extends BasePage{
 		
 		@FindBy(xpath="//input[@id='searchName']")
 		WebElement serachCommunity ;
+		@FindBy(xpath="//input[@placeholder='Search by Community Name']")
+		WebElement serachCommunityName ;
 		
 		@FindBy(xpath="//div[@class='communities-box ng-scope col-lg-4 col-md-12 col-sm-12']//div[@class='category-background']")
 		WebElement CommunityName ;
@@ -286,6 +288,9 @@ public class MyDashboardPage extends BasePage{
 		WebElement Testingcomm;
 	    @FindBy(xpath = "//a[normalize-space()='Discussions']")
 	  	WebElement discussion;
+	    @FindBy(xpath = "//button[normalize-space()='MANAGE']")
+	  	WebElement bizligo1manage;
+	    
 	  
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
@@ -828,7 +833,9 @@ public ManageAdPlansPage goToManageAdPlansPage() {
 	 public Bizligo1CommunityPage goToMyCommunity() throws InterruptedException {
 		 Thread.sleep(3000);
 			click(viewAllBtn,"view all");
-			waitForElementToPresent(bizligo1);
+			Thread.sleep(2000);
+			scrollIntoView(bizligo1);
+			//waitForElementToPresent(bizligo1);
 			click(bizligo1,"Bizligo 1");
 			return (Bizligo1CommunityPage) openPage(Bizligo1CommunityPage.class);
 		}
@@ -1029,7 +1036,18 @@ public ManageAdPlansPage goToManageAdPlansPage() {
 // 	Utility.highLightElement(driver, AllCommunities);
 //		AllCommunities.click();
 //	}
-	
+	 public CommunityDashboardPage gotoDashboardPage(String Community) throws InterruptedException {
+			Thread.sleep(3000);
+			waitForElementToPresent(viewAll);
+			click(viewAll, "Global Communities");
+			waitForElementToPresent(serachCommunityName);
+			type(serachCommunityName, Community, "Communities");
+			click(searchbtn, "Search");
+			Thread.sleep(15000);
+			waitForElementToPresent(bizligo1manage);
+			click(bizligo1manage,"Bizligo 1");
+			return(CommunityDashboardPage)openPage(CommunityDashboardPage.class);	
+	 }
 	public boolean verifySuccessLogin(){
 		return new VerificationHelper(driver).isDisplayed(Toggledropdownmenu);
 	}

@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 
 import java.util.List;
 
@@ -28,7 +29,6 @@ public class GroupDetailsPage extends BasePage {
 	@FindBy(xpath = "//*[@id='header']")
 	WebElement header;
 	
-
 	@FindBy(xpath = "(//*[@type='checkbox'])[1]")
 	WebElement checkbox;
 
@@ -78,6 +78,8 @@ public class GroupDetailsPage extends BasePage {
 
 	@FindBy(xpath = "//*[@class='navbar mynav group-nav']//*[contains(text(),'Members')]")
 	WebElement navbarMembers;
+	
+	
 
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
@@ -222,7 +224,7 @@ public class GroupDetailsPage extends BasePage {
 		Thread.sleep(3000);
 
 	}
-
+	
 	// public ZohoCRMPage gotoCRM() {
 	//
 	// click(crm,"CRM Link");
