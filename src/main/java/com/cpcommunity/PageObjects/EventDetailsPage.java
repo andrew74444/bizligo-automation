@@ -64,16 +64,12 @@ public class EventDetailsPage extends BasePage {
 	WebElement ViewAll;
 	@FindBy(xpath = "//input[@value='1']")
 	WebElement BtnPayPal;
-
 	@FindBy(xpath = "//*[@ng-show='data.ShowPaymentPaypal']//*[contains(text(),'Proceed')]")
 	WebElement BtnPayment;
-
 	@FindBy(xpath = "//input[@value='2']")
 	WebElement AuthorizeNet;
-
 	@FindBy(xpath = "//*[@id='Authorizeform']//span[contains(.,'Proceed')]")
 	WebElement BtnPaythroughCheckout;
-
 	@FindBy(xpath = "//strong[@ng-bind='Event.EventName'] | //strong[@class='ng-binding']")
 	WebElement EventName;
 	@FindBy(xpath = "//i[@title='This is Private Event']")
@@ -124,26 +120,20 @@ public class EventDetailsPage extends BasePage {
 
 	@FindBy(xpath = "//p[@ng-if='agenda.Venue']")
 	WebElement AgendeVenue;
-
 	@FindBy(xpath = "//div[@id='home']//a")
 	WebElement AlbumURL;
-
 	@FindBy(xpath = "//h4[contains(.,'Event Attendees')]")
 	WebElement attendeFormView;
-
 	@FindBy(xpath = "//h4[contains(text(),'Booking Information')]")
 	WebElement BookingInformation;
-
 	@FindBy(xpath = "//*[@name='FirstName[]']")
 	WebElement FirstName;
-
 	@FindBy(xpath = "//*[@name='LastName[]']")
 	WebElement LastName;
 	@FindBy(xpath = "")
 	WebElement Phone;
 	@FindBy(xpath = "//*[@name='Company[]']")
 	WebElement companyName;
-
 	@FindBy(xpath = "//input[@name='GuestEmailID[]']")
 	WebElement GuestEmailID;
 	@FindBy(xpath = "//input[@name='GuestFirstName[]']")
@@ -179,7 +169,8 @@ public class EventDetailsPage extends BasePage {
 		aShot();
 		updateClass(header, "navbar-fixed-top");
 	}	
-
+   
+	
 
 	public void addAttendeeDetails(Hashtable<String, String> data)
 			throws Exception {

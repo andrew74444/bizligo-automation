@@ -40,14 +40,8 @@ public class TC1156_Verify_RevenueReport_Updated_when_Member_PurchasePlan extend
 	 AG.makePayment();
 	 RevenueReportPage RRP=AG.navigateToRevenueReport();
 	 MemberRevenueReport MRR=RRP.goTomemberReport();
-	 MRR.checkRevenue();
+	 MRR.checkRevenue(data.get("member"));
 	  
 }
-	@AfterMethod
-	public void tearDown() {
-		
-		logInfo("TC155 Test Completed");
-		
-		quit();
-}
+	
 }

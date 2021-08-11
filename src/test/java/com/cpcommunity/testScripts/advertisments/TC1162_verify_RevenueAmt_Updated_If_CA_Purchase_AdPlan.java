@@ -41,7 +41,7 @@ public class TC1162_verify_RevenueAmt_Updated_If_CA_Purchase_AdPlan extends Base
 	 AG.makePayment();
 	 RevenueReportPage RRP=AG.navigateToRevenueReport();
 	 MemberRevenueReport MRR=RRP.goTomemberReport();
-	 MRR.checkRevenue();
+	 MRR.checkRevenue(data.get("member"));
 	}
 	@AfterMethod
 	public void tearDown() {

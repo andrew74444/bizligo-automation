@@ -34,7 +34,7 @@ public class TC1134_Verify_CA_ableto_create_adPlans_With_sameName_InAnotherCommu
 	Bizligo1CommunityPage biz=login.goToMyCommunity(data.get("communityName"));
 	ManageAdPlansPage MAPP=biz.gotoManageAdsplan();
 	MAPP.createAdPlan(data.get("name"),data.get("price"), data.get("planDetails"),data.get("duration"),data.get("durationType"),data.get("adLocation"),data.get("adType"), data.get("approvalType"));
-	MAPP.inactivatePlan(data.get("plan"));
+	//MAPP.inactivatePlan(data.get("plan"));
 	}
 	@AfterMethod
 	public void tearDown() {
@@ -42,5 +42,6 @@ public class TC1134_Verify_CA_ableto_create_adPlans_With_sameName_InAnotherCommu
 		logInfo("TC1134 Test Completed");
 		
 		quit();
-}
+		
+	}
 }

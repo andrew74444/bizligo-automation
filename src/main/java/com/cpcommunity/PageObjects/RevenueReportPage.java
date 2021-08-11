@@ -49,7 +49,7 @@ public class RevenueReportPage extends BasePage {
 		Thread.sleep(5000);
 		waitForElementToPresent(memberrevenue);
 		click(memberrevenue, "Revenue");
-
+        Thread.sleep(2000);
 		return (MemberRevenueReport) openPage(MemberRevenueReport.class);	
 	}
 }
