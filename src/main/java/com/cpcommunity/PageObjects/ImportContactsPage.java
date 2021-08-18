@@ -102,8 +102,9 @@ public class ImportContactsPage extends BasePage {
 		scrollDownVertically();
 		Thread.sleep(4000);
 		scrollToElement(manageCampaign);
+		waitForElementToPresent(manageCampaign);
 		click(manageCampaign, "manageCampaign");
-		Thread.sleep(1000);
+
 		waitForElementToPresent(composeCampaign);
 		this.composeCampaign.click();	
 		//click(composeCampaign, "composeCampaign");

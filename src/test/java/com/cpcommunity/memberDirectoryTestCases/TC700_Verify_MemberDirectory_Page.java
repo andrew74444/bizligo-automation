@@ -35,13 +35,13 @@ public class TC700_Verify_MemberDirectory_Page extends BaseTest {
 		MDP.profileCategoryList();
 
 }
-	@AfterMethod
+	/*@AfterMethod
 	public void tearDown() {
 		
 		logInfo("TC700 Test Completed");
 		
 		quit();
 		
-	}
+	}*/
 
 }
