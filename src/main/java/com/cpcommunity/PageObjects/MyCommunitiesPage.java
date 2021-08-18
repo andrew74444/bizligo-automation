@@ -30,7 +30,7 @@ public class MyCommunitiesPage extends BasePage {
 		aShot();//
 //		updateClass(pageheader, "navbar-fixed-top");
 	}
-
+//
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 
@@ -470,6 +470,7 @@ public class MyCommunitiesPage extends BasePage {
 
 		//this.searchCommunity(communityName+getDateInDDMMMYYYY());
 		click(MANAGEbtn, "Manage");
+		Thread.sleep(1000);
 		return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
 		// new CommunityDashboardPage(driver, );
 	}

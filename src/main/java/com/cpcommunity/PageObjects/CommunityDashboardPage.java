@@ -55,7 +55,10 @@ public class CommunityDashboardPage extends BasePage {
 
 	@FindBy(xpath = "//img[@src='/Content/Images/setting-icon.png']/../..")
 	WebElement manage;
-
+    
+	@FindBy(xpath = "//a[normalize-space()='Manage Community Widgets']")
+	WebElement manageCommunitywidget;
+	
 	@FindBy(xpath = "(//*[contains(text(),' Invite Members')])")
 	WebElement invitePeople;
 
@@ -190,7 +193,10 @@ public class CommunityDashboardPage extends BasePage {
 	WebElement managecommunity;
 	@FindBy(xpath = "//div[@class='panel panel-warning g-statistics']//div[@class='panel-body']")
 	WebElement adstatics;
-    
+	@FindBy(xpath = "//a[normalize-space()='Blogs']")
+	WebElement Blogs;
+	@FindBy(xpath = "//ul[@class='nav child_menu']//a[@title='Manage Categories'][normalize-space()='Categories']")
+	WebElement Blogcategories;
     
   
 	public void displayManageGroupsPage() throws Exception {
@@ -324,6 +330,13 @@ public class CommunityDashboardPage extends BasePage {
 		return (CommunityInviteMembersPage) openPage(CommunityInviteMembersPage.class);
 		// new CommunityInviteMembersPage(driver);
 	}
+	public ManageCommunityWidgets navigateTomanageWidget() {
+		click(manage, "manage");
+		waitForElementToPresent(manageCommunitywidget);
+		click(manageCommunitywidget, "manage Community widget");
+		return (ManageCommunityWidgets) openPage(ManageCommunityWidgets.class);
+		// new CommunityInviteMembersPage(driver);
+	}
 
 	public CommunityPendingRequestsPage navigateToPendingRequests() {
 
@@ -409,9 +422,10 @@ public class CommunityDashboardPage extends BasePage {
 		
 	}
 
-	public CategoriesPage gotoCategories() {
+	public CategoriesPage gotoCategories() throws InterruptedException {
+		Thread.sleep(1000);
 		click(blogs, "Categories");
-		waitForElementToPresent(posts);
+		waitForElementToPresent(categories);
 		click(categories, "Categories");
 
 		return (CategoriesPage) openPage(CategoriesPage.class);
@@ -471,7 +485,7 @@ public class CommunityDashboardPage extends BasePage {
 		scrollDownVertically();
 		scrollToElement(manageCampaign);
 		click(manageCampaign, "manageCampaign");
-		Thread.sleep(500);
+		Thread.sleep(1000);
 		waitForElementToPresent(composeCampaign);
 		this.composeCampaign.click();	
 		//click(composeCampaign, "composeCampaign");
@@ -482,7 +496,7 @@ public class CommunityDashboardPage extends BasePage {
 		scrollDownVertically();
 		scrollToElement(manageCampaign);
 		click(manageCampaign, "manageCampaign");
-		Thread.sleep(500);
+		Thread.sleep(1000);
 		waitForElementToPresent(campaignTemplate);
 		this.campaignTemplate.click();	
 		//click(composeCampaign, "composeCampaign");
@@ -492,7 +506,7 @@ public class CommunityDashboardPage extends BasePage {
 		scrollDownVertically();
 		scrollToElement(manageCampaign);
 		click(manageCampaign, "manageCampaign");
-		Thread.sleep(500);
+		Thread.sleep(1000);
 		waitForElementToPresent(Staticcampaign);
 		this.Staticcampaign.click();	
 		//click(composeCampaign, "composeCampaign");
@@ -503,7 +517,7 @@ public class CommunityDashboardPage extends BasePage {
 		
 		scrollToElement(manageCampaign);
 		click(manageCampaign, "manageCampaign");
-		Thread.sleep(500);
+		Thread.sleep(1000);
 		waitForElementToPresent(CampaignReport);
 		this.CampaignReport.click();	
 		//click(composeCampaign, "composeCampaign");
@@ -514,7 +528,7 @@ public class CommunityDashboardPage extends BasePage {
 		scrollDownVertically();
 		scrollToElement(manageCampaign);
 		click(manageCampaign, "manageCampaign");
-		Thread.sleep(500);
+		Thread.sleep(1000);
 		waitForElementToPresent(DraftCampaign);
 		this.DraftCampaign.click();	
 		//click(composeCampaign, "composeCampaign");
@@ -522,10 +536,11 @@ public class CommunityDashboardPage extends BasePage {
 		
 	}
 	public ImportContactsPage navigateToImportContactsPage() throws Exception {
+		Thread.sleep(3000);
 		scrollDownVertically();
 		scrollToElement(manageCampaign);
 		click(manageCampaign, "manageCampaign");
-		Thread.sleep(500);
+		Thread.sleep(1000);
 		waitForElementToPresent(importcampaign);
 		this.importcampaign.click();	
 		//click(composeCampaign, "composeCampaign");
@@ -619,6 +634,13 @@ public class CommunityDashboardPage extends BasePage {
 			waitForElementToPresent(revenuereport);
 			click(revenuereport, "Revenue Report");
 			return (RevenueReportPage) openPage(RevenueReportPage.class);	
+		}
+	 
+	 public EmailTemplatePage navigateToEmailTemplate() {
+
+			click(emailtemplate, "Email Template");
+			return (EmailTemplatePage) openPage(EmailTemplatePage.class);
+			// new CommunityEvents(driver);
 		}
 }
 

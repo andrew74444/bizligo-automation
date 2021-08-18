@@ -60,6 +60,5 @@ public class TC1136_Verify_RevenueAmt_TobeUpdated_inTimePeriodReport_when_member
 		logInfo("TC1136 Test Completed");
 		
 		quit();
-		
-	}
+}
 }

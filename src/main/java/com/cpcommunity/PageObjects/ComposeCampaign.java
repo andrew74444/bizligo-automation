@@ -131,7 +131,7 @@ public class ComposeCampaign extends BasePage {
 	WebElement composeCampaign;
 	@FindBy(xpath="//div[@class='ui-grid-selection-row-header-buttons ui-grid-icon-ok ng-scope']")
 	List<WebElement> ListOfContacts;
-	@FindBy(xpath="//button[@ng-click='closePopup()']//span[@aria-hidden='true'][normalize-space()='×']")
+	@FindBy(xpath="//button[@ng-click='closePopup()']//span[@aria-hidden='true'][normalize-space()='Ã—']")
 	WebElement cancelPopup;
 	@FindBy(xpath = "//button[normalize-space()='Send']")
 	WebElement sendBtn;//button[@class='btn-primary btn btn-close']//i[@class='fa fa-paper-plane']
@@ -235,7 +235,7 @@ public class ComposeCampaign extends BasePage {
 		click(addContacts,"add contacts");
 		Thread.sleep(2000);
 	    selectByVisibleText(communityDropdown,communityName,"Groups");
-	    Thread.sleep(2000);
+	    Thread.sleep(6000);
 	    click(nameCheckbox,"name check box");
 	    click(SaveBtn,"save button");
 	    Thread.sleep(3000);
@@ -488,15 +488,15 @@ public class ComposeCampaign extends BasePage {
 			waitForElementToPresent(addContacts);
 			click(addContacts, "Add Contacts");
 			//driver.switchTo().frame(1);
-			Thread.sleep(2000);
+			Thread.sleep(4000);
 			waitForElementToPresent(addContactdialogmodal);
-	       Thread.sleep(2000);
+	       Thread.sleep(4000);
 			waitForElementToPresent(dropdown);
 			selectByVisibleText(dropdown,importedContacts, "Imported contacts");
-			Thread.sleep(3000);
+			Thread.sleep(4000);
 			waitForElementToPresent(SearchEventsname);
 			type(SearchEventsname,Member, "importedContacts");
-			Thread.sleep(2000);
+			Thread.sleep(4000);
 		   waitForElementToPresent(email);
 		    int emailval=email.size();
 		    System.out.println(emailval);
@@ -506,16 +506,17 @@ public class ComposeCampaign extends BasePage {
 			
 		}
 		public void VerifyAddedContacts(String importedContacts, String Email2) throws InterruptedException {
+			Thread.sleep(2000);
 			waitForElementToPresent(addContacts);
 			click(addContacts, "Add Contacts");
-			Thread.sleep(2000);
+			Thread.sleep(4000);
 			waitForElementToPresent(addContactdialogmodal);
 			waitForElementToPresent(dropdown);
-			Thread.sleep(2000);
+			Thread.sleep(5000);
 			getAllDropDownData(dropdown);
 			selectByVisibleText(dropdown,importedContacts, "Imported contacts");
 			//selectUsingIndex(dropdown,18, "ImportedContacts");
-			Thread.sleep(4000);
+			Thread.sleep(5000);
 			//waitForElementToPresent(SearchEventsname);
 			type(SearchEventsname,Email2, "importedContacts");
 			waitForElementToPresent(email);
@@ -613,19 +614,19 @@ public class ComposeCampaign extends BasePage {
 		waitForElementToPresent(addContacts);
 		click(addContacts, "Add Contacts");
 		//driver.switchTo().frame(1);
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		waitForElementToPresent(addContactdialogmodal);
-       Thread.sleep(2000);
+       Thread.sleep(4000);
 		waitForElementToPresent(dropdown);
 		//click(dropdown, "Select options");
 		selectByVisibleText(dropdown,ContactsValue, "Organisation");
 		//selectUsingIndex(dropdown, 7, "Organisation");
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		scrollIntoView(selectAll);
 		click(selectAll, "clickselect");
 		waitForElementToPresent(saveAddContacts);
 		click(saveAddContacts, "Save");
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		waitForElementToPresent(addedEmails);
 		String val=this.addedEmails.getText();
 		System.out.println(val);
@@ -786,7 +787,7 @@ public void checkDuplicateImportContacts(String communityName, String typeName) 
     //click(nameCheckbox,"name check box");
     //click(SaveBtn,"save button");
     Thread.sleep(8000);
-    waitForElementToPresent(nameTextBox);
+
     type(nameTextBox,typeName,"duplicate");
     
     /*if(numberOfcsvFileResult.size()==1) {
@@ -800,7 +801,7 @@ public void checkDuplicateImportContacts(String communityName, String typeName) 
     		System.out.println("No Duplicate items are imported as only only one result is showing");
     		Assert.assertTrue(true);
     }else System.out.println("Duplicate items are also imported");
-   // Assert.assertTrue(false);
+
     
     }
 public void checkImportContacts(String communityName, String typeName) throws InterruptedException {
@@ -829,7 +830,7 @@ public void checkImportContactsAsDiffAdmin(String communityName, String typeName
     Thread.sleep(2000);
     //click(nameCheckbox,"name check box");
     //click(SaveBtn,"save button");
-    Thread.sleep(5000);
+    Thread.sleep(8000);
     type(nameTextBox,typeName,"duplicate");
     if(csvFileResult.isDisplayed()) {
     	Assert.assertTrue(true);

@@ -102,6 +102,9 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 	//WebElement  date;
 	
 	@FindBy(xpath = "//body[1]/div[3]/div[3]/table[1]/tbody[1]/tr[4]/td[4]")
+	WebElement  edit;
+	
+	@FindBy(xpath = "//body[1]/div[3]/div[3]/table[1]/tbody[1]/tr[4]/td[4]")
 	WebElement  enddate;
 
 	@FindBy(xpath = "//a[@title='Community Dashboard']")
@@ -145,6 +148,21 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 		picture();
 		
 	}
+	public void RejectAd(String status) throws Exception {
+		Thread.sleep(4000);
+		selectByVisibleText(statusSearch, status, "waiting for approval");
+		click(btnSearch, "Search");
+		Thread.sleep(6000);
+		
+		click(action, "action");
+		Thread.sleep(4000);
+		//waitForElementToPresent(adStartDate);
+//		selectStartAndEndDates();
+		click(reject, "Reject");
+		//Thread.sleep(4000);
+		picture();
+		
+	}
 	
 	public void approveAd (String planName,String AdImage,String LinkUrl) throws Exception {
 		Thread.sleep(4000);
@@ -153,9 +171,9 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 		selectUsingIndex(statusSearch, 1, "Status");
 		click(btnSearch, "Search");
 		Thread.sleep(6000);
-		String s = status.getText();
-		if (s.equalsIgnoreCase("WAITING FOR APPROVAL")) {
-			click(action, "action");
+		//String s = status.getText();
+		
+			click(edit, "action");
 			//click(date, "Select Date");
 			//waitForElementToPresent(adStartDatecalendar);
 			//Thread.sleep(1000);
@@ -172,7 +190,7 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 		}
 			//Advertisement details saved.
 		
-	}
+	
 		
 	public void changeDateAd(String planName,String adImage,String linkUrl) throws Exception {
        Thread.sleep(2000);

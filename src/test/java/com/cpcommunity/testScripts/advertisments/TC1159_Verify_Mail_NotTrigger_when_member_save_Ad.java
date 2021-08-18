@@ -40,4 +40,5 @@ public class TC1159_Verify_Mail_NotTrigger_when_member_save_Ad extends BaseTest 
 		
 		quit();
 }
+	
 }

@@ -18,7 +18,7 @@ public class ResourcesPage  extends BasePage{
 	@Override
 	protected void getPageScreenSot() {
 		// TODO Auto-generated method stub
-		updateClass(pageheader, "");
+		//updateClass(pageheader, "");
 		aShot();
 	}
 	@FindBy(xpath = "//strong[normalize-space()='Resources']")
@@ -35,7 +35,14 @@ public class ResourcesPage  extends BasePage{
 	WebElement YesProceed;
 	@FindBy(xpath = "//div[@class='bootbox-body']")
 	WebElement Message;
-	
+	@FindBy(xpath = "//div[@class='post-box']//div[2]//div[1]//div[1]//div[1]//div[1]//div[1]//div[1]//div[2]//button[1]")
+    WebElement leaveGroup3;
+	@FindBy(xpath="//span[normalize-space()='Groups']")
+    WebElement group ;
+	@FindBy(xpath = "//span[normalize-space()='Advertisements']")
+	WebElement advertisement;
+	@FindBy(xpath = "//div[@ng-show='PromotionPlans.length']//div[@class='row']")
+	WebElement adPlans;
 	
 	public void checkResources1() {
 		waitForElementToPresent(resource1);
@@ -46,7 +53,8 @@ public class ResourcesPage  extends BasePage{
 			Assert.assertTrue(false);
 		}
 	}
-	public void checkResources2() {
+	public void checkResources2() throws InterruptedException {
+		Thread.sleep(8000);
 		waitForElementToPresent(resource2);
 		if(this.resource2.isDisplayed()) {
 			Assert.assertTrue(true);
@@ -54,6 +62,11 @@ public class ResourcesPage  extends BasePage{
 		else {
 			Assert.assertTrue(false);
 		}
+		 Thread.sleep(2000);
+		    click(group,"Groups");
+		    Thread.sleep(5000);
+		    waitForElementToPresent(leaveGroup3);
+		    click(leaveGroup3, "Leave3");
 	}
 	
 	
@@ -66,11 +79,23 @@ public void checkResourceNotDisplaying() throws InterruptedException {
 		System.out.println(message);
 		takeScreenshotByShutterBug(YesProceed, "Yes Proceed");
 		click(YesProceed, "Yes Proceed");
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		
 	}
 	
+public void checkInactiveAdvertisementNotPresent() throws InterruptedException {
+	//waitForElementToPresent(BDMAIcomm);
+	//click(BDMAIcomm, "BDMAI");
+	//clickElementByJavaScript(BDMAIcomm);
+
+	scrollToElementAndClick(advertisement);
+	waitForElementToPresent(adPlans);
+	String Allplans=this.adPlans.getText();
+	String Notpresent="Test@1122";
+	System.out.println("Inactive Plan is not present");
+	Assert.assertNotSame(Notpresent, Allplans, "Inactive Plan is not present");
 	
+}
 	
 	
 	

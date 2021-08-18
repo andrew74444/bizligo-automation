@@ -47,6 +47,8 @@ public class OrganizationsPage extends BasePage {
 
 	@FindBy(xpath = "//*[@id='EntityStatusID']")
 	WebElement EntityStatusID;
+	@FindBy(xpath = "//select[@name='LocationStatus']")
+	WebElement locationStatusID;
 
 	@FindBy(xpath = "//*[@name='btnSave']")
 	WebElement btnSave;
@@ -54,6 +56,8 @@ public class OrganizationsPage extends BasePage {
 	WebElement toastMessage;
 	@FindBy(xpath = "//*[@class='fa fa-users']")
 	WebElement manageMembers;
+	@FindBy(xpath = "//*[@class='btn btn-warning btn-xs']")
+	WebElement editorganisation;
 
 	@FindBy(xpath = "//*[@id='firstname']")
 	WebElement firstname;
@@ -84,6 +88,8 @@ public class OrganizationsPage extends BasePage {
 
 	@FindBy(xpath = "//*[@class='fa fa-location-arrow']")
 	WebElement manageLocation;
+	@FindBy(xpath = "//button[@class='btn btn-info btn-xs']")
+	WebElement editLocation;
 
 	@FindBy(xpath = "//*[contains(text(),'Add Location')]")
 	WebElement addLocation;
@@ -96,6 +102,9 @@ public class OrganizationsPage extends BasePage {
 
 	@FindBy(xpath = "//*[@name='LocationAddress']")
 	WebElement locationAddress;
+	
+	@FindBy(xpath = "//input[@id='street_number']")
+	WebElement locationAddress1;
 
 	@FindBy(xpath = "//*[@name='LocationPhone']")
 	WebElement locationPhone;
@@ -117,6 +126,18 @@ public class OrganizationsPage extends BasePage {
 
 	@FindBy(xpath = "//*[@title='Approve this membership']")
 	WebElement approve;
+	
+	@FindBy(xpath = "//tbody/tr[1]/td[8]/button[1]/i[1]")
+	WebElement actionEdit;
+	
+	@FindBy(xpath = "//button[@class='btn btn-primary']")
+	WebElement update;
+	
+	@FindBy(xpath = "//select[@id='MemberStatus']")
+	WebElement memberStatus;
+	
+	@FindBy(xpath = "//select[@id='Memberlocation']")
+	WebElement memberlocation;
 	
 	
 	@FindBy(xpath = "//*[@class='modal-content']//*[contains(text(),' Yes, Proceed')]")
@@ -181,6 +202,45 @@ public class OrganizationsPage extends BasePage {
 		Thread.sleep(3000);
 		picture();
 	}
+	public void UpdateOrganization(String companyNameSearch, String name, String noOfEmp, String description, String Categories, String email,
+			String phone, String extension, String fax, String membershipPlan, String status)
+			throws Exception {
+		organizationSearch(companyNameSearch);
+		click(editorganisation, "Edit");
+		waitForElementToPresent(orgName);
+		Thread.sleep(3000);
+		waitForElementToPresent(orgName);
+		type(orgName, name, "org Name");
+		type(businessDescription, description, "business Description");
+		selectUsingIndex(numberOfEmployeesID, 3, "noOfEmp");
+		type(businessCategories, Categories, "business Categories");
+		Thread.sleep(2000);
+		
+		businessCategories.sendKeys(Keys.ENTER);
+//		robot.keyPress(KeyEvent.VK_ENTER);
+
+		//type(this.website, website, "website");
+		type(this.email, email, "email");
+		type(this.phone, phone, "phone");
+		type(this.extension, extension, "extension");
+		type(this.fax, fax, "fax");
+		
+		selectByVisibleText(this.membershipPlan, membershipPlan, "membership Plan");
+	
+		Thread.sleep(3000);
+		//String path = projectFloder(companyLogoImage);
+		//this.companyLogoImage.sendKeys(path);
+		// type(this.companyLogoImage, companyLogoImage, "company Logo Image");
+		
+		selectByVisibleText(this.EntityStatusID, status, "Status");
+	
+		click(btnSave, "Save");
+		waitForElementToPresent(toastMessage);
+		Thread.sleep(1000);
+		System.out.println(toastMessage.getText());
+		Thread.sleep(3000);
+		picture();
+	}
 
 	public void addMember(String companyNameSearch, String firstName, String LastName, String username, String password,
 			String confirmpassword, String location, String isContactPrimary) throws Exception {
@@ -220,6 +280,46 @@ public class OrganizationsPage extends BasePage {
 		waitForElementToPresent(showing1To1Of1Entries);
 		picture();
 	}
+	public void AddMember(String companyNameSearch, String firstName, String LastName, String username, String password,
+			String confirmpassword, String location, String ContactPrimary) throws Exception {
+		//companyNameSearch = companyNameSearch + getSystemCurrentDate() + getSystemCurrentMonth();
+		organizationSearch(companyNameSearch);
+        String date=getDateInDDMMMYYYY().replace(" ", "");
+		click(manageMembers, "manage Members");
+		waitForElementToPresent(addNew);
+		Thread.sleep(5000);
+
+		click(addNew, "Add");
+		waitForElementToPresent(firstname);
+		Thread.sleep(3000);
+		type(firstname, firstName, "last Name");
+		type(lastname, LastName, "last Name");
+		if (username.length() == 0) {
+			username = "andrew74444+a" + currentTime()+ "@gmail.com";
+		}
+		System.out.println(username);
+		
+		username=username+date+"@gmail.com";
+		type(this.username, username, "Email");
+		type(this.password, password, "password");
+		type(this.confirmpassword, confirmpassword, "confirm Password");
+
+		selectByVisibleText(this.addMemberlocation, location, "location");
+
+		System.out.println(getAllDropDownData(contactType));
+
+		//if (isContactPrimary.equalsIgnoreCase("Yes")) {
+			selectByVisibleText(this.contactType, ContactPrimary, "Primary Contact");
+		//} else {
+			//selectByVisibleText(this.contactType, " Secondary Contact ", "Secondary Contact");
+		//}
+		picture();
+		click(save, "save");
+		waitForElementToPresent(okBtn);
+		click(okBtn, "Ok Button");
+		//waitForElementToPresent(showing1To1Of1Entries);
+		picture();
+	}
 
 	public void addLocation(String companyNameSearch, String locationName, String locationType, String address,
 			String ph, String ext, String fax) throws Exception {
@@ -246,6 +346,78 @@ public class OrganizationsPage extends BasePage {
 		type(locationFax, fax, "fax");
 		click(savebtn, "Save");
 		waitForElementToPresent(locationPanel);
+		picture();
+	}
+	
+	public void AddLocation(String companyNameSearch, String locationName, String locationType, String address,
+			String ph, String ext, String fax) throws Exception {
+		//companyNameSearch = companyNameSearch + getSystemCurrentDate() + getSystemCurrentMonth();
+		
+		organizationSearch(companyNameSearch);
+		waitForElementToPresent(this.manageLocation);
+		Thread.sleep(5000);
+
+		click(manageLocation, "manageLocation");
+		waitForElementToPresent(this.addLocation);
+		click(addLocation, "addLocation");
+		waitForElementToPresent(this.locationName);
+		Thread.sleep(1000);
+		type(this.locationName, locationName, "location Name");
+		selectByVisibleText(this.locationType, locationType, locationType);
+		type(locationAddress, address, "Address");
+		Thread.sleep(7000);
+//		robot.keyPress(KeyEvent.VK_DOWN);
+		locationAddress.sendKeys(Keys.DOWN);
+		Thread.sleep(5000);
+		type(locationPhone, ph, "ph");
+		type(locationPhoneExtention, ext, "ext");
+		type(locationFax, fax, "fax");
+		click(savebtn, "Save");
+		waitForElementToPresent(locationPanel);
+		picture();
+	}
+	
+	public void updateStatusLocation(String companyNameSearch) throws Exception {
+		organizationSearch(companyNameSearch);
+		Thread.sleep(3000);
+		click(manageMembers, "manage Members");
+		waitForElementToPresent(actionEdit);
+		click(actionEdit, "Edit");
+		waitForElementToPresent(memberStatus);
+		selectUsingIndex(memberStatus, 1, "Member Status");
+		Thread.sleep(2000);
+		selectUsingIndex(memberlocation, 1, "Location");
+		Thread.sleep(2000);
+		click(update, "Update");
+		
+		
+	}
+	public void UpdateLocation(String companyNameSearch, String locationName, String locationType, String address,String street,String status,
+			String ph, String ext, String fax) throws Exception {
+		companyNameSearch = companyNameSearch ;
+		
+		organizationSearch(companyNameSearch);
+		waitForElementToPresent(this.manageLocation);
+		Thread.sleep(5000);
+
+		click(manageLocation, "manageLocation");
+		waitForElementToPresent(this.editLocation);
+		click(editLocation, "editLocation");
+		waitForElementToPresent(this.locationName);
+		Thread.sleep(1000);
+		type(this.locationName, locationName, "location Name");
+		selectByVisibleText(this.locationType, locationType, locationType);
+		type(locationAddress, address, "Address");
+		Thread.sleep(7000);
+//		robot.keyPress(KeyEvent.VK_DOWN);
+		locationAddress.sendKeys(Keys.DOWN);
+		Thread.sleep(5000);
+		type(locationPhone, ph, "ph");
+		type(locationPhoneExtention, ext, "ext");
+		type(locationFax, fax, "fax");
+		type(locationAddress1, street, "Street Address");
+		selectByVisibleText(locationStatusID, status, "Location status");
+		click(update, "Upate");
 		picture();
 	}
 
@@ -277,6 +449,17 @@ public class OrganizationsPage extends BasePage {
 		picture();
 		// this.organizationSearch(orgName);
 
+	}
+	
+	public void FieldValidation(String name, String noOfEmp, String description, String Categories) throws InterruptedException {
+		click(addNew, "add New Organizations");
+		waitForElementToPresent(orgName);
+		type(orgName, name, "org Name");
+		type(businessDescription, description, "business Description");
+		selectByVisibleText(numberOfEmployeesID, noOfEmp, "noOfEmp");
+		type(businessCategories, Categories, "business Categories");
+		Thread.sleep(2000);
+		
 	}
 
 	// https://gwcuat.bizligo.com/event/details/2020-IBA-Golf-Outing/6635

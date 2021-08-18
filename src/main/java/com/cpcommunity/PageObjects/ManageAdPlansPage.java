@@ -70,7 +70,7 @@ public class ManageAdPlansPage extends BasePage {
 
 	@FindBy(xpath = "//body/p")
 	WebElement enterTextInframe;
-	
+	//body[1]/div[1]/div[1]/div[3]/div[1]/div[4]/div[1]/div[2]/div[1]/div[1]/div[2]/form[1]/div[9]/div[1]/label[1]/span[1]
 	@FindBy(xpath = "//body[1]/div[1]/div[1]/div[3]/div[1]/div[4]/div[1]/div[2]/div[1]/div[1]/div[2]/form[1]/div[9]/div[1]/label[1]/span[1]")
 	WebElement inactiveStatus;
 	@FindBy(xpath = "//small[normalize-space()='Plan name is Required']")
@@ -122,6 +122,7 @@ public class ManageAdPlansPage extends BasePage {
 	   //scrollIntoView(btnAddNewPlan);
 	   click(btnAddNewPlan, "Add New Plan");
 		waitForElementToPresent(this.name);
+		name1=name1+ "" + getDateInDDMMMYYYY();
 		type(this.name, name, "name");
 		waitForElementToPresent(namefielderrors);
 		System.out.println("Plan name Should be minimum 2 characters and maximum 75 characters");
@@ -159,6 +160,7 @@ public class ManageAdPlansPage extends BasePage {
 		//int T2 = getString(str, 3);
 		click(btnAddNewPlan, "Add New Plan");
 		waitForElementToPresent(this.name);
+		name=name+ "" + getDateInDDMMMYYYY();
 		type(this.name, name, "name");
 		type(this.price, price, "price");
 		driver.switchTo().frame(0);
@@ -225,6 +227,7 @@ public class ManageAdPlansPage extends BasePage {
 		//int T2 = getString(str, 3);
 		click(btnAddNewPlan, "Add New Plan");
 		waitForElementToPresent(this.name);
+		name=name+ "" + getDateInDDMMMYYYY();
 		type(this.name, name, "name");
 		type(this.price, price, "price");
 		driver.switchTo().frame(0);
@@ -389,6 +392,26 @@ public class ManageAdPlansPage extends BasePage {
 	   Thread.sleep(3000);
 	   scrollUpVertically();
 	   waitForElementToPresent(plansearch);
+	   plan=plan+ "" + getDateInDDMMMYYYY();
+	   type(plansearch, plan, "Plan Name");
+	   Thread.sleep(4000);
+	   click(search, "Search");
+	   Thread.sleep(6000);
+	   waitForElementToPresent(editplan);
+	   click(editplan, "Edit");
+	   scrollDownVertically();
+	   Thread.sleep(2000);
+	   click(inactiveStatus, "Satus");
+	   Thread.sleep(2000);
+	   click(save, "Save");
+	   //AssertionHelper.verifyText(toastemessage.getText(), "Advertisement plan details saved.");
+		
+	   
+   }public void Inactivate(String plan) throws InterruptedException {
+	   Thread.sleep(3000);
+	   scrollUpVertically();
+	   waitForElementToPresent(plansearch);
+	   //plan=plan+ "" + getDateInDDMMMYYYY();
 	   type(plansearch, plan, "Plan Name");
 	   Thread.sleep(4000);
 	   click(search, "Search");
@@ -404,6 +427,27 @@ public class ManageAdPlansPage extends BasePage {
 		
 	   
    }
+   public void Activate(String plan) throws InterruptedException {
+	   Thread.sleep(3000);
+	   scrollUpVertically();
+	   waitForElementToPresent(plansearch);
+	   //plan=plan+ "" + getDateInDDMMMYYYY();
+	   type(plansearch, plan, "Plan Name");
+	   Thread.sleep(4000);
+	   click(search, "Search");
+	   Thread.sleep(6000);
+	   waitForElementToPresent(editplan);
+	   click(editplan, "Edit");
+	   scrollDownVertically();
+	   Thread.sleep(2000);
+	   click(inactiveStatus, "Satus");
+	   Thread.sleep(2000);
+	   click(save, "Save");
+	   //AssertionHelper.verifyText(toastemessage.getText(), "Advertisement plan details saved.");
+		
+	   
+   }
+   
    public void IsPlanInactive(String plan) throws InterruptedException {
 	   scrollUpVertically();
 	   waitForElementToPresent(plansearch);
@@ -462,6 +506,7 @@ public class ManageAdPlansPage extends BasePage {
 		//int T2 = getString(str, 3);
 		click(btnAddNewPlan, "Add New Plan");
 		waitForElementToPresent(this.name);
+		name=name+ "" + getDateInDDMMMYYYY();
 		type(this.name, name, "name");
 		type(this.price, price, "price");
 		driver.switchTo().frame(0);

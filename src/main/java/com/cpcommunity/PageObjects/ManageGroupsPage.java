@@ -40,12 +40,15 @@ public class ManageGroupsPage extends BasePage{
 	@FindBy(xpath="//input[@placeholder='Search by Group Name']")
 	WebElement SearchbyGroupName;
 	
-
+	@FindBy(xpath="//a[@class='dropdown-toggle']//img")
+	WebElement manageedit;
+	
 	@FindBy(xpath="(//*[contains(text(),'Search')])[2]")
 	WebElement Search;
 
 	@FindBy(xpath="//i[@class='fa fa-pencil-square-o']")
 	WebElement editGroup1;
+	
 	@FindBy(xpath="//div[@class='btn-group pull-right post_menu open']//span[contains(text(),'Edit Group')]")
 	WebElement editGroup;
 	
@@ -75,7 +78,7 @@ public class ManageGroupsPage extends BasePage{
 		return (Create_UpdateGroupPage) openPage(Create_UpdateGroupPage.class);
 //		new Create_UpdateGroupPage(driver, );
 	}
-public Create_UpdateGroupPage navigateToEditGroupPage(String groupName) throws Exception {
+      public Create_UpdateGroupPage navigateToEditGroupPage(String groupName) throws Exception {
 		
 		type(SearchbyGroupName, groupName,"Search by Group Name");   
 		 
@@ -125,4 +128,13 @@ public Create_UpdateGroupPage navigateToEditGroupPage(String groupName) throws E
 		
 	}
 
+	public Create_UpdateGroupPage gotoUpdategroup() throws InterruptedException {
+		
+		waitForElementToPresent(manageedit);
+		click(manageedit, "Manage Edit");
+		Thread.sleep(2000);
+		click(editGroup1, "Edit");
+		return (Create_UpdateGroupPage) openPage(Create_UpdateGroupPage.class);
+		
+	}
 }

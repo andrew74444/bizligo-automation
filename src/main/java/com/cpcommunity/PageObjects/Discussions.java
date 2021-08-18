@@ -1,6 +1,9 @@
 package com.cpcommunity.PageObjects;
 
 import java.awt.event.KeyEvent;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,6 +12,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 
 public class Discussions extends BasePage {
 
@@ -20,7 +24,7 @@ public class Discussions extends BasePage {
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 
-		return ExpectedConditions.visibilityOf(discussions);
+		return ExpectedConditions.visibilityOf(searchDiscussion);
 	}
 
 	// public ZohoCRMPage gotoCRM() {
@@ -34,8 +38,14 @@ public class Discussions extends BasePage {
 	@FindBy(xpath="//*[@class='post-date ng-binding']")
 	WebElement postDate;
 	
+	@FindBy(xpath="//body[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]")
+	WebElement topmostPopular;
+	
 	@FindBy(xpath = "//*[@class='header active']")
 	WebElement header;
+	
+	@FindBy(xpath = "//a[@class='edit-page ng-scope']")
+	WebElement manageBtn;
 
 	@FindBy(xpath = "//*[@id='header']")
 	WebElement groupPageHeader;
@@ -48,7 +58,7 @@ public class Discussions extends BasePage {
 	@FindBy(tagName = "body")
 	WebElement Postfield;
 
-	@FindBy(xpath = "(//*[contains(text(),'Discussions')])[1]")
+	@FindBy(xpath = "//strong[normalize-space()='Discussions']")
 	WebElement discussions;
 
 	@FindBy(xpath = "//input[@placeholder='Search Discussion...']")
@@ -95,7 +105,10 @@ public class Discussions extends BasePage {
 
 	@FindBy(xpath = "(//*[@class='btn btn-default']/i)[1]")
 	WebElement SendCommentBtn;
-
+	
+	@FindBy(xpath = "//div[@class='panel panel-default text-left']//div//div[2]//div[6]//div[1]//div[1]//div[2]//div[1]//div[2]//button[1]//i[1]")
+	WebElement SendC;
+	
 	@FindBy(xpath = "(//*[@class='post-box discussions-panel ng-scope'])[1]//*[@class='pull-left like-section']//span[2]")
 	WebElement NoOfPostLikes;
 
@@ -140,10 +153,63 @@ public class Discussions extends BasePage {
 	@FindBy(xpath = "//*[contains(text(),'Create New Post')]")
 	WebElement	createNewPost;
 	
-	//*[@id='discussionTitle']
+	@FindBy(xpath = "//div[@ng-if=\"appData.CurrentModuleName == 'discussions' && data.IsMostPopularDiscussionsWidgetConfigured.IsEnabled\"]//div[@class='panel panel-default text-left']")
+	WebElement	MostPopularDiscussion;
 	
+	@FindBy(xpath = "//span[@ng-if='data.IsMostPopularDiscussionsWidgetConfigured.CommunityWidgetEditedName.length > 1']")
+	List<WebElement> popularDiscussion;
+
+	@FindBy(xpath = "//span[@ng-if='data.IsYourSubscribedDiscussionsWidgetConfigured.CommunityWidgetEditedName.length > 1']")
+	List<WebElement> Likeddiscussion;
 	
+	@FindBy(xpath = "//span[contains(text(),'No discussions happened so far. Start a discussion')]")
+	WebElement	noDiscussionStarted;
+	@FindBy(xpath = "//button[normalize-space()='Yes, Proceed']")
+	WebElement yesProceed;
+	@FindBy(xpath = "//span[contains(text(),'You haven’t subscribed to any discussion yet')]")
+	WebElement	noSubcription;
 	
+	@FindBy(xpath = "//div[@class='row attendeeclass']")
+	WebElement	guestSubcription;
+	
+	@FindBy(xpath = "//span[@class='ng-binding ng-scope']")
+	WebElement populardiscussion;
+	
+	@FindBy(css = "a[ng-click='data.redirectoAdvertisements()'] span[class='ng-binding ng-scope']")
+	WebElement advertisement1;
+	
+	@FindBy(xpath = "//div[@ng-repeat='MostcommentsInfo in data.MostCommentedDiscussionsInfo']")
+	List<WebElement> NumDiscussion;
+	
+	@FindBy(xpath = "//div[@ng-repeat='SubscribedInfo in data.MostSubscribedDiscussions']")
+	List<WebElement> NumSubscribeDiscussion;
+	
+	@FindBy(xpath = "//body/div[@class='ng-scope']/div[@id='appController']/div/div[@class='community-cont']/div[@class='container data-container']/div[@class='row']/div[@id='MainContainer']/div[@class='ng-scope']/div[@id='discussionController']/div[@ng-hide='appData.IsPrivate']/div[@class='panel panel-default text-left']/div/div[2]/div[1]/div[1]")
+	WebElement	recentDiscussion;
+	@FindBy(xpath = "//ng-repeat[7]//div[1]//div[1]//div[1]//div[3]//a[1]")
+	WebElement selectPlan2;
+	@FindBy(xpath = "//button[@class='btn btn-danger padding-space']")
+	WebElement cancel;
+	
+	@FindBy(xpath = "//span[@class='ng-binding ng-scope']")
+	WebElement advertisement;
+	@FindBy(xpath = "/html[1]/body[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[2]/div[3]/div[1]/div[1]/div[1]/div[1]/h3[1]/a[1]/strong[1]/span[1]")
+	WebElement advertisementt;
+	@FindBy(xpath = "//div[@ng-show='PromotionPlans.length']//div[@class='row']")
+	WebElement adPlans;
+	@FindBy(xpath = "//ng-repeat[2]//div[1]//div[1]//div[1]//div[3]//a[1]")
+	WebElement selectPlans;
+	@FindBy(xpath = "//button[normalize-space()='Next']")
+	WebElement next;
+	@FindBy(xpath = "//input[@id='AdName']")
+	WebElement adname;
+	@FindBy(xpath = "//td[normalize-space()='17']")
+	WebElement dateselect;
+	@FindBy(xpath = "//input[@id='AdStartDate']")
+	WebElement date;
+	@FindBy(xpath = "//input[@id='AdImageId']")
+	WebElement choosefile;
+	//body/div[@class='ng-scope']/div[@id='appController']/div/div[@class='community-cont']/div[@class='container data-container']/div[@class='row']/div[@id='MainContainer']/div[@class='ng-scope']/div[@id='discussionController']/div[@ng-hide='appData.IsPrivate']/div[@class='panel panel-default text-left']/div/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]
 	
 	// String TCID;
 	// //public HomePage(WebDriver driver,ExtentTest test) throws IOException {
@@ -310,6 +376,15 @@ public class Discussions extends BasePage {
 //		noResultsFound.isDisplayed();
 	}
 
+	public void addComment(String Disccusion, String postComment) throws InterruptedException {
+		type(searchDiscussion, Disccusion, "searchDiscussion");
+		click(Searchbtn, "Search");
+		Thread.sleep(6000);
+		type(FirstPostComment, postComment, "First Post Comment");
+		click(SendC, "Send Comment");
+		Thread.sleep(10000);
+	}
+	
 	public void CheckNonMemberIsNotAbleToPostLikeComment() throws Exception {
 		
 		
@@ -438,7 +513,134 @@ public class Discussions extends BasePage {
 		return (NotificationsPage) openPage(NotificationsPage.class);
 	}
 	
+	public void CheckPopularDiscussion() {
+		waitForElementToPresent(MostPopularDiscussion);
+		if(MostPopularDiscussion.isDisplayed()) {
+			Assert.assertTrue(true);
+		}
+		else {
+			Assert.assertTrue(false);
+		}
+	}
 	
-	
+    public void NoDiscussionMessage() {
+    	waitForElementToPresent(noDiscussionStarted);
+    	String msg=this.noDiscussionStarted.getText();
+    	System.out.println(msg);
+    	if(noDiscussionStarted.isDisplayed()) {
+    		Assert.assertTrue(true);
+		}
+		else {
+			Assert.assertTrue(false);
+    	}
+    }
+    
+    public void NoSubscriptionMessage() {
+    	waitForElementToPresent(noSubcription);
+    	String msg=this.noSubcription.getText();
+    	System.out.println(msg);
+    	if(noSubcription.isDisplayed()) {
+    		Assert.assertTrue(true);
+		}
+		else {
+			Assert.assertTrue(false);
+    	}
+    }
+    
+    public void GuestSubscriptionMessage() {
+    	waitForElementToPresent(guestSubcription);
+    	String msg=this.guestSubcription.getText();
+    	System.out.println(msg);
+    	if(guestSubcription.isDisplayed()) {
+    		Assert.assertTrue(true);
+		}
+		else {
+			Assert.assertTrue(false);
+    	}
+    }
+    
+    public void checkNumbersOfDiscussion() throws InterruptedException {
+     
+    	waitForElementToPresent(NumDiscussion);
+    	int DiscussionCount=NumDiscussion.size();
+    	System.out.println("Number of Discussion Displaying is: " +DiscussionCount);
+    	Assert.assertEquals(DiscussionCount, 5);
+    }
 
+    public void checkNumbersOfSubscribeDiscussion() throws InterruptedException {
+        
+    	waitForElementToPresent(NumSubscribeDiscussion);
+    	int DiscussionCount=NumSubscribeDiscussion.size();
+    	System.out.println("Number of Subscribe Discussion Displaying is: " +DiscussionCount);
+    	Assert.assertEquals(DiscussionCount, 5);
+    }
+	private void waitForElementToPresent(List<WebElement> noDiscussion2) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void recentPost() throws InterruptedException {
+		waitForElementToPresent(topmostPopular);
+		String d =topmostPopular.getText();
+		System.out.println(d);
+		
+		Thread.sleep(2000);
+			System.out.println("Most Recent Discussion is displaying");
+		
+	}
+	public void VerifyDiscussionNotDisplaying() throws InterruptedException {
+		Thread.sleep(500);
+		Assert.assertEquals(0, popularDiscussion.size());
+		Assert.assertEquals(0, Likeddiscussion.size());
+		System.out.println("Popular Discussion and Liked Discussion are Not Displaying");
+		
+	}
+	
+	public ManageCommunityPage gotoDashboardpage() {
+		waitForElementToPresent(manageBtn);
+		click(manageBtn, "Manage Button");
+		return (ManageCommunityPage) openPage(ManageCommunityPage.class);		
+	}
+	
+	public void verifyDiscussiontitleChanged() throws InterruptedException {
+		waitForElementToPresent(populardiscussion);
+		String changead=this.populardiscussion.getText();
+		System.out.println(changead);
+	    String Expected="LATEST DISCUSSION";
+	    Assert.assertEquals(changead, Expected);
+	    
+	}
+	public void checkAdPresent() throws InterruptedException {
+		
+		waitForElementToPresent(advertisement1);
+		click(advertisement1, "Advertisement");
+		waitForElementToPresent(adPlans);
+		String Allplans=this.adPlans.getText();
+    	String present="Goldengold";
+    	System.out.println(" Plan is  present");
+		//Assert.assertEquals(Allplans, present);
+	}
+	public void clickCancel(String AdName, String  path) throws InterruptedException {
+		
+		//clickElementByJavaScript(BDMAIcomm);
+		Thread.sleep(5000);
+		click(advertisementt, "Advertisement");
+		
+		//click(advertisement, "Advertisement");
+		waitForElementToPresent(selectPlans);
+		click(selectPlan2, "Select TestSilver Plan");
+		waitForElementToPresent(next);
+		click(next, "Next");
+		waitForElementToPresent(adname);
+		type(adname, AdName, "Advertisement name");
+		click(date, "Select Date");
+		waitForElementToPresent(date);
+		click(dateselect, "Date 17 july");
+		waitForElementToPresent(choosefile);
+		type(choosefile, path, "Image Path");
+		scrollDownVertically();
+		click(cancel, "Cancel");
+		waitForElementToPresent(yesProceed);
+		click(yesProceed, "Yes Proceed");
+		
+	}
 }

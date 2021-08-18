@@ -117,9 +117,10 @@ public class LoginPage extends BasePage {
 		return (ForgotPasswordPage) openPage(ForgotPasswordPage.class);
 
 	}
-	public TenantAdminDashboardPage loginToTADashboard(String enterEmailAddress, String  password)
-	 {
+	public TenantAdminDashboardPage loginToTADashboard(String enterEmailAddress, String  password) throws InterruptedException
+	 {   
 		this.login(enterEmailAddress, password);
+		Thread.sleep(2000);
 		return (TenantAdminDashboardPage) openPage(TenantAdminDashboardPage.class);
 		 
 	 }
@@ -260,7 +261,7 @@ public class LoginPage extends BasePage {
 	}
 	public MyDashboardPage loginToMemberdashboard(String enterEmailAddress, String password) throws InterruptedException {
         this.login(enterEmailAddress, password);
-        Thread.sleep(3000);
+        Thread.sleep(5000);
         return (MyDashboardPage) openPage(MyDashboardPage.class);
 //        new MyDashboardPage(driver, );        
 	}

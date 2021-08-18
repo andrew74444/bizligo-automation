@@ -23,7 +23,7 @@ public class GlobalCommunitesPage extends BasePage {
 	protected ExpectedCondition getPageLoadCondition() {
 
 		// TODO Auto-generated method stub
-		return ExpectedConditions.visibilityOf(CreateCommunityBtn);
+		return ExpectedConditions.visibilityOf(Communities);
 	}
 
 	@FindBy(xpath = "//*[@id='global-nav']")
@@ -44,7 +44,9 @@ public class GlobalCommunitesPage extends BasePage {
 	// }
 	//
 	// return (ZohoCRMPage) openPage(ZohoCRMPage.class);
-
+	@FindBy(xpath = "//h2[normalize-space()='Global Communities']")
+	WebElement Communities;
+	
 	@FindBy(xpath = "//button[@id='CreateCommunity']")
 	WebElement CreateCommunityBtn;
 
@@ -109,7 +111,8 @@ public class GlobalCommunitesPage extends BasePage {
 	
 	@FindBy(xpath = "//p[@class='ng-binding ng-scope']")
 	WebElement msgIfNotMember;
-	
+	@FindBy(xpath="//div[@class='communities-box ng-scope col-lg-4 col-md-12 col-sm-12']//h4")
+	WebElement bizligo;
 	@FindBy(xpath="//a[normalize-space()='BizLigo1']")
 	WebElement bizligo1;
 	@FindBy(xpath="//a[normalize-space()='Animal Lovers']")
@@ -124,31 +127,30 @@ public class GlobalCommunitesPage extends BasePage {
 	
 	@FindBy(xpath="//input[@placeholder='Search by Job Title']")
 	WebElement searchByJobTitle;
-	
 	@FindBy(xpath="//select[@id='JobTypeID']")
 	WebElement searchByJobType;
-	
 	@FindBy(xpath="//input[@placeholder='Search by Location']")
 	WebElement location;
-	
 	@FindBy(xpath="//button[normalize-space()='Search']")
 	WebElement searchCareer;
-	
 	@FindBy(xpath = "//a[normalize-space()='View and Apply']")
 	WebElement ViewandApply;
-	
 	@FindBy(xpath = "//button[normalize-space()='Apply']")
 	WebElement Apply;
 	@FindBy(xpath = "//a[@title='Manage Community']")
 	WebElement managetocommunity;
-	
 	@FindBy(xpath = "//div[@class='swal-text']")
 	WebElement msgCannotApply;
-	
 	@FindBy(xpath = "//div[@class='communities-box ng-scope col-lg-4 col-md-12 col-sm-12']//h4")
 	WebElement BDMAIcomm;
-	@FindBy(xpath = "//span[normalize-space()='Advertisements']")
+	@FindBy(xpath = "//div[@class='col-sm-12 cm-group-name']")
+	WebElement BDMAIcomm1;
+	@FindBy(xpath = "//div[@class='communities-box ng-scope col-lg-4 col-md-12 col-sm-12']//div[@class='col-sm-12 cm-group-name']//h4")
+	WebElement Testingcomm;
+	@FindBy(xpath = "//span[@class='ng-binding ng-scope']")
 	WebElement advertisement;
+	@FindBy(xpath = "/html[1]/body[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[2]/div[3]/div[1]/div[1]/div[1]/div[1]/h3[1]/a[1]/strong[1]/span[1]")
+	WebElement advertisementt;
 	@FindBy(xpath = "//div[@ng-show='PromotionPlans.length']//div[@class='row']")
 	WebElement adPlans;
 	@FindBy(xpath = "//ng-repeat[2]//div[1]//div[1]//div[1]//div[3]//a[1]")
@@ -167,29 +169,60 @@ public class GlobalCommunitesPage extends BasePage {
 	WebElement save;
 	@FindBy(xpath = "//span[@title='Toggle dropdown menu']")
 	WebElement Toggledropdownmenu;
-	
 	@FindBy(xpath = "//a[normalize-space()='My Ecosystem']")
 	WebElement ecosystem;
 	@FindBy(xpath = "//ng-repeat[7]//div[1]//div[1]//div[1]//div[3]//a[1]")
 	WebElement selectPlan2;
-	
 	@FindBy(xpath = "//button[@class='btn btn-danger padding-space']")
 	WebElement cancel;
-	
 	@FindBy(xpath = "//button[normalize-space()='Yes, Proceed']")
 	WebElement yesProceed;
-	
 	@FindBy(xpath = "(((//*[@class='col-md-3 left_col']//img[@src='/Content/Images/adprommenu.png'])/..)/..)")
 	WebElement advertisements;
     @FindBy(xpath = "//img[@src='/Content/Images/setting-icon.png']/../..")
 	WebElement manage;
     @FindBy(xpath = "//a[contains(text(),'Manage Plans')]")
 	WebElement managePlans;
+
     @FindBy(xpath = "//h2[@id=\"swal2-title\"]")
 	WebElement successJoinMsg;
 	
 
 	
+    @FindBy(xpath = "//a[normalize-space()='Discussions']")
+  	WebElement discussion;
+    @FindBy(xpath = "//span[normalize-space()='Resources']")
+  	WebElement resources;
+    @FindBy(xpath = "//button[@ng-click='appData.closeModel()']")
+	WebElement Cancel1;
+    @FindBy(xpath = "//span[normalize-space()='Members']")
+  	WebElement members;
+    @FindBy(xpath = "//span[normalize-space()='Events']")
+  	WebElement events;
+    @FindBy(xpath = "//a[normalize-space()='Tenant Admin Module']")
+  	WebElement TAmodule;
+    @FindBy(xpath = "//div[@class='col-sm-12 cm-group-name']")
+  	WebElement bizligo1manage;
+    
+    public TenantAdminDashboardPage navigateToTenantAdminDashboardPage() throws Exception {
+    	click(Toggledropdownmenu,"Toggledropdownmenu");
+		Thread.sleep(2000);
+		waitForElementToPresent(TAmodule);
+		click(TAmodule,"Dashboard");		
+		return (TenantAdminDashboardPage) openPage(TenantAdminDashboardPage.class);
+		// CommunityDetailsPage(driver);
+	}
+    
+    public EventsPage navigatetoEventsPagee() throws InterruptedException {
+		waitForElementToPresent(bizligo);
+		click(bizligo,"Bizligo 1");
+		Thread.sleep(2000);
+		click(events, "Events");
+	return (EventsPage) openPage(EventsPage.class);	
+	}
+    
+    
+
 	public void checkTotalCommunities(Hashtable<String, String> data) throws Exception {
 		String name = "";
 		this.searchCommunity(data.get("Name"));
@@ -400,13 +433,25 @@ public class GlobalCommunitesPage extends BasePage {
 		this.searchCommunity(communityName);
 
 	}
+	public ResourcesPage gotoResource() throws InterruptedException {
+		waitForElementToPresent(BDMAIcomm);
+		click(BDMAIcomm, "BDMAI");
+		Thread.sleep(4000);
+		waitForElementToPresent(resources);
+		click(resources, "resources");
+		Thread.sleep(2000);
+		
+		return (ResourcesPage) openPage(ResourcesPage.class);
+	}
 	
 	public void checkInactiveAdvertisementNotPresent() throws InterruptedException {
 		waitForElementToPresent(BDMAIcomm);
 		click(BDMAIcomm, "BDMAI");
-		//clickElementByJavaScript(BDMAIcomm);
 		Thread.sleep(4000);
-		scrollToElementAndClick(advertisement);
+		waitForElementToPresent(resources);
+		click(resources, "resources");
+		Thread.sleep(4000);
+		click(advertisement,"Advertisement");
 		waitForElementToPresent(adPlans);
 		String Allplans=this.adPlans.getText();
     	String Notpresent="Test@1122";
@@ -418,7 +463,7 @@ public class GlobalCommunitesPage extends BasePage {
 		waitForElementToPresent(BDMAIcomm);
 		click(BDMAIcomm, "BDMAI");
 		scrollDownVertically();
-		waitForElementToPresent(advertisement);
+		//waitForElementToPresent(advertisement);
 		click(advertisement, "Advertisement");
 		waitForElementToPresent(adPlans);
 		String Allplans=this.adPlans.getText();
@@ -489,7 +534,7 @@ public class GlobalCommunitesPage extends BasePage {
 		searchName.clear();
 		type(searchName, CommunityName, "search");
 		click(searchBtn, "search Btn");
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		waitForElementToPresent(driver.findElement(By.xpath("//a[contains(text(),'" + CommunityName + "')]")));
 
 	}
@@ -497,21 +542,108 @@ public class GlobalCommunitesPage extends BasePage {
 	public SelectPlanPage navigatetoselectPlanPage() throws InterruptedException {
 		waitForElementToPresent(BDMAIcomm);
 		click(BDMAIcomm, "BDMAI");
-		Thread.sleep(2000);
-		scrollDownVertically();
-		clickElementByJavaScript(advertisement);
+		Thread.sleep(3000);
+		waitForElementToPresent(discussion);
+		click(discussion, "Discussion");
+		Thread.sleep(6000);
+		//clickElementByJavaScript(advertisement);
+		click(advertisementt, "Advertisement");
+		//scrollDownVertically();
+		//clickElementByJavaScript(advertisement);
 		//click(advertisement, "Advertisement");
 		
 	return (SelectPlanPage) openPage(SelectPlanPage.class);	
 }
+	 public SelectPlanPage NavigatetoselectPlanPage(String CommunityName) throws InterruptedException {
+		   searchName.clear();
+			type(searchName, CommunityName, "search");
+			click(searchBtn, "search Btn");
+			Thread.sleep(5000);	
+		 waitForElementToPresent(bizligo);
+			click(bizligo,"Bizligo 1");
+			Thread.sleep(5000);
+			waitForElementToPresent(discussion);
+			click(discussion, "Discussion");
+			Thread.sleep(5000);
+			//clickElementByJavaScript(advertisement);
+			click(advertisementt, "Advertisement");
+		return (SelectPlanPage) openPage(SelectPlanPage.class);	
+		}
+	public Discussions navigatetoDiscussionPage() throws InterruptedException {
+		waitForElementToPresent(BDMAIcomm);
+		click(BDMAIcomm, "BDMAI");	
+		click(discussion, "Discussion");
+	return (Discussions) openPage(Discussions.class);	
+	}
+	
+	public MembersPage navigatetoMembersPage() throws InterruptedException {
+		waitForElementToPresent(BDMAIcomm);
+		click(BDMAIcomm, "BDMAI");	
+		click(members, "Members");
+	return (MembersPage) openPage(MembersPage.class);	
+	}
+	public EventsPage gotoGuestEventPage() throws InterruptedException {
+		waitForElementToPresent(BDMAIcomm1);
+		click(BDMAIcomm1, "BDMAI");	
+		Thread.sleep(2000);
+		click(Cancel1, "Cancelbutton");
+		click(events, "Events");
+	return (EventsPage) openPage(EventsPage.class);	
+	}
+	public EventsPage gotoEventPage() throws InterruptedException {
+		waitForElementToPresent(BDMAIcomm1);
+		click(BDMAIcomm1, "BDMAI");	
+		Thread.sleep(5000);
+		click(events, "Events");
+	return (EventsPage) openPage(EventsPage.class);	
+	}
+	
+	public GlobalCareers gotoGuestCareerPage() throws InterruptedException {
+		waitForElementToPresent(BDMAIcomm1);
+		click(BDMAIcomm1, "BDMAI");	
+		Thread.sleep(2000);
+		click(Cancel1, "Cancelbutton");
+		click(careers, "Careers");
+	return (GlobalCareers) openPage(GlobalCareers.class);	
+	}
+	
+	public GlobalCareers gotoCareerPage() throws InterruptedException {
+		waitForElementToPresent(BDMAIcomm1);
+		click(BDMAIcomm1, "BDMAI");	
+		Thread.sleep(2000);
+		click(careers, "Careers");
+	return (GlobalCareers) openPage(GlobalCareers.class);	
+	}
+	
+	
+	public Discussions GotoGuestDiscussionPage() throws InterruptedException {
+	waitForElementToPresent(BDMAIcomm1);
+	click(BDMAIcomm1, "BDMAI");	
+	Thread.sleep(2000);
+	click(Cancel1, "Cancelbutton");
+	click(discussion, "Discussion");
+
+     return (Discussions) openPage(Discussions.class);	
+}
+	public Discussions GotoDiscussionPage() throws InterruptedException {
+		waitForElementToPresent(Testingcomm);
+		//click(Testingcomm, "18-02-2021 -testing");	
+		clickElementByJavaScript(Testingcomm);
+		click(discussion, "Discussion");
+       Thread.sleep(4000);
+	return (Discussions) openPage(Discussions.class);	
+}
+	
 	public CreateAdPage gotoCreateAdPage() throws InterruptedException {
 		waitForElementToPresent(BDMAIcomm);
 		click(BDMAIcomm, "BDMAI");
 		Thread.sleep(5000);
-		scrollDownVertically();
 		//scrollIntoViewAndClick(advertisement);
-		clickElementByJavaScript(advertisement);
-		//click(advertisement, "Advertisement");
+		waitForElementToPresent(discussion);
+		click(discussion, "Discussion");
+		Thread.sleep(5000);
+		//clickElementByJavaScript(advertisement);
+		click(advertisementt, "Advertisement");
 		waitForElementToPresent(selectPlans);
 		click(selectPlans, "Select TestSilver Plan");
 		waitForElementToPresent(next);
@@ -692,14 +824,12 @@ public class GlobalCommunitesPage extends BasePage {
 	}
 
 	public void checkInActivatedCommunityIsNotDisplayed(String communityName) throws Exception {
-		communityName = communityName+getDateInDDMMMYYYY();
+		//communityName = communityName+getDateInDDMMMYYYY();
 		type(searchName, communityName, "search");
 		Thread.sleep(10000);
 		click(searchBtn, "search Btn");
 		waitForElementToPresent(noCommunitiesfound);
-
 		Thread.sleep(2000);
-
 	}
 
 	public CommunityDetailsPage navigateToExpiredCommunityDetailsPage(String communityName) throws Exception {
@@ -717,6 +847,12 @@ public class GlobalCommunitesPage extends BasePage {
 		waitForElementToPresent(bizligo1);
 		click(bizligo1,"Bizligo 1");
 		return (Bizligo1CommunityPage) openPage(Bizligo1CommunityPage.class);
+	}
+	public CommunityDashboardPage goToMyCommunitydash() {
+		//click(viewAllBtn,"view all");
+		waitForElementToPresent(bizligo1manage);
+		click(bizligo1manage,"Bizligo 1");
+		return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
 	}
 	
 	public void checkResources() {

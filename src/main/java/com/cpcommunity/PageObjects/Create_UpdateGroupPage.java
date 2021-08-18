@@ -62,6 +62,12 @@ public class Create_UpdateGroupPage extends BasePage {
 	@FindBy(xpath = "//select[@id='GroupTypeID']")
 	WebElement groupType;
 	
+	@FindBy (xpath = "//span[normalize-space()='Groups']")
+    WebElement Groups;
+	
+	@FindBy(xpath = "//a[@class='site_title']")
+	WebElement BDMAIHomePage;
+	
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 		 
@@ -94,7 +100,18 @@ public class Create_UpdateGroupPage extends BasePage {
 		// new ManageGroupsPage(driver, );
 
 	}
+	public ManageGroupsPage editGroupName(String Name ) throws Exception {
 
+		picture();
+		Thread.sleep(15000);
+		type(this.Name, Name, "Name");
+		click(Save, "Save");
+		return (ManageGroupsPage) openPage(ManageGroupsPage.class);
+		// new ManageGroupsPage(driver, );
+
+	}
+
+	
 	public void fillGroupDetails(String name, String description, String city, String state, 
 			String groupType, String logoImagePath ) throws Exception {
 
@@ -132,7 +149,15 @@ public class Create_UpdateGroupPage extends BasePage {
 	    this.fillGroupDetails(Name, Description, City, State,  GroupType, logoImagePath);
 	    type(this.Name, newGroupName+" "+getDate(), "new Group Name");
 	    click(Save, "Save");
-	    return (GroupDetailsPage) openPage(GroupDetailsPage.class);
+	    return (GroupDetailsPage) openPage(GroupPage.class);
 	}
-
+	public GroupPage navigateToGroupPage() throws InterruptedException {
+		Thread.sleep(2000);
+		waitForElementToPresent(BDMAIHomePage);
+		click(BDMAIHomePage, "HomePage");
+		waitForElementToPresent(Groups);
+		click(Groups, "Groups");
+		
+		return (GroupPage) openPage(GroupPage.class);	
+	}
 }

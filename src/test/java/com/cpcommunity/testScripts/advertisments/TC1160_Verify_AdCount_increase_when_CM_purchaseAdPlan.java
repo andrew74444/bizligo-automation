@@ -29,6 +29,7 @@ public class TC1160_Verify_AdCount_increase_when_CM_purchaseAdPlan extends BaseT
 	HomePage home = new HomePage().open(data.get("tenantType"));
 	LoginPage login = home.clickOnLOGINBtn();
 	 MyDashboardPage MDP=login.loginToMemberdashboard(data.get("email"), data.get("password"));
+	 MDP.MyAdCount();
 	 GlobalCommunitesPage GCP=MDP.naviagtingToGlobalCommunities();
 	 GCP.searchCommunity(data.get("community"));
 	 SelectPlanPage SPP= GCP.navigatetoselectPlanPage();

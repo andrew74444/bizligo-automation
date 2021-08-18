@@ -93,7 +93,7 @@ public class CampaignTemplatePage extends BasePage{
 	public void edittemplate(String Description, String Name, String Subject, String Header, String Email, String Template) throws InterruptedException {
 		waitForElementToPresent(edit);
 		click(edit, "Edit");
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		waitForElementToPresent(description);
 		this.description.clear();
 		type(description, Description, "Description");
@@ -151,7 +151,7 @@ public class CampaignTemplatePage extends BasePage{
 	public void activate() throws InterruptedException {
 		waitForElementToPresent(edit);
 		click(edit, "Edit");
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		scrollDownVertically();
 		waitForElementToPresent(togglebutton);
 		if(inactive.isDisplayed()) {
