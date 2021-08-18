@@ -89,10 +89,24 @@ public class TenantAdminDashboardPage extends BasePage{
 	WebElement manageCommunities;
 	@FindBy(xpath = "//a[@title='Pending Communities']")
 	WebElement pendingCommunities;
+	@FindBy(xpath = "//*[@id=\"sidebar-menu\"]/div/ul/li[3]/a/i")
+	WebElement loyalty;
+	@FindBy(xpath = "//a[@href='/eventmanager/home/loyalities']")
+	WebElement LOYALTY;
+	@FindBy(xpath = "//a[@href='/eventmanager/home/loyaltymembership']")
+	WebElement loyaltyMembership;
 	
 
 	
-	
+	public LoyaltyPage navigateToLoyaltyPage() {
+		scrollDownVertically();
+		scrollToElement(loyalty);
+		click(loyalty, "loyalty");
+		waitForElementToPresent(LOYALTY);
+		click(LOYALTY, "LOYALTY");
+		return (LoyaltyPage) openPage(LoyaltyPage.class);
+		// new ManageJobs(driver);
+	}
 
 
 	

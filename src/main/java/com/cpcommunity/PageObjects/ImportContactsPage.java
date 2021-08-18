@@ -99,10 +99,11 @@ public class ImportContactsPage extends BasePage {
 	}
 	public ComposeCampaign navigateToComposeCampaignPage() throws Exception {
 		scrollDownVertically();
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		scrollToElement(manageCampaign);
+		waitForElementToPresent(manageCampaign);
 		click(manageCampaign, "manageCampaign");
-		Thread.sleep(500);
+		Thread.sleep(5000);
 		waitForElementToPresent(composeCampaign);
 		this.composeCampaign.click();	
 		//click(composeCampaign, "composeCampaign");

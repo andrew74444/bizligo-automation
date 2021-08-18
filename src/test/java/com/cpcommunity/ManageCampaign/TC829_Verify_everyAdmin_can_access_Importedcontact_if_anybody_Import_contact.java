@@ -40,17 +40,17 @@ public class TC829_Verify_everyAdmin_can_access_Importedcontact_if_anybody_Impor
 	logInfo("BizLigo Application Opened");
 	HomePage home1 = new HomePage().open(data.get("tenantType"));
 	LoginPage login1 = home1.clickOnLOGINBtn();
-	TenantAdminDashboardPage tadashoboard=login.loginToTADashboard(data.get("email"), data.get("password"));
+	TenantAdminDashboardPage tadashoboard=login1.loginToTADashboard(data.get("email1"), data.get("password1"));
 	ComposeCampaign composecp= tadashoboard.navigateToComposeCampaignPage();
 	composecp.checkImportContactsAsDiffAdmin(data.get("Community"),data.get("typeName"));
 	
 	}
-	@AfterMethod
+	/*@AfterMethod
 	public void tearDown() {
 		
 		logInfo("TC829 Test Completed");
 		
 		quit();
 		
-	}
+	}*/
 }

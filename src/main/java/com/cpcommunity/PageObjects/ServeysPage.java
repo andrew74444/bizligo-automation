@@ -195,7 +195,7 @@ public void eventNameNotVisibleInDropDown(String Title) {
 		String x=driver.switchTo().alert().getText();
 		System.out.println(x);
 		driver.switchTo().alert().accept();
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		click(action,"Action")	;
 		click(activeBtn,"Active");
 		driver.switchTo().alert().accept();
@@ -300,6 +300,7 @@ public void eventNameNotVisibleInDropDown(String Title) {
 		waitForElementToPresent(addBtn);
 		click(addBtn, "create new survey");
 		click(addQues,"Add Question");
+		Thread.sleep(1000);
 		//driver.switchTo().frame(0);
 		//type(description,"ABCD","description");
 		//driver.switchTo().defaultContent();
@@ -307,6 +308,10 @@ public void eventNameNotVisibleInDropDown(String Title) {
 		Thread.sleep(1000);
 		String x=driver.switchTo().alert().getText();
 		System.out.println(x);
+		if(x.equalsIgnoreCase("Error: All fields are required!")) {
+			Assert.assertTrue(true);
+			System.out.println("CA cannot submit empty survey form");
+					}else Assert.assertTrue(false);
 	}
 		
 		

@@ -93,6 +93,10 @@ public class EcoSystemPage extends BasePage {
 	WebElement myMatches;
 	@FindBy(xpath = "//a[contains(text(),'Home')]")
 	WebElement Home;
+	@FindBy(xpath="//a[@class=\"btn btn-default top-btn1 btn-sm dropdown-toggle\"]")
+	WebElement toggleDropDown;
+	@FindBy(xpath="//a[normalize-space()='My Events']")
+	WebElement myEvents;
 	
 	
 	
@@ -172,6 +176,14 @@ public class EcoSystemPage extends BasePage {
 		waitForElementToPresent(myEcosystem);
 		click(myEcosystem,"myEcosystem");
 		return (MyEcosystemPage) openPage(MyEcosystemPage.class);
+	}	
+	public MyEventsPage gotoMyEventsPage() throws Exception {
+		waitForElementToPresent(Toggledropdownmenu);
+		click(Toggledropdownmenu,"Toggledropdownmenu");
+		Thread.sleep(1000);
+		waitForElementToPresent(myEvents);
+		click(myEvents,"myEvents");
+		return (MyEventsPage) openPage(MyEventsPage.class);
 	}	
 	public void myMatches(String actual) throws Throwable
 		
@@ -312,6 +324,15 @@ public class EcoSystemPage extends BasePage {
 		return (UpcomingEventsPage) openPage(UpcomingEventsPage.class);
 		// new UpcomingEventsPage(driver, );
 	}
+	
+	public UpcomingEventsPage navigateToUpComingEvents() throws InterruptedException {
+		clickElementByJavaScript(globalEvents);
+		Thread.sleep(2000);
+		waitForElementToPresent(upcomingEvents);
+		click(upcomingEvents, "Upcoming Events");
+		return (UpcomingEventsPage) openPage(UpcomingEventsPage.class);
+		// new UpcomingEventsPage(driver, );
+	}
 
 	// public PastEventsPage ClickOnPastEvents()
 	// {
@@ -378,4 +399,12 @@ public class EcoSystemPage extends BasePage {
 	 myEndorsements.click();
 	 return (EndorsementPage) openPage(EndorsementPage.class);
 	 }
+	
+    public  MyEventsPage goToMyEventsPage() {
+		
+		click(toggleDropDown,"Toggle Drop Down Menu");
+		click(myEvents,"My events");
+		return (MyEventsPage) openPage(MyEventsPage.class);
+	}
+
 }

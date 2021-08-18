@@ -362,12 +362,7 @@ public class CommunityDashboardPage extends BasePage {
 		// new CommunityEvents(driver);
 	}
 	
-	//public EmailTemplatePage navigateToEmailTemplate() {
-
-		//click(emailtemplate, "Email Template");
-		//return (EmailTemplatePage) openPage(EmailTemplatePage.class);
-		// new CommunityEvents(driver);
-	//}
+	
 
 	// public CommunityPendingRequestsPage navigateToPendingInvitations(){
 	// ClickOn.button("manage", manage);
