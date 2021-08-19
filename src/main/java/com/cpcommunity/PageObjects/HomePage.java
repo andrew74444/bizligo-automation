@@ -60,6 +60,10 @@ public class HomePage extends BasePage {
 	WebElement contactUs;
 	@FindBy(xpath = "//h2[normalize-space()='Feature Not Available']")
 	WebElement featureNotAvailable;
+	@FindBy(xpath="//span[contains(text(),'Global Events')]")
+	WebElement globalEvents;
+	@FindBy(xpath="//a[contains(text(),'Upcoming Events')]")
+	WebElement upcomingEvents;
 
 
 
@@ -229,6 +233,14 @@ public void verifyContactPageWhenSuperAdminDisable() {
 		System.out.println("Contact Us Feature not available when Super Admin Disable it");
 	}else Assert.assertTrue(false);
 	
+}
+public UpcomingEventsPage navigateToUpComingEvents() throws InterruptedException {
+	clickElementByJavaScript(globalEvents);
+	Thread.sleep(2000);
+	waitForElementToPresent(upcomingEvents);
+	click(upcomingEvents, "Upcoming Events");
+	return (UpcomingEventsPage) openPage(UpcomingEventsPage.class);
+	// new UpcomingEventsPage(driver, );
 }
 
 }

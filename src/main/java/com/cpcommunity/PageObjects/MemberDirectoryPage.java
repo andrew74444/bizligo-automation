@@ -142,7 +142,7 @@ public class MemberDirectoryPage extends BasePage{
 	WebElement greatnesscancelBtn;
 	@FindBy(xpath = "//body/div[@class='main-home-cont']/div[@id='wrapper']/div[@id='body']/section[@id='renderBodyConatiner']/div[@id='removeinnercss']/div[@class='row member-directory-page']/div[@class='col-lg-9 ng-scope']/div/div[@class='row directory-box']/div")
 	WebElement resultOfProfileCategory;
-	@FindBy(xpath = "//li[@title='mentor']//span[@role='presentation'][normalize-space()='×']")
+	@FindBy(xpath = "//li[@title='Mentor']//span[@role='presentation'][normalize-space()='×']")
 	WebElement mentorcancelBtn;
 	@FindBy(xpath = "//div[@class='panel-body']")
 	WebElement memberProfileCategory;
@@ -598,14 +598,14 @@ public class MemberDirectoryPage extends BasePage{
 				searchByProfileCategory.click();
 				String profilelist=profileCategoryList.getText();
 				System.out.println(profilelist);
-				if(profilelist.contains("mentor")) {
+				if(profilelist.contains("Mentor")) {
 					System.out.println("Profile list contains list of values");
 				}else System.out.println("Profile list not asserted");
 				Thread.sleep(2000);	
 				searchByProfileCategory.click();
 				Select select=new Select(driver.findElement(By.xpath("//select[@id='WhoAmIs']")));
-				select.selectByVisibleText("mentor");
-				select.selectByVisibleText("greatness");
+				select.selectByVisibleText("Mentor");
+				select.selectByVisibleText("Great");
 				for(int i=2;i<10;i++) {
 				select.selectByIndex(i);
 				}
@@ -622,16 +622,16 @@ public class MemberDirectoryPage extends BasePage{
 					
 				}
 				try {
-					select.selectByVisibleText("mentor");
+					select.selectByVisibleText("Mentor");
 					
 				}catch(Exception e) {
 					System.out.println("Element cannot be selected again");
 					
 				}
-				if(greatnesscancelBtn.isDisplayed()) {
+				/*if(greatnesscancelBtn.isDisplayed()) {
 					System.out.println("greatness cancel button is displayed");
 					Assert.assertTrue(true);
-				}
+				}*/
 				if(mentorcancelBtn.isDisplayed()) {
 					System.out.println("mentor cancel button is displayed");
 					Assert.assertTrue(true);
@@ -641,12 +641,14 @@ public class MemberDirectoryPage extends BasePage{
 					
 				}
 				click(searchBtn,"search");
-				Thread.sleep(3000);
-				driver.findElement(By.xpath("//div[normalize-space()='Andrew Thomson']")).click();
-				Thread.sleep(6000);
+				Thread.sleep(5000);
+				driver.findElement(By.xpath("//div[normalize-space()='Alen Border']")).click();
+				Thread.sleep(8000);
+				
+				System.out.println("checking member profile");
 				String memprofile=memberProfileCategory.getText();
 				System.out.println(memprofile);
-				if(memprofile.contains("mentor")) {
+				if(memprofile.contains("Mentor")) {
 					Assert.assertTrue(true);
 				}
 				
@@ -796,7 +798,7 @@ public class MemberDirectoryPage extends BasePage{
 				type(searchByGroup,group,"groups");
 				type(searchByLocation,location,"location");
 				click(searchBtn,"search");
-				Thread.sleep(3000);
+				Thread.sleep(5000);
 				String Member=memberName.getText();
 				System.out.println("Matching Member is:"+ Member);
 				Assert.assertEquals(name, Member);
@@ -810,6 +812,7 @@ public class MemberDirectoryPage extends BasePage{
 				
 				type(searchByName,LastName,LastName);//search with last name
 				click(searchBtn,"search");
+				Thread.sleep(3000);
 				String Membername=memberName.getText();
 				if(Membername.contains(LastName)) {
 					System.out.println("Search Member is validated");
@@ -839,10 +842,10 @@ public class MemberDirectoryPage extends BasePage{
 				click(setReminder,"Set reminder");
 				click(this.reminderDate, "reminderDate");
 			    waitForElementToPresent(selectReminder);
-			    
+			    Thread.sleep(2000);
 			    DateManager d3 = new DateManager(driver);
 			    String date3 = d3.getCurrentDateString();
-			    date3=date3+1;
+			    //date3=date3+1;
 			    d3.selectDate("/html/body/div[5]/div[3]/table",date3);
 			    Thread.sleep(2000);
 			    click(currentHour,"current hour");
