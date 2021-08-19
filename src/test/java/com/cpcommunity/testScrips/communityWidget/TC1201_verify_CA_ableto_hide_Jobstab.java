@@ -39,7 +39,7 @@ public class TC1201_verify_CA_ableto_hide_Jobstab extends BaseTest{
     career.VerifyJobsNotDisplaying();
     ManageCommunityPage dash=career.gotoDashboardpage();
     ManageCommunityWidgets CMW=dash.navigateTomanageWidget();
-    CMW.EnableJobs();
+	CMW.EnableJobs();
     
 	
 	}

@@ -35,10 +35,10 @@ public class TC1034_Verify_ListOfValue_Displaying_In_SkillAndInterest extends Ba
 }
 	@AfterMethod
 	public void tearDown() {
-	
-	logInfo("TC1034 Test Completed");
-	
-	quit();
-	
-}
+		
+		logInfo("TC1034 Test Completed");
+		
+		quit();
+		
+	}
 }

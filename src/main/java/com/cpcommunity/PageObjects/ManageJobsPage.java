@@ -43,8 +43,11 @@ public class ManageJobsPage extends BasePage {
 	WebElement Location;
 
 	@FindBy(xpath = "(//input[@type='radio'])[1]")
-	WebElement Active;
+	WebElement Active;//input[@ng-value='false']
 
+	@FindBy(xpath = "//input[@ng-value='true']")
+	WebElement Active1;
+	
 	@FindBy(xpath = "//button[@id='submitJobForm']")
 	WebElement postBtn;
 
@@ -114,7 +117,8 @@ public class ManageJobsPage extends BasePage {
 	WebElement communitiesDropDown;
     @FindBy(xpath = "//div[@class='form-group']//select[@id='JobTypeID']")
 	WebElement SearchJobTypeID;
-	
+    @FindBy(xpath = "//a[@class='edit-page ng-scope']")
+	WebElement manageBtn;
 	@FindBy(xpath = "//select[@id='IsActiveSearch']")
 	WebElement SearchByStatus;
     @FindBy(xpath = "//tbody/tr/td[3]")
@@ -427,7 +431,7 @@ public class ManageJobsPage extends BasePage {
 		waitForElementToPresent(searchWithJobTitle);
 		type(searchWithJobTitle, Title, "Title");
 		click(btnSearch, "Search");
-		Thread.sleep(3000);
+		Thread.sleep(7000);
 		waitForElementToPresent(Edit);
 		click(Edit, "Edit");
 		waitForElementToPresent(this.JobTitle);
@@ -437,6 +441,22 @@ public class ManageJobsPage extends BasePage {
 		AssertionHelper.verifyText(toastMessage.getText(), "Job updated.");
 		Thread.sleep(7000);
 	}
+	public void ActivateJob(String Title2) throws Exception {
+		waitForElementToPresent(searchWithJobTitle);
+		type(searchWithJobTitle, Title2, "Title");
+		click(btnSearch, "Search");
+		Thread.sleep(7000);
+		waitForElementToPresent(Edit);
+		click(Edit, "Edit");
+		waitForElementToPresent(this.JobTitle);
+		click(Active1, "InActive");
+		click(Update, "Update");
+		waitForElementToPresent(toastMessage);
+		AssertionHelper.verifyText(toastMessage.getText(), "Job updated.");
+		Thread.sleep(7000);
+	}
+	
+	
 	public HomePage logout() throws InterruptedException {
 		Thread.sleep(2000);
 		click(angleDown, "Community Admin Menu Drop down");

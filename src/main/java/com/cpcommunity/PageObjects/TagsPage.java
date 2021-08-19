@@ -125,13 +125,14 @@ public class TagsPage extends BasePage {
 	}
 	
 	public void sameNameTag(String Name, String Description) throws Exception {
-		
+		Thread.sleep(7000);
 		click(createtag, "CreateTag");
 		waitForElementToPresent(tagname);
+		Thread.sleep(2000);
 		type(tagname, Name, "tagName");
 		type(tagdescription, Description, "Description");
 		click(save, "Save");
-		Thread.sleep(1000);
+		Thread.sleep(3000);
 		waitForElementToPresent(error);
 		String errormsg=this.error.getText();
 		System.out.println(errormsg);
@@ -153,9 +154,9 @@ public class TagsPage extends BasePage {
 		click(selectcat, "Select Category");
 		waitForElementToPresent(edit);
 		click(edit, "edit");
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		selectUsingIndex(status, 0, "Inactive");
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		click(update, "Update");
 		Thread.sleep(5000);
 		click(ok, "OK");
@@ -180,14 +181,15 @@ public class TagsPage extends BasePage {
 	}
 	
 	public void updateTag(String Name, String tagName, String Description) throws InterruptedException {
+		tagName=tagName+ " " + getDateInDDMMMYYYY();
 		waitForElementToPresent(searchtag);
 		type(searchtag, Name, "Category name");
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		waitForElementToPresent(selectcat);
 		click(selectcat, "Select Category");
 		waitForElementToPresent(edit);
 		click(edit, "edit");
-		Thread.sleep(2000);
+		Thread.sleep(8000);
 		click(tagname, "Category Name");
 		this.tagname.clear();
 		click(update, "Update");
@@ -197,11 +199,11 @@ public class TagsPage extends BasePage {
 		type(tagname, tagName, "Category Name");
 		this.description.clear();
 		type(this.description,Description, "Description");
-		Thread.sleep(2000);
+		Thread.sleep(6000);
 		selectUsingIndex(status, 1, "Inactive");
-		Thread.sleep(2000);
-		click(update, "Update");
 		Thread.sleep(5000);
+		click(update, "Update");
+		Thread.sleep(7000);
 		click(ok, "OK");
 		
 	}

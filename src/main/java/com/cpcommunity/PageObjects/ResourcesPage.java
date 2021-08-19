@@ -62,10 +62,10 @@ public class ResourcesPage  extends BasePage{
 		else {
 			Assert.assertTrue(false);
 		}
-		 Thread.sleep(2000);
+		 Thread.sleep(5000);
 		    click(group,"Groups");
 		    Thread.sleep(5000);
-		    waitForElementToPresent(leaveGroup3);
+		   // waitForElementToPresent(leaveGroup3);
 		    click(leaveGroup3, "Leave3");
 	}
 	

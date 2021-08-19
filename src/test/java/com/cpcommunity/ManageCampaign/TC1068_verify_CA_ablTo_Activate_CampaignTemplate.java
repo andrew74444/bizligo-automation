@@ -33,7 +33,7 @@ public class TC1068_verify_CA_ablTo_Activate_CampaignTemplate extends BaseTest {
 	MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
 	CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
 	CampaignTemplatePage campTemp=communityDashboard.navigateToCampaignTemplate();
-	campTemp.activate();
+	campTemp.Activate();
 	ComposeCampaign CC=campTemp.navigateToComposeCampaignPage();
 	CC.checkTemplateDisplay();
 	}

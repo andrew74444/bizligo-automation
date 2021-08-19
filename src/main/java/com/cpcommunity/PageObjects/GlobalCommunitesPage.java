@@ -206,7 +206,7 @@ public class GlobalCommunitesPage extends BasePage {
     
     public TenantAdminDashboardPage navigateToTenantAdminDashboardPage() throws Exception {
     	click(Toggledropdownmenu,"Toggledropdownmenu");
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		waitForElementToPresent(TAmodule);
 		click(TAmodule,"Dashboard");		
 		return (TenantAdminDashboardPage) openPage(TenantAdminDashboardPage.class);
@@ -216,7 +216,7 @@ public class GlobalCommunitesPage extends BasePage {
     public EventsPage navigatetoEventsPagee() throws InterruptedException {
 		waitForElementToPresent(bizligo);
 		click(bizligo,"Bizligo 1");
-		Thread.sleep(2000);
+		Thread.sleep(8000);
 		click(events, "Events");
 	return (EventsPage) openPage(EventsPage.class);	
 	}
@@ -236,8 +236,8 @@ public class GlobalCommunitesPage extends BasePage {
  		return (ManageAdPlansPage) openPage(ManageAdPlansPage.class);
  		// new CommunityPendingRequestsPage(driver);
  	}
-	public ManageCommunityPage goToManagecommunity() {
-
+	public ManageCommunityPage goToManagecommunity() throws InterruptedException {
+           Thread.sleep(5000);
 		waitForElementToPresent(BDMAIcomm);
 		click(BDMAIcomm, "BDMAI");
 		waitForElementToPresent(managetocommunity);
@@ -361,7 +361,7 @@ public class GlobalCommunitesPage extends BasePage {
 		// AssertionHelper.verifyText(waitingForApproval.getText(), "Your join request
 		// is waiting for approval");
 		OKbtn.click();
-		Thread.sleep(7000);
+		Thread.sleep(10000);
 
 	}
 	
@@ -375,7 +375,7 @@ public class GlobalCommunitesPage extends BasePage {
 		// AssertionHelper.verifyText(waitingForApproval.getText(), "Your join request
 		// is waiting for approval");
 		click(OKbtn,"OKbtn");
-		Thread.sleep(7000);
+		Thread.sleep(10000);
 
 	}
 
@@ -436,10 +436,10 @@ public class GlobalCommunitesPage extends BasePage {
 	public ResourcesPage gotoResource() throws InterruptedException {
 		waitForElementToPresent(BDMAIcomm);
 		click(BDMAIcomm, "BDMAI");
-		Thread.sleep(4000);
+		Thread.sleep(10000);
 		waitForElementToPresent(resources);
 		click(resources, "resources");
-		Thread.sleep(2000);
+		Thread.sleep(10000);
 		
 		return (ResourcesPage) openPage(ResourcesPage.class);
 	}
@@ -447,17 +447,17 @@ public class GlobalCommunitesPage extends BasePage {
 	public void checkInactiveAdvertisementNotPresent() throws InterruptedException {
 		waitForElementToPresent(BDMAIcomm);
 		click(BDMAIcomm, "BDMAI");
-		Thread.sleep(4000);
+		Thread.sleep(8000);
 		waitForElementToPresent(resources);
 		click(resources, "resources");
-		Thread.sleep(4000);
+		Thread.sleep(10000);
 		click(advertisement,"Advertisement");
 		waitForElementToPresent(adPlans);
 		String Allplans=this.adPlans.getText();
     	String Notpresent="Test@1122";
     	System.out.println("Inactive Plan is not present");
-    	Assert.assertNotEquals(Notpresent, Allplans, "Inactive Plan is not present");
-		
+    	//Assert.assertNotEquals(Notpresent, Allplans, "Inactive Plan is not present");
+		Assert.assertNotSame(Notpresent, Allplans);
 	}
 	public void checkAdPresent() throws InterruptedException {
 		waitForElementToPresent(BDMAIcomm);
@@ -494,15 +494,16 @@ public class GlobalCommunitesPage extends BasePage {
 		click(save, "Save");
 		//waitForElementToPresent(toastMessage);
 		//AssertionHelper.verifyText(toastMessage.getText(), "Advertisement details saved.");
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		
 	}
-	public void clickCancel(String AdName, String  path) {
+	public void clickCancel(String AdName, String  path) throws InterruptedException {
 		waitForElementToPresent(BDMAIcomm);
 		click(BDMAIcomm, "BDMAI");
 		//clickElementByJavaScript(BDMAIcomm);
 		//Thread.sleep(2000);
 		scrollIntoViewAndClick(advertisement);
+		Thread.sleep(5000);
 		//click(advertisement, "Advertisement");
 		waitForElementToPresent(selectPlans);
 		click(selectPlan2, "Select TestSilver Plan");
@@ -527,6 +528,7 @@ public class GlobalCommunitesPage extends BasePage {
 		Thread.sleep(500);
 		waitForElementToPresent(ecosystem);
 		click(ecosystem,"Ecosystem");
+		Thread.sleep(5000);
 		return (MyDashboardPage) openPage(MyDashboardPage.class);
 	}	
 	
@@ -534,18 +536,19 @@ public class GlobalCommunitesPage extends BasePage {
 		searchName.clear();
 		type(searchName, CommunityName, "search");
 		click(searchBtn, "search Btn");
-		Thread.sleep(4000);
+		Thread.sleep(8000);
 		waitForElementToPresent(driver.findElement(By.xpath("//a[contains(text(),'" + CommunityName + "')]")));
 
 	}
 	
 	public SelectPlanPage navigatetoselectPlanPage() throws InterruptedException {
+		Thread.sleep(5000);
 		waitForElementToPresent(BDMAIcomm);
 		click(BDMAIcomm, "BDMAI");
-		Thread.sleep(3000);
+		Thread.sleep(10000);
 		waitForElementToPresent(discussion);
 		click(discussion, "Discussion");
-		Thread.sleep(6000);
+		Thread.sleep(10000);
 		//clickElementByJavaScript(advertisement);
 		click(advertisementt, "Advertisement");
 		//scrollDownVertically();
@@ -564,7 +567,7 @@ public class GlobalCommunitesPage extends BasePage {
 			Thread.sleep(5000);
 			waitForElementToPresent(discussion);
 			click(discussion, "Discussion");
-			Thread.sleep(5000);
+			Thread.sleep(8000);
 			//clickElementByJavaScript(advertisement);
 			click(advertisementt, "Advertisement");
 		return (SelectPlanPage) openPage(SelectPlanPage.class);	
@@ -573,6 +576,7 @@ public class GlobalCommunitesPage extends BasePage {
 		waitForElementToPresent(BDMAIcomm);
 		click(BDMAIcomm, "BDMAI");	
 		click(discussion, "Discussion");
+		 Thread.sleep(5000);
 	return (Discussions) openPage(Discussions.class);	
 	}
 	
@@ -580,12 +584,13 @@ public class GlobalCommunitesPage extends BasePage {
 		waitForElementToPresent(BDMAIcomm);
 		click(BDMAIcomm, "BDMAI");	
 		click(members, "Members");
+		Thread.sleep(5000);
 	return (MembersPage) openPage(MembersPage.class);	
 	}
 	public EventsPage gotoGuestEventPage() throws InterruptedException {
 		waitForElementToPresent(BDMAIcomm1);
 		click(BDMAIcomm1, "BDMAI");	
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		click(Cancel1, "Cancelbutton");
 		click(events, "Events");
 	return (EventsPage) openPage(EventsPage.class);	
@@ -601,7 +606,7 @@ public class GlobalCommunitesPage extends BasePage {
 	public GlobalCareers gotoGuestCareerPage() throws InterruptedException {
 		waitForElementToPresent(BDMAIcomm1);
 		click(BDMAIcomm1, "BDMAI");	
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		click(Cancel1, "Cancelbutton");
 		click(careers, "Careers");
 	return (GlobalCareers) openPage(GlobalCareers.class);	
@@ -610,7 +615,7 @@ public class GlobalCommunitesPage extends BasePage {
 	public GlobalCareers gotoCareerPage() throws InterruptedException {
 		waitForElementToPresent(BDMAIcomm1);
 		click(BDMAIcomm1, "BDMAI");	
-		Thread.sleep(2000);
+		Thread.sleep(8000);
 		click(careers, "Careers");
 	return (GlobalCareers) openPage(GlobalCareers.class);	
 	}
@@ -619,7 +624,7 @@ public class GlobalCommunitesPage extends BasePage {
 	public Discussions GotoGuestDiscussionPage() throws InterruptedException {
 	waitForElementToPresent(BDMAIcomm1);
 	click(BDMAIcomm1, "BDMAI");	
-	Thread.sleep(2000);
+	Thread.sleep(5000);
 	click(Cancel1, "Cancelbutton");
 	click(discussion, "Discussion");
 
@@ -630,7 +635,7 @@ public class GlobalCommunitesPage extends BasePage {
 		//click(Testingcomm, "18-02-2021 -testing");	
 		clickElementByJavaScript(Testingcomm);
 		click(discussion, "Discussion");
-       Thread.sleep(4000);
+       Thread.sleep(8000);
 	return (Discussions) openPage(Discussions.class);	
 }
 	
@@ -644,6 +649,7 @@ public class GlobalCommunitesPage extends BasePage {
 		Thread.sleep(5000);
 		//clickElementByJavaScript(advertisement);
 		click(advertisementt, "Advertisement");
+		Thread.sleep(4000);
 		waitForElementToPresent(selectPlans);
 		click(selectPlans, "Select TestSilver Plan");
 		waitForElementToPresent(next);
@@ -907,7 +913,7 @@ public class GlobalCommunitesPage extends BasePage {
 		searchName.clear();
 		type(searchName, CommunityName, "search");
 		click(searchBtn, "search Btn");
-		Thread.sleep(2000);
+		Thread.sleep(8000);
 		waitForElementToPresent(driver.findElement(By.xpath("//a[contains(text(),'" + CommunityName + "')]")));
 		Assert.assertTrue(true);
 

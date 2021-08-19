@@ -43,7 +43,10 @@ public class ManageCommunityPage extends BasePage{
 	WebElement Browse;
 	@FindBy(xpath = "//form[@id='EditMyCommunityLogoForm']//button[@type='submit'][normalize-space()='Upload']")
 	WebElement Upload;
-	
+	@FindBy(xpath = "(((//*[@class='col-md-3 left_col']//img[@src='/Content/Images/Jobs/Jobs-active.png'])/..)/..)")
+	WebElement Jobs;
+	@FindBy(xpath = "(//*[@class='col-md-3 left_col']//*[@title='Manage Jobs'])")
+	WebElement ManageJobs;
 	@FindBy(xpath = "//label[normalize-space()='Standard']")
 	WebElement standard;
 	@FindBy(xpath = "//button[@id='btnSave']")
@@ -168,10 +171,12 @@ public class ManageCommunityPage extends BasePage{
 		// new GroupsPendingRequestsPage(driver);
 	}
 
-	public ManageCommunityWidgets navigateTomanageWidget() {
+	public ManageCommunityWidgets navigateTomanageWidget() throws InterruptedException {
+		Thread.sleep(5000);
 		click(manage, "manage");
 		waitForElementToPresent(manageCommunitywidget);
 		click(manageCommunitywidget, "manage Community widget");
+		Thread.sleep(3000);
 		return (ManageCommunityWidgets) openPage(ManageCommunityWidgets.class);
 		// new CommunityInviteMembersPage(driver);
 	}
@@ -183,5 +188,13 @@ public class ManageCommunityPage extends BasePage{
 		return (CategoriesPage) openPage(CategoriesPage.class);
 	}
 	
-	
+	public ManageJobsPage navigateToManageJobsPage() {
+		scrollDownVertically();
+		scrollToElement(Jobs);
+		click(Jobs, "Jobs");
+		waitForElementToPresent(ManageJobs);
+		click(ManageJobs, "ManageJobs");
+		return (ManageJobsPage) openPage(ManageJobsPage.class);
+		// new ManageJobs(driver);
+	}
 }

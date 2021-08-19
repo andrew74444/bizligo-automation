@@ -150,19 +150,22 @@ public class EcoSystemPage extends BasePage {
 		//this.searchCommunity(communityName+getDateInDDMMMYYYY());
 		//this.searchCommunity(communityName);
 		click(MANAGEbtn, "Manage");
+		Thread.sleep(5000);
 		return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
 		// new CommunityDashboardPage(driver, );
 	}
 	public CommunityDashboardPage navigateToManageCommunityPage() throws Exception {
 
 		click(MANAGEbtn, "Manage");
+		Thread.sleep(5000);
 		return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
 		
 	}
 
-	public MyJobsPage navigateToMyJobsPage() {
+	public MyJobsPage navigateToMyJobsPage() throws InterruptedException {
 		scrollIntoView(myJobs);
 		myJobs.click();		
+		Thread.sleep(3000);
 		return (MyJobsPage) openPage(MyJobsPage.class);
 	}
 	public MyEcosystemPage gotoMyEcosystemPage() throws Exception {

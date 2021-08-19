@@ -187,7 +187,8 @@ public class BlogsPage extends BasePage {
 	}
 	
  public CommunityDashboardPage gotoCommunityDashboard() throws InterruptedException {
-	 waitForElementToPresent(Toggledropdownmenu);
+	 Thread.sleep(10000);
+	// waitForElementToPresent(Toggledropdownmenu);
 		clickElementByJavaScript(Toggledropdownmenu);
 		Thread.sleep(3000);
 		waitForElementToPresent(ecosystem);

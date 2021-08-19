@@ -1,7 +1,5 @@
 package com.cpcommunity.PageObjects;
 
-
-import java.util.List;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -10,14 +8,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import junit.framework.Assert;
 
 public class TenantAdminDashboardPage extends BasePage{
-//bjkj
+
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 		// TODO Auto-generated method stub
 		waitForElementToPresent(PageTitle);
 		return ExpectedConditions.visibilityOf(PageTitle);
 	}
-
+//conflict
 	@Override
 	protected void getPageScreenSot() {
 		// TODO Auto-generated method stub
@@ -70,7 +68,6 @@ public class TenantAdminDashboardPage extends BasePage{
 	WebElement managePlans;
     @FindBy(xpath = "//*[contains(text(),'Manage Member Advertisements')]")
 	WebElement manageMemberAdvertisements;
-
     @FindBy(xpath = "(//*[contains(text(),'Blogs')])[1]")
 	WebElement blogs;
 	@FindBy(xpath = "(//*[contains(text(),'Categories')])[1]")
@@ -83,25 +80,12 @@ public class TenantAdminDashboardPage extends BasePage{
 	WebElement communities;
 	@FindBy(xpath = "//a[normalize-space()='Manage Communities']")
 	WebElement Managecommunities;
-	  @FindBy(xpath = "//a[normalize-space()='Donations']")
-		WebElement Donations;
-	@FindBy(xpath = "//div[@id='sidebar-menu']")
-	WebElement sideBarMenu;
-	@FindBy(xpath = "//a[normalize-space()='Payment Gateways']")
-	WebElement paymentGateway;
-	@FindBy(xpath = "//a[normalize-space()='Website Inquiries']")
-	WebElement websiteEnquiries;
-	@FindBy(xpath = "//a[normalize-space()='Website Inquiries']")
-	List<WebElement> websiteEnquiry;
-	@FindBy(xpath = "//*[@id='sidebar-menu']/div/ul/li[5]/a[1]")
-	WebElement CommunitiesNavSideMenu;
-	@FindBy(xpath = "//a[normalize-space()='Manage Communities']")
-	WebElement manageCommunity;
-	@FindBy(xpath = "//a[normalize-space()='Manage Communities']")
-	WebElement manageCommunities;
-	@FindBy(xpath = "//a[@title='Pending Communities']")
-	WebElement pendingCommunities;
-	
+	@FindBy(xpath = "//a[@title='Payment Gateways']")
+	WebElement paymentGateways;
+	@FindBy(xpath = "//a[normalize-space()='Dashboard Reports']")
+	WebElement dashboardreport;
+	@FindBy(xpath = "//a[normalize-space()='Revenue Reports']")
+	WebElement revenuereport;
 	
 
    
@@ -113,7 +97,6 @@ public class TenantAdminDashboardPage extends BasePage{
 		return (ManageCommunitiesPage) openPage(ManageCommunitiesPage.class);
 		// new ManageCommunityMembersPage(driver);
 	}
-   
     
 	 public ManageApplications navigateToManageApplication() {
 			scrollDownVertically();
@@ -145,14 +128,6 @@ public ComposeCampaign navigateToComposeCampaignPage() throws Exception {
 	return (ComposeCampaign) openPage(ComposeCampaign.class);
 	
 }
-public ManageDonationsPage NavigatetoManageDonationsPage() {
-	
-	waitForElementToPresent(Donations);
-	click( Donations, "Donations");
-	return (ManageDonationsPage) openPage(ManageDonationsPage.class);
-	// new ManageJobs(driver);
-}
-
 public ImportContactsPage navigateToImportContactsPagePage() throws Exception {
 	scrollDownVertically();
 	scrollToElement(manageCampaign);
@@ -247,7 +222,6 @@ public HomePage goToHomePage() {
  		return (ManageMemberAdvertisementsPage) openPage(ManageMemberAdvertisementsPage.class);
  		// new CommunityPendingRequestsPage(driver);
  	}
-
      public CategoriesPage gotoCategories() {
  		click(blogs, "Categories");
  		waitForElementToPresent(categories);
@@ -259,60 +233,18 @@ public HomePage goToHomePage() {
  		click(organisations, "Organizations");
  		return (OrganizationsPage) openPage(OrganizationsPage.class);
  	}
-   
-     public void checkDonationsWhenDisabled() {
-    	 System.out.println(sideBarMenu.getText());
-    	 if(sideBarMenu.getText().contains("Donations")) {
-    	 Assert.assertTrue(false);
-    	 System.out.println("Donations visible in side menu when disabled by Super Admin");
-    	 }else {
-    	 Assert.assertTrue(true);
-    	 System.out.println("Donations not visible in side menu when disabled by Super Admin");
-    	 }
-    	 }
-    	 public void checkDonationsWhenEnabled() {
-    	 System.out.println(sideBarMenu.getText());
-    	 if(sideBarMenu.getText().contains("Donations")) {
-    	 Assert.assertTrue(true);
-    	 System.out.println("Donations visible in side menu when enabled by Super Admin");
-    	 }else {
-    	 Assert.assertTrue(false);
-    	 System.out.println("Donations not visible in side menu when enabled by Super Admin");
-    	 }
-    	 }
-    	 public PaymentGatewaysPage NavigatetoPaymentGatewayPage() {
-    	 waitForElementToPresent(paymentGateway);
-    	 click( paymentGateway, "paymentGateway");
-    	 return (PaymentGatewaysPage) openPage(PaymentGatewaysPage.class);
-    	 // new ManageJobs(driver);
-    	 }
-    	 public WebsiteInquiryPage NavigatetoWebsiteInquiryPage() {
-
-    	  click(websiteEnquiries, "website Enquiries");
-    	 return (WebsiteInquiryPage) openPage(WebsiteInquiryPage.class);
-    	 // new GroupsPendingRequestsPage(driver);
-
-    	  }
-    	 public void websiteEnquiryNotPresentWhenSAdisable() {
-    	 if
-    	 (websiteEnquiry.size()>0)
-    	 {
-    	 System.out.println("Website enquiry not disabled when inactivated by Super Admin");
-    	 }else System.out.println("Website enquiry disabled when inactivated by Super Admin");
-    	 }
-    	 public TACommunitiesPage navigateToCommunitiesPage() {
-    	 click(CommunitiesNavSideMenu, "Communities");
-    	 waitForElementToPresent(manageCommunity);
-    	 clickElementByJavaScript(manageCommunity);
-    	 return (TACommunitiesPage) openPage(TACommunitiesPage.class);
-    	 }
-    	 public PendingCommunitiesPage naviagteToPendingCommunities() {
-    	 click(CommunitiesNavSideMenu, "Communities");
-    	 waitForElementToPresent(pendingCommunities);
-    	 clickElementByJavaScript(pendingCommunities);
-    	 // click(pendingCommunities,"pendingCommunities");
-    	 return (PendingCommunitiesPage) openPage(PendingCommunitiesPage.class);
-    	 }
-    
-
+     
+     public PaymentGatewaysPage navigateToPaymentGateways() {
+ 		click(paymentGateways, "payment Gateways");
+ 		return (PaymentGatewaysPage) openPage(PaymentGatewaysPage.class);
+ 		// new PaymentGatewaysPage(driver);
+ 	}
+     
+     public RevenueReportPage goToRevenueReport() {
+			//waitForElementToPresent(dashboardreport);
+			click(dashboardreport, "Dashboard Reports");
+			waitForElementToPresent(revenuereport);
+			click(revenuereport, "Revenue Report");
+			return (RevenueReportPage) openPage(RevenueReportPage.class);	
+		}
 }

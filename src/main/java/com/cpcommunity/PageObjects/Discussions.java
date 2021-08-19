@@ -573,6 +573,7 @@ public class Discussions extends BasePage {
     	int DiscussionCount=NumSubscribeDiscussion.size();
     	System.out.println("Number of Subscribe Discussion Displaying is: " +DiscussionCount);
     	Assert.assertEquals(DiscussionCount, 5);
+    	Thread.sleep(3000);
     }
 	private void waitForElementToPresent(List<WebElement> noDiscussion2) {
 		// TODO Auto-generated method stub
@@ -585,29 +586,29 @@ public class Discussions extends BasePage {
 		
 		Thread.sleep(2000);
 			System.out.println("Most Recent Discussion is displaying");
-		
 	}
 	public void VerifyDiscussionNotDisplaying() throws InterruptedException {
 		Thread.sleep(500);
 		Assert.assertEquals(0, popularDiscussion.size());
 		Assert.assertEquals(0, Likeddiscussion.size());
 		System.out.println("Popular Discussion and Liked Discussion are Not Displaying");
-		
+		Thread.sleep(5000);
 	}
 	
-	public ManageCommunityPage gotoDashboardpage() {
+	public ManageCommunityPage gotoDashboardpage() throws InterruptedException {
+		Thread.sleep(2000);
 		waitForElementToPresent(manageBtn);
 		click(manageBtn, "Manage Button");
 		return (ManageCommunityPage) openPage(ManageCommunityPage.class);		
 	}
 	
 	public void verifyDiscussiontitleChanged() throws InterruptedException {
-		waitForElementToPresent(populardiscussion);
+		//waitForElementToPresent(populardiscussion);
 		String changead=this.populardiscussion.getText();
 		System.out.println(changead);
 	    String Expected="LATEST DISCUSSION";
 	    Assert.assertEquals(changead, Expected);
-	    
+	    Thread.sleep(5000);
 	}
 	public void checkAdPresent() throws InterruptedException {
 		
@@ -615,9 +616,10 @@ public class Discussions extends BasePage {
 		click(advertisement1, "Advertisement");
 		waitForElementToPresent(adPlans);
 		String Allplans=this.adPlans.getText();
-    	String present="Goldengold";
+    	String present="Goldengold2";
     	System.out.println(" Plan is  present");
 		//Assert.assertEquals(Allplans, present);
+    	Thread.sleep(5000);
 	}
 	public void clickCancel(String AdName, String  path) throws InterruptedException {
 		
@@ -641,6 +643,6 @@ public class Discussions extends BasePage {
 		click(cancel, "Cancel");
 		waitForElementToPresent(yesProceed);
 		click(yesProceed, "Yes Proceed");
-		
+		Thread.sleep(5000);
 	}
 }

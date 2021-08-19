@@ -47,7 +47,7 @@ public class CampaignReportPage extends BasePage {
 	WebElement search;
 	@FindBy(xpath = "//button[normalize-space()='Reset']")
 	WebElement reset;
-	@FindBy(xpath = "//button[@id='34021']")
+	@FindBy(xpath = "//tbody//tr[1]//td[7]//button[@class='btn btn-info']")
 	WebElement viewDetail;
 	@FindBy(xpath = "//td[@ng-bind='maininfo.CampaignName']")
 	List<WebElement> CampaignName;
@@ -102,7 +102,10 @@ public class CampaignReportPage extends BasePage {
 		Thread.sleep(8000);
 		waitForElementToPresent(viewDetail);
 		click(viewDetail, "ViewDetails");
+		waitForElementToPresent(SuccessPopup);
+	
 		AssertionHelper.verifyText(SuccessPopup.getText(), "Mails History Loaded");
+	
 		
 					}
 		
