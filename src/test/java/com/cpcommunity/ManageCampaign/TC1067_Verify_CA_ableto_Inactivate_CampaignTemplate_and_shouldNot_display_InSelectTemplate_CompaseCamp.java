@@ -35,7 +35,9 @@ public class TC1067_Verify_CA_ableto_Inactivate_CampaignTemplate_and_shouldNot_d
 	CampaignTemplatePage campTemp=communityDashboard.navigateToCampaignTemplate();
 	campTemp.inactivate();
 	ComposeCampaign CC=campTemp.navigateToComposeCampaignPage();
-	CC.checkTemplatenotDisplay();;
+	CC.checkTemplatenotDisplay();
+	CampaignTemplatePage CT=CC.navigateToCampaignTemplate();
+	CT.activate();
 	
 }
 	@AfterMethod

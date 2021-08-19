@@ -132,7 +132,7 @@ public class HomePage extends BasePage {
 	public LoginPage clickOnLOGINBtn() throws Exception {
 		
 		waitForElementToPresent(LOGINBtn);
-		Thread.sleep(8000);
+		
 		click(LOGINBtn, "LOGIN");
 		return (LoginPage) openPage(LoginPage.class);
 		// new LoginPage(driver, );

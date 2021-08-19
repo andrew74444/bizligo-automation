@@ -224,29 +224,32 @@ public class CommunityDashboardPage extends BasePage {
 		click(advertisements, "advertisements");
 	}
 
-	public ManageCommunityPage goToManagecommunityPage() {
-
+	public ManageCommunityPage goToManagecommunityPage() throws InterruptedException {
+        Thread.sleep(5000);
 		this.clickOnAdvertisments();
 		waitForElementToPresent(manage);
 		click(manage, "Manage");
 		waitForElementToPresent(edit);
 		click(edit, "Edit");
+		Thread.sleep(5000);
 		return (ManageCommunityPage) openPage(ManageCommunityPage.class);
 		// new CommunityPendingRequestsPage(driver);
 	}
-	public ManageAdPlansPage goToManageAdPlansPage() {
-
+	public ManageAdPlansPage goToManageAdPlansPage() throws InterruptedException {
+		Thread.sleep(5000);
 		this.clickOnAdvertisments();
 		waitForElementToPresent(managePlans);
 		click(managePlans, "Manage Plans");
+		Thread.sleep(5000);
 		return (ManageAdPlansPage) openPage(ManageAdPlansPage.class);
 		// new CommunityPendingRequestsPage(driver);
 	}
-	public ManageMemberAdvertisementsPage navigateToMemberAdvertisements() {
-
+	public ManageMemberAdvertisementsPage navigateToMemberAdvertisements() throws InterruptedException {
+		Thread.sleep(5000);
 		this.clickOnAdvertisments();
 		waitForElementToPresent(manageMemberAdvertisements);
 		click(manageMemberAdvertisements, "Manage Member Advertisements");
+		Thread.sleep(5000);
 		return (ManageMemberAdvertisementsPage) openPage(ManageMemberAdvertisementsPage.class);
 		// new CommunityPendingRequestsPage(driver);
 	}
@@ -330,10 +333,12 @@ public class CommunityDashboardPage extends BasePage {
 		return (CommunityInviteMembersPage) openPage(CommunityInviteMembersPage.class);
 		// new CommunityInviteMembersPage(driver);
 	}
-	public ManageCommunityWidgets navigateTomanageWidget() {
+	public ManageCommunityWidgets navigateTomanageWidget() throws InterruptedException {
+		Thread.sleep(2000);
 		click(manage, "manage");
 		waitForElementToPresent(manageCommunitywidget);
 		click(manageCommunitywidget, "manage Community widget");
+		Thread.sleep(3000);
 		return (ManageCommunityWidgets) openPage(ManageCommunityWidgets.class);
 		// new CommunityInviteMembersPage(driver);
 	}
@@ -431,7 +436,8 @@ public class CommunityDashboardPage extends BasePage {
 		return (CategoriesPage) openPage(CategoriesPage.class);
 	}
 
-	public TagsPage gotoTags() {
+	public TagsPage gotoTags() throws InterruptedException {
+		Thread.sleep(5000);
 		click(blogs, "Tags");
 		waitForElementToPresent(tags);
 		click(tags, "Tags");
@@ -482,23 +488,27 @@ public class CommunityDashboardPage extends BasePage {
 		}
 	}
 	public ComposeCampaign navigateToComposeCampaignPage() throws Exception {
-		scrollDownVertically();
+		
+		Thread.sleep(5000);
 		scrollToElement(manageCampaign);
 		click(manageCampaign, "manageCampaign");
 		Thread.sleep(1000);
 		waitForElementToPresent(composeCampaign);
 		this.composeCampaign.click();	
+		Thread.sleep(5000);
 		//click(composeCampaign, "composeCampaign");
 		return (ComposeCampaign) openPage(ComposeCampaign.class);
 		
 	}
 	public CampaignTemplatePage navigateToCampaignTemplate() throws Exception {
+		Thread.sleep(6000);
 		scrollDownVertically();
 		scrollToElement(manageCampaign);
 		click(manageCampaign, "manageCampaign");
 		Thread.sleep(1000);
 		waitForElementToPresent(campaignTemplate);
 		this.campaignTemplate.click();	
+		 Thread.sleep(5000);
 		//click(composeCampaign, "composeCampaign");
 		return (CampaignTemplatePage) openPage(CampaignTemplatePage.class);
 		
@@ -514,7 +524,7 @@ public class CommunityDashboardPage extends BasePage {
 	}
 		
 	public CampaignReportPage navigateToCampaignReportPage() throws Exception {
-		
+		Thread.sleep(3000);
 		scrollToElement(manageCampaign);
 		click(manageCampaign, "manageCampaign");
 		Thread.sleep(1000);
@@ -628,7 +638,8 @@ public class CommunityDashboardPage extends BasePage {
 			return (RevenueReportPage) openPage(RevenueReportPage.class);	
 		}
 	 
-	 public RevenueReportPage goToRevenueReport() {
+	 public RevenueReportPage navigateToRevenueReportPage() throws InterruptedException {
+		 Thread.sleep(5000);
 			//waitForElementToPresent(dashboardreport);
 			click(dashboardreport, "Dashboard Reports");
 			waitForElementToPresent(revenuereport);
@@ -636,8 +647,17 @@ public class CommunityDashboardPage extends BasePage {
 			return (RevenueReportPage) openPage(RevenueReportPage.class);	
 		}
 	 
-	 public EmailTemplatePage navigateToEmailTemplate() {
-
+	 public RevenueReportPage goToRevenueReport() throws InterruptedException {
+			//waitForElementToPresent(dashboardreport);
+		 Thread.sleep(5000);
+			click(dashboardreport, "Dashboard Reports");
+			waitForElementToPresent(revenuereport);
+			click(revenuereport, "Revenue Report");
+			return (RevenueReportPage) openPage(RevenueReportPage.class);	
+		}
+	 
+	 public EmailTemplatePage navigateToEmailTemplate() throws InterruptedException {
+           Thread.sleep(5000);
 			click(emailtemplate, "Email Template");
 			return (EmailTemplatePage) openPage(EmailTemplatePage.class);
 			// new CommunityEvents(driver);

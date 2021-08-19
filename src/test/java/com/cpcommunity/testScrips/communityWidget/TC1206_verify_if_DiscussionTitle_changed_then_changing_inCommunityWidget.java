@@ -47,7 +47,7 @@ public class TC1206_verify_if_DiscussionTitle_changed_then_changing_inCommunityW
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("TC1199 Test Completed");
+		logInfo("TC1206 Test Completed");
 		
 		quit();
 		

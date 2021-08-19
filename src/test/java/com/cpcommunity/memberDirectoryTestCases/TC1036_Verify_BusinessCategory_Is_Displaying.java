@@ -30,16 +30,9 @@ public class TC1036_Verify_BusinessCategory_Is_Displaying extends BaseTest {
 		MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
 		//BusinessDirectoryPage bussinessdirectory= myCommunity.gotoBusinessDirectoryPage();
 		MemberDirectoryPage memberdirectory= myCommunity.gotoMemberDirectoryPage();
-		memberdirectory.ClickonBusinessCategory(data.get("BussinessCategory"),data.get("BussinessCategory1"));
+		memberdirectory.ClickonBusinessCategory(data.get("bussinessCategory"),data.get("BussinessCategory1"));
 		
 		
 	}
-	@AfterMethod
-	public void tearDown() {
-		
-		logInfo("TC1036 Test Completed");
-		
-		quit();
-		
-	}
+	
 }

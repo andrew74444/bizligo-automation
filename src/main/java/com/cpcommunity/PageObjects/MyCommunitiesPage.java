@@ -185,13 +185,14 @@ public class MyCommunitiesPage extends BasePage {
 	public MyDashboardPage gotoMyDashboardPage() throws Exception {
 		waitForElementToPresent(Toggledropdownmenu);
 		click(Toggledropdownmenu,"Toggledropdownmenu");
-		Thread.sleep(500);
+		Thread.sleep(1000);
 		waitForElementToPresent(DashBoard);
 		click(DashBoard,"DashBoard");
+		Thread.sleep(8000);
 		return (MyDashboardPage) openPage(MyDashboardPage.class);
 	}	
 	public MyProfilePage goToMyProfilePage() throws Exception {
-
+        Thread.sleep(5000);
 		click(Toggledropdownmenu,"Toggledropdownmenu");
 		Thread.sleep(1000);
 		click(myProfile,"myProfile");
@@ -467,7 +468,7 @@ public class MyCommunitiesPage extends BasePage {
 		
 	}
 	public CommunityDashboardPage gotoManageCommunity(String communityName) throws Exception {
-
+        Thread.sleep(5000);
 		//this.searchCommunity(communityName+getDateInDDMMMYYYY());
 		click(MANAGEbtn, "Manage");
 		Thread.sleep(1000);

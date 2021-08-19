@@ -60,7 +60,7 @@ public class ImportContactsPage extends BasePage {
 	waitForElementToPresent(chooseFile);
 	//chooseFile.sendKeys("C:\\Temp\\Book7.csv");
 	type(chooseFile,Filepath,"FileName");
-	Thread.sleep(2000);
+	Thread.sleep(5000);
 	waitForElementToPresent(importContact);
 	click(importContact, "Import");
 	AssertionHelper.verifyText(toastmessage.getText(), "Contacts saved");

@@ -2,6 +2,7 @@ package com.cpcommunity.testScripts.EmailTemplates;
 
 import java.util.Hashtable;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.CommunityDashboardPage;
@@ -53,5 +54,13 @@ public class TC1115_verify_COmmunityLogo_Updated_If_CA_updates_categoryLogo exte
 		CommunityDashboardPage communityDashboard2 = myCommunity2.gotoManageCommunity(data.get("communityName"));
 		ManageCommunityPage managecomm2=communityDashboard2.goToManagecommunityPage();
 		managecomm2.editCommunityLogo(data.get("about2"),data.get("updatecommunity2"),data.get("termandcond2"),data.get("logoImagePath2"));
+	}
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("TC1115 Test Completed");
+		
+		quit();
+		
 	}
 }

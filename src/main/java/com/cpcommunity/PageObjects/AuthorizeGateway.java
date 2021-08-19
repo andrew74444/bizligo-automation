@@ -239,16 +239,17 @@ public class AuthorizeGateway extends BasePage {
 	}
 	
 	public RevenueReportPage navigateToRevenueReport() throws InterruptedException {
-		scrollDownVertically();
+		Thread.sleep(8000);
+		//scrollDownVertically();
 		click(advertisement, "Advertisement");
 		waitForElementToPresent(managetogocommunity);
 		//scrollUpVertically();
 		click(managetogocommunity, "Manage button");
-		Thread.sleep(6000);
+		Thread.sleep(8000);
 		scrollUpVertically();
 		waitForElementToPresent(dashboardreport);
 		click(dashboardreport, "Dashboard Reports");
-		Thread.sleep(3000);
+		Thread.sleep(8000);
 		waitForElementToPresent(revenuereport);
 		click(revenuereport, "Revenue Report");
 		return (RevenueReportPage) openPage(RevenueReportPage.class);	
@@ -322,9 +323,10 @@ public class AuthorizeGateway extends BasePage {
 		scrollUpVertically();
 		waitForElementToPresent(toggledropdown);
 		click(toggledropdown, "Toggle dropdown");
-		Thread.sleep(4000);
+		Thread.sleep(5000);
 		waitForElementToPresent(myeco);
         click(myeco, "My Ecosystem");
+        Thread.sleep(8000);
 		return (MyDashboardPage) openPage(MyDashboardPage.class);
 	}
 }

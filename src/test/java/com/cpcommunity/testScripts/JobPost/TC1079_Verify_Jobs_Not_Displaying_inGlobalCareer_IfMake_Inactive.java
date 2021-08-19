@@ -8,6 +8,8 @@ import com.cpcommunity.PageObjects.CommunityDashboardPage;
 import com.cpcommunity.PageObjects.GlobalCareers;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
+import com.cpcommunity.PageObjects.ManageCommunitiesPage;
+import com.cpcommunity.PageObjects.ManageCommunityPage;
 import com.cpcommunity.PageObjects.ManageJobsPage;
 import com.cpcommunity.PageObjects.MyCommunitiesPage;
 import com.cpcommunity.testScripts.community.BaseTest;
@@ -36,6 +38,9 @@ public class TC1079_Verify_Jobs_Not_Displaying_inGlobalCareer_IfMake_Inactive ex
 	manageJob.inActivateJob(data.get("Title"));
 	GlobalCareers Cp=manageJob.navigateToCareerPage();
 	Cp.JobNotDisplayed(data.get("Title1"));
+	ManageCommunityPage managecomm=Cp.gotoDashboardpage();
+	ManageJobsPage MJP=managecomm.navigateToManageJobsPage();
+	MJP.ActivateJob(data.get("Title2"));
 	
 	
 	}
