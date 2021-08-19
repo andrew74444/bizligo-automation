@@ -246,7 +246,7 @@ public class TACommunitiesPage extends BasePage{
         		}
     }
         public void TA_editCommunity(String Name,String EditedName,String About,String Other,String Category) throws InterruptedException {
-    		Name = Name+getDateInDDMMMYYYY(); 
+    		//Name = Name+getDateInDDMMMYYYY(); 
     		type(nameSearch, Name, "Community Name Search");
     		click(searchBtn, "search Button");
     		Thread.sleep(5000);

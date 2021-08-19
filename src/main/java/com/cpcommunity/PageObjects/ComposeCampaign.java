@@ -131,7 +131,7 @@ public class ComposeCampaign extends BasePage {
 	WebElement composeCampaign;
 	@FindBy(xpath="//div[@class='ui-grid-selection-row-header-buttons ui-grid-icon-ok ng-scope']")
 	List<WebElement> ListOfContacts;
-	@FindBy(xpath="//button[@ng-click='closePopup()']//span[@aria-hidden='true'][normalize-space()='×']")
+	@FindBy(xpath="//button[@ng-click='closePopup()']//span[@aria-hidden='true'][normalize-space()='Ã—']")
 	WebElement cancelPopup;
 	@FindBy(xpath = "//button[normalize-space()='Send']")
 	WebElement sendBtn;//button[@class='btn-primary btn btn-close']//i[@class='fa fa-paper-plane']
@@ -791,6 +791,7 @@ public void checkDuplicateImportContacts(String communityName, String typeName) 
     //click(nameCheckbox,"name check box");
     //click(SaveBtn,"save button");
     Thread.sleep(8000);
+
     type(nameTextBox,typeName,"duplicate");
     
     /*if(numberOfcsvFileResult.size()==1) {
@@ -804,7 +805,7 @@ public void checkDuplicateImportContacts(String communityName, String typeName) 
     		System.out.println("No Duplicate items are imported as only only one result is showing");
     		Assert.assertTrue(true);
     }else System.out.println("Duplicate items are also imported");
-    
+
     
     }
 public void checkImportContacts(String communityName, String typeName) throws InterruptedException {

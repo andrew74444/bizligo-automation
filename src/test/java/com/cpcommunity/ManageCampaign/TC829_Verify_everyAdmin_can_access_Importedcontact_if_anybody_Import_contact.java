@@ -45,12 +45,12 @@ public class TC829_Verify_everyAdmin_can_access_Importedcontact_if_anybody_Impor
 	composecp.checkImportContactsAsDiffAdmin(data.get("Community"),data.get("typeName"));
 	
 	}
-	@AfterMethod
+	/*@AfterMethod
 	public void tearDown() {
 		
 		logInfo("TC829 Test Completed");
 		
 		quit();
 		
-	}
+	}*/
 }

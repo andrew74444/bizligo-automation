@@ -80,13 +80,51 @@ public class TenantAdminDashboardPage extends BasePage{
 	WebElement communities;
 	@FindBy(xpath = "//a[normalize-space()='Manage Communities']")
 	WebElement Managecommunities;
+
 	@FindBy(xpath = "//a[@title='Payment Gateways']")
 	WebElement paymentGateways;
 	@FindBy(xpath = "//a[normalize-space()='Dashboard Reports']")
 	WebElement dashboardreport;
 	@FindBy(xpath = "//a[normalize-space()='Revenue Reports']")
 	WebElement revenuereport;
+
+	  @FindBy(xpath = "//a[normalize-space()='Donations']")
+		WebElement Donations;
+	@FindBy(xpath = "//div[@id='sidebar-menu']")
+	WebElement sideBarMenu;
+	@FindBy(xpath = "//a[normalize-space()='Payment Gateways']")
+	WebElement paymentGateway;
+	@FindBy(xpath = "//a[normalize-space()='Website Inquiries']")
+	WebElement websiteEnquiries;
+	@FindBy(xpath = "//a[normalize-space()='Website Inquiries']")
+	List<WebElement> websiteEnquiry;
+	@FindBy(xpath = "//*[@id='sidebar-menu']/div/ul/li[5]/a[1]")
+	WebElement CommunitiesNavSideMenu;
+	@FindBy(xpath = "//a[normalize-space()='Manage Communities']")
+	WebElement manageCommunity;
+	@FindBy(xpath = "//a[normalize-space()='Manage Communities']")
+	WebElement manageCommunities;
+	@FindBy(xpath = "//a[@title='Pending Communities']")
+	WebElement pendingCommunities;
+	@FindBy(xpath = "//*[@id=\"sidebar-menu\"]/div/ul/li[3]/a/i")
+	WebElement loyalty;
+	@FindBy(xpath = "//a[@href='/eventmanager/home/loyalities']")
+	WebElement LOYALTY;
+	@FindBy(xpath = "//a[@href='/eventmanager/home/loyaltymembership']")
+	WebElement loyaltyMembership;
 	
+
+	
+	public LoyaltyPage navigateToLoyaltyPage() {
+		scrollDownVertically();
+		scrollToElement(loyalty);
+		click(loyalty, "loyalty");
+		waitForElementToPresent(LOYALTY);
+		click(LOYALTY, "LOYALTY");
+		return (LoyaltyPage) openPage(LoyaltyPage.class);
+		// new ManageJobs(driver);
+	}
+
 
    
 	public ManageCommunitiesPage navigatetomanageCommunities() throws Exception {
