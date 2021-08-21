@@ -20,7 +20,7 @@ import com.cpcommunity.utilities.ExcelReader;
 public class TC1062_Verify_already_ExistEmail_ifUpdated_with_NewFirstName_get_Updated extends BaseTest{
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1062(Hashtable<String,String> data) throws Exception {
- 
+ //
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC1062", data.get("Runmode"), excel);
 		log.info("Inside Login Test");			

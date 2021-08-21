@@ -20,7 +20,7 @@ public class TC1047_CA_ableTo_Check_SendMail_History extends BaseTest {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1047(Hashtable<String,String> data) throws Exception {
 		
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1047", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

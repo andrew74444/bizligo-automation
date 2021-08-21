@@ -22,7 +22,7 @@ import com.cpcommunity.utilities.ExcelReader;
 public class TC1069_Verify_registeredMember_email_shouldNot_Import_in_IC extends BaseTest {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1069(Hashtable<String,String> data) throws Exception {
- 
+ //
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC1069", data.get("Runmode"), excel);
 		log.info("Inside Login Test");			
