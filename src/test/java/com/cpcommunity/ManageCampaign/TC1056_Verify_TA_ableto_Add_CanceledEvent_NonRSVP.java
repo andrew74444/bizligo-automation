@@ -18,7 +18,7 @@ import com.cpcommunity.utilities.ExcelReader;
 public class TC1056_Verify_TA_ableto_Add_CanceledEvent_NonRSVP extends BaseTest{
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1056(Hashtable<String,String> data) throws Exception {
- 
+ //
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC1056", data.get("Runmode"), excel);
 		log.info("Inside Login Test");			

@@ -18,7 +18,7 @@ import com.cpcommunity.utilities.ExcelReader;
 public class TC1051_Verify_TA_ableto_Add_InActiveMember_for_Selecting_InactiveOrganisation extends BaseTest {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1051(Hashtable<String,String> data) throws Exception {
- 
+ //
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC1051", data.get("Runmode"), excel);
 		log.info("Inside Login Test");			

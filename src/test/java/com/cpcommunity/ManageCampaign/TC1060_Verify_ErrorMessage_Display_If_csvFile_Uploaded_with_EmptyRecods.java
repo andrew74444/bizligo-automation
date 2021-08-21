@@ -19,7 +19,7 @@ import com.cpcommunity.utilities.ExcelReader;
 public class TC1060_Verify_ErrorMessage_Display_If_csvFile_Uploaded_with_EmptyRecods extends BaseTest {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1060(Hashtable<String,String> data) throws Exception {
- 
+ //
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC1060", data.get("Runmode"), excel);
 		log.info("Inside Login Test");			

@@ -20,7 +20,7 @@ import com.cpcommunity.utilities.ExcelReader;
 public class TC1068_verify_CA_ablTo_Activate_CampaignTemplate extends BaseTest {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1068(Hashtable<String,String> data) throws Exception {
-		
+		//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1068", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

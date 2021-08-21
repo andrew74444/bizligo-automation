@@ -21,7 +21,7 @@ import com.cpcommunity.utilities.ExcelReader;
 public class TC1058_Verify_CA_ablto_sendMail_ByImporting_CSVfile extends BaseTest {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1058(Hashtable<String,String> data) throws Exception {
- 
+ //
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC1058", data.get("Runmode"), excel);
 		log.info("Inside Login Test");			
