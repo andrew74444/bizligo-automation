@@ -22,7 +22,7 @@ public class TC1210_verify_Championwidget_notDisplaying_if_Diable extends BaseTe
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1210(Hashtable<String,String> data) throws Exception {
 		
-	//change plan name before running code
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1210", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

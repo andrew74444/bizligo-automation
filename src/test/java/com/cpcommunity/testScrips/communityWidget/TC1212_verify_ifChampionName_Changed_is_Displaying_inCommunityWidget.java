@@ -21,7 +21,7 @@ public class TC1212_verify_ifChampionName_Changed_is_Displaying_inCommunityWidge
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1212(Hashtable<String,String> data) throws Exception {
 		
-	//change plan name before running code
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1212", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

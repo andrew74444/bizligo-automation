@@ -18,6 +18,7 @@ import com.cpcommunity.utilities.ExcelReader;
 
 public class TC1167_Verify_maximum_5_Discussion_displaying_in_communityWidget extends BaseTest{
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
+	
 	public void TC1167(Hashtable<String,String> data) throws Exception {
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1167", data.get("Runmode"), excel);

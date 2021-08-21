@@ -23,7 +23,7 @@ public class TC1203_verify_CA_ableto_hide_GroupTab extends BaseTest {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1203(Hashtable<String,String> data) throws Exception {
 		
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1203", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

@@ -21,7 +21,7 @@ public class TC1173_verify_maximum_numbersOf_UpcomingEvents_displaying extends B
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1173(Hashtable<String,String> data) throws Exception {
 		
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1173", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			
