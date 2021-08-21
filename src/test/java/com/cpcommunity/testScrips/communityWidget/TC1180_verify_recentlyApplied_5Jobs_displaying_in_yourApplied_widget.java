@@ -17,6 +17,8 @@ import com.cpcommunity.utilities.ExcelReader;
 
 public class TC1180_verify_recentlyApplied_5Jobs_displaying_in_yourApplied_widget extends BaseTest{
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
+	
+	//
 	public void TC1180(Hashtable<String,String> data) throws Exception {
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1180", data.get("Runmode"), excel);

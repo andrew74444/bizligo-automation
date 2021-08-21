@@ -18,7 +18,7 @@ import com.cpcommunity.utilities.ExcelReader;
 public class TC1175_verify_SuggestedEventWidget_not_showing_before_Login extends BaseTest {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1175(Hashtable<String,String> data) throws Exception {
-			
+		//	
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1175", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

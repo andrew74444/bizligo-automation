@@ -22,7 +22,7 @@ public class TC1204_verify_CA_ableto_hide_AdvertisementTab extends BaseTest{
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1204(Hashtable<String,String> data) throws Exception {
 		
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1204", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

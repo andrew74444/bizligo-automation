@@ -22,7 +22,7 @@ public class TC1202_verify_CA_ableto_hde_EventsTab extends BaseTest{
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1202(Hashtable<String,String> data) throws Exception {
 		
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1202", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

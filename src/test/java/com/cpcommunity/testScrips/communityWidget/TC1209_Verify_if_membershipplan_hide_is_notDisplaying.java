@@ -23,7 +23,7 @@ public class TC1209_Verify_if_membershipplan_hide_is_notDisplaying extends BaseT
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1209(Hashtable<String,String> data) throws Exception {
 		
-	//change plan name before running code
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1209", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

@@ -17,7 +17,7 @@ import com.cpcommunity.utilities.ExcelReader;
 public class TC1171_verify_Guest_askTo_login_for_view_subscription extends BaseTest{
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1171(Hashtable<String,String> data) throws Exception {
-			
+			//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1171", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

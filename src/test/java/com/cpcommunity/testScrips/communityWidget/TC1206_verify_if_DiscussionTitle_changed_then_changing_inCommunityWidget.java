@@ -23,7 +23,7 @@ public class TC1206_verify_if_DiscussionTitle_changed_then_changing_inCommunityW
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1206(Hashtable<String,String> data) throws Exception {
 		
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1206", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

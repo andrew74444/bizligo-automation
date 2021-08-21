@@ -18,6 +18,8 @@ import com.cpcommunity.utilities.ExcelReader;
 
 public class TC1174_verify_UpcomingEvent_displaying_inSuggestedEvent_basedOn_previousEvents extends BaseTest {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
+	
+	//
 	public void TC1174(Hashtable<String,String> data) throws Exception {
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1174", data.get("Runmode"), excel);

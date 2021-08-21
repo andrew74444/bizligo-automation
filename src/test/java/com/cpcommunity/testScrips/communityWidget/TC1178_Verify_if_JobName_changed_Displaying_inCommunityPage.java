@@ -24,7 +24,7 @@ public class TC1178_Verify_if_JobName_changed_Displaying_inCommunityPage extends
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1178(Hashtable<String,String> data) throws Exception {
 		
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1178", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

@@ -22,7 +22,7 @@ public class TC1205_verify_if_AdTitle_changed_then_changing_inCommunityWidget ex
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1205(Hashtable<String,String> data) throws Exception {
 		
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1205", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

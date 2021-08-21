@@ -22,7 +22,7 @@ public class TC1211_verify_iffMembershipPlan_NameChanged_is_displaying_inCommuni
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1211(Hashtable<String,String> data) throws Exception {
 		
-	//change plan name before running code
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1211", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			
