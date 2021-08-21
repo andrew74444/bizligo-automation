@@ -37,7 +37,7 @@ public class TC1122_Verify_Inactive_AdStatusPlan_notTo_Display_InAdPage extends 
 	MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
 	CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
 	ManageAdPlansPage MAPP=communityDashboard.goToManageAdPlansPage();
-	MAPP.createInactiveAdPlan(data.get("name"),data.get("price"), data.get("planDetails"),data.get("duration"),data.get("durationType"),data.get("adLocation"),data.get("adType"), data.get("approvalType"));
+	MAPP.createInactiveAdPlan(data.get("name1"),data.get("price"), data.get("planDetails"),data.get("duration"),data.get("durationType"),data.get("adLocation"),data.get("adType"), data.get("approvalType"));
 	quit();
 	
 	openBrowser(data.get("browser"));

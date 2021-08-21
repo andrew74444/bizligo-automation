@@ -122,6 +122,8 @@ public class MyAdvertisements extends BasePage {
 	@FindBy(xpath = "//body/div[3]")
 	WebElement  adEndDatecalendar;
 	
+	@FindBy(xpath="//tr[@class='odd']//span[@title='For this plan payment is pending'][normalize-space()='PAYMENT PENDING']")
+	WebElement inactivestatus ;
 	
 	@Override
 	protected  void getPageScreenSot() {
@@ -236,7 +238,7 @@ public class MyAdvertisements extends BasePage {
 		picture();
 		waitForElementToPresent(selectGold2);
 		 clickElementByJavaScript(selectGold2);
-	        Thread.sleep(3000);		
+	        Thread.sleep(4000);		
 			click(next, "Next button");
 			Thread.sleep(5000);
 			picture();
@@ -244,12 +246,12 @@ public class MyAdvertisements extends BasePage {
 			type(adname, AdName, "Advertisement name");
 			click(date, "Select Date");
 			waitForElementToPresent(adStartDatecalendar);
-			Thread.sleep(2000);
+			Thread.sleep(3000);
 			click(nextMonth, "Next");
 			click(nextMonth, "Next");
 			waitForElementToPresent(dateselect);
 			click(dateselect, "Date");
-			Thread.sleep(500);
+			Thread.sleep(1000);
 			//click(this.adEndDate, "Ad End Date");
 			//Thread.sleep(1000);
 			type(choosefile, path, "Image Path");
@@ -263,9 +265,10 @@ public class MyAdvertisements extends BasePage {
 		 waitForElementToPresent(plansearch);
 		   type(plansearch, planName, "Plan Name");
 		   click(search, "Search");
-		   Thread.sleep(6000);
+		   Thread.sleep(8000);
 		   waitForElementToPresent(editp);
 		   click(editp, "Edit");
+		   Thread.sleep(4000);
 		picture();
 		waitForElementToPresent(adname);
 		type(adname, AdName, "Advertisement name");
@@ -389,6 +392,13 @@ public class MyAdvertisements extends BasePage {
 		Thread.sleep(4000);
 		
 	}
+	public void checkplanstatus() throws InterruptedException {
+		Thread.sleep(6000);
+		this.inactivestatus.isDisplayed();
+		String status=inactivestatus.getText();
+		System.out.println(status);
+		
+	}
 	
 	public void checkIsplanInactive() {
 		
@@ -400,6 +410,7 @@ public class MyAdvertisements extends BasePage {
 		
 	}
 	public MyDashboardPage gotoMyDashboardPage() throws Exception {
+		//Thread.sleep(3000);
 		waitForElementToPresent(Toggledropdownmenu);
 		click(Toggledropdownmenu,"Toggledropdownmenu");
 		Thread.sleep(500);

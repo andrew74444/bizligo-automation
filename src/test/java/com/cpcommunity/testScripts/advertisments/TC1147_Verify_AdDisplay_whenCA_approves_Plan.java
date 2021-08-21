@@ -50,5 +50,12 @@ public class TC1147_Verify_AdDisplay_whenCA_approves_Plan extends BaseTest{
 	 ManageMemberAdvertisementsPage MMA=communityDashboard.navigateToMemberAdvertisements();
 	 MMA.approveAd(data.get("plan"),data.get("AdImage"),data.get("LinkUrl"));
 }
-	
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("TC1147 Test Completed");
+		
+		quit();
+		
+	}
 }

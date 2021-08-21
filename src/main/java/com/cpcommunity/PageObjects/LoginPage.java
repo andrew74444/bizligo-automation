@@ -269,8 +269,9 @@ public class LoginPage extends BasePage {
 		return (AccountSelectPlansPage) openPage(AccountSelectPlansPage.class);
 	}
 	public MyDashboardPage loginToMemberdashboard(String enterEmailAddress, String password) throws InterruptedException {
-        this.login(enterEmailAddress, password);
-        Thread.sleep(8000);
+        Thread.sleep(3000);
+		this.login(enterEmailAddress, password);
+        Thread.sleep(5000);
         return (MyDashboardPage) openPage(MyDashboardPage.class);
 //        new MyDashboardPage(driver, );        
 	}
@@ -309,10 +310,10 @@ public class LoginPage extends BasePage {
 	public Bizligo1CommunityPage goToMyBizCommunity(String communityName ) throws InterruptedException {
 		Thread.sleep(4000);
 		clickElementByJavaScript(globalCommunities);
-		waitForElementToPresent(Searchcommunity);
+		waitForElementToPresent(SearchcommunityName);
 		picture();
-		type(Searchcommunity, communityName, "Search by Community");
-		click(search, "search btn");
+		type(SearchcommunityName, communityName, "Search by Community");
+		click(searchbtn, "search btn");
 		Thread.sleep(12000);
 		//WebElement ele = driver.findElement(By.xpath("//a[@tooltip='" + communityName + "']"));
 		waitForElementToPresent(bizligo1manage);

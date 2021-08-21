@@ -33,9 +33,9 @@ public class MemberRevenueReport extends BasePage{
 	WebElement email;
 	
 	public void checkRevenue(String member) throws InterruptedException {
-		Thread.sleep(6000);
+		Thread.sleep(8000);
 		type(membername, member, "Member Name");
-		Thread.sleep(1000);
+		Thread.sleep(8000);
 		click(menu, "Menu");
 		Thread.sleep(1000);
 		click(email, "email Id");

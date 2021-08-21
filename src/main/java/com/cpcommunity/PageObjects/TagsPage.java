@@ -184,9 +184,10 @@ public class TagsPage extends BasePage {
 		tagName=tagName+ " " + getDateInDDMMMYYYY();
 		waitForElementToPresent(searchtag);
 		type(searchtag, Name, "Category name");
-		Thread.sleep(5000);
+		Thread.sleep(8000);
 		waitForElementToPresent(selectcat);
 		click(selectcat, "Select Category");
+		Thread.sleep(3000);
 		waitForElementToPresent(edit);
 		click(edit, "edit");
 		Thread.sleep(8000);

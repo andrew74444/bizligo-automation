@@ -27,7 +27,7 @@ public class TC1126_Verify_CA_ablleto_createAd_andMember_CanSee extends BaseTest
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1126", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			
-	/*openBrowser(data.get("browser"));
+	openBrowser(data.get("browser"));
 	logInfo("Launched Browser : "+ data.get("browser"));		
 	logInfo("BizLigo Application Opened");
 	HomePage home = new HomePage().open(data.get("tenantType"));
@@ -37,7 +37,7 @@ public class TC1126_Verify_CA_ablleto_createAd_andMember_CanSee extends BaseTest
 	CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
 	ManageAdPlansPage MAPP=communityDashboard.goToManageAdPlansPage();
 	MAPP.createAdPlan(data.get("name"),data.get("price"), data.get("planDetails"),data.get("duration"),data.get("durationType"),data.get("adLocation"),data.get("adType"), data.get("approvalType"));
-	quit();*/
+	quit();
 	
 	openBrowser(data.get("browser"));
 	logInfo("Launched Browser : "+data.get("browser"));

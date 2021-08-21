@@ -272,11 +272,12 @@ public class EmailTemplatePage extends BasePage {
 	    	System.out.println("Jobs is not Present in Pricing Plan Page");
 	    	Assert.assertNotEquals(Notpresent, AllFeatures, "Job is not present");
 	    }
-	 public void clickBackToFilter() {
+	 public void clickBackToFilter() throws InterruptedException {
 		 waitForElementToPresent(group);
 	    	this.group.click();
 	    	waitForElementToPresent(editGroup);
 	    	click(editGroup, "Edit");
+	    	Thread.sleep(2000);
 	    	waitForElementToPresent(backtoFilter);
 	    	click(backtoFilter, "Back to Filter");
 	 }

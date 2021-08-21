@@ -663,13 +663,20 @@ public ManageAdPlansPage goToManageAdPlansPage() {
 //		new GlobalMembersPage(driver, );
 	}
 	
-	public void checkAdcounts() {
+	public int checkAdcounts() {
 		waitForElementToPresent(myAdvertisements);
 		String count=adcounts.getText();
 		System.out.println("Advertisement counts :" + count);
+		int i = Integer.parseInt(count);				
+		return i;
 		
 	}
-	
+	public boolean CompareProgressBars(int previouscount,int Aftercount){
+		if(previouscount <= Aftercount) {
+			  return true;
+		} 
+		else return false;
+	}
 	public ConnectionsPage navigateToMyConnections()
 	{				
 		myConnections.click();	
@@ -734,7 +741,7 @@ public ManageAdPlansPage goToManageAdPlansPage() {
 //	}
 	
 	public MyAdvertisements NaviagtingToMyAdvertisements() throws InterruptedException
-	{		
+	{		Thread.sleep(5000);
 		scrollToElement(myAdvertisements);
 		clickElementByJavaScript(myAdvertisements);
 		//click(myAdvertisements,"My Advertisements");	

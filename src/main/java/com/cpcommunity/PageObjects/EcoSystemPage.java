@@ -180,14 +180,14 @@ public class EcoSystemPage extends BasePage {
 		click(myEcosystem,"myEcosystem");
 		return (MyEcosystemPage) openPage(MyEcosystemPage.class);
 	}	
-	public MyEventsPage gotoMyEventsPage() throws Exception {
+	/*public MyEventsPage gotoMyEventsPage() throws Exception {
 		waitForElementToPresent(Toggledropdownmenu);
 		click(Toggledropdownmenu,"Toggledropdownmenu");
 		Thread.sleep(1000);
 		waitForElementToPresent(myEvents);
 		click(myEvents,"myEvents");
 		return (MyEventsPage) openPage(MyEventsPage.class);
-	}	
+	}*/	
 	public void myMatches(String actual) throws Throwable
 		
 	        {
@@ -403,11 +403,11 @@ public class EcoSystemPage extends BasePage {
 	 return (EndorsementPage) openPage(EndorsementPage.class);
 	 }
 	
-    public  MyEventsPage goToMyEventsPage() {
+ /*   public  MyEventsPage goToMyEventsPage() {
 		
 		click(toggleDropDown,"Toggle Drop Down Menu");
 		click(myEvents,"My events");
 		return (MyEventsPage) openPage(MyEventsPage.class);
 	}
-
+*/
 }

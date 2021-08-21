@@ -183,6 +183,7 @@ public class MyCommunitiesPage extends BasePage {
 
 	
 	public MyDashboardPage gotoMyDashboardPage() throws Exception {
+		Thread.sleep(5000);
 		waitForElementToPresent(Toggledropdownmenu);
 		click(Toggledropdownmenu,"Toggledropdownmenu");
 		Thread.sleep(1000);

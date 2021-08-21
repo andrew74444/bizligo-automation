@@ -36,10 +36,8 @@ public class TC1187_Verify_CA_ableto_Update_Tag_Information extends BaseTest {
 	tag.updateTag(data.get("Name"),data.get("tagName"),data.get("Description"));
 	BlogsPage blogpage=tag.gotoBlogsPage();
 	blogpage.verifytagchanges();
-	CommunityDashboardPage CDP=blogpage.gotoCommunityDashboard();
-	TagsPage tag1=CDP.gotoTags();
-	tag1.updateTag(data.get("Name1"),data.get("tagName1"),data.get("Description1"));
-	BlogsPage blogpage1=tag1.gotoBlogsPage();
+	TagsPage TP=blogpage.gotoTagsPage();
+	TP.updateTag(data.get("Name1"),data.get("tagName1"),data.get("Description1"));
 	
 }
 	@AfterMethod

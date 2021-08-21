@@ -33,12 +33,12 @@ public class TC1123_Verify_Countnot_Increment_InAdvertisementPage_When_Planis_Pe
 	LoginPage login1 = home1.clickOnLOGINBtn();
 	MyCommunitiesPage myCommunity = login1.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
 	MyDashboardPage mydash=myCommunity.gotoMyDashboardPage();
-	mydash.checkAdcounts();
+	int previouscount=mydash.checkAdcounts();
 	 MyAdvertisements A=mydash.NaviagtingToMyAdvertisements();
 	 A.createAd(data.get("planName"), data.get("AdName"),data.get("path"));
 	MyDashboardPage dash=A.gotoMyDashboardPage();
-	dash.checkAdcounts();
-	
+	int Aftercount=dash.checkAdcounts();
+	boolean val=dash.CompareProgressBars(previouscount,Aftercount);
 	 
 	 
 	}
