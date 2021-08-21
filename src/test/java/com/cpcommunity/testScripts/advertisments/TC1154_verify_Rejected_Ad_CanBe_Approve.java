@@ -20,7 +20,7 @@ public class TC1154_verify_Rejected_Ad_CanBe_Approve extends BaseTest  {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1154(Hashtable<String,String> data) throws Exception {
 		
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1154", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

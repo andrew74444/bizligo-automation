@@ -23,7 +23,7 @@ public class TC1126_Verify_CA_ablleto_createAd_andMember_CanSee extends BaseTest
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1126(Hashtable<String,String> data) throws Exception {
 		
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1126", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

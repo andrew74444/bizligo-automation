@@ -19,7 +19,7 @@ public class TC1159_Verify_Mail_NotTrigger_when_member_save_Ad extends BaseTest 
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1159(Hashtable<String,String> data) throws Exception {
 		
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1159", data.get("Runmode"), excel);
 	log.info("Inside Login Test");	

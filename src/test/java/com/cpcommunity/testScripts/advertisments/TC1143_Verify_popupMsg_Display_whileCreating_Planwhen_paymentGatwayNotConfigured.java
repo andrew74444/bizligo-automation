@@ -20,7 +20,7 @@ public class TC1143_Verify_popupMsg_Display_whileCreating_Planwhen_paymentGatway
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1143(Hashtable<String,String> data) throws Exception {
 		
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1143", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

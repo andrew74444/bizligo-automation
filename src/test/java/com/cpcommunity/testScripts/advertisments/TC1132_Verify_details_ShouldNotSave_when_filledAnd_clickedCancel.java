@@ -20,7 +20,7 @@ public class TC1132_Verify_details_ShouldNotSave_when_filledAnd_clickedCancel ex
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1132(Hashtable<String,String> data) throws Exception {
 		
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1132", data.get("Runmode"), excel);
 	log.info("Inside Login Test");	

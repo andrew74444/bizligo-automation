@@ -21,7 +21,7 @@ public class TC1134_Verify_CA_ableto_create_adPlans_With_sameName_InAnotherCommu
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1134(Hashtable<String,String> data) throws Exception {
 		
-	//change plan name before running code
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1134", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

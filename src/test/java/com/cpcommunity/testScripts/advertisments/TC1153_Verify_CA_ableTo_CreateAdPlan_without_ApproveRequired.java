@@ -20,7 +20,7 @@ public class TC1153_Verify_CA_ableTo_CreateAdPlan_without_ApproveRequired extend
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1153(Hashtable<String,String> data) throws Exception {
 		
-	//change plan name before running code
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1153", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

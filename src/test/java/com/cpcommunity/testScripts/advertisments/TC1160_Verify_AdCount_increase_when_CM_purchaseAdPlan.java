@@ -19,6 +19,8 @@ import com.cpcommunity.utilities.ExcelReader;
 
 public class TC1160_Verify_AdCount_increase_when_CM_purchaseAdPlan extends BaseTest {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
+	
+	
 	public void TC1160(Hashtable<String,String> data) throws Exception {
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1160", data.get("Runmode"), excel);

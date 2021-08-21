@@ -24,7 +24,7 @@ import com.cpcommunity.utilities.ExcelReader;
 public class TC1145_Verify_AdNot_tobeDisplay_inCommunitydetailPage_ifRejected_ByAdmin extends BaseTest {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1145(Hashtable<String,String> data) throws Exception {
-		
+		//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1145", data.get("Runmode"), excel);
 	log.info("Inside Login Test");	

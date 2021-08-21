@@ -23,7 +23,7 @@ import com.cpcommunity.utilities.ExcelReader;
 public class TC1150_Verify_Adcount_Increase_when_plan_approves extends BaseTest{
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1150(Hashtable<String,String> data) throws Exception {
-		
+		//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1150", data.get("Runmode"), excel);
 	log.info("Inside Login Test");	
