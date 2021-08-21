@@ -19,7 +19,7 @@ import com.cpcommunity.utilities.ExcelReader;
 public class TC1024_CA_canSearch_GRoup_withGroupName_inPendingRequestPage extends BaseTest{
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1024(Hashtable<String,String> data) throws Exception {
-		
+	//	
 	
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1024", data.get("Runmode"), excel);
