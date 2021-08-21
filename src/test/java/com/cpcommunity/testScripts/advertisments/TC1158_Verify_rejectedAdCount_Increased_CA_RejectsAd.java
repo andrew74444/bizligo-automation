@@ -28,7 +28,7 @@ public class TC1158_Verify_rejectedAdCount_Increased_CA_RejectsAd extends BaseTe
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1158", data.get("Runmode"), excel);
 	log.info("Inside Login Test");	
-	/*openBrowser(data.get("browser"));
+	openBrowser(data.get("browser"));
 	logInfo("Launched Browser : "+data.get("browser"));
 	logInfo("BizLigo Application Opened");
 	HomePage home = new HomePage().open(data.get("tenantType"));
@@ -40,7 +40,7 @@ public class TC1158_Verify_rejectedAdCount_Increased_CA_RejectsAd extends BaseTe
 	SelectPlanPage SPP= GCP.navigatetoselectPlanPage();
 	AuthorizeGateway AG=SPP.selectPlan1(data.get("planName"),data.get("AdName"),data.get("path"));
 	AG.makePayment();
-	quit();*/
+	quit();
 	
 	openBrowser(data.get("browser"));
 	logInfo("Launched Browser : "+ data.get("browser"));				
@@ -55,5 +55,12 @@ public class TC1158_Verify_rejectedAdCount_Increased_CA_RejectsAd extends BaseTe
     comdash.RejectedAdcounts();
    
 	}
-	
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("Test Completed");
+		
+		quit();
+		
+	}	
 }
