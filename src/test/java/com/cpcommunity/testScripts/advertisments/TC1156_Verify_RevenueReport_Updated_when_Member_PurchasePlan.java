@@ -43,5 +43,12 @@ public class TC1156_Verify_RevenueReport_Updated_when_Member_PurchasePlan extend
 	 MRR.checkRevenue(data.get("member"));
 	  
 }
-	
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("Test Completed");
+		
+		quit();
+		
+	}	
 }

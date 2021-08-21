@@ -34,5 +34,12 @@ public class TC1036_Verify_BusinessCategory_Is_Displaying extends BaseTest {
 		
 		
 	}
-	
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("TC1036 Test Completed");
+		
+		quit();
+		
+	}
 }

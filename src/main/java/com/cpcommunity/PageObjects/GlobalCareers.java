@@ -234,6 +234,7 @@ public void JobDisplayed(String Title1) {
 		click(search, "Search button");
 		if(searchResult.isDisplayed()) {
 			Assert.assertTrue(true);
+			System.out.println(searchResult);
 		}
 		else {
 			Assert.assertTrue(false);

@@ -1,6 +1,7 @@
 package com.cpcommunity.PageObjects;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -12,6 +13,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
 import com.uiFramework.pamTen.cpcommunity.helper.calendar.DateManager;
+
+import junit.framework.Assert;
 
 
 public class SelectPlanPage extends BasePage {
@@ -86,6 +89,10 @@ public class SelectPlanPage extends BasePage {
 	WebElement advertisement;
 	@FindBy(xpath = "//div[@class='datetimepicker-days']//th[@class='next']")
 	WebElement nextMonth;
+	@FindBy(xpath = "//*[@ng-repeat='promotionPlan in PromotionPlans']")
+	List<WebElement> Selectpanels;
+	@FindBy(xpath = "//ng-repeat//div[1]//div[1]//div[1]//div[1]//h3[1]")
+	List<WebElement> plansName;
 	
 	
 	@Override
@@ -133,6 +140,57 @@ public class SelectPlanPage extends BasePage {
 			}
 		}
 	}
+	
+	public void selectBPlan(String planName) throws Exception {
+
+		int T = this.Selectpanels.size();
+		planName=planName+ "" + getDateInDDMMMYYYY();
+		int j = 1;
+		int V = driver.findElements(By.xpath("//body/div[@class='main-home-cont']/div[@id='wrapper']/div[@id='body']/section[@id='renderBodyConatiner']/div[@id='removeinnercss']/div[@class='purchasepage']/div[@id='PurchasePromotionsController']/div[@class='reg_cont']/div[@class='row']/div[@id='msform']/fieldset[@class='ng-pristine ng-valid']/div[@ng-show='PromotionPlans.length']/div[@class='row']/ng-repeat/div[1]")).size();
+		for (int i = 1; i <= V; i++) {
+			System.out.println(i);
+			
+			if (i > 3 && i <= V) {
+          
+				scrollToElement(driver
+						.findElement(By.xpath("//ng-repeat[" + j + "]//div[1]//div[1]//div[1]//div[3]//a[1]")));
+				j++;
+			
+		     String Name = driver.findElement(By.xpath("//ng-repeat[" + i + "]//div[1]//div[1]//div[1]//div[1]//h3")).getText();
+			System.out.println(Name);
+			if(Name.matches(planName)) {
+			//if (Name.equalsIgnoreCase(planName)) {			
+				driver.findElement(By.xpath("//*//ng-repeat[" + i + "]//div[1]//div[1]//div[1]//div[3]//a[1]")).click();
+				Thread.sleep(5000);
+				System.out.println("plan selected");
+			}
+			}
+		}
+	}
+	
+	public void PlanNotDisplaying(String planName) throws Exception {
+		int T = this.Selectpanels.size();
+		planName=planName+ "" + getDateInDDMMMYYYY();
+		int j = 1;
+		int V = driver.findElements(By.xpath("//body/div[@class='main-home-cont']/div[@id='wrapper']/div[@id='body']/section[@id='renderBodyConatiner']/div[@id='removeinnercss']/div[@class='purchasepage']/div[@id='PurchasePromotionsController']/div[@class='reg_cont']/div[@class='row']/div[@id='msform']/fieldset[@class='ng-pristine ng-valid']/div[@ng-show='PromotionPlans.length']/div[@class='row']/ng-repeat/div[1]")).size();
+		for (int i = 1; i <= V; i++) {
+			System.out.println(i);
+			if (i > 0 && i < T) {
+
+				scrollToElement(driver
+						.findElement(By.xpath("//ng-repeat[" + j + "]//div[1]//div[1]//div[1]//div[3]//a[1]")));
+				j++;
+				
+				String Name = driver.findElement(By.xpath("//ng-repeat[" + i + "]//div[1]//div[1]//div[1]//div[1]//h3")).getText();
+				System.out.println(Name);
+				
+				Assert.assertNotSame( planName, Name);
+				
+			   }	
+			}
+		System.out.println(" " + planName +" is not present.");
+		}
+	
 
 	//
 	private void selectStartAndEndDates() throws Exception {
@@ -205,13 +263,82 @@ public class SelectPlanPage extends BasePage {
 		Thread.sleep(4000);
 		return (AuthorizeGateway) openPage(AuthorizeGateway.class);
 	}
+	public AuthorizeGateway selectTenantPlan( String AdName, String path ) throws Exception {
+		//this.createGlobalAd.click();
+        Thread.sleep(2000);
+		//this.selectAPlan(planName);
+          //clickElementByJavaScript(selectGold2);
+        Thread.sleep(3000);		
+		click(next, "Next button");
+		Thread.sleep(5000);
+		picture();
+		waitForElementToPresent(adname);
+		type(adname, AdName, "Advertisement name");
+		click(date, "Select Date");
+		waitForElementToPresent(adStartDatecalendar);
+		Thread.sleep(2000);
+		click(nextMonth, "Next");
+		click(nextMonth, "Next");
+		waitForElementToPresent(dateselect);
+		click(dateselect, "Date");
+		//click(this.adEndDate, "Ad End Date");
+		//waitForElementToPresent(adEndDatecalendar);
+		//Thread.sleep(1000);
+		//click(enddate, "EndDate");
+		Thread.sleep(4000);
+		waitForElementToPresent(choosefile);
+		type(choosefile, path, "Image Path");
+		scrollDownVertically();
+		click(proceedTopayment, "Proceed To Payment");
+		waitForElementToPresent(Authorised);
+		click(Authorised, "Authorised.Net");
+	    waitForElementToPresent(proceed);
+		click(proceed, "Proceed");
+		Thread.sleep(4000);
+		return (AuthorizeGateway) openPage(AuthorizeGateway.class);
+	}
 	
-	public AuthorizeGateway selectPlan1(String planName, String AdName, String path ) throws Exception {
+	public AuthorizeGateway TenantPlan(String planName, String AdName, String path ) throws Exception {
 		//this.createGlobalAd.click();
         Thread.sleep(2000);
 		//this.selectAPlan(planName);
           clickElementByJavaScript(selectGold2);
-        Thread.sleep(3000);		
+        Thread.sleep(5000);		
+		click(next, "Next button");
+		Thread.sleep(5000);
+		picture();
+		waitForElementToPresent(adname);
+		type(adname, AdName, "Advertisement name");
+		click(date, "Select Date");
+		waitForElementToPresent(adStartDatecalendar);
+		Thread.sleep(2000);
+		click(nextMonth, "Next");
+		click(nextMonth, "Next");
+		waitForElementToPresent(dateselect);
+		click(dateselect, "Date");
+		//click(this.adEndDate, "Ad End Date");
+		//waitForElementToPresent(adEndDatecalendar);
+		//Thread.sleep(1000);
+		//click(enddate, "EndDate");
+		Thread.sleep(4000);
+		waitForElementToPresent(choosefile);
+		type(choosefile, path, "Image Path");
+		scrollDownVertically();
+		click(proceedTopayment, "Proceed To Payment");
+		waitForElementToPresent(Authorised);
+		click(Authorised, "Authorised.Net");
+	    waitForElementToPresent(proceed);
+		click(proceed, "Proceed");
+		Thread.sleep(5000);
+		return (AuthorizeGateway) openPage(AuthorizeGateway.class);
+	}
+	
+	public AuthorizeGateway selectPlan1(String planName, String AdName, String path ) throws Exception {
+		//this.createGlobalAd.click();
+        Thread.sleep(4000);
+		//this.selectAPlan(planName);
+          clickElementByJavaScript(selectGold2);
+        Thread.sleep(5000);		
 		click(next, "Next button");
 		Thread.sleep(5000);
 		picture();

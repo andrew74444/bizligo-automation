@@ -51,7 +51,15 @@ public class BlogsPage extends BasePage {
 	WebElement verifyname;
 	@FindBy(xpath = "//div[@class='panel panel-warning']//div[@class='panel-body']")
 	WebElement checkname;
-	
+	@FindBy(xpath = "(//*[contains(text(),'Blogs')])[1]")
+	WebElement blogs;
+
+	@FindBy(xpath = "(//*[contains(text(),'Categories')])[1]")
+	WebElement categories;
+
+	@FindBy(xpath = "(//*[contains(text(),'Tags')])[1]")
+	WebElement tags;
+
 	@FindBy(xpath = "//*[contains(text(),'No Posts found')]")
 	WebElement noPosts;
 	
@@ -235,4 +243,22 @@ public class BlogsPage extends BasePage {
   	
   	
   }
+  public TagsPage gotoTagsPage() throws InterruptedException {
+		
+		waitForElementToPresent(Toggledropdownmenu);
+		clickElementByJavaScript(Toggledropdownmenu);
+		Thread.sleep(5000);
+		waitForElementToPresent(ecosystem);
+		click(ecosystem,"Ecosystem");
+		Thread.sleep(5000);
+		Thread.sleep(5000);
+		//this.searchCommunity(communityName+getDateInDDMMMYYYY());
+		click(MANAGEbtn, "Manage");
+		Thread.sleep(1000);
+		Thread.sleep(5000);
+		click(blogs, "Tags");
+		waitForElementToPresent(tags);
+		click(tags, "Tags");
+		return (TagsPage) openPage(TagsPage.class);	
+	}
 }

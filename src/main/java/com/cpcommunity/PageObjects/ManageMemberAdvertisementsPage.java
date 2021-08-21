@@ -91,7 +91,7 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 	@FindBy(xpath = "//body/div[3]")
 	WebElement  adEndDatecalendar;
 	
-	@FindBy(xpath = "//button[normalize-space()='Approve']")
+	@FindBy(xpath = "//button[@id='ApproveClick']")
 	WebElement  approve;
 	
 	
@@ -101,7 +101,7 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 	//@FindBy(xpath = "//body[1]/div[2]/div[3]/table[1]/tbody[1]/tr[4]/td[2]")
 	//WebElement  date;
 	
-	@FindBy(xpath = "//body[1]/div[3]/div[3]/table[1]/tbody[1]/tr[4]/td[4]")
+	@FindBy(xpath = "//tbody/tr[1]/td[2]/a[1]")
 	WebElement  edit;
 	
 	@FindBy(xpath = "//body[1]/div[3]/div[3]/table[1]/tbody[1]/tr[4]/td[4]")
@@ -133,18 +133,18 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 	}
 
 	public void rejectAd(String status) throws Exception {
-		Thread.sleep(4000);
+		Thread.sleep(5000);
 		waitForElementToPresent(statusSearch);
 		selectByVisibleText(statusSearch, status, "waiting for approval");
 		click(btnSearch, "Search");
-		Thread.sleep(6000);
+		Thread.sleep(8000);
 		
 		click(action, "action");
-		Thread.sleep(4000);
+		Thread.sleep(8000);
 		//waitForElementToPresent(adStartDate);
 //		selectStartAndEndDates();
 		click(reject, "Reject");
-		//Thread.sleep(4000);
+		Thread.sleep(8000);
 		picture();
 		
 	}
@@ -165,12 +165,12 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 	}
 	
 	public void approveAd (String planName,String AdImage,String LinkUrl) throws Exception {
-		Thread.sleep(4000);
+		Thread.sleep(5000);
 		waitForElementToPresent(PlanNameSearch);
-		type(PlanNameSearch, planName, "Plan Name Search");
+		//type(PlanNameSearch, planName, "Plan Name Search");
 		selectUsingIndex(statusSearch, 1, "Status");
 		click(btnSearch, "Search");
-		Thread.sleep(6000);
+		Thread.sleep(10000);
 		//String s = status.getText();
 		
 			click(edit, "action");
@@ -197,7 +197,7 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 		waitForElementToPresent(PlanNameSearch);
 		//type(PlanNameSearch, planName, "Plan Name Search");
 		selectUsingIndex(statusSearch, 2, linkUrl);
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		click(btnSearch, "Search");
 		Thread.sleep(8000);
 		click(action, "action");
@@ -277,13 +277,13 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 	}
 
 	public CommunityDashboardPage gotoCommunityDashboard() throws InterruptedException {
-		Thread.sleep(4000);
+		Thread.sleep(8000);
 		scrollUpVertically();
 		waitForElementToPresent(dashboardreport);
 		click(dashboardreport, "Dashboard Reports");
 		waitForElementToPresent(communitydash);
 		click(communitydash, "Community DashBoard");
-		
+		Thread.sleep(6000);
 		return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
 	}
 

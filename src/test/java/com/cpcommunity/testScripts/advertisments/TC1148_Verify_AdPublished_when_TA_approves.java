@@ -48,11 +48,11 @@ public class TC1148_Verify_AdPublished_when_TA_approves extends BaseTest{
 	 MMA.approveAd(data.get("plan"),data.get("AdImage"),data.get("LinkUrl"));
 	
 }
-	/*@AfterMethod
+	@AfterMethod
 	public void tearDown() {
 		
 		logInfo("TC1148 Test Completed");
 		
 		quit();
-}*/
+}
 }

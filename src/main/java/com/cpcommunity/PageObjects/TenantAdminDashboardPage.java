@@ -1,5 +1,7 @@
 package com.cpcommunity.PageObjects;
 
+import java.util.List;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -114,7 +116,7 @@ public class TenantAdminDashboardPage extends BasePage{
 	WebElement loyaltyMembership;
 	
 
-	
+	/*
 	public LoyaltyPage navigateToLoyaltyPage() {
 		scrollDownVertically();
 		scrollToElement(loyalty);
@@ -124,7 +126,7 @@ public class TenantAdminDashboardPage extends BasePage{
 		return (LoyaltyPage) openPage(LoyaltyPage.class);
 		// new ManageJobs(driver);
 	}
-
+*/
 
    
 	public ManageCommunitiesPage navigatetomanageCommunities() throws Exception {

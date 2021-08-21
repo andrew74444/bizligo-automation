@@ -131,7 +131,7 @@ public class ComposeCampaign extends BasePage {
 	WebElement composeCampaign;
 	@FindBy(xpath="//div[@class='ui-grid-selection-row-header-buttons ui-grid-icon-ok ng-scope']")
 	List<WebElement> ListOfContacts;
-	@FindBy(xpath="//button[@ng-click='closePopup()']//span[@aria-hidden='true'][normalize-space()='×']")
+	@FindBy(xpath="//div[@id='ContactsModal']//button[@role='button'][normalize-space()='Cancel']")
 	WebElement cancelPopup;
 	@FindBy(xpath = "//button[normalize-space()='Send']")
 	WebElement sendBtn;//button[@class='btn-primary btn btn-close']//i[@class='fa fa-paper-plane']

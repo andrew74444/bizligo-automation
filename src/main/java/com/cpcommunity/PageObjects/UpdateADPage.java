@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 
 import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
 
@@ -44,6 +45,14 @@ public class UpdateADPage  extends BasePage{
 	WebElement nextMonth;
 	@FindBy(xpath = "//div[@class='toast-message']")
 	WebElement toastemessage;
+	@FindBy(xpath = "//*[@id='DurationTypeID']")
+	WebElement durationType;
+	@FindBy(xpath = "//*[@id='AdLocation']")
+	WebElement adLocation;
+	@FindBy(xpath = "//*[@id='ViewType']")
+	WebElement adType;
+	@FindBy(xpath = "//*[@for='chkRequiresApproval']")
+	WebElement chkRequiresApproval;
 
 	public void editPaymentpendingAD(String AdName, String  path) throws InterruptedException {
 		
@@ -56,10 +65,7 @@ public class UpdateADPage  extends BasePage{
 		Thread.sleep(2000);
 		
 	}
-	public void checkIsplanInactive() {
-		
-		
-	}
+	
 }
 
 
