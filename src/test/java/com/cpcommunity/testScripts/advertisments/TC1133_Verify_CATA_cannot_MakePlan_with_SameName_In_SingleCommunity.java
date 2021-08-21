@@ -20,7 +20,7 @@ public class TC1133_Verify_CATA_cannot_MakePlan_with_SameName_In_SingleCommunity
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1133(Hashtable<String,String> data) throws Exception {
 		
-	//change plan name before running code
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1133", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

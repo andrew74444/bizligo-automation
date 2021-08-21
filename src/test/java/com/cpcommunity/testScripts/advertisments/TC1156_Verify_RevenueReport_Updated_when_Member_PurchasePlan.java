@@ -23,7 +23,7 @@ import com.cpcommunity.utilities.ExcelReader;
 public class TC1156_Verify_RevenueReport_Updated_when_Member_PurchasePlan extends BaseTest {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1156(Hashtable<String,String> data) throws Exception {
-		
+		//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1156", data.get("Runmode"), excel);
 	log.info("Inside Login Test");	

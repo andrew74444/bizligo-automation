@@ -24,7 +24,7 @@ public class TC1122_Verify_Inactive_AdStatusPlan_notTo_Display_InAdPage extends 
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1122(Hashtable<String,String> data) throws Exception {
 		
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1122", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

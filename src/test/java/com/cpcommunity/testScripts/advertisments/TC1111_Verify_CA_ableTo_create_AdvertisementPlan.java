@@ -20,7 +20,7 @@ public class TC1111_Verify_CA_ableTo_create_AdvertisementPlan extends BaseTest {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1111(Hashtable<String,String> data) throws Exception {
 		
-	//change plan name before running code
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1111", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

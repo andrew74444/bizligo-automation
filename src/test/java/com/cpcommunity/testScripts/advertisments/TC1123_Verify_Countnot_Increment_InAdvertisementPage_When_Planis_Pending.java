@@ -22,7 +22,7 @@ public class TC1123_Verify_Countnot_Increment_InAdvertisementPage_When_Planis_Pe
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1123(Hashtable<String,String> data) throws Exception {
 		
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1123", data.get("Runmode"), excel);
 	log.info("Inside Login Test");	

@@ -20,7 +20,7 @@ public class TC1155_Verify_PublishedAd_If_Duration_Change extends BaseTest {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1155(Hashtable<String,String> data) throws Exception {
 		
-	//change plan name before running code
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1155", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

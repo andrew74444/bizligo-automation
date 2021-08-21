@@ -24,7 +24,7 @@ public class TC1158_Verify_rejectedAdCount_Increased_CA_RejectsAd extends BaseTe
 	
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1158(Hashtable<String,String> data) throws Exception {
-		//
+		
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1158", data.get("Runmode"), excel);
 	log.info("Inside Login Test");	

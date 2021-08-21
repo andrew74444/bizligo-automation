@@ -19,6 +19,8 @@ import com.cpcommunity.utilities.ExcelReader;
 
 public class TC1149_Verify_Adpublished_when_member_purchase extends BaseTest{
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
+	
+	
 	public void TC1149(Hashtable<String,String> data) throws Exception {
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1149", data.get("Runmode"), excel);
