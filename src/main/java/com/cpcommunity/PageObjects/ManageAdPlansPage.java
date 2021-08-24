@@ -570,13 +570,13 @@ public class ManageAdPlansPage extends BasePage {
 		Thread.sleep(3000);
 }
    public void editPlan() throws InterruptedException {
-	  Thread.sleep(3000);
+	  Thread.sleep(9000);
 	   waitForElementToPresent(edit);
 	   click(edit, "Edit");
 	   scrollDownVertically();
 	  Thread.sleep(5000);
 	   click(status, "status");
-	   Thread.sleep(1000);
+	   Thread.sleep(2000);
 	   click(save, "Save");
 	   AssertionHelper.verifyText(toastemessage.getText(), "Advertisement plan details saved.");
 		Thread.sleep(2000);

@@ -312,11 +312,11 @@ public class EmailTemplatePage extends BasePage {
 	}
 	 public void changeFromEmail(String Template, String Footer, String Subject, String Header, String Email, String bcc) throws InterruptedException {
     	 waitForElementToPresent(group);
-    	 Thread.sleep(3000);
+    	 Thread.sleep(6000);
     	this.group.click();
     	waitForElementToPresent(editGroup);
     	this.editGroup.click();
-    	Thread.sleep(2000);
+    	Thread.sleep(5000);
     	waitForElementToPresent(this.emailsubject);
 		this.emailsubject.clear();
 		this.emailheader.clear();

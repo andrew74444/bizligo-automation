@@ -44,7 +44,8 @@ public class ResourcesPage  extends BasePage{
 	@FindBy(xpath = "//div[@ng-show='PromotionPlans.length']//div[@class='row']")
 	WebElement adPlans;
 	
-	public void checkResources1() {
+	public void checkResources1() throws InterruptedException {
+		Thread.sleep(4000);
 		waitForElementToPresent(resource1);
 		if(this.resource1.isDisplayed()&&this.resource1.isEnabled()) {
 			Assert.assertTrue(true);
@@ -58,17 +59,13 @@ public class ResourcesPage  extends BasePage{
 		waitForElementToPresent(resource2);
 		if(this.resource2.isDisplayed()) {
 			Assert.assertTrue(true);
-		}
-		else {
-			Assert.assertTrue(false);
-		}
 		 Thread.sleep(5000);
 		    click(group,"Groups");
 		    Thread.sleep(5000);
 		   // waitForElementToPresent(leaveGroup3);
 		    click(leaveGroup3, "Leave3");
 	}
-	
+	}
 	
 public void checkResourceNotDisplaying() throws InterruptedException {
 		waitForElementToPresent(NotMemberResourcevedio);
