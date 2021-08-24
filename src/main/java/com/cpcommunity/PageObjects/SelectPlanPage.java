@@ -394,12 +394,12 @@ public class SelectPlanPage extends BasePage {
 	}
 	
 	public void checkNextbtnError() throws InterruptedException {
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		scrollDownVertically();
 		click(next, "Next btn");
 		click(next, "Next btn");
 		AssertionHelper.verifyText(toastMessage.getText(), "Please select a plan.");
-		Thread.sleep(4000);
+		Thread.sleep(5000);
 	
 
 		System.out.println("Multiple error Not Displaying when double clicking Next Button");

@@ -491,7 +491,7 @@ public class ComposeCampaign extends BasePage {
 			//driver.switchTo().frame(1);
 			Thread.sleep(4000);
 			waitForElementToPresent(addContactdialogmodal);
-	       Thread.sleep(4000);
+	     //  Thread.sleep(4000);
 			waitForElementToPresent(dropdown);
 			selectByVisibleText(dropdown,importedContacts, "Imported contacts");
 			Thread.sleep(10000);
@@ -513,11 +513,11 @@ public class ComposeCampaign extends BasePage {
 			Thread.sleep(4000);
 			waitForElementToPresent(addContactdialogmodal);
 			waitForElementToPresent(dropdown);
-			Thread.sleep(8000);
+			Thread.sleep(10000);
 			getAllDropDownData(dropdown);
 			selectByVisibleText(dropdown,importedContacts, "Imported contacts");
 			//selectUsingIndex(dropdown,18, "ImportedContacts");
-			Thread.sleep(5000);
+			Thread.sleep(8000);
 			//waitForElementToPresent(SearchEventsname);
 			type(SearchEventsname,Email2, "importedContacts");
 			waitForElementToPresent(email);

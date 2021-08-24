@@ -224,9 +224,9 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 		public void approveRejectedAd(String planName,String adImage,String linkUrl,String status) throws Exception {
             Thread.sleep(3000);
 			waitForElementToPresent(planStatus);
-			selectUsingIndex(planStatus, 3,"planStatus");
+			selectUsingIndex(planStatus, 1,"planStatus");
 			click(btnSearch, "Search");
-			Thread.sleep(6000);
+			Thread.sleep(12000);
 				click(action, "action");
 				//waitForElementToPresent(adStartDate);
 				
