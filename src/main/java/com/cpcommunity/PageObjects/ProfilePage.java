@@ -176,8 +176,8 @@ public class ProfilePage extends BasePage{
 //	}
 //	
 //	return (ZohoCRMPage) openPage(ZohoCRMPage.class);
-	public void AddEndorsement(String Endorsement ){
-		
+	public void AddEndorsement(String Endorsement ) throws InterruptedException{
+		Thread.sleep(5000);
 //		log.info("Clicking on Endorsement Button...");
 //		logExtentReport("Clicking on Endorsement Button...");	
 		waitForElementToPresent(addEndorsementBtn);
