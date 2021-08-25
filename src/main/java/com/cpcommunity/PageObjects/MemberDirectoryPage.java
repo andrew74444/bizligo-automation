@@ -238,6 +238,7 @@ public class MemberDirectoryPage extends BasePage{
 		if(MemberProfileList.size() > 0) {
 			click(MemberProfileList.get(0),"OpenMemberProfile");		
 		}
+		Thread.sleep(4000);
 		return (ProfilePage) openPage(ProfilePage.class);
 		// new MyProfilePage(driver, );
 	}
@@ -586,9 +587,9 @@ public class MemberDirectoryPage extends BasePage{
 				Thread.sleep(2000);
 				type(searchByName,MemberName,"Name of Member");//search pending member
 				click(searchBtn,"search");
-				Thread.sleep(3000);
+				Thread.sleep(5000);
 				memberName.click();
-				 Thread.sleep(3000);
+				 Thread.sleep(8000);
 				return (ProfilePage) openPage(ProfilePage.class);
 				
 				
@@ -727,7 +728,7 @@ public class MemberDirectoryPage extends BasePage{
 				System.out.print("update file name" +name);
 			    click(excelDownload1,"download file");
 			    log.info("downloading excel file");
-			    Thread.sleep(10000);
+			    Thread.sleep(12000);
 			    click(wordDownload2,"download file");
 			    log.info("downloading doc file");
 			    Thread.sleep(10000);
