@@ -292,7 +292,7 @@ public class EcoSystemPage extends BasePage {
 	//
 
 	public MyProfilePage goToMyProfilePage() throws Exception {
-
+        Thread.sleep(8000);
 		click(Toggledropdownmenu,"Toggledropdownmenu");
 		Thread.sleep(1000);
 		click(myProfile,"myProfile");
