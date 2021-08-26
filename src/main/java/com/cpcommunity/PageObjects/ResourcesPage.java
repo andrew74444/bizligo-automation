@@ -35,8 +35,10 @@ public class ResourcesPage  extends BasePage{
 	WebElement YesProceed;
 	@FindBy(xpath = "//div[@class='bootbox-body']")
 	WebElement Message;
-	@FindBy(xpath = "//div[@class='post-box']//div[2]//div[1]//div[1]//div[1]//div[1]//div[1]//div[1]//div[2]//button[1]")
-    WebElement leaveGroup3;
+	@FindBy(xpath="//div[@class='post-box']//div[2]//div[1]//div[1]//div[1]//div[1]//div[1]//div[1]//div[2]//button[1]//strong[1]")
+	WebElement leaveGroup3 ;
+	@FindBy(xpath = "//strong[normalize-space()='Leave']")
+    WebElement leave;//div[@class='post-box']//div[2]//div[1]//div[1]//div[1]//div[1]//div[1]//div[1]//div[2]//button[1]
 	@FindBy(xpath="//span[normalize-space()='Groups']")
     WebElement group ;
 	@FindBy(xpath = "//span[normalize-space()='Advertisements']")
@@ -63,7 +65,7 @@ public class ResourcesPage  extends BasePage{
 		    click(group,"Groups");
 		    Thread.sleep(5000);
 		   // waitForElementToPresent(leaveGroup3);
-		    click(leaveGroup3, "Leave3");
+		    click(leaveGroup3, "Leave");
 	}
 	}
 	

@@ -223,6 +223,7 @@ public MemberDirectoryPage goToMemberDirectory() throws InterruptedException {
 public GlobalCommunitesPage NavigateToGlobalCommunities() throws Exception {
 	Thread.sleep(5000);
 	click(GlobalCommunities, "Global Communities");
+	Thread.sleep(3000);
 	return (GlobalCommunitesPage) openPage(GlobalCommunitesPage.class);
 	
 }
