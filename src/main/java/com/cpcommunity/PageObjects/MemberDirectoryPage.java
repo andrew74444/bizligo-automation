@@ -249,7 +249,7 @@ public class MemberDirectoryPage extends BasePage{
 		if(MemberProfileList.size() > 0) {
 			click(MemberProfileList.get(0),"OpenMemberProfile");		
 		}
-		
+		Thread.sleep(5000);
 		return (MyProfilePage) openPage(MyProfilePage.class);
 		// new CreateCommunityPage(driver);
 	}
@@ -453,12 +453,12 @@ public class MemberDirectoryPage extends BasePage{
 					System.out.println("All organisation displayed");
 					Assert.assertTrue(true);
 				}
-				Thread.sleep(4000);
+				Thread.sleep(6000);
 				this.searchByOrganisation.clear();
 				waitForElementToPresent(this.searchByOrganisation);
 				type(this.searchByOrganisation,organisation , "Organisation Name");
 				click(searchBtn , "Search button");
-				Thread.sleep(3000);
+				Thread.sleep(6000);
 				   String Message=this.warning.getText();
 	                String message2=this.warning2.getText();
 					System.out.println("Warning msg:" + Message);

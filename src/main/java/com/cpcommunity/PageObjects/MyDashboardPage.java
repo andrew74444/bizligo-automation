@@ -847,10 +847,11 @@ public ManageAdPlansPage goToManageAdPlansPage() {
 	 public Bizligo1CommunityPage goToMyCommunity() throws InterruptedException {
 		 Thread.sleep(6000);
 			click(viewAllBtn,"view all");
-			Thread.sleep(2000);
+			Thread.sleep(6000);
 			scrollIntoView(bizligo1);
 			//waitForElementToPresent(bizligo1);
 			click(bizligo1,"Bizligo 1");
+			Thread.sleep(8000);
 			return (Bizligo1CommunityPage) openPage(Bizligo1CommunityPage.class);
 		}
 	 public RemindersPage NaviagtingToRemindersPage()

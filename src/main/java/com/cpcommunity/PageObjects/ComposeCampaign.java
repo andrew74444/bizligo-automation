@@ -497,7 +497,7 @@ public class ComposeCampaign extends BasePage {
 			Thread.sleep(10000);
 			waitForElementToPresent(SearchEventsname);
 			type(SearchEventsname,Member, "importedContacts");
-			Thread.sleep(4000);
+			//Thread.sleep(6000);
 		   waitForElementToPresent(email);
 		    int emailval=email.size();
 		    System.out.println(emailval);

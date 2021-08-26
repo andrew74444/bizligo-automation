@@ -60,9 +60,9 @@ public class Bizligo1CommunityPage extends BasePage {
 	@FindBy(xpath="//button[@ng-click='appData.closeModel()']")
 	WebElement cancelPopup;
 	
-	@FindBy(xpath="//div[@ng-show='appData.showLoginOrJoinMessage']")
+	@FindBy(xpath="//div[@ng-if='!data.IsLoading && !data.CommunityVideos.length']//p[@class='ng-binding'][contains(text(),'Please')]")
 	WebElement msgWhenNotMember;
-	//a[@title='Manage Community']
+	//div[@ng-show='appData.showLoginOrJoinMessage']
 	@FindBy(xpath="//a[@title='Manage Community']")//a[@title='Manage Community']
 	WebElement manage;
 	@FindBy(xpath = "(((//*[@class='col-md-3 left_col']//img[@src='/Content/Images/adprommenu.png'])/..)/..)")
@@ -145,12 +145,13 @@ public class Bizligo1CommunityPage extends BasePage {
 		click(cancelPopup,"cancel");
 		waitForElementToPresent(resources);
 		click(resources,"Resources");
-		System.out.println(msgWhenNotMember.getText());
+		Thread.sleep(5000);
 		
-		if(msgWhenNotMember.getText().equalsIgnoreCase("Join the community or login if you are already a member")) {
+		String Loginmsg=msgWhenNotMember.getText();
+		 {
+			System.out.println(Loginmsg);
 			Assert.assertTrue(true);
-			System.out.println("Guest member cannot see resources");
-		}else Assert.assertTrue(false);
+		}
 	}
 	public void checkResourceUpdate(String Description) {
 		click(resources,"Resources");
@@ -184,7 +185,7 @@ public class Bizligo1CommunityPage extends BasePage {
 		click(groups,"Groups");
 		waitForElementToPresent(leaveGroup4);
 		click(leaveGroup4,"leaveGroup4");
-		Thread.sleep(3000);
+		Thread.sleep(6000);
 		//click(yesProceed,"yes proceed");
 		//Thread.sleep(3000);
 		//waitForElementToPresent(resources);
@@ -200,7 +201,7 @@ public class Bizligo1CommunityPage extends BasePage {
 		}
 		click(groups,"Groups");
 		waitForElementToPresent(joinGroup4);
-		click(joinGroup4,"joinGroup4");
+		click(leaveGroup4,"joinGroup4");
 		click(yesProceed,"yes proceed");
 		
 	}
