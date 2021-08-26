@@ -624,7 +624,9 @@ public class Discussions extends BasePage {
 	public void clickCancel(String AdName, String  path) throws InterruptedException {
 		
 		//clickElementByJavaScript(BDMAIcomm);
-		Thread.sleep(5000);
+		//Thread.sleep(8000);
+		//waitForElementToPresent(advertisement);
+		//scrollToElementAndClick(advertisement);
 		click(advertisementt, "Advertisement");
 		
 		//click(advertisement, "Advertisement");

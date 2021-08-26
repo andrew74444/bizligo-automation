@@ -215,7 +215,8 @@ public class RemindersPage extends BasePage{
 		}
 		
 	}
-	public void checkReminder(String CompletedTask) {
+	public void checkReminder(String CompletedTask) throws InterruptedException {
+		Thread.sleep(2000);
 		click(viewHistory,"View History");
 		waitForElementToPresent(historyData);
 		System.out.println("Tasks Completed and In View History are:");

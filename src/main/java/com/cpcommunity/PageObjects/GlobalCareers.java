@@ -43,9 +43,9 @@ public class GlobalCareers extends BasePage {
 
 	@FindBy(xpath = "//*[contains(text(),'View and Apply')]")
 	WebElement ViewandApply;
-	@FindBy(xpath = "(//button[contains(text(),'View and Apply')])[1]")
+	@FindBy(xpath = "//button[@class='apply-button']")
 	WebElement ViewandApply1;
-	
+	//button[contains(text(),'View and Apply')]
 	@FindBy(xpath = "//button[@class='apply-button']")
 	List<WebElement> ViewandApplyLst;
 	
@@ -220,6 +220,7 @@ public void JobNotDisplayed(String Title1) throws InterruptedException {
 		click(search, "Search button");
 		Thread.sleep(2000);
 		if(NoJobFound.isDisplayed()) {
+			System.out.println(NoJobFound);
 			Assert.assertTrue(true);
 		}
 		else {
@@ -233,8 +234,9 @@ public void JobDisplayed(String Title1) {
 		type(searchByJobTitle,Title1 , "Job TItle");
 		click(search, "Search button");
 		if(searchResult.isDisplayed()) {
-			Assert.assertTrue(true);
 			System.out.println(searchResult);
+			Assert.assertTrue(true);
+			
 		}
 		else {
 			Assert.assertTrue(false);
@@ -272,15 +274,21 @@ public void CheckAdditionaltitleAndRemarkNotDisplaying(String Title1) throws Int
 		picture();
 	}
 	public void applyToJob(String path) throws InterruptedException {
+		Thread.sleep(8000);
 		clickElementByJavaScript(ViewandApply1);
 		//click(ViewandApply1, "ViewandApply");
+		Thread.sleep(7000);
 		waitForElementToPresent(Apply);
 		click(Apply, "Apply");
-		chooseFile.sendKeys(path);
-		Thread.sleep(1000);
+		Thread.sleep(5000);
+		waitForElementToPresent(chooseFile);
+		type(chooseFile,path,"FileName");
+		//chooseFile.sendKeys(path);
+		//Thread.sleep(2000);
+        waitForElementToPresent(submitBtn);
 		click(submitBtn,"submit");
-		Thread.sleep(3000);
-		System.out.println(SuccessPopup.getText());
+        
+		//System.out.println(SuccessPopup.getText());
 		}
 	
 	@Override
