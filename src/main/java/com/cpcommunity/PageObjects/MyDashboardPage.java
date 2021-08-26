@@ -316,7 +316,8 @@ public class MyDashboardPage extends BasePage{
 	      click( myGroups,"myGroups");	      
 	      return TC;		
 	}
-	public GlobalCareers NavigateToGlobalCareers(){
+	public GlobalCareers NavigateToGlobalCareers() throws InterruptedException{
+		Thread.sleep(4000);
 		click(GlobalCareers,"click");
 		return (GlobalCareers) openPage(GlobalCareers.class);
 //				new GlobalCareers(driver, );

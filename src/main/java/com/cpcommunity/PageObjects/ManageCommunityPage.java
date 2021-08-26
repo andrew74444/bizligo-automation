@@ -124,6 +124,7 @@ public class ManageCommunityPage extends BasePage{
 			
 		click(save, "Save");
 		picture();
+		Thread.sleep(5000);
 		//AssertionHelper.verifyText(toastmessage.getText(), "Community details updated successfully");
 	}
 	

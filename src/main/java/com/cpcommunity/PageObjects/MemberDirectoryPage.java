@@ -848,14 +848,14 @@ public class MemberDirectoryPage extends BasePage{
 			    String date3 = d3.getCurrentDateString();
 			    //date3=date3+1;
 			    d3.selectDate("/html/body/div[5]/div[3]/table",date3);
-			    Thread.sleep(2000);
-			    click(currentHour,"current hour");
-			    if(CurrentMinutes.size()>0) {
+			    Thread.sleep(5000);
+			    //click(currentHour,"current hour");
+			   /* if(CurrentMinutes.size()>0) {
 			    click(currentMinutes,"current time");
 			    }else {
 			    	click(arrowButton,"Click next");
 			    	click(currentMinutes,"current time");
-			    }	    
+			    }	 */   
 			   Thread.sleep(2000);
 			   click(updateNote,"Update");
 			

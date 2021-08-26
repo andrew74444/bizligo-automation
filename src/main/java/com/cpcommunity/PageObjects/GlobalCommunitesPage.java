@@ -115,6 +115,8 @@ public class GlobalCommunitesPage extends BasePage {
 	WebElement bizligo;
 	@FindBy(xpath="//a[normalize-space()='BizLigo1']")
 	WebElement bizligo1;
+	@FindBy(xpath="//a[@title='Go to My Communities']")
+	WebElement viewAllBtn;
 	@FindBy(xpath="//a[normalize-space()='Animal Lovers']")
 	WebElement animalLovercommunity;
 	@FindBy(xpath="//div[@id='myNavbar']")
@@ -634,6 +636,7 @@ public class GlobalCommunitesPage extends BasePage {
 		waitForElementToPresent(Testingcomm);
 		//click(Testingcomm, "18-02-2021 -testing");	
 		clickElementByJavaScript(Testingcomm);
+		waitForElementToPresent(discussion);
 		click(discussion, "Discussion");
        Thread.sleep(8000);
 	return (Discussions) openPage(Discussions.class);	
@@ -647,6 +650,7 @@ public class GlobalCommunitesPage extends BasePage {
 		waitForElementToPresent(discussion);
 		click(discussion, "Discussion");
 		Thread.sleep(5000);
+		//scrollDownByPixel(300);
 		//clickElementByJavaScript(advertisement);
 		click(advertisementt, "Advertisement");
 		Thread.sleep(4000);
@@ -850,10 +854,12 @@ public class GlobalCommunitesPage extends BasePage {
 	}
 	public Bizligo1CommunityPage goToMyCommunity() {
 		//click(viewAllBtn,"view all");
-		waitForElementToPresent(bizligo1);
+		scrollIntoView(bizligo1);
+		//waitForElementToPresent(bizligo);
 		click(bizligo1,"Bizligo 1");
 		return (Bizligo1CommunityPage) openPage(Bizligo1CommunityPage.class);
 	}
+	
 	public CommunityDashboardPage goToMyCommunitydash() {
 		//click(viewAllBtn,"view all");
 		waitForElementToPresent(bizligo1manage);
