@@ -462,10 +462,10 @@ public class GlobalCommunitesPage extends BasePage {
 		Assert.assertNotSame(Notpresent, Allplans);
 	}
 	public void checkAdPresent() throws InterruptedException {
-		waitForElementToPresent(BDMAIcomm);
-		click(BDMAIcomm, "BDMAI");
-		scrollDownVertically();
-		//waitForElementToPresent(advertisement);
+		//waitForElementToPresent(BDMAIcomm);
+		//click(BDMAIcomm, "BDMAI");
+		//scrollDownVertically();
+		waitForElementToPresent(advertisement);
 		click(advertisement, "Advertisement");
 		waitForElementToPresent(adPlans);
 		String Allplans=this.adPlans.getText();
@@ -500,13 +500,13 @@ public class GlobalCommunitesPage extends BasePage {
 		
 	}
 	public void clickCancel(String AdName, String  path) throws InterruptedException {
-		waitForElementToPresent(BDMAIcomm);
-		click(BDMAIcomm, "BDMAI");
+		//waitForElementToPresent(BDMAIcomm);
+		//click(BDMAIcomm, "BDMAI");
 		//clickElementByJavaScript(BDMAIcomm);
 		//Thread.sleep(2000);
-		scrollIntoViewAndClick(advertisement);
+		//scrollIntoViewAndClick(advertisement);
 		Thread.sleep(5000);
-		//click(advertisement, "Advertisement");
+		click(advertisement, "Advertisement");
 		waitForElementToPresent(selectPlans);
 		click(selectPlan2, "Select TestSilver Plan");
 		waitForElementToPresent(next);
@@ -548,11 +548,11 @@ public class GlobalCommunitesPage extends BasePage {
 		waitForElementToPresent(BDMAIcomm);
 		click(BDMAIcomm, "BDMAI");
 		Thread.sleep(10000);
-		waitForElementToPresent(discussion);
-		click(discussion, "Discussion");
+		waitForElementToPresent(resources);
+		click(resources, "resources");
 		Thread.sleep(10000);
 		//clickElementByJavaScript(advertisement);
-		click(advertisementt, "Advertisement");
+		click(advertisement, "Advertisement");
 		//scrollDownVertically();
 		//clickElementByJavaScript(advertisement);
 		//click(advertisement, "Advertisement");
@@ -567,19 +567,19 @@ public class GlobalCommunitesPage extends BasePage {
 		 waitForElementToPresent(bizligo);
 			click(bizligo,"Bizligo 1");
 			Thread.sleep(5000);
-			waitForElementToPresent(discussion);
-			click(discussion, "Discussion");
+			waitForElementToPresent(resources);
+			click(resources, "resources");
 			Thread.sleep(8000);
 			//clickElementByJavaScript(advertisement);
 			click(advertisementt, "Advertisement");
 		return (SelectPlanPage) openPage(SelectPlanPage.class);	
 		}
-	public Discussions navigatetoDiscussionPage() throws InterruptedException {
+	public void navigatetoresources() throws InterruptedException {
 		waitForElementToPresent(BDMAIcomm);
 		click(BDMAIcomm, "BDMAI");	
-		click(discussion, "Discussion");
+		click(resources, "resources");
 		 Thread.sleep(5000);
-	return (Discussions) openPage(Discussions.class);	
+		
 	}
 	
 	public MembersPage navigatetoMembersPage() throws InterruptedException {
@@ -623,23 +623,42 @@ public class GlobalCommunitesPage extends BasePage {
 	}
 	
 	
-	public Discussions GotoGuestDiscussionPage() throws InterruptedException {
+	public void GotoGuestresources() throws InterruptedException {
 	waitForElementToPresent(BDMAIcomm1);
 	click(BDMAIcomm1, "BDMAI");	
 	Thread.sleep(5000);
 	click(Cancel1, "Cancelbutton");
-	click(discussion, "Discussion");
+	click(resources, "resources");
 
-     return (Discussions) openPage(Discussions.class);	
+    	
 }
-	public Discussions GotoDiscussionPage() throws InterruptedException {
+	public Discussions GotoGuestDiscussionPage() throws InterruptedException {
+		waitForElementToPresent(BDMAIcomm1);
+		click(BDMAIcomm1, "BDMAI");	
+		Thread.sleep(5000);
+		click(Cancel1, "Cancelbutton");
+		click(discussion, "discussion");
+		return (Discussions) openPage(Discussions.class);
+	    	
+	}
+	public void Gotoresources() throws InterruptedException {
 		waitForElementToPresent(Testingcomm);
 		//click(Testingcomm, "18-02-2021 -testing");	
 		clickElementByJavaScript(Testingcomm);
-		waitForElementToPresent(discussion);
-		click(discussion, "Discussion");
+		waitForElementToPresent(resources);
+		click(resources, "resources");
        Thread.sleep(8000);
-	return (Discussions) openPage(Discussions.class);	
+		
+}
+	public Discussions navigatetoDiscussionPage() throws InterruptedException {
+		waitForElementToPresent(Testingcomm);
+		//click(Testingcomm, "18-02-2021 -testing");	
+		clickElementByJavaScript(Testingcomm);
+		waitForElementToPresent(discussion );
+		click(discussion, "resources");
+       Thread.sleep(8000);
+       return (Discussions) openPage(Discussions.class);	
+		
 }
 	
 	public CreateAdPage gotoCreateAdPage() throws InterruptedException {
@@ -647,13 +666,13 @@ public class GlobalCommunitesPage extends BasePage {
 		click(BDMAIcomm, "BDMAI");
 		Thread.sleep(5000);
 		//scrollIntoViewAndClick(advertisement);
-		waitForElementToPresent(discussion);
-		click(discussion, "Discussion");
+		waitForElementToPresent(resources);
+		click(resources, "resources");
 		Thread.sleep(5000);
 		//scrollDownByPixel(300);
 		//clickElementByJavaScript(advertisement);
-		click(advertisementt, "Advertisement");
-		Thread.sleep(4000);
+		click(advertisement, "Advertisement");
+		Thread.sleep(6000);
 		waitForElementToPresent(selectPlans);
 		click(selectPlans, "Select TestSilver Plan");
 		waitForElementToPresent(next);

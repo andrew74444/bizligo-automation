@@ -32,8 +32,8 @@ public class TC1132_Verify_details_ShouldNotSave_when_filledAnd_clickedCancel ex
 	 MyDashboardPage MDP=login1.loginToMemberdashboard(data.get("email"), data.get("password"));
 	 GlobalCommunitesPage GCP=MDP.naviagtingToGlobalCommunities();
 	 GCP.searchCommunity(data.get("community"));
-	 Discussions D=GCP.GotoDiscussionPage();
-	 D.clickCancel(data.get("AdName"), data.get("path"));
+	 GCP.Gotoresources();
+	 GCP.clickCancel(data.get("AdName"), data.get("path"));
 	
 	}
 	@AfterMethod

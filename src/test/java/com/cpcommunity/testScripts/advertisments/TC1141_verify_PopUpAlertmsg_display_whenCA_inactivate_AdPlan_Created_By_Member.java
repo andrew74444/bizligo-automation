@@ -29,7 +29,7 @@ public class TC1141_verify_PopUpAlertmsg_display_whenCA_inactivate_AdPlan_Create
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1141", data.get("Runmode"), excel);
 	log.info("Inside Login Test");	
-	/*openBrowser(data.get("browser"));
+	openBrowser(data.get("browser"));
 	logInfo("Launched Browser : "+data.get("browser"));
 	logInfo("BizLigo Application Opened");
 	HomePage home = new HomePage().open(data.get("tenantType"));
@@ -60,7 +60,7 @@ public class TC1141_verify_PopUpAlertmsg_display_whenCA_inactivate_AdPlan_Create
 	 MyDashboardPage MDP2=login2.loginToMemberdashboard(data.get("email2"), data.get("password2"));
 	 MyAdvertisements Map=MDP2.NaviagtingToMyAdvertisements();
 	 Map.searchplan(data.get("planName1"));
-	 Map.checkIsplanInactive();*/ 
+	 Map.checkIsplanInactive(); 
 	 
 	    openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+ data.get("browser"));				

@@ -67,6 +67,8 @@ public class Bizligo1CommunityPage extends BasePage {
 	WebElement manage;
 	@FindBy(xpath = "(((//*[@class='col-md-3 left_col']//img[@src='/Content/Images/adprommenu.png'])/..)/..)")
 	WebElement advertisements;
+	@FindBy(xpath = "//span[@class='ng-binding ng-scope']")
+	WebElement advertisement;
 	@FindBy(xpath = "//a[contains(text(),'Manage Plans')]")
 	WebElement managePlans;
 
@@ -211,7 +213,8 @@ public class Bizligo1CommunityPage extends BasePage {
 		Thread.sleep(4000);
 		scrollUpVertically();
 		//scrollIntoView(advertisements);
-		click(advertisements, "advertisements");
+		clickElementByJavaScript(advertisements);
+		//click(advertisements, "advertisements");
 		waitForElementToPresent(managePlans);
 		click(managePlans, "Manage Plans");
 		return (ManageAdPlansPage) openPage(ManageAdPlansPage.class);
