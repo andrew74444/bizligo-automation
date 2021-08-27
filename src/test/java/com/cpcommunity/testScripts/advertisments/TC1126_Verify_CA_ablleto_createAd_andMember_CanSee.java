@@ -47,8 +47,8 @@ public class TC1126_Verify_CA_ablleto_createAd_andMember_CanSee extends BaseTest
 	 MyDashboardPage MDP=login1.loginToMemberdashboard(data.get("email1"), data.get("password1"));
 	 GlobalCommunitesPage GCP=MDP.naviagtingToGlobalCommunities();
 	 GCP.searchCommunity(data.get("community"));
-	 Discussions D=GCP.GotoDiscussionPage();
-	 D.checkAdPresent();
+	 GCP.Gotoresources();
+	 GCP.checkAdPresent();
 	 quit();
 	 
 	    openBrowser(data.get("browser"));

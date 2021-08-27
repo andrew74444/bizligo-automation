@@ -257,7 +257,7 @@ public class MyAdvertisements extends BasePage {
 			type(choosefile, path, "Image Path");
 		scrollDownVertically();
 		click(save, "Save");
-		Thread.sleep(5000);
+		Thread.sleep(8000);
 		
 	}
 	public void createGlobalAd2( String planName,String AdName, String path) throws Exception {
@@ -410,7 +410,7 @@ public class MyAdvertisements extends BasePage {
 		
 	}
 	public MyDashboardPage gotoMyDashboardPage() throws Exception {
-		//Thread.sleep(3000);
+		Thread.sleep(3000);
 		waitForElementToPresent(Toggledropdownmenu);
 		click(Toggledropdownmenu,"Toggledropdownmenu");
 		Thread.sleep(500);
