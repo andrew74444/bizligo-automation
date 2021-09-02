@@ -13,6 +13,7 @@ import org.testng.Assert;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
 
@@ -590,9 +591,9 @@ public ManageAdPlansPage goToManageAdPlansPage() {
 	
    public GlobalCommunitesPage naviagtingToGlobalCommunities() throws Exception
 	{ 
-	   Thread.sleep(8000);
+		driver.manage().timeouts().implicitlyWait(1200, TimeUnit.SECONDS);
 		clickElementByJavaScript(globalCommunities);
-		Thread.sleep(4000);
+		Thread.sleep(6000);
 		return (GlobalCommunitesPage) openPage(GlobalCommunitesPage.class);
 //		new GlobalCommunitesPage(driver, );
 		
@@ -742,11 +743,11 @@ public ManageAdPlansPage goToManageAdPlansPage() {
 //	}
 	
 	public MyAdvertisements NaviagtingToMyAdvertisements() throws InterruptedException
-	{		Thread.sleep(5000);
+	{		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);Thread.sleep(5000);
 		scrollToElement(myAdvertisements);
 		clickElementByJavaScript(myAdvertisements);
 		//click(myAdvertisements,"My Advertisements");	
-		Thread.sleep(5000);
+		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
 		return (MyAdvertisements) openPage(MyAdvertisements.class);
 //		new MyProfilePage(driver, );
 	}
@@ -771,26 +772,26 @@ public ManageAdPlansPage goToManageAdPlansPage() {
 	
 	public ResourcesPage goToBDMAIResouces(String Community) throws InterruptedException {
 		waitForElementToPresent(Globalcommunities);
-		Thread.sleep(5000);
+		driver.manage().timeouts().implicitlyWait(1500, TimeUnit.SECONDS);
 		click(Globalcommunities, "Global Communities");
 		waitForElementToPresent(serachCommunity);
 		type(serachCommunity, Community, "Communities");
 		waitForElementToPresent(search);
 		click(search, "Search");
 		waitForElementToPresent(CommunityName);
-		Thread.sleep(5000);
+		driver.manage().timeouts().implicitlyWait(1500, TimeUnit.SECONDS);
 		click(CommunityName, "BDMAI Community");
 		waitForElementToPresent(resources);
 		click(resources, "Resources");
 		return (ResourcesPage) openPage(ResourcesPage.class);
 	}
 	public void joinGroup(String Community) throws InterruptedException {
-		Thread.sleep(7000);
+		driver.manage().timeouts().implicitlyWait(1500, TimeUnit.SECONDS);
 		waitForElementToPresent(viewAll);
 		click(viewAll, "Global Communities");
 		//waitForElementToPresent(serachCommunity);
 		//type(serachCommunity, Community, "Communities");
-		Thread.sleep(8000);
+		driver.manage().timeouts().implicitlyWait(1200, TimeUnit.SECONDS);
 		waitForElementToPresent(bizligo1);
 		click(bizligo1, "Bizligo1 Community");
 		//waitForElementToPresent(search);
@@ -803,13 +804,13 @@ public ManageAdPlansPage goToManageAdPlansPage() {
 		AssertionHelper.verifyText(joinedMessage.getText(),
 				"You have joined the group successfully.");
 		System.out.println("Assertion done");
-	   
+		 Thread.sleep(5000);
 	}
 	 public ResourcesPage gotoResource() throws InterruptedException {
-		 Thread.sleep(5000);
+		 driver.manage().timeouts().implicitlyWait(1500, TimeUnit.SECONDS);
 		 waitForElementToPresent(resources);
 			click(resources, "Resources");
-		 
+			Thread.sleep(5000);
 		 return (ResourcesPage) openPage(ResourcesPage.class); 
 	 }
 	 public void NavigatingToMyGroups(String Groupname) throws InterruptedException
