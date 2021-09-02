@@ -124,9 +124,9 @@ public class ManageCommunityPage extends BasePage{
 			 //Runtime.getRuntime().exec(projectFloder(logoImagePath));
 			 	//driver.manage().timeouts().implicitlyWait(900, TimeUnit.SECONDS);
 			     waitForElementToPresent(Upload);
-			     driver.manage().timeouts().implicitlyWait(900, TimeUnit.SECONDS);
+			     Thread.sleep(5000);
 			click(Upload, "Upload");
-			
+			driver.manage().timeouts().implicitlyWait(1500, TimeUnit.SECONDS);
 			waitForElementToPresent(save);
 			driver.manage().timeouts().implicitlyWait(900, TimeUnit.SECONDS);
 		click(save, "Save");

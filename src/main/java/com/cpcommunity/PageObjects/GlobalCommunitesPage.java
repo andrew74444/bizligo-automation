@@ -570,7 +570,7 @@ public class GlobalCommunitesPage extends BasePage {
 			Thread.sleep(5000);	
 		 waitForElementToPresent(bizligo);
 			click(bizligo,"Bizligo 1");
-			Thread.sleep(5000);
+			driver.manage().timeouts().implicitlyWait(1500, TimeUnit.SECONDS);
 			waitForElementToPresent(resources);
 			click(resources, "resources");
 			driver.manage().timeouts().implicitlyWait(1500, TimeUnit.SECONDS);

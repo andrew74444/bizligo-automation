@@ -5,6 +5,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
+import java.util.concurrent.TimeUnit;
+
 import org.apache.log4j.Logger;
 
 
@@ -130,15 +137,29 @@ public class Create_UpdateGroupPage extends BasePage {
 	    selectUsingIndex(this.GroupCategory, index,"Group Category");*/
 		
 		selectByVisibleText(this.GroupType, groupType,"GroupType");
-		
+		Thread.sleep(5000);
 		click(changeImageLink,"change Image Link");
-
+		
 		 waitForElementToPresent(Browse);
+		 Thread.sleep(1000);
 		click(Browse," Browse");
-		 Thread.sleep(10000);
-		 System.out.println(projectFloder(logoImagePath));
-		 Runtime.getRuntime().exec(projectFloder(logoImagePath));
-		Thread.sleep(10000);
+		 StringSelection ss = new StringSelection(logoImagePath);
+		  Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
+		  Robot robot = new Robot();
+		     robot.delay(350);
+		     robot.keyPress(KeyEvent.VK_ENTER);
+		     robot.keyRelease(KeyEvent.VK_ENTER);
+		    
+		     robot.keyPress(KeyEvent.VK_CONTROL);
+		     robot.keyPress(KeyEvent.VK_V);
+		     robot.keyRelease(KeyEvent.VK_CONTROL);
+		     robot.keyRelease(KeyEvent.VK_V);
+		    
+		     robot.keyPress(KeyEvent.VK_ENTER);
+		     robot.keyRelease(KeyEvent.VK_ENTER);
+		// System.out.println(projectFloder(logoImagePath));
+		// Runtime.getRuntime().exec(projectFloder(logoImagePath));
+		waitForElementToPresent(Upload);
 		click(Upload, "Upload");
 		Thread.sleep(10000);
 		picture();

@@ -160,8 +160,8 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 		//waitForElementToPresent(adStartDate);
 //		selectStartAndEndDates();
 		click(reject, "Reject");
-		//Thread.sleep(4000);
 		picture();
+		Thread.sleep(8000);
 		
 	}
 	
@@ -280,7 +280,7 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 	}
 
 	public CommunityDashboardPage gotoCommunityDashboard() throws InterruptedException {
-		driver.manage().timeouts().implicitlyWait(1500, TimeUnit.SECONDS);
+		
 		scrollUpVertically();
 		waitForElementToPresent(dashboardreport);
 		click(dashboardreport, "Dashboard Reports");
