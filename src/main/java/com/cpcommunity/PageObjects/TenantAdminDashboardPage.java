@@ -114,7 +114,7 @@ public class TenantAdminDashboardPage extends BasePage{
 	WebElement LOYALTY;
 	@FindBy(xpath = "//a[@href='/eventmanager/home/loyaltymembership']")
 	WebElement loyaltyMembership;
-	
+	//
 
 	/*
 	public LoyaltyPage navigateToLoyaltyPage() {
