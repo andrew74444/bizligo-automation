@@ -65,7 +65,7 @@ public class ManageCommunityMembersPage extends BasePage {
 	@FindBy(xpath = "//div[@class='bootbox-body']")
 	WebElement successMsg;
 	
-	@FindBy(xpath = "//*[@id=\"row_758\"]/td[2]")
+	@FindBy(xpath = "//*[@role=\"row\"]/td[2]")//*[@id=\"row_758\"]/td[2]
 	WebElement checkBoxMemberAdded;
 	@FindBy(xpath = "//input[@aria-controls='CommunityUsersTable']")
 	WebElement searchMemberInCommunity;
