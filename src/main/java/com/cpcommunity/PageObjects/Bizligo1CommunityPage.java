@@ -114,7 +114,7 @@ public class Bizligo1CommunityPage extends BasePage {
 	
 	@FindBy(xpath="//strong[normalize-space()='CSS - Training']")
 	WebElement eventName;
-
+//
 	
 
 

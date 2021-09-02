@@ -334,7 +334,7 @@ public void TAunAbleToRemoveAdminOnlyOneAdmin(String name) throws Exception {
 	Thread.sleep(3000);
 	System.out.println(successMsg.getText());
 	waitForElementToPresent(makeAnotherMemberAsCommunityAdminToRemove);
-	click(OkBth, "Ok Button");
+	click(OkBth, "Ok Button");//
 	
 	
 }
