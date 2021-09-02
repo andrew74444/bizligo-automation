@@ -86,7 +86,7 @@ public class Bizligo1CommunityPage extends BasePage {
 	@FindBy(xpath="//span[normalize-space()='$ 20']")
 	WebElement $20;
 	
-	@FindBy(xpath="//span[normalize-space()='$ 10']")
+	@FindBy(xpath="//button[2]//span[1]")
 	WebElement $10;
 	
 	@FindBy(xpath="//button[normalize-space()='Other Amount']")
@@ -123,7 +123,7 @@ public class Bizligo1CommunityPage extends BasePage {
 	
 	@FindBy(xpath="//strong[normalize-space()='CSS - Training']")
 	WebElement eventName;
-
+//
 	
 
 
@@ -230,7 +230,7 @@ public class Bizligo1CommunityPage extends BasePage {
 	}
 	public void CAcanMakeDonation() throws InterruptedException {
 		click(donateBtn,"Donation");
-		Thread.sleep(3000);
+		Thread.sleep(8000);
 		click($10,"$10");
 		click(authorizeBtn,"pay through Authorize.net");
 		click(payThroughCheckout,"Pay");

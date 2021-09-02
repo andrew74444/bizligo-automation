@@ -65,7 +65,7 @@ public class ManageCommunityMembersPage extends BasePage {
 	@FindBy(xpath = "//div[@class='bootbox-body']")
 	WebElement successMsg;
 	
-	@FindBy(xpath = "//*[@id=\"row_758\"]/td[2]")
+	@FindBy(xpath = "//*[@role=\"row\"]/td[2]")//*[@id=\"row_758\"]/td[2]
 	WebElement checkBoxMemberAdded;
 	@FindBy(xpath = "//input[@aria-controls='CommunityUsersTable']")
 	WebElement searchMemberInCommunity;
@@ -334,7 +334,7 @@ public void TAunAbleToRemoveAdminOnlyOneAdmin(String name) throws Exception {
 	Thread.sleep(3000);
 	System.out.println(successMsg.getText());
 	waitForElementToPresent(makeAnotherMemberAsCommunityAdminToRemove);
-	click(OkBth, "Ok Button");
+	click(OkBth, "Ok Button");//
 	
 	
 }
