@@ -498,7 +498,7 @@ public class ComposeCampaign extends BasePage {
 			selectByVisibleText(dropdown,importedContacts, "Imported contacts");
 			waitForElementToPresent(SearchEventsname);
 			type(SearchEventsname,Member, "importedContacts");
-			driver.manage().timeouts().implicitlyWait(1500, TimeUnit.SECONDS);
+			Thread.sleep(10000);
 		   waitForElementToPresent(email);
 		    int emailval=email.size();
 		    System.out.println(emailval);
