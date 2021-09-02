@@ -3,6 +3,8 @@ package com.cpcommunity.PageObjects;
 import static org.testng.Assert.assertTrue;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import org.bouncycastle.asn1.dvcs.Data;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
@@ -489,35 +491,34 @@ public class ComposeCampaign extends BasePage {
 			waitForElementToPresent(addContacts);
 			click(addContacts, "Add Contacts");
 			//driver.switchTo().frame(1);
-			Thread.sleep(4000);
+			driver.manage().timeouts().implicitlyWait(400, TimeUnit.SECONDS);
 			waitForElementToPresent(addContactdialogmodal);
 	     //  Thread.sleep(4000);
 			waitForElementToPresent(dropdown);
 			selectByVisibleText(dropdown,importedContacts, "Imported contacts");
-			Thread.sleep(10000);
 			waitForElementToPresent(SearchEventsname);
 			type(SearchEventsname,Member, "importedContacts");
-			//Thread.sleep(6000);
+			driver.manage().timeouts().implicitlyWait(1500, TimeUnit.SECONDS);
 		   waitForElementToPresent(email);
 		    int emailval=email.size();
 		    System.out.println(emailval);
-		    Thread.sleep(6000);
+		    driver.manage().timeouts().implicitlyWait(600, TimeUnit.SECONDS);
 		    waitForElementToPresent(cancelPopup);
 		    click(cancelPopup, "Cancel");
 			
 		}
 		public void VerifyAddedContacts(String importedContacts, String Email2) throws InterruptedException {
-			Thread.sleep(2000);
+			driver.manage().timeouts().implicitlyWait(200, TimeUnit.SECONDS);
 			waitForElementToPresent(addContacts);
 			click(addContacts, "Add Contacts");
-			Thread.sleep(4000);
+			driver.manage().timeouts().implicitlyWait(400, TimeUnit.SECONDS);
 			waitForElementToPresent(addContactdialogmodal);
 			waitForElementToPresent(dropdown);
-			Thread.sleep(10000);
+			driver.manage().timeouts().implicitlyWait(800, TimeUnit.SECONDS);
 			getAllDropDownData(dropdown);
 			selectByVisibleText(dropdown,importedContacts, "Imported contacts");
 			//selectUsingIndex(dropdown,18, "ImportedContacts");
-			Thread.sleep(8000);
+			driver.manage().timeouts().implicitlyWait(800, TimeUnit.SECONDS);
 			//waitForElementToPresent(SearchEventsname);
 			type(SearchEventsname,Email2, "importedContacts");
 			waitForElementToPresent(email);

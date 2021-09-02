@@ -1,6 +1,7 @@
 package com.cpcommunity.PageObjects;
 
 import java.util.Hashtable;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -225,13 +226,13 @@ public class CommunityDashboardPage extends BasePage {
 	}
 
 	public ManageCommunityPage goToManagecommunityPage() throws InterruptedException {
-        Thread.sleep(5000);
-		this.clickOnAdvertisments();
+		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
+		//this.clickOnAdvertisments();
 		waitForElementToPresent(manage);
 		click(manage, "Manage");
 		waitForElementToPresent(edit);
 		click(edit, "Edit");
-		Thread.sleep(5000);
+		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
 		return (ManageCommunityPage) openPage(ManageCommunityPage.class);
 		// new CommunityPendingRequestsPage(driver);
 	}

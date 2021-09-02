@@ -3,6 +3,7 @@ package com.cpcommunity.PageObjects;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -233,31 +234,31 @@ public class MyAdvertisements extends BasePage {
 		
 	}
 	public void createAd( String planName,String AdName, String path) throws Exception {
-		Thread.sleep(2000);
+		driver.manage().timeouts().implicitlyWait(300, TimeUnit.SECONDS);
 		  click(createGlobalAd, "Creat global Ad");
 		picture();
 		waitForElementToPresent(selectGold2);
 		 clickElementByJavaScript(selectGold2);
-	        Thread.sleep(4000);		
+		 driver.manage().timeouts().implicitlyWait(400, TimeUnit.SECONDS);		
 			click(next, "Next button");
-			Thread.sleep(5000);
+			driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
 			picture();
 			waitForElementToPresent(adname);
 			type(adname, AdName, "Advertisement name");
 			click(date, "Select Date");
 			waitForElementToPresent(adStartDatecalendar);
-			Thread.sleep(3000);
+			driver.manage().timeouts().implicitlyWait(300, TimeUnit.SECONDS);
 			click(nextMonth, "Next");
 			click(nextMonth, "Next");
 			waitForElementToPresent(dateselect);
 			click(dateselect, "Date");
-			Thread.sleep(1000);
+			driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
 			//click(this.adEndDate, "Ad End Date");
 			//Thread.sleep(1000);
 			type(choosefile, path, "Image Path");
 		scrollDownVertically();
 		click(save, "Save");
-		Thread.sleep(8000);
+		Thread.sleep(12000);
 		
 	}
 	public void createGlobalAd2( String planName,String AdName, String path) throws Exception {
@@ -291,7 +292,7 @@ public class MyAdvertisements extends BasePage {
 		 waitForElementToPresent(plansearch);
 		   type(plansearch, planName, "Plan Name");
 		   click(search, "Search");
-		   Thread.sleep(6000);
+		   Thread.sleep(9000);
 		   waitForElementToPresent(editp);
 		   click(editp, "Edit");
 		picture();
@@ -299,7 +300,7 @@ public class MyAdvertisements extends BasePage {
 		type(adname, AdName, "Advertisement name");
 		click(date, "Select Date");
 		waitForElementToPresent(adStartDatecalendar);
-		Thread.sleep(1000);
+		driver.manage().timeouts().implicitlyWait(200, TimeUnit.SECONDS);
 		click(nextMonth, "Next");
 		click(nextMonth, "Next");
 		waitForElementToPresent(dateselect);
@@ -402,20 +403,21 @@ public class MyAdvertisements extends BasePage {
 	
 	public void checkIsplanInactive() {
 		
-		waitForElementToPresent(editt);
-		click(editt, "Edit");
-		waitForElementToPresent(inactiveerror);
-		System.out.print(inactiveerror);
-		click(ok, "OK");
+		//waitForElementToPresent(editt);
+		//click(editt, "Edit");
+		//waitForElementToPresent(inactiveerror);
+		//System.out.print(inactiveerror);
+		//click(ok, "OK");
 		
 	}
 	public MyDashboardPage gotoMyDashboardPage() throws Exception {
-		Thread.sleep(3000);
+		driver.manage().timeouts().implicitlyWait(800, TimeUnit.SECONDS);
 		waitForElementToPresent(Toggledropdownmenu);
 		click(Toggledropdownmenu,"Toggledropdownmenu");
-		Thread.sleep(500);
+	
 		waitForElementToPresent(ecosystem);
 		click(ecosystem,"DashBoard");
+		driver.manage().timeouts().implicitlyWait(800, TimeUnit.SECONDS);
 		return (MyDashboardPage) openPage(MyDashboardPage.class);
 	
 	}

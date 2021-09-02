@@ -1,5 +1,7 @@
 package com.cpcommunity.PageObjects;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -57,13 +59,13 @@ public class ResourcesPage  extends BasePage{
 		}
 	}
 	public void checkResources2() throws InterruptedException {
-		Thread.sleep(8000);
+		driver.manage().timeouts().implicitlyWait(800, TimeUnit.SECONDS);
 		waitForElementToPresent(resource2);
 		if(this.resource2.isDisplayed()) {
 			Assert.assertTrue(true);
-		 Thread.sleep(5000);
+			driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
 		    click(group,"Groups");
-		    Thread.sleep(5000);
+			driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
 		   // waitForElementToPresent(leaveGroup3);
 		    click(leaveGroup3, "Leave");
 	}
@@ -78,7 +80,7 @@ public void checkResourceNotDisplaying() throws InterruptedException {
 		System.out.println(message);
 		takeScreenshotByShutterBug(YesProceed, "Yes Proceed");
 		click(YesProceed, "Yes Proceed");
-		Thread.sleep(4000);
+		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
 		
 	}
 	

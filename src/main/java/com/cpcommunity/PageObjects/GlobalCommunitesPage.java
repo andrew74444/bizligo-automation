@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 public class GlobalCommunitesPage extends BasePage {
 
@@ -179,7 +180,7 @@ public class GlobalCommunitesPage extends BasePage {
 	WebElement cancel;
 	@FindBy(xpath = "//button[normalize-space()='Yes, Proceed']")
 	WebElement yesProceed;
-	@FindBy(xpath = "(((//*[@class='col-md-3 left_col']//img[@src='/Content/Images/adprommenu.png'])/..)/..)")
+	@FindBy(css = "a[ng-click='data.redirectoAdvertisements()'] span[class='ng-scope']")
 	WebElement advertisements;
     @FindBy(xpath = "//img[@src='/Content/Images/setting-icon.png']/../..")
 	WebElement manage;
@@ -505,7 +506,8 @@ public class GlobalCommunitesPage extends BasePage {
 		//clickElementByJavaScript(BDMAIcomm);
 		//Thread.sleep(2000);
 		//scrollIntoViewAndClick(advertisement);
-		Thread.sleep(5000);
+		//driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
+		waitForElementToPresent(advertisement);
 		click(advertisement, "Advertisement");
 		waitForElementToPresent(selectPlans);
 		click(selectPlan2, "Select TestSilver Plan");
@@ -538,13 +540,14 @@ public class GlobalCommunitesPage extends BasePage {
 		searchName.clear();
 		type(searchName, CommunityName, "search");
 		click(searchBtn, "search Btn");
-		Thread.sleep(8000);
+		
 		waitForElementToPresent(driver.findElement(By.xpath("//a[contains(text(),'" + CommunityName + "')]")));
-
+		Thread.sleep(5000);
 	}
 	
 	public SelectPlanPage navigatetoselectPlanPage() throws InterruptedException {
-		Thread.sleep(5000);
+		
+		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
 		waitForElementToPresent(BDMAIcomm);
 		click(BDMAIcomm, "BDMAI");
 		Thread.sleep(10000);
@@ -552,11 +555,12 @@ public class GlobalCommunitesPage extends BasePage {
 		click(resources, "resources");
 		Thread.sleep(10000);
 		//clickElementByJavaScript(advertisement);
+		waitForElementToPresent(advertisement);
 		click(advertisement, "Advertisement");
 		//scrollDownVertically();
 		//clickElementByJavaScript(advertisement);
 		//click(advertisement, "Advertisement");
-		
+		Thread.sleep(4000);
 	return (SelectPlanPage) openPage(SelectPlanPage.class);	
 }
 	 public SelectPlanPage NavigatetoselectPlanPage(String CommunityName) throws InterruptedException {
@@ -569,9 +573,10 @@ public class GlobalCommunitesPage extends BasePage {
 			Thread.sleep(5000);
 			waitForElementToPresent(resources);
 			click(resources, "resources");
-			Thread.sleep(8000);
+			driver.manage().timeouts().implicitlyWait(1500, TimeUnit.SECONDS);
 			//clickElementByJavaScript(advertisement);
-			click(advertisementt, "Advertisement");
+			waitForElementToPresent(advertisements);
+			click(advertisements, "Advertisement");
 		return (SelectPlanPage) openPage(SelectPlanPage.class);	
 		}
 	public void navigatetoresources() throws InterruptedException {
@@ -642,12 +647,14 @@ public class GlobalCommunitesPage extends BasePage {
 	    	
 	}
 	public void Gotoresources() throws InterruptedException {
+		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
 		waitForElementToPresent(Testingcomm);
-		//click(Testingcomm, "18-02-2021 -testing");	
-		clickElementByJavaScript(Testingcomm);
+		click(Testingcomm, "18-02-2021 -testing");	
+		//clickElementByJavaScript(Testingcomm);
+		
 		waitForElementToPresent(resources);
 		click(resources, "resources");
-       Thread.sleep(8000);
+		Thread.sleep(5000);
 		
 }
 	public Discussions navigatetoDiscussionPage() throws InterruptedException {

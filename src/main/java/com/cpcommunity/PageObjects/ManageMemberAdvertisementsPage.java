@@ -1,6 +1,7 @@
 package com.cpcommunity.PageObjects;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -137,7 +138,7 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 		waitForElementToPresent(statusSearch);
 		selectByVisibleText(statusSearch, status, "waiting for approval");
 		click(btnSearch, "Search");
-		Thread.sleep(8000);
+		Thread.sleep(10000);
 		
 		click(action, "action");
 		Thread.sleep(8000);
@@ -149,13 +150,13 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 		
 	}
 	public void RejectAd(String status) throws Exception {
-		Thread.sleep(4000);
+		driver.manage().timeouts().implicitlyWait(900, TimeUnit.SECONDS);
 		selectByVisibleText(statusSearch, status, "waiting for approval");
 		click(btnSearch, "Search");
-		Thread.sleep(6000);
-		
+		driver.manage().timeouts().implicitlyWait(900, TimeUnit.SECONDS);
+		Thread.sleep(9000);
 		click(action, "action");
-		Thread.sleep(4000);
+		driver.manage().timeouts().implicitlyWait(1500, TimeUnit.SECONDS);
 		//waitForElementToPresent(adStartDate);
 //		selectStartAndEndDates();
 		click(reject, "Reject");
@@ -165,12 +166,12 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 	}
 	
 	public void approveAd (String planName,String AdImage,String LinkUrl) throws Exception {
-		Thread.sleep(5000);
+		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
 		waitForElementToPresent(PlanNameSearch);
 		//type(PlanNameSearch, planName, "Plan Name Search");
 		selectUsingIndex(statusSearch, 1, "Status");
 		click(btnSearch, "Search");
-		Thread.sleep(10000);
+		Thread.sleep(18000);
 		//String s = status.getText();
 		
 			click(edit, "action");
@@ -181,12 +182,14 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 			//click(nextMonth, "Next");
 			//waitForElementToPresent(dateselect);
 			//click(dateselect, "Date");
+			Thread.sleep(2000);
 		    scrollDownVertically();
 			
 			//waitForElementToPresent(adImage);
 			//type(this.adImage, AdImage, "Ad Image");
 			//type(this.linkUrl, LinkUrl, "Link Url");
 			click(approve, "Approve");
+			
 		}
 			//Advertisement details saved.
 		
@@ -277,7 +280,7 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 	}
 
 	public CommunityDashboardPage gotoCommunityDashboard() throws InterruptedException {
-		Thread.sleep(8000);
+		driver.manage().timeouts().implicitlyWait(1500, TimeUnit.SECONDS);
 		scrollUpVertically();
 		waitForElementToPresent(dashboardreport);
 		click(dashboardreport, "Dashboard Reports");

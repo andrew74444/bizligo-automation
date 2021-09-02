@@ -303,7 +303,7 @@ public class ManageAdPlansPage extends BasePage {
 		}
 		
 		click(btnSave, "Save button");
-		Thread.sleep(8000);
+		Thread.sleep(12000);
 		//waitForElementToPresent(this.toaster);
 		//AssertionHelper.verifyText(toaster.getText(), "Advertisement plan details saved.");
 		//T1++;
@@ -604,14 +604,14 @@ public class ManageAdPlansPage extends BasePage {
    }
    
    public void inactivatePlan(String plan) throws InterruptedException {
-	   Thread.sleep(5000);
+	   Thread.sleep(15000);
 	   scrollUpVertically();
 	   waitForElementToPresent(plansearch);
 	   plan=plan+ "" + getDateInDDMMMYYYY();
 	   type(plansearch, plan, "Plan Name");
 	   Thread.sleep(4000);
 	   click(search, "Search");
-	   Thread.sleep(6000);
+	   Thread.sleep(9000);
 	   waitForElementToPresent(editplan);
 	   click(editplan, "Edit");
 	   scrollDownVertically();

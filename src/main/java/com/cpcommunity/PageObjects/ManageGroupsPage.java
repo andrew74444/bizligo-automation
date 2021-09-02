@@ -1,5 +1,7 @@
 package com.cpcommunity.PageObjects;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -67,13 +69,13 @@ public class ManageGroupsPage extends BasePage{
 	public void searchGroup(String GroupName) throws Exception {
 		type(SearchbyGroupName, GroupName,"Search by Group Name");
 		click(Search,"Search");
-		Thread.sleep(5000);
+		driver.manage().timeouts().implicitlyWait(600, TimeUnit.SECONDS);
 		
 	}
 	
 	public Create_UpdateGroupPage editGroup() throws Exception {
 		click(Menu,"Menu");
-		Thread.sleep(1000);
+		driver.manage().timeouts().implicitlyWait(300, TimeUnit.SECONDS);
 		click(editGroup,"editGroup");
 		return (Create_UpdateGroupPage) openPage(Create_UpdateGroupPage.class);
 //		new Create_UpdateGroupPage(driver, );
@@ -87,7 +89,7 @@ public class ManageGroupsPage extends BasePage{
         picture();
         click(element,"Group name");
         waitForElementToPresent(editGroup1);
-        Thread.sleep(5000);
+        driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
         picture();
         click(editGroup1,"Edit group"); 
         
@@ -119,7 +121,7 @@ public class ManageGroupsPage extends BasePage{
 		waitForElementToPresent(this.SearchByStatus);
 	    selectByVisibleText(SearchByStatus,Status,"Search by status");
 		click(Search,"Search");
-		Thread.sleep(3000);
+		driver.manage().timeouts().implicitlyWait(900, TimeUnit.SECONDS);
 		WebElement el=driver.findElement(By.xpath("//span[contains(text(),'"+GroupName+"')]"));
 		waitForElementToPresent(el);
 		String ele=el.getText();
@@ -132,7 +134,7 @@ public class ManageGroupsPage extends BasePage{
 		
 		waitForElementToPresent(manageedit);
 		click(manageedit, "Manage Edit");
-		Thread.sleep(2000);
+		driver.manage().timeouts().implicitlyWait(300, TimeUnit.SECONDS);
 		click(editGroup1, "Edit");
 		return (Create_UpdateGroupPage) openPage(Create_UpdateGroupPage.class);
 		

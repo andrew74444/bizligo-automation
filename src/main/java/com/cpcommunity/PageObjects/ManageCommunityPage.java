@@ -6,6 +6,7 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -79,7 +80,7 @@ public class ManageCommunityPage extends BasePage{
 	
 	
 	public void editCommunityLogo(String about,String updatecommunity, String termandcond, String logoImagePath ) throws InterruptedException, IOException, AWTException {
-		Thread.sleep(6000);
+		driver.manage().timeouts().implicitlyWait(600, TimeUnit.SECONDS);
 		
 		waitForElementToPresent(custom);
 		click(custom, "Custom");
@@ -98,33 +99,39 @@ public class ManageCommunityPage extends BasePage{
 		enterTextInframe.clear();
 		enterTextInframe.sendKeys(termandcond);
 		driver.switchTo().defaultContent();
-	
+		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
 		click(changeImageLink,"change Image Link");
+		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
 		 waitForElementToPresent(Browse);
 		click(Browse," Browse");
-		Thread.sleep(10000);
+		
 			  StringSelection ss = new StringSelection(logoImagePath);
 			  Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
 			  Robot robot = new Robot();
-			     robot.delay(250);
+			     robot.delay(350);
 			     robot.keyPress(KeyEvent.VK_ENTER);
 			     robot.keyRelease(KeyEvent.VK_ENTER);
+			    
 			     robot.keyPress(KeyEvent.VK_CONTROL);
 			     robot.keyPress(KeyEvent.VK_V);
-			     robot.keyRelease(KeyEvent.VK_V);
 			     robot.keyRelease(KeyEvent.VK_CONTROL);
+			     robot.keyRelease(KeyEvent.VK_V);
+			    
 			     robot.keyPress(KeyEvent.VK_ENTER);
-			     robot.delay(90);
 			     robot.keyRelease(KeyEvent.VK_ENTER);
-			// System.out.println(projectFloder(logoImagePath));
-			// Runtime.getRuntime().exec(projectFloder(logoImagePath));
-			Thread.sleep(4000);
+			    
+			 //System.out.println(projectFloder(logoImagePath));
+			 //Runtime.getRuntime().exec(projectFloder(logoImagePath));
+			 	//driver.manage().timeouts().implicitlyWait(900, TimeUnit.SECONDS);
+			     waitForElementToPresent(Upload);
+			     driver.manage().timeouts().implicitlyWait(900, TimeUnit.SECONDS);
 			click(Upload, "Upload");
 			
-			
+			waitForElementToPresent(save);
+			driver.manage().timeouts().implicitlyWait(900, TimeUnit.SECONDS);
 		click(save, "Save");
 		picture();
-		Thread.sleep(5000);
+		Thread.sleep(8000);
 		//AssertionHelper.verifyText(toastmessage.getText(), "Community details updated successfully");
 	}
 	
@@ -173,7 +180,7 @@ public class ManageCommunityPage extends BasePage{
 	}
 
 	public ManageCommunityWidgets navigateTomanageWidget() throws InterruptedException {
-		Thread.sleep(5000);
+		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
 		click(manage, "manage");
 		waitForElementToPresent(manageCommunitywidget);
 		click(manageCommunitywidget, "manage Community widget");

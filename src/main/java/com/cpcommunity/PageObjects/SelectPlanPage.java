@@ -2,6 +2,7 @@ package com.cpcommunity.PageObjects;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -79,6 +80,8 @@ public class SelectPlanPage extends BasePage {
 	WebElement save;
 	@FindBy(xpath= "//ng-repeat[2]//div[1]//div[1]//div[1]//div[3]//a[1]")
 	WebElement selectGold2;
+	@FindBy(xpath= "//ng-repeat[2]//div[1]//div[1]//div[1]//div[3]//a[1]")
+	WebElement selectGold3;
 	@FindBy(xpath = "//i[@class='fa fa-plus']")
 	WebElement createGlobalAd;
 	@FindBy(xpath = "//input[@value='2']")
@@ -335,18 +338,19 @@ public class SelectPlanPage extends BasePage {
 	
 	public AuthorizeGateway selectPlan1(String planName, String AdName, String path ) throws Exception {
 		//this.createGlobalAd.click();
-        Thread.sleep(4000);
+		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
 		//this.selectAPlan(planName);
-          clickElementByJavaScript(selectGold2);
-        Thread.sleep(5000);		
+		waitForElementToPresent(selectGold3);
+          clickElementByJavaScript(selectGold3);
+          driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);		
 		click(next, "Next button");
-		Thread.sleep(5000);
+		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
 		picture();
 		waitForElementToPresent(adname);
 		type(adname, AdName, "Advertisement name");
 		click(date, "Select Date");
 		waitForElementToPresent(adStartDatecalendar);
-		Thread.sleep(2000);
+		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
 		click(nextMonth, "Next");
 		click(nextMonth, "Next");
 		waitForElementToPresent(dateselect);
@@ -355,14 +359,14 @@ public class SelectPlanPage extends BasePage {
 		//waitForElementToPresent(adEndDatecalendar);
 		//Thread.sleep(1000);
 		//click(enddate, "EndDate");
-		Thread.sleep(4000);
+		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
 		waitForElementToPresent(choosefile);
 		type(choosefile, path, "Image Path");
 		scrollDownVertically();
 		click(proceedTopayment, "Proceed To Payment");
 		waitForElementToPresent(Authorised);
 		click(Authorised, "Authorised.Net");
-		Thread.sleep(2000);
+		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);;
 	    waitForElementToPresent(proceed);
 		click(proceed, "Proceed");
 		Thread.sleep(4000);

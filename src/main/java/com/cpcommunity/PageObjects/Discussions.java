@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -588,7 +589,7 @@ public class Discussions extends BasePage {
 			System.out.println("Most Recent Discussion is displaying");
 	}
 	public void VerifyDiscussionNotDisplaying() throws InterruptedException {
-		Thread.sleep(500);
+		
 		Assert.assertEquals(0, popularDiscussion.size());
 		Assert.assertEquals(0, Likeddiscussion.size());
 		System.out.println("Popular Discussion and Liked Discussion are Not Displaying");
@@ -596,7 +597,7 @@ public class Discussions extends BasePage {
 	}
 	
 	public ManageCommunityPage gotoDashboardpage() throws InterruptedException {
-		Thread.sleep(2000);
+		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
 		waitForElementToPresent(manageBtn);
 		click(manageBtn, "Manage Button");
 		return (ManageCommunityPage) openPage(ManageCommunityPage.class);		

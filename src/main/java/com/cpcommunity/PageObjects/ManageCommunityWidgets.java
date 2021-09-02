@@ -1,5 +1,7 @@
 package com.cpcommunity.PageObjects;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -140,30 +142,30 @@ public class ManageCommunityWidgets extends BasePage {
 	WebElement skillinteresttype;
 	
      public void disablediscussion() throws InterruptedException {
-    	 Thread.sleep(8000);
+    	Thread.sleep(4000);
     	 waitForElementToPresent(disablepopularDiscussion);
     	 click(disablepopularDiscussion, "Disable popular discussion");
     	 click(disableLikeddiscussion, "Disable liked discussion");
-    	 Thread.sleep(6000);
+    	 
     	 click(save, "Save");
-    	 Thread.sleep(4000);
+    	 Thread.sleep(8000);
      } 
      public void Enablediscussion() throws InterruptedException {
-    	 Thread.sleep(8000);
+    	 driver.manage().timeouts().implicitlyWait(900, TimeUnit.SECONDS);
     	 waitForElementToPresent(enablepopularDiscussion);
     	 click(enablepopularDiscussion, "Disable popular discussion");
     	 click(enablelikedDiscussion, "Disable liked discussion");
-    	 Thread.sleep(6000);
+    	 driver.manage().timeouts().implicitlyWait(600, TimeUnit.SECONDS);
     	 click(save, "Save");
-    	 Thread.sleep(4000);
+    	 Thread.sleep(5000);
      } 
      public Discussions navigateToDiscussionPage() throws InterruptedException {
-    	 Thread.sleep(4000);
+  
  		waitForElementToPresent(BDMAIHomePage);
  		click(BDMAIHomePage, "HomePage");
  		waitForElementToPresent(discussion);
  		click(discussion, "Discussions");
- 		Thread.sleep(8000);
+ 		Thread.sleep(3000);
  		return (Discussions) openPage(Discussions.class);	
  	} 
      public void disableJob() throws InterruptedException {
@@ -308,12 +310,12 @@ public class ManageCommunityWidgets extends BasePage {
     	 Thread.sleep(4000);
      } 
      public void RenameEventsWidget(String event) throws InterruptedException {
-    	 Thread.sleep(8000);
+    	 driver.manage().timeouts().implicitlyWait(900, TimeUnit.SECONDS);
     	 waitForElementToPresent(suggestedEvents);
     	 type(suggestedEvents, event, "Rename Event");
-    	 Thread.sleep(6000);
+    	 driver.manage().timeouts().implicitlyWait(800, TimeUnit.SECONDS);
     	 click(save, "Save");
-    	 Thread.sleep(4000);
+    	 driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
     	 
      }
      

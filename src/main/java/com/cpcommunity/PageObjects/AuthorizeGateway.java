@@ -209,8 +209,8 @@ public class AuthorizeGateway extends BasePage {
 		type(email, "nancycarton2@gmail.com", "email");
 
 		String orderTotalAmount = this.orderTotalAmount.getText();
-
-		clickElementByJavaScript(PayBtn);
+        click(PayBtn, "payBtn");
+		//clickElementByJavaScript(PayBtn);
 
 		driver.switchTo().defaultContent();
 
