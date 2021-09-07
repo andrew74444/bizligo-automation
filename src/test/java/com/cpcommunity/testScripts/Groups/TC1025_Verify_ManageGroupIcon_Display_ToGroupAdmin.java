@@ -40,7 +40,7 @@ public class TC1025_Verify_ManageGroupIcon_Display_ToGroupAdmin extends BaseTest
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("TC190 Test Completed");
+		logInfo("TC1025 Test Completed");
 		
 		quit();
 		

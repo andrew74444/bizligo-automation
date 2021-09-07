@@ -28,7 +28,7 @@ public class TC917_Verify_TA_able_filter_donations_records_by_community_name ext
 		LoginPage login = home.clickOnLOGINBtn();	
 		TenantAdminDashboardPage TDP = login.loginToTADashboard(data.get("email"), data.get("password"));
 	    ManageDonationsPage MDP=TDP.NavigatetoManageDonationsPage();
-	    MDP.filterByCommunityName(data.get("Community"));
+	    MDP.filterByCommunityName(data.get("Community"));//
 
 }
 	@AfterMethod

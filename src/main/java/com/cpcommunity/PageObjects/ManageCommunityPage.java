@@ -2,9 +2,13 @@ package com.cpcommunity.PageObjects;
 
 import java.awt.AWTException;
 import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -34,12 +38,16 @@ public class ManageCommunityPage extends BasePage{
 	WebElement title;
 	@FindBy(tagName = "body")
 	WebElement enterTextInframe;
-	@FindBy(tagName = "//a[@id='changePictureLink']")
+	@FindBy(xpath = "//a[normalize-space()='Change Logo']")
 	WebElement changeImageLink;
-	@FindBy(xpath = "//button[@onclick=\"document.getElementById('uploadGroupLogo').click();\"]")
+	@FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[3]/div[1]/div[4]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/form[1]/div[2]/div[2]/div[1]/button[1]")
 	WebElement Browse;
-	@FindBy(xpath = "//form[@id='EditMyGroupLogoForm']//button[@type='submit'][normalize-space()='Upload']")
+	@FindBy(xpath = "//form[@id='EditMyCommunityLogoForm']//button[@type='submit'][normalize-space()='Upload']")
 	WebElement Upload;
+	@FindBy(xpath = "(((//*[@class='col-md-3 left_col']//img[@src='/Content/Images/Jobs/Jobs-active.png'])/..)/..)")
+	WebElement Jobs;
+	@FindBy(xpath = "(//*[@class='col-md-3 left_col']//*[@title='Manage Jobs'])")
+	WebElement ManageJobs;
 	@FindBy(xpath = "//label[normalize-space()='Standard']")
 	WebElement standard;
 	@FindBy(xpath = "//button[@id='btnSave']")
@@ -56,41 +64,75 @@ public class ManageCommunityPage extends BasePage{
 	WebElement advertisement;
 	@FindBy(xpath = "//a[normalize-space()='Manage Plans']")
 	WebElement manageplan;
+	@FindBy(xpath = "//label[normalize-space()='Custom']")
+	WebElement custom;
+	@FindBy(xpath = "//img[@src='/Content/Images/setting-icon.png']/../..")
+	WebElement manage;
+    
+	@FindBy(xpath = "//a[normalize-space()='Manage Community Widgets']")
+	WebElement manageCommunitywidget;
+	
+	@FindBy(xpath = "(//*[contains(text(),'Blogs')])[1]")
+	WebElement blogs;
+
+	@FindBy(xpath = "(//*[contains(text(),'Categories')])[1]")
+	WebElement categories;
 	
 	
-	public void editCommunityLogo(String about,String updatecommunity, String termandcond, String logoImagePath ) throws InterruptedException, IOException {
-		Thread.sleep(4000);
-		waitForElementToPresent(standard);
-		click(standard, "Standard");
-		Thread.sleep(2000);
+	public void editCommunityLogo(String about,String updatecommunity, String termandcond, String logoImagePath ) throws InterruptedException, IOException, AWTException {
+		driver.manage().timeouts().implicitlyWait(600, TimeUnit.SECONDS);
+		
+		waitForElementToPresent(custom);
+		click(custom, "Custom");
 		driver.switchTo().frame(0);
 		enterTextInframe.clear();
 		enterTextInframe.sendKeys(about);
 		driver.switchTo().defaultContent();
-		scrollDownByPixel(30);
+	   // scrollDownByPixel(30);
+		
 		driver.switchTo().frame(1);
 		enterTextInframe.clear();
 		enterTextInframe.sendKeys(updatecommunity);
 		driver.switchTo().defaultContent();
+		
 		driver.switchTo().frame(2);
 		enterTextInframe.clear();
 		enterTextInframe.sendKeys(termandcond);
 		driver.switchTo().defaultContent();
-		scrollDownByPixel(30);
-		//click(changeImageLink,"change Image Link");
-       clickElementByJavaScript(changeImageLink);
+		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
+		click(changeImageLink,"change Image Link");
+		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
 		 waitForElementToPresent(Browse);
 		click(Browse," Browse");
-		 Thread.sleep(10000);
-		 System.out.println(projectFloder(logoImagePath));
-		 Runtime.getRuntime().exec(projectFloder(logoImagePath));
-		Thread.sleep(10000);
-		click(Upload, "Upload");
-		scrollDownByPixel(100);
-		Thread.sleep(1000);
+		
+			  StringSelection ss = new StringSelection(logoImagePath);
+			  Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
+			  Robot robot = new Robot();
+			     robot.delay(350);
+			     robot.keyPress(KeyEvent.VK_ENTER);
+			     robot.keyRelease(KeyEvent.VK_ENTER);
+			    
+			     robot.keyPress(KeyEvent.VK_CONTROL);
+			     robot.keyPress(KeyEvent.VK_V);
+			     robot.keyRelease(KeyEvent.VK_CONTROL);
+			     robot.keyRelease(KeyEvent.VK_V);
+			    
+			     robot.keyPress(KeyEvent.VK_ENTER);
+			     robot.keyRelease(KeyEvent.VK_ENTER);
+			    
+			 //System.out.println(projectFloder(logoImagePath));
+			 //Runtime.getRuntime().exec(projectFloder(logoImagePath));
+			 	//driver.manage().timeouts().implicitlyWait(900, TimeUnit.SECONDS);
+			     waitForElementToPresent(Upload);
+			     Thread.sleep(5000);
+			click(Upload, "Upload");
+			driver.manage().timeouts().implicitlyWait(1500, TimeUnit.SECONDS);
+			waitForElementToPresent(save);
+			driver.manage().timeouts().implicitlyWait(900, TimeUnit.SECONDS);
 		click(save, "Save");
 		picture();
-		AssertionHelper.verifyText(toastmessage.getText(), "Community details updated successfully");
+		Thread.sleep(8000);
+		//AssertionHelper.verifyText(toastmessage.getText(), "Community details updated successfully");
 	}
 	
 	public void openGuerillamail(String emailName) throws InterruptedException, AWTException {
@@ -137,8 +179,30 @@ public class ManageCommunityPage extends BasePage{
 		// new GroupsPendingRequestsPage(driver);
 	}
 
+	public ManageCommunityWidgets navigateTomanageWidget() throws InterruptedException {
+		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
+		click(manage, "manage");
+		waitForElementToPresent(manageCommunitywidget);
+		click(manageCommunitywidget, "manage Community widget");
+		Thread.sleep(3000);
+		return (ManageCommunityWidgets) openPage(ManageCommunityWidgets.class);
+		// new CommunityInviteMembersPage(driver);
+	}
+	public CategoriesPage gotoCategories() {
+		click(blogs, "Categories");
+		waitForElementToPresent(categories);
+		click(categories, "Categories");
+
+		return (CategoriesPage) openPage(CategoriesPage.class);
+	}
 	
-	
-	
-	
+	public ManageJobsPage navigateToManageJobsPage() {
+		scrollDownVertically();
+		scrollToElement(Jobs);
+		click(Jobs, "Jobs");
+		waitForElementToPresent(ManageJobs);
+		click(ManageJobs, "ManageJobs");
+		return (ManageJobsPage) openPage(ManageJobsPage.class);
+		// new ManageJobs(driver);
+	}
 }

@@ -20,7 +20,7 @@ import com.cpcommunity.utilities.ExcelReader;
 public class TC1067_Verify_CA_ableto_Inactivate_CampaignTemplate_and_shouldNot_display_InSelectTemplate_CompaseCamp extends BaseTest{
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1067(Hashtable<String,String> data) throws Exception {
-		
+		//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1067", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			
@@ -35,7 +35,9 @@ public class TC1067_Verify_CA_ableto_Inactivate_CampaignTemplate_and_shouldNot_d
 	CampaignTemplatePage campTemp=communityDashboard.navigateToCampaignTemplate();
 	campTemp.inactivate();
 	ComposeCampaign CC=campTemp.navigateToComposeCampaignPage();
-	CC.checkTemplatenotDisplay();;
+	CC.checkTemplatenotDisplay();
+	CampaignTemplatePage CT=CC.navigateToCampaignTemplate();
+	CT.activate();
 	
 }
 	@AfterMethod

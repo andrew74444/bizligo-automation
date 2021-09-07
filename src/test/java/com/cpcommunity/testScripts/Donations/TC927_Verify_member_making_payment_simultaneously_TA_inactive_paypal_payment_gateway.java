@@ -49,7 +49,7 @@ public class TC927_Verify_member_making_payment_simultaneously_TA_inactive_paypa
 		LoginPage login4 = home4.clickOnLOGINBtn();	
 		TenantAdminDashboardPage TDP1 = login4.loginToTADashboard(data.get("email1"), data.get("password1"));
 		PaymentGatewaysPage PGP1=TDP1.NavigatetoPaymentGatewayPage();
-	    PGP1.activePayPalGateway();
+	    PGP1.activePayPalGateway();//
 
 
 }

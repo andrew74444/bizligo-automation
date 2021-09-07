@@ -14,7 +14,7 @@ public class PaymentGatewaysPage extends BasePage {
 	@Override
 	protected void getPageScreenSot() {
 
-		aShot();
+		aShot();//
 
 	}
 
@@ -41,6 +41,8 @@ public class PaymentGatewaysPage extends BasePage {
 
 	@FindBy(xpath = "//*[@class = 'swal-button swal-button--Cancel btn-danger']")
 	WebElement cancelBtn;
+	@FindBy(xpath = "//button[normalize-space()='Cancel']")
+	WebElement cancel;
 
 	@FindBy(xpath = "//button[contains(.,'Validate')]")
 	WebElement ValidateBtn;
@@ -80,7 +82,8 @@ public class PaymentGatewaysPage extends BasePage {
 	
 	@FindBy(xpath="//ng-repeat[1]//li[1]//label[1]//input[1]")
 	List<WebElement> paypalBtns;
-
+	@FindBy(xpath = "//div[@class='swal-text']")
+	WebElement gatewayerror;
 
 
 
@@ -199,7 +202,7 @@ public class PaymentGatewaysPage extends BasePage {
 	}
 	public void inactiveAuthorizeGateway() throws InterruptedException {
 		selectByVisibleText(selectCommunity,"BizLigo1","Bizligo1");
-		Thread.sleep(1000);
+		Thread.sleep(3000);
 		Authorize.click();
 		Thread.sleep(3000);
 		click(active,"Active");
@@ -209,9 +212,60 @@ public class PaymentGatewaysPage extends BasePage {
 		Thread.sleep(1000);
 		
 	}
+	
+	public void inactiveAuthorizeGateway(String community) throws InterruptedException {
+		selectByVisibleText(selectCommunity,community,"Bizligo1");
+		Thread.sleep(9000);
+		Authorize.click();
+		Thread.sleep(5000);
+		click(inactive,"Active");
+		click(update,"Update");
+		waitForElementToPresent(OkBtn);
+		click(OkBtn,"OkBtn");
+		Thread.sleep(9000);
+		
+	}
+	public void activeAuthorizeGateway(String community) throws InterruptedException {
+		selectByVisibleText(selectCommunity,community,"Bizligo1");
+		Thread.sleep(9000);
+		Authorize.click();
+		Thread.sleep(3000);
+		click(inactive," Active");
+		click(update,"Update");
+		waitForElementToPresent(OkBtn);
+		click(OkBtn,"OkBtn");
+		Thread.sleep(5000);
+		
+	}
+	public void inactiveCash(String community) throws InterruptedException {
+		selectByVisibleText(selectCommunity,community,"Bizligo1");
+		Thread.sleep(9000);
+		Cash.click();
+		Thread.sleep(5000);
+		//click(inactive,"Active");
+		//click(update,"Update");
+		waitForElementToPresent(gatewayerror);
+		String error=this.gatewayerror.getText();
+		System.out.println(error);
+		click(cancel,"Cancel");
+		Thread.sleep(5000);
+		
+	}
+	public void activeCash(String community) throws InterruptedException {
+		selectByVisibleText(selectCommunity,community,"Bizligo1");
+		Thread.sleep(3000);
+		Cash.click();
+		Thread.sleep(3000);
+		click(active,"In Active");
+		click(update,"Update");
+		waitForElementToPresent(OkBtn);
+		click(OkBtn,"OkBtn");
+		Thread.sleep(5000);
+		
+	}
 	public void activeAuthorizeGateway() throws InterruptedException {
 		selectByVisibleText(selectCommunity,"BizLigo1","Bizligo1");
-		Thread.sleep(1000);
+		Thread.sleep(3000);
 		Authorize.click();
 		Thread.sleep(3000);
 		click(inactive,"In Active");
@@ -223,7 +277,7 @@ public class PaymentGatewaysPage extends BasePage {
 	}
 	public void inactivePaypalGateway() throws InterruptedException {
 		selectByVisibleText(selectCommunity,"BizLigo1","Bizligo1");
-		Thread.sleep(1000);
+		Thread.sleep(3000);
 		PayPal.click();
 		Thread.sleep(3000);
 		click(active,"Active");
@@ -235,7 +289,7 @@ public class PaymentGatewaysPage extends BasePage {
 	}
 	public void activePayPalGateway() throws InterruptedException {
 		selectByVisibleText(selectCommunity,"BizLigo1","Bizligo1");
-		Thread.sleep(1000);
+		Thread.sleep(3000);
 		PayPal.click();
 		Thread.sleep(3000);
 		click(inactive,"In Active");

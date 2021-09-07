@@ -18,7 +18,7 @@ import com.cpcommunity.utilities.ExcelReader;
 public class TC1036_Verify_BusinessCategory_Is_Displaying extends BaseTest {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1036(Hashtable<String,String> data) throws Exception {
- 
+ //
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC1036", data.get("Runmode"), excel);
 		log.info("Inside Login Test");			
@@ -30,7 +30,7 @@ public class TC1036_Verify_BusinessCategory_Is_Displaying extends BaseTest {
 		MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
 		//BusinessDirectoryPage bussinessdirectory= myCommunity.gotoBusinessDirectoryPage();
 		MemberDirectoryPage memberdirectory= myCommunity.gotoMemberDirectoryPage();
-		memberdirectory.ClickonBusinessCategory(data.get("BussinessCategory"),data.get("BussinessCategory1"));
+		memberdirectory.ClickonBusinessCategory(data.get("bussinessCategory"),data.get("BussinessCategory1"));
 		
 		
 	}

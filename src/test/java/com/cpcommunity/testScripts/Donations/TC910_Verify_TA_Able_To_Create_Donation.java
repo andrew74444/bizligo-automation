@@ -28,7 +28,7 @@ public class TC910_Verify_TA_Able_To_Create_Donation extends BaseTest{
 		LoginPage login = home.clickOnLOGINBtn();	
 		TenantAdminDashboardPage TDP = login.loginToTADashboard(data.get("email"), data.get("password"));
 	    ManageDonationsPage MDP=TDP.NavigatetoManageDonationsPage();
-	    MDP.addDonation(data.get("Name"));
+	    MDP.addDonation(data.get("Name"));//
 
 }
 	@AfterMethod

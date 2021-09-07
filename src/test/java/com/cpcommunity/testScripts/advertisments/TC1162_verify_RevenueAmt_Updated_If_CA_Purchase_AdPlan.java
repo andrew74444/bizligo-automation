@@ -23,7 +23,7 @@ public class TC1162_verify_RevenueAmt_Updated_If_CA_Purchase_AdPlan extends Base
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1162(Hashtable<String,String> data) throws Exception {
 		
-	//change plan name before running code
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1162", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			
@@ -41,7 +41,7 @@ public class TC1162_verify_RevenueAmt_Updated_If_CA_Purchase_AdPlan extends Base
 	 AG.makePayment();
 	 RevenueReportPage RRP=AG.navigateToRevenueReport();
 	 MemberRevenueReport MRR=RRP.goTomemberReport();
-	 MRR.checkRevenue();
+	 MRR.checkRevenue(data.get("member"));
 	}
 	@AfterMethod
 	public void tearDown() {

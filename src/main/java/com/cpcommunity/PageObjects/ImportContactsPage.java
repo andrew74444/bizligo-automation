@@ -56,10 +56,11 @@ public class ImportContactsPage extends BasePage {
 	
 	
 	public void uploadFile(String Filepath) throws InterruptedException {
+		Thread.sleep(2000);
 	waitForElementToPresent(chooseFile);
 	//chooseFile.sendKeys("C:\\Temp\\Book7.csv");
 	type(chooseFile,Filepath,"FileName");
-	Thread.sleep(2000);
+	Thread.sleep(5000);
 	waitForElementToPresent(importContact);
 	click(importContact, "Import");
 	AssertionHelper.verifyText(toastmessage.getText(), "Contacts saved");
@@ -99,10 +100,11 @@ public class ImportContactsPage extends BasePage {
 	}
 	public ComposeCampaign navigateToComposeCampaignPage() throws Exception {
 		scrollDownVertically();
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		scrollToElement(manageCampaign);
+		waitForElementToPresent(manageCampaign);
 		click(manageCampaign, "manageCampaign");
-		Thread.sleep(500);
+
 		waitForElementToPresent(composeCampaign);
 		this.composeCampaign.click();	
 		//click(composeCampaign, "composeCampaign");
@@ -110,10 +112,11 @@ public class ImportContactsPage extends BasePage {
 		
 }
 public void errorMsgWhenEmptyEmailRecords(String path) throws InterruptedException {
-		
+		Thread.sleep(2000);
 		waitForElementToPresent(chooseFile);
-		chooseFile.sendKeys(path);
-		Thread.sleep(3000);
+		type(chooseFile,path,"FileName");
+		//chooseFile.sendKeys(path);
+		Thread.sleep(1000);
 		click(importBtn,"Import File");
 		if(errorMsg.isDisplayed()) {
 			Assert.assertTrue(true);
@@ -121,10 +124,11 @@ public void errorMsgWhenEmptyEmailRecords(String path) throws InterruptedExcepti
 		}
 	}
 public void csvFileWithDuplicateRecords(String path) throws InterruptedException {
-	
+	Thread.sleep(2000);
 	waitForElementToPresent(chooseFile);
-	chooseFile.sendKeys(path);
-	Thread.sleep(3000);
+	type(chooseFile,path,"FileName");
+	//chooseFile.sendKeys(path);
+	Thread.sleep(1000);
 	click(importBtn,"Import File");
 	Thread.sleep(3000);
 	System.out.println("Success in saving Contacts from CSV file:"+ SuccessPopup.getText());

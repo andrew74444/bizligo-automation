@@ -43,7 +43,7 @@ public class TC926_Verify_donate_menu_link_opening_new_tab_if_donation_external 
 		LoginPage login3 = home3.clickOnLOGINBtn();
 		TenantAdminDashboardPage TDP1 = login3.loginToTADashboard(data.get("email"), data.get("password"));
 	    ManageDonationsPage MDP1=TDP1.NavigatetoManageDonationsPage();
-	    MDP1.makeDonationInternal(data.get("Community"));    
+	    MDP1.makeDonationInternal(data.get("Community")); //   
 	    }
 	@AfterMethod
 	public void tearDown() {

@@ -35,7 +35,8 @@ public class TC751_Verify_rejected_endorsements_notlisted_if_rejected_by_member 
 		MemberDirectoryPage MDP=MyCP.gotoMemberDirectoryPage();
 		ProfilePage PP=MDP.MemberWithRejectedEndorsement(data.get("Name"));
 		PP.AddEndorsement(data.get("EndorsementMessage"));
-		try {
+		quit();
+	try {
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
@@ -45,13 +46,13 @@ public class TC751_Verify_rejected_endorsements_notlisted_if_rejected_by_member 
 		EndorsementPage EP=ESP.NaviagtingToMyEndorsements();
 		EP.Reject();
 		close();
-		}catch(Exception e) {
-		}
-		/*MemberDirectoryPage MDP1=PP.gotoMemberDirectoryPage();
+	}catch(Exception e) {
+	}
+		/*MemberDirect oryPage MDP1=PP.gotoMemberDirectoryPage();
 		 PP=MDP1.MemberWithRejectedEndorsement(data.get("Name"));
 		//PP.AddEndorsement(data.get("EndorsementMessage"));
 		navigateToRefresh();*/
-		}
+	}
 	@AfterMethod
 	public void tearDown() {
 		

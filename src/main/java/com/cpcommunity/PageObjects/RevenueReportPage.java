@@ -46,10 +46,10 @@ public class RevenueReportPage extends BasePage {
 		return (TotalRevenueReport) openPage(TotalRevenueReport.class);	
 	}
 	public MemberRevenueReport goTomemberReport() throws InterruptedException {
-		Thread.sleep(5000);
+		Thread.sleep(10000);
 		waitForElementToPresent(memberrevenue);
 		click(memberrevenue, "Revenue");
-
+        Thread.sleep(2000);
 		return (MemberRevenueReport) openPage(MemberRevenueReport.class);	
 	}
 }

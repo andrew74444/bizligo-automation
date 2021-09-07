@@ -1,6 +1,7 @@
 package com.cpcommunity.PageObjects;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -91,7 +92,7 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 	@FindBy(xpath = "//body/div[3]")
 	WebElement  adEndDatecalendar;
 	
-	@FindBy(xpath = "//button[normalize-space()='Approve']")
+	@FindBy(xpath = "//button[@id='ApproveClick']")
 	WebElement  approve;
 	
 	
@@ -100,6 +101,9 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 	
 	//@FindBy(xpath = "//body[1]/div[2]/div[3]/table[1]/tbody[1]/tr[4]/td[2]")
 	//WebElement  date;
+	
+	@FindBy(xpath = "//tbody/tr[1]/td[2]/a[1]")
+	WebElement  edit;
 	
 	@FindBy(xpath = "//body[1]/div[3]/div[3]/table[1]/tbody[1]/tr[4]/td[4]")
 	WebElement  enddate;
@@ -130,32 +134,47 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 	}
 
 	public void rejectAd(String status) throws Exception {
-		Thread.sleep(4000);
+		Thread.sleep(5000);
 		waitForElementToPresent(statusSearch);
 		selectByVisibleText(statusSearch, status, "waiting for approval");
 		click(btnSearch, "Search");
-		Thread.sleep(6000);
+		Thread.sleep(10000);
 		
 		click(action, "action");
-		Thread.sleep(4000);
+		Thread.sleep(8000);
 		//waitForElementToPresent(adStartDate);
 //		selectStartAndEndDates();
 		click(reject, "Reject");
-		//Thread.sleep(4000);
+		Thread.sleep(8000);
 		picture();
+		
+	}
+	public void RejectAd(String status) throws Exception {
+		driver.manage().timeouts().implicitlyWait(900, TimeUnit.SECONDS);
+		selectByVisibleText(statusSearch, status, "waiting for approval");
+		click(btnSearch, "Search");
+		driver.manage().timeouts().implicitlyWait(900, TimeUnit.SECONDS);
+		Thread.sleep(9000);
+		click(action, "action");
+		driver.manage().timeouts().implicitlyWait(1500, TimeUnit.SECONDS);
+		//waitForElementToPresent(adStartDate);
+//		selectStartAndEndDates();
+		click(reject, "Reject");
+		picture();
+		Thread.sleep(8000);
 		
 	}
 	
 	public void approveAd (String planName,String AdImage,String LinkUrl) throws Exception {
-		Thread.sleep(4000);
+		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
 		waitForElementToPresent(PlanNameSearch);
-		type(PlanNameSearch, planName, "Plan Name Search");
+		//type(PlanNameSearch, planName, "Plan Name Search");
 		selectUsingIndex(statusSearch, 1, "Status");
 		click(btnSearch, "Search");
-		Thread.sleep(6000);
-		String s = status.getText();
-		if (s.equalsIgnoreCase("WAITING FOR APPROVAL")) {
-			click(action, "action");
+		Thread.sleep(18000);
+		//String s = status.getText();
+		
+			click(edit, "action");
 			//click(date, "Select Date");
 			//waitForElementToPresent(adStartDatecalendar);
 			//Thread.sleep(1000);
@@ -163,23 +182,25 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 			//click(nextMonth, "Next");
 			//waitForElementToPresent(dateselect);
 			//click(dateselect, "Date");
+			Thread.sleep(2000);
 		    scrollDownVertically();
 			
 			//waitForElementToPresent(adImage);
 			//type(this.adImage, AdImage, "Ad Image");
 			//type(this.linkUrl, LinkUrl, "Link Url");
 			click(approve, "Approve");
+			
 		}
 			//Advertisement details saved.
 		
-	}
+	
 		
 	public void changeDateAd(String planName,String adImage,String linkUrl) throws Exception {
        Thread.sleep(2000);
 		waitForElementToPresent(PlanNameSearch);
 		//type(PlanNameSearch, planName, "Plan Name Search");
 		selectUsingIndex(statusSearch, 2, linkUrl);
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		click(btnSearch, "Search");
 		Thread.sleep(8000);
 		click(action, "action");
@@ -206,9 +227,9 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 		public void approveRejectedAd(String planName,String adImage,String linkUrl,String status) throws Exception {
             Thread.sleep(3000);
 			waitForElementToPresent(planStatus);
-			selectUsingIndex(planStatus, 3,"planStatus");
+			selectUsingIndex(planStatus, 1,"planStatus");
 			click(btnSearch, "Search");
-			Thread.sleep(6000);
+			Thread.sleep(12000);
 				click(action, "action");
 				//waitForElementToPresent(adStartDate);
 				
@@ -259,13 +280,13 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 	}
 
 	public CommunityDashboardPage gotoCommunityDashboard() throws InterruptedException {
-		Thread.sleep(4000);
+		
 		scrollUpVertically();
 		waitForElementToPresent(dashboardreport);
 		click(dashboardreport, "Dashboard Reports");
 		waitForElementToPresent(communitydash);
 		click(communitydash, "Community DashBoard");
-		
+		Thread.sleep(6000);
 		return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
 	}
 

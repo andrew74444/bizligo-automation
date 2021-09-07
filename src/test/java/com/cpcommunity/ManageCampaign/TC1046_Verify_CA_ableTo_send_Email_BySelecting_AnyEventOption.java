@@ -20,7 +20,7 @@ public class TC1046_Verify_CA_ableTo_send_Email_BySelecting_AnyEventOption exten
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1046(Hashtable<String,String> data) throws Exception {
 		
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1046", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

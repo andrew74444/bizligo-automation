@@ -27,10 +27,10 @@ public class MyCommunitiesPage extends BasePage {
 	protected void getPageScreenSot() {
 
 		updateClass(pageheader, "");
-		aShot();
+		aShot();//
 //		updateClass(pageheader, "navbar-fixed-top");
 	}
-
+//
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 
@@ -170,17 +170,30 @@ public class MyCommunitiesPage extends BasePage {
     WebElement managetoadpage;
 	@FindBy(xpath = "//span[normalize-space()='Advertisements']")
 	WebElement advertisement;
+	@FindBy(xpath = "//a[normalize-space()='Contact Us']")
+	WebElement contactUs;
+	@FindBy(xpath="//div[@id='body']//div[@class='row']//a[1]")
+	WebElement dashboardBtn;
+	@FindBy(xpath = "//span[normalize-space()='Directory']")
+	WebElement directory;
+	
+
+	
+
+
 	
 	public MyDashboardPage gotoMyDashboardPage() throws Exception {
+		Thread.sleep(8000);
 		waitForElementToPresent(Toggledropdownmenu);
 		click(Toggledropdownmenu,"Toggledropdownmenu");
-		Thread.sleep(500);
+		Thread.sleep(1000);
 		waitForElementToPresent(DashBoard);
 		click(DashBoard,"DashBoard");
+		Thread.sleep(8000);
 		return (MyDashboardPage) openPage(MyDashboardPage.class);
 	}	
 	public MyProfilePage goToMyProfilePage() throws Exception {
-
+        Thread.sleep(5000);
 		click(Toggledropdownmenu,"Toggledropdownmenu");
 		Thread.sleep(1000);
 		click(myProfile,"myProfile");
@@ -456,9 +469,10 @@ public class MyCommunitiesPage extends BasePage {
 		
 	}
 	public CommunityDashboardPage gotoManageCommunity(String communityName) throws Exception {
-
+        Thread.sleep(5000);
 		//this.searchCommunity(communityName+getDateInDDMMMYYYY());
 		click(MANAGEbtn, "Manage");
+		Thread.sleep(1000);
 		return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
 		// new CommunityDashboardPage(driver, );
 	}
@@ -538,4 +552,29 @@ public class MyCommunitiesPage extends BasePage {
 		
 		return (MyAdvertisements) openPage(MyAdvertisements.class);	
 	}
+	public ContactUsPage NavigateToContactUsPage() {
+		click(contactUs, "Contact Us");
+		return (ContactUsPage) openPage(ContactUsPage.class);
+		// new GlobalCareers(driver, );
+	}
+	public MyDashboardPage gotoMyDashboard() throws Exception {
+
+		//this.searchCommunity(communityName+getDateInDDMMMYYYY());
+		click(dashboardBtn, "Dashboard");
+		return (MyDashboardPage) openPage(MyDashboardPage.class);
+		// new CommunityDashboardPage(driver, );
+	}
+	public MemberDirectoryPage goToMemberDirectory() throws InterruptedException {
+		click(directory,"directory");
+		Thread.sleep(3000);
+		//moveToElement(directory);
+		click(memberDirectory,"member directory");
+		//click(memberDirectory,"member directory");
+		Thread.sleep(3000);
+		return (MemberDirectoryPage) openPage(MemberDirectoryPage.class);
+		
+	}
+
+
+
 }

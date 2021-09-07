@@ -16,7 +16,10 @@ public class ManageDonationsPage extends BasePage{
 	protected  void getPageScreenSot() {
 	
 
+		aShot();//
+
 		aShot();
+
 
 	}
 	

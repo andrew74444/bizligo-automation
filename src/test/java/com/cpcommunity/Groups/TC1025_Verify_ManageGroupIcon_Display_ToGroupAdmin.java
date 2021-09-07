@@ -19,7 +19,7 @@ public class TC1025_Verify_ManageGroupIcon_Display_ToGroupAdmin extends BaseTest
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1025(Hashtable<String,String> data) throws Exception {
 		
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1025", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

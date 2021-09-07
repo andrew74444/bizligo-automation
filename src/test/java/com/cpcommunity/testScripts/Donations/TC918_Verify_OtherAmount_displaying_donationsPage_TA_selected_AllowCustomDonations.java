@@ -29,7 +29,7 @@ public class TC918_Verify_OtherAmount_displaying_donationsPage_TA_selected_Allow
 		LoginPage login = home.clickOnLOGINBtn();
 		MyCommunitiesPage MyCP = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
         Bizligo1CommunityPage BCP=MyCP.goToMyCommunity(data.get("Community"));
-        BCP.otherOptionAvailable();
+        BCP.otherOptionAvailable();//
 
 }
 	@AfterMethod

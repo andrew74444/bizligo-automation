@@ -23,11 +23,23 @@ public class MemberRevenueReport extends BasePage{
 	WebElement pageheader;
 	@FindBy(xpath = "//h2[normalize-space()='Member Revenue Report']")
 	WebElement pageTitle;
-	@FindBy(css = "div[id='1627000972293-2-uiGrid-000D-cell'] div[class='ui-grid-cell-contents ng-binding ng-scope']")
+	@FindBy(xpath = "//span[@class='ng-binding ng-scope']")
 	WebElement johnRevenue;
+	@FindBy(xpath = "//i[@aria-label='Grid Menu']")
+	WebElement menu;
+	@FindBy(xpath = "//div[@class='ui-grid-header-cell ui-grid-clearfix ng-scope ng-isolate-scope ui-grid-coluiGrid-0007']//div[@role='columnheader']//div//input[@aria-label='Filter for column']")
+	WebElement membername;
+	@FindBy(xpath = "//li[@id='menuitem-10']//button[@type='button']")
+	WebElement email;
 	
-	public void checkRevenue() throws InterruptedException {
-		Thread.sleep(6000);
+	public void checkRevenue(String member) throws InterruptedException {
+		Thread.sleep(8000);
+		type(membername, member, "Member Name");
+		Thread.sleep(8000);
+		click(menu, "Menu");
+		Thread.sleep(1000);
+		click(email, "email Id");
+		click(menu, "menu");
 		String amt=johnRevenue.getText();
 		System.out.println(amt);
 	}

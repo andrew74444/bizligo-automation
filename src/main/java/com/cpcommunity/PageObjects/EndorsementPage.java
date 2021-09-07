@@ -32,6 +32,8 @@ public class EndorsementPage extends BasePage{
 	WebElement Reject;
 	@FindBy(xpath="//*[contains(text(),'Approve')][1]")
 	WebElement Approve;
+	@FindBy(xpath="/html[1]/body[1]/div[3]/div[1]/div[1]/section[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[3]/button[2]")
+	WebElement Reject1;
 	
 	@FindBy(xpath = "//*[@id='toast-container']/div/div[3]")
 	WebElement SuccessPopup;
@@ -71,7 +73,7 @@ public EndorsementPage Approve(){
 		
 		//log.info("Clicking on Reject button....");
 				
-		click(Reject,"Reject");
+		click(Reject1,"Reject");
 		return (EndorsementPage) openPage(EndorsementPage.class);
 //		new (driver, TCID);
 	}

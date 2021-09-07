@@ -24,7 +24,7 @@ import com.cpcommunity.utilities.ExcelReader;
 public class TC1146_Verify_AdNot_tobeDisplay_inCommunityPage_ifRejected_BYTA extends BaseTest {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1146(Hashtable<String,String> data) throws Exception {
-		
+		//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1146", data.get("Runmode"), excel);
 	log.info("Inside Login Test");	

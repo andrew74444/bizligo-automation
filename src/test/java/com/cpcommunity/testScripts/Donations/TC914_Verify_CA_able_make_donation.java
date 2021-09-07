@@ -29,7 +29,7 @@ public class TC914_Verify_CA_able_make_donation extends BaseTest{
 		LoginPage login = home.clickOnLOGINBtn();
 		MyCommunitiesPage MyCP = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
         Bizligo1CommunityPage BCP=MyCP.goToMyCommunity(data.get("Community"));
-        BCP.CAcanMakeDonation();
+        BCP.CAcanMakeDonation();//
 	}
 	@AfterMethod
 	public void tearDown() {

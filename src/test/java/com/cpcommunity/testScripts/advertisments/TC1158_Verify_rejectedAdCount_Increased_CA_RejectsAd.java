@@ -58,8 +58,9 @@ public class TC1158_Verify_rejectedAdCount_Increased_CA_RejectsAd extends BaseTe
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("TC155 Test Completed");
+		logInfo("Test Completed");
 		
 		quit();
-}
+		
+	}	
 }

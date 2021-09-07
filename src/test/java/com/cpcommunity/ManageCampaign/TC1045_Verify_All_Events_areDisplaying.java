@@ -22,7 +22,7 @@ public class TC1045_Verify_All_Events_areDisplaying  extends BaseTest{
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1045(Hashtable<String,String> data) throws Exception {
 		
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1045", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

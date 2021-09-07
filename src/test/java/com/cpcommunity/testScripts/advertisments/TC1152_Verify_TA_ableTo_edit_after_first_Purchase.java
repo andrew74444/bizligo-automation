@@ -23,6 +23,7 @@ import com.cpcommunity.utilities.ExcelReader;
 
 public class TC1152_Verify_TA_ableTo_edit_after_first_Purchase extends BaseTest{
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
+	
 	public void TC1152(Hashtable<String,String> data) throws Exception {
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1152", data.get("Runmode"), excel);

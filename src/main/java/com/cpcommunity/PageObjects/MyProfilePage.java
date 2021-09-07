@@ -268,7 +268,7 @@ public class MyProfilePage extends BasePage {
 
 	public boolean UpdateProfile() throws Exception {
 		scrollIntoView(MyProfileSaveBtn);
-		Thread.sleep(1000);
+		Thread.sleep(5000);
 		clickElementByJavaScript(MyProfileSaveBtn);
 		// *[contains(text(),'Save')]
 		Thread.sleep(4000);
@@ -1340,7 +1340,8 @@ public class MyProfilePage extends BasePage {
 	     		Thread.sleep(8000);
 	     	}
 	     	
-	     	public int GetProfileProgress() {
+	     	public int GetProfileProgress() throws InterruptedException {
+	     		Thread.sleep(8000);
 				String profileProgress=profileCompletenessBar.getText();
 				profileProgress = StringUtils.stripEnd(profileProgress, "%");	
 				System.out.println("ProgressBar status is " + profileProgress);
@@ -1370,6 +1371,7 @@ public class MyProfilePage extends BasePage {
 				Phone.clear();
 				Ext.clear();
 				click(PublicRdnBtn, "Public Radio Btn");
+				Thread.sleep(5000);
 				return this.UpdateProfile();
 			}
 

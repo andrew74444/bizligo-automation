@@ -187,6 +187,7 @@ public class ManageResourcesPage  extends BasePage{
 			waitForElementToPresent(save);
 			click(save, "Save");
 			AssertionHelper.verifyText(toastMessage.getText(), "Success! Resources saved");
+		Thread.sleep(3000);
 		}
 		}
 
@@ -256,23 +257,7 @@ public class ManageResourcesPage  extends BasePage{
 			System.out.println("Admin able to update resource");
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	
 	}	

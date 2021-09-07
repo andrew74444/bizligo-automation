@@ -26,7 +26,7 @@ public class TC916_Verify_DonationsMenu_displayed_TA_Dashboard_enabledBySuperAdm
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();	
 		TenantAdminDashboardPage TDP = login.loginToTADashboard(data.get("email"), data.get("password"));
-		TDP.checkDonationsWhenEnabled();
+		TDP.checkDonationsWhenEnabled();//
 }
 	@AfterMethod
 	public void tearDown() {

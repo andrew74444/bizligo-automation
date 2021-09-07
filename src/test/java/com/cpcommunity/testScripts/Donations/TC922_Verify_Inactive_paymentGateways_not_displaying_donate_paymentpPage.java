@@ -44,7 +44,7 @@ public class TC922_Verify_Inactive_paymentGateways_not_displaying_donate_payment
 	LoginPage login4 = home4.clickOnLOGINBtn();	
 	TenantAdminDashboardPage TDP1 = login4.loginToTADashboard(data.get("email1"), data.get("password1"));
 	PaymentGatewaysPage PGP1=TDP1.NavigatetoPaymentGatewayPage();
-    PGP1.activeAuthorizeGateway();
+    PGP1.activeAuthorizeGateway();//
 
 
 }
