@@ -35,7 +35,7 @@ public class TC1096_Verify_CA_ableTo_Filter_Template_basedOn_Feature extends Bas
 	CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
 	EmailTemplatePage emailtemplate=communityDashboard.navigateToEmailTemplate();
 	emailtemplate.clickGroup();
-
+//committed
 }
 	@AfterMethod
 	public void tearDown() {
