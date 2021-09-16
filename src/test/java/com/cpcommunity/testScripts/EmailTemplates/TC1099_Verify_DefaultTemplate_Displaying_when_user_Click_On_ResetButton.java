@@ -34,7 +34,7 @@ public class TC1099_Verify_DefaultTemplate_Displaying_when_user_Click_On_ResetBu
 	CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
 	EmailTemplatePage emailtemplate=communityDashboard.navigateToEmailTemplate();
 	emailtemplate.ResetTemplate(data.get("Template"),data.get("Footer"), data.get("Subject"),data.get("Header"), data.get("Email"),data.get("bcc"));
-	
+	//comitted
 	}
 
 	@AfterMethod
