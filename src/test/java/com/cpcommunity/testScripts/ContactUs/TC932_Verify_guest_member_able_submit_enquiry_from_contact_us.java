@@ -26,7 +26,7 @@ public class TC932_Verify_guest_member_able_submit_enquiry_from_contact_us exten
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		ContactUsPage CP=home.NavigateToContactUsPage();
 		CP.checkAndSubmitEquiryForm(data.get("Name"),data.get("Organization") ,data.get("Address"),data.get("Phone"),data.get("Email"), data.get("Comments"));
-		//commented
+		//commeneted
 	}
 	@AfterMethod
 	public void tearDown() {
