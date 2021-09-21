@@ -95,6 +95,8 @@ public class TenantAdminDashboardPage extends BasePage{
 	WebElement LOYALTY;
 	@FindBy(xpath = "//a[@href='/eventmanager/home/loyaltymembership']")
 	WebElement loyaltyMembership;
+	@FindBy(xpath = "//a[normalize-space()='Promo Codes']")
+	WebElement promocodes;
 	//
 
 	
@@ -105,6 +107,14 @@ public class TenantAdminDashboardPage extends BasePage{
 		waitForElementToPresent(LOYALTY);
 		click(LOYALTY, "LOYALTY");
 		return (LoyaltyPage) openPage(LoyaltyPage.class);
+		// new ManageJobs(driver);
+	}
+	public PromoCodePage navigateToPromocodePage() {
+		scrollDownVertically();
+		scrollToElement(promocodes);
+		click(promocodes, "promocodes");
+		
+		return (PromoCodePage) openPage(PromoCodePage.class);
 		// new ManageJobs(driver);
 	}
 
@@ -292,7 +302,7 @@ public HomePage goToHomePage() {
  		waitForElementToPresent(manageCommunity);
  		clickElementByJavaScript(manageCommunity);
  		return (TACommunitiesPage) openPage(TACommunitiesPage.class);
- 	}
+ 	}//
      public PendingCommunitiesPage naviagteToPendingCommunities() {
  		click(CommunitiesNavSideMenu, "Communities");
  		waitForElementToPresent(pendingCommunities);
