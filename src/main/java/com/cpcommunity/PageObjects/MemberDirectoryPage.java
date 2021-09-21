@@ -6,7 +6,9 @@ import java.io.File;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -69,6 +71,9 @@ public class MemberDirectoryPage extends BasePage{
 	WebElement searchByCommunities;
 	@FindBy(xpath = "//input[@placeholder='Search by Business Categories (Upto 5)']")
 	WebElement searchByBussinessCategory;
+	@FindBy(xpath = "//input[@class='select2-search__field'][@placeholder='Search By Business Category (Upto 5)']")
+	WebElement searchByBussinessCat;
+	
 	@FindBy(xpath = "//input[@placeholder='Select Groups (Limit 3)']")
 	WebElement searchByGroup;
 	@FindBy(xpath = "//input[@id='memberlocation']")
@@ -233,6 +238,7 @@ public class MemberDirectoryPage extends BasePage{
 		if(MemberProfileList.size() > 0) {
 			click(MemberProfileList.get(0),"OpenMemberProfile");		
 		}
+		Thread.sleep(4000);
 		return (ProfilePage) openPage(ProfilePage.class);
 		// new MyProfilePage(driver, );
 	}
@@ -243,7 +249,7 @@ public class MemberDirectoryPage extends BasePage{
 		if(MemberProfileList.size() > 0) {
 			click(MemberProfileList.get(0),"OpenMemberProfile");		
 		}
-		
+		Thread.sleep(5000);
 		return (MyProfilePage) openPage(MyProfilePage.class);
 		// new CreateCommunityPage(driver);
 	}
@@ -285,11 +291,11 @@ public class MemberDirectoryPage extends BasePage{
 		waitForElementToPresent(searchBySkillAndInterest);
 		waitForElementToPresent(searchByOrganisation);
 		waitForElementToPresent(searchByCommunities);
-		waitForElementToPresent(searchByBussinessCategory);
+		waitForElementToPresent(searchByBussinessCat);
 		waitForElementToPresent(searchByGroup);
 		//scrollIntoView(Send);
 		waitForElementToPresent(searchByLocation);
-	if(searchByName.isDisplayed()&&searchByProfileCategory.isDisplayed()&&searchBySkillAndInterest.isDisplayed()&&searchByOrganisation.isDisplayed()&&searchByCommunities.isDisplayed()&&searchByBussinessCategory.isDisplayed()&&searchByGroup.isDisplayed()&&searchByLocation.isDisplayed()) {
+	if(searchByName.isDisplayed()&&searchByProfileCategory.isDisplayed()&&searchBySkillAndInterest.isDisplayed()&&searchByOrganisation.isDisplayed()&&searchByCommunities.isDisplayed()&&searchByBussinessCat.isDisplayed()&&searchByGroup.isDisplayed()&&searchByLocation.isDisplayed()) {
 		System.out.println("All search is displaying");
 	}
 	else {
@@ -398,7 +404,7 @@ public class MemberDirectoryPage extends BasePage{
 	
 			
 			public void ClickonSkillAndInterest(String SkillAndInterest) throws InterruptedException {
-				Thread.sleep(2000);
+				Thread.sleep(5000);
 				
 				searchBySkillAndInterest.click();
 				String Skilllist=skillCategoryList.getText();
@@ -447,12 +453,12 @@ public class MemberDirectoryPage extends BasePage{
 					System.out.println("All organisation displayed");
 					Assert.assertTrue(true);
 				}
-				Thread.sleep(4000);
+				Thread.sleep(6000);
 				this.searchByOrganisation.clear();
 				waitForElementToPresent(this.searchByOrganisation);
 				type(this.searchByOrganisation,organisation , "Organisation Name");
 				click(searchBtn , "Search button");
-				Thread.sleep(3000);
+				Thread.sleep(6000);
 				   String Message=this.warning.getText();
 	                String message2=this.warning2.getText();
 					System.out.println("Warning msg:" + Message);
@@ -460,10 +466,21 @@ public class MemberDirectoryPage extends BasePage{
 					AssertionHelper.verifyText(warning.getText(), "Sorry!");	
 					AssertionHelper.verifyText(warning2.getText(), "There aren't any members here.");  
 				}
-			public void ClickonBusinessCategory(String BussinessCategory,String BussinessCategory1) throws InterruptedException {
-				waitForElementToPresent(this.searchByBussinessCategory);
-				type(this.searchByBussinessCategory,BussinessCategory, "Business Category");
-				List<WebElement> options=this.BusinessCategoryList;
+			public void ClickonBusinessCategory(String bussinessCategory,String BussinessCategory1) throws InterruptedException {
+				//Thread.sleep(5000);
+				waitForElementToPresent(searchByBussinessCat);
+				click(searchByBussinessCat, "Bussiness Category");
+				this.searchByBussinessCat.sendKeys(bussinessCategory);
+				//type(searchByBussinessCat, bussinessCategory, "BussinessCategory");
+				Actions ac = new Actions(driver);
+		        ac.sendKeys(Keys.ARROW_DOWN).build().perform();
+		        Thread.sleep(2500);
+		        ac.sendKeys(Keys.ARROW_DOWN).build().perform();
+		        Thread.sleep(2500);
+		        ac.sendKeys(Keys.ENTER).build().perform();
+				//type(this.searchByBussinessCat,bussinessCategory, "Business Category");
+				Thread.sleep(1000);
+				/*List<WebElement> options=this.BusinessCategoryList;
 				for(WebElement option: options) {
 					if(option.getText().equalsIgnoreCase("Accommodation"))
 					{
@@ -482,7 +499,7 @@ public class MemberDirectoryPage extends BasePage{
 						break;
 					}
 				}
-				
+				*/
 				//type(this.searchByBussinessCategory,BusinessCategoryList, "Business Category");
 				//String BusinessListList = this.searchByBussinessCategory.getText();
 				//System.out.println("List is :" +BusinessListList);
@@ -502,10 +519,11 @@ public class MemberDirectoryPage extends BasePage{
 				
 			}
 
-			public void ClickOnLocation(String Location )  {
+			public void ClickOnLocation(String Location ) throws InterruptedException  {
 				waitForElementToPresent(this.searchByLocation);
 				type(this.searchByLocation,Location , "Location");
 				click(searchBtn , "Search button");
+				Thread.sleep(5000);
 				waitForElementToPresent(this.memberAddress);
 				if(memberAddress.isDisplayed()) {
 					System.out.println("All address displayed");
@@ -569,9 +587,9 @@ public class MemberDirectoryPage extends BasePage{
 				Thread.sleep(2000);
 				type(searchByName,MemberName,"Name of Member");//search pending member
 				click(searchBtn,"search");
-				Thread.sleep(3000);
+				Thread.sleep(5000);
 				memberName.click();
-				 Thread.sleep(3000);
+				 Thread.sleep(8000);
 				return (ProfilePage) openPage(ProfilePage.class);
 				
 				
@@ -710,7 +728,7 @@ public class MemberDirectoryPage extends BasePage{
 				System.out.print("update file name" +name);
 			    click(excelDownload1,"download file");
 			    log.info("downloading excel file");
-			    Thread.sleep(10000);
+			    Thread.sleep(12000);
 			    click(wordDownload2,"download file");
 			    log.info("downloading doc file");
 			    Thread.sleep(10000);
@@ -830,14 +848,14 @@ public class MemberDirectoryPage extends BasePage{
 			    String date3 = d3.getCurrentDateString();
 			    //date3=date3+1;
 			    d3.selectDate("/html/body/div[5]/div[3]/table",date3);
-			    Thread.sleep(2000);
-			    click(currentHour,"current hour");
-			    if(CurrentMinutes.size()>0) {
+			    Thread.sleep(5000);
+			    //click(currentHour,"current hour");
+			   /* if(CurrentMinutes.size()>0) {
 			    click(currentMinutes,"current time");
 			    }else {
 			    	click(arrowButton,"Click next");
 			    	click(currentMinutes,"current time");
-			    }	    
+			    }	 */   
 			   Thread.sleep(2000);
 			   click(updateNote,"Update");
 			

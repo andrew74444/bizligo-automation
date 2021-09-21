@@ -25,7 +25,7 @@ public class TC1141_verify_PopUpAlertmsg_display_whenCA_inactivate_AdPlan_Create
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1141(Hashtable<String,String> data) throws Exception {
 		
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1141", data.get("Runmode"), excel);
 	log.info("Inside Login Test");	
@@ -49,13 +49,14 @@ public class TC1141_verify_PopUpAlertmsg_display_whenCA_inactivate_AdPlan_Create
 	MyCommunitiesPage myCommunity = login1.loginToMyCommunitiesPage(data.get("email1"), data.get("password1"));
 	CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
 	 ManageAdPlansPage MApP=communityDashboard.goToManageAdPlansPage();
-	 MApP.inactivatePlan(data.get("plan"));
+	 MApP.Inactivate(data.get("plan"));
 	 quit();
 	 
 	 openBrowser(data.get("browser"));
 	 logInfo("Launched Browser : "+data.get("browser"));
 	 logInfo("BizLigo Application Opened");
-	 HomePage home2 = new HomePage().open(data.get("tenantType"));		LoginPage login2 = home2.clickOnLOGINBtn();
+	 HomePage home2 = new HomePage().open(data.get("tenantType"));		
+	 LoginPage login2 = home2.clickOnLOGINBtn();
 	 MyDashboardPage MDP2=login2.loginToMemberdashboard(data.get("email2"), data.get("password2"));
 	 MyAdvertisements Map=MDP2.NaviagtingToMyAdvertisements();
 	 Map.searchplan(data.get("planName1"));
@@ -65,11 +66,11 @@ public class TC1141_verify_PopUpAlertmsg_display_whenCA_inactivate_AdPlan_Create
 		logInfo("Launched Browser : "+ data.get("browser"));				
 		logInfo("BizLigo Application Opened");
 		HomePage home3= new HomePage().open(data.get("tenantType"));
-		LoginPage login3 = home1.clickOnLOGINBtn();
+		LoginPage login3 = home3.clickOnLOGINBtn();
 		MyCommunitiesPage myCommunity3 = login3.loginToMyCommunitiesPage(data.get("email3"), data.get("password3"));
 		CommunityDashboardPage communityDashboard3 = myCommunity3.gotoManageCommunity(data.get("communityName3"));
 		 ManageAdPlansPage MApP3=communityDashboard3.goToManageAdPlansPage();
-		 MApP3.inactivatePlan(data.get("plan3"));
+		 MApP3.Activate(data.get("plan3"));
 		 quit();
 	}
 	

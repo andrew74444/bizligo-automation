@@ -66,7 +66,7 @@ public class CreateAdPage extends BasePage {
 		waitForElementToPresent(choosefile);
 		type(choosefile, path, "Image Path");
 		click(save, "Save");
-		
+		Thread.sleep(4000);
 	}
 	
 	

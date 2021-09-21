@@ -11,6 +11,7 @@ import com.cpcommunity.PageObjects.GlobalCommunitesPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.MemberRevenueReport;
+import com.cpcommunity.PageObjects.MyAdvertisements;
 import com.cpcommunity.PageObjects.MyCommunitiesPage;
 import com.cpcommunity.PageObjects.MyDashboardPage;
 import com.cpcommunity.PageObjects.RevenueReportPage;
@@ -23,6 +24,8 @@ import com.cpcommunity.utilities.ExcelReader;
 
 public class TC1164_verify_Revenueamt_NotUpdated__inTotalRevenueTimePeriod_whenCA_aborted_From_PaymentGateway extends BaseTest {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
+	
+	
 	public void TC1164(Hashtable<String,String> data) throws Exception {
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1164", data.get("Runmode"), excel);
@@ -39,7 +42,8 @@ public class TC1164_verify_Revenueamt_NotUpdated__inTotalRevenueTimePeriod_whenC
 	 AuthorizeGateway AG=SPP.selectPlan1(data.get("planName"),data.get("AdName"),data.get("path"));
 	 AG.makePayment();
 	 MyDashboardPage mydash= AG.gotoMyDashPage();
-	 mydash.checkplanstatus();
+	MyAdvertisements ad= mydash.NaviagtingToMyAdvertisements();
+	 ad.checkplanstatus();
 	 quit();
 	 
 	    openBrowser(data.get("browser"));
@@ -49,9 +53,9 @@ public class TC1164_verify_Revenueamt_NotUpdated__inTotalRevenueTimePeriod_whenC
 		LoginPage login1 = home1.clickOnLOGINBtn();
 		MyCommunitiesPage myCommunity = login1.loginToMyCommunitiesPage(data.get("email1"), data.get("password1"));
 		CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
-		 RevenueReportPage RRP=AG.navigateToRevenueReport();
+		 RevenueReportPage RRP=communityDashboard.navigateToRevenueReportPage();
 		 MemberRevenueReport MRR=RRP.goTomemberReport();
-		 MRR.checkRevenue();	
+		 MRR.checkRevenue(data.get("member"));	
 
 }
 	@AfterMethod

@@ -20,7 +20,7 @@ public class TC1124_Verify_Member_ableto_Edit_AdPlan_when_Status_Is_paymentPendi
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1124(Hashtable<String,String> data) throws Exception {
 		
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1124", data.get("Runmode"), excel);
 	log.info("Inside Login Test");	

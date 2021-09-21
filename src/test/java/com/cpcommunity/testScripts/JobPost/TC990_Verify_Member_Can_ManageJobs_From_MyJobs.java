@@ -2,6 +2,7 @@ package com.cpcommunity.testScripts.JobPost;
 
 import java.util.Hashtable;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.HomePage;
@@ -34,4 +35,12 @@ public class TC990_Verify_Member_Can_ManageJobs_From_MyJobs extends BaseTest{
 		MyJobsPage MyJP = MyDP.NavigatingToMyJobs();
 		MyJP.searchJobs(data.get("JobTitle"),data.get("Jobtype"),data.get("location"),data.get("community"));
 }
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("TC990 Test Completed");
+		
+		quit();
+		
+	}
 }

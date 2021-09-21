@@ -22,7 +22,7 @@ public class TC1144_mailTrigger_AllCommunityAdmin_IfOneCA_PurchasePlan extends B
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1144(Hashtable<String,String> data) throws Exception {
 		
-	//change plan name before running code
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1144", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

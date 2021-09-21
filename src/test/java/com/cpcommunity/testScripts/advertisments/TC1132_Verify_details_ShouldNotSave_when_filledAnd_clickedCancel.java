@@ -5,6 +5,7 @@ import java.util.Hashtable;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
+import com.cpcommunity.PageObjects.Discussions;
 import com.cpcommunity.PageObjects.GlobalCommunitesPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
@@ -19,7 +20,7 @@ public class TC1132_Verify_details_ShouldNotSave_when_filledAnd_clickedCancel ex
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1132(Hashtable<String,String> data) throws Exception {
 		
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1132", data.get("Runmode"), excel);
 	log.info("Inside Login Test");	
@@ -31,6 +32,7 @@ public class TC1132_Verify_details_ShouldNotSave_when_filledAnd_clickedCancel ex
 	 MyDashboardPage MDP=login1.loginToMemberdashboard(data.get("email"), data.get("password"));
 	 GlobalCommunitesPage GCP=MDP.naviagtingToGlobalCommunities();
 	 GCP.searchCommunity(data.get("community"));
+	 GCP.Gotoresources();
 	 GCP.clickCancel(data.get("AdName"), data.get("path"));
 	
 	}

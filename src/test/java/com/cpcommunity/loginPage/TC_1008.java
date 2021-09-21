@@ -1,4 +1,4 @@
-package com.cpcommunity.testScripts.loginPage;
+package com.cpcommunity.loginPage;
 
 import java.util.Hashtable;
 

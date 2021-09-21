@@ -21,6 +21,7 @@ import com.cpcommunity.utilities.ExcelReader;
 
 public class TC1148_Verify_AdPublished_when_TA_approves extends BaseTest{
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
+	
 	public void TC1148(Hashtable<String,String> data) throws Exception {
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1148", data.get("Runmode"), excel);
@@ -48,11 +49,11 @@ public class TC1148_Verify_AdPublished_when_TA_approves extends BaseTest{
 	 MMA.approveAd(data.get("plan"),data.get("AdImage"),data.get("LinkUrl"));
 	
 }
-	/*@AfterMethod
+	@AfterMethod
 	public void tearDown() {
 		
 		logInfo("TC1148 Test Completed");
 		
 		quit();
-}*/
+}
 }

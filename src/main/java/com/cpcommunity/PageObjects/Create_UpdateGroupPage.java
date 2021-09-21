@@ -5,6 +5,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
+import java.util.concurrent.TimeUnit;
+
 import org.apache.log4j.Logger;
 
 
@@ -62,6 +69,12 @@ public class Create_UpdateGroupPage extends BasePage {
 	@FindBy(xpath = "//select[@id='GroupTypeID']")
 	WebElement groupType;
 	
+	@FindBy (xpath = "//span[normalize-space()='Groups']")
+    WebElement Groups;
+	
+	@FindBy(xpath = "//a[@class='site_title']")
+	WebElement BDMAIHomePage;
+	
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 		 
@@ -94,7 +107,18 @@ public class Create_UpdateGroupPage extends BasePage {
 		// new ManageGroupsPage(driver, );
 
 	}
+	public ManageGroupsPage editGroupName(String Name ) throws Exception {
 
+		picture();
+		Thread.sleep(15000);
+		type(this.Name, Name, "Name");
+		click(Save, "Save");
+		return (ManageGroupsPage) openPage(ManageGroupsPage.class);
+		// new ManageGroupsPage(driver, );
+
+	}
+
+	
 	public void fillGroupDetails(String name, String description, String city, String state, 
 			String groupType, String logoImagePath ) throws Exception {
 
@@ -113,15 +137,29 @@ public class Create_UpdateGroupPage extends BasePage {
 	    selectUsingIndex(this.GroupCategory, index,"Group Category");*/
 		
 		selectByVisibleText(this.GroupType, groupType,"GroupType");
-		
+		Thread.sleep(5000);
 		click(changeImageLink,"change Image Link");
-
+		
 		 waitForElementToPresent(Browse);
+		 Thread.sleep(1000);
 		click(Browse," Browse");
-		 Thread.sleep(10000);
-		 System.out.println(projectFloder(logoImagePath));
-		 Runtime.getRuntime().exec(projectFloder(logoImagePath));
-		Thread.sleep(10000);
+		 StringSelection ss = new StringSelection(logoImagePath);
+		  Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
+		  Robot robot = new Robot();
+		     robot.delay(350);
+		     robot.keyPress(KeyEvent.VK_ENTER);
+		     robot.keyRelease(KeyEvent.VK_ENTER);
+		    
+		     robot.keyPress(KeyEvent.VK_CONTROL);
+		     robot.keyPress(KeyEvent.VK_V);
+		     robot.keyRelease(KeyEvent.VK_CONTROL);
+		     robot.keyRelease(KeyEvent.VK_V);
+		    
+		     robot.keyPress(KeyEvent.VK_ENTER);
+		     robot.keyRelease(KeyEvent.VK_ENTER);
+		// System.out.println(projectFloder(logoImagePath));
+		// Runtime.getRuntime().exec(projectFloder(logoImagePath));
+		waitForElementToPresent(Upload);
 		click(Upload, "Upload");
 		Thread.sleep(10000);
 		picture();
@@ -132,7 +170,15 @@ public class Create_UpdateGroupPage extends BasePage {
 	    this.fillGroupDetails(Name, Description, City, State,  GroupType, logoImagePath);
 	    type(this.Name, newGroupName+" "+getDate(), "new Group Name");
 	    click(Save, "Save");
-	    return (GroupDetailsPage) openPage(GroupDetailsPage.class);
+	    return (GroupDetailsPage) openPage(GroupPage.class);
 	}
-
+	public GroupPage navigateToGroupPage() throws InterruptedException {
+		Thread.sleep(2000);
+		waitForElementToPresent(BDMAIHomePage);
+		click(BDMAIHomePage, "HomePage");
+		waitForElementToPresent(Groups);
+		click(Groups, "Groups");
+		
+		return (GroupPage) openPage(GroupPage.class);	
+	}
 }

@@ -18,7 +18,7 @@ import com.cpcommunity.utilities.ExcelReader;
 public class TC1033_Verify_SearchBy_MemberName extends BaseTest{
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1033(Hashtable<String,String> data) throws Exception {
- 
+ //
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC1033", data.get("Runmode"), excel);
 		log.info("Inside Login Test");			

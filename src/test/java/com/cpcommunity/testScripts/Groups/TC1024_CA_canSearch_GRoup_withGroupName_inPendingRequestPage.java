@@ -34,12 +34,12 @@ public class TC1024_CA_canSearch_GRoup_withGroupName_inPendingRequestPage extend
 	MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
 	CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
 	GroupsPendingRequestsPage pendingrequestgroup=communityDashboard.NavigateToCommunitygroupPendingRequets();
-	
+	pendingrequestgroup.serachGroup(data.get("Group"));
 }
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("TC190 Test Completed");
+		logInfo("TC1024 Test Completed");
 		
 		quit();
 		

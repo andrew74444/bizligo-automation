@@ -18,7 +18,7 @@ import com.cpcommunity.utilities.ExcelReader;
 public class TC1034_Verify_ListOfValue_Displaying_In_SkillAndInterest extends BaseTest{
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1034(Hashtable<String,String> data) throws Exception {
- 
+ //
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC1034", data.get("Runmode"), excel);
 		log.info("Inside Login Test");			
@@ -35,10 +35,10 @@ public class TC1034_Verify_ListOfValue_Displaying_In_SkillAndInterest extends Ba
 }
 	@AfterMethod
 	public void tearDown() {
-	
-	logInfo("TC1034 Test Completed");
-	
-	quit();
-	
-}
+		
+		logInfo("TC1034 Test Completed");
+		
+		quit();
+		
+	}
 }

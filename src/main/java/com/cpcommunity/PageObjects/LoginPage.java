@@ -75,12 +75,18 @@ public class LoginPage extends BasePage {
 	WebElement globalCommunities;
 	@FindBy(xpath="//a[normalize-space()='BizLigo1']")
     WebElement bizligo1;
+	@FindBy(xpath="//button[normalize-space()='MANAGE']")
+    WebElement bizligo1manage;
 	@FindBy(xpath="//a[@title='Manage Community']")
     WebElement manageCommunity;
 	@FindBy(xpath = "//button[@class='btn btn-info']")
 	WebElement searchbtn;
 	@FindBy(xpath = "//input[@id='searchName']")
 	WebElement SearchcommunityName;
+	@FindBy(xpath = "//input[@placeholder='Search by Community Name']")
+	WebElement Searchcommunity;
+	@FindBy(xpath = "//button[normalize-space()='Search']")
+	WebElement search;
 	
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
@@ -95,9 +101,10 @@ public class LoginPage extends BasePage {
 	//// new FaceBookPage(driver, );
 	// }
 	//
-	public MyDashboardPage loginToDashboard(String enterEmailAddress, String  password)
+	public MyDashboardPage loginToDashboard(String enterEmailAddress, String  password) throws InterruptedException
 	 {
 		this.login(enterEmailAddress, password);
+		 Thread.sleep(5000);
 		return (MyDashboardPage) openPage(MyDashboardPage.class);
 		 
 	 }
@@ -107,8 +114,9 @@ public class LoginPage extends BasePage {
 		return (MyProfilePage) openPage(MyProfilePage.class);
 	}
 	
-	public MyCommunitiesPage loginToMyCommunitiesPage(String enterEmailAddress, String password) {
+	public MyCommunitiesPage loginToMyCommunitiesPage(String enterEmailAddress, String password) throws InterruptedException {
 		this.login(enterEmailAddress, password);
+		
 		return (MyCommunitiesPage) openPage(MyCommunitiesPage.class);
 	}
 	
@@ -117,9 +125,10 @@ public class LoginPage extends BasePage {
 		return (ForgotPasswordPage) openPage(ForgotPasswordPage.class);
 
 	}
-	public TenantAdminDashboardPage loginToTADashboard(String enterEmailAddress, String  password)
-	 {
+	public TenantAdminDashboardPage loginToTADashboard(String enterEmailAddress, String  password) throws InterruptedException
+	 {   
 		this.login(enterEmailAddress, password);
+		Thread.sleep(4000);
 		return (TenantAdminDashboardPage) openPage(TenantAdminDashboardPage.class);
 		 
 	 }
@@ -152,8 +161,9 @@ public class LoginPage extends BasePage {
 
 	// public MyDashboardPage loginToApplication(String enterEmailAddress, String
 	// password) {
-	public EcoSystemPage loginToApplication(String enterEmailAddress, String password) {
+	public EcoSystemPage loginToApplication(String enterEmailAddress, String password) throws InterruptedException {
 		this.login(enterEmailAddress, password);
+		 Thread.sleep(5000);
 		return (EcoSystemPage) openPage(EcoSystemPage.class);
 		// new MyDashboardPage(driver, );
 	}
@@ -259,8 +269,9 @@ public class LoginPage extends BasePage {
 		return (AccountSelectPlansPage) openPage(AccountSelectPlansPage.class);
 	}
 	public MyDashboardPage loginToMemberdashboard(String enterEmailAddress, String password) throws InterruptedException {
-        this.login(enterEmailAddress, password);
         Thread.sleep(3000);
+		this.login(enterEmailAddress, password);
+        Thread.sleep(5000);
         return (MyDashboardPage) openPage(MyDashboardPage.class);
 //        new MyDashboardPage(driver, );        
 	}
@@ -273,12 +284,14 @@ public class LoginPage extends BasePage {
 	
 	}
 	public MyDashboardPage gotoMyDashboardPage() throws Exception {
+		Thread.sleep(8000);
 		waitForElementToPresent(Toggledropdownmenu);
 		//click(Toggledropdownmenu,"Toggledropdownmenu");
 		clickElementByJavaScript(Toggledropdownmenu);
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		waitForElementToPresent(ecosystem);
 		click(ecosystem,"Ecosystem");
+		 Thread.sleep(8000);
 		return (MyDashboardPage) openPage(MyDashboardPage.class);
 	}
 	public Bizligo1CommunityPage goToMyCommunity(String communityName ) throws InterruptedException {
@@ -288,10 +301,23 @@ public class LoginPage extends BasePage {
 		picture();
 		type(SearchcommunityName, communityName, "Search by Community");
 		click(searchbtn, "search btn");
-		Thread.sleep(6000);
+		Thread.sleep(12000);
 		//WebElement ele = driver.findElement(By.xpath("//a[@tooltip='" + communityName + "']"));
 		waitForElementToPresent(bizligo1);
 		click(bizligo1,"Bizligo 1");
+		return (Bizligo1CommunityPage) openPage(Bizligo1CommunityPage.class);
+	}
+	public Bizligo1CommunityPage goToMyBizCommunity(String communityName ) throws InterruptedException {
+		Thread.sleep(4000);
+		clickElementByJavaScript(globalCommunities);
+		waitForElementToPresent(SearchcommunityName);
+		picture();
+		type(SearchcommunityName, communityName, "Search by Community");
+		click(searchbtn, "search btn");
+		Thread.sleep(12000);
+		//WebElement ele = driver.findElement(By.xpath("//a[@tooltip='" + communityName + "']"));
+		waitForElementToPresent(bizligo1manage);
+		click(bizligo1manage,"Bizligo 1");
 		return (Bizligo1CommunityPage) openPage(Bizligo1CommunityPage.class);
 	}
 }

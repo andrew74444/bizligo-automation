@@ -6,6 +6,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.CommunityDashboardPage;
+import com.cpcommunity.PageObjects.Discussions;
 import com.cpcommunity.PageObjects.GlobalCommunitesPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
@@ -22,7 +23,7 @@ public class TC1126_Verify_CA_ablleto_createAd_andMember_CanSee extends BaseTest
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1126(Hashtable<String,String> data) throws Exception {
 		
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1126", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			
@@ -46,6 +47,7 @@ public class TC1126_Verify_CA_ablleto_createAd_andMember_CanSee extends BaseTest
 	 MyDashboardPage MDP=login1.loginToMemberdashboard(data.get("email1"), data.get("password1"));
 	 GlobalCommunitesPage GCP=MDP.naviagtingToGlobalCommunities();
 	 GCP.searchCommunity(data.get("community"));
+	 GCP.Gotoresources();
 	 GCP.checkAdPresent();
 	 quit();
 	 

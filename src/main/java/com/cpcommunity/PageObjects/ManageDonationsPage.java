@@ -18,6 +18,9 @@ public class ManageDonationsPage extends BasePage{
 
 		aShot();//
 
+		aShot();
+
+
 	}
 	
 	@Override

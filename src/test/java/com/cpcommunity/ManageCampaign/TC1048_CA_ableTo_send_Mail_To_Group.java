@@ -20,7 +20,7 @@ public class TC1048_CA_ableTo_send_Mail_To_Group extends BaseTest {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1048(Hashtable<String,String> data) throws Exception {
 		
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1048", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

@@ -13,9 +13,11 @@ import org.testng.Assert;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
 
+import com.cpcommunity.utilities.DriverManager;
 import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
 import com.uiFramework.pamTen.cpcommunity.helper.assertion.VerificationHelper;
 import com.uiFramework.pamTen.cpcommunity.helper.calendar.DateManager;
@@ -219,8 +221,10 @@ public class MyDashboardPage extends BasePage{
 	@FindBy(xpath = "(//*[contains(text(),'Blog')])[3]")
 	WebElement blogpageisWorking;
 	
-	 @FindBy(xpath = "//button[contains(.,'Yes,Proceed')]")
+	 @FindBy(xpath = "//button[normalize-space()='Yes,Proceed']")
 	 WebElement YesProceed;
+	 @FindBy(xpath = "//div[@class='post-box']//div[2]//div[1]//div[1]//div[1]//div[1]//div[1]//div[1]//div[2]//button[1]")
+	 WebElement leaveGroup3;
 	   
 	
 	 @FindBy(xpath = "//div[@class='my-communities']//div[2]//div[1]//div[1]//div[1]//div[1]//div[1]//div[2]//div[3]//button[1]")
@@ -236,6 +240,8 @@ public class MyDashboardPage extends BasePage{
 		
 		@FindBy(xpath="//input[@id='searchName']")
 		WebElement serachCommunity ;
+		@FindBy(xpath="//input[@placeholder='Search by Community Name']")
+		WebElement serachCommunityName ;
 		
 		@FindBy(xpath="//div[@class='communities-box ng-scope col-lg-4 col-md-12 col-sm-12']//div[@class='category-background']")
 		WebElement CommunityName ;
@@ -253,7 +259,7 @@ public class MyDashboardPage extends BasePage{
 		@FindBy(xpath="//tr[@class='odd']//span[@title='For this plan payment is pending'][normalize-space()='PAYMENT PENDING']")
 		WebElement inactivestatus ;
 		@FindBy(xpath="//div[@class='post-box']//div[2]//div[1]//div[1]//div[1]//div[1]//div[1]//div[1]//div[2]//button[1]//strong[1]")
-		WebElement join ;
+		WebElement join3 ;
 		@FindBy(xpath="//div[@class='cmt-groups']//div[@class='clearfix']")
 		WebElement joinedMessage ;
 	    @FindBy(xpath = "//div[@class='swal-text']")
@@ -280,6 +286,13 @@ public class MyDashboardPage extends BasePage{
 		WebElement advertisements;
 	    @FindBy(xpath = "//a[contains(text(),'Manage Plans')]")
 		WebElement managePlans;
+	    @FindBy(xpath = "//span[normalize-space()='18-02-2021 -Testing']")
+		WebElement Testingcomm;
+	    @FindBy(xpath = "//a[normalize-space()='Discussions']")
+	  	WebElement discussion;
+	    @FindBy(xpath = "//button[normalize-space()='MANAGE']")
+	  	WebElement bizligo1manage;
+	    
 	  
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
@@ -304,7 +317,8 @@ public class MyDashboardPage extends BasePage{
 	      click( myGroups,"myGroups");	      
 	      return TC;		
 	}
-	public GlobalCareers NavigateToGlobalCareers(){
+	public GlobalCareers NavigateToGlobalCareers() throws InterruptedException{
+		Thread.sleep(4000);
 		click(GlobalCareers,"click");
 		return (GlobalCareers) openPage(GlobalCareers.class);
 //				new GlobalCareers(driver, );
@@ -323,7 +337,7 @@ public class MyDashboardPage extends BasePage{
 	      		
 	}
 	public void  MyAdCount() throws InterruptedException {	
-		Thread.sleep(2000);
+		Thread.sleep(8000);
 		   String C = myAdCount.getText();
 	      int TC=Integer.parseInt(C);
 	      System.out.println("The number of Ads count visible on Dashboard is:"+ TC);
@@ -515,7 +529,6 @@ public ManageAdPlansPage goToManageAdPlansPage() {
 	
 	public ChangePasswordPage NaviagtingToManagePassword() throws Exception
 	{
-	
 		Toggledropdownmenu.click();
 		Thread.sleep(1000);
 		ManagePassword.click();
@@ -568,24 +581,25 @@ public ManageAdPlansPage goToManageAdPlansPage() {
 		
 	}
 	
-	public void checkplanstatus() {
+	public void checkplanstatus() throws InterruptedException {
+		Thread.sleep(5000);
 		this.inactivestatus.isDisplayed();
 		String status=inactivestatus.getText();
 		System.out.println(status);
 		
 	}
 	
-public GlobalCommunitesPage naviagtingToGlobalCommunities() throws Exception
-	{
-		
+   public GlobalCommunitesPage naviagtingToGlobalCommunities() throws Exception
+	{ 
+		driver.manage().timeouts().implicitlyWait(1200, TimeUnit.SECONDS);
 		clickElementByJavaScript(globalCommunities);
-		Thread.sleep(1000);
+		Thread.sleep(6000);
 		return (GlobalCommunitesPage) openPage(GlobalCommunitesPage.class);
 //		new GlobalCommunitesPage(driver, );
 		
 	}
 
-public void blogPageisnotWorking() throws Throwable
+  public void blogPageisnotWorking() throws Throwable
 {
 	Thread.sleep(5000);
 	Actions action = new Actions(driver);
@@ -596,7 +610,8 @@ public void blogPageisnotWorking() throws Throwable
 	waitForElementToPresent(blogpageisnotWorking);
 }
 
-public void blogPageWorking() throws Throwable
+
+     public void blogPageWorking() throws Throwable
 {
 	Thread.sleep(5000);
 	Actions action = new Actions(driver);
@@ -650,13 +665,20 @@ public void blogPageWorking() throws Throwable
 //		new GlobalMembersPage(driver, );
 	}
 	
-	public void checkAdcounts() {
+	public int checkAdcounts() {
 		waitForElementToPresent(myAdvertisements);
 		String count=adcounts.getText();
 		System.out.println("Advertisement counts :" + count);
+		int i = Integer.parseInt(count);				
+		return i;
 		
 	}
-	
+	public boolean CompareProgressBars(int previouscount,int Aftercount){
+		if(previouscount <= Aftercount) {
+			  return true;
+		} 
+		else return false;
+	}
 	public ConnectionsPage navigateToMyConnections()
 	{				
 		myConnections.click();	
@@ -721,10 +743,11 @@ public void blogPageWorking() throws Throwable
 //	}
 	
 	public MyAdvertisements NaviagtingToMyAdvertisements() throws InterruptedException
-	{		
+	{		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);Thread.sleep(5000);
 		scrollToElement(myAdvertisements);
 		clickElementByJavaScript(myAdvertisements);
 		//click(myAdvertisements,"My Advertisements");	
+		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
 		return (MyAdvertisements) openPage(MyAdvertisements.class);
 //		new MyProfilePage(driver, );
 	}
@@ -747,51 +770,57 @@ public void blogPageWorking() throws Throwable
 		return (ResourcesPage) openPage(ResourcesPage.class);
 			}
 	
-	public ResourcesPage goToBDMAIResouces(String Community) {
+	public ResourcesPage goToBDMAIResouces(String Community) throws InterruptedException {
 		waitForElementToPresent(Globalcommunities);
+		driver.manage().timeouts().implicitlyWait(1500, TimeUnit.SECONDS);
 		click(Globalcommunities, "Global Communities");
 		waitForElementToPresent(serachCommunity);
 		type(serachCommunity, Community, "Communities");
 		waitForElementToPresent(search);
 		click(search, "Search");
 		waitForElementToPresent(CommunityName);
+		driver.manage().timeouts().implicitlyWait(1500, TimeUnit.SECONDS);
 		click(CommunityName, "BDMAI Community");
 		waitForElementToPresent(resources);
 		click(resources, "Resources");
 		return (ResourcesPage) openPage(ResourcesPage.class);
 	}
 	public void joinGroup(String Community) throws InterruptedException {
+		driver.manage().timeouts().implicitlyWait(1500, TimeUnit.SECONDS);
 		waitForElementToPresent(viewAll);
 		click(viewAll, "Global Communities");
 		//waitForElementToPresent(serachCommunity);
 		//type(serachCommunity, Community, "Communities");
+		driver.manage().timeouts().implicitlyWait(1200, TimeUnit.SECONDS);
 		waitForElementToPresent(bizligo1);
 		click(bizligo1, "Bizligo1 Community");
 		//waitForElementToPresent(search);
 		//click(search, "Search");
 		waitForElementToPresent(group);
 		click(group, "Group");
-		waitForElementToPresent(join);
-		click(join, "Join");
+		waitForElementToPresent(join3);
+		click(join3, "Join");
 		click(YesProceed, "Yes Proceed");
 		AssertionHelper.verifyText(joinedMessage.getText(),
 				"You have joined the group successfully.");
 		System.out.println("Assertion done");
-	
+		 Thread.sleep(5000);
 	}
-	 public ResourcesPage gotoResource() {
+	 public ResourcesPage gotoResource() throws InterruptedException {
+		 driver.manage().timeouts().implicitlyWait(1500, TimeUnit.SECONDS);
 		 waitForElementToPresent(resources);
 			click(resources, "Resources");
-		 
+			Thread.sleep(5000);
 		 return (ResourcesPage) openPage(ResourcesPage.class); 
 	 }
 	 public void NavigatingToMyGroups(String Groupname) throws InterruptedException
 		{
+		 Thread.sleep(5000);
 			click(myGroups,"myGroups");
 			Thread.sleep(4000);
 			type( SearchGroup,Groupname,"Search by Group Name");
 	    	click(searchbtn,"search btn");
-	    	Thread.sleep(2000);
+	    	Thread.sleep(5000);
 	    	WebElement ele = driver.findElement(By.xpath("//span[normalize-space()='"+Groupname+"']"));
 	    	waitForElementToPresent(ele);
 	    	String el=ele.getText();
@@ -803,10 +832,10 @@ public void blogPageWorking() throws Throwable
 		}
 	 public void numberOfMembers(String Groupname) throws InterruptedException {
 			click(myGroups,"myGroups");
-			Thread.sleep(4000);
+			Thread.sleep(6000);
 			type( SearchGroup,Groupname,"Search by Group Name");
 	    	click(searchbtn,"search btn");
-	    	Thread.sleep(2000);
+	    	Thread.sleep(6000);
 	    	WebElement ele = driver.findElement(By.xpath("//span[normalize-space()='"+Groupname+"']"));
 	    	waitForElementToPresent(ele);
 	    	String el=ele.getText();
@@ -817,10 +846,14 @@ public void blogPageWorking() throws Throwable
 				Assert.assertTrue(true);
 			}
 		}
-	 public Bizligo1CommunityPage goToMyCommunity() {
+	 public Bizligo1CommunityPage goToMyCommunity() throws InterruptedException {
+		 Thread.sleep(6000);
 			click(viewAllBtn,"view all");
-			waitForElementToPresent(bizligo1);
+			Thread.sleep(6000);
+			scrollIntoView(bizligo1);
+			//waitForElementToPresent(bizligo1);
 			click(bizligo1,"Bizligo 1");
+			Thread.sleep(8000);
 			return (Bizligo1CommunityPage) openPage(Bizligo1CommunityPage.class);
 		}
 	 public RemindersPage NaviagtingToRemindersPage()
@@ -1020,12 +1053,30 @@ public void blogPageWorking() throws Throwable
 // 	Utility.highLightElement(driver, AllCommunities);
 //		AllCommunities.click();
 //	}
-	
+	 public CommunityDashboardPage gotoDashboardPage(String Community) throws InterruptedException {
+			Thread.sleep(6000);
+			waitForElementToPresent(viewAll);
+			click(viewAll, "Global Communities");
+			waitForElementToPresent(serachCommunityName);
+			type(serachCommunityName, Community, "Communities");
+			click(searchbtn, "Search");
+			Thread.sleep(15000);
+			waitForElementToPresent(bizligo1manage);
+			click(bizligo1manage,"Bizligo 1");
+			return(CommunityDashboardPage)openPage(CommunityDashboardPage.class);	
+	 }
 	public boolean verifySuccessLogin(){
 		return new VerificationHelper(driver).isDisplayed(Toggledropdownmenu);
 	}
 
-
+    public void gotoGlobalAdPageUsingURL() throws InterruptedException{
+   Thread.sleep(2000); 
+   DriverManager.getDriver().navigate().to("https://tenant1.bizligotest.com/eventmanager/promotions#");
+   Thread.sleep(8000);
+   System.out.println("User cannot open Global Advertisement page using URl");
+   
+    }
+	
 	public BlogsPage goToBlogsPage() 
 	{
 	 click(blog,"blog");
@@ -1043,7 +1094,14 @@ public void blogPageWorking() throws Throwable
 		// TODO Auto-generated method stub
 		
 	}
+	public Discussions GotoDiscussionPage() throws InterruptedException {
+		waitForElementToPresent(Testingcomm);
+		click(Testingcomm, "18-02-2021 -testing");	
+		Thread.sleep(7000);
+		click(discussion, "Discussion");
 
+	return (Discussions) openPage(Discussions.class);	
+}
 //	public void naviagtingToTestimonials() {
 //		// TODO Auto-generated method stub
 //		

@@ -20,7 +20,7 @@ public class TC1127_Verify_CA_ableTo_create_Inactive_AdPlan extends BaseTest{
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1127(Hashtable<String,String> data) throws Exception {
 		
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1127", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

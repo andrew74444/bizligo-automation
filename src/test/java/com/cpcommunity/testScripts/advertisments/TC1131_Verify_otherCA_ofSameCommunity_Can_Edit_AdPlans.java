@@ -24,7 +24,7 @@ public class TC1131_Verify_otherCA_ofSameCommunity_Can_Edit_AdPlans extends Base
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1131(Hashtable<String,String> data) throws Exception {
 		
-	//change plan name before running code
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1131", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

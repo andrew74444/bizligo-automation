@@ -23,10 +23,20 @@ import com.cpcommunity.utilities.ExcelReader;
 public class TC1161_verify_Rejected_Adcounts_Decrease_when_CA_published extends BaseTest {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1161(Hashtable<String,String> data) throws Exception {
-		
+		//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1161", data.get("Runmode"), excel);
 	log.info("Inside Login Test");	
+	openBrowser(data.get("browser"));
+	logInfo("Launched Browser : "+ data.get("browser"));				
+	logInfo("BizLigo Application Opened");
+	HomePage home2 = new HomePage().open(data.get("tenantType"));
+	LoginPage login2 = home2.clickOnLOGINBtn();
+	MyCommunitiesPage myCommunity = login2.loginToMyCommunitiesPage(data.get("email1"), data.get("password1"));
+	CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
+	communityDashboard.RejectedAdcounts();
+	quit();
+	
 	openBrowser(data.get("browser"));
 	logInfo("Launched Browser : "+data.get("browser"));
 	logInfo("BizLigo Application Opened");
@@ -35,8 +45,8 @@ public class TC1161_verify_Rejected_Adcounts_Decrease_when_CA_published extends 
 	MyDashboardPage MDP=login.loginToMemberdashboard(data.get("email"), data.get("password"));
 	MDP.MyAdCount();
 	GlobalCommunitesPage GCP=MDP.naviagtingToGlobalCommunities();
-	GCP.searchCommunity(data.get("community"));
-	SelectPlanPage SPP= GCP.navigatetoselectPlanPage();
+	//GCP.searchCommunity(data.get("community"));
+	SelectPlanPage SPP= GCP.NavigatetoselectPlanPage(data.get("community"));
 	AuthorizeGateway AG=SPP.selectPlan1(data.get("planName"),data.get("AdName"),data.get("path"));
 	AG.makePayment();
 	quit();
@@ -46,10 +56,10 @@ public class TC1161_verify_Rejected_Adcounts_Decrease_when_CA_published extends 
 	logInfo("BizLigo Application Opened");
 	HomePage home1 = new HomePage().open(data.get("tenantType"));
 	LoginPage login1 = home1.clickOnLOGINBtn();
-	MyCommunitiesPage myCommunity = login1.loginToMyCommunitiesPage(data.get("email1"), data.get("password1"));
-	CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
-    ManageMemberAdvertisementsPage MMA=communityDashboard.navigateToMemberAdvertisements();
-    MMA.approveAd(data.get("planName1"),data.get("adImage"),data.get("linkUrl"));
+	MyCommunitiesPage myCommunity1 = login1.loginToMyCommunitiesPage(data.get("email1"), data.get("password1"));
+	CommunityDashboardPage communityDashboard1 = myCommunity1.gotoManageCommunity(data.get("communityName"));
+    ManageMemberAdvertisementsPage MMA=communityDashboard1.navigateToMemberAdvertisements();
+    MMA.RejectAd(data.get("status"));
     CommunityDashboardPage comdash= MMA.gotoCommunityDashboard();
     comdash.RejectedAdcounts();
 	}

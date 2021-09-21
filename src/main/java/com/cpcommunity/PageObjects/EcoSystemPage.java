@@ -154,19 +154,22 @@ public class EcoSystemPage extends BasePage {
 		//this.searchCommunity(communityName+getDateInDDMMMYYYY());
 		//this.searchCommunity(communityName);
 		click(MANAGEbtn, "Manage");
+		Thread.sleep(5000);
 		return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
 		// new CommunityDashboardPage(driver, );
 	}
 	public CommunityDashboardPage navigateToManageCommunityPage() throws Exception {
 
 		click(MANAGEbtn, "Manage");
+		Thread.sleep(5000);
 		return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
 		
 	}
 
-	public MyJobsPage navigateToMyJobsPage() {
+	public MyJobsPage navigateToMyJobsPage() throws InterruptedException {
 		scrollIntoView(myJobs);
 		myJobs.click();		
+		Thread.sleep(3000);
 		return (MyJobsPage) openPage(MyJobsPage.class);
 	}
 	public MyEcosystemPage gotoMyEcosystemPage() throws Exception {
@@ -177,14 +180,14 @@ public class EcoSystemPage extends BasePage {
 		click(myEcosystem,"myEcosystem");
 		return (MyEcosystemPage) openPage(MyEcosystemPage.class);
 	}	
-	public MyEventsPage gotoMyEventsPage() throws Exception {
+	/*public MyEventsPage gotoMyEventsPage() throws Exception {
 		waitForElementToPresent(Toggledropdownmenu);
 		click(Toggledropdownmenu,"Toggledropdownmenu");
 		Thread.sleep(1000);
 		waitForElementToPresent(myEvents);
 		click(myEvents,"myEvents");
 		return (MyEventsPage) openPage(MyEventsPage.class);
-	}	
+	}*/	
 	public void myMatches(String actual) throws Throwable
 		
 	        {
@@ -289,7 +292,7 @@ public class EcoSystemPage extends BasePage {
 	//
 
 	public MyProfilePage goToMyProfilePage() throws Exception {
-
+        Thread.sleep(8000);
 		click(Toggledropdownmenu,"Toggledropdownmenu");
 		Thread.sleep(1000);
 		click(myProfile,"myProfile");
@@ -400,11 +403,11 @@ public class EcoSystemPage extends BasePage {
 	 return (EndorsementPage) openPage(EndorsementPage.class);
 	 }
 	
-    public  MyEventsPage goToMyEventsPage() {
+ /*   public  MyEventsPage goToMyEventsPage() {
 		
 		click(toggleDropDown,"Toggle Drop Down Menu");
 		click(myEvents,"My events");
 		return (MyEventsPage) openPage(MyEventsPage.class);
 	}
-
+*/
 }

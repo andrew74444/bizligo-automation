@@ -18,7 +18,7 @@ import com.cpcommunity.utilities.ExcelReader;
 public class TC1050_Verify_TA_ableto_Add_ActiveMembers_forSelecting_RegisteredOrganisation extends BaseTest{
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1050(Hashtable<String,String> data) throws Exception {
- 
+ //
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC1050", data.get("Runmode"), excel);
 		log.info("Inside Login Test");			

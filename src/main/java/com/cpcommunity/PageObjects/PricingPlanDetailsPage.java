@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 
 public class PricingPlanDetailsPage extends BasePage {
 
@@ -32,7 +33,10 @@ public class PricingPlanDetailsPage extends BasePage {
 	WebElement storage;
 	@FindBy(xpath = "//*[contains(text(),'Support: ')]//*")
 	WebElement support;
-	
+	@FindBy(xpath = "//body[1]/div[1]/div[1]/div[3]/div[1]/div[4]/div[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[2]")
+	WebElement featurescontains;
+	 @FindBy(xpath = "//a[normalize-space()='Email Templates']")
+	    WebElement emailtemplate;
 	
 	public void checkFeaturedisbled(String feature) {
 		driver.findElement(By.xpath("((//*[@class='row plan-detail-cont'])[2]//*[contains(text(),'" + feature
@@ -45,10 +49,6 @@ public class PricingPlanDetailsPage extends BasePage {
 	}
 
 	public void checkPlanDetails(HashMap<String, String> ftr_list) {
-
-		
-		
-		
 		
 		if (ftr_list.containsKey("Events")) {
 			checkFeatureEnabled("Events");
@@ -142,5 +142,15 @@ public class PricingPlanDetailsPage extends BasePage {
 		aShot();
 
 	}
+    public void checkJobsPresent() {
+    	String expected=this.featurescontains.getText();
+    	String actual="Jobs";
+    	System.out.println("Jobs is not Present in Pricing Plan Page");
+    	Assert.assertNotEquals(actual, expected, "Job is not present");
+    }
+    public EmailTemplatePage navigateToEmailTemplate() {
 
+		click(emailtemplate, "Email Template");
+		return (EmailTemplatePage) openPage(EmailTemplatePage.class);
+	}
 }
