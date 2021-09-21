@@ -35,7 +35,7 @@ public class HomePage extends BasePage {
 	@FindBy(xpath = "//span[contains(.,'Events')]")
 	WebElement Events;
 
-	@FindBy(xpath = "//*[@id='myNavbar']//*[contains (text(),'Home')]")
+	@FindBy(xpath = "(//h1[normalize-space()='building communities'])[1]")
 	WebElement home;
 	
 	@FindBy(xpath = "//span[normalize-space()='Directory']")

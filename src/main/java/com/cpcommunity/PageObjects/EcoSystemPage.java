@@ -91,7 +91,7 @@ public class EcoSystemPage extends BasePage {
 	
 	@FindBy(xpath = "//*[contains(text(),'My Matches')]")
 	WebElement myMatches;
-	@FindBy(xpath = "//a[contains(text(),'Home')]")
+	@FindBy(xpath = "//h2[normalize-space()='MY ECOSYSTEM']")
 	WebElement Home;
 	@FindBy(xpath="//a[@class=\"btn btn-default top-btn1 btn-sm dropdown-toggle\"]")
 	WebElement toggleDropDown;
