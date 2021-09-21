@@ -34,7 +34,7 @@ public class TC1097_Verify_CA_ableTo_Edit_theContent_Of_EmaiTemplate extends Bas
 	CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
 	EmailTemplatePage emailtemplate=communityDashboard.navigateToEmailTemplate();
 	emailtemplate.EditEvents(data.get("Template"),data.get("Footer"), data.get("Subject"),data.get("Header"), data.get("Email"),data.get("bcc"));
-	
+	//committed
 	}
 
 	@AfterMethod

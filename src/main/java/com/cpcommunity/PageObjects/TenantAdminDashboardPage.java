@@ -114,6 +114,8 @@ public class TenantAdminDashboardPage extends BasePage{
 	WebElement LOYALTY;
 	@FindBy(xpath = "//a[@href='/eventmanager/home/loyaltymembership']")
 	WebElement loyaltyMembership;
+	@FindBy(xpath = "//a[normalize-space()='Promo Codes']")
+	WebElement promocodes;
 	//
 
 	/*
@@ -126,7 +128,16 @@ public class TenantAdminDashboardPage extends BasePage{
 		return (LoyaltyPage) openPage(LoyaltyPage.class);
 		// new ManageJobs(driver);
 	}
-*/
+
+	public PromoCodePage navigateToPromocodePage() {
+		scrollDownVertically();
+		scrollToElement(promocodes);
+		click(promocodes, "promocodes");
+		
+		return (PromoCodePage) openPage(PromoCodePage.class);
+		// new ManageJobs(driver);
+	}
+
 
    
 	public ManageCommunitiesPage navigatetomanageCommunities() throws Exception {
@@ -273,11 +284,29 @@ public HomePage goToHomePage() {
  		click(organisations, "Organizations");
  		return (OrganizationsPage) openPage(OrganizationsPage.class);
  	}
+
+     public TACommunitiesPage navigateToCommunitiesPage() {
+ 		click(CommunitiesNavSideMenu, "Communities");
+ 		waitForElementToPresent(manageCommunity);
+ 		clickElementByJavaScript(manageCommunity);
+ 		return (TACommunitiesPage) openPage(TACommunitiesPage.class);
+ 	}//
+     public PendingCommunitiesPage naviagteToPendingCommunities() {
+ 		click(CommunitiesNavSideMenu, "Communities");
+ 		waitForElementToPresent(pendingCommunities);
+ 		clickElementByJavaScript(pendingCommunities);
+ 		// click(pendingCommunities,"pendingCommunities");
+
+ 		return (PendingCommunitiesPage) openPage(PendingCommunitiesPage.class);
+    }
+ 		
+
      
      public PaymentGatewaysPage navigateToPaymentGateways() {
  		click(paymentGateways, "payment Gateways");
  		return (PaymentGatewaysPage) openPage(PaymentGatewaysPage.class);
  		// new PaymentGatewaysPage(driver);
+
  	}
      
      public RevenueReportPage goToRevenueReport() {
