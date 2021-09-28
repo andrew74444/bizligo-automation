@@ -13,7 +13,7 @@ import com.cpcommunity.testScripts.community.BaseTest;
 import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.ExcelReader;
 
-public class TC235_Verify_Member_Able_To_Register_For_No_MembershipPlans extends BaseTest {
+public class TC666_Verify_Member_Able_To_Register_For_No_MembershipPlans extends BaseTest {
 
 	PaymentReceipt PaymentReceipt;
 	
