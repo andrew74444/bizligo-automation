@@ -109,6 +109,16 @@ public class LoginPage extends BasePage {
 		 
 	 }
 	
+	public void waitingForTAApproval(String email, String password) {
+
+		this.login(email, password);
+		waitForElementToPresent(pendingForApproval);
+		picture();
+
+	}
+	
+	
+	
 	public MyProfilePage loginToMyProfilePage(String enterEmailAddress, String password) {
 		this.login(enterEmailAddress, password);
 		return (MyProfilePage) openPage(MyProfilePage.class);
