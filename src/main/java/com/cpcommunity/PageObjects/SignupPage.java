@@ -216,4 +216,43 @@ public class SignupPage extends BasePage {
         return (AccountVerificationCodePage) openPage(AccountVerificationCodePage.class);
 
     }
+	
+	public AccountVerificationCodePage signupExistingORG(String firstName, String lastName, String emailAddress,String password, 
+			String confirmPassword,String phNo, String organizationName)
+			throws Exception {
+		
+		type(this.firstName, firstName, "first Name");
+		type(this.lastName, lastName, "last Name");
+		type(this.emailAddress, emailAddress, "email Address");
+		type(this.password, password, "password");
+		type(this.confirmPassword, confirmPassword, "confirm Password");
+		type(this.phone, phNo, "phone No");
+		type(this.organizationName, organizationName, "organization Name");
+		Actions ac = new Actions(driver);
+		ac.sendKeys(Keys.ARROW_DOWN).build().perform();
+		Thread.sleep(3000);
+		ac.sendKeys(Keys.ENTER).build().perform();
+		Thread.sleep(5000);
+		click(saveAndContinue, "Save And Continue");
+		return (AccountVerificationCodePage) openPage(AccountVerificationCodePage.class);
+		
+	}
+	
+	public AccountVerificationCodePage signupPageWithoutORG(String firstName, String lastName, String emailAddress,String password, 
+			String confirmPassword,String phNo) throws Throwable
+	{
+		type(this.firstName, firstName, "first Name");
+		type(this.lastName, lastName, "last Name");
+		type(this.emailAddress, emailAddress, "email Address");
+		type(this.password, password, "password");
+		type(this.confirmPassword, confirmPassword, "confirm Password");
+		type(this.phone, phNo, "phone No");
+		Actions ac = new Actions(driver);
+		ac.sendKeys(Keys.ARROW_DOWN).build().perform();
+		Thread.sleep(3000);
+		ac.sendKeys(Keys.ENTER).build().perform();
+		Thread.sleep(5000);
+		click(saveAndContinue, "Save And Continue");
+		return (AccountVerificationCodePage) openPage(AccountVerificationCodePage.class);
+	}
 }
