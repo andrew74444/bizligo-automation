@@ -97,6 +97,18 @@ public class TenantAdminDashboardPage extends BasePage{
 	WebElement loyaltyMembership;
 	@FindBy(xpath = "//a[normalize-space()='Promo Codes']")
 	WebElement promocodes;
+	@FindBy(xpath = "(//*[contains(text(),'Blogs')])[1]")
+	WebElement blogs;
+	@FindBy(xpath = "(//*[contains(text(),'Categories')])[1]")
+	WebElement categories;
+	@FindBy(xpath = "(//*[contains(text(),'Tags')])[1]")
+	WebElement tags;
+	@FindBy(xpath = "//a[@title='Manage Organizations/Companies']")
+	WebElement organisations;
+	@FindBy(xpath = "//a[@class='display-none'][normalize-space()='Communities']")
+	WebElement communities;
+	@FindBy(xpath = "//a[normalize-space()='Manage Communities']")
+	WebElement Managecommunities;
 	//
 
 	
@@ -308,8 +320,29 @@ public HomePage goToHomePage() {
  		waitForElementToPresent(pendingCommunities);
  		clickElementByJavaScript(pendingCommunities);
  		// click(pendingCommunities,"pendingCommunities");
-
+ 		
  		return (PendingCommunitiesPage) openPage(PendingCommunitiesPage.class);
+     }
+ 		public CategoriesPage gotoCategories() {
+ 			click(blogs, "Categories");
+ 			waitForElementToPresent(categories);
+ 			click(categories, "Categories");
+
+ 			 return (CategoriesPage) openPage(CategoriesPage.class);
+ 			}
+ 		
+ 		public OrganizationsPage goToOrganizationsPage() {
+ 			click(organisations, "Organizations");
+ 			return (OrganizationsPage) openPage(OrganizationsPage.class);
+ 			}
+ 		public ManageCommunitiesPage navigatetomanageCommunities() throws Exception {
+ 			waitForElementToPresent(communities);
+ 			click(communities, "Members");
+ 			Thread.sleep(2000);
+ 			click(Managecommunities, "Manage Members");
+ 			return (ManageCommunitiesPage) openPage(ManageCommunitiesPage.class);
+ 			// new ManageCommunityMembersPage(driver);
+ 			}
  		
  	}
 
@@ -320,4 +353,3 @@ public HomePage goToHomePage() {
 
 
 
-}
