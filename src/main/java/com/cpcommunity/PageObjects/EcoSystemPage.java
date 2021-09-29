@@ -15,7 +15,7 @@ public class EcoSystemPage extends BasePage {
 	@FindBy(xpath = "//a[normalize-space()='My Ecosystem']")
 	WebElement myEcosystem;
 
-	@FindBy(xpath = "//*[@class='dropdown-menu']//*[contains(text(),'My Ecosystem')] | //*[@class='dropdown-menu gretdrpmenu']//*[contains(text(),'My Ecosystem')]")
+	@FindBy(xpath = "//a[normalize-space()='My Ecosystem']")
 	WebElement myEcosystemInMenu;
 	
 	@FindBy(xpath = "//a[contains(.,'Dashboard')]")
@@ -24,7 +24,7 @@ public class EcoSystemPage extends BasePage {
 	@FindBy(xpath = "//*[@id='global-nav']")
 	WebElement pageheader;
 
-	@FindBy(xpath = "(//*[contains(text(),'Global Communities')])[2]")
+	@FindBy(xpath = "//a[normalize-space()='Global Communities']")
 	WebElement globalCommunities;
 
 	@FindBy(xpath = "//span[@title='Toggle dropdown menu']")

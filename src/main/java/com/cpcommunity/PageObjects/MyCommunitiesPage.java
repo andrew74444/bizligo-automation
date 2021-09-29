@@ -96,7 +96,7 @@ public class MyCommunitiesPage extends BasePage {
 	WebElement SearchCreatedCommunity;
 	@FindBy(xpath = "//button[@ng-click='data.SearchCreatedCommunities()']")
 	WebElement SearchCreatedCommunitiesBtn;
-	@FindBy(xpath = "//div[@class='row my-communities']//div[2]//div[1]//div[1]//div[1]//a[1]//div[1]//div[1]//div[1]//div[3]//button[1]")
+	@FindBy(xpath = "//button[normalize-space()='MANAGE']")
 	WebElement MANAGEbtn;
 	@FindBy(xpath = "//button[normalize-space()='MANAGE']")
 	WebElement MANAGECAP;
