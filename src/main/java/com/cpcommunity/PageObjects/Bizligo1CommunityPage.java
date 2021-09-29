@@ -4,9 +4,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import java.util.List;
-
-
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -54,24 +51,18 @@ public class Bizligo1CommunityPage extends BasePage {
 	@FindBy(xpath = "//i[@class='fa fa-check']")
 	WebElement yesProceed;
 	
-	@FindBy(xpath = "//button[normalize-space()='Yes,Proceed']")
-	WebElement yesProceed4;
-	
 	@FindBy(xpath="//button[@ng-click='appData.closeModel()']")
 	WebElement cancelPopup;
 	
-	@FindBy(xpath="//div[@ng-if='!data.IsLoading && !data.CommunityVideos.length']//p[@class='ng-binding'][contains(text(),'Please')]")
+	@FindBy(xpath="//div[@ng-show='appData.showLoginOrJoinMessage']")
 	WebElement msgWhenNotMember;
-	//div[@ng-show='appData.showLoginOrJoinMessage']
+	//a[@title='Manage Community']
 	@FindBy(xpath="//a[@title='Manage Community']")//a[@title='Manage Community']
 	WebElement manage;
 	@FindBy(xpath = "(((//*[@class='col-md-3 left_col']//img[@src='/Content/Images/adprommenu.png'])/..)/..)")
 	WebElement advertisements;
-	@FindBy(xpath = "//span[@class='ng-binding ng-scope']")
-	WebElement advertisement;
 	@FindBy(xpath = "//a[contains(text(),'Manage Plans')]")
 	WebElement managePlans;
-
 	@FindBy(xpath = "//a[normalize-space()='Donate']")
 	WebElement donateBtn;
 	
@@ -123,22 +114,55 @@ public class Bizligo1CommunityPage extends BasePage {
 	
 	@FindBy(xpath="//strong[normalize-space()='CSS - Training']")
 	WebElement eventName;
-//
+	@FindBy(xpath="//a[@ui-sref='community.member']")
+	WebElement member;
+	@FindBy(xpath="//input[@id='memberName']")
+	WebElement searchByMember;
+	@FindBy(xpath="//button[normalize-space()='Search']")
+	WebElement searchBtn;
+	@FindBy(xpath="//button[normalize-space()='Connect']")
+	WebElement connect;
+	@FindBy(xpath="//button[normalize-space()='Send']")
+	WebElement send;
+	@FindBy(xpath = "//div[contains(@class,'toast-message')]")
+	WebElement toastMessage;
+	@FindBy(xpath = "//span[@ ng-bind=\"member.MemberName | limitTo:14\"]")
+	WebElement memberName;
+	@FindBy(xpath = "//button[normalize-space()='Cancel Request']")
+	WebElement cancelConnectionReq;
+	@FindBy(xpath = "//span[@class='label label-warning connected-btn']")
+	WebElement pendingBtn;
+	@FindBy(xpath = "//span[@ng-bind='group.GroupName'][normalize-space()='Group 2']")
+	WebElement group2;
+	@FindBy(xpath = "//span[normalize-space()='Members']")
+	WebElement memberGroup;//input[@placeholder='Search Members...']
+	@FindBy(xpath = "//input[@placeholder='Search Members...']")
+	WebElement searchGroupMember;
+	@FindBy(xpath = "//span[contains(text(),'Groups')]")
+	WebElement Groups;
+	@FindBy(xpath = "//span[@ng-bind=\"approvedMember.FullName | limitTo:14\"]")
+	WebElement memberGroupName;
+	@FindBy(xpath = "//button[contains(text(),'Cancel Request')]")
+	WebElement cancelConnectReq;
+	@FindBy(xpath = "//i[@class='fa fa-link']")
+	WebElement connectLinkIcon;
+	@FindBy(xpath = "//span[@ng-bind=\"member.EmailAddress | limitTo:27\"]")
+	WebElement memberEmail;
+	@FindBy(xpath = "//span[@ng-bind=\"member.Phone\"]")
+	WebElement memberPhone;
+	@FindBy(xpath = "//textarea[@id='ConnectionNoteArea']")
+	WebElement addNote;
+	@FindBy(xpath = "//a[@ng-click=\"data.redirectToMenu('group');\"]")
+	WebElement group;
+	
+	
+	
 	
 
 
 
-	@FindBy(xpath = "//span[@ng-if='data.IsMembershipPlanDetailsWidgetConfigured.CommunityWidgetEditedName.length == 0']")
-	List<WebElement> membership;
-	@FindBy(xpath = "//a[@title='Manage Community']")
-	WebElement manageBtn;
-	@FindBy(xpath = "//span[@ng-if='data.IsAdminWidgetConfigured.CommunityWidgetEditedName.length == 0']")
-	List<WebElement> champions;
-	@FindBy(css = "div[class='col-sm-12 col-xs-12'] span[class='ng-scope']")
-	WebElement membershipName;
-	@FindBy(css = "div[class='col-sm-8 col-xs-6'] span[class='ng-binding ng-scope']")
-	WebElement championName;
 	
+
 
 	
 	
@@ -147,13 +171,12 @@ public class Bizligo1CommunityPage extends BasePage {
 		click(cancelPopup,"cancel");
 		waitForElementToPresent(resources);
 		click(resources,"Resources");
-		Thread.sleep(5000);
+		System.out.println(msgWhenNotMember.getText());
 		
-		String Loginmsg=msgWhenNotMember.getText();
-		 {
-			System.out.println(Loginmsg);
+		if(msgWhenNotMember.getText().equalsIgnoreCase("Join the community or login if you are already a member")) {
 			Assert.assertTrue(true);
-		}
+			System.out.println("Guest member cannot see resources");
+		}else Assert.assertTrue(false);
 	}
 	public void checkResourceUpdate(String Description) {
 		click(resources,"Resources");
@@ -187,12 +210,12 @@ public class Bizligo1CommunityPage extends BasePage {
 		click(groups,"Groups");
 		waitForElementToPresent(leaveGroup4);
 		click(leaveGroup4,"leaveGroup4");
-		Thread.sleep(6000);
+		Thread.sleep(3000);
 		//click(yesProceed,"yes proceed");
-		//Thread.sleep(3000);
+		Thread.sleep(5000);
 		//waitForElementToPresent(resources);
 		click(resources,"Resources");
-		Thread.sleep(8000);
+		Thread.sleep(5000);
 		waitForElementToPresent(photos);
 		System.out.println(photos.getAttribute("href"));
 		if(photos.getAttribute("href").equals("https://tenant1.bizligotest.com/Content/Uploads/tenant1/1/Resources/Images/c057d593-6929-4e3e-bd52-5de7d77be6ba.png")) {
@@ -203,23 +226,19 @@ public class Bizligo1CommunityPage extends BasePage {
 		}
 		click(groups,"Groups");
 		waitForElementToPresent(joinGroup4);
-		click(leaveGroup4,"joinGroup4");
+		click(joinGroup4,"joinGroup4");
 		click(yesProceed,"yes proceed");
 		
 	}
-	public ManageAdPlansPage gotoManageAdsplan() throws InterruptedException {
+	public ManageAdPlansPage gotoManageAdsplan() {
 		waitForElementToPresent(manage);
 		click(manage, "Manage Icon button");
-		Thread.sleep(4000);
-		scrollUpVertically();
-		//scrollIntoView(advertisements);
-		//clickElementByJavaScript(advertisements);
+		scrollIntoView(advertisements);
 		click(advertisements, "advertisements");
 		waitForElementToPresent(managePlans);
 		click(managePlans, "Manage Plans");
 		return (ManageAdPlansPage) openPage(ManageAdPlansPage.class);
 	}
-
 	public void checkUpdatedDonation(String Purpose) throws InterruptedException {
 		click(donateBtn,"Donation");
 		Thread.sleep(3000);
@@ -344,50 +363,261 @@ public class Bizligo1CommunityPage extends BasePage {
 		}else System.out.println("PayPal payment gateway not displayed when TA inactivate it");
 		
 	}
+	public void sendConnectionToMember(String Name) throws InterruptedException {
+		click(member,"Member");
+		Thread.sleep(3000);
+		type(searchByMember,Name,"Name of member to connect");
+		Thread.sleep(6000);
+		click(searchBtn,"search");
+		waitForElementToPresent(connect);
+		click(connect,"Connect");
+		click(send,"Send Connect request");
+		Thread.sleep(4000);
+		System.out.println(toastMessage.getText());
+		if(toastMessage.getText().equalsIgnoreCase("Connection request has been sent.")) {
+			System.out.println("Member Able to Send request from community");
+			Assert.assertTrue(true);
+		}else Assert.assertTrue(false);
+		waitForElementToPresent(memberName);
+		click(memberName,"Member Name");
+		waitForElementToPresent(cancelConnectionReq);
+		click(cancelConnectionReq,"Cancel connection");
+		
+	}
+	public void checkConnectionStatus(String Name) throws InterruptedException {
+		click(member,"Member");
+		Thread.sleep(6000);
+		type(searchByMember,Name,"Name of member to connect");
+		Thread.sleep(6000);
+		click(searchBtn,"search");
+		Thread.sleep(4000);
+		waitForElementToPresent(connect);
+		click(connect,"Connect");
+		click(send,"Send Connect request");
+		Thread.sleep(4000);
+		System.out.println(toastMessage.getText());
+		if(toastMessage.getText().equalsIgnoreCase("Connection request has been sent.")) {
+			System.out.println("Member Able to Send request from community");			
+		}
+		waitForElementToPresent(memberName);
+		System.out.println(pendingBtn.getText());
+		if(pendingBtn.getText().equalsIgnoreCase("pending")) {
+			System.out.println("Status of connection is pending");
+		}
+		Thread.sleep(3000);
+		click(Groups,"Groups");
+		Thread.sleep(5000);
+		click(group2,"Group 2");
+		click(memberGroup,"Members");
+		Thread.sleep(9000);
+		type(searchGroupMember,Name,"Name of member");
+		Thread.sleep(3000);
+		click(searchBtn,"Search");
+		Thread.sleep(3000);
+		System.out.println(pendingBtn.getText());
+		if(pendingBtn.getText().equalsIgnoreCase("pending")) {
+			System.out.println("Status of connection in groups is pending");
+			System.out.println("Status is showing as pending in both community and groups for same member");
+			Assert.assertTrue(true);
+		}else Assert.assertTrue(false);
+		click(memberGroupName,"Member Name");
+		Thread.sleep(2000);
+		 String mainWindowHandle = driver.getWindowHandle();
+	        Set<String> allWindowHandles = driver.getWindowHandles();
+	        Iterator<String> iterator = allWindowHandles.iterator();
+	        Thread.sleep(5000);
+
+	        // Here we will check if child window has other child windows and will fetch the heading of the child window
+	        while (iterator.hasNext()) {
+	            String ChildWindow = iterator.next();
+	                if (!mainWindowHandle.equalsIgnoreCase(ChildWindow)) {
+	                driver.switchTo().window(ChildWindow);
+	                System.out.println("waiting");
+	        		clickElementByJavaScript(cancelConnectReq);
+	                }
+	        }
+		
+	}
+	public void cancelConnectrequest(String Name) throws InterruptedException {
+		click(member,"Member");
+		Thread.sleep(9000);
+		type(searchByMember,Name,"Name of member to connect");
+		Thread.sleep(9000);
+		click(searchBtn,"search");
+		waitForElementToPresent(connect);
+		click(connect,"Connect");
+		click(send,"Send Connect request");
+		Thread.sleep(4000);
+		System.out.println(toastMessage.getText());
+		if(toastMessage.getText().equalsIgnoreCase("Connection request has been sent.")) {
+			System.out.println("Member Able to Send request from community");
+			Assert.assertTrue(true);
+		}else Assert.assertTrue(false);
+		waitForElementToPresent(memberName);
+		click(memberName,"Member Name");
+		waitForElementToPresent(cancelConnectionReq);
+		click(cancelConnectionReq,"Cancel connection");
+		Thread.sleep(5000);
+		driver.navigate().back();
+		driver.navigate().refresh();
+		Thread.sleep(9000);
+		type(searchByMember,Name,"Name of member to connect");
+		Thread.sleep(9000);
+		click(searchBtn,"search");
+		waitForElementToPresent(connect);
+		if(connect.isDisplayed()) {
+			Assert.assertTrue(true);
+			System.out.println("Connection status is again Connect");
+		}
+		
+	}
+	public void connectionRequestToMember(String Name) throws InterruptedException {
+		click(member,"Member");
+		Thread.sleep(6000);
+		type(searchByMember,Name,"Name of member to connect");
+		Thread.sleep(6000);
+		click(searchBtn,"search");
+		Thread.sleep(4000);
+		waitForElementToPresent(connect);
+		click(connect,"Connect");
+		click(send,"Send Connect request");
+		Thread.sleep(4000);
+		System.out.println(toastMessage.getText());
+		if(toastMessage.getText().equalsIgnoreCase("Connection request has been sent.")) {
+			System.out.println("Member Able to Send request from community");			
+		}
+		
+	}
+	public void checkStatusWhenMemberCancel(String Name) throws InterruptedException {
+		click(member,"Member");
+		Thread.sleep(6000);
+		type(searchByMember,Name,"Name of member to connect");
+		Thread.sleep(6000);
+		click(searchBtn,"search");
+		Thread.sleep(4000);
+		if(connect.isDisplayed()) {
+			System.out.println("If member rejects connection request Connect symbol is seen on member template");
+		}
+		
+	}
+	public void checkConnectedIconOnMember(String Name) throws InterruptedException {
+		click(member,"Member");
+		Thread.sleep(6000);
+		type(searchByMember,Name,"Name of member to connect");
+		Thread.sleep(6000);
+		click(searchBtn,"search");
+		Thread.sleep(4000);
+		if(connectLinkIcon.isDisplayed()) {
+			System.out.println("Link icon is present on connected members");
+			Assert.assertTrue(true);
+		}else Assert.assertTrue(false);
+		
+	}
+	public void memberIsPrivate(String Name) throws InterruptedException {
+		click(member,"Member");
+		Thread.sleep(6000);
+		type(searchByMember,Name,"Name of member to connect");
+		Thread.sleep(6000);
+		click(searchBtn,"search");
+		Thread.sleep(4000);
+		if(memberEmail.isDisplayed()&&memberPhone.isDisplayed()) {
+			System.out.println("Member if private , email and phone is dispalyed");
+		}else {
+			System.out.println("Member if private, email and phone is not displayed on member card");
+			Assert.assertTrue(true);
+		}
+		
+	}
+	public void memberDetailsCommunityAndGroup(String Name) throws InterruptedException {
+		click(member,"Member");
+		Thread.sleep(6000);
+		type(searchByMember,Name,"Name of member to connect");
+		Thread.sleep(6000);
+		click(searchBtn,"search");
+		Thread.sleep(4000);
+		if(memberEmail.isDisplayed()&&memberPhone.isDisplayed()) {
+			System.out.println("Email and Phone of member is dispalyed in Community details");
+		}
+		click(Groups,"Groups");
+		Thread.sleep(5000);
+		click(group2,"Group 2");
+		click(memberGroup,"Members");
+		Thread.sleep(9000);
+		type(searchGroupMember,Name,"Name of member");
+		Thread.sleep(3000);
+		click(searchBtn,"Search");
+		Thread.sleep(3000);
+		if(memberEmail.isDisplayed()&&memberPhone.isDisplayed()) {
+			System.out.println("Email and Phone of member is dispalyed in Groups also");
+		}		
+		
+	}
+	public void sendingConnectionAddingNotes(String Name, String Notes) throws InterruptedException {
+		click(member,"Member");
+		Thread.sleep(6000);
+		type(searchByMember,Name,"Name of member to connect");
+		Thread.sleep(6000);
+		click(searchBtn,"search");
+		Thread.sleep(4000);
+		waitForElementToPresent(connect);
+		click(connect,"Connect");
+		type(addNote,Notes,"Notes");
+		click(send,"Send Connect request");
+		Thread.sleep(6000);
+		System.out.println(toastMessage.getText());
+		if(toastMessage.getText().equalsIgnoreCase("Connection request has been sent.")) {
+			System.out.println("Member Able to Send request after adding notes");
+			Assert.assertTrue(true);
+		}else Assert.assertTrue(false);
+		waitForElementToPresent(memberName);
+		click(memberName,"Member Name");
+		waitForElementToPresent(cancelConnectionReq);
+		click(cancelConnectionReq,"Cancel connection");
+		Thread.sleep(3000);
+		click(group,"Groups");
+		Thread.sleep(5000);
+		click(group2,"Group 2");
+		click(memberGroup,"Members");
+		Thread.sleep(9000);
+		type(searchGroupMember,Name,"Name of member");
+		Thread.sleep(6000);
+		click(searchBtn,"Search");
+		Thread.sleep(3000);
+		waitForElementToPresent(connect);
+		click(connect,"Connect");
+		type(addNote,Notes,"Notes");
+		click(send,"Send Connect request");
+		Thread.sleep(6000);
+		System.out.println(toastMessage.getText());
+		if(toastMessage.getText().equalsIgnoreCase("Connection request has been sent.")) {
+			System.out.println("Member Able to Send request after adding notes from Groups");
+			Assert.assertTrue(true);
+		}else Assert.assertTrue(false);
+		//waitForElementToPresent(memberName);
+		click(memberGroupName,"Member Name");
+		Thread.sleep(3000);
+		 String mainWindowHandle = driver.getWindowHandle();
+	        Set<String> allWindowHandles = driver.getWindowHandles();
+	        Iterator<String> iterator = allWindowHandles.iterator();
+	        Thread.sleep(5000);
+
+	        // Here we will check if child window has other child windows and will fetch the heading of the child window
+	        while (iterator.hasNext()) {
+	            String ChildWindow = iterator.next();
+	                if (!mainWindowHandle.equalsIgnoreCase(ChildWindow)) {
+	                driver.switchTo().window(ChildWindow);
+	                System.out.println("waiting");
+	        		clickElementByJavaScript(cancelConnectReq);
+	                }
+	        }
+		
+	}
 	
 
 
 
 
 
-
-
-	
-	 public void VerifyMembershipplanNotDisplaying() throws InterruptedException {
-			Thread.sleep(500);
-			Assert.assertEquals(0, membership.size());
-			System.out.println("MembershipPlan is Not Displaying");
-			
-		}
-	 public void VerifychampionsNotDisplaying() throws InterruptedException {
-			Thread.sleep(500);
-			Assert.assertEquals(0, champions.size());
-			System.out.println("Champions is Not Displaying");
-			
-		}
-	 
-	 public ManageCommunityPage gotoDashboardpage() {
-			waitForElementToPresent(manageBtn);
-			click(manageBtn, "Manage Button");
-			return (ManageCommunityPage) openPage(ManageCommunityPage.class);		
-		}
-	 
-	 public void verifychampionTitleChanged() throws InterruptedException {
-			scrollIntoView(championName);
-			String changead=this.championName.getText();
-			System.out.println(changead);
-		    String Expected="TOP MOST CHAMPIONS";
-		    Assert.assertEquals(changead, Expected);
-		    
-		}
-	 public void verifyMembershiptitleChanged() throws InterruptedException {
-			waitForElementToPresent(membershipName);
-			String changead=this.membershipName.getText();
-			System.out.println(changead);
-		    String Expected="MEMBERSHIP";
-		    Assert.assertEquals(changead, Expected);
-		    
-		}
 
 }
 	
