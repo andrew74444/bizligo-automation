@@ -1,9 +1,13 @@
+
 package com.cpcommunity.PageObjects;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.util.List;
+
 import org.apache.log4j.Logger;
 
 public class PaymentGatewaysPage extends BasePage {
@@ -11,7 +15,7 @@ public class PaymentGatewaysPage extends BasePage {
 	@Override
 	protected void getPageScreenSot() {
 
-		aShot();
+		aShot();//
 
 	}
 
@@ -38,6 +42,8 @@ public class PaymentGatewaysPage extends BasePage {
 
 	@FindBy(xpath = "//*[@class = 'swal-button swal-button--Cancel btn-danger']")
 	WebElement cancelBtn;
+	@FindBy(xpath = "//button[normalize-space()='Cancel']")
+	WebElement cancel;
 
 	@FindBy(xpath = "//button[contains(.,'Validate')]")
 	WebElement ValidateBtn;
@@ -62,6 +68,25 @@ public class PaymentGatewaysPage extends BasePage {
 	WebElement Amount;
 	@FindBy(xpath = "//button[contains(.,' Submit ')]")
 	WebElement SubmitBtn;
+	@FindBy(xpath = "//select[@id='CommunityID']")
+	WebElement selectCommunity;
+	@FindBy(xpath = "//label[normalize-space()='Active']")
+	WebElement active;
+	@FindBy(xpath = "//label[normalize-space()='In-Active']")
+	WebElement inactive;
+	@FindBy(xpath = "//span[@class='ng-binding']")
+	WebElement update;
+	@FindBy(xpath = "//a[normalize-space()='Donate']")
+	WebElement donateBtn;
+	@FindBy(xpath="//input[@value='2']")
+	List<WebElement> authorizeBtns;
+	
+	@FindBy(xpath="//ng-repeat[1]//li[1]//label[1]//input[1]")
+	List<WebElement> paypalBtns;
+	@FindBy(xpath = "//div[@class='swal-text']")
+	WebElement gatewayerror;
+
+
 
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
@@ -176,5 +201,114 @@ public class PaymentGatewaysPage extends BasePage {
 		return (PaymentGatewaysPage) openPage(PaymentGatewaysPage.class);
 
 	}
+	public void inactiveAuthorizeGateway() throws InterruptedException {
+		selectByVisibleText(selectCommunity,"BizLigo1","Bizligo1");
+		Thread.sleep(3000);
+		Authorize.click();
+		Thread.sleep(3000);
+		click(active,"Active");
+		click(update,"Update");
+		waitForElementToPresent(OkBtn);
+		click(OkBtn,"OkBtn");
+		Thread.sleep(1000);
+		
+	}
+	
+	public void inactiveAuthorizeGateway(String community) throws InterruptedException {
+		selectByVisibleText(selectCommunity,community,"Bizligo1");
+		Thread.sleep(9000);
+		Authorize.click();
+		Thread.sleep(5000);
+		click(inactive,"Active");
+		click(update,"Update");
+		waitForElementToPresent(OkBtn);
+		click(OkBtn,"OkBtn");
+		Thread.sleep(9000);
+		
+	}
+	public void activeAuthorizeGateway(String community) throws InterruptedException {
+		selectByVisibleText(selectCommunity,community,"Bizligo1");
+		Thread.sleep(9000);
+		Authorize.click();
+		Thread.sleep(3000);
+		click(inactive," Active");
+		click(update,"Update");
+		waitForElementToPresent(OkBtn);
+		click(OkBtn,"OkBtn");
+		Thread.sleep(5000);
+		
+	}
+	public void inactiveCash(String community) throws InterruptedException {
+		selectByVisibleText(selectCommunity,community,"Bizligo1");
+		Thread.sleep(9000);
+		Cash.click();
+		Thread.sleep(5000);
+		//click(inactive,"Active");
+		//click(update,"Update");
+		waitForElementToPresent(gatewayerror);
+		String error=this.gatewayerror.getText();
+		System.out.println(error);
+		click(cancel,"Cancel");
+		Thread.sleep(5000);
+		
+	}
+	public void activeCash(String community) throws InterruptedException {
+		selectByVisibleText(selectCommunity,community,"Bizligo1");
+		Thread.sleep(3000);
+		Cash.click();
+		Thread.sleep(3000);
+		click(active,"In Active");
+		click(update,"Update");
+		waitForElementToPresent(OkBtn);
+		click(OkBtn,"OkBtn");
+		Thread.sleep(5000);
+		
+	}
+	public void activeAuthorizeGateway() throws InterruptedException {
+		selectByVisibleText(selectCommunity,"BizLigo1","Bizligo1");
+		Thread.sleep(3000);
+		Authorize.click();
+		Thread.sleep(3000);
+		click(inactive,"In Active");
+		click(update,"Update");
+		waitForElementToPresent(OkBtn);
+		click(OkBtn,"OkBtn");
+		Thread.sleep(1000);
+		
+	}
+	public void inactivePaypalGateway() throws InterruptedException {
+		selectByVisibleText(selectCommunity,"BizLigo1","Bizligo1");
+		Thread.sleep(3000);
+		PayPal.click();
+		Thread.sleep(3000);
+		click(active,"Active");
+		click(update,"Update");
+		waitForElementToPresent(OkBtn);
+		click(OkBtn,"OkBtn");
+		Thread.sleep(1000);
+		
+	}
+	public void activePayPalGateway() throws InterruptedException {
+		selectByVisibleText(selectCommunity,"BizLigo1","Bizligo1");
+		Thread.sleep(3000);
+		PayPal.click();
+		Thread.sleep(3000);
+		click(inactive,"In Active");
+		click(update,"Update");
+		waitForElementToPresent(OkBtn);
+		click(OkBtn,"OkBtn");
+		Thread.sleep(1000);
+		
+	}
+	
+
+	
+	
+
+
+
+
+
+
 
 }

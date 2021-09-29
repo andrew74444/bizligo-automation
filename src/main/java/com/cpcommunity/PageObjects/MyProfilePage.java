@@ -11,6 +11,7 @@ import org.testng.Assert;
 
 import java.io.IOException;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
 
@@ -18,7 +19,7 @@ import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
 
 public class MyProfilePage extends BasePage {
 
-	@FindBy(xpath = "//*[@id='global-nav']")
+	@FindBy(xpath = "//nav[@class='navbar navbar-inverse']")
 	WebElement pageheader;
 
 	@Override
@@ -28,12 +29,13 @@ public class MyProfilePage extends BasePage {
 		aShot();
 //		updateClass(pageheader, "navbar-fixed-top");
 	}
-
+	//a[@data-toggle='tab'][normalize-space()='My Profile']
 	@FindBy(xpath = "//a[@data-toggle='tab'][contains(text(),'My Profile')]")
 	WebElement MyProfile;
 	@FindBy(xpath = "//i[@title='Edit Profile']")
 	WebElement EditBtn;
-
+	@FindBy(xpath = "//*[@id=\"Skill_InterestController\"]/div[2]/div/div[2]")
+	WebElement profileCompletenessBar;
 	@FindBy(xpath = "//*[@name='FirstName']")
 	WebElement FirstName;
 	@FindBy(xpath = "//*[@name='LastName']")
@@ -189,14 +191,15 @@ public class MyProfilePage extends BasePage {
 	WebElement profileCategoryFieldSaveBtn;
 	@FindBy(xpath = "//form[@id='EditWhoAmIForm']//i[@class='fa fa-times text-danger']")
 	WebElement profileCategoryDelete;
-
+	@FindBy(xpath="//div[@class='col-lg-3 pc-percentage ng-binding']")
+	WebElement progressBarPercent;
 	@FindBy(xpath = "//a[contains(.,' Apply LinkedIn Profile')]")
 	WebElement ApplyLinkedInProfileBtn;
 
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 
-		return ExpectedConditions.visibilityOf(EditBtn);
+		return ExpectedConditions.visibilityOf(MyProfile);
 	}
 
 	public void clickOnEditButton() throws Exception {
@@ -265,7 +268,7 @@ public class MyProfilePage extends BasePage {
 
 	public boolean UpdateProfile() throws Exception {
 		scrollIntoView(MyProfileSaveBtn);
-		Thread.sleep(1000);
+		Thread.sleep(5000);
 		clickElementByJavaScript(MyProfileSaveBtn);
 		// *[contains(text(),'Save')]
 		Thread.sleep(4000);
@@ -1337,7 +1340,111 @@ public class MyProfilePage extends BasePage {
 	     		Thread.sleep(8000);
 	     	}
 	     	
-	         
-	         
-	         
+	     	public int GetProfileProgress() throws InterruptedException {
+	     		Thread.sleep(8000);
+				String profileProgress=profileCompletenessBar.getText();
+				profileProgress = StringUtils.stripEnd(profileProgress, "%");	
+				System.out.println("ProgressBar status is " + profileProgress);
+				int i = Integer.parseInt(profileProgress);				
+				return i;
+	     	}
+	     	
+	    
+
+			public boolean CompareProgressBars(int prevProgress,int afterProgress){
+				if(prevProgress <= afterProgress) {
+				   return true;
+				} 
+				else return false;
+			}   
+	    
+			public boolean ClearProfileDetails(String FName, String LName, String jtitle, String PPhone, String PExt,
+					String PSummary, String Ytube, String LUrl, String FUrl, String TUrl) throws Exception {
+
+				this.clickOnEditButton();
+				JobTitle.clear();
+				ProfessionalSummary.clear();
+				YouTubeUrl.clear();
+				LinkedInUrl.clear();
+				FacebookUrl.clear();
+				TwitterUrl.clear();
+				Phone.clear();
+				Ext.clear();
+				click(PublicRdnBtn, "Public Radio Btn");
+				Thread.sleep(5000);
+				return this.UpdateProfile();
+			}
+
+			public boolean UpdatePhoneMediaVideo( String PPhone , String Ytube, String LUrl, String FUrl, String TUrl) throws Exception {
+
+	     		this.clickOnEditButton();
+	     		YouTubeUrl.clear();
+	     		LinkedInUrl.clear();
+	     		FacebookUrl.clear();
+	     		TwitterUrl.clear();
+	     		Phone.clear();
+	     		
+	     		picture();
+//	     		new TestBase().captureScreen(, driver);
+	     		scrollIntoView(CompanyPhone);
+	     		Thread.sleep(3000);
+	     		
+	     		executeScript("arguments[0].value='" + PPhone + "';", Phone);
+	     		//executeScript("arguments[0].value='" + PExt + "';", Ext);
+	     		type(YouTubeUrl, Ytube, "YouTubeUrl");
+	     		type(LinkedInUrl, LUrl, "LinkedInUrl");
+	     		type(FacebookUrl, FUrl, "FacebookUrl");
+	     		type(TwitterUrl, TUrl, "TwitterUrl");
+	     		click(PublicRdnBtn, "Public Radio Btn");
+	     		picture();
+//	     		new TestBase().captureScreen(, driver);
+	     		return this.UpdateProfile();
+	     	}
+			public int currentProfilePercent() {
+				String percentProgress = progressBarPercent.getText();
+				System.out.println(" Percent progress=" + percentProgress);
+
+				int perStr = percentProgress.indexOf("%");
+
+				int percentValue = Integer.parseInt(percentProgress.substring(0, perStr));
+				System.out.println("After Percent progress conversion=" + percentValue);
+				return percentValue;
+			}
+			public boolean validate_Progress(int intialProgressPercent, int finalProgressPercent) {
+
+				if (intialProgressPercent < finalProgressPercent) {
+
+					return true;
+					
+				}
+				
+
+				else
+					return false;
+
+			}
+			public boolean DeleteProfileDetails() throws Exception {
+
+				this.clickOnEditButton();
+				JobTitle.clear();
+				ProfessionalSummary.clear();
+				YouTubeUrl.clear();
+				LinkedInUrl.clear();
+				FacebookUrl.clear();
+				TwitterUrl.clear();
+				//FirstName.clear();
+
+				//System.out.println(FName);
+				//LastName.clear();
+				Phone.clear();
+				Ext.clear();
+				picture();
+//				new TestBase().captureScreen(, driver);
+				scrollIntoView(FirstName);
+				
+				click(PublicRdnBtn, "Public Radio Btn");
+				picture();
+//				new TestBase().captureScreen(, driver);
+				return this.UpdateProfile();
+			}   
 }

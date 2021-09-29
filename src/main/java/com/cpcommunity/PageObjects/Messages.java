@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -20,7 +21,7 @@ import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
 
 
 public class Messages extends BasePage{
-	@FindBy(xpath = "//*[@id='header']")
+	@FindBy(xpath = "//header[@id='global-nav']")
 	WebElement pageheader;
 	@Override
 	protected  void getPageScreenSot() {
@@ -35,7 +36,7 @@ public class Messages extends BasePage{
 	WebElement newMessage;
 	
 	
-	@FindBy(xpath="//h2[@class='MessagesHeader text-uppercase']")
+	@FindBy(xpath="//h2[normalize-space()='Messages']")
 	WebElement MessagesHeader;
 	
 	@FindBy(xpath="//a[contains(text(),'Privacy Policy')]")
@@ -53,9 +54,15 @@ public class Messages extends BasePage{
 	
 	@FindBy(xpath="//span[contains(.,'Events')]")
 	WebElement Events;
+	@FindBy(xpath="//span[@ng-bind='msg.MemberName'][normalize-space()='Shourish Shakakers']")
+	WebElement member;
 	
-	
-	
+	@FindBy(xpath = "//span[@title='Toggle dropdown menu']")
+	WebElement Toggledropdownmenu;
+	@FindBy(xpath = "//a[normalize-space()='My Ecosystem']")
+    WebElement myDashboard;
+	@FindBy(xpath = "//input[@id='pplSearch']")
+    WebElement search;
 	
 	
 	@Override
@@ -107,5 +114,38 @@ public class Messages extends BasePage{
 		AssertionHelper.verifyText(SharedMessage, Message);
 		Thread.sleep(2000);	
 		return Message;
+	}
+	
+	public void checkMessage() {
+		
+		waitForElementToPresent(member);
+		click(member, "Member");
+	}
+	
+	public MyDashboardPage NaviagtingToMYEcosystemPage() throws Exception
+	{
+		Thread.sleep(6000);
+		Toggledropdownmenu.click();
+		Thread.sleep(1000);
+		myDashboard.click();
+		return (MyDashboardPage) openPage(MyDashboardPage.class);
+//		new MyProfilePage(driver, );
+		
+	}
+	public void checkUnreadHightedMessage() {
+		waitForElementToPresent(member);
+		String color=this.member.getCssValue("color");
+		String fontWeight = this.member.getCssValue("font-weight");
+		Assert.assertTrue(fontWeight.equals("bold") || fontWeight.equals("700"));
+		
+	}
+	public void SendMsgToNonConnectedMember(String Name) throws Exception{
+		click( newMessage,"new Message");
+		Thread.sleep(3000);
+		type(search, Name, "Search");
+		System.out.println("Cannot send msg to Nonconnected members");
+		
+		
+		
 	}
 }

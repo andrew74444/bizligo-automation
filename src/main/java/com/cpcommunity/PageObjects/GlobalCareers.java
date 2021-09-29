@@ -16,6 +16,8 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
 
+import junit.framework.Assert;
+
 
 
 /**
@@ -46,6 +48,12 @@ public class GlobalCareers extends BasePage {
 
 	@FindBy(xpath = "(//button[contains(text(),'View and Apply')])[1]")
 	WebElement ViewandApply;
+
+	@FindBy(xpath = "//button[@class='apply-success']")
+	WebElement ApplyAlready;
+	
+	@FindBy(xpath = "//button[normalize-space()='Already Applied']")
+	WebElement Applysuccess;
 
 	@FindBy(xpath = "//*[contains(text(),'Job Requirement Details')]")
 	WebElement JobRequirementDetails;
@@ -100,7 +108,20 @@ public class GlobalCareers extends BasePage {
 		waitForElementToPresent(ele);
 		picture();
 	}
-
+    
+	public void ApplyJobs() {
+		scrollIntoView(ApplyAlready);
+		waitForElementToPresent(ApplyAlready);
+		click(ApplyAlready, "Apply Already");
+		waitForElementToPresent(Applysuccess);
+		if(Applysuccess.isDisplayed()) {
+			Assert.assertTrue(true);
+		}
+		else {
+			Assert.assertTrue(false);
+		}
+		
+	}
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 		// TODO Auto-generated method stub

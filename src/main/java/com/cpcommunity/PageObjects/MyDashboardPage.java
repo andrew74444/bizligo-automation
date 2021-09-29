@@ -14,19 +14,23 @@ import java.util.Calendar;
 
 import org.apache.log4j.Logger;
 
+import com.cpcommunity.utilities.DriverManager;
+import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
 import com.uiFramework.pamTen.cpcommunity.helper.assertion.VerificationHelper;
 import com.uiFramework.pamTen.cpcommunity.helper.calendar.DateManager;
 
+import junit.framework.Assert;
+
 public class MyDashboardPage extends BasePage{
 	
-	@FindBy(xpath = "//*[@id='global-nav']")
-	WebElement pageheader;
-	@Override
+	@FindBy(xpath = "//header[@id='global-nav']") 
+    WebElement pageheader;
+	@Override 
 	protected  void getPageScreenSot() {
 	
 		updateClass(pageheader, "");
 		aShot();
-		updateClass(pageheader, "navbar-fixed-top");
+		//updateClass(pageheader, "navbar-fixed-top");
 	}
 		
 	@FindBy(xpath="//*[contains(text(),'Blog')]")
@@ -38,25 +42,22 @@ public class MyDashboardPage extends BasePage{
 	@FindBy(xpath = "//h2[contains(text(),'Sorry, the page or event you are looking for was n')]")
 	WebElement errorPage;
 	
-	@FindBy(xpath = "(//*[contains(text(),'My Dash')])[2]")
-	WebElement myDashboard;
-	
-	
-	
-	@FindBy(xpath="//*[contains(text(),'My Advertisements')]")
+	@FindBy(xpath = "//h2[normalize-space()='MY ECOSYSTEM']")
+    WebElement myDashboard;
+		
+	@FindBy(xpath="//div[normalize-space()='My Advertisements']")
 	WebElement myAdvertisements;
 	
 	@FindBy(xpath = "//img[@class='img-circle']")
 	WebElement menu;
 	
-	
-	
+	 @FindBy(xpath = "//li[@ng-if='(!appData.IsInEventManagerRole) && (appData.IsGroupActive)']")
+	 WebElement LeaveBtn;
 	//@FindBy(xpath="")
 	@FindBy(xpath = "//body//div[@id='header']//div//div//div//div//div//div//div[1]")
 	WebElement Toggledropdownmenu;
 	@FindBy (xpath="//*[@id='toast-container']/div/div[3]")
 	WebElement SuccessPopup;
-	
 	@FindBy(xpath = "//*[contains(text(),'MY')]")
 	WebElement MyEco;
 	
@@ -64,6 +65,10 @@ public class MyDashboardPage extends BasePage{
 	//*************************************Endorsements**********************************
 	@FindBy (xpath = "//*[contains(text(),'My Endorsements')]")
     WebElement myEndorsements;
+	@FindBy(xpath = "//a[@href='/member/endorsements']//div")
+	WebElement endorsement;
+	@FindBy(xpath = "//div[@class='pull-right text-right endorse-color']")
+	WebElement TotalendorsCount;
 	
 	//*************************************Groups****************************************
 	@FindBy (xpath = "//*[contains(text(),'My Groups')]")
@@ -86,10 +91,8 @@ public class MyDashboardPage extends BasePage{
 	WebElement myMessages;
 	@FindBy(xpath="//div[@class='huge'])[3]")
 	WebElement myMessagesCount;
-	
 	@FindBy (xpath="//button[contains(.,'New Message')]")
 	WebElement NewMessage;
-	
 	@FindBy (xpath = "//*[@onclick = 'setACookie()']")
 	WebElement cookie;
 	
@@ -101,22 +104,14 @@ public class MyDashboardPage extends BasePage{
 	//***********************************Member******************************************
 	@FindBy(xpath="//*[contains(text(),'Member Directory')]")
 	WebElement  memberDirectory;
-	
 	@FindBy(xpath="//a[contains(text(),'Global Communities')]")
 	WebElement globalCommunities;
 	@FindBy(xpath = "//span[contains(text(),'Others')]")
 	WebElement others;
-	
-	
-	
 	@FindBy(xpath="//a[contains(text(),'My Profile')]")
 	WebElement myProfile;
-	
 	@FindBy(xpath="//a[contains(text(),'Manage Password')]")
 	WebElement ManagePassword;
-	@FindBy(xpath="//a[contains(text(),'Global Communities')]")
-	WebElement GlobalCommunities;
-	
 	
 	
 	//***********************************Messages******************************************
@@ -140,8 +135,13 @@ public class MyDashboardPage extends BasePage{
 	WebElement MyEcosystem1;
 	@FindBy(xpath="//span[contains(text(),'Global Events')]")
 	WebElement globalEvents;
-	
-	
+	 @FindBy(xpath = "//button[contains(.,'Yes,Proceed')]")
+	WebElement YesProceed;
+    @FindBy(xpath = "//button[contains(.,'Ok')]")
+    WebElement BtnOK;
+    @FindBy(xpath = "//div[@class='swal-text']")
+   	WebElement makeAnothergroupAdminAlertMeassge;
+    
 	@FindBy(xpath="//a[contains(text(),'Upcoming Events')]")
 	WebElement upcomingEvents;
 	@FindBy(xpath="//a[contains(text(),'Past Events')]")
@@ -213,6 +213,36 @@ public class MyDashboardPage extends BasePage{
 	@FindBy(xpath = "(//*[contains(text(),'Blog')])[3]")
 	WebElement blogpageisWorking;
 	
+	@FindBy (xpath="//*[contains(text(),'My Jobs')]")
+	WebElement myJobs;
+	
+	@FindBy(xpath="//span[normalize-space()='18-02-2021 -Testing']")
+	WebElement Testingcommunity;
+	
+	@FindBy(xpath="//span[normalize-space()='Resources']")
+	WebElement resources;
+	
+	@FindBy(xpath="//input[@id='searchName']")
+	WebElement serachCommunity ;
+	
+	@FindBy(xpath="//div[@class='communities-box ng-scope col-lg-4 col-md-12 col-sm-12']//div[@class='category-background']")
+	WebElement CommunityName ;
+	
+	@FindBy(xpath="//span[normalize-space()='Groups']")
+	WebElement group ;
+	
+	@FindBy(xpath="//div[@class='post-box']//div[2]//div[1]//div[1]//div[1]//div[1]//div[1]//div[1]//div[2]//button[1]//strong[1]")
+	WebElement join ;
+	
+	@FindBy(xpath="//div[@class='cmt-groups']//div[@class='clearfix']")
+	WebElement joinedMessage ;
+	
+	@FindBy(xpath="//div[@class='MessagenotificationBadge']")
+	WebElement msgnotification ;
+	@FindBy(xpath="//a[@title='Go to My Messages']//div[@class='pull-left cards-icon MainNotification']")
+	WebElement msgnotification1 ;
+	
+	
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 		
@@ -235,7 +265,17 @@ public class MyDashboardPage extends BasePage{
 	      int TC=Integer.parseInt(C);
 	      click( myGroups,"myGroups");	      
 	      return TC;		
+	      
 	}
+	public int checkUnreadMessagecounts() {		
+		   String C = msgnotification.getText();
+	      int TC=Integer.parseInt(C);
+	      System.out.println(C);
+	     // click( myMessages,"myMessages");	      
+	      return TC;		
+	      
+	}
+	
 	public GlobalCareers NavigateToGlobalCareers(){
 		click(GlobalCareers,"click");
 		return (GlobalCareers) openPage(GlobalCareers.class);
@@ -306,12 +346,37 @@ public class MyDashboardPage extends BasePage{
 		Thread.sleep(8000);
 	}
 	
-	
 	public MyGroupsPage NavigatingToMyGroups()
 	{
 		click(myGroups,"myGroups");
 		return (MyGroupsPage) openPage(MyGroupsPage.class);
 //		new MyGroupsPage(driver, );		
+	}
+	public void checkProperAlertDisplayedWhenOnlyOneAdmin(String GroupName) throws Exception {
+		//this.searchCommunity(communityName+getDateInDDMMMYYYY());
+		//waitForElementToPresent(CommunityBox);
+		//click(CommunityBox, "Community Box");
+		//scrollIntoView(LeaveBtn);
+		waitForElementToPresent(myGroups);
+		myGroups.click();		
+		Thread.sleep(5000);
+		waitForElementToPresent(LeaveBtn);
+		click(LeaveBtn, "leave");
+		takeScreenshotByShutterBug(LeaveBtn, "Leave Btn");
+		waitForElementToPresent(YesProceed);
+		takeScreenshotByShutterBug(YesProceed, "Yes Proceed");
+		click(YesProceed, "Yes Proceed");
+		waitForElementToPresent(BtnOK);
+		takeScreenshotByShutterBug(BtnOK, "Ok");
+		click(BtnOK, "Ok");
+		picture();
+		System.out.println("Ok button click");
+		
+
+				//"Please make another member as Group Admin to leave from this Group.");
+		AssertionHelper.verifyText(makeAnothergroupAdminAlertMeassge.getText(),
+				"Please make another member as Group Admin to leave from this Group.");
+		System.out.println("Assertion done");
 	}
 	
 	public TestimonialsVerifyPage NavigateTotestimonials() throws InterruptedException
@@ -323,15 +388,12 @@ public class MyDashboardPage extends BasePage{
 		return (TestimonialsVerifyPage) openPage(TestimonialsVerifyPage.class);
 	}
 	
-	
 	public void testimonialEnabled() throws InterruptedException
 	{
 		Actions action = new Actions(driver);
 		  action.moveToElement(testimonialsPage).click().perform();
 		  Thread.sleep(2000);
-		  waitForElementToPresent(testimonialsPage);
-		  
-		  
+		  waitForElementToPresent(testimonialsPage); 
 	}
 	
 	public void testimonialDisabled() throws InterruptedException
@@ -357,13 +419,22 @@ public class MyDashboardPage extends BasePage{
 	
 		click(Toggledropdownmenu,"Toggle drop down menu");
 		Thread.sleep(1000);
-		click(GlobalCommunities,"Global Communities");
+		click(globalCommunities,"Global Communities");
 		return (GlobalCommunitesPage) openPage(GlobalCommunitesPage.class);
 //		new ChangePasswordPage(driver, );
 		
 	}
 	
-	
+	public ResourcesPage  gotoResourcesPage() throws Exception {
+		Thread.sleep(2000);
+		waitForElementToPresent(Testingcommunity);
+		click(Testingcommunity,"18-02-2021Testing community");
+		Thread.sleep(5000);
+		waitForElementToPresent(resources);
+		click(resources,"Resources");
+		Thread.sleep(5000);
+		return (ResourcesPage) openPage(ResourcesPage.class);
+			}
 	public ChangePasswordPage NaviagtingToManagePassword() throws Exception
 	{
 	
@@ -505,11 +576,17 @@ public void blogPageWorking() throws Throwable
 //		new ConnectionsPage(driver, );
 	}
 	
+	public MyJobsPage navigateToMyJobsPage() {
+		myJobs.click();		
+		return (MyJobsPage) openPage(MyJobsPage.class);
+	}
+	
 	public void ClickOnGlobalEvents()
 	{				
 		moveToElement(globalEvents);
 //		click(globalEvents,"Global Events");		
 	}
+	
 	public UpcomingEventsPage GoToUpComingEvents()
 	{
 		
@@ -553,23 +630,28 @@ public void blogPageWorking() throws Throwable
 //		new HomePage(driver, );
 	}
 	
-//	public EndorsementPage NaviagtingToMyEndorsements()
-//	{
-//		
-//		myEndorsements.click();	
-//		return (EndorsementPage) openPage(EndorsementPage.class);
-////		new EndorsementPage(driver, );
-//	}
+	public EndorsementPage NaviagtingToMyEndorsements()
+	{
+		waitForElementToPresent(myEndorsements);
+		myEndorsements.click();	
+		return (EndorsementPage) openPage(EndorsementPage.class);
+		//new EndorsementPage(driver, );
+	}
 	
 	public MyAdvertisements NaviagtingToMyAdvertisements()
 	{		
-		scrollToElement(myAdvertisements);
+		//scrollToElement(myAdvertisements);
 		click(myAdvertisements,"My Advertisements");	
 		return (MyAdvertisements) openPage(MyAdvertisements.class);
 //		new MyProfilePage(driver, );
 	}
 	
-	
+public MyGroupsPage navigateToMyGroupsPage() {
+		
+		waitForElementToPresent(myGroups);
+		myGroups.click();		
+		return (MyGroupsPage) openPage(MyGroupsPage.class);
+	}
 	
 	public MyProfilePage NaviagtingToMyProfilePage1()
 	{
@@ -577,11 +659,51 @@ public void blogPageWorking() throws Throwable
 		return (MyProfilePage) openPage(MyProfilePage.class);
 //		new MyProfilePage(driver, );
 	}
+	public void Totalendorsments() throws Exception {
+		//boolean varExists = false;
+		scrollIntoView(myEndorsements);
+		waitForElementToPresent(this.TotalendorsCount);
+		 String C = TotalendorsCount.getText();
+	      int TC=Integer.parseInt(C);
+			System.out.println("Total count is " + TC);
+	}
 	
+	public ResourcesPage goToBDMAIResouces(String Community) {
+		waitForElementToPresent(globalCommunities);
+		click(globalCommunities, "Global Communities");
+		waitForElementToPresent(serachCommunity);
+		type(serachCommunity, Community, "Communities");
+		waitForElementToPresent(CommunityName);
+		click(CommunityName, "BDMAI Community");
+		waitForElementToPresent(resources);
+		click(resources, "Resources");
+		return (ResourcesPage) openPage(ResourcesPage.class);
+	}
 	
+	public void joinGroup(String Community) throws InterruptedException {
+		waitForElementToPresent(globalCommunities);
+		click(globalCommunities, "Global Communities");
+		waitForElementToPresent(serachCommunity);
+		type(serachCommunity, Community, "Communities");
+		waitForElementToPresent(CommunityName);
+		click(CommunityName, "Bizligo1 Community");
+		waitForElementToPresent(group);
+		click(group, "Group");
+		Thread.sleep(4000);
+		waitForElementToPresent(join);
+		click(join, "Join");
+		click(YesProceed, "Yes Proceed");
+		AssertionHelper.verifyText(joinedMessage.getText(),
+				"You have joined the group successfully.");
+		System.out.println("Assertion done");
 	
-	
- 
+	}
+ public ResourcesPage gotoResource() {
+	 waitForElementToPresent(resources);
+		click(resources, "Resources");
+	 
+	 return (ResourcesPage) openPage(ResourcesPage.class); 
+ }
 // public void Groups(ExtentTest logger) throws InterruptedException
 // {
 // 	JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -771,31 +893,6 @@ public void blogPageWorking() throws Throwable
 //		AllCommunities.click();
 //	}
 
- 
- 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	public boolean verifySuccessLogin(){
 		return new VerificationHelper(driver).isDisplayed(Toggledropdownmenu);
 	}
@@ -838,7 +935,13 @@ public void blogPageWorking() throws Throwable
 ////		new CommunityDetailsPage(driver, );
 //	}
 
-	
+	  public void gotoGlobalAdPageUsingURL() throws InterruptedException{
+		   Thread.sleep(2000); 
+		   DriverManager.getDriver().navigate().to("https://tenant1.bizligotest.com/eventmanager/promotions#");
+		   Thread.sleep(8000);
+		   System.out.println("User cannot open Global Advertisement page using URl");
+		   
+		    }
 	
 	
 }

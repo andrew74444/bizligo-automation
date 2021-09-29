@@ -109,8 +109,13 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 		String query = "SELECT TOP 10 ID,Name,Price,DurationValue,DurationTypeID,Adlocation,RequiresApproval,createddate,Createdby,isactive,Viewtype,Communityid FROM PromotionPlans ORDER BY ID desc";
 	}
 
-	public void rejectAd(String planName) throws Exception {
-		this.searchAd(planName);
+	public void rejectAd(String planName,String status) throws Exception {
+		waitForElementToPresent(planStatus);
+		//type(PlanNameSearch, planName, "Plan Name Search");
+		
+		selectByVisibleText(planStatus, status,"planStatus");
+		click(btnSearch, "Search");
+		Thread.sleep(8000);
 		click(action, "action");
 		waitForElementToPresent(adStartDate);
 //		selectStartAndEndDates();
