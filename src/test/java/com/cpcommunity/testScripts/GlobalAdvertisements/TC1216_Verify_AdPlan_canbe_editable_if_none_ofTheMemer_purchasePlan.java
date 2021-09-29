@@ -21,7 +21,7 @@ public class TC1216_Verify_AdPlan_canbe_editable_if_none_ofTheMemer_purchasePlan
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1216(Hashtable<String,String> data) throws Exception {
 		
-		
+		//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1216", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

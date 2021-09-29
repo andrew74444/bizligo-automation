@@ -30,7 +30,7 @@ public class Messages extends BasePage{
 		aShot();
 //		updateClass(pageheader, "navbar-fixed-top");
 	}
-
+//
 	
 	@FindBy(xpath="//span[@class='fa fa-pencil-square-o']")
 	WebElement newMessage;

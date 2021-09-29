@@ -22,7 +22,7 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 		aShot();
 
 	}
-
+//
 	@FindBy(xpath = "//h2[contains(text(),'Manage Member Advertisements')]")
 	WebElement manageMemberAdvertisements;
 

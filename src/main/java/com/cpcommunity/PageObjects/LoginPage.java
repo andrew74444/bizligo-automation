@@ -20,7 +20,7 @@ public class LoginPage extends BasePage {
 		aShot();
 
 	}
-
+//
 	@FindBy(xpath = "//*[@id='global-nav']")
 	WebElement pageheader;
 

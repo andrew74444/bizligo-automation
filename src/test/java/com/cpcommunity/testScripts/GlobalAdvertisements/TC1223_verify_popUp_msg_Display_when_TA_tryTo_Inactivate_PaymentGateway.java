@@ -18,7 +18,7 @@ import com.cpcommunity.utilities.ExcelReader;
 public class TC1223_verify_popUp_msg_Display_when_TA_tryTo_Inactivate_PaymentGateway extends BaseTest{
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1223(Hashtable<String,String> data) throws Exception {
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1223", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

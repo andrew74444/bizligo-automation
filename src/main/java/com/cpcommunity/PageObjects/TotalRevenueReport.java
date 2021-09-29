@@ -38,7 +38,7 @@ public class TotalRevenueReport extends BasePage{
 		Thread.sleep(5000);
 		String amt=adRevenue.getText();
 		System.out.println(amt);
-		
+		Thread.sleep(2000);
 	 	
 	}
 	

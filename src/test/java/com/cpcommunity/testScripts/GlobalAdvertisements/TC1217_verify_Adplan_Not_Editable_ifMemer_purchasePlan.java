@@ -22,7 +22,7 @@ import com.cpcommunity.utilities.ExcelReader;
 public class TC1217_verify_Adplan_Not_Editable_ifMemer_purchasePlan extends BaseTest{
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1217(Hashtable<String,String> data) throws Exception {
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1217", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

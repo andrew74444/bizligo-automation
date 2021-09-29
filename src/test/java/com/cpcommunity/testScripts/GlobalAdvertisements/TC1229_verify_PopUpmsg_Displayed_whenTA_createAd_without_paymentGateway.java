@@ -18,7 +18,7 @@ import com.cpcommunity.utilities.ExcelReader;
 public class TC1229_verify_PopUpmsg_Displayed_whenTA_createAd_without_paymentGateway extends BaseTest {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1229(Hashtable<String,String> data) throws Exception {
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1229", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

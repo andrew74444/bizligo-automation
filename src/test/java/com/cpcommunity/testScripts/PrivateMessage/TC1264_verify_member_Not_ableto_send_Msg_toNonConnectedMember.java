@@ -18,7 +18,7 @@ import com.cpcommunity.utilities.ExcelReader;
 public class TC1264_verify_member_Not_ableto_send_Msg_toNonConnectedMember extends BaseTest {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1264(Hashtable<String,String> data) throws Exception {
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1264", data.get("Runmode"), excel);
 	log.info("Inside Login Test");

@@ -263,6 +263,6 @@ public LoginPage advertiseBusiness() throws Exception {
 	    
 		System.out.println("Advertisement link is not working");
 			
-			
+			//
 		}
 }

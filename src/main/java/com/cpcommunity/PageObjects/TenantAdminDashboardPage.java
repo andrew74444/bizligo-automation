@@ -18,7 +18,7 @@ public class TenantAdminDashboardPage extends BasePage{
 		waitForElementToPresent(PageTitle);
 		return ExpectedConditions.visibilityOf(PageTitle);
 	}
-//conflict
+//
 	@Override
 	protected void getPageScreenSot() {
 		// TODO Auto-generated method stub

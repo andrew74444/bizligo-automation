@@ -17,7 +17,7 @@ import com.cpcommunity.utilities.ExcelReader;
 public class TC1227_verify_AdvertiseUrBusiness_link_shouldnot_Work_for_TenantAdmin extends BaseTest {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1227(Hashtable<String,String> data) throws Exception {
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1227", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

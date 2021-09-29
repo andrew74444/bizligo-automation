@@ -21,7 +21,7 @@ public class RevenueReportPage extends BasePage {
 		aShot();
 	}
 
-	
+	//
 	@FindBy(xpath = "//div[@class='nav_menu']")
 	WebElement pageheader;
 	@FindBy(xpath = "//h2[normalize-space()='Revenue Reports']")

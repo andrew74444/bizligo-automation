@@ -19,7 +19,7 @@ public class TC1228_verify_communityName_tobe_Display_in_AlphabeticOrder extends
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1228(Hashtable<String,String> data) throws Exception {
 		
-		
+		//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1228", data.get("Runmode"), excel);
 	log.info("Inside Login Test");	

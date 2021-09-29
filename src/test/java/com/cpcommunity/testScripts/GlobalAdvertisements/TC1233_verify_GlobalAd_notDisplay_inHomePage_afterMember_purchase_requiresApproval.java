@@ -22,7 +22,7 @@ import com.cpcommunity.utilities.ExcelReader;
 public class TC1233_verify_GlobalAd_notDisplay_inHomePage_afterMember_purchase_requiresApproval extends BaseTest {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1233(Hashtable<String,String> data) throws Exception {
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1233", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

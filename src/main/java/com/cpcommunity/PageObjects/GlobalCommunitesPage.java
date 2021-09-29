@@ -39,7 +39,7 @@ public class GlobalCommunitesPage extends BasePage {
 		aShot();
 //		updateClass(pageheader, "navbar-fixed-top");
 	}
-
+//
 	// public ZohoCRMPage gotoCRM() {
 	//
 	// click(crm,"CRM Link");

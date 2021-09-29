@@ -27,7 +27,7 @@ public class TC1230_verify_AdPlan_notTobe_Display_inHomePage_when_TA_rejectsPlan
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1230", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			
-	/*openBrowser(data.get("browser"));
+	openBrowser(data.get("browser"));
 	logInfo("Launched Browser : "+ data.get("browser"));		
 	logInfo("BizLigo Application Opened");
 	HomePage home = new HomePage().open(data.get("tenantType"));
@@ -49,7 +49,7 @@ public class TC1230_verify_AdPlan_notTobe_Display_inHomePage_when_TA_rejectsPlan
 	SPP.selectBPlan(data.get("planName"));
 	AuthorizeGateway AG=SPP.selectTenantPlan(data.get("AdName"),data.get("path"));
 	 AG.makePayment();
-     quit();*/
+     quit();
 	 
 	 openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+ data.get("browser"));		

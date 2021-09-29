@@ -32,7 +32,7 @@ public class SelectPlanPage extends BasePage {
 
 	@FindBy(xpath = "//*[contains(text(),'SELECT PAYMENT METHODS')]")
 	WebElement PAYMENTMETHODS;
-
+//
 	@FindBy(xpath = "//*[@value='1']")
 	WebElement payPal;
 	

@@ -19,7 +19,7 @@ public class TC1236_verify_popUp_alertmsgBox_not_Displaying_when_ClickedCancel_w
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1236(Hashtable<String,String> data) throws Exception {
 		
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1236", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

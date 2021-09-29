@@ -98,8 +98,9 @@ public class ManageCommunitiesPage extends BasePage {
   		//Thread.sleep(5000); 
   		
              }
-    public void clickOnAdvertisments() {
+    public void clickOnAdvertisments() throws InterruptedException {
  		click(advertisements, "advertisements");
+ 		Thread.sleep(1000);
  	}
     
     public ManageAdPlansPage goToManageAdPlansPage() throws InterruptedException {

@@ -22,7 +22,7 @@ import com.cpcommunity.utilities.ExcelReader;
 public class TC1221_Verify_MailTriggers_toMember_after_purchasing_plan_which_Riquires_NO_approval extends BaseTest {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1221(Hashtable<String,String> data) throws Exception {
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1221", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

@@ -20,7 +20,7 @@ public class TC1213_Verify_TA_aleto_create_GlobalAdvertisementPlan extends BaseT
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1213(Hashtable<String,String> data) throws Exception {
 		
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1213", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			

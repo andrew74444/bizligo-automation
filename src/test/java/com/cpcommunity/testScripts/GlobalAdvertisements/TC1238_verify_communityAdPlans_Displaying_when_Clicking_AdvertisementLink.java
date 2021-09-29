@@ -19,7 +19,7 @@ import com.cpcommunity.utilities.ExcelReader;
 public class TC1238_verify_communityAdPlans_Displaying_when_Clicking_AdvertisementLink extends BaseTest{
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1238(Hashtable<String,String> data) throws Exception {
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1238", data.get("Runmode"), excel);
 	log.info("Inside Login Test");

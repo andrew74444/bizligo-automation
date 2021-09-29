@@ -18,7 +18,7 @@ public class TC1226_verify_applicant_redirected_tothe_selectPlanPage_onclicking_
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1226(Hashtable<String,String> data) throws Exception {
 		
-		
+		//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1226", data.get("Runmode"), excel);
 	log.info("Inside Login Test");	
@@ -29,7 +29,7 @@ public class TC1226_verify_applicant_redirected_tothe_selectPlanPage_onclicking_
 	LoginPage login = home.clickOnLOGINBtn();
 	MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
 	HomePage home1=myCommunity.naviagtingToHomePage();
-	//me1.Createadvertise();
+	//home1.Createadvertise();
 	
 	
 }

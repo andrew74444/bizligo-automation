@@ -17,7 +17,7 @@ public class TC1225_verify_applicant_redirected_tothe_LoginPage_onClicking_Adver
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1225(Hashtable<String,String> data) throws Exception {
 		
-		
+		//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1225", data.get("Runmode"), excel);
 	log.info("Inside Login Test");	

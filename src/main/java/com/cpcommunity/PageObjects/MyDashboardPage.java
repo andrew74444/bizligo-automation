@@ -32,7 +32,7 @@ public class MyDashboardPage extends BasePage{
 		aShot();
 		//updateClass(pageheader, "navbar-fixed-top");
 	}
-		
+		//
 	@FindBy(xpath="//*[contains(text(),'Blog')]")
 	WebElement blog;
 	

@@ -160,7 +160,7 @@ public class MyAdvertisements extends BasePage {
 		   click(save, "Save");
 		   AssertionHelper.verifyText(toastemessage.getText(), "Advertisement plan details saved.");
 			Thread.sleep(2000);
-		   
+		  // 
 	   }
 	/*public UpdateADPage gotoUpdateAdpage(String planName) throws InterruptedException {
 		//Thread.sleep(2000);
