@@ -41,7 +41,7 @@ public class GlobalCareers extends BasePage {
 	@FindBy(xpath = "//*[contains(text(),'Current Job Openings')]")
 	WebElement CurrentJobOpenings;
 
-	@FindBy(xpath = "//*[contains(text(),'View and Apply')]")
+	@FindBy(xpath = "//div[@infinite-scroll='data.LoadGlobalJobsOnScroll()']//div[1]//div[1]//div[3]//button[1]")
 	WebElement ViewandApply;
 	@FindBy(xpath = "//button[@class='apply-button']")
 	WebElement ViewandApply1;
