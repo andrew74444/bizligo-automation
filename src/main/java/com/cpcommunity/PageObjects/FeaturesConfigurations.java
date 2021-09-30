@@ -26,7 +26,7 @@ public class FeaturesConfigurations extends BasePage{
 		aShot();
 		
 	}
-	
+	//
     @FindBy(xpath="//h2[normalize-space()='Features Configuration']")
     WebElement title;
     @FindBy(xpath = "//div[@class='nav_menu']")

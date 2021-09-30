@@ -22,7 +22,7 @@ public class SuperAdminFeatureConfigurationPage extends BasePage {
 	protected void getPageScreenSot() {
 		aShot();//
 	}
-	
+	//
 	
 	@FindBy(xpath="//h2[contains(text(),'Features Configuration')]")
 	WebElement featuresConfigurationTitle;

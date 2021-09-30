@@ -28,7 +28,7 @@ public class superAdminDashboardPage extends BasePage {
 	
 	@FindBy(xpath="(//i[@class='fa fa-gear'])[3]")
 	WebElement featuresConfiguration;
-	
+	//
 	public SuperAdminFeatureConfigurationPage goToFeatureConfigurationsPage() {
 		click(configuration, "configuration");
 		waitForElementToPresent(featuresConfiguration);
