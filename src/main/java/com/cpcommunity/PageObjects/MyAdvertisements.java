@@ -94,10 +94,15 @@ public class MyAdvertisements extends BasePage {
 	WebElement pageheader;
 	@FindBy(xpath = "//tr[@class='odd']//a[@title='Click to purchase this Advertisement']")
 	WebElement editPP;
+
 	@FindBy(xpath = "//a[@title='Click to purchase this Advertisement']")
 	WebElement editt;
 	@FindBy(xpath = "//span[@title='This Advertisement plan is In-Activated.']")
 	WebElement editinactive;
+
+	@FindBy(xpath = "//tbody/tr[1]/td[2]/span[1]")
+	WebElement editt;
+
 	
 	@FindBy(xpath = "//div[@class='well well-sm']//div[@class='col-sm-12']")
 	WebElement allplan;
@@ -160,9 +165,15 @@ public class MyAdvertisements extends BasePage {
 		   click(save, "Save");
 		   AssertionHelper.verifyText(toastemessage.getText(), "Advertisement plan details saved.");
 			Thread.sleep(2000);
+
 		  // 
 	   }
 	/*public UpdateADPage gotoUpdateAdpage(String planName) throws InterruptedException {
+
+		   
+	   }
+	public UpdateADPage gotoUpdateAdpage(String planName) throws InterruptedException {
+
 		//Thread.sleep(2000);
 		 //waitForElementToPresent(plansearch);
 		  // type(plansearch, planName, "Plan Name");
@@ -172,7 +183,11 @@ public class MyAdvertisements extends BasePage {
 		click(editPP, "Edit");
 		Thread.sleep(5000);
 		return (UpdateADPage) openPage(UpdateADPage.class);
+
 	}*/
+
+	}
+
 	
 	
 	public void checkInactivePlanNotDisplay() {
@@ -390,6 +405,7 @@ public class MyAdvertisements extends BasePage {
 		Thread.sleep(3000);
 		scrollUpVertically();
 		waitForElementToPresent(searchPlan);
+
 		//click(searchPlan, "Search Plan");
 		type(searchPlan, planName1, "Plan Name");
 		click(search, "Search");
@@ -403,6 +419,10 @@ public class MyAdvertisements extends BasePage {
 		click(searchPlan, "Search Plan");
 		type(searchPlan, planName1, "Plan Name");
 		selectUsingIndex(searchbyStatus, 5, "Select Inactive ");
+
+		click(searchPlan, "Search Plan");
+		type(searchPlan, planName1, "Plan Name");
+
 		click(search, "Search");
 		Thread.sleep(4000);
 		
@@ -415,6 +435,7 @@ public class MyAdvertisements extends BasePage {
 		
 	}
 	
+
 	public void checkinactiveplanByTA() {
 		
 		waitForElementToPresent(editinactive);
@@ -422,6 +443,15 @@ public class MyAdvertisements extends BasePage {
 		waitForElementToPresent(inactiveerror);
 		System.out.print(inactiveerror);
 		click(ok, "OK");
+
+	public void checkIsplanInactive() {
+		
+		//waitForElementToPresent(editt);
+		//click(editt, "Edit");
+		//waitForElementToPresent(inactiveerror);
+		//System.out.print(inactiveerror);
+		//click(ok, "OK");
+
 		
 	}
 	public MyDashboardPage gotoMyDashboardPage() throws Exception {
@@ -438,4 +468,8 @@ public class MyAdvertisements extends BasePage {
 	
 	
 	
+
 }
+
+}
+

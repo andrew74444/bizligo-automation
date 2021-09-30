@@ -9,7 +9,7 @@ import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.MemberDirectoryPage;
 import com.cpcommunity.PageObjects.MyCommunitiesPage;
-import com.cpcommunity.PageObjects.TA_DashboardPage;
+import com.cpcommunity.PageObjects.TenantAdminDashboardPage;
 import com.cpcommunity.testScripts.community.BaseTest;
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataProviders;
@@ -28,7 +28,7 @@ public class TC704_Verify_TenantAdmin_CanDownload_Excel_from_MemberDirectory ext
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
-		TA_DashboardPage TDP = login.loginToApplicationTDP(data.get("email"), data.get("password"));
+		TenantAdminDashboardPage TDP = login.loginToTADashboard(data.get("email"), data.get("password"));
 		HomePage HP=TDP.goToHomePage();
 		MemberDirectoryPage MDP=HP.goToMemberDirectory();
 		MDP.downloadExcelFile(data.get("PathDownload"));

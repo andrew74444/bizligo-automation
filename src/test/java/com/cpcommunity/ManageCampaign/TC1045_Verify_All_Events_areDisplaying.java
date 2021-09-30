@@ -10,6 +10,7 @@ import com.cpcommunity.PageObjects.ComposeCampaign;
 import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
+import com.cpcommunity.PageObjects.MyCommunitiesPage;
 import com.cpcommunity.testScripts.community.BaseTest;
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataProviders;
@@ -21,7 +22,7 @@ public class TC1045_Verify_All_Events_areDisplaying  extends BaseTest{
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1045(Hashtable<String,String> data) throws Exception {
 		
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1045", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			
@@ -30,10 +31,12 @@ public class TC1045_Verify_All_Events_areDisplaying  extends BaseTest{
 	logInfo("BizLigo Application Opened");
 	HomePage home = new HomePage().open(data.get("tenantType"));
 	LoginPage login = home.clickOnLOGINBtn();
-	EcoSystemPage ecosystemp = login.loginToApplication(data.get("email"), data.get("password"));
-	CommunityDashboardPage communityDashboard=ecosystemp.navigateToManageCommunityPage();
+	MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
+	CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
 	ComposeCampaign composecp= communityDashboard.navigateToComposeCampaignPage();
-	composecp.Eventcheck(data.get("Events"));
+	//composecp.UpcomingEventcheck(data.get("Events"));
+	composecp.PastEventCheck(data.get("Events2"));
+	composecp.AllMember(data.get("Members"));
 	}
 	@AfterMethod
 	public void tearDown() {

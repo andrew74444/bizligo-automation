@@ -31,12 +31,12 @@ public class TC883_Verify_Number_OfMembers_And_GroupName_Is_Dispalyed extends Ba
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
-		MyCommunitiesPage MyCP = login.loginToApplicationMcp(data.get("email"), data.get("password"));
-		MyDashboardPage MyDP= MyCP.gotoMyDashboard();
+		MyCommunitiesPage MyCP = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
+		MyDashboardPage mydash=MyCP.gotoMyDashboardPage();
 		//CommunityDashboardPage CDP= MyCP.gotoManageCommunity(data.get("communityName"));
 		//ManageGroupsPage MGP=CDP.navigateToManageGroupsPage();
 		
-		MyDP.numberOfMembers(data.get("GroupName"));
+		mydash.numberOfMembers(data.get("GroupName"));
 
 }
 	@AfterMethod

@@ -2,6 +2,7 @@ package com.cpcommunity.ProfileCompleteness;
 
 import java.util.Hashtable;
 
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
@@ -14,8 +15,6 @@ import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.DataUtil;
 import com.cpcommunity.utilities.ExcelReader;
-
-import junit.framework.Assert;
 
 public class TC1012_Clear_ProfileDetails extends BaseTest{
 
@@ -36,20 +35,20 @@ public class TC1012_Clear_ProfileDetails extends BaseTest{
 		int prevProgress = myProfile.GetProfileProgress();
 		myProfile.ClearProfileDetails(data.get("FirstName"),data.get("LastName"),data.get("JobTitle"),data.get("PhoneNumber"),data.get("PhoneExt"),data.get("ProfessionalSummary"), data.get("Youtube"),data.get("Linkedln"),data.get("Facebook"),data.get("Twitter"));
 		int afterProgress = myProfile.GetProfileProgress();
-		logInfo("Before Progress : " + prevProgress + ", After Progress : " + afterProgress);
+		//logInfo("Before Progress : " + prevProgress + ", After Progress : " + afterProgress);
 		boolean val=myProfile.CompareProgressBars(prevProgress,afterProgress);
-		//myProfile.Validate_progress_ToClearDetails(val);
-		Assert.assertEquals(false, val);
+		
 		
 }
 	
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("TC001 Test Completed");
+		logInfo("TC1012 Test Completed");
 		
 		quit();
 		
 	}
+
 	
 }

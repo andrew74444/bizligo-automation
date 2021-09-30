@@ -5,6 +5,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
+
+import java.util.List;
+
 import org.apache.log4j.Logger;
 
 import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
@@ -26,27 +30,34 @@ public class MyGroupsPage extends BasePage{
 	
 	@FindBy(xpath = "//h3[contains(.,'My Groups')]")
     WebElement myGroups;
-
 	@FindBy(xpath = "//*[@type='text']")
     WebElement SearchGroup;
-    
     @FindBy(xpath = "//button[@id='CreateCommunity']")
     WebElement CreateCommunityBtn;
-    
+    @FindBy(xpath = "//button[contains(.,'Yes,Proceed')]")
+    WebElement YesProceed;
     @FindBy(xpath = "//*[@id='toast-container']")
     WebElement ToastMessage;
+
     @FindBy(xpath = "//li[@ng-if='(!appData.IsInEventManagerRole) && (appData.IsGroupActive)']")
     WebElement LeaveBtn;
+
+    @FindBy(xpath = "//button[@class='btn btn-default btn-sm btn-remove'][1]")
+    List<WebElement> LeaveBtn;
+
     @FindBy(xpath = "//button[contains(.,'Cancel')]")
     WebElement CancelBtn;
     @FindBy(xpath = "//span[@title='Menu']")
     WebElement CommunityDashboardMenu;
     @FindBy(xpath = "//button[contains(.,'Search')]")
     WebElement searchbtn;
+
     @FindBy(xpath = "//body//div[@class='container body']//div[@role='main']//div//div//div[4]//div[1]//div[1]//div[1]//div[1]//div[1]//div[2]//div[1]")
 	WebElement CommunityBox;
     @FindBy(xpath = "//button[contains(.,'Yes,Proceed')]")
 	WebElement YesProceed;
+
+
     @FindBy(xpath = "//button[contains(.,'Ok')]")
     WebElement BtnOK;
     @FindBy(xpath = "//img[@src='/Content/Images/search.png']")
@@ -56,7 +67,32 @@ public class MyGroupsPage extends BasePage{
     @FindBy(xpath = "//*[contains(text(),'Manage Members')]")
 	WebElement ManageMembers;
     @FindBy(xpath = "//*[contains(text(),'\"Please make another member as Group Admin to leave from this Group.')]")
+
 	WebElement makeAnothergroupAdminAlertMeassge;
+
+   	WebElement makeAnothergroupAdminAlertMeassge;
+	
+    
+    
+    @Override
+	protected ExpectedCondition getPageLoadCondition() {
+		
+		return ExpectedConditions.visibilityOf(myGroups);
+	}
+
+	@FindBy(xpath="//*[contains(text(),'Inactive')]")
+	WebElement inActive;
+	
+	@FindBy(xpath="//h2[contains(text(),'This Group Is No Longer Available')]")
+	WebElement groupNotAvailable;
+	
+	@FindBy(xpath="//*[contains(text(),'My Groups')]")
+	WebElement myGroupsbutton;
+	
+	
+
+   
+
     
     public ManageGroupMembersPageByGroupAdmin manageGroupMembers(String groupName ) throws Exception {
     	groupName = groupName+" "+getDateInDDMMMYYYY();
@@ -73,6 +109,7 @@ public class MyGroupsPage extends BasePage{
 		
 	}
     
+   
     public GroupDetailsPage NaviagtingToGroupDetailsPage(String GroupName) throws Exception {
     	this.searchGroup(GroupName);
     	WebElement ele = driver.findElement(By.xpath("//span[contains(text(),'"+GroupName+"')]"));
@@ -91,7 +128,7 @@ public class MyGroupsPage extends BasePage{
     	Thread.sleep(6000); 
     	
     }
-    
+
     
     public boolean cancel(String groupName) throws Exception {
     	groupName = groupName+" "+getDateInDDMMMYYYY();
@@ -126,21 +163,7 @@ public class MyGroupsPage extends BasePage{
 	}
     
     
-	@Override
-	protected ExpectedCondition getPageLoadCondition() {
-		
-		return ExpectedConditions.visibilityOf(myGroups);
-	}
-
-	@FindBy(xpath="//*[contains(text(),'Inactive')]")
-	WebElement inActive;
 	
-	@FindBy(xpath="//h2[contains(text(),'This Group Is No Longer Available')]")
-	WebElement groupNotAvailable;
-	
-	@FindBy(xpath="//*[contains(text(),'My Groups')]")
-	WebElement myGroupsbutton;
-
 	
 	public void goToInActivegroup(String groupName) throws Exception {
 	
@@ -179,6 +202,7 @@ public class MyGroupsPage extends BasePage{
 	        click(editGroup,"Edit group");  	       
 	        return (Create_UpdateGroupPage) openPage(Create_UpdateGroupPage.class);
 	    }
+
 		public void checkProperAlertDisplayedWhenOnlyOneAdmin(String GroupName) throws Exception {
 			//this.searchCommunity(communityName+getDateInDDMMMYYYY());
 			//waitForElementToPresent(CommunityBox);
@@ -205,8 +229,33 @@ public class MyGroupsPage extends BasePage{
 					"Please make another member as Group Admin to leave from this Group.");
 			System.out.println("Assertion done");
 		}
+
+		
+		
+
+		private void takeScreenshotByShutterBug(List<WebElement> leaveBtn2, String imageName) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		private void click(List<WebElement> leaveBtn2, String elementName) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		private void waitForElementToPresent(List<WebElement> leaveBtn2) {
+			// TODO Auto-generated method stub
+			
+		}
 		
 	}
+
+		
+		
+		
+
+		
+	
 
 	
 //	public ZohoCRMPage gotoCRM() {

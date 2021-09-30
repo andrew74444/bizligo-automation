@@ -1,6 +1,9 @@
 package com.cpcommunity.PageObjects;
 
+
 import java.util.List;
+
+
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -60,6 +63,7 @@ public class ManageCommunitiesPage extends BasePage {
 	WebElement globalcommunties;
 	@FindBy(xpath = "//button[contains(.,'Yes, Proceed')]")
 	WebElement YesProceed;
+
 	@FindBy(xpath = "//select[@id='IsActiveSearch']")
 	WebElement searchbystatus;
 	@FindBy(xpath = "//tbody//td[3]")
@@ -76,12 +80,17 @@ public class ManageCommunitiesPage extends BasePage {
 		WebElement tenantmodule;
 
 	
+	
+
+
+	
     public void searchCommunity(String Community) throws InterruptedException {
 	waitForElementToPresent(searchByName);
 	type(searchByName, Community, "Community Name");
 	click(search, "Search");
 	Thread.sleep(8000);
          }
+
 
     public void searchinactiveCommunity() throws InterruptedException {
     	waitForElementToPresent(searchbystatus);
@@ -112,6 +121,9 @@ public class ManageCommunitiesPage extends BasePage {
  		return (ManageAdPlansPage) openPage(ManageAdPlansPage.class);
  		// new CommunityPendingRequestsPage(driver);
  	}
+
+
+
 
    public void EditCommunities(String About, String Category,String type) throws InterruptedException {
 	   waitForElementToPresent(edit);

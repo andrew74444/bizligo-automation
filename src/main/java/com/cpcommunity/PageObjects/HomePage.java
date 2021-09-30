@@ -36,7 +36,11 @@ public class HomePage extends BasePage {
 	@FindBy(xpath = "//span[contains(.,'Events')]")
 	WebElement Events;
 
+
 	@FindBy(xpath = "//h1[normalize-space()='building communities']")
+
+	@FindBy(xpath = "(//h1[normalize-space()='building communities'])[1]")
+
 	WebElement home;
 	
 	@FindBy(xpath = "//span[normalize-space()='Directory']")
@@ -55,8 +59,11 @@ public class HomePage extends BasePage {
 	WebElement careers;
 	@FindBy(xpath = "//span[@title='Toggle dropdown menu']")
 	WebElement toggleDropDown;
+
 	@FindBy(xpath = "//a[normalize-space()='Tenant Admin Module']")
 	WebElement tenantadminModule;
+
+
 	@FindBy(xpath = "//a[normalize-space()='Logout']")
 	WebElement logoutBtn;
 	@FindBy(xpath = "//a[normalize-space()='Contact Us']")
@@ -67,8 +74,11 @@ public class HomePage extends BasePage {
 	WebElement globalEvents;
 	@FindBy(xpath="//a[contains(text(),'Upcoming Events')]")
 	WebElement upcomingEvents;
+
 	@FindBy(xpath="//div[@class='inner_right']//h4[@ng-hide='IsEM']//a[normalize-space()='advertise your business']")
 	WebElement advertiseBussiness;
+
+
 
 
 
@@ -94,6 +104,12 @@ public class HomePage extends BasePage {
 		return (HomePage) openPage(HomePage.class);
 		// new GlobalCareers(driver, );
 	}
+	public ContactUsPage NavigateToContactUsPage() {
+		click(contactUs, "Contact Us");
+		return (ContactUsPage) openPage(ContactUsPage.class);
+		// new GlobalCareers(driver, );
+	}
+
 
 
 //	public HomePage open() throws Exception {
@@ -249,6 +265,7 @@ public UpcomingEventsPage navigateToUpComingEvents() throws InterruptedException
 	return (UpcomingEventsPage) openPage(UpcomingEventsPage.class);
 	// new UpcomingEventsPage(driver, );
 }
+
 public LoginPage advertiseBusiness() throws Exception {
 	
 	waitForElementToPresent(advertiseBussiness);
@@ -256,6 +273,8 @@ public LoginPage advertiseBusiness() throws Exception {
 	click(advertiseBussiness, "advertise your Bussiness");
 	return (LoginPage) openPage(LoginPage.class);
 	// new LoginPage(driver, );
+
+
 
 }
          public void Checkadvertisebutton() throws InterruptedException {

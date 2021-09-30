@@ -48,6 +48,7 @@ public class CampaignReportPage extends BasePage {
 	@FindBy(xpath = "//button[normalize-space()='Reset']")
 	WebElement reset;
 	@FindBy(xpath = "//button[@id='34017']")
+	@FindBy(xpath = "//tbody//tr[1]//td[7]//button[@class='btn btn-info']")
 	WebElement viewDetail;
 	@FindBy(xpath = "//td[@ng-bind='maininfo.CampaignName']")
 	List<WebElement> CampaignName;
@@ -69,6 +70,7 @@ public class CampaignReportPage extends BasePage {
 		click(search, "Search");
 		this.SearchbyCampaign.clear();
 		Thread.sleep(3000);
+		Thread.sleep(5000);
 		waitForElementToPresent(SearchbySentAt);
 		click(SearchbySentAt, "Sentdate");
 		waitForElementToPresent(DateBlock);
@@ -76,11 +78,13 @@ public class CampaignReportPage extends BasePage {
 		click(date, "Date30");
 		waitForElementToPresent(search);
 		click(search, "Search");
+		Thread.sleep(9000);
 		waitForElementToPresent(SearchbySentAt);
 		click(SearchbySentAt, "Sentdate");
 		waitForElementToPresent(clear);
 		click(clear, "Clear");
 		Thread.sleep(3000);
+		Thread.sleep(8000);
 		waitForElementToPresent(selectEmailStatus);
 		//selectUsingIndex(selectEmailStatus, 2, "Sent");
 		selectByVisibleText(selectEmailStatus,Status, "Email");
@@ -88,6 +92,7 @@ public class CampaignReportPage extends BasePage {
 		click(search, "Search");
 		selectUsingIndex(selectEmailStatus, 0, "Sent");
 		Thread.sleep(3000);
+		Thread.sleep(8000);
 		waitForElementToPresent(searchbySubject);
 		type(searchbySubject, Subject, "Subject");
 		waitForElementToPresent(search);
@@ -103,6 +108,18 @@ public class CampaignReportPage extends BasePage {
 		waitForElementToPresent(viewDetail);
 		click(viewDetail, "ViewDetails");
 		AssertionHelper.verifyText(SuccessPopup.getText(), "Mails History Loaded");
+		Thread.sleep(8000);
+		waitForElementToPresent(searchbyToEmail);
+		type(searchbyToEmail, Email, "Email");
+		click(search, "Search");
+		//this.searchbyToEmail.clear();
+		Thread.sleep(8000);
+		waitForElementToPresent(viewDetail);
+		click(viewDetail, "ViewDetails");
+		waitForElementToPresent(SuccessPopup);
+	
+		AssertionHelper.verifyText(SuccessPopup.getText(), "Mails History Loaded");
+	
 		
 					}
 		

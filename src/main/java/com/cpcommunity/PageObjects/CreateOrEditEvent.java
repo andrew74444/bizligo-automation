@@ -222,8 +222,12 @@ public class CreateOrEditEvent extends BasePage {
 	WebElement Publishbtn;
 	@FindBy(xpath = "//button[@class='btn btn-primary space-bottom'][normalize-space()='Publish Changes']")
 	WebElement Publish;
+
 	@FindBy(xpath = "//input[@id='startdatetime']")
 	WebElement evetdate;
+
+
+
 	@FindBy(xpath = "//*/tbody/tr[1]/td[4]/i")
 	WebElement EditEvent;
 	@FindBy(xpath = "//*[@id='EventInfoForm']/div[10]/div[2]/div/button[1]")
@@ -305,13 +309,21 @@ public class CreateOrEditEvent extends BasePage {
 	WebElement TicketPrice;
 	@FindBy(xpath = "//a[@class='btn btn-default top-btn1 btn-sm dropdown-toggle']	")
 	WebElement Toggledropdownmenu;
+
 	@FindBy(xpath = "//input[@ng-click='makeAvailableToPublic()']")
 	WebElement eventPaid;	
+
+	
+
 	//a[@class='btn btn-default top-btn1 btn-sm dropdown-toggle']
 	@FindBy(xpath = "//*[contains(text(),'MANAGE')]")
 	WebElement MANAGEbtn;
 	@FindBy(xpath = "//a[normalize-space()='My Ecosystem']")
 	WebElement ecosystem;
+
+
+
+
 	@FindBy(xpath = "//*[@id='validate-dates-form']/div[1]/div[2]/div[1]/div/table/tbody/tr/td[3]/button")
 	WebElement EditAgendaBtnInEventDetails;
 	@FindBy(xpath = "//body[1]/div[2]/div[1]/div[2]/table[1]/tbody[1]/tr[3]/td[4]")

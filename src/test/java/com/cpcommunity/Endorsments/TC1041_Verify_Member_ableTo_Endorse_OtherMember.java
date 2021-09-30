@@ -1,4 +1,4 @@
-package com.cpcommunity.testScripts.Endorsments;
+package com.cpcommunity.Endorsments;
 
 import java.util.Hashtable;
 
@@ -20,7 +20,7 @@ import com.cpcommunity.utilities.ExcelReader;
 public class TC1041_Verify_Member_ableTo_Endorse_OtherMember extends BaseTest{
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1041(Hashtable<String,String> data) throws Exception {
- 
+ //
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC1041", data.get("Runmode"), excel);
 		log.info("Inside Login Test");			
@@ -33,7 +33,7 @@ public class TC1041_Verify_Member_ableTo_Endorse_OtherMember extends BaseTest{
 		//BusinessDirectoryPage bussinessdirectory= myCommunity.gotoBusinessDirectoryPage();
 		MemberDirectoryPage memberdirectory= myCommunity.gotoMemberDirectoryPage();
 		memberdirectory.clickOnsearchByName(data.get("Name"));
-		ProfilePage profilep = memberdirectory.gotoProfilePage();
+		ProfilePage profilep = memberdirectory.goToProfilePage();
 		profilep.AddEndorsement(data.get("Endorsement"),data.get("Endorsement2"),data.get("Endorsement3"),data.get("Endorsement4"));
 	}
 	@AfterMethod

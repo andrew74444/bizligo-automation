@@ -3,7 +3,10 @@ package com.cpcommunity.PageObjects;
 import static org.testng.Assert.assertTrue;
 
 import java.util.Hashtable;
+
 import java.util.List;
+
+
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -201,11 +204,15 @@ public class CommunityDashboardPage extends BasePage {
 	WebElement Blogs;
 	@FindBy(xpath = "//ul[@class='nav child_menu']//a[@title='Manage Categories'][normalize-space()='Categories']")
 	WebElement Blogcategories;
+
 	@FindBy(xpath = "//li[@class='active']//ul[@class='nav child_menu']")
 	WebElement campList;
 	
 	
 	
+
+    
+
   
 	public void displayManageGroupsPage() throws Exception {
 		boolean varExists = false;
@@ -519,6 +526,7 @@ public class CommunityDashboardPage extends BasePage {
 		 Thread.sleep(5000);
 		//click(composeCampaign, "composeCampaign");
 		return (CampaignTemplatePage) openPage(CampaignTemplatePage.class);
+
 		
 	}public StatisticsManageCampaign NavigatetoStatistics() throws Exception {
 		scrollDownVertically();
@@ -574,6 +582,63 @@ public class CommunityDashboardPage extends BasePage {
 	}
 	public PricingPlanDetailsPage navigateToPricingPlanDetailsPage() throws Exception {
 		
+
+		
+	}public StatisticsManageCampaign NavigatetoStatistics() throws Exception {
+		scrollDownVertically();
+		scrollToElement(manageCampaign);
+		click(manageCampaign, "manageCampaign");
+		Thread.sleep(1000);
+		waitForElementToPresent(Staticcampaign);
+		this.Staticcampaign.click();	
+		//click(composeCampaign, "composeCampaign");
+		return (StatisticsManageCampaign) openPage(StatisticsManageCampaign.class);
+	}
+		
+	public CampaignReportPage navigateToCampaignReportPage() throws Exception {
+		Thread.sleep(3000);
+		scrollToElement(manageCampaign);
+		click(manageCampaign, "manageCampaign");
+		Thread.sleep(1000);
+		waitForElementToPresent(CampaignReport);
+		this.CampaignReport.click();	
+		//click(composeCampaign, "composeCampaign");
+		return (CampaignReportPage) openPage(CampaignReportPage.class);
+		
+	}
+	public DraftCampaignPage navigateToDraftCampaignPage() throws Exception {
+		scrollDownVertically();
+		scrollToElement(manageCampaign);
+		click(manageCampaign, "manageCampaign");
+		Thread.sleep(1000);
+		waitForElementToPresent(DraftCampaign);
+		this.DraftCampaign.click();	
+		//click(composeCampaign, "composeCampaign");
+		return (DraftCampaignPage) openPage(DraftCampaignPage.class);
+		
+	}
+	public ImportContactsPage navigateToImportContactsPage() throws Exception {
+		Thread.sleep(3000);
+		scrollDownVertically();
+		scrollToElement(manageCampaign);
+		click(manageCampaign, "manageCampaign");
+		Thread.sleep(1000);
+		waitForElementToPresent(importcampaign);
+		this.importcampaign.click();	
+		//click(composeCampaign, "composeCampaign");
+		return (ImportContactsPage) openPage(ImportContactsPage.class);
+		
+	}
+	public ManageResourcesPage navigateToManageResourcesPage() throws Exception {
+		scrollDownVertically();
+		scrollToElement(manageresource);
+		click(manageresource, "manageresource");
+		return (ManageResourcesPage) openPage(ManageResourcesPage.class);
+		
+	}
+	public PricingPlanDetailsPage navigateToPricingPlanDetailsPage() throws Exception {
+		
+
 		click(pricingplan, "Pricing Plan");
 		return (PricingPlanDetailsPage) openPage(PricingPlanDetailsPage.class);
 		
@@ -670,6 +735,7 @@ public class CommunityDashboardPage extends BasePage {
 			return (EmailTemplatePage) openPage(EmailTemplatePage.class);
 			// new CommunityEvents(driver);
 		}
+
 	 public boolean checkImportContactDisplay() throws Exception {
 			
 			Thread.sleep(5000);
@@ -701,5 +767,7 @@ public class CommunityDashboardPage extends BasePage {
 			return (ImportContactsPage) openPage(ImportContactsPage.class) != null;
 			
 		}
+
+
 }
 

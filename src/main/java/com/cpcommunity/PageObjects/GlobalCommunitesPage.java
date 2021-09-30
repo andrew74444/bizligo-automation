@@ -560,14 +560,23 @@ public class GlobalCommunitesPage extends BasePage {
 		searchName.clear();
 		type(searchName, CommunityName, "search");
 		click(searchBtn, "search Btn");
+
 		Thread.sleep(5000);
 		//waitForElementToPresent(driver.findElement(By.xpath("//a[contains(text(),'" + CommunityName + "')]")));
+
+		
+		waitForElementToPresent(driver.findElement(By.xpath("//a[contains(text(),'" + CommunityName + "')]")));
+
 		Thread.sleep(5000);
 	}
 	
 	public SelectPlanPage navigatetoselectPlanPage() throws InterruptedException {
 		
+
 		driver.manage().timeouts().implicitlyWait(800, TimeUnit.SECONDS);
+
+		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
+
 		waitForElementToPresent(BDMAIcomm);
 		click(BDMAIcomm, "BDMAI");
 		Thread.sleep(10000);
@@ -688,7 +697,11 @@ public class GlobalCommunitesPage extends BasePage {
 		
 }
 	
+
 /*	public CreateAdPage gotoCreateAdPage() throws InterruptedException {
+
+	public CreateAdPage gotoCreateAdPage() throws InterruptedException {
+
 		waitForElementToPresent(BDMAIcomm);
 		click(BDMAIcomm, "BDMAI");
 		Thread.sleep(5000);
@@ -706,7 +719,11 @@ public class GlobalCommunitesPage extends BasePage {
 		click(next, "Next");
 		
 		return (CreateAdPage) openPage(CreateAdPage.class);	
+
 	}*/
+
+	}
+
 	
 	public void CheckcareerMenuNotPresent() {
 		waitForElementToPresent(animalLovercommunity);
@@ -968,6 +985,38 @@ public class GlobalCommunitesPage extends BasePage {
 		Thread.sleep(8000);
 		waitForElementToPresent(driver.findElement(By.xpath("//a[contains(text(),'" + CommunityName + "')]")));
 		Assert.assertTrue(true);
+
+
+
+	}
+	public void searchInactiveCommunityTA(String CommunityName) throws Exception {
+		searchName.clear();
+		type(searchName, CommunityName, "search");
+		click(searchBtn, "search Btn");
+		Thread.sleep(2000);
+		if(noCommunitiesfound.getText().equalsIgnoreCase("no communities found")) {
+			System.out.println("Inactive communities are not visible in Global Communities");
+		}else System.out.println("Inactive communities are visible in Global Communities");
+	}
+    public void communityJoin(String communityName) throws Exception {
+		
+		this.searchCommunity(communityName);
+		this.clickOnJoin();
+		waitForElementToPresent(YesProceed);
+		click(YesProceed, "Yes Proceed");
+		waitForElementToPresent(OKbtn);
+		System.out.println(successJoinMsg.getText());
+		// AssertionHelper.verifyText(waitingForApproval.getText(), "Your join request
+		// is waiting for approval");
+		OKbtn.click();
+		Thread.sleep(7000);
+
+	}
+
+
+
+
+
 
 	}
 	public void searchInactiveCommunityTA(String CommunityName) throws Exception {

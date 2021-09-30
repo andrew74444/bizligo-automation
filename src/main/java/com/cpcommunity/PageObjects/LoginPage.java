@@ -17,10 +17,14 @@ public class LoginPage extends BasePage {
 	protected void getPageScreenSot() {
 		updateClass(pageheader, "");
 
-		aShot();
+		aShot();//
 
 	}
+
 //
+
+//change
+
 	@FindBy(xpath = "//*[@id='global-nav']")
 	WebElement pageheader;
 
@@ -62,8 +66,39 @@ public class LoginPage extends BasePage {
 
 	@FindBy(xpath = "//*[contains(text(),'Not a member? Click here to Signup')]")
 	WebElement clickHereToSignup;
+
 	@FindBy(xpath = "//a[@title='Go to My Endorsements']//div")
 	WebElement myEndorsement;
+	
+
+
+	
+	@FindBy(xpath = "//span[@title='Toggle dropdown menu']")
+	WebElement Toggledropdownmenu;
+	
+	@FindBy(xpath = "//a[normalize-space()='My Ecosystem']")
+	WebElement ecosystem;
+
+	@FindBy(xpath = "//div[normalize-space()='My Advertisements']")
+	WebElement myads;
+	@FindBy(xpath = "//img[@src='/Content/Images/connectpro_logo.png']")
+	WebElement bizligo;
+	@FindBy(xpath="//a[contains(text(),'Global Communities')]")
+	WebElement globalCommunities;
+	@FindBy(xpath="//a[normalize-space()='BizLigo1']")
+    WebElement bizligo1;
+	@FindBy(xpath="//button[normalize-space()='MANAGE']")
+    WebElement bizligo1manage;
+	@FindBy(xpath="//a[@title='Manage Community']")
+    WebElement manageCommunity;
+	@FindBy(xpath = "//button[@class='btn btn-info']")
+	WebElement searchbtn;
+	@FindBy(xpath = "//input[@id='searchName']")
+	WebElement SearchcommunityName;
+	@FindBy(xpath = "//input[@placeholder='Search by Community Name']")
+	WebElement Searchcommunity;
+	@FindBy(xpath = "//button[normalize-space()='Search']")
+	WebElement search;
 	
 
 	@Override
@@ -79,11 +114,47 @@ public class LoginPage extends BasePage {
 	//// new FaceBookPage(driver, );
 	// }
 	//
+	public MyDashboardPage loginToDashboard(String enterEmailAddress, String  password) throws InterruptedException
+	 {
+		this.login(enterEmailAddress, password);
+		 Thread.sleep(5000);
+		return (MyDashboardPage) openPage(MyDashboardPage.class);
+		 
+	 }
+	
+	public void waitingForTAApproval(String email, String password) {
+
+		this.login(email, password);
+		waitForElementToPresent(pendingForApproval);
+		picture();
+
+	}
+	
+	
+	
+	public MyProfilePage loginToMyProfilePage(String enterEmailAddress, String password) {
+		this.login(enterEmailAddress, password);
+		return (MyProfilePage) openPage(MyProfilePage.class);
+	}
+	
+	public MyCommunitiesPage loginToMyCommunitiesPage(String enterEmailAddress, String password) throws InterruptedException {
+		this.login(enterEmailAddress, password);
+		
+		return (MyCommunitiesPage) openPage(MyCommunitiesPage.class);
+	}
+	
 	public ForgotPasswordPage clickOnForgotpassword() {
 		click(forgotPassword, "forgot Password");
 		return (ForgotPasswordPage) openPage(ForgotPasswordPage.class);
 
 	}
+	public TenantAdminDashboardPage loginToTADashboard(String enterEmailAddress, String  password) throws InterruptedException
+	 {   
+		this.login(enterEmailAddress, password);
+		Thread.sleep(4000);
+		return (TenantAdminDashboardPage) openPage(TenantAdminDashboardPage.class);
+		 
+	 }
 
 	public void login(String enterEmailAddress, String password) {
 		int t = (int) (Math.random()*10000);
@@ -123,8 +194,9 @@ public class LoginPage extends BasePage {
 	
 	// public MyDashboardPage loginToApplication(String enterEmailAddress, String
 	// password) {
-	public EcoSystemPage loginToApplication(String enterEmailAddress, String password) {
+	public EcoSystemPage loginToApplication(String enterEmailAddress, String password) throws InterruptedException {
 		this.login(enterEmailAddress, password);
+		 Thread.sleep(5000);
 		return (EcoSystemPage) openPage(EcoSystemPage.class);
 		// new MyDashboardPage(driver, );
 	}
@@ -163,9 +235,6 @@ public class LoginPage extends BasePage {
 		// new LoginPage(driver, );
 	}
 	
-	
-	
-
 	public JoinUserCommunity joinUserCommunityLogin(String emailAddress, String password) {
 
 		this.login(emailAddress, password);
@@ -244,6 +313,7 @@ public class LoginPage extends BasePage {
 		this.login(email, password);
 		return (AccountSelectPlansPage) openPage(AccountSelectPlansPage.class);
 	}
+
 		
 		public SelectPlanPage loginWithPendingUser(String email, String password) {
 			this.login(email, password);
@@ -253,6 +323,13 @@ public class LoginPage extends BasePage {
 	public MyDashboardPage loginToMemberdashboard(String enterEmailAddress, String password) {
         this.login(enterEmailAddress, password);
          return (MyDashboardPage) openPage(MyDashboardPage.class);
+
+	public MyDashboardPage loginToMemberdashboard(String enterEmailAddress, String password) throws InterruptedException {
+        Thread.sleep(3000);
+		this.login(enterEmailAddress, password);
+        Thread.sleep(5000);
+        return (MyDashboardPage) openPage(MyDashboardPage.class);
+
 //        new MyDashboardPage(driver, );        
 	}
 	
@@ -262,8 +339,43 @@ public class LoginPage extends BasePage {
         click(LoginBtn, "Login");
         return (ChangePasswordPage) openPage(ChangePasswordPage.class);
 	
-	
-	
+	}
+	public MyDashboardPage gotoMyDashboardPage() throws Exception {
+		Thread.sleep(8000);
+		waitForElementToPresent(Toggledropdownmenu);
+		//click(Toggledropdownmenu,"Toggledropdownmenu");
+		clickElementByJavaScript(Toggledropdownmenu);
+		Thread.sleep(4000);
+		waitForElementToPresent(ecosystem);
+		click(ecosystem,"Ecosystem");
+		 Thread.sleep(8000);
+		return (MyDashboardPage) openPage(MyDashboardPage.class);
+	}
+	public Bizligo1CommunityPage goToMyCommunity(String communityName ) throws InterruptedException {
+		Thread.sleep(4000);
+		clickElementByJavaScript(globalCommunities);
+		waitForElementToPresent(SearchcommunityName);
+		picture();
+		type(SearchcommunityName, communityName, "Search by Community");
+		click(searchbtn, "search btn");
+		Thread.sleep(12000);
+		//WebElement ele = driver.findElement(By.xpath("//a[@tooltip='" + communityName + "']"));
+		waitForElementToPresent(bizligo1);
+		click(bizligo1,"Bizligo 1");
+		return (Bizligo1CommunityPage) openPage(Bizligo1CommunityPage.class);
+	}
+	public Bizligo1CommunityPage goToMyBizCommunity(String communityName ) throws InterruptedException {
+		Thread.sleep(4000);
+		clickElementByJavaScript(globalCommunities);
+		waitForElementToPresent(SearchcommunityName);
+		picture();
+		type(SearchcommunityName, communityName, "Search by Community");
+		click(searchbtn, "search btn");
+		Thread.sleep(12000);
+		//WebElement ele = driver.findElement(By.xpath("//a[@tooltip='" + communityName + "']"));
+		waitForElementToPresent(bizligo1manage);
+		click(bizligo1manage,"Bizligo 1");
+		return (Bizligo1CommunityPage) openPage(Bizligo1CommunityPage.class);
 	}
 
 	}

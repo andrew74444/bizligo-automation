@@ -8,6 +8,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+
+import org.testng.Assert;
+
+
 import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
 
 public class ManageResourcesPage  extends BasePage{
@@ -42,7 +46,11 @@ public class ManageResourcesPage  extends BasePage{
 	WebElement resourceDocument;
 	@FindBy(xpath = "//input[@value='4']")
 	WebElement resourceAudio;
+
 	@FindBy(xpath = "//input[@class='select2-search__field'][@placeholder='Select Groups']")
+
+	@FindBy(xpath = "//input[@placeholder='Select Groups']")
+
 	WebElement selectGroup;
 	@FindBy(xpath = "//input[@type='radio'][@name='UploadType'][@value='1']")
 	WebElement internal;
@@ -84,6 +92,29 @@ public class ManageResourcesPage  extends BasePage{
 	WebElement resourcesName;
 	@FindBy(xpath = "//li[@class='select2-results__option'][3]")
 	List<WebElement> GroupName;
+
+
+	@FindBy(xpath = "//button[normalize-space()='Add Resource']")
+	WebElement addBtn;
+	@FindBy(xpath = "//input[@id='ResourceTitle']")
+	WebElement title1;
+	@FindBy(xpath = "//input[@class='ng-pristine ng-valid ng-empty ng-touched']")
+	WebElement imageResource;
+	@FindBy(xpath = "//input[@value='3']")
+	WebElement document;
+	@FindBy(xpath = "//label[normalize-space()='Free']")
+	WebElement freeBtn;
+	@FindBy(xpath = "//select[@name='Community']")
+	WebElement selectCommuntiy;
+	@FindBy(xpath = "//input[@class='ng-pristine ng-valid ng-not-empty ng-touched']")
+	WebElement internalBtn;
+	@FindBy(xpath = "//tbody/tr[2]/td[2]/p[1]")
+	WebElement editSecond;
+	@FindBy(xpath = "//button[normalize-space()='Update']")
+	WebElement updateBtn;
+	@FindBy(xpath = "//*[@id='toast-container']/div/div[3]")
+	WebElement SuccessPopup;
+
 	
 	
 	
@@ -101,6 +132,7 @@ public class ManageResourcesPage  extends BasePage{
 			waitForElementToPresent(free);
 			click(free, "Free");
 			//waitForElementToPresent(GroupName);
+
 		
 			waitForElementToPresent(selectGroup);
 			this.selectGroup.sendKeys("test123");
@@ -114,12 +146,28 @@ public class ManageResourcesPage  extends BasePage{
 			type(this.description, Description, "Description");
 			waitForElementToPresent(external);
 			click(external, "External");
+
+			waitForElementToPresent(external);
+			click(external, "External");
+			waitForElementToPresent(description);
+			type(this.description, Description, "Description");
+
 			waitForElementToPresent(URL);
 			type(this.URL, url, "Url");
 			waitForElementToPresent(resourceImage);
 			click(resourceImage, "Image");
 			waitForElementToPresent(Active);
 			click(Active, "Inactive It");
+
+
+			waitForElementToPresent(selectGroup);
+			type(this.selectGroup,Group,"Group");
+			//waitForElementToPresent(GroupName);
+			//click(GroupName,"Test123");
+			//selectUsingIndex(selectGroup,3,"Test123");
+	
+			
+
 			waitForElementToPresent(save);
 			click(save, "Save");
 			AssertionHelper.verifyText(toastMessage.getText(), "Success! Resources saved");
@@ -168,6 +216,10 @@ public class ManageResourcesPage  extends BasePage{
 			waitForElementToPresent(save);
 			click(save, "Save");
 			AssertionHelper.verifyText(toastMessage.getText(), "Success! Resources saved");
+
+
+		Thread.sleep(3000);
+
 		}
 		}
 
@@ -214,6 +266,7 @@ public class ManageResourcesPage  extends BasePage{
 	    
 	}
 	
+
 	
 	
 	
@@ -231,6 +284,32 @@ public class ManageResourcesPage  extends BasePage{
 	
 	
 	
+
+
+	public void createResources(String Title) {
+		waitForElementToPresent(addBtn);
+		click(addBtn,"add button");
+		type(title,Title,Title);
+		click(document,"document");
+		click(freeBtn,"free");
+		
+	}
+	
+	public void updateResources(String Title,String Description) throws InterruptedException {
+		waitForElementToPresent(editSecond);
+		click(editSecond,"edit");
+		type(title1,Title,Title);
+		type(description,Description,Description);
+		click(updateBtn,"updateBtn");
+		Thread.sleep(3000);
+		System.out.println(SuccessPopup.getText());
+		if(SuccessPopup.getText().equalsIgnoreCase("Resources saved")) {
+			Assert.assertTrue(true);
+			System.out.println("Admin able to update resource");
+		}
+	}
+
+
 	
 	
 	}	

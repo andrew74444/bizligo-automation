@@ -302,6 +302,7 @@ public class SelectPlanPage extends BasePage {
 		return (AuthorizeGateway) openPage(AuthorizeGateway.class);
 	}
 	
+
 	public void selectandSaveTenantPlan( String AdName, String path ) throws Exception {
 		//this.createGlobalAd.click();
         Thread.sleep(2000);
@@ -333,6 +334,8 @@ public class SelectPlanPage extends BasePage {
 		
 	}
 	
+
+
 	public AuthorizeGateway TenantPlan(String planName, String AdName, String path ) throws Exception {
 		//this.createGlobalAd.click();
         Thread.sleep(2000);
@@ -436,6 +439,7 @@ public class SelectPlanPage extends BasePage {
 		click(next, "Next btn");
 		AssertionHelper.verifyText(toastMessage.getText(), "Please select a plan.");
 		Thread.sleep(5000);
+
 	
 
 		System.out.println("Multiple error Not Displaying when double clicking Next Button");
@@ -460,6 +464,11 @@ public class SelectPlanPage extends BasePage {
 			}
 		}
 		
+
+	
+
+		System.out.println("Multiple error Not Displaying when double clicking Next Button");
+
 	}
 	//
 	// public SelectPlan open(String url) {

@@ -4,6 +4,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
+
 import org.apache.log4j.Logger;
 
 
@@ -120,4 +123,13 @@ public class PendingCommunitiesPage extends BasePage{
 		 this.Searchcommmunity(communityName+" "+getDateInDDMMMYYYY());
 		waitForElementToPresent(noCommunitiesAvailable);
 	}
+	public void communityNotDisplayed(String CommunityName) throws InterruptedException {
+		type(this.NameSearch, CommunityName, "Name");
+		click(btnSearch,"btn Search"); 
+		Thread.sleep(5000);
+		waitForElementToPresent(noCommunitiesAvailable);
+		
+		AssertionHelper.verifyText(noCommunitiesAvailable.getText(),"There are no Communities available");
+	}
+
 }

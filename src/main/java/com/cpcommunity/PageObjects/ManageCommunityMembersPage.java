@@ -4,6 +4,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
+
+import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
 
 public class ManageCommunityMembersPage extends BasePage {
 
@@ -58,6 +61,17 @@ public class ManageCommunityMembersPage extends BasePage {
 	
 	@FindBy(xpath = "//*[contains(text(),'Please make another member as Community Admin to remove this member as Community Admin')]")
 	WebElement makeAnotherMemberAsCommunityAdminToRemove;
+	
+	@FindBy(xpath = "//div[@class='bootbox-body']")
+	WebElement successMsg;
+	
+	@FindBy(xpath = "//*[@role=\"row\"]/td[2]")//*[@id=\"row_758\"]/td[2]
+	WebElement checkBoxMemberAdded;
+	@FindBy(xpath = "//input[@aria-controls='CommunityUsersTable']")
+	WebElement searchMemberInCommunity;
+	
+
+
 	
 	
 	
@@ -198,5 +212,135 @@ public class ManageCommunityMembersPage extends BasePage {
 		
 		
 	}
+	public void addmemberByTA(String email) throws Exception {
+		this.memberOutSearch(email);
+		this.memberOutCheckBox();
+		click(Add, "Add");
+		waitForElementToPresent(YesProceed);
+		picture();
+		click(YesProceed, "Yes, Proceed");		
+		waitForElementToPresent(OkBth);
+		System.out.println(successMsg.getText());
+		click(OkBth, "Ok Button");
+		Assert.assertTrue(true);
+		Thread.sleep(2000);
+		checkBoxMemberAdded.click();
+		Remove.click();
+		waitForElementToPresent(YesProceed);
+		click(YesProceed, "Yes, Proceed");		
+		waitForElementToPresent(OkBth);
+		System.out.println(successMsg.getText());
+		click(OkBth, "Ok Button");	
+	}
+	
+public void memberAsAdmin(String email) throws Exception {
+		
+		this.memberOutSearch(email);
+		this.memberOutCheckBox();
+		click(Add, "Add");
+		waitForElementToPresent(YesProceed);
+		picture();
+		click(YesProceed, "Yes, Proceed");		
+		waitForElementToPresent(OkBth);
+		click(OkBth, "Ok Button");
+		Thread.sleep(3000);
+		MakeAdmin.click();
+		waitForElementToPresent(YesProceed);
+		click(YesProceed, "Yes, Proceed");
+		waitForElementToPresent(OkBth);
+		System.out.println(successMsg.getText());
+		AssertionHelper.verifyText(successMsg.getText(), "Community Admin added successfully");
+		click(OkBth, "Ok Button");
+		Thread.sleep(4000);
+		RemoveAdmin.click();
+		waitForElementToPresent(YesProceed);
+		click(YesProceed, "Yes, Proceed");		
+		waitForElementToPresent(OkBth);
+		System.out.println(successMsg.getText());
+		click(OkBth, "Ok Button");
+		Thread.sleep(3000);
+		checkBoxMemberAdded.click();
+		Remove.click();
+		waitForElementToPresent(YesProceed);
+		click(YesProceed, "Yes, Proceed");		
+		waitForElementToPresent(OkBth);
+		System.out.println(successMsg.getText());
+		click(OkBth, "Ok Button");		
+	}
+
+public void removeMemberTA(String email) throws Exception{
+	
+	this.memberOutSearch(email);
+	this.memberOutCheckBox();
+	click(Add, "Add");
+	waitForElementToPresent(YesProceed);
+	picture();
+	click(YesProceed, "Yes, Proceed");		
+	waitForElementToPresent(OkBth);
+	System.out.println(successMsg.getText());
+	click(OkBth, "Ok Button");		
+	Thread.sleep(2000);
+	checkBoxMemberAdded.click();
+	Remove.click();
+	waitForElementToPresent(YesProceed);
+	click(YesProceed, "Yes, Proceed");		
+	waitForElementToPresent(OkBth);
+	System.out.println(successMsg.getText());
+	Assert.assertTrue(true);
+	click(OkBth, "Ok Button");		
+}
+public void removeMemberAsAdmin(String email) throws Exception {
+	
+	this.memberOutSearch(email);
+	this.memberOutCheckBox();
+	click(Add, "Add");
+	waitForElementToPresent(YesProceed);
+	picture();
+	click(YesProceed, "Yes, Proceed");		
+	waitForElementToPresent(OkBth);
+	click(OkBth, "Ok Button");
+	Thread.sleep(3000);
+	MakeAdmin.click();
+	waitForElementToPresent(YesProceed);
+	click(YesProceed, "Yes, Proceed");
+	waitForElementToPresent(OkBth);
+	System.out.println(successMsg.getText());
+	click(OkBth, "Ok Button");
+	Thread.sleep(4000);
+	RemoveAdmin.click();
+	waitForElementToPresent(YesProceed);
+	click(YesProceed, "Yes, Proceed");		
+	waitForElementToPresent(OkBth);
+	System.out.println(successMsg.getText());
+	AssertionHelper.verifyText(successMsg.getText(), "Community Admin removed successfully");
+	
+	click(OkBth, "Ok Button");
+	Thread.sleep(3000);
+	checkBoxMemberAdded.click();
+	Remove.click();
+	waitForElementToPresent(YesProceed);
+	click(YesProceed, "Yes, Proceed");		
+	waitForElementToPresent(OkBth);
+	System.out.println(successMsg.getText());
+	click(OkBth, "Ok Button");		
+}
+public void TAunAbleToRemoveAdminOnlyOneAdmin(String name) throws Exception {
+    type(searchMemberInCommunity,name,name);
+    Thread.sleep(4000);
+	//this.memberInSearch(email);
+	click(RemoveAdmin, "Remove Admin");
+	waitForElementToPresent(YesProceed);
+	click(YesProceed, "Yes, Proceed");
+	Thread.sleep(3000);
+	System.out.println(successMsg.getText());
+	waitForElementToPresent(makeAnotherMemberAsCommunityAdminToRemove);
+	click(OkBth, "Ok Button");//
+	
+	
+}
+
+
+
+
 
 }

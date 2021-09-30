@@ -6,7 +6,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.BusinessDirectoryPage;
-import com.cpcommunity.PageObjects.DirectoryPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.MemberDirectoryPage;
@@ -37,7 +36,7 @@ public class TC1013_Verify_ProgressBar_NotDisplaying_WhenViewing_BissinessDirect
 		//BusinessDirectoryPage bussinessdirectory= myCommunity.gotoBusinessDirectoryPage();
 		MemberDirectoryPage memberdirectory= myCommunity.gotoMemberDirectoryPage();
 		//memberdirectory.clickOnsearchByName(data.get("memberName"));
-		memberdirectory.goToMyProfilePage();
+		memberdirectory.goToProfilePage();
 		memberdirectory.profileComplenessViibility();
 		
 		
@@ -46,7 +45,7 @@ public class TC1013_Verify_ProgressBar_NotDisplaying_WhenViewing_BissinessDirect
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("TC190 Test Completed");
+		logInfo("TC1013 Test Completed");
 		
 		quit();
 		

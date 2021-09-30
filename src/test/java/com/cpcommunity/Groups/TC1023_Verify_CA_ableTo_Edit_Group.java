@@ -1,4 +1,4 @@
-package com.cpcommunity.testScripts.Groups;
+package com.cpcommunity.Groups;
 
 import java.util.Hashtable;
 
@@ -22,7 +22,7 @@ public class TC1023_Verify_CA_ableTo_Edit_Group extends BaseTest {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1023(Hashtable<String,String> data) throws Exception {
 		
-	
+	//
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1023", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			
@@ -36,7 +36,7 @@ public class TC1023_Verify_CA_ableTo_Edit_Group extends BaseTest {
 	CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
 	ManageGroupsPage managegroup=communityDashboard.navigateToManageGroupsPage();
 	Create_UpdateGroupPage updateGroupPage = managegroup.editGroup();
-	updateGroupPage.editGroup(data.get("Name"), data.get("Description"), data.get("City"), data.get("State"), data.get("GroupCategory"), data.get("GroupType"), data.get("LogoImagePath"));	
+	//updateGroupPage.editGroup(data.get("Name"), data.get("Description"), data.get("City"), data.get("State"), data.get("GroupCategory"), data.get("GroupType"), data.get("LogoImagePath"));	
 	
 }
 	@AfterMethod

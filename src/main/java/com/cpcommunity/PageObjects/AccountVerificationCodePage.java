@@ -1,7 +1,13 @@
 package com.cpcommunity.PageObjects;
 
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -18,11 +24,17 @@ public class AccountVerificationCodePage extends BasePage {
 		aShot();
 
 	}
-
+	
+	@FindBy(xpath = "//input[@id='CodebyEmail']")
+	WebElement email;
+	@FindBy(xpath = "//input[@id='CodebyPhone']")
+	WebElement phone;
 	@FindBy(xpath = "//input[@value='SEND']")
 	WebElement send;
+	@FindBy(xpath = "//input[@ng-click='SiData.SendVerificationCode(SiData.Sendcodeby)']")
+	WebElement send1;
 
-	@FindBy(xpath = "//*[@id='header']")
+	@FindBy(xpath = "//header[@id='global-nav']")
 	WebElement pageheader;
 
 	@FindBy(xpath = "//input[@id='verify-code']")
@@ -31,18 +43,39 @@ public class AccountVerificationCodePage extends BasePage {
 	@FindBy(xpath = "//input[@value='VERIFY']")
 	WebElement verifyBtn;
 
-	
-
 	@FindBy(xpath = "//*[contains(text(),'Your Email is Verified Successfully. Please click on Ok to purchase the membership plan')]")
 	WebElement YourEmailisVerifiedSuccessfullyPleaseClickOnOkToPurchaseTheMembershipplan;
 
 	@FindBy(xpath = "//button[contains(text(),'Ok')]")
 	WebElement okBtn;
+	
+	@FindBy(xpath = "//span[@id='inbox-id']")
+	WebElement boxId;
+	
+	@FindBy(xpath = "(//input[@type = 'text'])[2]")
+	WebElement emailName;
+	
+	@FindBy(xpath = "//button[normalize-space()='Set']")
+	WebElement setBtn;
+
+
+	
+	@FindBy(xpath = "(//tbody/tr/td[2])[1]")
+	WebElement emailVerify;
+	
+	@FindBy(xpath = "//table/tbody/tr/td/div/p[3]/strong")
+	WebElement passWord;
+	
+	@FindBy(xpath = "//input[@id='verify-code']")
+	WebElement verifyCodeField;
+	
+	@FindBy(xpath = "//button[normalize-space()='Ok']")
+	WebElement oK;
 
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 
-		return ExpectedConditions.visibilityOf(send);
+		return ExpectedConditions.visibilityOf(send1);
 	}
 
 	public ForgotPasswordPage clickOnForgotpassword() {
@@ -51,12 +84,116 @@ public class AccountVerificationCodePage extends BasePage {
 
 	}
 
-	public void clickOnSend() throws Exception {
-
+	public void clickOnSend() throws Exception{
+		
+	waitForElementToPresent(email);
+	click(email, "radio button");
 		click(send, "send");
 		Thread.sleep(3000);
 //		return(AccountVerificationCodePage) openPage(AccountVerificationCodePage.class);
 
+	}
+	public SelectnewMembershipPlan clickOnSend(String email) throws Exception {
+       // clickElementByJavaScript(send);
+		waitForElementToPresent(this.email);
+		click(this.email, "Email");
+		click(phone, "Phone");
+		click(this.email, "Email");
+		click(send, "send");
+		Thread.sleep(3000);
+		return(SelectnewMembershipPlan) openPage(SelectnewMembershipPlan.class);
+
+	}
+	
+	public LoginPage clickOnSendToNavigateHomepage(String emailName) throws Exception {
+
+		click(send, "send");
+		Thread.sleep(5000);
+		((JavascriptExecutor)driver).executeScript("window.open()");
+		Thread.sleep(2500);
+		ArrayList<String>wins = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(wins.get(1));
+		driver.get("https://www.guerrillamail.com/");
+		Thread.sleep(5000);
+		click(boxId,"BoxID");
+		Thread.sleep(5000);
+		type(this.emailName, emailName, "emailName");
+		Thread.sleep(5000);
+		click(setBtn,"set Button");
+		Thread.sleep(180000);
+		Actions ac = new Actions(driver);
+		ac.contextClick().build().perform();
+		Thread.sleep(5000);
+		Robot r = new Robot();
+		r.keyPress(KeyEvent.VK_DOWN);
+		Thread.sleep(5000);
+		r.keyPress(KeyEvent.VK_DOWN);
+		Thread.sleep(5000);
+		r.keyPress(KeyEvent.VK_ENTER);
+		Thread.sleep(8000);
+		click(emailVerify,"passwordVerify");
+		Thread.sleep(1500);
+		String password = passWord.getText();
+		Thread.sleep(2000);
+		ArrayList<String>wins1 = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(wins1.get(0));
+		Thread.sleep(2000);
+		verifyCodeField.sendKeys(password);
+		Thread.sleep(5000);
+		click(verifyBtn, "Click");
+		Thread.sleep(1500);
+		click(oK, "Ok Button");
+		Thread.sleep(3000);
+		return(LoginPage) openPage(LoginPage.class);
+
+	}
+	
+	public void clickOnSendTOloginPage(String emailName) throws Exception {
+
+		click(send, "send");
+		Thread.sleep(5000);
+		((JavascriptExecutor)driver).executeScript("window.open()");
+		Thread.sleep(2500);
+		ArrayList<String>wins = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(wins.get(1));
+		driver.get("https://www.guerrillamail.com/");
+		Thread.sleep(5000);
+		click(boxId,"BoxID");
+		Thread.sleep(5000);
+		type(this.emailName, emailName, "emailName");
+		Thread.sleep(5000);
+		click(setBtn,"set Button");
+		Thread.sleep(180000);
+		Actions ac = new Actions(driver);
+		ac.contextClick().build().perform();
+		Thread.sleep(5000);
+		Robot r = new Robot();
+		r.keyPress(KeyEvent.VK_DOWN);
+		Thread.sleep(5000);
+		r.keyPress(KeyEvent.VK_DOWN);
+		Thread.sleep(5000);
+		r.keyPress(KeyEvent.VK_ENTER);
+		Thread.sleep(8000);
+		click(emailVerify,"passwordVerify");
+		Thread.sleep(1500);
+		String password = passWord.getText();
+		Thread.sleep(2000);
+		ArrayList<String>wins1 = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(wins1.get(0));
+		Thread.sleep(2000);
+		verifyCodeField.sendKeys(password);
+		Thread.sleep(5000);
+		click(verifyBtn, "Click");
+		Thread.sleep(1500);
+		click(oK, "Ok Button");
+		Thread.sleep(8000);
+
+	}
+
+
+	private void waitForElementToPresent(String email2) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	public String getURL() throws Exception {
@@ -91,5 +228,46 @@ public class AccountVerificationCodePage extends BasePage {
 //		return (AccountVerificationCodePage) openPage(AccountVerificationCodePage.class);
 		
 	}
-
+	/*public LoginPage clickOnSendToNavigateHomepage(String emailName) throws Exception {
+		 
+        click(send, "send");
+        Thread.sleep(5000);
+        ((JavascriptExecutor)driver).executeScript("window.open()");
+        Thread.sleep(2500);
+        ArrayList<String>wins = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(wins.get(1));
+        driver.get("https://www.guerrillamail.com/");
+        Thread.sleep(5000);
+        click(boxId,"BoxID");
+        Thread.sleep(5000);
+        type(this.emailName, emailName, "emailName");
+        Thread.sleep(5000);
+        click(setBtn,"set Button");
+        Thread.sleep(180000);
+        Actions ac = new Actions(driver);
+        ac.contextClick().build().perform();
+        Thread.sleep(5000);
+        Robot r = new Robot();
+        r.keyPress(KeyEvent.VK_DOWN);
+        Thread.sleep(5000);
+        r.keyPress(KeyEvent.VK_DOWN);
+        Thread.sleep(5000);
+        r.keyPress(KeyEvent.VK_ENTER);
+        Thread.sleep(8000);
+        click(emailVerify,"passwordVerify");
+        Thread.sleep(1500);
+        String password = passWord.getText();
+        Thread.sleep(2000);
+        ArrayList<String>wins1 = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(wins1.get(0));
+        Thread.sleep(2000);
+        verifyCodeField.sendKeys(password);
+        Thread.sleep(5000);
+        click(verifyBtn, "Click");
+        Thread.sleep(1500);
+        click(oK, "Ok Button");
+        Thread.sleep(3000);
+        return(LoginPage) openPage(LoginPage.class);
+ 
+    }*/
 }

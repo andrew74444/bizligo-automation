@@ -8,6 +8,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import com.uiFramework.pamTen.cpcommunity.helper.calendar.DateManager;
 import com.uiFramework.pamTen.cpcommunity.helper.imagediffer.Imagediff;
+
+import junit.framework.Assert;
+
 import com.cpcommunity.utilities.DriverManager;
 
 public class PromoCodePage extends BasePage {
@@ -34,6 +37,12 @@ public class PromoCodePage extends BasePage {
 	WebElement promoCodeName;
 	@FindBy(xpath = "//div[@class='radio radio-primary']//input[@name='ExpiryBy']")
 	WebElement expiryFrom;
+	@FindBy(xpath = "//label[normalize-space()='Community']//input[@id='IsGlobal']")
+	WebElement communityBtn;
+	@FindBy(xpath = "//select[@name='Community']")
+	WebElement communityDropdown;
+	@FindBy(xpath = "//input[@id=\"CouponNameSearch\"]")
+	WebElement searchByPromo;
 
 	@FindBy(xpath = "//input[@id='ExpiryStartDate']")
 	WebElement openCalendar;
@@ -71,6 +80,19 @@ public class PromoCodePage extends BasePage {
 	WebElement membershipPlansBtn;
 	@FindBy(xpath = "//input[@placeholder='Select events or search...']")
 	WebElement selectEvent;
+	@FindBy(xpath = "//tbody/tr[5]/td[2]/a[1]")
+	WebElement editFirstCode;
+	@FindBy(xpath = "//button[@class='btn btn-danger'][normalize-space()='Cancel']")
+	WebElement cancelBtn;
+	@FindBy(xpath = "//button[@class=\"swal-button swal-button--Yes btn-success\"]")
+	WebElement yesProceed;
+	@FindBy(xpath = "//*[contains(text(),'There are no promo codes available')]")
+	WebElement searchNotFound;
+	@FindBy(xpath = "//td[@class='sorting_1']")
+	WebElement promoCodeSearchResult;
+	@FindBy(xpath = "//a[@title='Click to edit this promo code']")
+	WebElement editPromo;
+	
 
 	@FindBy(xpath = "//div[contains(@class,'col-md-2 col-xs-12 radio radio-primary m-pull-left')]//input[contains(@name,'MembershipTypes')]")
 	WebElement allMemberships;
@@ -154,6 +176,147 @@ public class PromoCodePage extends BasePage {
 		Thread.sleep(5000);
 		picture();
 	}
+	public void checkInvalidCommunity(String community) {
+		click(addNew,"New promo");
+		waitForElementToPresent(communityBtn);
+		click(communityBtn,"Community Button");
+		System.out.println(communityDropdown.getText());
+		if(communityDropdown.getText().contains(community)) {
+			System.out.println("Dropdown contains Inactive community");
+			Assert.assertTrue(false);
+		}else {System.out.println("Dropdown does not contain Inactive community");
+		Assert.assertTrue(true);
+		
+		}
+		}
+		
+		
+	public void communityDisabledWhenEdit() throws Exception{
+		Thread.sleep(2000);
+		click(editFirstCode,"Edit promo code");
+		Boolean x=communityDropdown.isEnabled();
+		System.out.println(x);
+		Assert.assertFalse(x);
+	}
+	public void cancelledPromoCode(String promoCode, String promoCodeExpiry, String discountByPercent,
+			String discountByValue, String discountByPercentageValue, String maxNumberofUses, String appliesToAd,
+			String appliesToMembership, String appliesToEvents, String allAds, String allEvents, String allMemberships,
+			String advertisementPlan, String event, String memberShipPlan) throws Exception {
+		click(addNew, "Add New button");
+		waitForElementToPresent(promoCodeName);
+		String y = getSystemCurrentYear();
+		
+		String date = getSystemCurrentDate();
+		String month = getSystemCurrentMonth();
+		//type(promoCodeName, promoCode + month + date + y, "promo Code");
+		type(promoCodeName, promoCode, "promo Code");
+		
+		if (promoCodeExpiry.equalsIgnoreCase("No Expiry")) {
+			click(noExpiry, "No Expiry");
+		} else {
+			click(openCalendar, "Calendar");
+			waitForElementToPresent(expiryStartDate);
+
+			String promoCodeExpiryDate = month + "/" + date + "/" + y;
+			type(expiryStartDate, promoCodeExpiryDate, promoCodeExpiryDate);
+			type(expiryEndDate, promoCodeExpiryDate, promoCodeExpiryDate);
+			click(applyButton, "applyButton");
+		}
+		int d = stringToInt(discountByPercentageValue);
+		if (d > 0) {
+			click(discountPercentBtn, "discount Percent ");
+			type(this.DiscountByPercentageValue, discountByPercentageValue, discountByPercentageValue);
+		} else {
+			click(DiscountAmountBtn, "discount value ");
+			type(this.discountByValue, discountByValue, discountByValue);
+		}
+		type(this.maxNumberofUses, maxNumberofUses, maxNumberofUses);
+		if (appliesToAd.equalsIgnoreCase("yes")) {
+			click(advertisementPlansBtn, "advertisement Plans");
+			if (allAds.equalsIgnoreCase("yes")) {
+				click(allAdvertisementsPlans, "All Advertisements Plans");
+			} else {
+				click(AdvertisementsPlansChooseBtn, "AdvertisementsPlansChooseBtn");
+				type(selectAdvertisementPlans, advertisementPlan, advertisementPlan);
+			}
+
+		}
+		if (appliesToMembership.equalsIgnoreCase("yes")) {
+			click(membershipPlansBtn, "membership Plans");
+			if (allMemberships.equalsIgnoreCase("yes")) {
+				click(this.allMemberships, "All Memberships Plans");
+			} else {
+				click(chooseMemberships, "choose Memberships");
+				type(selectMembership, memberShipPlan, memberShipPlan);
+			}
+		}
+		if (appliesToEvents.equalsIgnoreCase("yes")) {
+			click(eventsBtn, "events");
+			if (allEvents.equalsIgnoreCase("yes")) {
+				click(this.allEvents, "All Events");
+			} else {
+				click(chooseEventsBtn, "choose Events");
+				type(this.selectEvent, event, event);
+			}
+		}		
+		click(cancelBtn,"cancel");
+		click(yesProceed,"Yes Proceed");
+		//waitForElementToPresent(toastMessage);
+		Thread.sleep(5000);
+		type(searchByPromo, promoCode,"Cancelled promo code name");
+		click(btnSearch,"search");
+		if(searchNotFound.getText().equalsIgnoreCase("There are no promo codes available")) {
+			System.out.println("Cancelled promo codes are not saved");
+			Assert.assertTrue(true);
+		}
+		picture();
+		
+		
+	}
+	public void checkPCatCAdashboard(String promo) throws InterruptedException {
+		type(searchByPromo, promo,"Promo Code created by TA");
+		click(btnSearch,"search");
+		Thread.sleep(2000);
+		System.out.println(promoCodeSearchResult.getText());
+		if(promoCodeSearchResult.getText().equalsIgnoreCase(promo)) {
+			System.out.println("Promo code created By TA visible in respective community");
+			Assert.assertTrue(true);
+		}else {
+			System.out.println("Promocode not visible");
+			Assert.assertTrue(false);
+		}
+		
+		
+	}
+	public void checkPCcreatedByCAatTAdashboard(String promo) throws InterruptedException {
+		type(searchByPromo, promo,"Promo Code created by TA");
+		click(btnSearch,"search");
+		Thread.sleep(2000);
+		System.out.println(promoCodeSearchResult.getText());
+		if(promoCodeSearchResult.getText().equalsIgnoreCase(promo)) {
+			System.out.println("Promo code created By CA visible in TA page");
+			Assert.assertTrue(true);
+		}else {
+			System.out.println("Promocode not visible");
+			Assert.assertTrue(false);
+		}
+	}
+	public void caAbleToEditPromoByTA(String promo,String maxNumberofUses) throws InterruptedException {
+		type(searchByPromo, promo,"Promo Code created by TA");
+		click(btnSearch,"search");
+		Thread.sleep(2000);
+		click(editPromo,"Edit PromoCode");
+		type(this.maxNumberofUses, maxNumberofUses, maxNumberofUses);
+		click(save,"save");
+		waitForElementToPresent(toastMessage);
+		System.out.println(toastMessage.getText());
+		if(toastMessage.getText().equalsIgnoreCase("Promo code info saved.")) {
+			System.out.println("CA can edit Promocode created by TA");
+			Assert.assertTrue(true);
+		}else Assert.assertTrue(false);
+		picture();		
+	}
+	
 }
 
 // Promo code info saved.

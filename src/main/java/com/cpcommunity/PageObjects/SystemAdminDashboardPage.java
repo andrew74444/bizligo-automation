@@ -1,6 +1,7 @@
 package com.cpcommunity.PageObjects;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -139,6 +140,25 @@ public class SystemAdminDashboardPage extends BasePage {
 	@FindBy(xpath = "(//*[contains(text(),'Catego')])[1]")
 	WebElement categorie;
 	
+	@FindBy(xpath = "//a[normalize-space()='Features Configuration']")
+	WebElement featureConfiguration;
+	
+	@FindBy(xpath = "//label[contains(text(),'Allow new registrations with existing organization')]")
+	WebElement existingORG;
+	
+	@FindBy(xpath = "(//span[@class='toggle-handle btn btn-default btn-lg'])[3]")
+	WebElement toggleButtonDisabled;
+	
+	@FindBy(xpath = "(//button[@name = 'btnSave'])[3]")
+	WebElement saveBtn;
+	
+	@FindBy(xpath = "//a[normalize-space()='Tenant Admin']")
+	WebElement welcomeTA;
+	
+	@FindBy(xpath = "//a[normalize-space()='Logout']")
+	WebElement logOUT;
+	
+	
 		
 	        public BlogsBySystemAdmin navigateToSystemAdminBlogs() throws Exception
 		
@@ -175,4 +195,22 @@ public class SystemAdminDashboardPage extends BasePage {
 	                return (BlogsBySystemAdmin) openPage(BlogsBySystemAdmin.class);
 		
 	        }
+	        
+	        public HomePage notAllowExistingOrg() throws Throwable
+	    	{
+	    		click(featureConfiguration, "feature Configuration");
+	    		Thread.sleep(8000);
+	    		click(existingORG, "Existing Org");
+	    		Thread.sleep(8000);
+	    		click(toggleButtonDisabled, "ToggleButton");
+	    		Thread.sleep(10000);
+	    		click(saveBtn,"saveBtn");
+	    		Thread.sleep(8000);
+	    		Actions ac = new Actions(driver);
+	    		ac.moveToElement(welcomeTA).click().build().perform();
+	    		Thread.sleep(3000);
+	    		ac.moveToElement(logOUT).click().build().perform();
+	    		Thread.sleep(5000);
+	    		return (HomePage) openPage(HomePage.class);
+	    	}
 }

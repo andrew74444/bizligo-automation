@@ -35,7 +35,7 @@ public class TC1026_Verify_GroupCount_Displaying_onGroupdisplayCar extends BaseT
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("TC190 Test Completed");
+		logInfo("TC1026 Test Completed");
 		
 		quit();
 		

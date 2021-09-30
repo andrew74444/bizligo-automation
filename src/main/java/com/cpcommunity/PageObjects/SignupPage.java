@@ -6,6 +6,7 @@ import java.util.Hashtable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -40,7 +41,7 @@ public class SignupPage extends BasePage {
 	@FindBy(xpath = "//*[@id='Phone']")
 	WebElement phone;
 
-	@FindBy(xpath = "//*[@id='organizationName']")
+	@FindBy(xpath = "//input[@id='CompanyName']")
 	WebElement organizationName;
 
 	@FindBy(xpath = "(//*[@id='BusinessCategories']/..)//input")
@@ -173,4 +174,85 @@ public class SignupPage extends BasePage {
 
 	}
 
+	public AccountVerificationCodePage signupPage(String firstName, String lastName, String emailAddress,String password,
+            String confirmPassword,String organizationName,String website, String businessDescription,String phNo,String corporateAddress,String businessCategories)
+            throws Exception {
+		String date=getDateInDDMMMYYYY().replace(" ", "");
+		System.out.println(date);
+		organizationName = organizationName +date;
+		emailAddress = emailAddress+date+"@sharklasers.com";
+        type(this.firstName, firstName, "first Name");
+        type(this.lastName, lastName, "last Name");
+        type(this.emailAddress, emailAddress, "email Address");
+        type(this.password, password, "password");
+        type(this.confirmPassword, confirmPassword, "confirm Password");
+        type(this.phone, phNo, "phone No");
+        type(this.corporateAddress, corporateAddress, "corporate Address");
+        Actions ac = new Actions(driver);
+        ac.sendKeys(Keys.ARROW_DOWN).build().perform();
+        Thread.sleep(2500);
+        ac.sendKeys(Keys.ARROW_DOWN).build().perform();
+        Thread.sleep(2500);
+        ac.sendKeys(Keys.ARROW_DOWN).build().perform();
+        Thread.sleep(2500);
+        ac.sendKeys(Keys.ENTER).build().perform();
+        type(this.organizationName, organizationName, "organization Name");
+        type(this.website, website, "website");
+        type(this.businessDescription, businessDescription, "business Description");
+        click(noOfEmployees,"No Of Employees");
+        ac.sendKeys(Keys.ARROW_DOWN).build().perform();
+        Thread.sleep(2500);
+        ac.sendKeys(Keys.ARROW_DOWN).build().perform();
+        Thread.sleep(2500);
+        ac.sendKeys(Keys.ENTER).build().perform();
+        type(this.businessCategories,businessCategories,"Business Categories");
+        ac.sendKeys(Keys.ARROW_DOWN).build().perform();
+        Thread.sleep(2500);
+        ac.sendKeys(Keys.ARROW_DOWN).build().perform();
+        Thread.sleep(2500);
+        ac.sendKeys(Keys.ENTER).build().perform();
+        Thread.sleep(5000);
+        click(saveAndContinue, "Save And Continue");
+        return (AccountVerificationCodePage) openPage(AccountVerificationCodePage.class);
+
+    }
+	
+	public AccountVerificationCodePage signupExistingORG(String firstName, String lastName, String emailAddress,String password, 
+			String confirmPassword,String phNo, String organizationName)
+			throws Exception {
+		
+		type(this.firstName, firstName, "first Name");
+		type(this.lastName, lastName, "last Name");
+		type(this.emailAddress, emailAddress, "email Address");
+		type(this.password, password, "password");
+		type(this.confirmPassword, confirmPassword, "confirm Password");
+		type(this.phone, phNo, "phone No");
+		type(this.organizationName, organizationName, "organization Name");
+		Actions ac = new Actions(driver);
+		ac.sendKeys(Keys.ARROW_DOWN).build().perform();
+		Thread.sleep(3000);
+		ac.sendKeys(Keys.ENTER).build().perform();
+		Thread.sleep(5000);
+		click(saveAndContinue, "Save And Continue");
+		return (AccountVerificationCodePage) openPage(AccountVerificationCodePage.class);
+		
+	}
+	
+	public AccountVerificationCodePage signupPageWithoutORG(String firstName, String lastName, String emailAddress,String password, 
+			String confirmPassword,String phNo) throws Throwable
+	{
+		type(this.firstName, firstName, "first Name");
+		type(this.lastName, lastName, "last Name");
+		type(this.emailAddress, emailAddress, "email Address");
+		type(this.password, password, "password");
+		type(this.confirmPassword, confirmPassword, "confirm Password");
+		type(this.phone, phNo, "phone No");
+		Actions ac = new Actions(driver);
+		ac.sendKeys(Keys.ARROW_DOWN).build().perform();
+		Thread.sleep(3000);
+		ac.sendKeys(Keys.ENTER).build().perform();
+		Thread.sleep(5000);
+		click(saveAndContinue, "Save And Continue");
+		return (AccountVerificationCodePage) openPage(AccountVerificationCodePage.class);
+	}
 }

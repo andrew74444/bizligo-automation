@@ -26,18 +26,23 @@ public class TotalRevenueReport extends BasePage{
 	WebElement pageTitle;
 	@FindBy(xpath = "//div[@class='col-sm-6 col-md-6']")
 	WebElement adRevenue;
+
     @FindBy(xpath = "(((//*[@class='col-md-3 left_col']//img[@src='/Content/Images/adprommenu.png'])/..)/..)")
 		WebElement advertisements;
 	    @FindBy(xpath = "//img[@src='/Content/Images/setting-icon.png']/../..")
 		WebElement manage;
 	    @FindBy(xpath = "//a[contains(text(),'Manage Plans')]")
 		WebElement managePlans;
+
+	
+
 	
 	public void checkTotalRevenuebasedOnTimePeriod() throws InterruptedException {
 		
 		Thread.sleep(5000);
 		String amt=adRevenue.getText();
 		System.out.println(amt);
+
 		Thread.sleep(2000);
 	 	
 	}
@@ -55,6 +60,16 @@ public class TotalRevenueReport extends BasePage{
 	 public void clickOnAdvertisments() {
 	 		click(advertisements, "advertisements");
 	 	}
+
+		
+	 	
+	}
+	
+	
+	
+	
+	
+
 	
 	
 }

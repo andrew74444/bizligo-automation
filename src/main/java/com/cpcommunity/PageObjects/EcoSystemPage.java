@@ -15,7 +15,7 @@ public class EcoSystemPage extends BasePage {
 	@FindBy(xpath = "//a[normalize-space()='My Ecosystem']")
 	WebElement myEcosystem;
 
-	@FindBy(xpath = "//*[@class='dropdown-menu']//*[contains(text(),'My Ecosystem')] | //*[@class='dropdown-menu gretdrpmenu']//*[contains(text(),'My Ecosystem')]")
+	@FindBy(xpath = "//a[normalize-space()='My Ecosystem']")
 	WebElement myEcosystemInMenu;
 	
 	@FindBy(xpath = "//a[contains(.,'Dashboard')]")
@@ -24,7 +24,7 @@ public class EcoSystemPage extends BasePage {
 	@FindBy(xpath = "//*[@id='global-nav']")
 	WebElement pageheader;
 
-	@FindBy(xpath = "(//*[contains(text(),'Global Communities')])[2]")
+	@FindBy(xpath = "//a[normalize-space()='Global Communities']")
 	WebElement globalCommunities;
 
 	@FindBy(xpath = "//span[@title='Toggle dropdown menu']")
@@ -91,8 +91,17 @@ public class EcoSystemPage extends BasePage {
 	
 	@FindBy(xpath = "//*[contains(text(),'My Matches')]")
 	WebElement myMatches;
+
 	@FindBy(xpath = "//a[contains(text(),'Home')]")
 	WebElement Home;
+
+	@FindBy(xpath = "//h2[normalize-space()='MY ECOSYSTEM']")
+	WebElement Home;
+	@FindBy(xpath="//a[@class=\"btn btn-default top-btn1 btn-sm dropdown-toggle\"]")
+	WebElement toggleDropDown;
+	@FindBy(xpath="//a[normalize-space()='My Events']")
+	WebElement myEvents;
+
 	
 	
 	
@@ -147,6 +156,7 @@ public class EcoSystemPage extends BasePage {
 	}
 	public CommunityDashboardPage gotoManageCommunity(String communityName) throws Exception {
 
+
 		//this.searchCommunity(communityName+getDateInDDMMMYYYY());
 		//this.searchCommunity(communityName);
 		click(MANAGEbtn, "Manage");
@@ -156,13 +166,34 @@ public class EcoSystemPage extends BasePage {
 	public CommunityDashboardPage navigateToManageCommunityPage() throws Exception {
 
 		click(MANAGEbtn, "Manage");
+
+
+		//this.searchCommunity(communityName+getDateInDDMMMYYYY());
+		//this.searchCommunity(communityName);
+		click(MANAGEbtn, "Manage");
+		Thread.sleep(5000);
+		return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
+		// new CommunityDashboardPage(driver, );
+	}
+	public CommunityDashboardPage navigateToManageCommunityPage() throws Exception {
+
+		click(MANAGEbtn, "Manage");
+		Thread.sleep(5000);
+
 		return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
 		
 	}
 
+
 	public MyJobsPage navigateToMyJobsPage() {
 		scrollIntoView(myJobs);
 		myJobs.click();		
+
+	public MyJobsPage navigateToMyJobsPage() throws InterruptedException {
+		scrollIntoView(myJobs);
+		myJobs.click();		
+		Thread.sleep(3000);
+
 		return (MyJobsPage) openPage(MyJobsPage.class);
 	}
 	public MyEcosystemPage gotoMyEcosystemPage() throws Exception {
@@ -173,6 +204,17 @@ public class EcoSystemPage extends BasePage {
 		click(myEcosystem,"myEcosystem");
 		return (MyEcosystemPage) openPage(MyEcosystemPage.class);
 	}	
+
+
+	/*public MyEventsPage gotoMyEventsPage() throws Exception {
+		waitForElementToPresent(Toggledropdownmenu);
+		click(Toggledropdownmenu,"Toggledropdownmenu");
+		Thread.sleep(1000);
+		waitForElementToPresent(myEvents);
+		click(myEvents,"myEvents");
+		return (MyEventsPage) openPage(MyEventsPage.class);
+	}*/	
+
 	public void myMatches(String actual) throws Throwable
 		
 	        {
@@ -277,7 +319,7 @@ public class EcoSystemPage extends BasePage {
 	//
 
 	public MyProfilePage goToMyProfilePage() throws Exception {
-
+        Thread.sleep(8000);
 		click(Toggledropdownmenu,"Toggledropdownmenu");
 		Thread.sleep(1000);
 		click(myProfile,"myProfile");
@@ -307,6 +349,15 @@ public class EcoSystemPage extends BasePage {
 	public UpcomingEventsPage goToUpComingEvents() {
 
 		this.eventsMenu();
+		waitForElementToPresent(upcomingEvents);
+		click(upcomingEvents, "Upcoming Events");
+		return (UpcomingEventsPage) openPage(UpcomingEventsPage.class);
+		// new UpcomingEventsPage(driver, );
+	}
+	
+	public UpcomingEventsPage navigateToUpComingEvents() throws InterruptedException {
+		clickElementByJavaScript(globalEvents);
+		Thread.sleep(2000);
 		waitForElementToPresent(upcomingEvents);
 		click(upcomingEvents, "Upcoming Events");
 		return (UpcomingEventsPage) openPage(UpcomingEventsPage.class);
@@ -372,5 +423,18 @@ public class EcoSystemPage extends BasePage {
 	// }
 	//
 	// return (ZohoCRMPage) openPage(ZohoCRMPage.class);
-
+	public EndorsementPage NaviagtingToMyEndorsements()
+	 {
+	
+	 myEndorsements.click();
+	 return (EndorsementPage) openPage(EndorsementPage.class);
+	 }
+	
+ /*   public  MyEventsPage goToMyEventsPage() {
+		
+		click(toggleDropDown,"Toggle Drop Down Menu");
+		click(myEvents,"My events");
+		return (MyEventsPage) openPage(MyEventsPage.class);
+	}
+*/
 }

@@ -29,10 +29,10 @@ public class TC900_Verify_loginpage_validcredentials extends BaseTest{
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
 		logInfo("Username entered as "+data.get("email")+" and Password entered as "+data.get("password"));
-		MyCommunitiesPage mCP=login.loginToApplicationMcp(data.get("email"), data.get("password"));
+		//MyCommunitiesPage mCP=login.loginToApplicationMcp(data.get("email"), data.get("password"));
 		
 //		MyCommunitiesPage mCP= ecosys.goToMyCommunities();
-		mCP.logout();
+		//mCP.logout();
 				
 		//Assert.fail("Failing the login test");
 	}

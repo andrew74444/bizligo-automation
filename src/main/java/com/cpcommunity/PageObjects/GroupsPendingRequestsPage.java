@@ -21,6 +21,10 @@ public class GroupsPendingRequestsPage extends BasePage{
 
 	}
 	
+
+
+	
+
 	@FindBy(xpath="//input[@placeholder='Search by Group Name']")
 	WebElement searchGroupName;
 	@FindBy(xpath="//td[@class='sorting_1']")

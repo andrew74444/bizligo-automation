@@ -1,4 +1,4 @@
-package com.cpcommunity.testScripts.Endorsments;
+package com.cpcommunity.Endorsments;
 
 import java.util.Hashtable;
 
@@ -20,7 +20,7 @@ import com.cpcommunity.utilities.ExcelReader;
 public class TC1042_Verify_EndorsmentCount_IsDisplaying_for_PendingEndorsment extends BaseTest{
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1042(Hashtable<String,String> data) throws Exception {
- 
+ //
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC1042", data.get("Runmode"), excel);
 		log.info("Inside Login Test");			
