@@ -1,3 +1,4 @@
+   
 package com.cpcommunity.PageObjects;
 
 import java.awt.AWTException;
@@ -16,7 +17,7 @@ public class AuthorizeGateway extends BasePage {
 
 	@FindBy(xpath = "//input[@id='cardNum']")
 	WebElement cardNum;
-
+//
 	@FindBy(xpath = "//input[@id='expiryDate']")
 	WebElement ExpiryDate;
 

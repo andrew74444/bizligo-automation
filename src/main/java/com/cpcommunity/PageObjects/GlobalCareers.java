@@ -19,6 +19,8 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
 
+import junit.framework.Assert;
+
 
 
 /**
@@ -51,6 +53,12 @@ public class GlobalCareers extends BasePage {
 	
 	@FindBy(xpath = "//div[@id='careersController']//div[2]//div[1]//div[1]//div[2]//div[1]//a[1]")
 	WebElement ViewandApplyQA3;
+
+	@FindBy(xpath = "//button[@class='apply-success']")
+	WebElement ApplyAlready;
+	
+	@FindBy(xpath = "//button[normalize-space()='Already Applied']")
+	WebElement Applysuccess;
 
 	@FindBy(xpath = "//*[contains(text(),'Job Requirement Details')]")
 	WebElement JobRequirementDetails;
@@ -213,6 +221,16 @@ public class GlobalCareers extends BasePage {
 		waitForElementToPresent(ele);
 		picture();
 	}
+
+    
+	public void ApplyJobs() {
+		scrollIntoView(ApplyAlready);
+		waitForElementToPresent(ApplyAlready);
+		click(ApplyAlready, "Apply Already");
+		waitForElementToPresent(Applysuccess);
+		if(Applysuccess.isDisplayed()) {
+			Assert.assertTrue(true);
+
 public void JobNotDisplayed(String Title1) throws InterruptedException {
 		
 		waitForElementToPresent(searchByJobTitle);
@@ -237,10 +255,15 @@ public void JobDisplayed(String Title1) {
 			System.out.println(searchResult);
 			Assert.assertTrue(true);
 			
+
 		}
 		else {
 			Assert.assertTrue(false);
 		}
+
+		
+	}
+
 	}
 public void CheckAdditionaltitleAndRemarkNotDisplaying(String Title1) throws InterruptedException {
 	waitForElementToPresent(searchByJobTitle);
@@ -291,6 +314,7 @@ public void CheckAdditionaltitleAndRemarkNotDisplaying(String Title1) throws Int
 		//System.out.println(SuccessPopup.getText());
 		}
 	
+
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 		// TODO Auto-generated method stub

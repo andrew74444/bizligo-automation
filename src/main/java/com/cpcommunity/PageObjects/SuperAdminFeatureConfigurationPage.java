@@ -1,3 +1,4 @@
+
 package com.cpcommunity.PageObjects;
 
 import static org.testng.Assert.assertEquals;
@@ -51,7 +52,7 @@ public class SuperAdminFeatureConfigurationPage extends BasePage {
 		
 		WebElement saveButton = driver.findElement(By.xpath("//label[contains(text(),'"+feature+"')]/../../../../..//*[@id='btnSave']"));
 		this.save(saveButton);
-		
+		Thread.sleep(3000);
 	}
 
 	public void enableFeature(String feature) throws Exception {
@@ -62,8 +63,14 @@ public class SuperAdminFeatureConfigurationPage extends BasePage {
 		WebElement toggleButton = driver.findElement(By.xpath("//label[contains(text(),'"+feature+"')]/../../../../..//*[contains(text(),'Disabled')]"));
 		click(toggleButton, "enabling the feature");
 		Thread.sleep(2000);
-		WebElement saveButton = driver.findElement(By.xpath("//label[contains(text(),'"+feature+"')]/../../../../..//*[@id='btnSave']"));
+		WebElement saveButton = driver.findElement(By.xpath("//div[@id='"+feature+"']//div[@class='panel-body']//div[@class='row']//div[@class='col-md-12 col-sm-12 col-xs-12']//div[@class='col-md-3']//div//button[@id='btnSave']"));
 		this.save(saveButton);
+	}
+	public void clickfeature(String feature) throws InterruptedException {
+		Thread.sleep(3000);
+		WebElement element = driver.findElement(By.xpath("//label[contains(text(),'"+feature+"')]")); 
+		
+		click(element, "feature");
 	}
 
 	public void save(WebElement saveButton)

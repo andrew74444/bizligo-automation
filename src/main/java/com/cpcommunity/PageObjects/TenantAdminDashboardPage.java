@@ -1,3 +1,7 @@
+
+
+
+
 package com.cpcommunity.PageObjects;
 
 import java.util.List;
@@ -18,16 +22,29 @@ public class TenantAdminDashboardPage extends BasePage{
 		return ExpectedConditions.visibilityOf(PageTitle);
 	}
 
+//
+
+
+
 	@Override
 	protected void getPageScreenSot() {
 		// TODO Auto-generated method stub
 		updateClass(pageheader, "");
+
+		aShot();
+
 		aShot();//
+
 	}
 	@FindBy(xpath = "//div[@class='nav_menu']")
 	WebElement pageheader;
 	@FindBy(xpath = "//h3[normalize-space()='Tenant Admin Dashboard']")
 	WebElement PageTitle;
+
+	@FindBy(xpath="//a[normalize-space()='Membership Plans']")
+	WebElement membershipplan;
+
+
 	@FindBy(xpath="//a[normalize-space()='Import Contacts']")
 	WebElement ImportContacts;
 	@FindBy(xpath="//a[normalize-space()='Manage Campaign']")
@@ -70,6 +87,44 @@ public class TenantAdminDashboardPage extends BasePage{
 	WebElement managePlans;
     @FindBy(xpath = "//*[contains(text(),'Manage Member Advertisements')]")
 	WebElement manageMemberAdvertisements;
+
+    @FindBy(xpath = "(//*[contains(text(),'Blogs')])[1]")
+	WebElement blogs;
+	@FindBy(xpath = "(//*[contains(text(),'Categories')])[1]")
+	WebElement categories;
+	@FindBy(xpath = "(//*[contains(text(),'Tags')])[1]")
+	WebElement tags;
+	@FindBy(xpath = "//a[@title='Manage Organizations/Companies']")
+	WebElement organisations;
+	@FindBy(xpath = "//a[@class='display-none'][normalize-space()='Communities']")
+	WebElement communities;
+	@FindBy(xpath = "//a[normalize-space()='Manage Communities']")
+	WebElement Managecommunities;
+	@FindBy(xpath = "//*[contains(text(),'building communities')]")
+	WebElement buildingcommunities;
+	@FindBy(xpath = "//a[@title='Payment Gateways']")
+	WebElement paymentGateways;
+	@FindBy(xpath = "//a[normalize-space()='Dashboard Reports']")
+	WebElement dashboardreport;
+	@FindBy(xpath = "//a[normalize-space()='Revenue Reports']")
+	WebElement revenuereport;
+	@FindBy(xpath = "//body/div[@class='container body']/div[@class='main_container']/div[@class='col-md-3 left_col']/div[@class='left_col scroll-view']/div[@id='sidebar-menu']/div[@class='menu_section']/ul[@class='nav side-menu']/li[8]/a[1]")
+	WebElement setting;
+    @FindBy(xpath = "//a[normalize-space()='Donations']")
+    WebElement Donations;
+    @FindBy(xpath = "//a[normalize-space()='Manage Menu']")
+    WebElement managemenu;
+	@FindBy(xpath = "//div[@id='sidebar-menu']")
+	WebElement sideBarMenu;
+	@FindBy(xpath = "//a[normalize-space()='Payment Gateways']")
+	WebElement paymentGateway;
+	@FindBy(xpath = "//a[normalize-space()='Website Inquiries']")
+	WebElement websiteEnquiries;
+	@FindBy(xpath = "//a[normalize-space()='Website Inquiries']")
+	List<WebElement> websiteEnquiry;
+	@FindBy(xpath = "//*[@id='sidebar-menu']/div/ul/li[5]/a[1]")
+	WebElement CommunitiesNavSideMenu;
+
     @FindBy(xpath = "//a[normalize-space()='Donations']")
 	WebElement Donations;
     @FindBy(xpath = "//div[@id='sidebar-menu']")
@@ -83,6 +138,7 @@ public class TenantAdminDashboardPage extends BasePage{
     @FindBy(xpath = "//*[@id='sidebar-menu']/div/ul/li[5]/a[1]")
 	WebElement CommunitiesNavSideMenu;
  
+
 	@FindBy(xpath = "//a[normalize-space()='Manage Communities']")
 	WebElement manageCommunity;
 	@FindBy(xpath = "//a[normalize-space()='Manage Communities']")
@@ -95,6 +151,20 @@ public class TenantAdminDashboardPage extends BasePage{
 	WebElement LOYALTY;
 	@FindBy(xpath = "//a[@href='/eventmanager/home/loyaltymembership']")
 	WebElement loyaltyMembership;
+
+	@FindBy(xpath = "//a[normalize-space()='Home']")
+	WebElement home;
+	@FindBy(xpath = "//div[@class='bx-wrapper']")
+	WebElement ad;
+	@FindBy(xpath = "//a[normalize-space()='Features Configuration']")
+	WebElement featureConfiguration;
+	@FindBy(xpath = "//li[15]//ul[@class='nav child_menu']")
+	WebElement campList;
+	
+	
+
+	/*
+
 	@FindBy(xpath = "//a[normalize-space()='Promo Codes']")
 	WebElement promocodes;
 	@FindBy(xpath = "(//*[contains(text(),'Blogs')])[1]")
@@ -112,6 +182,7 @@ public class TenantAdminDashboardPage extends BasePage{
 	//
 
 	
+
 	public LoyaltyPage navigateToLoyaltyPage() {
 		scrollDownVertically();
 		scrollToElement(loyalty);
@@ -121,6 +192,19 @@ public class TenantAdminDashboardPage extends BasePage{
 		return (LoyaltyPage) openPage(LoyaltyPage.class);
 		// new ManageJobs(driver);
 	}
+
+*/
+
+   
+	public ManageCommunitiesPage navigatetomanageCommunities() throws Exception {
+        waitForElementToPresent(communities);
+		click(communities, "Members");
+		Thread.sleep(2000);
+		click(Managecommunities, "Manage Members");
+		return (ManageCommunitiesPage) openPage(ManageCommunitiesPage.class);
+		// new ManageCommunityMembersPage(driver);
+	}
+
 	public PromoCodePage navigateToPromocodePage() {
 		scrollDownVertically();
 		scrollToElement(promocodes);
@@ -133,6 +217,7 @@ public class TenantAdminDashboardPage extends BasePage{
 
 	
  
+
     
 	 public ManageApplications navigateToManageApplication() {
 			scrollDownVertically();
@@ -153,16 +238,26 @@ public class TenantAdminDashboardPage extends BasePage{
 			// new ManageJobs(driver);
 		}
 public ComposeCampaign navigateToComposeCampaignPage() throws Exception {
+
+	Thread.sleep(4000);
+	scrollDownVertically();
+	scrollToElement(manageCampaign);
+	click(manageCampaign, "manageCampaign");
+	Thread.sleep(1000);
+
 	scrollDownVertically();
 	scrollToElement(manageCampaign);
 	click(manageCampaign, "manageCampaign");
 	Thread.sleep(500);
+
 	waitForElementToPresent(composeCampaign);
 	this.composeCampaign.click();	
 	//click(composeCampaign, "composeCampaign");
 	return (ComposeCampaign) openPage(ComposeCampaign.class);
 	
 }
+
+
 public ManageDonationsPage NavigatetoManageDonationsPage() {
 	
 	waitForElementToPresent(Donations);
@@ -171,11 +266,16 @@ public ManageDonationsPage NavigatetoManageDonationsPage() {
 	// new ManageJobs(driver);
 }
 
+
 public ImportContactsPage navigateToImportContactsPagePage() throws Exception {
 	scrollDownVertically();
 	scrollToElement(manageCampaign);
 	click(manageCampaign, "manageCampaign");
+
+	Thread.sleep(1000);
+
 	Thread.sleep(500);
+
 	waitForElementToPresent(ImportContacts);
 	this.ImportContacts.click();	
 	//click(composeCampaign, "composeCampaign");
@@ -186,7 +286,11 @@ public CampaignTemplatePage navigateToCampaignTemplate() throws Exception {
 	scrollDownVertically();
 	scrollToElement(manageCampaign);
 	click(manageCampaign, "manageCampaign");
+
+	Thread.sleep(1000);
+
 	Thread.sleep(500);
+
 	waitForElementToPresent(campaignTemplate);
 	this.campaignTemplate.click();	
 	//click(composeCampaign, "composeCampaign");
@@ -200,13 +304,36 @@ public ManageResourcesPage navigateToManageResourcesPage() throws Exception {
 	return (ManageResourcesPage) openPage(ManageResourcesPage.class);
 	
 }
+
+
+   public ManageMembershipPlan navigateToMembershipPlansPage() throws Exception {
+	waitForElementToPresent(membershipplan);
+	click(membershipplan, "membership plan");
+	return (ManageMembershipPlan) openPage(ManageMembershipPlan.class);
+	
+}
+public HomePage goToHomePage() throws InterruptedException {
+
 public HomePage goToHomePage() {
+
 	 
 	click(bizligoBtn,"Bizligo button");
 	
 	return (HomePage) openPage(HomePage.class);
 
 }
+
+public void goHomePage() throws InterruptedException {
+	 
+	click(bizligoBtn,"Bizligo button");
+	Thread.sleep(5000);
+	scrollToElement(buildingcommunities);
+	takeScreenshotByShutterBug(ad, "HomePageAd");
+	
+
+}
+
+
    public int TotalJobs() throws Exception {
 	//boolean varExists = false;
 	    scrollIntoView(totakJobs);
@@ -265,6 +392,73 @@ public HomePage goToHomePage() {
  		return (ManageMemberAdvertisementsPage) openPage(ManageMemberAdvertisementsPage.class);
  		// new CommunityPendingRequestsPage(driver);
  	}
+
+     public CategoriesPage gotoCategories() {
+ 		click(blogs, "Categories");
+ 		waitForElementToPresent(categories);
+ 		click(categories, "Categories");
+
+ 		return (CategoriesPage) openPage(CategoriesPage.class);
+ 	}
+     public OrganizationsPage goToOrganizationsPage() {
+ 		click(organisations, "Organizations");
+ 		return (OrganizationsPage) openPage(OrganizationsPage.class);
+ 	}
+     
+     public FeaturesConfigurations goToFeaturesConfigurationsPage() {
+    	 scrollToElement(featureConfiguration);
+  		click(featureConfiguration, "Feature Configuration");
+  		return (FeaturesConfigurations) openPage(FeaturesConfigurations.class);
+  	}
+     
+     public PaymentGatewaysPage navigateToPaymentGateways() {
+ 		click(paymentGateways, "payment Gateways");
+ 		return (PaymentGatewaysPage) openPage(PaymentGatewaysPage.class);
+ 		// new PaymentGatewaysPage(driver);
+ 	}
+     
+     public RevenueReportPage goToRevenueReport() {
+			//waitForElementToPresent(dashboardreport);
+			click(dashboardreport, "Dashboard Reports");
+			waitForElementToPresent(revenuereport);
+			click(revenuereport, "Revenue Report");
+			return (RevenueReportPage) openPage(RevenueReportPage.class);	
+		}
+     public HomePage goToBizligoHomePage() throws InterruptedException {
+    	 
+    		click(bizligoBtn,"Bizligo button");
+    		Thread.sleep(3000);
+    		//clickElementByJavaScript(home);
+    		//click(home, "home");
+    		Thread.sleep(1000);
+    		return (HomePage) openPage(HomePage.class);
+
+    	}
+     
+     public ManageMenuPage goToManageMenu() {
+			waitForElementToPresent(setting);
+			click(setting, "setting");
+			waitForElementToPresent(managemenu);
+			click(managemenu, "managemenu");
+			return (ManageMenuPage) openPage(ManageMenuPage.class);	
+		}
+     
+     public void checkImportContactnotDisplay() throws Exception {
+ 		
+ 		Thread.sleep(5000);
+ 		scrollToElement(manageCampaign);
+ 		click(manageCampaign, "manageCampaign");
+ 		Thread.sleep(1000);
+ 		Object list=campList.getText();
+ 		System.out.println(list);
+ 		Object name="Import Contact";
+ 		//Assert.assertNotSame(list, name);
+ 		Assert.assertNotSame(list, name);
+ 		//click(composeCampaign, "composeCampaign");
+ 		Thread.sleep(4000);	
+ 	}
+}
+
      public void checkDonationsWhenDisabled() {
  		System.out.println(sideBarMenu.getText());
  		if(sideBarMenu.getText().contains("Donations")) {
@@ -345,6 +539,7 @@ public HomePage goToHomePage() {
  			}
  		
  	}
+
 
 
 
