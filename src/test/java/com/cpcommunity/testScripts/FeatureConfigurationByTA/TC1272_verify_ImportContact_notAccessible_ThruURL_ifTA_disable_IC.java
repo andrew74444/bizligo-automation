@@ -43,8 +43,7 @@ public class TC1272_verify_ImportContact_notAccessible_ThruURL_ifTA_disable_IC  
 	MyCommunitiesPage myCommunity = login1.loginToMyCommunitiesPage(data.get("email1"), data.get("password1"));
 	CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
     communityDashboard.checkImportContactnotDisplay();
-    HomePage HP1=communityDashboard.logout();
-    quit();
+   quit();
    
     openBrowser(data.get("browser"));
 	logInfo("Launched Browser : "+ data.get("browser"));		

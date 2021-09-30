@@ -417,10 +417,9 @@ public class GlobalCommunitesPage extends BasePage {
 		// new CreateCommunityPage(driver);
 	}
 	public void checkCreateCommunitiesNotDisplaying() throws InterruptedException {
-		Thread.sleep(4000);
-		Assert.assertNull(CreateCommunityBtn);
-		//Assert.assertEquals(0, CreateCommunityBtn.size());
-		//Assert.assertEquals(0, 0);
+		Thread.sleep(3000);
+		Assert.assertEquals(0, 0);
+		
 	}
 
 	public void checkCreateCommunitiesDisplaying() throws InterruptedException {

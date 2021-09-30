@@ -29,7 +29,8 @@ public class superAdminDashboardPage extends BasePage {
 	@FindBy(xpath="(//i[@class='fa fa-gear'])[3]")
 	WebElement featuresConfiguration;
 	//
-	public SuperAdminFeatureConfigurationPage goToFeatureConfigurationsPage() {
+	public SuperAdminFeatureConfigurationPage goToFeatureConfigurationsPage() throws InterruptedException {
+		Thread.sleep(3000);
 		click(configuration, "configuration");
 		waitForElementToPresent(featuresConfiguration);
 		click(featuresConfiguration, "features Configuration");

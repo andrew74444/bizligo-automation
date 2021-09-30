@@ -180,6 +180,7 @@ public void EnableImportContact() throws InterruptedException {
 		Thread.sleep(2000);
 		WebElement saveButton = driver.findElement(By.xpath("//label[contains(text(),'"+feature+"')]/../../../../..//*[@id='btnSave']"));
 		this.save(saveButton);
+		Thread.sleep(4000);
 	}
 	public void clickfeature(String feature) throws InterruptedException {
 		Thread.sleep(3000);

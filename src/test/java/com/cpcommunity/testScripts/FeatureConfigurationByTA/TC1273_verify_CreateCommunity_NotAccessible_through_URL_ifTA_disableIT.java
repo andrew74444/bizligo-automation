@@ -32,7 +32,7 @@ public class TC1273_verify_CreateCommunity_NotAccessible_through_URL_ifTA_disabl
 	LoginPage login = home.clickOnLOGINBtn();
 	TenantAdminDashboardPage tadashoboard=login.loginToTADashboard(data.get("email"), data.get("password"));
     FeaturesConfigurations FC= tadashoboard.goToFeaturesConfigurationsPage();
-    FC.DisableCreateCommunity();
+    FC.disablefeature(data.get("feature"));
     quit();
     
     openBrowser(data.get("browser1"));
@@ -52,7 +52,7 @@ public class TC1273_verify_CreateCommunity_NotAccessible_through_URL_ifTA_disabl
 	LoginPage login2 = home2.clickOnLOGINBtn();
 	TenantAdminDashboardPage tadashoboard2=login2.loginToTADashboard(data.get("email"), data.get("password"));
     FeaturesConfigurations FC2= tadashoboard2.goToFeaturesConfigurationsPage();
-    FC2.EableCreateCommunity();
+    FC2.enableFeature(data.get("feature"));
 	}
 	@AfterMethod
 	public void tearDown() {

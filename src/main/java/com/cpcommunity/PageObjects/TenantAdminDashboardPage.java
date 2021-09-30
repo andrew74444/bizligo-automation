@@ -306,7 +306,8 @@ public void goHomePage() throws InterruptedException {
  		return (OrganizationsPage) openPage(OrganizationsPage.class);
  	}
      
-     public FeaturesConfigurations goToFeaturesConfigurationsPage() {
+     public FeaturesConfigurations goToFeaturesConfigurationsPage() throws InterruptedException {
+    	 Thread.sleep(2000);
     	 scrollToElement(featureConfiguration);
   		click(featureConfiguration, "Feature Configuration");
   		return (FeaturesConfigurations) openPage(FeaturesConfigurations.class);

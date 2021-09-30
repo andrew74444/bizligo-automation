@@ -2,6 +2,7 @@ package com.cpcommunity.testScripts.FeatureConfigurationByTA;
 
 import java.util.Hashtable;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.AdminHomePage;
@@ -29,12 +30,17 @@ public class TC1270_verify_SuperAdmin_canAbleto_EnableDisable_ImportContact exte
 	superAdminDashboardPage SADP=login.superAdminloginToApplication(data.get("email"), data.get("password"));
 	SuperAdminFeatureConfigurationPage SAFC=SADP.goToFeatureConfigurationsPage();
 	SAFC.disablefeature(data.get("feature"));
-	SAFC.clickfeature(data.get("feature"));
-	SAFC.enableFeature(data.get("feature"));
+	//SAFC.clickfeature(data.get("feature"));
+	SAFC.enablefeature(data.get("feature"));
 	
-	
-	
-	
-	
+
+	}
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("TC1270 Test Completed");
+		
+		quit();
+		
 	}
 }
