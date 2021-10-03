@@ -1039,7 +1039,21 @@ public MyGroupsPage navigateToMyGroupsPage() {
 			return (RemindersPage) openPage(RemindersPage.class);
 //			new MyProfilePage(driver, );
 		}
+	 public void cancelConnectionRequest() throws InterruptedException {
+		 Thread.sleep(6000);
+		 click(requests,"Requests");
+		 waitForElementToPresent(reject);
+		 click(reject,"Reject");
+		 Thread.sleep(3000);
+		 
+	 }
 		
+	    @FindBy(xpath = "//a[normalize-space()='Requests']")
+		WebElement requests;
+	    @FindBy(xpath = "//button[normalize-space()='Reject']")
+		WebElement reject;
+
+
 
 
 // public void Groups(ExtentTest logger) throws InterruptedException
