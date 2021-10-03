@@ -2,6 +2,7 @@ package com.cpcommunity.testScripts.MyEvents;
 
 import java.util.Hashtable;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.EcoSystemPage;
@@ -34,5 +35,12 @@ public class TC2124_Verify_Member_Register_paid_event_and_event_dispalyed_in_MyE
 		MEP.registeredEventPresentInMyevents(data.get("UpcomingPaidEvent"));
 		
 	}
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("TC2124 Test Completed");
+		
+		quit();
+}
 
 }

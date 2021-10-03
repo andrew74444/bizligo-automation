@@ -2,6 +2,7 @@ package com.cpcommunity.testScripts.MyEvents;
 
 import java.util.Hashtable;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.EcoSystemPage;
@@ -31,5 +32,12 @@ public class TC2121_Verify_Search_by_date_working_in_MyEvents extends BaseTest{
 		MyEventsPage MEP= EcoSystemPage.goToMyEventsPage();
 		MEP.searchByEventDate(data.get("Start Date"),data.get("End Date"),data.get("UpcomingEvent"));
 	}
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("TC2121 Test Completed");
+		
+		quit();
+}
 
 }

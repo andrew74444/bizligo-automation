@@ -2,6 +2,7 @@ package com.cpcommunity.testScripts.MyEvents;
 
 import java.util.Hashtable;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.EcoSystemPage;
@@ -41,6 +42,13 @@ public class TC2123_Verify_Events_registered_from_other_members_displaying_in_My
 	
 	
 	}
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("TC2123 Test Completed");
+		
+		quit();
+}
 		
 		
 
