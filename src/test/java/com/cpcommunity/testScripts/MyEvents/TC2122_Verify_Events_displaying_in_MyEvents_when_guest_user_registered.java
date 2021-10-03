@@ -2,6 +2,7 @@ package com.cpcommunity.testScripts.MyEvents;
 
 import java.util.Hashtable;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.EcoSystemPage;
@@ -36,5 +37,12 @@ public class TC2122_Verify_Events_displaying_in_MyEvents_when_guest_user_registe
 	MEP.registeredEventPresentInMyevents(data.get("UpcomingEvent"));
 	
 
+}
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("TC2122 Test Completed");
+		
+		quit();
 }
 }
