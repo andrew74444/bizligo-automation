@@ -402,6 +402,23 @@ public class EcoSystemPage extends BasePage {
 	 myEndorsements.click();
 	 return (EndorsementPage) openPage(EndorsementPage.class);
 	 }
+	public MyEventsPage gotoMyEventsPage() throws Exception {
+		waitForElementToPresent(Toggledropdownmenu);
+		click(Toggledropdownmenu,"Toggledropdownmenu");
+		Thread.sleep(1000);
+		waitForElementToPresent(myEvents);
+		click(myEvents,"myEvents");
+		return (MyEventsPage) openPage(MyEventsPage.class);
+	}	
+public  MyEventsPage goToMyEventsPage() {
+		
+		click(toggleDropDown,"Toggle Drop Down Menu");
+		click(myEvents,"My events");
+		return (MyEventsPage) openPage(MyEventsPage.class);
+	}
+
+}
+
 	
  /*   public  MyEventsPage goToMyEventsPage() {
 		
@@ -410,4 +427,4 @@ public class EcoSystemPage extends BasePage {
 		return (MyEventsPage) openPage(MyEventsPage.class);
 	}
 */
-}
+
