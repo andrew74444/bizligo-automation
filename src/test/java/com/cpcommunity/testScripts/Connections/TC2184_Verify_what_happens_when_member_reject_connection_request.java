@@ -2,6 +2,7 @@ package com.cpcommunity.testScripts.Connections;
 
 import java.util.Hashtable;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.Bizligo1CommunityPage;
@@ -47,4 +48,12 @@ public class TC2184_Verify_what_happens_when_member_reject_connection_request ex
 	       
 
 }
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("TC2184 Test Completed");
+		
+		quit();
+		
+	}
 }

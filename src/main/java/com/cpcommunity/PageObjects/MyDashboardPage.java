@@ -1047,11 +1047,48 @@ public MyGroupsPage navigateToMyGroupsPage() {
 		 Thread.sleep(3000);
 		 
 	 }
+	 public void checkConnectionMsg(String Notes) throws InterruptedException {
+		 Thread.sleep(6000);
+		 click(requests,"Requests");
+		 waitForElementToPresent(reject);
+		 System.out.println(connectionNote.getText());
+		 if(connectionNote.getText().equalsIgnoreCase(Notes)) {
+			 Assert.assertTrue(true);
+			 System.out.println("Member can see connection note on the Dashboard with request");
+		 }else {
+			 System.out.println("Member unable to see connection note");
+		 }
+		 
+	 }
+	 public void checkConnectionMsgIsEditable(String Notes) throws InterruptedException {
+		 Thread.sleep(6000);
+		 click(requests,"Requests");
+		 waitForElementToPresent(reject);
+		 System.out.println(connectionNote.getText());
+		 Boolean x=connectionNote.isEnabled();
+		 System.out.println(x);
+	 }
+	 public void checkSeeMoreOption(String Notes) throws InterruptedException {
+		 Thread.sleep(6000);
+		 click(requests,"Requests");
+		 waitForElementToPresent(reject);
+		 System.out.println(connectionNote.getText());
+		 seeMore.getText();
+		 if(seeMore.getText().equals("See More")) {
+			 System.out.println("If connection note has more than 50 characters , see more option comes");
+			 Assert.assertTrue(true);
+		 }
+	 }
+		
 		
 	    @FindBy(xpath = "//a[normalize-space()='Requests']")
 		WebElement requests;
 	    @FindBy(xpath = "//button[normalize-space()='Reject']")
 		WebElement reject;
+	    @FindBy(xpath = "//span[@title='Connection Note']")
+		WebElement connectionNote;
+	    @FindBy(xpath = "//a[normalize-space()='See More']")
+		WebElement seeMore;
 
 
 

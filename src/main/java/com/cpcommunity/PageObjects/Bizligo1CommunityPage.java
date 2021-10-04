@@ -177,6 +177,10 @@ public class Bizligo1CommunityPage extends BasePage {
 	WebElement addNote;
 	@FindBy(xpath = "//a[@ng-click=\"data.redirectToMenu('group');\"]")
 	WebElement group;
+	@FindBy(xpath = "//label[normalize-space()='Add Note :']")
+	WebElement addNotePopUp;
+	@FindBy(xpath = "//button[normalize-space()='Close']")
+	WebElement closeConnectionPopUp;
 	
 	
 	
@@ -664,6 +668,43 @@ public class Bizligo1CommunityPage extends BasePage {
 	        }
 		
 	}
+
+	public void sendingConnectionWithNotes(String Name, String Notes) throws InterruptedException {
+		click(member,"Member");
+		Thread.sleep(6000);
+		type(searchByMember,Name,"Name of member to connect");
+		Thread.sleep(6000);
+		click(searchBtn,"search");
+		Thread.sleep(4000);
+		waitForElementToPresent(connect);
+		click(connect,"Connect");
+		type(addNote,Notes,"Notes");
+		click(send,"Send Connect request");
+		Thread.sleep(6000);
+		System.out.println(toastMessage.getText());
+		if(toastMessage.getText().equalsIgnoreCase("Connection request has been sent.")) {
+			System.out.println("Member Able to Send request after adding notes");			
+		}
+	}
+	public void checkAddNotesAppearWhenConnect(String Name, String Notes) throws InterruptedException {
+		click(member,"Member");
+		Thread.sleep(6000);
+		type(searchByMember,Name,"Name of member to connect");
+		Thread.sleep(6000);
+		click(searchBtn,"search");
+		Thread.sleep(4000);
+		waitForElementToPresent(connect);
+		click(connect,"Connect");
+		Thread.sleep(2000);
+		if(addNotePopUp.getText().contains("Add Note")) {
+		System.out.println("Add note pops up when clicking connect on member profile");
+		Assert.assertTrue(true);
+		}else Assert.assertTrue(false);
+		click(closeConnectionPopUp,"close pop up");
+	}
+
+
+
 	
 
 	 public void VerifyMembershipplanNotDisplaying() throws InterruptedException {
@@ -702,6 +743,7 @@ public class Bizligo1CommunityPage extends BasePage {
 		    
 		}
 
-}
+
+}//
 	
 

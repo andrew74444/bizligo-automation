@@ -2,6 +2,7 @@ package com.cpcommunity.testScripts.Connections;
 
 import java.util.Hashtable;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.Bizligo1CommunityPage;
@@ -32,4 +33,12 @@ public class TC2186_verify_details_except_contact_email_visible_memberCard_when_
 	
 
 }
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("TC2186 Test Completed");
+		
+		quit();
+		
+	}
 }

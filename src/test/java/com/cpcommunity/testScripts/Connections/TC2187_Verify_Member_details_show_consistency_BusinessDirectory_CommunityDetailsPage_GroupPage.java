@@ -2,6 +2,7 @@ package com.cpcommunity.testScripts.Connections;
 
 import java.util.Hashtable;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.Bizligo1CommunityPage;
@@ -32,4 +33,12 @@ public class TC2187_Verify_Member_details_show_consistency_BusinessDirectory_Com
 	
 
 }
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("TC2187 Test Completed");
+		
+		quit();
+		
+	}
 }
