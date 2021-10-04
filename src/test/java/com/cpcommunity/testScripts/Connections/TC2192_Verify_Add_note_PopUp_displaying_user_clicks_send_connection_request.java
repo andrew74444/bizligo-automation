@@ -15,12 +15,12 @@ import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.DataUtil;
 import com.cpcommunity.utilities.ExcelReader;
 
-public class TC2181_Verify_Connection_status_display_same_in_Communities_and_groupDetails extends BaseTest{
+public class TC2192_Verify_Add_note_PopUp_displaying_user_clicks_send_connection_request extends BaseTest{
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC2181(Hashtable<String,String> data) throws Exception {
+	public void TC2192(Hashtable<String,String> data) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC2181", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC2192", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
@@ -29,16 +29,17 @@ public class TC2181_Verify_Connection_status_display_same_in_Communities_and_gro
 		LoginPage login = home.clickOnLOGINBtn();
 		MyDashboardPage MDP= login.loginToMemberdashboard(data.get("email"), data.get("password"));
 		Bizligo1CommunityPage BCP=MDP.goToMyCommunity();
-		BCP.checkConnectionStatus(data.get("Name"));
+		BCP.checkAddNotesAppearWhenConnect(data.get("Name"),data.get("Notes"));
 		
-
+	
 }
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("TC2181 Test Completed");
+		logInfo("TC2192 Test Completed");
 		
 		quit();
 		
 	}
+
 }

@@ -2,6 +2,7 @@ package com.cpcommunity.testScripts.Connections;
 
 import java.util.Hashtable;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.Bizligo1CommunityPage;
@@ -31,4 +32,12 @@ public class TC2188_Verify_member_able_send_connection_adding_notes_Global_membe
 		BCP.sendingConnectionAddingNotes(data.get("Name"),data.get("Notes"));
 	
 }
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("TC2188 Test Completed");
+		
+		quit();
+		
+	}
 }

@@ -2,6 +2,7 @@ package com.cpcommunity.testScripts.Connections;
 
 import java.util.Hashtable;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.Bizligo1CommunityPage;
@@ -31,4 +32,12 @@ public class TC2183_Verify_status_changes_to_Connected_icon_on_member_card_membe
 		BCP.checkConnectedIconOnMember(data.get("Name"));
 	
 }
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("TC2183 Test Completed");
+		
+		quit();
+		
+	}
 }

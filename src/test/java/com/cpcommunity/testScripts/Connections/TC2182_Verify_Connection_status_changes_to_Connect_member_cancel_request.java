@@ -2,6 +2,7 @@ package com.cpcommunity.testScripts.Connections;
 
 import java.util.Hashtable;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.Bizligo1CommunityPage;
@@ -29,6 +30,14 @@ public class TC2182_Verify_Connection_status_changes_to_Connect_member_cancel_re
 		MyDashboardPage MDP= login.loginToMemberdashboard(data.get("email"), data.get("password"));
 		Bizligo1CommunityPage BCP=MDP.goToMyCommunity();
 		BCP.cancelConnectrequest(data.get("Name"));
+		
+	}
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("TC2182 Test Completed");
+		
+		quit();
 		
 	}
 
