@@ -4,6 +4,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import java.util.List;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -15,9 +17,9 @@ public class Bizligo1CommunityPage extends BasePage {
 	@Override
 	protected void getPageScreenSot() {
 
-		aShot();//
+		aShot();
 
-	}//checking github
+	}
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 
@@ -51,18 +53,35 @@ public class Bizligo1CommunityPage extends BasePage {
 	@FindBy(xpath = "//i[@class='fa fa-check']")
 	WebElement yesProceed;
 	
+	@FindBy(xpath = "//button[normalize-space()='Yes,Proceed']")
+	WebElement yesProceed4;
+	
+	@FindBy(xpath="//button[@ng-click='appData.closeModel()']")
+	WebElement cancelPopup;
+	
+	@FindBy(xpath="//div[@ng-if='!data.IsLoading && !data.CommunityVideos.length']//p[@class='ng-binding'][contains(text(),'Please')]")
+	WebElement msgWhenNotMember;
+	//div[@ng-show='appData.showLoginOrJoinMessage']
 	@FindBy(xpath="//button[@ng-click='appData.closeModel()']")
 	WebElement cancelPopup;
 	
 	@FindBy(xpath="//div[@ng-show='appData.showLoginOrJoinMessage']")
 	WebElement msgWhenNotMember;
 	//a[@title='Manage Community']
+
 	@FindBy(xpath="//a[@title='Manage Community']")//a[@title='Manage Community']
 	WebElement manage;
 	@FindBy(xpath = "(((//*[@class='col-md-3 left_col']//img[@src='/Content/Images/adprommenu.png'])/..)/..)")
 	WebElement advertisements;
+
+	@FindBy(xpath = "//span[@class='ng-binding ng-scope']")
+	WebElement advertisement;
 	@FindBy(xpath = "//a[contains(text(),'Manage Plans')]")
 	WebElement managePlans;
+
+	@FindBy(xpath = "//a[contains(text(),'Manage Plans')]")
+	WebElement managePlans;
+
 	@FindBy(xpath = "//a[normalize-space()='Donate']")
 	WebElement donateBtn;
 	
@@ -77,7 +96,10 @@ public class Bizligo1CommunityPage extends BasePage {
 	@FindBy(xpath="//span[normalize-space()='$ 20']")
 	WebElement $20;
 	
+	@FindBy(xpath="//span[normalize-space()='$ 10']")
+
 	@FindBy(xpath="//button[2]//span[1]")
+
 	WebElement $10;
 	
 	@FindBy(xpath="//button[normalize-space()='Other Amount']")
@@ -114,6 +136,7 @@ public class Bizligo1CommunityPage extends BasePage {
 	
 	@FindBy(xpath="//strong[normalize-space()='CSS - Training']")
 	WebElement eventName;
+
 	@FindBy(xpath="//a[@ui-sref='community.member']")
 	WebElement member;
 	@FindBy(xpath="//input[@id='memberName']")
@@ -161,20 +184,31 @@ public class Bizligo1CommunityPage extends BasePage {
 	
 	
 	
+	@FindBy(xpath = "//span[@ng-if='data.IsMembershipPlanDetailsWidgetConfigured.CommunityWidgetEditedName.length == 0']")
+	List<WebElement> membership;
+	@FindBy(xpath = "//a[@title='Manage Community']")
+	WebElement manageBtn;
+	@FindBy(xpath = "//span[@ng-if='data.IsAdminWidgetConfigured.CommunityWidgetEditedName.length == 0']")
+	List<WebElement> champions;
+	@FindBy(css = "div[class='col-sm-12 col-xs-12'] span[class='ng-scope']")
+	WebElement membershipName;
+	@FindBy(css = "div[class='col-sm-8 col-xs-6'] span[class='ng-binding ng-scope']")
+	WebElement championName;
 	
 
-
-
-	
-
-
-	
 	
 	public void resourceForGuestMember() throws InterruptedException {
 		Thread.sleep(2000);
 		click(cancelPopup,"cancel");
 		waitForElementToPresent(resources);
 		click(resources,"Resources");
+		Thread.sleep(5000);
+		
+		String Loginmsg=msgWhenNotMember.getText();
+		 {
+			System.out.println(Loginmsg);
+			Assert.assertTrue(true);
+		}
 		System.out.println(msgWhenNotMember.getText());
 		
 		if(msgWhenNotMember.getText().equalsIgnoreCase("Join the community or login if you are already a member")) {
@@ -214,6 +248,12 @@ public class Bizligo1CommunityPage extends BasePage {
 		click(groups,"Groups");
 		waitForElementToPresent(leaveGroup4);
 		click(leaveGroup4,"leaveGroup4");
+		Thread.sleep(6000);
+		//click(yesProceed,"yes proceed");
+		//Thread.sleep(3000);
+		//waitForElementToPresent(resources);
+		click(resources,"Resources");
+		Thread.sleep(8000);
 		Thread.sleep(3000);
 		//click(yesProceed,"yes proceed");
 		Thread.sleep(5000);
@@ -230,6 +270,17 @@ public class Bizligo1CommunityPage extends BasePage {
 		}
 		click(groups,"Groups");
 		waitForElementToPresent(joinGroup4);
+		click(leaveGroup4,"joinGroup4");
+		click(yesProceed,"yes proceed");
+		
+	}
+	public ManageAdPlansPage gotoManageAdsplan() throws InterruptedException {
+		waitForElementToPresent(manage);
+		click(manage, "Manage Icon button");
+		Thread.sleep(4000);
+		scrollUpVertically();
+		//scrollIntoView(advertisements);
+		//clickElementByJavaScript(advertisements);
 		click(joinGroup4,"joinGroup4");
 		click(yesProceed,"yes proceed");
 		
@@ -253,6 +304,7 @@ public class Bizligo1CommunityPage extends BasePage {
 	}
 	public void CAcanMakeDonation() throws InterruptedException {
 		click(donateBtn,"Donation");
+		Thread.sleep(3000);
 		Thread.sleep(8000);
 		click($10,"$10");
 		click(authorizeBtn,"pay through Authorize.net");
@@ -616,6 +668,7 @@ public class Bizligo1CommunityPage extends BasePage {
 	        }
 		
 	}
+
 	public void sendingConnectionWithNotes(String Name, String Notes) throws InterruptedException {
 		click(member,"Member");
 		Thread.sleep(6000);
@@ -650,6 +703,45 @@ public class Bizligo1CommunityPage extends BasePage {
 		click(closeConnectionPopUp,"close pop up");
 	}
 
+
+
+	
+
+	 public void VerifyMembershipplanNotDisplaying() throws InterruptedException {
+			Thread.sleep(500);
+			Assert.assertEquals(0, membership.size());
+			System.out.println("MembershipPlan is Not Displaying");
+			
+		}
+	 public void VerifychampionsNotDisplaying() throws InterruptedException {
+			Thread.sleep(500);
+			Assert.assertEquals(0, champions.size());
+			System.out.println("Champions is Not Displaying");
+			
+		}
+	 
+	 public ManageCommunityPage gotoDashboardpage() {
+			waitForElementToPresent(manageBtn);
+			click(manageBtn, "Manage Button");
+			return (ManageCommunityPage) openPage(ManageCommunityPage.class);		
+		}
+	 
+	 public void verifychampionTitleChanged() throws InterruptedException {
+			scrollIntoView(championName);
+			String changead=this.championName.getText();
+			System.out.println(changead);
+		    String Expected="TOP MOST CHAMPIONS";
+		    Assert.assertEquals(changead, Expected);
+		    
+		}
+	 public void verifyMembershiptitleChanged() throws InterruptedException {
+			waitForElementToPresent(membershipName);
+			String changead=this.membershipName.getText();
+			System.out.println(changead);
+		    String Expected="MEMBERSHIP";
+		    Assert.assertEquals(changead, Expected);
+		    
+		}
 
 
 }//

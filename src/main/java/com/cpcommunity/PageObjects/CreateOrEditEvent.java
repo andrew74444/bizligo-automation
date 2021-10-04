@@ -1,3 +1,4 @@
+
 package com.cpcommunity.PageObjects;
 
 import org.openqa.selenium.By;
@@ -17,6 +18,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Hashtable;
+import java.util.concurrent.TimeUnit;
 
 public class CreateOrEditEvent extends BasePage {
 
@@ -37,11 +39,24 @@ public class CreateOrEditEvent extends BasePage {
 	WebElement Online;
 	@FindBy(xpath = "//*[@name='EventMode'][@value='3']")
 	WebElement Both;
-
+	@FindBy(xpath = "//button[@class='btn btn-primary'][normalize-space()='Save & Continue']")
+	WebElement saveandContinue;
+	@FindBy(xpath = "//button[@class='btn btn-primary space-bottom'][normalize-space()='Save & Continue']")
+	WebElement saveandContinueEventDetails;
+	@FindBy(xpath = "//button[@ng-click='SubmitTicketDetails(true,false)']")
+	WebElement saveandContinuecreateTicket;
+	@FindBy(xpath = "//div[@class='text-left']//div[@class='pull-right']//button[2]")
+	WebElement saveandContinueadditionalInformation;
 	@FindBy(xpath = "//button[contains(.,'Ok')]")
 	WebElement Okbtn;
+	@FindBy(xpath = "//button[normalize-space()='Add Field']")
+	WebElement customFieldaddField;
 	@FindBy(xpath = "//input[@id='startdatetime']")
 	WebElement startdatetime;
+	@FindBy(xpath = "//input[@id='newField-minLength']")
+	WebElement minlength;
+	@FindBy(xpath = "//input[@id='newField-maxLength']")
+	WebElement maxlength;
 	@FindBy(xpath = "html/body/div[2]/div[1]/div[2]/table/thead/tr[1]/th[2]")
 	WebElement DatePickerFirstMonth;
 	@FindBy(xpath = "//button[contains(.,'Apply')]")
@@ -58,7 +73,7 @@ public class CreateOrEditEvent extends BasePage {
 	WebElement Timezone;
 	@FindBy(xpath = "//input[@id='country']")
 	WebElement Country;
-	@FindBy(tagName = "body")
+	@FindBy(xpath = "//body//p")
 	WebElement EventDescription;
 	@FindBy(tagName = "body")
 	WebElement CommunityAbout;
@@ -167,7 +182,6 @@ public class CreateOrEditEvent extends BasePage {
 	WebElement Agenda_Description;
 	@FindBy(xpath = "//*[@id='AgendaInfoForm']//*[@class='fa fa-floppy-o']")
 	WebElement AgendaInfoFormSave;
-
 	// form[@id='AgendaInfoForm']//button[contains(.,'Save')]
 	@FindBy(xpath = "//span[@ng-hide='IsAgendaSaveMode']")
 	WebElement saveAgenda;
@@ -209,6 +223,11 @@ public class CreateOrEditEvent extends BasePage {
 	@FindBy(xpath = "//button[@class='btn btn-primary space-bottom'][normalize-space()='Publish Changes']")
 	WebElement Publish;
 
+	@FindBy(xpath = "//input[@id='startdatetime']")
+	WebElement evetdate;
+
+
+
 	@FindBy(xpath = "//*/tbody/tr[1]/td[4]/i")
 	WebElement EditEvent;
 	@FindBy(xpath = "//*[@id='EventInfoForm']/div[10]/div[2]/div/button[1]")
@@ -232,7 +251,8 @@ public class CreateOrEditEvent extends BasePage {
 	WebElement EditAgendaEndTime;
 	@FindBy(xpath = "(//button[contains(text(),'Apply')])[2]")
 	WebElement EditAgendaApplyBtn;
-
+	@FindBy(xpath = "//a[@title='Manage Events']")
+	WebElement manageEvents;
 	@FindBy(xpath = "//button[@ng-click='SaveEventsDates()']")
 	WebElement SaveEventsDates;
 	@FindBy(xpath = "//button[@ng-click='EditTicketInfo(ticket, false)']")
@@ -257,7 +277,8 @@ public class CreateOrEditEvent extends BasePage {
 
 	@FindBy(xpath = "//button[@ng-click='EditSponsor(sponsor)']")
 	WebElement EditSponsorBtn;
-
+	@FindBy(xpath = "//div[@class='row HideCustomFormBuilder']//button[@type='submit'][normalize-space()='Save & Continue']")
+	WebElement savecontinueCustomField;
 	@FindBy(xpath = "//*[@id='AdditionalInformationForm']/div[4]/div[2]/div/button[2]")
 	WebElement AdditionalInformationPublishContinueBtn;
 	@FindBy(xpath = "//button[@ng-click='EditAlbum(Album)']")
@@ -288,15 +309,77 @@ public class CreateOrEditEvent extends BasePage {
 	WebElement TicketPrice;
 	@FindBy(xpath = "//a[@class='btn btn-default top-btn1 btn-sm dropdown-toggle']	")
 	WebElement Toggledropdownmenu;
+
+	@FindBy(xpath = "//input[@ng-click='makeAvailableToPublic()']")
+	WebElement eventPaid;	
+
 	
+
 	//a[@class='btn btn-default top-btn1 btn-sm dropdown-toggle']
 	@FindBy(xpath = "//*[contains(text(),'MANAGE')]")
 	WebElement MANAGEbtn;
 	@FindBy(xpath = "//a[normalize-space()='My Ecosystem']")
 	WebElement ecosystem;
 
+
+
+
 	@FindBy(xpath = "//*[@id='validate-dates-form']/div[1]/div[2]/div[1]/div/table/tbody/tr/td[3]/button")
 	WebElement EditAgendaBtnInEventDetails;
+	@FindBy(xpath = "//body[1]/div[2]/div[1]/div[2]/table[1]/tbody[1]/tr[3]/td[4]")
+	WebElement evetstart;
+	@FindBy(xpath = "//body[1]/div[2]/div[1]/div[2]/table[1]/tbody[1]/tr[4]/td[5]")
+	WebElement evetend;
+	@FindBy(xpath = "//i[@class='fa fa-chevron-right glyphicon glyphicon-chevron-right']")
+	WebElement next;
+	@FindBy(xpath = "//button[normalize-space()='Apply']")
+	WebElement applydate;
+	@FindBy(xpath = "//div[@class='text-left HideCreateTicketDetails']//button[@type='button'][normalize-space()='Save & Continue']")
+	WebElement savecontinue;
+	@FindBy(xpath = "//button[@class='btn btn-primary pay-btn']")
+	WebElement savecontinue2;
+	@FindBy(xpath = "//div[@class='row HideCustomFormBuilder']//button[@type='button'][normalize-space()='Save & Continue']//i[@class='fa fa-floppy-o']")
+	WebElement savecontinue3;
+	@FindBy(xpath = "//button[normalize-space()='Add Field']")
+	WebElement addfield;
+	@FindBy(xpath = "//input[@placeholder='Enter label']")
+	WebElement enterlabel;
+	@FindBy(xpath = "//input[@id='newField-order']")
+	WebElement displayOrder;
+	@FindBy(xpath = "//select[@name='FieldType']")
+	WebElement fieldtype;
+	@FindBy(xpath = "//input[@placeholder='Enter Instruction Text']")
+	WebElement instructiontext;
+	@FindBy(xpath = "//input[@id='newField-minLength']")
+	WebElement minLength;
+	@FindBy(xpath = "//input[@id='newField-maxLength']")
+	WebElement maxLength;
+	@FindBy(xpath = "//small[@data-fv-for='FieldMinLength'][normalize-space()='Please enter a value greater than or equal to 1']")
+	WebElement minLengtherror;
+	@FindBy(xpath = "//small[@data-fv-for='FieldMaxLength'][normalize-space()='Value must be between 1 and 200']")
+	WebElement maxLengtherror;
+	@FindBy(xpath = "//small[@data-fv-for='FieldMaxLength'][normalize-space()='Value must be between 1 and 10']")
+	WebElement maxLengtherror2;
+	@FindBy(xpath = "//select[@name='FieldValidationType']")
+	WebElement validationtype;
+	@FindBy(xpath = "//button[@class='btn btn-info animated fadeInRight']")
+	WebElement save;
+	@FindBy(xpath = "//button[@ng-click='resetFieldForm()']")
+	WebElement cancel;
+	@FindBy(xpath = "//input[@placeholder='Enter option name']")
+	WebElement optionname;
+	@FindBy(xpath = "//input[@placeholder='Enter option value']")
+	WebElement optionValue;
+	@FindBy(xpath = "//input[@placeholder='Enter order']")
+	WebElement optionorder;
+	@FindBy(xpath = "//button[normalize-space()='Publish']")
+	WebElement publish;
+	@FindBy(xpath = "//input[@class='form-control animated fadeInRight ng-pristine ng-valid ng-scope ng-empty ng-touched']")
+	WebElement chooseFile;
+	
+	
+	
+	
 
 	public MyDashboardPage gotomyEcosystem() throws InterruptedException {
 		 waitForElementToPresent(Toggledropdownmenu);
@@ -523,8 +606,6 @@ public class CreateOrEditEvent extends BasePage {
 		TicketQunatity.sendKeys(Keys.ARROW_UP);
 		Thread.sleep(5000);
 		TicketQunatity.sendKeys(Keys.ARROW_DOWN);
-		
-		selectByVisibleText(TicketType, data.get("ticketType"), "Ticket Type");
 
 		int TableTicket = Integer.parseInt(data.get("noOfTicketPerTable"));
 		if (data.get("ticketType").contains("Table")) {
@@ -535,6 +616,7 @@ public class CreateOrEditEvent extends BasePage {
 				}
 			}
 		}
+		selectByVisibleText(TicketType, data.get("ticketType"), "Ticket Type");
 		Thread.sleep(3000);
 		click(AvailableDates, "Available Dates");
 		waitForElementToPresent(TicketCalendarApplyBtn);
@@ -1135,5 +1217,231 @@ type(Document_Title, DocumentTitle, "Document_Title");
 	// }
 	//
 	// return (ZohoCRMPage) openPage(ZohoCRMPage.class);
+	public void AddDetails( String EventTitle , String EventCategory, String location, String Description 
+			) throws Exception {
+		EventTitle=EventTitle +" " + getDateInDDMMMYYYY();
 
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
+		type(EventName,EventTitle, "Event Name");
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
+		type(EventLocation, location, "Location");
+        Thread.sleep(7000);
+        EventLocation.sendKeys(Keys.DOWN);
+		click(eventPaid, "Paid");
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
+		click(evetdate, "Date");
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
+		click(next, "Next");
+		click(evetstart, "Start date");
+		click(evetend, "Event eND");
+		click(applydate, "Apply");
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
+		selectByVisibleText(EventCategoryID, EventCategory, "Event Category");
+		
+		// try {
+		// String s = startdatetime.getAttribute("value");
+		// System.out.println(s);
+		// } catch (Exception e) {
+		//
+		// }
+		scrollIntoView(Country);
+		driver.switchTo().frame(1);
+		
+		type(EventDescription, Description, "Description");
+		driver.switchTo().defaultContent();
+		Thread.sleep(5000);
+		driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
+		click(saveandContinue, "Save and Continue");
+	}
+
+	public void AddTickets(String StartTime, String endTime, int hour, 
+		 int endHour, String ticketquantity, String ticketName) throws AWTException, Exception {
+
+		waitForElementToPresent(AddTicketBtn);
+		driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
+		click(AddTicketBtn, "Add Ticket");
+		driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
+		waitForElementToPresent(Ticket);
+		type(Ticket, ticketName, "Ticket Name");
+		driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
+		TicketQunatity.click();
+		type(Ticket, ticketquantity, "Ticket");
+
+		selectUsingIndex(availableTo, 2, "All");
+		
+		TicketQunatity.click();
+		TicketQunatity.sendKeys(Keys.UP);
+//		Actions ac = new Actions(driver);
+//		ac.keyUp(TicketQunatity, keyu);
+//		Thread.sleep(2000);
+//		robot.keyPress(KeyEvent.VK_UP);
+		Thread.sleep(5000);
+//		robot.keyPress(KeyEvent.VK_DOWN);
+//		Thread.sleep(5000);
+		TicketQunatity.sendKeys(Keys.DOWN);
+		Thread.sleep(5000);
+		TicketQunatity.sendKeys(Keys.ARROW_UP);
+		Thread.sleep(5000);
+		TicketQunatity.sendKeys(Keys.ARROW_DOWN);
+		
+		selectUsingIndex(TicketType, 1, "Ticket Type");
+		driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
+		click(AvailableDates, "Available Dates");
+		waitForElementToPresent(TicketCalendarApplyBtn);
+		TicketStartTime.click();
+		TicketStartTime.sendKeys(Keys.CONTROL + "a");
+		//type(TicketStartTime, StartTime, "Ticket Start Time");
+		TicketEndTime.click();
+		TicketEndTime.sendKeys(Keys.CONTROL + "a");
+		//type(TicketEndTime, endTime, "Ticket End Time");
+		picture();
+		click(TicketCalendarApplyBtn, "Calendar Apply");
+		click(SaveTicketInfoBtn, "Save button in the pop up");
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
+		waitForElementToPresent(TicketsSaveAndContinueBtn);
+		Thread.sleep(10000);
+		picture();
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
+		click(TicketsSaveAndContinueBtn, "Tickets Save And ContinueBtn");
+		Thread.sleep(16000);
+		//waitForElementToPresent(AddtionalinfomationSaveAndContinueBtn);
+		//scrollIntoViewAndClick(AddtionalinfomationSaveAndContinueBtn);
+		clickElementByJavaScript(AddtionalinfomationSaveAndContinueBtn);
+		//click(AddtionalinfomationSaveAndContinueBtn, "Addtional infomation Save And ContinueBtn");
+		
+		//click(AddtionalinfomationSaveAndContinueBtn, "Addtional infomation Save And ContinueBtn");
+		picture();
+	}
+		public void saveField() {
+			
+			driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
+			click(savecontinue3, "SAve and Continue");
+		}
+
+	public void AddField(String Label, String order, String type, String OptionName, String value, String order1,String type1, String type2, String type3, String type4) throws InterruptedException {
+		waitForElementToPresent(addfield);
+		click(addfield, "Add Field");
+		waitForElementToPresent(enterlabel);
+		type(enterlabel, Label, "Label");
+		driver.manage().timeouts().implicitlyWait(10,TimeUnit.MINUTES);
+		type(displayOrder, order, "Order");
+		selectByVisibleText(fieldtype, type, "Field Type");
+		driver.manage().timeouts().implicitlyWait(10,TimeUnit.MINUTES);
+		click(save, "Save");
+		scrollUpVertically();
+		driver.manage().timeouts().implicitlyWait(30,TimeUnit.MINUTES);
+		//click(addfield, "Add Field");
+		clickElementByJavaScript(addfield);
+		waitForElementToPresent(enterlabel);
+		type(enterlabel, Label, "Label");
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
+		type(displayOrder, order, "Order");
+		selectByVisibleText(fieldtype, type1, "Field Type");
+		driver.manage().timeouts().implicitlyWait(10,TimeUnit.MINUTES);
+		click(save, "Save");
+		driver.manage().timeouts().implicitlyWait(30,TimeUnit.MINUTES);
+		clickElementByJavaScript(addfield);
+		waitForElementToPresent(enterlabel);
+		type(enterlabel, Label, "Label");
+		driver.manage().timeouts().implicitlyWait(10,TimeUnit.MINUTES);
+		type(displayOrder, order, "Order");
+		selectByVisibleText(fieldtype, type2, "Field Type");
+		type(optionname, OptionName, "Option Name");
+		type(optionValue, value, "Option Value");
+		type(optionorder, order1, "Option order");
+		driver.manage().timeouts().implicitlyWait(30,TimeUnit.MINUTES);
+		click(save, "Save");
+		driver.manage().timeouts().implicitlyWait(30,TimeUnit.MINUTES);
+		clickElementByJavaScript(addfield);
+		waitForElementToPresent(enterlabel);
+		type(enterlabel, Label, "Label");
+		type(displayOrder, order, "Order");
+		selectByVisibleText(fieldtype, type3, "Field Type");
+		driver.manage().timeouts().implicitlyWait(30,TimeUnit.MINUTES);
+		click(save, "Save");
+		driver.manage().timeouts().implicitlyWait(30,TimeUnit.MINUTES);
+		clickElementByJavaScript(addfield);
+		waitForElementToPresent(enterlabel);
+		type(enterlabel, Label, "Label");
+		type(displayOrder, order, "Order");
+		selectByVisibleText(fieldtype, type4, "Field Type");
+		driver.manage().timeouts().implicitlyWait(30,TimeUnit.MINUTES);
+		click(save, "Save");
+		click(savecontinue3, "Save and Continue");
+		driver.manage().timeouts().implicitlyWait(30,TimeUnit.MINUTES);
+		click(publish, "Publish");
+		Thread.sleep(5000);
+	}
+	
+	public void checkField(String Filepath) {
+		
+		waitForElementToPresent(chooseFile);
+		type(chooseFile,Filepath,"FileName");
+		
+	}
+	public void UpdateDetails(String EventTitleName, String Location) throws Exception {
+
+		EventTitleName=EventTitleName +" " + getDateInDDMMMYYYY();
+          
+		
+	     
+		type(EventName,EventTitleName, "Event Name");
+		type(EventLocation, Location, "Location");
+        Thread.sleep(7000);
+        EventLocation.sendKeys(Keys.DOWN);
+		click(eventPaid, "Paid");
+	
+		driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
+		scrollIntoViewAndClick(saveandContinueEventDetails);
+		//scrollIntoView(saveandContinue);
+		//click(saveandContinue, "Save and Continue");
+	}
+   public void checkFieldvalidation(String lengthm, String lengthM, String label, String lengthM1,String lengthM2) {
+	   waitForElementToPresent(saveandContinuecreateTicket);
+	   click(saveandContinuecreateTicket, "Save and Continue CT");
+	   driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
+	   click(saveandContinueadditionalInformation, "save and Continue additional Information");
+	   waitForElementToPresent(customFieldaddField);
+	   click(customFieldaddField, "customFieldaddField");
+	   type(minLength, lengthm, "min Length");
+	   type(maxLength, lengthM, "max Length");
+	   type(enterlabel, label, "Label");
+	   selectUsingIndex(fieldtype, 1, "Field type");
+	   driver.manage().timeouts().implicitlyWait(8,TimeUnit.MINUTES);
+	   click(save, "Save");
+	   //String error1=this.minLengtherror.getText();
+	   String error2=this.maxLengtherror.getText();
+	   //System.out.println(error1);
+	   System.out.println(error2);
+	   driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
+	   selectUsingIndex(fieldtype, 7, "Field type");
+	   type(minLength, lengthm, "min Length");
+	   type(maxLength, lengthM1, "max Length");
+	   type(enterlabel, label, "Label");
+	   driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
+	   click(save, "Save");
+	   driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
+	   selectUsingIndex(fieldtype, 8, "Field type");
+	   type(minLength, lengthm, "min Length");
+	   type(maxLength, lengthM2, "max Length");
+	   type(enterlabel, label, "Label");
+	   driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
+	   click(save, "Save");
+	   String error3=this.maxLengtherror2.getText();
+	   System.out.println(error2);
+	   
+   }
+   public void checkCustomField() {
+	   
+	   waitForElementToPresent(saveandContinue);
+	   click(saveandContinue, "Save and Continue");
+	   driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
+	   waitForElementToPresent(savecontinue);
+	   click(savecontinue, "Save and Continue");
+	   waitForElementToPresent(saveandContinueadditionalInformation);
+	   click(saveandContinueadditionalInformation, "Save and Continue");
+	   waitForElementToPresent(saveandContinueadditionalInformation);
+	   click(saveandContinueadditionalInformation, "Save and Continue");
+	   click(manageEvents, "manage Events");
+   }
 }
