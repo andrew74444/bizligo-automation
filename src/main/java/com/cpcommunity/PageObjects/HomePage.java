@@ -1,3 +1,4 @@
+   
 package com.cpcommunity.PageObjects;
 
 import org.openqa.selenium.WebElement;
@@ -35,7 +36,11 @@ public class HomePage extends BasePage {
 	@FindBy(xpath = "//span[contains(.,'Events')]")
 	WebElement Events;
 
+
+	@FindBy(xpath = "//h1[normalize-space()='building communities']")
+
 	@FindBy(xpath = "(//h1[normalize-space()='building communities'])[1]")
+
 	WebElement home;
 	
 	@FindBy(xpath = "//span[normalize-space()='Directory']")
@@ -54,6 +59,11 @@ public class HomePage extends BasePage {
 	WebElement careers;
 	@FindBy(xpath = "//span[@title='Toggle dropdown menu']")
 	WebElement toggleDropDown;
+
+	@FindBy(xpath = "//a[normalize-space()='Tenant Admin Module']")
+	WebElement tenantadminModule;
+
+
 	@FindBy(xpath = "//a[normalize-space()='Logout']")
 	WebElement logoutBtn;
 	@FindBy(xpath = "//a[normalize-space()='Contact Us']")
@@ -64,6 +74,11 @@ public class HomePage extends BasePage {
 	WebElement globalEvents;
 	@FindBy(xpath="//a[contains(text(),'Upcoming Events')]")
 	WebElement upcomingEvents;
+
+	@FindBy(xpath="//div[@class='inner_right']//h4[@ng-hide='IsEM']//a[normalize-space()='advertise your business']")
+	WebElement advertiseBussiness;
+
+
 
 
 
@@ -94,6 +109,7 @@ public class HomePage extends BasePage {
 		return (ContactUsPage) openPage(ContactUsPage.class);
 		// new GlobalCareers(driver, );
 	}
+
 
 
 //	public HomePage open() throws Exception {
@@ -199,7 +215,13 @@ public class HomePage extends BasePage {
 		
 		return (HomePage) openPage(HomePage.class);
 	}
-
+	public TenantAdminDashboardPage gotoTenantAdminDashboardPage() throws Exception {
+		waitForElementToPresent(toggleDropDown);
+		click(toggleDropDown, "Toggle drop down");
+		Thread.sleep(1000);
+        click(tenantadminModule, "tenantadminModule");		
+		return (TenantAdminDashboardPage) openPage(TenantAdminDashboardPage.class);
+	}
 
 
 	// public ZohoCRMPage gotoCRM() {
@@ -244,4 +266,22 @@ public UpcomingEventsPage navigateToUpComingEvents() throws InterruptedException
 	// new UpcomingEventsPage(driver, );
 }
 
+public LoginPage advertiseBusiness() throws Exception {
+	
+	waitForElementToPresent(advertiseBussiness);
+	
+	click(advertiseBussiness, "advertise your Bussiness");
+	return (LoginPage) openPage(LoginPage.class);
+	// new LoginPage(driver, );
+
+
+
+}
+         public void Checkadvertisebutton() throws InterruptedException {
+        	 Thread.sleep(2000);
+	    
+		System.out.println("Advertisement link is not working");
+			
+			//
+		}
 }

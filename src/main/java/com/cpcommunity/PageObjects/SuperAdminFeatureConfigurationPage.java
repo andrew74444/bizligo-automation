@@ -1,3 +1,4 @@
+
 package com.cpcommunity.PageObjects;
 
 import static org.testng.Assert.assertEquals;
@@ -21,7 +22,7 @@ public class SuperAdminFeatureConfigurationPage extends BasePage {
 	protected void getPageScreenSot() {
 		aShot();//
 	}
-	
+	//
 	
 	@FindBy(xpath="//h2[contains(text(),'Features Configuration')]")
 	WebElement featuresConfigurationTitle;
@@ -48,22 +49,45 @@ public class SuperAdminFeatureConfigurationPage extends BasePage {
 			waitForElementToPresent(selecteMemebershipPlan);
 			selectByVisibleText(selecteMemebershipPlan, "0Free Plan - 1 Year (1 Year(s))", "MembershipPlan");
 		}
-		
+		Thread.sleep(3000);
 		WebElement saveButton = driver.findElement(By.xpath("//label[contains(text(),'"+feature+"')]/../../../../..//*[@id='btnSave']"));
 		this.save(saveButton);
-		
+		Thread.sleep(3000);
 	}
 
+	public void enablefeature(String feature) throws Exception {
+	
+		//WebElement element = driver.findElement(By.xpath("//label[contains(text(),'"+feature+"')]")); 
+		//scrollToElement(element);
+		//click(element, "feature");
+		Thread.sleep(3000);
+		WebElement toggleButton = driver.findElement(By.xpath("//label[contains(text(),'"+feature+"')]/../../../../..//*[contains(text(),'Disabled')]"));
+		click(toggleButton, "enabling the feature");
+		Thread.sleep(4000);
+		WebElement saveButton = driver.findElement(By.xpath("//label[contains(text(),'"+feature+"')]/../../../../..//*[@id='btnSave']"));
+		this.save(saveButton);
+		Thread.sleep(3000);
+	}
 	public void enableFeature(String feature) throws Exception {
+		
 		WebElement element = driver.findElement(By.xpath("//label[contains(text(),'"+feature+"')]")); 
 		scrollToElement(element);
 		click(element, "feature");
 		Thread.sleep(3000);
 		WebElement toggleButton = driver.findElement(By.xpath("//label[contains(text(),'"+feature+"')]/../../../../..//*[contains(text(),'Disabled')]"));
 		click(toggleButton, "enabling the feature");
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		WebElement saveButton = driver.findElement(By.xpath("//label[contains(text(),'"+feature+"')]/../../../../..//*[@id='btnSave']"));
 		this.save(saveButton);
+		Thread.sleep(3000);
+	}
+	
+	
+	public void clickfeature(String feature) throws InterruptedException {
+		Thread.sleep(3000);
+		WebElement element = driver.findElement(By.xpath("//label[contains(text(),'"+feature+"')]")); 
+		
+		click(element, "feature");
 	}
 
 	public void save(WebElement saveButton)
