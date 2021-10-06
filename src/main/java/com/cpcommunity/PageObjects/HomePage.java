@@ -1,6 +1,7 @@
    
 package com.cpcommunity.PageObjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -37,8 +38,6 @@ public class HomePage extends BasePage {
 	WebElement Events;
 
 
-	@FindBy(xpath = "//h1[normalize-space()='building communities']")
-
 	@FindBy(xpath = "(//h1[normalize-space()='building communities'])[1]")
 
 	WebElement home;
@@ -74,10 +73,14 @@ public class HomePage extends BasePage {
 	WebElement globalEvents;
 	@FindBy(xpath="//a[contains(text(),'Upcoming Events')]")
 	WebElement upcomingEvents;
-
+	@FindBy(xpath="//a[normalize-space()='Blogs']")
+	WebElement blogs;
 	@FindBy(xpath="//div[@class='inner_right']//h4[@ng-hide='IsEM']//a[normalize-space()='advertise your business']")
 	WebElement advertiseBussiness;
-
+	@FindBy(xpath="//a[normalize-space()='Menu']")
+	WebElement menu;
+	@FindBy(xpath="//a[normalize-space()='Contact']")
+	WebElement contact;
 
 
 
@@ -161,7 +164,12 @@ public class HomePage extends BasePage {
 		
 	}
 
-
+	public TenantAdminDashboardPage gotoTAdashbord() {
+		toggleDropDown.click();
+		tenantadminModule.click();
+		return (TenantAdminDashboardPage) openPage(TenantAdminDashboardPage.class);
+		
+	}
 
 	public UpcomingEventsPage clickOnupComingEvents() {
 
@@ -284,4 +292,30 @@ public LoginPage advertiseBusiness() throws Exception {
 			
 			//
 		}
+         public void checkAllPages() throws InterruptedException {
+        	 Thread.sleep(3000);
+        	 this.contact.isDisplayed();
+        		clickElementByJavaScript(blogs);
+        		Thread.sleep(4000);
+        		this.contact.isDisplayed();
+        		Assert.assertTrue(true);
+        		click(GlobalCommunities, "Global Communities");
+        		this.contact.isDisplayed();
+        		Assert.assertTrue(true);
+        	}
+         public void blogSubmenu() {
+        	 Actions actions = new Actions(driver);
+        	 actions.moveToElement(blogs);
+
+        	// Locating the element from Sub Menu
+        	WebElement subMenu = driver.findElement(By.xpath("//a[normalize-space()='subMenu']"));
+      String menu=subMenu.getText();
+        	//To mouseover on sub menu
+        	actions.moveToElement(subMenu);
+        	System.out.println(menu);
+         }
+         public void gotomenu() {
+        	 clickElementByJavaScript(menu);
+        	 
+         }
 }
