@@ -129,6 +129,8 @@ public class TenantAdminDashboardPage extends BasePage{
 	WebElement featureConfiguration;
 	@FindBy(xpath = "//li[15]//ul[@class='nav child_menu']")
 	WebElement campList;
+	@FindBy(xpath = "//a[normalize-space()='Membership Plans']")
+	WebElement membership;
 	
 	
 
@@ -145,12 +147,29 @@ public class TenantAdminDashboardPage extends BasePage{
 */
 
    
+	public MembershipPlansPage navigatetoMembershipPlansPage() throws Exception {
+        waitForElementToPresent(membership);
+		click(membership, "Membership");
+		Thread.sleep(2000);
+		
+		return (MembershipPlansPage) openPage(MembershipPlansPage.class);
+		// new ManageCommunityMembersPage(driver);
+	}
 	public ManageCommunitiesPage navigatetomanageCommunities() throws Exception {
         waitForElementToPresent(communities);
 		click(communities, "Members");
 		Thread.sleep(2000);
 		click(Managecommunities, "Manage Members");
 		return (ManageCommunitiesPage) openPage(ManageCommunitiesPage.class);
+		// new ManageCommunityMembersPage(driver);
+	}
+	
+	public PendingCommunitiesPage navigatetopendingCommunities() throws Exception {
+        waitForElementToPresent(communities);
+		click(communities, "Members");
+		Thread.sleep(2000);
+		click(pendingCommunities, "pending Communities");
+		return (PendingCommunitiesPage) openPage(PendingCommunitiesPage.class);
 		// new ManageCommunityMembersPage(driver);
 	}
     
@@ -344,6 +363,8 @@ public void goHomePage() throws InterruptedException {
 			click(managemenu, "managemenu");
 			return (ManageMenuPage) openPage(ManageMenuPage.class);	
 		}
+     
+   
      
      public void checkImportContactnotDisplay() throws Exception {
  		
