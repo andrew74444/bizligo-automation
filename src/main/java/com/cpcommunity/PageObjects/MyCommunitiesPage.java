@@ -45,12 +45,13 @@ public class MyCommunitiesPage extends BasePage {
 	//
 	// return (ZohoCRMPage) openPage(ZohoCRMPage.class);
 
-
+	@FindBy(xpath = "//input[@placeholder='Search by Community Name']")
+	WebElement communityNameField;
 	@FindBy(xpath = "//h3[normalize-space()='My Communities']")
 	WebElement myCommunitiesHeader;
 	@FindBy(xpath = "//button[contains(text(),'Search')]")
 	WebElement btnSearch;
-	@FindBy(xpath = "//button[@id='CreateCommunity']")
+	@FindBy(xpath = "//button[normalize-space()='Create Community']")
 	WebElement CreateCommunityBtn;
 	@FindBy(xpath = "//button[contains(.,' Yes, Proceed')]")
 	WebElement YesProceedBtn;
@@ -176,6 +177,7 @@ public class MyCommunitiesPage extends BasePage {
 	WebElement dashboardBtn;
 	@FindBy(xpath = "//span[normalize-space()='Directory']")
 	WebElement directory;
+	private WebElement communityName;
 	
 
 	
@@ -325,8 +327,12 @@ public class MyCommunitiesPage extends BasePage {
 	}
 
 	public CommunityDetailsPage navigateToCommunityDetailsPage(String communityName) throws Exception {
-		communityName = communityName+getDateInDDMMMYYYY();
-		this.searchCommunity(communityName);
+		//communityName = communityName+getDateInDDMMMYYYY();
+		//this.searchCommunity(communityName);
+		type(this.communityNameField, communityName, "communityName");
+		Thread.sleep(5000);
+		click(btnSearch, "Search");
+		Thread.sleep(5000);
 		WebElement ele = driver.findElement(By.xpath("//a[@tooltip='" + communityName + "']"));
 		click(ele, communityName);
 		return (CommunityDetailsPage) openPage(CommunityDetailsPage.class);

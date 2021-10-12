@@ -851,7 +851,7 @@ public class GlobalCommunitesPage extends BasePage {
 	}
 
 	public CommunityDetailsPage navigateToCommunityDetailsPage(String communityName) throws Exception {
-		communityName = communityName+getDateInDDMMMYYYY();
+		//communityName = communityName+getDateInDDMMMYYYY();
 		this.searchCommunity(communityName);
 
 		click(driver.findElement(By.xpath("//a[@tooltip='" + communityName + "']")),"Community Name");

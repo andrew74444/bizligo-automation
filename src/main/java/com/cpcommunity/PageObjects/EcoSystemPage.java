@@ -24,7 +24,7 @@ public class EcoSystemPage extends BasePage {
 	@FindBy(xpath = "//*[@id='global-nav']")
 	WebElement pageheader;
 
-	@FindBy(xpath = "//a[normalize-space()='Global Communities']")
+	@FindBy(xpath = "(//a[normalize-space()='Global Communities'])[2]")
 	WebElement globalCommunities;
 
 	@FindBy(xpath = "//span[@title='Toggle dropdown menu']")
@@ -215,18 +215,16 @@ public class EcoSystemPage extends BasePage {
 		} catch (Exception e) {
 			
 			driver.navigate().refresh();
-			Thread.sleep(10000);
+			Thread.sleep(12000);
 			waitForElementToPresent(viewAll);
 			click(viewAll, "view All");
 			
 		}
 		
-		
-		
-		
 		return (MyCommunitiesPage) openPage(MyCommunitiesPage.class);
 	}
 
+	
 	public EcoSystemPage goToMyEcosystem() {
 		click(Toggledropdownmenu, "Toggledropdownmenu");
 		waitForElementToPresent(myEcosystemInMenu);
