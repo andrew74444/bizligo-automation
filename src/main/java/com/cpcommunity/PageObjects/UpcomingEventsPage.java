@@ -68,6 +68,14 @@ public class UpcomingEventsPage extends BasePage{
 		click(Search,"Search");
 		Thread.sleep(5000);
 	}
+	public CreateOrEditEvent searchEvent(String Eventname) throws Exception {
+		Eventname=Eventname+" "+getDateInDDMMMYYYY();
+		EventNameSearch.clear();
+		type(EventNameSearch,Eventname , "eventName");
+		click(Search,"Search");
+		Thread.sleep(5000);
+		return (CreateOrEditEvent) openPage(CreateOrEditEvent.class);
+	}
 	
 	
 	public EventDetailsPage goToEventDetailsPage(Hashtable<String, String> data) throws Exception {

@@ -1,6 +1,9 @@
 package com.cpcommunity.PageObjects;
 
+
+
 import java.util.concurrent.TimeUnit;
+
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,7 +23,11 @@ public class ResourcesPage  extends BasePage{
 	@Override
 	protected void getPageScreenSot() {
 		// TODO Auto-generated method stub
+
+		updateClass(pageheader, "");
+
 		//updateClass(pageheader, "");
+
 		aShot();
 	}
 	@FindBy(xpath = "//strong[normalize-space()='Resources']")
@@ -32,6 +39,14 @@ public class ResourcesPage  extends BasePage{
 	@FindBy(xpath = "//h4[normalize-space()='Test Video']")
 	WebElement resource2;
 	@FindBy(xpath = "//img[@class='media-object']")
+
+	WebElement NotMemberResource;
+	@FindBy(xpath = "//button[normalize-space()='Yes, Proceed']")
+	WebElement YesProceed;
+	
+	
+	public void checkResources1() {
+
 	WebElement NotMemberResourcevedio;
 	@FindBy(xpath = "//button[normalize-space()='Yes, Proceed']")
 	WebElement YesProceed;
@@ -50,6 +65,7 @@ public class ResourcesPage  extends BasePage{
 	
 	public void checkResources1() throws InterruptedException {
 		Thread.sleep(4000);
+
 		waitForElementToPresent(resource1);
 		if(this.resource1.isDisplayed()&&this.resource1.isEnabled()) {
 			Assert.assertTrue(true);
@@ -58,6 +74,30 @@ public class ResourcesPage  extends BasePage{
 			Assert.assertTrue(false);
 		}
 	}
+
+	public void checkResources2() {
+		waitForElementToPresent(resource2);
+		if(this.resource2.isDisplayed()) {
+			Assert.assertTrue(true);
+		}
+		else {
+			Assert.assertTrue(false);
+		}
+	}
+	
+	
+public MembershipPlansPage checkResourceNotDisplaying() throws InterruptedException {
+		waitForElementToPresent(NotMemberResource);
+		this.NotMemberResource.click();
+		waitForElementToPresent(YesProceed);
+		takeScreenshotByShutterBug(YesProceed, "Yes Proceed");
+		click(YesProceed, "Yes Proceed");
+		Thread.sleep(2000);
+		return (MembershipPlansPage) openPage(MembershipPlansPage.class);
+	}
+	
+	
+
 	public void checkResources2() throws InterruptedException {
 		driver.manage().timeouts().implicitlyWait(800, TimeUnit.SECONDS);
 		waitForElementToPresent(resource2);
@@ -97,6 +137,7 @@ public void checkInactiveAdvertisementNotPresent() throws InterruptedException {
 	Assert.assertNotSame(Notpresent, Allplans, "Inactive Plan is not present");
 	
 }
+
 	
 	
 	
