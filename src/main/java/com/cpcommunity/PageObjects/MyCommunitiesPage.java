@@ -678,7 +678,22 @@ public class MyCommunitiesPage extends BasePage {
 		return (MemberDirectoryPage) openPage(MemberDirectoryPage.class);
 		
 	}
-
+	public EventDetailsPage gotoEventsDetailsPage() throws InterruptedException {
+		click(globalEvents,"Global Events");
+		waitForElementToPresent(upcomingEvents);
+		click(upcomingEvents, "Upcoming Events");
+		Thread.sleep(6000);
+		waitForElementToPresent(paidEvent);
+		click(paidEvent,"Event that is paid");
+		
+		return (EventDetailsPage) openPage(EventDetailsPage.class);	
+	}
+	@FindBy(xpath="//span[contains(text(),'Global Events')]")
+	WebElement globalEvents;
+	@FindBy(xpath="//a[contains(text(),'Upcoming Events')]")
+	WebElement upcomingEvents;
+	@FindBy(xpath="//strong[contains(text(),\"Copy Of Copy Of Functional Event 2\")]")
+	WebElement paidEvent;
 
 
 	public HomePage naviagtingToHomePage() {
