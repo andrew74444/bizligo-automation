@@ -317,7 +317,7 @@ public class PromoCodePage extends BasePage {
 		picture();		
 	}
 	
-}
+}//
 
 // Promo code info saved.
 
