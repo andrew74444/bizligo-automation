@@ -31,7 +31,7 @@ public class TC931_Verify_member_able_submit_enquiry_from_contactUsPage extends 
 		ContactUsPage CP=MyCP.NavigateToContactUsPage();
 		CP.checkAndSubmitEquiryForm(data.get("Name"),data.get("Organization") ,data.get("Address"),data.get("Phone"),data.get("Email"), data.get("Comments"));
 		
-
+//comments
 }
 	@AfterMethod
 	public void tearDown() {

@@ -1,5 +1,10 @@
 package com.cpcommunity.PageObjects;
 
+
+import java.util.List;
+
+
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -58,8 +63,25 @@ public class ManageCommunitiesPage extends BasePage {
 	WebElement globalcommunties;
 	@FindBy(xpath = "//button[contains(.,'Yes, Proceed')]")
 	WebElement YesProceed;
+
+	@FindBy(xpath = "//select[@id='IsActiveSearch']")
+	WebElement searchbystatus;
+	@FindBy(xpath = "//tbody//td[3]")
+	List<WebElement> planList;
+	 @FindBy(xpath = "(((//*[@class='col-md-3 left_col']//img[@src='/Content/Images/adprommenu.png'])/..)/..)")
+		WebElement advertisements;
+	    @FindBy(xpath = "//img[@src='/Content/Images/setting-icon.png']/../..")
+		WebElement manage;
+	    @FindBy(xpath = "//a[contains(text(),'Manage Plans')]")
+		WebElement managePlans;
+	    @FindBy(xpath = "//span[@class='fa fa-angle-down']")
+		WebElement toggledropdown;
+	    @FindBy(xpath = "//span[@class='fa fa-angle-down']")
+		WebElement tenantmodule;
+
 	
 	
+
 
 	
     public void searchCommunity(String Community) throws InterruptedException {
@@ -68,6 +90,38 @@ public class ManageCommunitiesPage extends BasePage {
 	click(search, "Search");
 	Thread.sleep(8000);
          }
+
+
+    public void searchinactiveCommunity() throws InterruptedException {
+    	waitForElementToPresent(searchbystatus);
+    	selectUsingIndex(searchbystatus, 2, "Inactve");
+    	click(search, "Search");
+    	Thread.sleep(5000);
+
+  	 List<WebElement> elementList= this.planList;
+  		String[] obtainedList= new String[elementList.size()]  ;
+  		for(int i=0; i<=1;i++) {
+  			obtainedList[i]=elementList.get(i).getText();
+  		System.out.println(obtainedList[i]);
+  		}
+  		//Thread.sleep(5000); 
+  		
+             }
+    public void clickOnAdvertisments() throws InterruptedException {
+ 		click(advertisements, "advertisements");
+ 		Thread.sleep(1000);
+ 	}
+    
+    public ManageAdPlansPage goToManageAdPlansPage() throws InterruptedException {
+    	Thread.sleep(5000);
+         scrollToElement(advertisements);
+ 		this.clickOnAdvertisments();
+ 		waitForElementToPresent(managePlans);
+ 		click(managePlans, "Manage Plans");
+ 		return (ManageAdPlansPage) openPage(ManageAdPlansPage.class);
+ 		// new CommunityPendingRequestsPage(driver);
+ 	}
+
 
 
 

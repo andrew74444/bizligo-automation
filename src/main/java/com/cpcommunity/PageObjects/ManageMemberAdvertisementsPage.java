@@ -23,7 +23,7 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 		aShot();
 
 	}
-
+//
 	@FindBy(xpath = "//h2[contains(text(),'Manage Member Advertisements')]")
 	WebElement manageMemberAdvertisements;
 
@@ -133,6 +133,15 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 		String query = "SELECT TOP 10 ID,Name,Price,DurationValue,DurationTypeID,Adlocation,RequiresApproval,createddate,Createdby,isactive,Viewtype,Communityid FROM PromotionPlans ORDER BY ID desc";
 	}
 
+
+	public void rejectAd(String planName,String status) throws Exception {
+		waitForElementToPresent(planStatus);
+		//type(PlanNameSearch, planName, "Plan Name Search");
+		
+		selectByVisibleText(planStatus, status,"planStatus");
+		click(btnSearch, "Search");
+		Thread.sleep(8000);
+
 	public void rejectAd(String status) throws Exception {
 		Thread.sleep(5000);
 		waitForElementToPresent(statusSearch);
@@ -140,6 +149,7 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 		click(btnSearch, "Search");
 		Thread.sleep(10000);
 		
+
 		click(action, "action");
 		Thread.sleep(8000);
 		//waitForElementToPresent(adStartDate);

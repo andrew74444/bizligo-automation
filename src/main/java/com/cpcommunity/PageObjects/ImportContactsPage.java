@@ -46,21 +46,33 @@ public class ImportContactsPage extends BasePage {
 	WebElement composeCampaign;
 	@FindBy(xpath="//span[@id='CSVErrorMessage']")
 	WebElement Error;
+
+	
+	
+
 	@FindBy(xpath = "//button[normalize-space()='Import']")
 	WebElement importBtn;
 	@FindBy(xpath = "//span[@id='CSVErrorMessage']")
 	WebElement errorMsg;
 	@FindBy(xpath = "//*[@id='toast-container']/div/div[3]")
 	WebElement SuccessPopup; //div[contains(@class,'toast-message')and contains(text(),'Bulk Mail sent.')]
+
 	
 	
 	
 	public void uploadFile(String Filepath) throws InterruptedException {
+
+	waitForElementToPresent(chooseFile);
+	//chooseFile.sendKeys("C:\\Temp\\Book7.csv");
+	type(chooseFile,Filepath,"FileName");
+	Thread.sleep(2000);
+
 		Thread.sleep(2000);
 	waitForElementToPresent(chooseFile);
 	//chooseFile.sendKeys("C:\\Temp\\Book7.csv");
 	type(chooseFile,Filepath,"FileName");
 	Thread.sleep(5000);
+
 	waitForElementToPresent(importContact);
 	click(importContact, "Import");
 	AssertionHelper.verifyText(toastmessage.getText(), "Contacts saved");
@@ -100,10 +112,17 @@ public class ImportContactsPage extends BasePage {
 	}
 	public ComposeCampaign navigateToComposeCampaignPage() throws Exception {
 		scrollDownVertically();
+
+		Thread.sleep(2000);
+		scrollToElement(manageCampaign);
+		click(manageCampaign, "manageCampaign");
+		Thread.sleep(500);
+
 		Thread.sleep(4000);
 		scrollToElement(manageCampaign);
 		waitForElementToPresent(manageCampaign);
 		click(manageCampaign, "manageCampaign");
+
 
 		waitForElementToPresent(composeCampaign);
 		this.composeCampaign.click();	
@@ -111,6 +130,8 @@ public class ImportContactsPage extends BasePage {
 		return (ComposeCampaign) openPage(ComposeCampaign.class);
 		
 }
+
+
 public void errorMsgWhenEmptyEmailRecords(String path) throws InterruptedException {
 		Thread.sleep(2000);
 		waitForElementToPresent(chooseFile);
@@ -135,4 +156,5 @@ public void csvFileWithDuplicateRecords(String path) throws InterruptedException
 	
 	
 }
+
 }
