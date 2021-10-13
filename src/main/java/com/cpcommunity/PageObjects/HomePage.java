@@ -1,5 +1,7 @@
+   
 package com.cpcommunity.PageObjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -35,7 +37,9 @@ public class HomePage extends BasePage {
 	@FindBy(xpath = "//span[contains(.,'Events')]")
 	WebElement Events;
 
+
 	@FindBy(xpath = "(//h1[normalize-space()='building communities'])[1]")
+
 	WebElement home;
 	
 	@FindBy(xpath = "//span[normalize-space()='Directory']")
@@ -54,6 +58,11 @@ public class HomePage extends BasePage {
 	WebElement careers;
 	@FindBy(xpath = "//span[@title='Toggle dropdown menu']")
 	WebElement toggleDropDown;
+
+	@FindBy(xpath = "//a[normalize-space()='Tenant Admin Module']")
+	WebElement tenantadminModule;
+
+
 	@FindBy(xpath = "//a[normalize-space()='Logout']")
 	WebElement logoutBtn;
 	@FindBy(xpath = "//a[normalize-space()='Contact Us']")
@@ -64,6 +73,15 @@ public class HomePage extends BasePage {
 	WebElement globalEvents;
 	@FindBy(xpath="//a[contains(text(),'Upcoming Events')]")
 	WebElement upcomingEvents;
+	@FindBy(xpath="//a[normalize-space()='Blogs']")
+	WebElement blogs;
+	@FindBy(xpath="//div[@class='inner_right']//h4[@ng-hide='IsEM']//a[normalize-space()='advertise your business']")
+	WebElement advertiseBussiness;
+	@FindBy(xpath="//a[normalize-space()='Menu']")
+	WebElement menu;
+	@FindBy(xpath="//a[normalize-space()='Contact']")
+	WebElement contact;
+
 
 
 
@@ -94,6 +112,7 @@ public class HomePage extends BasePage {
 		return (ContactUsPage) openPage(ContactUsPage.class);
 		// new GlobalCareers(driver, );
 	}
+
 
 
 //	public HomePage open() throws Exception {
@@ -145,7 +164,12 @@ public class HomePage extends BasePage {
 		
 	}
 
-
+	public TenantAdminDashboardPage gotoTAdashbord() {
+		toggleDropDown.click();
+		tenantadminModule.click();
+		return (TenantAdminDashboardPage) openPage(TenantAdminDashboardPage.class);
+		
+	}
 
 	public UpcomingEventsPage clickOnupComingEvents() {
 
@@ -199,7 +223,13 @@ public class HomePage extends BasePage {
 		
 		return (HomePage) openPage(HomePage.class);
 	}
-
+	public TenantAdminDashboardPage gotoTenantAdminDashboardPage() throws Exception {
+		waitForElementToPresent(toggleDropDown);
+		click(toggleDropDown, "Toggle drop down");
+		Thread.sleep(1000);
+        click(tenantadminModule, "tenantadminModule");		
+		return (TenantAdminDashboardPage) openPage(TenantAdminDashboardPage.class);
+	}
 
 
 	// public ZohoCRMPage gotoCRM() {
@@ -244,4 +274,48 @@ public UpcomingEventsPage navigateToUpComingEvents() throws InterruptedException
 	// new UpcomingEventsPage(driver, );
 }
 
+public LoginPage advertiseBusiness() throws Exception {
+	
+	waitForElementToPresent(advertiseBussiness);
+	
+	click(advertiseBussiness, "advertise your Bussiness");
+	return (LoginPage) openPage(LoginPage.class);
+	// new LoginPage(driver, );
+
+
+
+}
+         public void Checkadvertisebutton() throws InterruptedException {
+        	 Thread.sleep(2000);
+	    
+		System.out.println("Advertisement link is not working");
+			
+			//
+		}
+         public void checkAllPages() throws InterruptedException {
+        	 Thread.sleep(3000);
+        	 this.contact.isDisplayed();
+        		clickElementByJavaScript(blogs);
+        		Thread.sleep(4000);
+        		this.contact.isDisplayed();
+        		Assert.assertTrue(true);
+        		click(GlobalCommunities, "Global Communities");
+        		this.contact.isDisplayed();
+        		Assert.assertTrue(true);
+        	}
+         public void blogSubmenu() {
+        	 Actions actions = new Actions(driver);
+        	 actions.moveToElement(blogs);
+
+        	// Locating the element from Sub Menu
+        	WebElement subMenu = driver.findElement(By.xpath("//a[normalize-space()='subMenu']"));
+      String menu=subMenu.getText();
+        	//To mouseover on sub menu
+        	actions.moveToElement(subMenu);
+        	System.out.println(menu);
+         }
+         public void gotomenu() {
+        	 clickElementByJavaScript(menu);
+        	 
+         }
 }

@@ -3,7 +3,9 @@ package com.cpcommunity.PageObjects;
 import static org.testng.Assert.assertTrue;
 
 import java.util.List;
+
 import java.util.concurrent.TimeUnit;
+
 
 import org.bouncycastle.asn1.dvcs.Data;
 import org.openqa.selenium.Dimension;
@@ -25,7 +27,11 @@ public class ComposeCampaign extends BasePage {
 		waitForElementToPresent(panelTitle);
 		return ExpectedConditions.visibilityOf(panelTitle);
 	}
+
+
+
 //change
+
 	@Override
 	protected void getPageScreenSot() {
 		// TODO Auto-generated method stub
@@ -121,10 +127,15 @@ public class ComposeCampaign extends BasePage {
 	WebElement searchContactsemail;
 	@FindBy(xpath="//div[@title='Aana Mack']")
 	WebElement Contactsemail;
+
+	@FindBy(xpath="//div[@title='test1@gmail.com']")
+	List<WebElement> email;
+
 	@FindBy(xpath="//div[@title='test22@gmail.com']")
 	List<WebElement> email;
 	@FindBy(xpath="//div[@title='test1@gmail.com']")
 	List<WebElement> email1;
+
 	@FindBy(xpath="//a[normalize-space()='Manage Campaign']")
 	WebElement manageCampaign;
 	@FindBy(xpath="//a[normalize-space()='Import Contacts']")
@@ -133,6 +144,12 @@ public class ComposeCampaign extends BasePage {
 	WebElement composeCampaign;
 	@FindBy(xpath="//div[@class='ui-grid-selection-row-header-buttons ui-grid-icon-ok ng-scope']")
 	List<WebElement> ListOfContacts;
+
+	@FindBy(xpath="//button[@ng-click='closePopup()']//span[@aria-hidden='true'][normalize-space()='×']")
+	WebElement cancelPopup;
+	
+	
+
 	@FindBy(xpath="//div[@id='ContactsModal']//button[@role='button'][normalize-space()='Cancel']")
 	WebElement cancelPopup;
 	@FindBy(xpath = "//button[normalize-space()='Send']")
@@ -292,23 +309,45 @@ public class ComposeCampaign extends BasePage {
 	
 		
 	}
+
 	public void Addcontact(String Campaign, String Message) throws InterruptedException { 
 		waitForElementToPresent(addContacts);
 		click(addContacts, "Add Contacts");
 		//driver.switchTo().frame(1);
+
+		Thread.sleep(2000);
+		waitForElementToPresent(addContactdialogmodal);
+       Thread.sleep(2000);
+
 		Thread.sleep(8000);
 		waitForElementToPresent(addContactdialogmodal);
        Thread.sleep(5000);
+
 		waitForElementToPresent(dropdown);
 		//click(dropdown, "Select options");
 		//selectByVisibleText(optcommunities, Communities, "Communities");
 		selectUsingIndex(dropdown, 1, "Communities");
+
+		Thread.sleep(2000);
+
 		Thread.sleep(8000);
+
 		scrollIntoView(selectcommunities);
 		waitForElementToPresent(selectcommunities);
 		click(selectcommunities, "clickselect");
 		waitForElementToPresent(saveAddContacts);
 		click(saveAddContacts, "Save");
+
+		Thread.sleep(3000);
+		waitForElementToPresent(addedEmails);
+		waitForElementToPresent(selectCampaign);
+		selectByVisibleText(selectCampaign,Campaign, "Campaign");
+		Thread.sleep(2000);
+		scrollIntoView(MessageField);
+		waitForElementToPresent(MessageField);
+		//type(MessageField,Message, "Message");
+		Thread.sleep(2000);
+
 		Thread.sleep(5000);
 		waitForElementToPresent(addedEmails);
 		waitForElementToPresent(selectCampaign);
@@ -318,6 +357,7 @@ public class ComposeCampaign extends BasePage {
 		waitForElementToPresent(MessageField);
 		//type(MessageField,Message, "Message");
 		Thread.sleep(5000);
+
 		scrollIntoView(scheduleDate);
 		//waitForElementToPresent(scheduleDate);
 		click(scheduleDate, "Date");
@@ -333,14 +373,24 @@ public class ComposeCampaign extends BasePage {
 		waitForElementToPresent(addContacts);
 		click(addContacts, "Add Contacts");
 		//driver.switchTo().frame(1);
+
+		Thread.sleep(2000);
+		waitForElementToPresent(addContactdialogmodal);
+       Thread.sleep(2000);
+
 		Thread.sleep(4000);
 		waitForElementToPresent(addContactdialogmodal);
        Thread.sleep(4000);
+
 		waitForElementToPresent(dropdown);
 		//click(dropdown, "Select options");
 		selectByVisibleText(dropdown, Events, "Upcoming Events");
 		//selectUsingIndex(dropdown, 3, "Events");
+
+		Thread.sleep(2000);
+
 		Thread.sleep(5000);
+
 		click(selectAll, "selectAllEvent");
 		waitForElementToPresent(upcomingeventRegistered);
 		String eventname=this.upcomingeventRegistered.getText();
@@ -363,6 +413,15 @@ public class ComposeCampaign extends BasePage {
 		waitForElementToPresent(addContacts);
 		click(addContacts, "Add Contacts");
 		//driver.switchTo().frame(1);
+
+		Thread.sleep(2000);
+		waitForElementToPresent(addContactdialogmodal);
+       Thread.sleep(2000);
+		waitForElementToPresent(dropdown);
+		Thread.sleep(2000);
+		selectByVisibleText(dropdown, Events2, "Past Events");
+		Thread.sleep(2000);
+
 		Thread.sleep(8000);
 		waitForElementToPresent(addContactdialogmodal);
        Thread.sleep(8000);
@@ -370,6 +429,7 @@ public class ComposeCampaign extends BasePage {
 		Thread.sleep(8000);
 		selectByVisibleText(dropdown, Events2, "Past Events");
 		Thread.sleep(7000);
+
 		waitForElementToPresent(pasteventRegistered);
 		String eventname=this.pasteventRegistered.getText();
 		System.out.println("Event: " +eventname);
@@ -390,7 +450,11 @@ public class ComposeCampaign extends BasePage {
 	public void AllMember(String Members) throws InterruptedException {
 		
 		selectByVisibleText(dropdown, Members, "Events");
+
+		Thread.sleep(2000);
+
 		Thread.sleep(5000);
+
 		click(selectAll, "selectAllEvent");
 		waitForElementToPresent(selectAll);
 		if(selectAll.isDisplayed()) {
@@ -405,6 +469,29 @@ public class ComposeCampaign extends BasePage {
 	public void SendEvents(String Events, String EventsName, String Campaign) throws InterruptedException {
 		waitForElementToPresent(addContacts);
 		click(addContacts, "Add Contacts");
+
+		Thread.sleep(2000);
+		waitForElementToPresent(addContactdialogmodal);
+       Thread.sleep(2000);
+		waitForElementToPresent(dropdown);
+		//selectUsingIndex(dropdown, 3, "Events");
+		Thread.sleep(1000);
+		selectByVisibleText(dropdown,Events, "Events");
+		Thread.sleep(1000);
+		scrollIntoView(SearchEventsname);
+		waitForElementToPresent(SearchEventsname);
+		Thread.sleep(1000);
+		type(SearchEventsname,EventsName, "Events Name");
+		waitForElementToPresent(selectAll);
+		Thread.sleep(1000);
+		click(selectAll, "select EventName");
+		waitForElementToPresent(saveAddContacts);
+		click(saveAddContacts, "Save");
+		Thread.sleep(3000);
+		waitForElementToPresent(selectCampaign);
+		selectByVisibleText(selectCampaign,Campaign, "Campaign");
+		Thread.sleep(2000);
+
 		Thread.sleep(8000);
 		waitForElementToPresent(addContactdialogmodal);
        Thread.sleep(8000);
@@ -426,6 +513,7 @@ public class ComposeCampaign extends BasePage {
 		waitForElementToPresent(selectCampaign);
 		selectByVisibleText(selectCampaign,Campaign, "Campaign");
 		Thread.sleep(8000);
+
 		scrollIntoView(Send);
 		waitForElementToPresent(Send);
 		click(Send, "Send");
@@ -444,6 +532,16 @@ public class ComposeCampaign extends BasePage {
 		public void checkAddedContacts(String importedContacts, String Email1) throws InterruptedException {
 			waitForElementToPresent(addContacts);
 			click(addContacts, "Add Contacts");
+
+			Thread.sleep(2000);
+			waitForElementToPresent(addContactdialogmodal);
+			waitForElementToPresent(dropdown);
+			Thread.sleep(2000);
+			getAllDropDownData(dropdown);
+			selectByVisibleText(dropdown,importedContacts, "Imported contacts");
+			//selectUsingIndex(dropdown,18, "ImportedContacts");
+			Thread.sleep(4000);
+
 			Thread.sleep(6000);
 			waitForElementToPresent(addContactdialogmodal);
 			waitForElementToPresent(dropdown);
@@ -452,6 +550,7 @@ public class ComposeCampaign extends BasePage {
 			selectByVisibleText(dropdown,importedContacts, "Imported contacts");
 			//selectUsingIndex(dropdown,18, "ImportedContacts");
 			Thread.sleep(8000);
+
 			waitForElementToPresent(SearchEventsname);
 			type(SearchEventsname,Email1, "importedContacts");
 			String Name=this.Contactsemail.getText();
@@ -467,18 +566,31 @@ public class ComposeCampaign extends BasePage {
 			waitForElementToPresent(addContacts);
 			click(addContacts, "Add Contacts");
 			//driver.switchTo().frame(1);
+
+			Thread.sleep(2000);
+			waitForElementToPresent(addContactdialogmodal);
+	       Thread.sleep(2000);
+
 			Thread.sleep(8000);
 			waitForElementToPresent(addContactdialogmodal);
 	       Thread.sleep(8000);
+
 			waitForElementToPresent(dropdown);
 			selectByVisibleText(dropdown,importedContacts, "Imported contacts");
 			Thread.sleep(5000);
 			waitForElementToPresent(SearchEmailID);
 			type(SearchEmailID,Email1, "importedContacts");
+
+			Thread.sleep(2000);
+			waitForElementToPresent(email);
+			int emaildim =this.email.size();
+			if(emaildim==1) {
+
 			Thread.sleep(4000);
 			waitForElementToPresent(email1);
 			int Count =this.email1.size();
 			if(Count==1) {
+
 				Assert.assertTrue(true);
 			}
 			else {
@@ -491,6 +603,21 @@ public class ComposeCampaign extends BasePage {
 			waitForElementToPresent(addContacts);
 			click(addContacts, "Add Contacts");
 			//driver.switchTo().frame(1);
+
+			Thread.sleep(2000);
+			waitForElementToPresent(addContactdialogmodal);
+	       Thread.sleep(2000);
+			waitForElementToPresent(dropdown);
+			selectByVisibleText(dropdown,importedContacts, "Imported contacts");
+			Thread.sleep(3000);
+			waitForElementToPresent(SearchEventsname);
+			type(SearchEventsname,Member, "importedContacts");
+			Thread.sleep(2000);
+		   waitForElementToPresent(email);
+		    int emailval=email.size();
+		    System.out.println(emailval);
+		    Thread.sleep(6000);
+
 			driver.manage().timeouts().implicitlyWait(400, TimeUnit.SECONDS);
 			waitForElementToPresent(addContactdialogmodal);
 	     //  Thread.sleep(4000);
@@ -503,11 +630,30 @@ public class ComposeCampaign extends BasePage {
 		    int emailval=email.size();
 		    System.out.println(emailval);
 		    driver.manage().timeouts().implicitlyWait(600, TimeUnit.SECONDS);
+
 		    waitForElementToPresent(cancelPopup);
 		    click(cancelPopup, "Cancel");
 			
 		}
 		public void VerifyAddedContacts(String importedContacts, String Email2) throws InterruptedException {
+
+			waitForElementToPresent(addContacts);
+			click(addContacts, "Add Contacts");
+			Thread.sleep(2000);
+			waitForElementToPresent(addContactdialogmodal);
+			waitForElementToPresent(dropdown);
+			Thread.sleep(2000);
+			getAllDropDownData(dropdown);
+			selectByVisibleText(dropdown,importedContacts, "Imported contacts");
+			//selectUsingIndex(dropdown,18, "ImportedContacts");
+			Thread.sleep(4000);
+			waitForElementToPresent(SearchEventsname);
+			type(SearchEventsname,Email2, "importedContacts");
+			waitForElementToPresent(email);
+			//String Name=this.Contactsemail.getText();
+			 int emailval1=email.size();
+			 if(emailval1>1) {
+
 			driver.manage().timeouts().implicitlyWait(200, TimeUnit.SECONDS);
 			waitForElementToPresent(addContacts);
 			click(addContacts, "Add Contacts");
@@ -526,6 +672,7 @@ public class ComposeCampaign extends BasePage {
 			//String Name=this.Contactsemail.getText();
 			 int emailval1=email.size();
 			 if(emailval1==1) {
+
 				 Assert.assertTrue(true);
 			 }
 			 else {
@@ -537,6 +684,32 @@ public class ComposeCampaign extends BasePage {
 	public void SendToGroups(String Campaign) throws InterruptedException {
 		waitForElementToPresent(addContacts);
 		click(addContacts, "Add Contacts");
+
+		Thread.sleep(2000);
+		waitForElementToPresent(addContactdialogmodal);
+       Thread.sleep(2000);
+		waitForElementToPresent(dropdown);
+		selectUsingIndex(dropdown, 2, "Groups");
+		Thread.sleep(3000);
+		waitForElementToPresent(selectAll);
+		click(selectAll, "Select");
+		Thread.sleep(2000);
+		waitForElementToPresent(saveAddContacts);
+		click(saveAddContacts, "Save");
+		Thread.sleep(3000);
+		waitForElementToPresent(selectCampaign);
+		selectByVisibleText(selectCampaign, Campaign, "Campaign");
+		Thread.sleep(2000);
+		scrollIntoView(Send);
+		waitForElementToPresent(Send);
+		click(Send, "Send");
+		Thread.sleep(3000);
+		waitForElementToPresent(toasttitle);
+		//Thread.sleep(3000);
+		String toasttile=toasttitle.getText();
+		//String toastmessage = toastMessage.getText();
+		AssertionHelper.verifyText(toasttitle.getText(), "Success");
+
 		Thread.sleep(6000);
 		waitForElementToPresent(addContactdialogmodal);
        Thread.sleep(8000);
@@ -557,6 +730,7 @@ public class ComposeCampaign extends BasePage {
 		click(Send, "Send");
 		//String toasttitle = toastMessage.getText();
 		/*AssertionHelper.verifyText(toasttitle.getText(), "Success");
+
 		System.out.println(toasttitle);
 		//System.out.println(toastmessage);
 		String expected="Success!";
@@ -565,7 +739,11 @@ public class ComposeCampaign extends BasePage {
 		}
 		else {
 			System.out.println("fail");
+
+		}
+
 		}*/
+
 	}
 	private void waitForElementToPresent(List<WebElement> select1Group2) {
 		// TODO Auto-generated method stub
@@ -586,14 +764,24 @@ public class ComposeCampaign extends BasePage {
 		waitForElementToPresent(addContacts);
 		click(addContacts, "Add Contacts");
 		//driver.switchTo().frame(1);
+
+		Thread.sleep(2000);
+		waitForElementToPresent(addContactdialogmodal);
+       Thread.sleep(2000);
+
 		Thread.sleep(5000);
 		waitForElementToPresent(addContactdialogmodal);
        Thread.sleep(5000);
+
 		waitForElementToPresent(dropdown);
 		//click(dropdown, "Select options");
 		selectByVisibleText(dropdown,importedContacts, "Imported contacts");
 		//selectUsingIndex(dropdown, 5, "Organisation");
+
+		Thread.sleep(2000);
+
 		Thread.sleep(5000);
+
 		waitForElementToPresent(ListOfContacts);
 		int count=this.ListOfContacts.size();
 		System.out.println(count);
@@ -616,19 +804,33 @@ public class ComposeCampaign extends BasePage {
 		waitForElementToPresent(addContacts);
 		click(addContacts, "Add Contacts");
 		//driver.switchTo().frame(1);
+
+		Thread.sleep(2000);
+		waitForElementToPresent(addContactdialogmodal);
+       Thread.sleep(2000);
+
 		Thread.sleep(8000);
 		waitForElementToPresent(addContactdialogmodal);
        Thread.sleep(8000);
+
 		waitForElementToPresent(dropdown);
 		//click(dropdown, "Select options");
 		selectByVisibleText(dropdown,ContactsValue, "Organisation");
 		//selectUsingIndex(dropdown, 7, "Organisation");
+
+		Thread.sleep(2000);
+
 		Thread.sleep(8000);
+
 		scrollIntoView(selectAll);
 		click(selectAll, "clickselect");
 		waitForElementToPresent(saveAddContacts);
 		click(saveAddContacts, "Save");
+
+		Thread.sleep(2000);
+
 		Thread.sleep(8000);
+
 		waitForElementToPresent(addedEmails);
 		String val=this.addedEmails.getText();
 		System.out.println(val);
@@ -665,27 +867,43 @@ public class ComposeCampaign extends BasePage {
 		     }
 }
 	
+
+	public void checkTemplatenotDisplay() {
+
 	public void checkTemplatenotDisplay() throws InterruptedException {
+
 		waitForElementToPresent(selectCampaign);
 		click(selectCampaign, "Select campaign template");
 		String value=selectCampaign.getText();
 		System.out.println(value);
+
+	    if(value.contains("Bizligo Scheduler test")) {
+
 		Thread.sleep(5000);
 	    if(value.contains("3rd templatet")) {
+
 		Assert.assertFalse(true);
 	}
 	    else {
 	    	Assert.assertFalse(false);
 	    }
 	}
+
+	public void checkTemplateDisplay() {
+
 	public void checkTemplateDisplay() throws InterruptedException {
 		
+
 		waitForElementToPresent(selectCampaign);
 		click(selectCampaign, "Select campaign template");
 		String value=selectCampaign.getText();
 		System.out.println(value);
+
+	    if(value.contains("Bizligo Scheduler Test")) {
+
 		Thread.sleep(5000);
 	    if(value.contains("3rd template")) {
+
 		Assert.assertTrue(true);
 	}
 	    else {
@@ -693,6 +911,11 @@ public class ComposeCampaign extends BasePage {
 	    }
 	}
 	
+
+	
+	
+	
+
 public void emailWithoutRecipeintDetails() {
 		
 		click(sendBtn,"send button");
@@ -855,4 +1078,5 @@ public CampaignTemplatePage navigateToCampaignTemplate() throws Exception {
 	return (CampaignTemplatePage) openPage(CampaignTemplatePage.class);
 	
 }
+
 }

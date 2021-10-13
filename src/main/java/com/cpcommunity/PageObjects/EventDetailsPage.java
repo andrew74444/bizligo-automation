@@ -13,7 +13,7 @@ import org.testng.asserts.SoftAssert;
 import com.assertthat.selenium_shutterbug.core.Shutterbug;
 import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
 
-
+import junit.framework.Assert;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -39,6 +39,22 @@ public class EventDetailsPage extends BasePage {
 	WebElement AttendeePhone;
 	@FindBy(xpath = "//*[contains(text(),'Next')]")
 	WebElement NextBtn;
+	@FindBy(xpath = "//label[@for=\"IHavePromoCode\"]")
+	WebElement iHavePromocode;
+	@FindBy(xpath = "//input[@placeholder=\"Enter Promo code\"]")
+	WebElement Promocode;
+	@FindBy(xpath = "//span[contains(text(),\"APPLY\")]")
+	WebElement apply;
+	@FindBy(xpath = "//*[@id=\"selectticketcount\"]")
+	WebElement selectTicket;
+	@FindBy(xpath = "//strong[contains(text(),\"Congratulations!\")]")
+	WebElement congratulationsMsg;
+	@FindBy(xpath = "//span[contains(text(),\"Sorry! The Promo code you have entered is not valid. Please try with a different code.\")]")
+	WebElement sorryMsg;
+	@FindBy(xpath = "//span[contains(text(),\"Sorry! The Promo code you have entered has exceeded the usage limit. Please try with a different code.\")]")
+	WebElement exceedMsg;
+	@FindBy(xpath = "//span[contains(text(),\"Sorry! The Promo code you have entered is not valid. Please try with a different code.\")]")
+	WebElement inactiveMsg;
 	@FindBy(xpath = "//input[@name='PayerEmailID']")
 	WebElement PayerEmailID;
 	@FindBy(xpath = "//input[@name='PayerPhone']")
@@ -164,11 +180,15 @@ public class EventDetailsPage extends BasePage {
 		return ExpectedConditions.visibilityOf(Details);
 	}
 	@Override
+	//protected void getPageScreenSot() {
+		//updateClass(header, "");
+		//aShot();
+		//updateClass(header, "navbar-fixed-top");
 	protected void getPageScreenSot() {
-		updateClass(header, "");
-		aShot();
-		updateClass(header, "navbar-fixed-top");
-	}	
+
+		aShot();//
+
+		}	
    
 	
 
@@ -716,8 +736,83 @@ public class EventDetailsPage extends BasePage {
 
 	}
 
+	public void checkPromoCode(String promoCode)
+			throws Exception {
+
+//		updateClass(header, "");		
+		click(RegisterBtn,"Register");
+		Thread.sleep(1000);
+		selectByVisibleText(selectTicket, "1", "Ticket");
+		Thread.sleep(4000);
+		scrollToElement(attendeFormView);
+		click(NextBtn,"Next");
+		Thread.sleep(2000);
+		scrollToElement(iHavePromocode);
+		click(iHavePromocode,"I have promo code");
+		type(Promocode,promoCode,"PromoCode");
+		click(apply,"APPLY");
+		if(congratulationsMsg.getText().contains("Congratulations")) {
+			System.out.println("Member was able to use promocode");
+			Assert.assertTrue(true);
+		}else Assert.assertTrue(false);
 	
+	}	
+	public void checkPromoCodeWhenExhausted(String promoCode)
+			throws Exception {	
+		click(RegisterBtn,"Register");
+		Thread.sleep(1000);
+		selectByVisibleText(selectTicket, "1", "Ticket");
+		Thread.sleep(4000);
+		scrollToElement(attendeFormView);
+		click(NextBtn,"Next");
+		Thread.sleep(2000);
+		scrollToElement(iHavePromocode);
+		click(iHavePromocode,"I have promo code");
+		type(Promocode,promoCode,"PromoCode");
+		click(apply,"APPLY");
+		if(exceedMsg.getText().equalsIgnoreCase("Sorry! The Promo code you have entered has exceeded the usage limit. Please try with a different code.")) {
+			System.out.println("Member cannot use exhausted Promocode");
+			Assert.assertTrue(true);
+		}else Assert.assertTrue(false);
 	
+	}	
+	public void checkPromoCodeWhenNotMember(String promoCode)
+			throws Exception {		
+		click(RegisterBtn,"Register");
+		Thread.sleep(1000);
+		selectByVisibleText(selectTicket, "1", "Ticket");
+		Thread.sleep(4000);
+		scrollToElement(attendeFormView);
+		click(NextBtn,"Next");
+		Thread.sleep(2000);
+		scrollToElement(iHavePromocode);
+		click(iHavePromocode,"I have promo code");
+		type(Promocode,promoCode,"PromoCode");
+		click(apply,"APPLY");
+		if(sorryMsg.getText().contains("Sorry")) {
+			System.out.println("Member was not able to use promocode if they are part of community");
+			Assert.assertTrue(true);
+		}else Assert.assertTrue(false);
 	
+	}	
+	public void checkInactivePromoCode(String promoCode)
+			throws Exception {		
+		click(RegisterBtn,"Register");
+		Thread.sleep(1000);
+		selectByVisibleText(selectTicket, "1", "Ticket");
+		Thread.sleep(4000);
+		scrollToElement(attendeFormView);
+		click(NextBtn,"Next");
+		Thread.sleep(2000);
+		scrollToElement(iHavePromocode);
+		click(iHavePromocode,"I have promo code");
+		type(Promocode,promoCode,"PromoCode");
+		click(apply,"APPLY");
+		if(inactiveMsg.getText().equals("Sorry! The Promo code you have entered is not valid. Please try with a different code.")) {
+			System.out.println("Member was not able to use promocode if promocode is inactive");
+			Assert.assertTrue(true);
+		}else Assert.assertTrue(false);
+	
+	}	
 	
 }

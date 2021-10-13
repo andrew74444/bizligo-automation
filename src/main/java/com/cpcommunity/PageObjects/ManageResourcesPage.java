@@ -7,7 +7,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+
 import org.testng.Assert;
+
 
 import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
 
@@ -43,7 +46,11 @@ public class ManageResourcesPage  extends BasePage{
 	WebElement resourceDocument;
 	@FindBy(xpath = "//input[@value='4']")
 	WebElement resourceAudio;
+
+	@FindBy(xpath = "//input[@class='select2-search__field'][@placeholder='Select Groups']")
+
 	@FindBy(xpath = "//input[@placeholder='Select Groups']")
+
 	WebElement selectGroup;
 	@FindBy(xpath = "//input[@type='radio'][@name='UploadType'][@value='1']")
 	WebElement internal;
@@ -85,6 +92,8 @@ public class ManageResourcesPage  extends BasePage{
 	WebElement resourcesName;
 	@FindBy(xpath = "//li[@class='select2-results__option'][3]")
 	List<WebElement> GroupName;
+
+
 	@FindBy(xpath = "//button[normalize-space()='Add Resource']")
 	WebElement addBtn;
 	@FindBy(xpath = "//input[@id='ResourceTitle']")
@@ -105,6 +114,7 @@ public class ManageResourcesPage  extends BasePage{
 	WebElement updateBtn;
 	@FindBy(xpath = "//*[@id='toast-container']/div/div[3]")
 	WebElement SuccessPopup;
+
 	
 	
 	
@@ -122,16 +132,34 @@ public class ManageResourcesPage  extends BasePage{
 			waitForElementToPresent(free);
 			click(free, "Free");
 			//waitForElementToPresent(GroupName);
+
+		
+			waitForElementToPresent(selectGroup);
+			this.selectGroup.sendKeys("test123");
+			//type(this.selectGroup,Group,"Group");
+			//waitForElementToPresent(GroupName);
+			//click(GroupName,"Test123");
+			//selectUsingIndex(selectGroup,3,"Test123");
+			//selectByVisibleText(this.selectGroup,Group,"Group");
+            Thread.sleep(2000);
+			waitForElementToPresent(description);
+			type(this.description, Description, "Description");
+			waitForElementToPresent(external);
+			click(external, "External");
+
 			waitForElementToPresent(external);
 			click(external, "External");
 			waitForElementToPresent(description);
 			type(this.description, Description, "Description");
+
 			waitForElementToPresent(URL);
 			type(this.URL, url, "Url");
 			waitForElementToPresent(resourceImage);
 			click(resourceImage, "Image");
 			waitForElementToPresent(Active);
 			click(Active, "Inactive It");
+
+
 			waitForElementToPresent(selectGroup);
 			type(this.selectGroup,Group,"Group");
 			//waitForElementToPresent(GroupName);
@@ -139,6 +167,7 @@ public class ManageResourcesPage  extends BasePage{
 			//selectUsingIndex(selectGroup,3,"Test123");
 	
 			
+
 			waitForElementToPresent(save);
 			click(save, "Save");
 			AssertionHelper.verifyText(toastMessage.getText(), "Success! Resources saved");
@@ -187,7 +216,10 @@ public class ManageResourcesPage  extends BasePage{
 			waitForElementToPresent(save);
 			click(save, "Save");
 			AssertionHelper.verifyText(toastMessage.getText(), "Success! Resources saved");
+
+
 		Thread.sleep(3000);
+
 		}
 		}
 
@@ -235,6 +267,25 @@ public class ManageResourcesPage  extends BasePage{
 	}
 	
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
 	public void createResources(String Title) {
 		waitForElementToPresent(addBtn);
 		click(addBtn,"add button");
@@ -257,6 +308,7 @@ public class ManageResourcesPage  extends BasePage{
 			System.out.println("Admin able to update resource");
 		}
 	}
+
 
 	
 	
