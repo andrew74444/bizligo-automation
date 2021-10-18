@@ -137,6 +137,9 @@ public class Bizligo1CommunityPage extends BasePage {
 	@FindBy(xpath="//strong[normalize-space()='CSS - Training']")
 	WebElement eventName;
 
+	@FindBy(xpath="//strong[normalize-space()='2nd CSS - Training']")
+	WebElement eventName2;
+
 	@FindBy(xpath="//a[@ui-sref='community.member']")
 	WebElement member;
 	@FindBy(xpath="//input[@id='memberName']")
@@ -701,6 +704,12 @@ public class Bizligo1CommunityPage extends BasePage {
 		Assert.assertTrue(true);
 		}else Assert.assertTrue(false);
 		click(closeConnectionPopUp,"close pop up");
+	}
+	public EventDetailsPage goToPaidEvent() throws InterruptedException {
+		click(events,"Events");
+		Thread.sleep(4000);
+		click(eventName2,"Event upcoming");
+		return (EventDetailsPage) openPage(EventDetailsPage.class);
 	}
 
 
