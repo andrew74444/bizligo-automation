@@ -289,7 +289,7 @@ public class SelectPlanPage extends BasePage {
 		//waitForElementToPresent(adEndDatecalendar);
 		//Thread.sleep(1000);
 		//click(enddate, "EndDate");
-		Thread.sleep(4000);
+		Thread.sleep(8000);
 		waitForElementToPresent(choosefile);
 		type(choosefile, path, "Image Path");
 		scrollDownVertically();

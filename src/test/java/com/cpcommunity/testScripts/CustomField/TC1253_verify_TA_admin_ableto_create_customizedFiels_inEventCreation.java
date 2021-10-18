@@ -36,7 +36,7 @@ public class TC1253_verify_TA_admin_ableto_create_customizedFiels_inEventCreatio
 	CreateOrEditEvent CEE=commevent.NewEvent();
 	CEE.AddDetails(data.get("EventTitle"), data.get("EventCategory"),data.get("location"), data.get("Description"));
 	CEE.AddTickets(data.get("ticketName"), data.get("ticketquantity"));
-	CEE.AddField(data.get("Label"), data.get("order"),data.get("type"), data.get("OptionName"), data.get("value"),data.get("order1"), data.get("type1"),data.get("type2"),data.get("type3"),data.get("type4"));
+	CEE.AddField1(data.get("Label"), data.get("order"),data.get("type"));
 	
 	
 	}

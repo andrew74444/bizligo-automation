@@ -35,9 +35,9 @@ public class TC1254_verify_TACA_ceatedField_displaying_inEventRegistration exten
 	MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
 	MyDashboardPage dash=myCommunity.gotoMyDashboardPage();
 	UpcomingEventsPage UE=dash.GoToUpComingEvents();
-	CreateOrEditEvent CEE=UE.searchEvent(data.get("Eventname"));
-	CEE.UpdateDetails(data.get("eventTitleName"),  data.get("Location"));
-	CEE.checkFieldvalidation(data.get("lengthm"), data.get("lengthM"), data.get("label"), data.get("lengthM1"),data.get("lengthM2"));
+	UE.registerTt(data.get("Eventname"));
+	//CEE.UpdateDetails(data.get("eventTitleName"),  data.get("Location"));
+	//CEE.checkFieldvalidation(data.get("lengthm"), data.get("lengthM"), data.get("label"), data.get("lengthM1"),data.get("lengthM2"));
 	
 	}
 	@AfterMethod

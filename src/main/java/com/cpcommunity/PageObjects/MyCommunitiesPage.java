@@ -36,7 +36,7 @@ public class MyCommunitiesPage extends BasePage {
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 
-		return ExpectedConditions.visibilityOf(CreateCommunityBtn);
+		return ExpectedConditions.visibilityOf(btnSearch);
 	}
 
 	// public ZohoCRMPage gotoCRM() {
@@ -48,7 +48,7 @@ public class MyCommunitiesPage extends BasePage {
 	// return (ZohoCRMPage) openPage(ZohoCRMPage.class);
 
 
-	@FindBy(xpath = "//h3[@class='MyCommunitiesHeader text-uppercase']")
+	//@FindBy(xpath = "//h3[@class='MyCommunitiesHeader text-uppercase']")
 
 
 	@FindBy(xpath = "//h3[normalize-space()='My Communities']")
@@ -161,15 +161,8 @@ public class MyCommunitiesPage extends BasePage {
 	WebElement manageButton;
 	@FindBy(xpath="//span[normalize-space()='18-02-2021 -Testing']")
 	WebElement Testingcommunity;
-
-	
-	@FindBy(xpath="//span[normalize-space()='Resources']")
-	WebElement resources;
-	
 	@FindBy(xpath = "//a[normalize-space()='home']")
 	WebElement home;
-	@FindBy(xpath="//a[contains(text(),'Global Communities')]")
-	WebElement globalCommunities;
 	
 	public GlobalCommunitesPage naviagtingToGlobalCommunities() throws Exception
 	{
@@ -228,16 +221,7 @@ public class MyCommunitiesPage extends BasePage {
 		Thread.sleep(8000);
 		return (MyDashboardPage) openPage(MyDashboardPage.class);
 	}	
-	public MyProfilePage goToMyProfilePage() throws Exception {
-        Thread.sleep(5000);
-		click(Toggledropdownmenu,"Toggledropdownmenu");
-		Thread.sleep(1000);
-		click(myProfile,"myProfile");
-		return (MyProfilePage) openPage(MyProfilePage.class);
-		// new MyProfilePage(driver, );
-	}
-
-
+	
 	public BusinessDirectoryPage gotoBusinessDirectoryPage() throws Exception {
 		click(Directory,"Directory");
 		Thread.sleep(5000);
@@ -276,14 +260,7 @@ public class MyCommunitiesPage extends BasePage {
 		// new HomePage(driver, );
 	}
 	
-	public MyDashboardPage gotoMyDashboardPage() throws Exception {
-		waitForElementToPresent(Toggledropdownmenu);
-		click(Toggledropdownmenu,"Toggledropdownmenu");
-		Thread.sleep(500);
-		waitForElementToPresent(DashBoard);
-		click(DashBoard,"DashBoard");
-		return (MyDashboardPage) openPage(MyDashboardPage.class);
-	}	
+	
 
 
 
@@ -552,15 +529,7 @@ public class MyCommunitiesPage extends BasePage {
 		picture();
 	}
 
-	public GlobalCommunitesPage naviagtingToGlobalCommunities() throws Exception
-	{
-		
-		clickElementByJavaScript(globalCommunities);
-		Thread.sleep(1000);
-		return (GlobalCommunitesPage) openPage(GlobalCommunitesPage.class);
-//		new GlobalCommunitesPage(driver, );
-		
-	}
+	
 	public CommunityDashboardPage gotoManageCommunity(String communityName) throws Exception {
 
 

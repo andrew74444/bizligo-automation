@@ -127,10 +127,12 @@ public class TenantAdminDashboardPage extends BasePage{
 	WebElement ad;
 	@FindBy(xpath = "//a[normalize-space()='Features Configuration']")
 	WebElement featureConfiguration;
-	@FindBy(xpath = "//li[15]//ul[@class='nav child_menu']")
+	@FindBy(xpath = "//li[@class='active']//ul[@class='nav child_menu']")
 	WebElement campList;
 	@FindBy(xpath = "//a[normalize-space()='Membership Plans']")
 	WebElement membership;
+	@FindBy(xpath = "//a[normalize-space()='Pricing Plans']")
+	WebElement pricingplan;
 	
 	
 
@@ -233,6 +235,13 @@ public ManageResourcesPage navigateToManageResourcesPage() throws Exception {
 	
 }
 
+public ManagePricingPlan navigateToManagePricingPlan() throws Exception {
+	Thread.sleep(2000);
+	click(pricingplan, "pricingplan");
+	return (ManagePricingPlan) openPage(ManagePricingPlan.class);
+	
+}
+
    public ManageMembershipPlan navigateToMembershipPlansPage() throws Exception {
 	waitForElementToPresent(membershipplan);
 	click(membershipplan, "membership plan");
@@ -326,17 +335,20 @@ public void goHomePage() throws InterruptedException {
  	}
      
      public FeaturesConfigurations goToFeaturesConfigurationsPage() throws InterruptedException {
-    	 Thread.sleep(2000);
+    	 Thread.sleep(5000);
     	 scrollToElement(featureConfiguration);
   		click(featureConfiguration, "Feature Configuration");
   		return (FeaturesConfigurations) openPage(FeaturesConfigurations.class);
   	}
      
-     public PaymentGatewaysPage navigateToPaymentGateways() {
- 		click(paymentGateways, "payment Gateways");
- 		return (PaymentGatewaysPage) openPage(PaymentGatewaysPage.class);
- 		// new PaymentGatewaysPage(driver);
- 	}
+   
+     public PaymentGatewaysPage NavigatetoPaymentGatewayPage() {
+
+    	 waitForElementToPresent(paymentGateway);
+    	 click( paymentGateway, "paymentGateway");
+    	 return (PaymentGatewaysPage) openPage(PaymentGatewaysPage.class);
+    	 // new ManageJobs(driver);
+    	 }
      
      public RevenueReportPage goToRevenueReport() {
 			//waitForElementToPresent(dashboardreport);
@@ -369,15 +381,14 @@ public void goHomePage() throws InterruptedException {
      public void checkImportContactnotDisplay() throws Exception {
  		
  		Thread.sleep(5000);
- 		scrollToElement(manageCampaign);
- 		click(manageCampaign, "manageCampaign");
+ 		scrollToElementAndClick(manageCampaign);
  		Thread.sleep(1000);
- 		Object list=campList.getText();
+ 		String list=campList.getText();
  		System.out.println(list);
- 		Object name="Import Contact";
+ 		String name="Import Contact";
  		//Assert.assertNotSame(list, name);
  		Assert.assertNotSame(list, name);
  		//click(composeCampaign, "composeCampaign");
- 		Thread.sleep(4000);	
+ 		
  	}
 }

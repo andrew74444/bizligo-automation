@@ -29,7 +29,7 @@ public class TC1224_verify_RevenueReport_updated_when_member_purchaseplan extend
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1224", data.get("Runmode"), excel);
 	log.info("Inside Login Test");	
-	openBrowser(data.get("browser"));
+	/*openBrowser(data.get("browser"));
 	logInfo("Launched Browser : "+ data.get("browser"));		
 	logInfo("BizLigo Application Opened");
 	HomePage home = new HomePage().open(data.get("tenantType"));
@@ -40,7 +40,7 @@ public class TC1224_verify_RevenueReport_updated_when_member_purchaseplan extend
 	RevenueReportPage revenue= MAPP.goToRevenueReport();
 	TotalRevenueReport totalrevenue=revenue.goToTotalReport();
 	totalrevenue.checkTotalRevenuebasedOnTimePeriod();
-	quit();
+	quit();*/
 	
 	openBrowser(data.get("browser"));
 	logInfo("Launched Browser : "+ data.get("browser"));		

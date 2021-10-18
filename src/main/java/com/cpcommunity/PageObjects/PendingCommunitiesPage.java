@@ -92,7 +92,7 @@ public class PendingCommunitiesPage extends BasePage{
 	
 	
 	public void rejectCommunity(String communityName, String rejectReason ) throws Exception{
-		this.Searchcommmunity(communityName+getDateInDDMMMYYYY());
+		this.Searchcommmunity(communityName);
 		this.viewCommunityDetails();
 		clickElementByJavaScript(btnReject);
 		waitForElementToPresent(this.rejectReason); 
@@ -100,7 +100,7 @@ public class PendingCommunitiesPage extends BasePage{
 		click(rejectYesProceed,"Yes Proceed"); 
 		waitForElementToPresent(this.OkBtn);
 		click( OkBtn,"Ok Btn");
-		Thread.sleep(6000);
+		Thread.sleep(1000);
 		picture();
 //		new TestBase().captureScreen(rejectReason, driver);
 		
