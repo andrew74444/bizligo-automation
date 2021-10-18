@@ -28,7 +28,7 @@ public class TC1223_verify_popUp_msg_Display_when_TA_tryTo_Inactivate_PaymentGat
 	HomePage home = new HomePage().open(data.get("tenantType"));
 	LoginPage login = home.clickOnLOGINBtn();
 	TenantAdminDashboardPage tadashoboard=login.loginToTADashboard(data.get("email"), data.get("password"));
-    PaymentGatewaysPage paymentgate=tadashoboard.navigateToPaymentGateways();
+    PaymentGatewaysPage paymentgate=tadashoboard.NavigatetoPaymentGatewayPage();
     paymentgate.inactiveAuthorizeGateway(data.get("community"));
     paymentgate.inactiveCash(data.get("community"));
     paymentgate.activeAuthorizeGateway(data.get("community"));

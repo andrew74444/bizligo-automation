@@ -172,6 +172,8 @@ public class CommunityEventsPage extends BasePage {
 	}
 	public void gotoCheckin(String eventname, String email1, String NameF, String NameL) throws Exception {
 		this.SearchEvent(eventname+" "+getDateInDDMMMYYYY());
+
+		Thread.sleep(2000);
 		click(firstEventRowCheckBox,"firstEventRowCheckBox");
 		Thread.sleep(1000);
 		click(btnCheckinEvent, "Checkin Event");	

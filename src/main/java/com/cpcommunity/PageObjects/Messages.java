@@ -112,7 +112,7 @@ public class Messages extends BasePage{
 		String i = Integer.toString(elements.size());
 		String SharedMessage = driver.findElement(By.xpath("//*[@id='ChatController']/div/div/div[1]/div/div/div[2]/div[1]/ul/li["+i+"]/div[2]/p")).getText();	
 		AssertionHelper.verifyText(SharedMessage, Message);
-		Thread.sleep(2000);	
+		Thread.sleep(4000);	
 		return Message;
 	}
 	

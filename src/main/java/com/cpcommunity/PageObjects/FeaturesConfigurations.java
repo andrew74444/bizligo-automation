@@ -162,7 +162,7 @@ public void EnableImportContact() throws InterruptedException {
 		scrollToElement(element);
 		click(element, "feature");
 		Thread.sleep(3000);
-		WebElement toggleButton = driver.findElement(By.xpath("//label[contains(text(),'"+feature+"')]/../../../../..//*[@class='btn btn-success btn-lg toggle-on']"));
+		WebElement toggleButton = driver.findElement(By.xpath("//label[contains(text(),'"+feature+"')]/../../../../..//*[@class='btn btn-warning btn-lg active toggle-off']"));
 		click(toggleButton, "disabling the feature");
 		
 		WebElement saveButton = driver.findElement(By.xpath("//label[contains(text(),'"+feature+"')]/../../../../..//*[@id='btnSave']"));

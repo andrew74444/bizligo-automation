@@ -37,8 +37,8 @@ public class TC1230_verify_AdPlan_notTobe_Display_inHomePage_when_TA_rejectsPlan
 	MAPP.GlobalAdByTA(data.get("community"),data.get("name1"),data.get("price1"), data.get("planDetails"),data.get("duration1"),data.get("durationType"),data.get("adLocation"),data.get("adType"), data.get("approvalType"));
 	quit();
 	
-	openBrowser(data.get("browser"));
-	logInfo("Launched Browser : "+ data.get("browser"));		
+	openBrowser(data.get("browser1"));
+	logInfo("Launched Browser : "+ data.get("browser1"));		
 	logInfo("BizLigo Application Opened");
 	HomePage home1 = new HomePage().open(data.get("tenantType"));
 	LoginPage login1 = home1.clickOnLOGINBtn();
