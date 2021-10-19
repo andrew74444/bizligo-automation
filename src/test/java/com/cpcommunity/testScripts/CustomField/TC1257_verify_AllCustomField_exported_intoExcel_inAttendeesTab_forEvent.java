@@ -38,7 +38,7 @@ public class TC1257_verify_AllCustomField_exported_intoExcel_inAttendeesTab_forE
 	CreateOrEditEvent CEE=commevent.NewEvent();
 	CEE.AddDetails(data.get("EventTitle"), data.get("EventCategory"),data.get("location"), data.get("Description"));
 	CEE.AddTickets(data.get("StartTime"), data.get("endTime"),0,0,data.get("ticketName"), data.get("ticketquantity"));
-	CEE.AddField1(data.get("Label"), data.get("order"),data.get("type"));
+	CEE.AddField(data.get("Label"), data.get("order"),data.get("type"), data.get("OptionName"), data.get("value"),data.get("order1"), data.get("type1"),data.get("type2"),data.get("type3"),data.get("type4"));
     quit();
     
     openBrowser(data.get("browser"));
@@ -50,9 +50,7 @@ public class TC1257_verify_AllCustomField_exported_intoExcel_inAttendeesTab_forE
 	CommunityDashboardPage communityDashboard1 = myCommunity1.gotoManageCommunity(data.get("communityName"));
 	CommunityEventsPage commevent1=communityDashboard1.navigateToEvents();
 	commevent1.gotoCheckin(data.get("eventname"),data.get("email1"), data.get("NameF"), data.get("NameL"));
-	commevent1.bookTicket();
-	quit();
-
+	
 	
 	}
 	@AfterMethod
@@ -63,4 +61,5 @@ public class TC1257_verify_AllCustomField_exported_intoExcel_inAttendeesTab_forE
 		quit();
 
 	}
+	
 }

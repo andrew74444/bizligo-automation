@@ -28,7 +28,7 @@ public class TC1226_verify_applicant_redirected_tothe_selectPlanPage_onclicking_
 	HomePage home = new HomePage().open(data.get("tenantType"));
 	LoginPage login = home.clickOnLOGINBtn();
 	MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
-	HomePage home1=myCommunity.naviagtingToHomePage();
+	//HomePage home1=myCommunity.naviagtingToHomePage();
 	//home1.Createadvertise();
 	
 	

@@ -39,11 +39,11 @@ public class TotalRevenueReport extends BasePage{
 	
 	public void checkTotalRevenuebasedOnTimePeriod() throws InterruptedException {
 		
-		Thread.sleep(5000);
+		Thread.sleep(8000);
 		String amt=adRevenue.getText();
 		System.out.println(amt);
 
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 	 	
 	}
 	
@@ -64,7 +64,6 @@ public class TotalRevenueReport extends BasePage{
 		
 	 	
 	}
-	
 	
 	
 	

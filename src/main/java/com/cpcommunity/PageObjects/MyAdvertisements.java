@@ -101,7 +101,7 @@ public class MyAdvertisements extends BasePage {
 	WebElement editinactive;
 
 	@FindBy(xpath = "//tbody/tr[1]/td[2]/span[1]")
-	WebElement editt;
+	WebElement editt1;
 
 	
 	@FindBy(xpath = "//div[@class='well well-sm']//div[@class='col-sm-12']")
@@ -168,10 +168,7 @@ public class MyAdvertisements extends BasePage {
 
 		  // 
 	   }
-	//public UpdateADPage gotoUpdateAdpage(String planName) throws InterruptedException {
 
-		   
-	   
 	public UpdateADPage gotoUpdateAdpage(String planName) throws InterruptedException {
 
 		//Thread.sleep(2000);
@@ -444,7 +441,6 @@ public class MyAdvertisements extends BasePage {
 		System.out.print(inactiveerror);
 		click(ok, "OK");
 	}
-	
 
 	public void checkIsplanInactive() {
 		
@@ -453,9 +449,9 @@ public class MyAdvertisements extends BasePage {
 		waitForElementToPresent(inactiveerror);
 		System.out.print(inactiveerror);
 		click(ok, "OK");
-
-		
+	
 	}
+  
 	public MyDashboardPage gotoMyDashboardPage() throws Exception {
 		driver.manage().timeouts().implicitlyWait(800, TimeUnit.SECONDS);
 		waitForElementToPresent(Toggledropdownmenu);
@@ -468,9 +464,7 @@ public class MyAdvertisements extends BasePage {
 	
 	}
 	
-	
-	
-
+		
 }
 
 

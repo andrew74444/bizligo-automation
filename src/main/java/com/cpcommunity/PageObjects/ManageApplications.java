@@ -52,8 +52,6 @@ public class ManageApplications extends BasePage{
 	@FindBy(xpath = "//input[@id='JobTitleSearch']")
 	WebElement JobTitle;
 
-	//@FindBy(xpath="//button[@id='btnSearch']")
-
 	@FindBy(xpath = "//td[@class='sorting_1']")
 	WebElement JobTitleName;
 	
@@ -82,8 +80,6 @@ public class ManageApplications extends BasePage{
 
 	@FindBy(xpath = "//label[contains(text(),'Accept')]")
     WebElement Accept;
-	
-//	@FindBy(xpath = "//*[@type='submit']")
 
 	@FindBy(xpath = "//tbody/tr[1]/td[2]/a[1]/span[1]")
     WebElement edit;

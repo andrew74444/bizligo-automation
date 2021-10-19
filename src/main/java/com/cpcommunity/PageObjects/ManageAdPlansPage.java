@@ -114,8 +114,8 @@ public class ManageAdPlansPage extends BasePage {
 	
 	@FindBy(xpath = "//div[@class='bootstrap-dialog-message']")
 	WebElement sameplanerror;
-	//button[normalize-space()='×']
-	@FindBy(xpath = "//button[normalize-space()='×']")
+	//button[normalize-space()='Ã—']
+	@FindBy(xpath = "//button[normalize-space()='Ã—']")
 	WebElement closeerror;
 	@FindBy(xpath = "//input[@id='global']")
 	WebElement global;
@@ -190,6 +190,7 @@ public class ManageAdPlansPage extends BasePage {
 		
    }
    
+
 	/*
 	 * public void createAdByTA(String name,String name1, String price,String
 	 * price1, String planDetails, String duration,String duration1, String
@@ -225,6 +226,7 @@ public class ManageAdPlansPage extends BasePage {
 	 * 
 	 * }
 	 */
+
    
    public void createAdByTA(String name,String name1, String price,String price1, String planDetails, String duration,String duration1, String durationType,
 			String adLocation, String adType, String approvalType) {
@@ -272,7 +274,7 @@ public class ManageAdPlansPage extends BasePage {
 		waitForElementToPresent(this.communityradiobtn);
 		click(communityradiobtn, "Community");
 		selectByVisibleText(communityselect, community, "Community");
-		Thread.sleep(5000);
+		Thread.sleep(8000);
 		name1=name1+ "" + getDateInDDMMMYYYY();
 		Thread.sleep(2000);
 		type(this.name, name1, "name");
@@ -281,7 +283,8 @@ public class ManageAdPlansPage extends BasePage {
 		enterTextInframe.clear();
 		enterTextInframe.sendKeys(planDetails);
 		driver.switchTo().defaultContent();
-		type(this.duration, duration1, "duration");
+		duration.sendKeys("duration1");
+	//	type(this.duration, duration1, "duration");
 		selectByVisibleText(this.durationType, durationType, "duration Type");
 		selectByVisibleText(this.adLocation, adLocation, "ad Location");
 		selectByVisibleText(this.adType, adType, "Ad Type");
@@ -294,11 +297,6 @@ public class ManageAdPlansPage extends BasePage {
 		//waitForElementToPresent(this.toaster);
 		AssertionHelper.verifyText(toastemessage.getText(), "Advertisement plan details saved.");
 
-		
-		click(btnSave, "Save button");
-		//waitForElementToPresent(this.toaster);
-		//AssertionHelper.verifyText(toastemessage.getText(), "Advertisement plan details saved.");
-
 		Thread.sleep(5000);
  }
    
@@ -310,7 +308,7 @@ public class ManageAdPlansPage extends BasePage {
 		waitForElementToPresent(this.communityradiobtn);
 		click(communityradiobtn, "Community");
 		selectByVisibleText(communityselect, community, "Community");
-		Thread.sleep(3000);
+		Thread.sleep(7000);
 		name1=name1+ "" + getDateInDDMMMYYYY();
 		type(this.name, name1, "name");
 		type(this.price, price1, "price");
@@ -322,10 +320,8 @@ public class ManageAdPlansPage extends BasePage {
 		selectByVisibleText(this.durationType, durationType, "duration Type");
 		selectByVisibleText(this.adLocation, adLocation, "ad Location");
 		selectByVisibleText(this.adType, adType, "Ad Type");
-		if (approvalType.equalsIgnoreCase("no")) {
-			click(chkRequiresApproval, "Approval approaval");
-		}
-		click(statusTA, "Satus");
+		
+		  click(statusTA, "Satus");
 		Thread.sleep(5000);
 		click(btnSave, "Save button");
 		//waitForElementToPresent(this.toaster);
@@ -593,20 +589,20 @@ public class ManageAdPlansPage extends BasePage {
 	  
 	   WebElement disable= this.durationType;
 	   Assert.assertTrue(true, disable.getAttribute("disable"));
-       System.out.println("Duration Type is in Disable mode");
+       System.out.println("Duration Type is not Editable");
        
        WebElement disable2= this.adLocation;
 	   Assert.assertTrue(true, disable2.getAttribute("disable"));
-       System.out.println("Advertisement location is in Disable mode");
+       System.out.println("Advertisement location is not Editable");
 		
        
        WebElement disable3= this.adType;
 	   Assert.assertTrue(true, disable3.getAttribute("disable"));
-       System.out.println("Advertisement type is in Disable mode");
+       System.out.println("Advertisement type is in not Editable");
        
        WebElement disable4= this.chkRequiresApproval;
 	   Assert.assertTrue(true, disable3.getAttribute("disable"));
-       System.out.println("Requires Approval is in Disable mode");
+       System.out.println("Requires Approval is in not Editable.");
 		   
 		   click(save, "Save");
 		   Thread.sleep(4000);
@@ -719,12 +715,6 @@ public class ManageAdPlansPage extends BasePage {
 	   //AssertionHelper.verifyText(toastemessage.getText(), "Advertisement plan details saved.");
 	   Thread.sleep(6000);
 
-	   Thread.sleep(5000);
-	   click(save, "Save");
-	   //AssertionHelper.verifyText(toastemessage.getText(), "Advertisement plan details saved.");
-		
-
-	   
    }
    public void Activate(String plan) throws InterruptedException {
 	   Thread.sleep(3000);
@@ -861,6 +851,7 @@ public class ManageAdPlansPage extends BasePage {
   
 
 
+
  /* public void CreateAdUsingURL(String community,String name1, String price1, String planDetails, String duration1, String durationType,
 			String adLocation, String adType, String approvalType) throws InterruptedException, AWTException{
 	  Thread.sleep(5000);
@@ -908,6 +899,8 @@ public class ManageAdPlansPage extends BasePage {
 		picture();
 	}*/
   
+  }
+
   public void CancelAdwithoutFilling() throws InterruptedException {
 		waitForElementToPresent(dataTablesInfo);
 		//String str = dataTablesInfo.getText();
@@ -972,10 +965,8 @@ public class ManageAdPlansPage extends BasePage {
 		
 }
 	   
- 
-	    
-  
- /*   public void windowhandle() throws InterruptedException, AWTException {
+  /*  public void windowhandle() throws InterruptedException, AWTException {
+
     	 Thread.sleep(4000);
     	 Robot robot = new Robot();                          
          robot.keyPress(KeyEvent.VK_CONTROL); 
@@ -999,12 +990,10 @@ public class ManageAdPlansPage extends BasePage {
 		
         driver.switchTo().window(tabs.get(0));
          
-         
-		
+       		
+
 }
-	*/   
- 
-	    
+    
   
     public void windowhandle() throws InterruptedException, AWTException {
     	 Thread.sleep(4000);
@@ -1112,12 +1101,6 @@ public RevenueReportPage goToRevenueReport() {
 
   
 
-}
-  
-  
-  
-  
-  
-  
+ 
 
 
