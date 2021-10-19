@@ -25,6 +25,7 @@ public class TenantAdminDashboardPage extends BasePage{
 		updateClass(pageheader, "");
 		aShot();
 	}
+	
 	@FindBy(xpath = "//div[@class='nav_menu']")
 	WebElement pageheader;
 	@FindBy(xpath = "//h3[normalize-space()='Tenant Admin Dashboard']")
@@ -131,10 +132,11 @@ public class TenantAdminDashboardPage extends BasePage{
 	WebElement campList;
 	@FindBy(xpath = "//a[normalize-space()='Membership Plans']")
 	WebElement membership;
-	
+	@FindBy(xpath = "//a[normalize-space()='Promo Codes']")
+	WebElement promocodes;
 	
 
-	/*
+	
 	public LoyaltyPage navigateToLoyaltyPage() {
 		scrollDownVertically();
 		scrollToElement(loyalty);
@@ -144,9 +146,8 @@ public class TenantAdminDashboardPage extends BasePage{
 		return (LoyaltyPage) openPage(LoyaltyPage.class);
 		// new ManageJobs(driver);
 	}
-*/
 
-   
+
 	public MembershipPlansPage navigatetoMembershipPlansPage() throws Exception {
         waitForElementToPresent(membership);
 		click(membership, "Membership");
@@ -164,7 +165,7 @@ public class TenantAdminDashboardPage extends BasePage{
 		// new ManageCommunityMembersPage(driver);
 	}
 	
-	public PendingCommunitiesPage navigatetopendingCommunities() throws Exception {
+/*	public PendingCommunitiesPage navigatetopendingCommunities() throws Exception {
         waitForElementToPresent(communities);
 		click(communities, "Members");
 		Thread.sleep(2000);
@@ -172,7 +173,18 @@ public class TenantAdminDashboardPage extends BasePage{
 		return (PendingCommunitiesPage) openPage(PendingCommunitiesPage.class);
 		// new ManageCommunityMembersPage(driver);
 	}
-    
+    */
+	
+	public PendingCommunitiesPage navigatetopendingCommunities1() throws Exception {
+		waitForElementToPresent(communities);
+		click(communities, "Members");
+		Thread.sleep(2000);
+		click(pendingCommunities, "pending Communities");
+		return (PendingCommunitiesPage) openPage(PendingCommunitiesPage.class);
+		// new ManageCommunityMembersPage(driver);
+		}
+	
+	
 	 public ManageApplications navigateToManageApplication() {
 			scrollDownVertically();
 			scrollToElement(Jobs);
@@ -345,6 +357,51 @@ public void goHomePage() throws InterruptedException {
 			click(revenuereport, "Revenue Report");
 			return (RevenueReportPage) openPage(RevenueReportPage.class);	
 		}
+     
+     public TACommunitiesPage navigateToCommunitiesPage() {
+    	 click(CommunitiesNavSideMenu, "Communities");
+    	 waitForElementToPresent(manageCommunity);
+    	 clickElementByJavaScript(manageCommunity);
+    	 return (TACommunitiesPage) openPage(TACommunitiesPage.class);
+    	 }
+     
+     public void checkDonationsWhenDisabled() {
+    	 System.out.println(sideBarMenu.getText());
+    	 if(sideBarMenu.getText().contains("Donations")) {
+    	 Assert.assertTrue(false);
+    	 System.out.println("Donations visible in side menu when disabled by Super Admin");
+    	 }else {
+    	 Assert.assertTrue(true);
+    	 System.out.println("Donations not visible in side menu when disabled by Super Admin");
+    	 }
+
+    	 }
+          
+     public PaymentGatewaysPage NavigatetoPaymentGatewayPage() {
+
+    	 waitForElementToPresent(paymentGateway);
+    	 click( paymentGateway, "paymentGateway");
+    	 return (PaymentGatewaysPage) openPage(PaymentGatewaysPage.class);
+    	 // new ManageJobs(driver);
+    	 }
+     
+     public PromoCodePage navigateToPromocodePage() {
+    	 scrollDownVertically();
+    	 scrollToElement(promocodes);
+    	 click(promocodes, "promocodes");
+
+    	 return (PromoCodePage) openPage(PromoCodePage.class);
+    	 // new ManageJobs(driver);
+    	 }
+          
+        public ManageDonationsPage NavigatetoManageDonationsPage() {
+
+    	 waitForElementToPresent(Donations);
+    	 click( Donations, "Donations");
+    	 return (ManageDonationsPage) openPage(ManageDonationsPage.class);
+    	 // new ManageJobs(driver);
+    	 }
+          
      public HomePage goToBizligoHomePage() throws InterruptedException {
     	 
     		click(bizligoBtn,"Bizligo button");
@@ -364,7 +421,43 @@ public void goHomePage() throws InterruptedException {
 			return (ManageMenuPage) openPage(ManageMenuPage.class);	
 		}
      
+     public void checkDonationsWhenEnabled() {
+    	 System.out.println(sideBarMenu.getText());
+    	 if(sideBarMenu.getText().contains("Donations")) {
+    	 Assert.assertTrue(true);
+    	 System.out.println("Donations visible in side menu when enabled by Super Admin");
+    	 }else {
+    	 Assert.assertTrue(false);
+    	 System.out.println("Donations not visible in side menu when enabled by Super Admin");
+    	 }
+
+    	 }
    
+     public WebsiteInquiryPage NavigatetoWebsiteInquiryPage() {
+
+    	 click(websiteEnquiries, "website Enquiries");
+
+    	 return (WebsiteInquiryPage) openPage(WebsiteInquiryPage.class);
+    	 // new GroupsPendingRequestsPage(driver);
+
+    	 }
+     
+     public void websiteEnquiryNotPresentWhenSAdisable() {
+    	 if
+    	 (websiteEnquiry.size()>0)
+    	 {
+    	 System.out.println("Website enquiry not disabled when inactivated by Super Admin");
+    	 }else System.out.println("Website enquiry disabled when inactivated by Super Admin");
+    	 }
+     
+     public PendingCommunitiesPage navigatetopendingCommunities() throws Exception {
+    	 waitForElementToPresent(communities);
+    	 click(communities, "Members");
+    	 Thread.sleep(2000);
+    	 click(pendingCommunities, "pending Communities");
+    	 return (PendingCommunitiesPage) openPage(PendingCommunitiesPage.class);
+    	 // new ManageCommunityMembersPage(driver);
+    	 }
      
      public void checkImportContactnotDisplay() throws Exception {
  		

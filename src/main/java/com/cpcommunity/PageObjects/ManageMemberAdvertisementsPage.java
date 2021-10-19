@@ -141,7 +141,9 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 		selectByVisibleText(planStatus, status,"planStatus");
 		click(btnSearch, "Search");
 		Thread.sleep(8000);
-
+	}
+	
+		
 	public void rejectAd(String status) throws Exception {
 		Thread.sleep(5000);
 		waitForElementToPresent(statusSearch);

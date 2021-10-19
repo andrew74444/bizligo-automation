@@ -95,8 +95,8 @@ public class MyAdvertisements extends BasePage {
 	@FindBy(xpath = "//tr[@class='odd']//a[@title='Click to purchase this Advertisement']")
 	WebElement editPP;
 
-	@FindBy(xpath = "//a[@title='Click to purchase this Advertisement']")
-	WebElement editt;
+	//@FindBy(xpath = "//a[@title='Click to purchase this Advertisement']")
+	//WebElement editt;
 	@FindBy(xpath = "//span[@title='This Advertisement plan is In-Activated.']")
 	WebElement editinactive;
 
@@ -168,10 +168,10 @@ public class MyAdvertisements extends BasePage {
 
 		  // 
 	   }
-	/*public UpdateADPage gotoUpdateAdpage(String planName) throws InterruptedException {
+	//public UpdateADPage gotoUpdateAdpage(String planName) throws InterruptedException {
 
 		   
-	   }
+	   
 	public UpdateADPage gotoUpdateAdpage(String planName) throws InterruptedException {
 
 		//Thread.sleep(2000);
@@ -184,9 +184,9 @@ public class MyAdvertisements extends BasePage {
 		Thread.sleep(5000);
 		return (UpdateADPage) openPage(UpdateADPage.class);
 
-	}*/
-
 	}
+
+	
 
 	
 	
@@ -443,14 +443,16 @@ public class MyAdvertisements extends BasePage {
 		waitForElementToPresent(inactiveerror);
 		System.out.print(inactiveerror);
 		click(ok, "OK");
+	}
+	
 
 	public void checkIsplanInactive() {
 		
-		//waitForElementToPresent(editt);
-		//click(editt, "Edit");
-		//waitForElementToPresent(inactiveerror);
-		//System.out.print(inactiveerror);
-		//click(ok, "OK");
+		waitForElementToPresent(editt);
+		click(editt, "Edit");
+		waitForElementToPresent(inactiveerror);
+		System.out.print(inactiveerror);
+		click(ok, "OK");
 
 		
 	}
@@ -471,5 +473,4 @@ public class MyAdvertisements extends BasePage {
 
 }
 
-}
 

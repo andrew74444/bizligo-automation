@@ -44,10 +44,9 @@ public class ProfilePage extends BasePage{
 	@FindBy(xpath = "(//button[contains(.,'Send')])[2]")
 	WebElement sendBtn;	
 
-	@FindBy(xpath = "//a[@data-toggle='tab'][contains(text(),'Organization Details')]")
+	//@FindBy(xpath = "//a[@data-toggle='tab'][contains(text(),'Organization Details')]")
 
 	@FindBy(xpath = "//a[normalize-space()='Profile']")
-
 	WebElement profilePage;	
 	 @FindBy(xpath = "//div[@class='progress custom-progress']")
 		List<WebElement> profileCompletenessBardisplay;
@@ -69,10 +68,10 @@ public class ProfilePage extends BasePage{
 	WebElement contentError1;
 
 	
-	@FindBy(xpath = "//small[@class='help-block'][contains(text(),'500 characters')]")
-	WebElement contentError2;
-	@FindBy(xpath = "//button[@class='close'][@xpath='1']")
-	WebElement closeContent;
+	//@FindBy(xpath = "//small[@class='help-block'][contains(text(),'500 characters')]")
+	//WebElement contentError2;
+	//@FindBy(xpath = "//button[@class='close'][@xpath='1']")
+	//WebElement closeContent;
 
 
 	
@@ -134,6 +133,8 @@ public class ProfilePage extends BasePage{
 				return false;
 			}
 		}*/
+		
+/*		
 public void AddEndorsement(String Endorsement, String Endorsement2, String Endorsement3, String Endorsement4) throws InterruptedException{
 			//commited in Github
 //			log.info("Clicking on Endorsement Button...");
@@ -201,14 +202,17 @@ public void AddEndorsement(String Endorsement, String Endorsement2, String Endor
 			}
          }
 
-	@Override
+*/
+
+/*	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 		// TODO Auto-generated method stub
 		
 		return ExpectedConditions.visibilityOf(profilePage);
 	}
+*/
 	
-	public boolean profileComplenessViibility() throws InterruptedException {
+/*	public boolean profileComplenessViibility() throws InterruptedException {
 		Thread.sleep(1000);
 	
 	if(!profileCompletenessBar.isDisplayed()) {
@@ -219,7 +223,7 @@ public void AddEndorsement(String Endorsement, String Endorsement2, String Endor
 		
 	}
 	
-	
+	*/
 		
 	
 	

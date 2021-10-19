@@ -27,8 +27,6 @@ import org.apache.log4j.Logger;
 
 import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
 
-import junit.framework.Assert;
-
 
 
 public class ManageApplications extends BasePage{
@@ -54,7 +52,7 @@ public class ManageApplications extends BasePage{
 	@FindBy(xpath = "//input[@id='JobTitleSearch']")
 	WebElement JobTitle;
 
-	@FindBy(xpath="//button[@id='btnSearch']")
+	//@FindBy(xpath="//button[@id='btnSearch']")
 
 	@FindBy(xpath = "//td[@class='sorting_1']")
 	WebElement JobTitleName;
@@ -85,13 +83,12 @@ public class ManageApplications extends BasePage{
 	@FindBy(xpath = "//label[contains(text(),'Accept')]")
     WebElement Accept;
 	
-	@FindBy(xpath = "//*[@type='submit']")
+//	@FindBy(xpath = "//*[@type='submit']")
 
 	@FindBy(xpath = "//tbody/tr[1]/td[2]/a[1]/span[1]")
     WebElement edit;
 	
 	@FindBy(xpath = "//button[normalize-space()='Update']")
-
     WebElement update;	
 	
 	@FindBy(xpath = "//td[contains(text(),'Candidate Name:')]")
