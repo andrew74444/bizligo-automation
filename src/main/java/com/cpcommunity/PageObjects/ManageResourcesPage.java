@@ -47,7 +47,7 @@ public class ManageResourcesPage  extends BasePage{
 	@FindBy(xpath = "//input[@value='4']")
 	WebElement resourceAudio;
 
-	@FindBy(xpath = "//input[@class='select2-search__field'][@placeholder='Select Groups']")
+	//@FindBy(xpath = "//input[@class='select2-search__field'][@placeholder='Select Groups']")
 
 	@FindBy(xpath = "//input[@placeholder='Select Groups']")
 

@@ -164,10 +164,16 @@ public class MyCommunitiesPage extends BasePage {
 	WebElement manageButton;
 	@FindBy(xpath="//span[normalize-space()='18-02-2021 -Testing']")
 	WebElement Testingcommunity;
+
+	//@FindBy(xpath="//span[normalize-space()='Resources']")
+	//WebElement resources;
+	
 	@FindBy(xpath = "//a[normalize-space()='home']")
 	WebElement home;
+	//@FindBy(xpath="//a[contains(text(),'Global Communities')]")
+	//WebElement globalCommunities;
 	
-	public GlobalCommunitesPage naviagtingToGlobalCommunities() throws Exception
+/*	public GlobalCommunitesPage naviagtingToGlobalCommunities() throws Exception
 	{
 		
 		clickElementByJavaScript(globalCommunities);
@@ -175,10 +181,10 @@ public class MyCommunitiesPage extends BasePage {
 		return (GlobalCommunitesPage) openPage(GlobalCommunitesPage.class);
 //		new GlobalCommunitesPage(driver, );
 		
-	}
+	}*/
 	
 	
-	public MyProfilePage goToMyProfilePage() throws Exception {
+/*	public MyProfilePage goToMyProfilePage() throws Exception {
 
 		click(Toggledropdownmenu,"Toggledropdownmenu");
 		Thread.sleep(1000);
@@ -186,7 +192,7 @@ public class MyCommunitiesPage extends BasePage {
 		return (MyProfilePage) openPage(MyProfilePage.class);
 		// new MyProfilePage(driver, );
 	}
-
+*/
 
 	@FindBy(xpath="//span[normalize-space()='Resources']")
 	WebElement resources;
@@ -215,7 +221,7 @@ public class MyCommunitiesPage extends BasePage {
 
 
 	
-	public MyDashboardPage gotoMyDashboardPage() throws Exception {
+/*	public MyDashboardPage gotoMyDashboardPage() throws Exception {
 		Thread.sleep(8000);
 		waitForElementToPresent(Toggledropdownmenu);
 		click(Toggledropdownmenu,"Toggledropdownmenu");
@@ -226,6 +232,16 @@ public class MyCommunitiesPage extends BasePage {
 		return (MyDashboardPage) openPage(MyDashboardPage.class);
 	}	
 	
+	public MyProfilePage goToMyProfilePage() throws Exception {
+        Thread.sleep(5000);
+		click(Toggledropdownmenu,"Toggledropdownmenu");
+		Thread.sleep(1000);
+		click(myProfile,"myProfile");
+		return (MyProfilePage) openPage(MyProfilePage.class);
+		// new MyProfilePage(driver, );
+	}
+
+
 	public BusinessDirectoryPage gotoBusinessDirectoryPage() throws Exception {
 		click(Directory,"Directory");
 		Thread.sleep(5000);

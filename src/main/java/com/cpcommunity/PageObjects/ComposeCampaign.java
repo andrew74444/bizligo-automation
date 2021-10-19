@@ -131,9 +131,7 @@ public class ComposeCampaign extends BasePage {
 	@FindBy(xpath="//div[@title='test1@gmail.com']")
 	List<WebElement> email;
 
-	@FindBy(xpath="//div[@title='test22@gmail.com']")
-	List<WebElement> email;
-	@FindBy(xpath="//div[@title='test1@gmail.com']")
+		@FindBy(xpath="//div[@title='test1@gmail.com']")
 	List<WebElement> email1;
 
 	@FindBy(xpath="//a[normalize-space()='Manage Campaign']")
@@ -150,8 +148,8 @@ public class ComposeCampaign extends BasePage {
 	
 	
 
-	@FindBy(xpath="//div[@id='ContactsModal']//button[@role='button'][normalize-space()='Cancel']")
-	WebElement cancelPopup;
+	//@FindBy(xpath="//div[@id='ContactsModal']//button[@role='button'][normalize-space()='Cancel']")
+	//WebElement cancelPopup;
 	@FindBy(xpath = "//button[normalize-space()='Send']")
 	WebElement sendBtn;//button[@class='btn-primary btn btn-close']//i[@class='fa fa-paper-plane']
 	@FindBy(xpath = "//span[normalize-space()='Campaign Name Is Required']")
@@ -596,6 +594,7 @@ public class ComposeCampaign extends BasePage {
 			else {
 				Assert.assertTrue(false);
 			}
+			}
 				
 			
 		}
@@ -627,8 +626,8 @@ public class ComposeCampaign extends BasePage {
 			type(SearchEventsname,Member, "importedContacts");
 			Thread.sleep(10000);
 		   waitForElementToPresent(email);
-		    int emailval=email.size();
-		    System.out.println(emailval);
+		    int emailval1=email.size();
+		    System.out.println(emailval1);
 		    driver.manage().timeouts().implicitlyWait(600, TimeUnit.SECONDS);
 
 		    waitForElementToPresent(cancelPopup);
@@ -670,13 +669,14 @@ public class ComposeCampaign extends BasePage {
 			waitForElementToPresent(email);
 			System.out.println("email");
 			//String Name=this.Contactsemail.getText();
-			 int emailval1=email.size();
-			 if(emailval1==1) {
+			 int emailval11=email.size();
+			 if(emailval11==1) {
 
 				 Assert.assertTrue(true);
 			 }
 			 else {
 				 Assert.assertTrue(false);
+			 }
 			 }
 			
 		}
@@ -868,7 +868,7 @@ public class ComposeCampaign extends BasePage {
 }
 	
 
-	public void checkTemplatenotDisplay() {
+//	public void checkTemplatenotDisplay() {
 
 	public void checkTemplatenotDisplay() throws InterruptedException {
 
@@ -887,9 +887,10 @@ public class ComposeCampaign extends BasePage {
 	    else {
 	    	Assert.assertFalse(false);
 	    }
+	    }
 	}
 
-	public void checkTemplateDisplay() {
+	//public void checkTemplateDisplay() {
 
 	public void checkTemplateDisplay() throws InterruptedException {
 		
@@ -908,6 +909,7 @@ public class ComposeCampaign extends BasePage {
 	}
 	    else {
 	    	Assert.assertTrue(false);
+	    }
 	    }
 	}
 	

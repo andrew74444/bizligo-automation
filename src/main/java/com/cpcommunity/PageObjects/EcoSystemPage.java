@@ -92,8 +92,8 @@ public class EcoSystemPage extends BasePage {
 	@FindBy(xpath = "//*[contains(text(),'My Matches')]")
 	WebElement myMatches;
 
-	@FindBy(xpath = "//a[contains(text(),'Home')]")
-	WebElement Home;
+	//@FindBy(xpath = "//a[contains(text(),'Home')]")
+	//WebElement Home;
 
 	@FindBy(xpath = "//h2[normalize-space()='MY ECOSYSTEM']")
 	WebElement Home;
@@ -163,18 +163,18 @@ public class EcoSystemPage extends BasePage {
 		return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
 		// new CommunityDashboardPage(driver, );
 	}
-	public CommunityDashboardPage navigateToManageCommunityPage() throws Exception {
 
-		click(MANAGEbtn, "Manage");
-
-
-		//this.searchCommunity(communityName+getDateInDDMMMYYYY());
-		//this.searchCommunity(communityName);
-		click(MANAGEbtn, "Manage");
-		Thread.sleep(5000);
-		return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
-		// new CommunityDashboardPage(driver, );
-	}
+	/*
+	 * public CommunityDashboardPage navigateToManageCommunityPage() throws
+	 * Exception {
+	 * 
+	 * click(MANAGEbtn, "Manage");
+	 * //this.searchCommunity(communityName+getDateInDDMMMYYYY());
+	 * //this.searchCommunity(communityName); click(MANAGEbtn, "Manage");
+	 * Thread.sleep(5000); return (CommunityDashboardPage)
+	 * openPage(CommunityDashboardPage.class); // new CommunityDashboardPage(driver,
+	 * ); }
+	 */
 	public CommunityDashboardPage navigateToManageCommunityPage() throws Exception {
 
 		click(MANAGEbtn, "Manage");
@@ -185,9 +185,6 @@ public class EcoSystemPage extends BasePage {
 	}
 
 
-	public MyJobsPage navigateToMyJobsPage() {
-		scrollIntoView(myJobs);
-		myJobs.click();		
 
 	public MyJobsPage navigateToMyJobsPage() throws InterruptedException {
 		scrollIntoView(myJobs);
@@ -355,7 +352,7 @@ public class EcoSystemPage extends BasePage {
 	
 	public UpcomingEventsPage navigateToUpComingEvents() throws InterruptedException {
 		clickElementByJavaScript(globalEvents);
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		waitForElementToPresent(upcomingEvents);
 		click(upcomingEvents, "Upcoming Events");
 		return (UpcomingEventsPage) openPage(UpcomingEventsPage.class);

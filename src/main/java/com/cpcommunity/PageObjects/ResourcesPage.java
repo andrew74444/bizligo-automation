@@ -41,11 +41,11 @@ public class ResourcesPage  extends BasePage{
 	@FindBy(xpath = "//img[@class='media-object']")
 
 	WebElement NotMemberResource;
-	@FindBy(xpath = "//button[normalize-space()='Yes, Proceed']")
-	WebElement YesProceed;
+	//@FindBy(xpath = "//button[normalize-space()='Yes, Proceed']")
+//	WebElement YesProceed;
 	
 	
-	public void checkResources1() {
+	//public void checkResources1() {
 
 	WebElement NotMemberResourcevedio;
 	@FindBy(xpath = "//button[normalize-space()='Yes, Proceed']")
@@ -75,7 +75,7 @@ public class ResourcesPage  extends BasePage{
 		}
 	}
 
-	public void checkResources2() {
+/*	public void checkResources2() {
 		waitForElementToPresent(resource2);
 		if(this.resource2.isDisplayed()) {
 			Assert.assertTrue(true);
@@ -84,8 +84,9 @@ public class ResourcesPage  extends BasePage{
 			Assert.assertTrue(false);
 		}
 	}
+	*/
 	
-	
+	/*
 public MembershipPlansPage checkResourceNotDisplaying() throws InterruptedException {
 		waitForElementToPresent(NotMemberResource);
 		this.NotMemberResource.click();
@@ -95,7 +96,7 @@ public MembershipPlansPage checkResourceNotDisplaying() throws InterruptedExcept
 		Thread.sleep(2000);
 		return (MembershipPlansPage) openPage(MembershipPlansPage.class);
 	}
-	
+*/	
 	
 
 	public void checkResources2() throws InterruptedException {
