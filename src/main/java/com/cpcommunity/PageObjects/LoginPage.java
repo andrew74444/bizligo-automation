@@ -114,11 +114,11 @@ public class LoginPage extends BasePage {
 	//// new FaceBookPage(driver, );
 	// }
 	//
-	public MyDashboardPage loginToDashboard(String enterEmailAddress, String  password) throws InterruptedException
+	//public MyDashboardPage loginToDashboard(String enterEmailAddress, String  password) throws InterruptedException
 	 {
-		this.login(enterEmailAddress, password);
-		 Thread.sleep(5000);
-		return (MyDashboardPage) openPage(MyDashboardPage.class);
+	//	this.login(enterEmailAddress, password);
+	//	 Thread.sleep(5000);
+	//	return (MyDashboardPage) openPage(MyDashboardPage.class);
 		 
 	 }
 	
@@ -132,29 +132,29 @@ public class LoginPage extends BasePage {
 	
 	
 	
-	public MyProfilePage loginToMyProfilePage(String enterEmailAddress, String password) {
-		this.login(enterEmailAddress, password);
-		return (MyProfilePage) openPage(MyProfilePage.class);
-	}
+	//public MyProfilePage loginToMyProfilePage(String enterEmailAddress, String password) {
+	//	this.login(enterEmailAddress, password);
+	//	return (MyProfilePage) openPage(MyProfilePage.class);
+	//}
 	
-	public MyCommunitiesPage loginToMyCommunitiesPage(String enterEmailAddress, String password) throws InterruptedException {
-		this.login(enterEmailAddress, password);
+	//public MyCommunitiesPage loginToMyCommunitiesPage(String enterEmailAddress, String password) throws InterruptedException {
+		//this.login(enterEmailAddress, password);
 		
-		return (MyCommunitiesPage) openPage(MyCommunitiesPage.class);
-	}
+	//	return (MyCommunitiesPage) openPage(MyCommunitiesPage.class);
+	//}
 	
 	public ForgotPasswordPage clickOnForgotpassword() {
 		click(forgotPassword, "forgot Password");
 		return (ForgotPasswordPage) openPage(ForgotPasswordPage.class);
 
 	}
-	public TenantAdminDashboardPage loginToTADashboard(String enterEmailAddress, String  password) throws InterruptedException
-	 {   
-		this.login(enterEmailAddress, password);
-		Thread.sleep(4000);
-		return (TenantAdminDashboardPage) openPage(TenantAdminDashboardPage.class);
+	//public TenantAdminDashboardPage loginToTADashboard(String enterEmailAddress, String  password) throws InterruptedException
+	// {   
+	//	this.login(enterEmailAddress, password);
+	//	Thread.sleep(4000);
+		//return (TenantAdminDashboardPage) openPage(TenantAdminDashboardPage.class);
 		 
-	 }
+	// }
 
 	public void login(String enterEmailAddress, String password) {
 		int t = (int) (Math.random()*10000);
@@ -320,9 +320,9 @@ public class LoginPage extends BasePage {
 			return (SelectPlanPage) openPage(SelectPlanPage.class);
 		
 	}
-	public MyDashboardPage loginToMemberdashboard(String enterEmailAddress, String password) {
-        this.login(enterEmailAddress, password);
-         return (MyDashboardPage) openPage(MyDashboardPage.class);
+	//public MyDashboardPage loginToMemberdashboard(String enterEmailAddress, String password) {
+      //  this.login(enterEmailAddress, password);
+        // return (MyDashboardPage) openPage(MyDashboardPage.class);
 
 	public MyDashboardPage loginToMemberdashboard(String enterEmailAddress, String password) throws InterruptedException {
         Thread.sleep(3000);

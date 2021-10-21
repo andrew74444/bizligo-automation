@@ -56,11 +56,9 @@ public class Bizligo1CommunityPage extends BasePage {
 	@FindBy(xpath = "//button[normalize-space()='Yes,Proceed']")
 	WebElement yesProceed4;
 	
-	@FindBy(xpath="//button[@ng-click='appData.closeModel()']")
-	WebElement cancelPopup;
-	
-	@FindBy(xpath="//div[@ng-if='!data.IsLoading && !data.CommunityVideos.length']//p[@class='ng-binding'][contains(text(),'Please')]")
-	WebElement msgWhenNotMember;
+		
+	//@FindBy(xpath="//div[@ng-if='!data.IsLoading && !data.CommunityVideos.length']//p[@class='ng-binding'][contains(text(),'Please')]")
+	//WebElement msgWhenNotMember;
 	//div[@ng-show='appData.showLoginOrJoinMessage']
 	@FindBy(xpath="//button[@ng-click='appData.closeModel()']")
 	WebElement cancelPopup;
@@ -79,8 +77,7 @@ public class Bizligo1CommunityPage extends BasePage {
 	@FindBy(xpath = "//a[contains(text(),'Manage Plans')]")
 	WebElement managePlans;
 
-	@FindBy(xpath = "//a[contains(text(),'Manage Plans')]")
-	WebElement managePlans;
+
 
 	@FindBy(xpath = "//a[normalize-space()='Donate']")
 	WebElement donateBtn;
@@ -96,9 +93,9 @@ public class Bizligo1CommunityPage extends BasePage {
 	@FindBy(xpath="//span[normalize-space()='$ 20']")
 	WebElement $20;
 	
-	@FindBy(xpath="//span[normalize-space()='$ 10']")
+//	@FindBy(xpath="//span[normalize-space()='$ 10']")
 
-	@FindBy(xpath="//button[2]//span[1]")
+	//@FindBy(xpath="//button[2]//span[1]")
 
 	WebElement $10;
 	
@@ -136,6 +133,9 @@ public class Bizligo1CommunityPage extends BasePage {
 	
 	@FindBy(xpath="//strong[normalize-space()='CSS - Training']")
 	WebElement eventName;
+
+	@FindBy(xpath="//strong[normalize-space()='2nd CSS - Training']")
+	WebElement eventName2;
 
 	@FindBy(xpath="//a[@ui-sref='community.member']")
 	WebElement member;
@@ -274,17 +274,16 @@ public class Bizligo1CommunityPage extends BasePage {
 		click(yesProceed,"yes proceed");
 		
 	}
-	public ManageAdPlansPage gotoManageAdsplan() throws InterruptedException {
-		waitForElementToPresent(manage);
-		click(manage, "Manage Icon button");
-		Thread.sleep(4000);
-		scrollUpVertically();
-		//scrollIntoView(advertisements);
-		//clickElementByJavaScript(advertisements);
-		click(joinGroup4,"joinGroup4");
-		click(yesProceed,"yes proceed");
-		
-	}
+
+	/*
+	 * public ManageAdPlansPage gotoManageAdsplan() throws InterruptedException {
+	 * waitForElementToPresent(manage); click(manage, "Manage Icon button");
+	 * Thread.sleep(4000); scrollUpVertically(); //scrollIntoView(advertisements);
+	 * //clickElementByJavaScript(advertisements); click(joinGroup4,"joinGroup4");
+	 * click(yesProceed,"yes proceed");
+	 * 
+	 * }
+	 */
 	public ManageAdPlansPage gotoManageAdsplan() {
 		waitForElementToPresent(manage);
 		click(manage, "Manage Icon button");
@@ -701,6 +700,12 @@ public class Bizligo1CommunityPage extends BasePage {
 		Assert.assertTrue(true);
 		}else Assert.assertTrue(false);
 		click(closeConnectionPopUp,"close pop up");
+	}
+	public EventDetailsPage goToPaidEvent() throws InterruptedException {
+		click(events,"Events");
+		Thread.sleep(4000);
+		click(eventName2,"Event upcoming");
+		return (EventDetailsPage) openPage(EventDetailsPage.class);
 	}
 
 
