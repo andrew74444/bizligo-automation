@@ -686,7 +686,7 @@ public class GlobalCommunitesPage extends BasePage {
 		
 }
 	
-/*	public CreateAdPage gotoCreateAdPage() throws InterruptedException {
+	public CreateAdPage gotoCreateAdPage() throws InterruptedException {
 		waitForElementToPresent(BDMAIcomm);
 		click(BDMAIcomm, "BDMAI");
 		Thread.sleep(5000);
@@ -704,7 +704,7 @@ public class GlobalCommunitesPage extends BasePage {
 		click(next, "Next");
 		
 		return (CreateAdPage) openPage(CreateAdPage.class);	
-	}*/
+	}
 	
 	public void CheckcareerMenuNotPresent() {
 		waitForElementToPresent(animalLovercommunity);

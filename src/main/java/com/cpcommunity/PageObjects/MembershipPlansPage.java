@@ -46,9 +46,10 @@ public class MembershipPlansPage extends BasePage {
 	@FindBy(xpath = "(((((//*[@class='features-popup membership-plan ng-scope main-plan-cont'])[1])//*[@class='pop-icon-card'])[2]))//*[@class='pop-feature-icon-green fa fa-bullhorn fa-3x']")
 	WebElement advertisementEnable;
 
-
 	@FindBy(xpath="//*[contains(text(),'RENEW')]")
 	WebElement renew;
+	
+	
 	
 	
 	public void renewThePurchasedMembershipPlan() throws Exception
