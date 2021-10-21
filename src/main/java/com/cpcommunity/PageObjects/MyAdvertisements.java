@@ -433,7 +433,7 @@ public class MyAdvertisements extends BasePage {
 	}
 	
 
-	public void checkinactiveplanByTA() {
+	public void checkerrorMsg() {
 		
 		waitForElementToPresent(editinactive);
 		click(editinactive, "Edit");

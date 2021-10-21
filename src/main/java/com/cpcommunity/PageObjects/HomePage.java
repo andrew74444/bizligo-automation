@@ -38,7 +38,7 @@ public class HomePage extends BasePage {
 	WebElement Events;
 
 
-	@FindBy(xpath = "(//h1[normalize-space()='building communities'])[1]")
+	@FindBy(xpath = "//h1[normalize-space()='building communities']")
 
 	WebElement home;
 	
@@ -81,7 +81,8 @@ public class HomePage extends BasePage {
 	WebElement menu;
 	@FindBy(xpath="//a[normalize-space()='Contact']")
 	WebElement contact;
-
+	@FindBy(xpath="//li[@class='ng-scope']//span[@ng-show='ad.LinkUrl']//img[@class='img-responsive']")
+	WebElement image;
 
 
 
@@ -231,7 +232,12 @@ public class HomePage extends BasePage {
 		return (TenantAdminDashboardPage) openPage(TenantAdminDashboardPage.class);
 	}
 
-
+  public SelectPlanPage Createadvertise() {
+	  
+	  waitForElementToPresent(advertiseBussiness);
+		click(advertiseBussiness, "advertise your Bussiness");
+	  return (SelectPlanPage) openPage(SelectPlanPage.class); 
+  }
 	// public ZohoCRMPage gotoCRM() {
 	//
 	// click(crm,"CRM Link");
@@ -274,23 +280,24 @@ public UpcomingEventsPage navigateToUpComingEvents() throws InterruptedException
 	// new UpcomingEventsPage(driver, );
 }
 
-public LoginPage advertiseBusiness() throws Exception {
+    public LoginPage advertiseBusiness() throws Exception {
 	
 	waitForElementToPresent(advertiseBussiness);
-	
 	click(advertiseBussiness, "advertise your Bussiness");
 	return (LoginPage) openPage(LoginPage.class);
 	// new LoginPage(driver, );
 
-
-
-}
-         public void Checkadvertisebutton() throws InterruptedException {
+   }
+        public void Checkadvertisebutton() throws InterruptedException {
         	 Thread.sleep(2000);
-	    
 		System.out.println("Advertisement link is not working");
 			
-			//
+		}
+        public void CheckadvertiseNotDisplay() throws InterruptedException {
+       	 Thread.sleep(2000);
+       	 String img=image.getTagName();
+		System.out.println(img);
+			
 		}
          public void checkAllPages() throws InterruptedException {
         	 Thread.sleep(3000);

@@ -57,6 +57,7 @@ public class TC1233_verify_GlobalAd_notDisplay_inHomePage_afterMember_purchase_r
 		LoginPage login3 = home3.clickOnLOGINBtn();
 		TenantAdminDashboardPage tadashoboard3=login3.loginToTADashboard(data.get("email"), data.get("password")); 
 		HomePage home2= tadashoboard3.goToHomePage();
+		home2.CheckadvertiseNotDisplay();
 	   TenantAdminDashboardPage TAP=home2.gotoTenantAdminDashboardPage();
 	   ManageAdPlansPage MAPP3=TAP.goToManageAdPlansPage();
 	   MAPP3.Inactivate(data.get("planName"));

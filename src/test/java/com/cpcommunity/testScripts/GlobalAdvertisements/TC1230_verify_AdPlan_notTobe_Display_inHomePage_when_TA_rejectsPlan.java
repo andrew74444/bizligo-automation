@@ -31,6 +31,7 @@ public class TC1230_verify_AdPlan_notTobe_Display_inHomePage_when_TA_rejectsPlan
 	logInfo("Launched Browser : "+ data.get("browser"));		
 	logInfo("BizLigo Application Opened");
 	HomePage home = new HomePage().open(data.get("tenantType"));
+	home.CheckadvertiseNotDisplay();
 	LoginPage login = home.clickOnLOGINBtn();
 	TenantAdminDashboardPage tadashoboard=login.loginToTADashboard(data.get("email"), data.get("password"));
 	ManageAdPlansPage MAPP=tadashoboard.goToManageAdPlansPage();
@@ -59,6 +60,8 @@ public class TC1230_verify_AdPlan_notTobe_Display_inHomePage_when_TA_rejectsPlan
 		TenantAdminDashboardPage tadashoboard2=login2.loginToTADashboard(data.get("email"), data.get("password"));
 		ManageMemberAdvertisementsPage MMA=tadashoboard2.navigateToMemberAdvertisements();
 		MMA.rejectAd(data.get("planName"),data.get("status"));
+		HomePage home3=MMA.goToHomePage();
+		home3.CheckadvertiseNotDisplay();
 		
 }
 	@AfterMethod

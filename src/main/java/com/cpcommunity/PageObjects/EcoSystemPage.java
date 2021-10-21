@@ -61,7 +61,6 @@ public class EcoSystemPage extends BasePage {
 	@FindBy(xpath="//a[contains(text(),'Member Directory')] | //a[contains(text(),'Global Members')]")
 	WebElement memberDirectory;
 	
-	
 	//*[@class='fa fa-arrow-left'] | //*[@class='fa fa-tv']
 	
 	@FindBy(xpath="//a[contains(text(),'My Profile')]")
@@ -91,10 +90,8 @@ public class EcoSystemPage extends BasePage {
 	
 	@FindBy(xpath = "//*[contains(text(),'My Matches')]")
 	WebElement myMatches;
-
 	//@FindBy(xpath = "//a[contains(text(),'Home')]")
 	//WebElement Home;
-
 	@FindBy(xpath = "//h2[normalize-space()='MY ECOSYSTEM']")
 	WebElement Home;
 	@FindBy(xpath="//a[@class=\"btn btn-default top-btn1 btn-sm dropdown-toggle\"]")
@@ -175,6 +172,7 @@ public class EcoSystemPage extends BasePage {
 	 * openPage(CommunityDashboardPage.class); // new CommunityDashboardPage(driver,
 	 * ); }
 	 */
+
 	public CommunityDashboardPage navigateToManageCommunityPage() throws Exception {
 
 		click(MANAGEbtn, "Manage");
@@ -183,6 +181,7 @@ public class EcoSystemPage extends BasePage {
 		return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
 		
 	}
+
 
 
 
