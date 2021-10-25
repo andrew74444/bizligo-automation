@@ -45,8 +45,11 @@ public class UpcomingEventsPage extends BasePage{
 	
 	@FindBy(xpath="//*[@class='event-venue']")
 	WebElement EventVenue;	
-
-		
+	
+	@FindBy(xpath="//a[@class='btn btn-success']//strong[contains(text(),'REGISTER')]")
+	WebElement registe;		
+	
+	
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 		// TODO Auto-generated method stub
@@ -67,6 +70,15 @@ public class UpcomingEventsPage extends BasePage{
 		type(EventNameSearch, data.get("eventName")+" "+getDateInDDMMMYYYY(), "eventName");
 		click(Search,"Search");
 		Thread.sleep(5000);
+	}
+	public CreateOrEditEvent searchEvent(String Eventname) throws Exception {
+		Eventname=Eventname+" "+getDateInDDMMMYYYY();
+		EventNameSearch.clear();
+		type(EventNameSearch,Eventname , "eventName");
+		click(Search,"Search");
+		Thread.sleep(6000);
+		click(EventName, "Event Name");
+		return (CreateOrEditEvent) openPage(CreateOrEditEvent.class);
 	}
 	
 	
@@ -181,11 +193,12 @@ public class UpcomingEventsPage extends BasePage{
 		click(Search,"Search");
 		Thread.sleep(3000);
 		driver.findElement(By.xpath("//strong[contains(text(),'" + Event + "')]")).click();
-		waitForElementToPresent(register);
-		click(register,"Register");
+		waitForElementToPresent(registe);
+		click(registe,"Register");
 		Thread.sleep(2000);
 		selectUsingIndex(noOfTickets,1,"1");
 		Thread.sleep(2000);
+		//type(AuthoriseNet, label, Event)
 		click(booknow,"Book Now");
 		waitForElementToPresent(bookingConfirmation);
 		Thread.sleep(4000);
@@ -353,9 +366,20 @@ public void registerToPaidEvent(String Event) throws InterruptedException {
 	
 }
 
+public void registerTt(String Event) throws InterruptedException {
+	type(EventNameSearch, Event, "eventName");
+	click(Search,"Search");
+	Thread.sleep(3000);
+	driver.findElement(By.xpath("//strong[contains(text(),'" + Event + "')]")).click();
+	waitForElementToPresent(registe);
+	click(registe,"Register");
+	Thread.sleep(2000);
+	selectUsingIndex(noOfTickets,1,"1");
+	Thread.sleep(2000);
+	//type(AuthoriseNet, label, Event)
+	click(booknow,"Book Now");
 
-
-
+}
 
 	
 	

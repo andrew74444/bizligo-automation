@@ -38,8 +38,11 @@ public class CampaignTemplatePage extends BasePage{
 	WebElement logout;
 	@FindBy(xpath = "//div[@id='CampaignCtrl']//div[@class='ng-scope']//div[1]//div[1]//div[1]//div[2]//div[1]//ul[1]//li[2]//a[1]//i[1]")
 	WebElement edit;
+
+
 	@FindBy(xpath = "//div[@class='email-contarea']//div[3]//div[1]//div[1]//div[2]//div[1]//ul[1]//li[2]//a[1]//i[1]")
 	WebElement edit3;
+
 	@FindBy(xpath = "//input[@id='Description']")
 	WebElement description;
 	@FindBy(xpath = "//input[@id='Name']")
@@ -52,6 +55,9 @@ public class CampaignTemplatePage extends BasePage{
 	WebElement fromEmail;
 	@FindBy(xpath = "//iframe[@title='Rich Text Editor, Template']")
 	WebElement template;
+
+	//@FindBy(xpath = "//button[normalize-space()='Update']")
+
 	@FindBy(xpath = "//span[@ng-if='data.isEdit']")
 	WebElement update;
 	@FindBy(xpath = "//div[@class='toast-message']")
@@ -95,7 +101,11 @@ public class CampaignTemplatePage extends BasePage{
 	public void edittemplate(String Description, String Name, String Subject, String Header, String Email, String Template) throws InterruptedException {
 		waitForElementToPresent(edit);
 		click(edit, "Edit");
+
+		Thread.sleep(2000);
+
 		Thread.sleep(4000);
+
 		waitForElementToPresent(description);
 		this.description.clear();
 		type(description, Description, "Description");
@@ -128,6 +138,37 @@ public class CampaignTemplatePage extends BasePage{
 	}
 	public void inactivate() throws InterruptedException {
 		waitForElementToPresent(edit);
+
+		click(edit, "Edit");
+		Thread.sleep(2000);
+		scrollDownVertically();
+		waitForElementToPresent(togglebutton);
+			click(inactive, "active first");
+			Thread.sleep(2000);
+			click(active, "Inactive now");
+			Thread.sleep(5000);
+			waitForElementToPresent(update);
+			click(update, "Update");
+			Thread.sleep(4000);
+	
+	}
+	public void activate() throws InterruptedException {
+		waitForElementToPresent(edit);
+		click(edit, "Edit");
+		Thread.sleep(2000);
+		scrollDownVertically();
+		waitForElementToPresent(togglebutton);
+		if(active.isDisplayed()) {
+			click(active, "InActive now");
+			Thread.sleep(2000);
+			click(inactive, "Active now");
+			Thread.sleep(5000);
+			waitForElementToPresent(update);
+			click(update, "Update");
+			Thread.sleep(4000);
+		}
+		else {
+
 		click(edit3, "Edit");
 		Thread.sleep(8000);
 		scrollDownVertically();
@@ -139,6 +180,7 @@ public class CampaignTemplatePage extends BasePage{
 			click(update, "Update");
 			Thread.sleep(7000);
 		}
+	}
 		/*else {
 			click(inactive, "Active now");
 			Thread.sleep(5000);
@@ -151,19 +193,14 @@ public class CampaignTemplatePage extends BasePage{
 			
 	
 	
-	public void activate() throws InterruptedException {
-		Thread.sleep(4000);
-		waitForElementToPresent(edit3);
-		click(edit3, "Edit");
-		Thread.sleep(8000);
-		scrollDownVertically();
-		waitForElementToPresent(togglebutton);
-	
-			click(inactive, "Active now");
-			waitForElementToPresent(update);
-			click(update, "Update");
-			Thread.sleep(7000);
-		}
+		/*
+		 * public void activate() throws InterruptedException { Thread.sleep(4000);
+		 * waitForElementToPresent(edit3); click(edit3, "Edit"); Thread.sleep(8000);
+		 * scrollDownVertically(); waitForElementToPresent(togglebutton);
+		 * 
+		 * click(inactive, "Active now"); waitForElementToPresent(update); click(update,
+		 * "Update"); Thread.sleep(7000); }
+		 */
 	
 	public void Activate() throws InterruptedException {
 		Thread.sleep(4000);
@@ -181,23 +218,36 @@ public class CampaignTemplatePage extends BasePage{
 		/*else {
 			click(active, "Active now");
 			Thread.sleep(5000);
+
 			click(inactive, "Active now");
 			Thread.sleep(5000);
 			waitForElementToPresent(update);
 			click(update, "Update");
 			Thread.sleep(4000);
+
+		}
+	
+		}
+	public ComposeCampaign navigateToComposeCampaignPage() throws Exception {
+		//scrollDownVertically();
+		Thread.sleep(4000);
+
 		}*/
 	
 		
 	public ComposeCampaign navigateToComposeCampaignPage() throws Exception {
 		//scrollDownVertically();
 		Thread.sleep(6000);
+
 		scrollToElement(manageCampaign);
 		click(manageCampaign, "manageCampaign");
 		Thread.sleep(500);
 		waitForElementToPresent(composeCampaign);
 		this.composeCampaign.click();	
+
+
 		Thread.sleep(6000);
+
 		//click(composeCampaign, "composeCampaign");
 		return (ComposeCampaign) openPage(ComposeCampaign.class);
 		

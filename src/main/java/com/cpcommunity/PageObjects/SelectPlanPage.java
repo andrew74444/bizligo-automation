@@ -1,3 +1,4 @@
+   
 package com.cpcommunity.PageObjects;
 
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ public class SelectPlanPage extends BasePage {
 
 	@FindBy(xpath = "//*[contains(text(),'SELECT PAYMENT METHODS')]")
 	WebElement PAYMENTMETHODS;
-
+//
 	@FindBy(xpath = "//*[@value='1']")
 	WebElement payPal;
 	
@@ -288,7 +289,7 @@ public class SelectPlanPage extends BasePage {
 		//waitForElementToPresent(adEndDatecalendar);
 		//Thread.sleep(1000);
 		//click(enddate, "EndDate");
-		Thread.sleep(4000);
+		Thread.sleep(8000);
 		waitForElementToPresent(choosefile);
 		type(choosefile, path, "Image Path");
 		scrollDownVertically();
@@ -301,6 +302,40 @@ public class SelectPlanPage extends BasePage {
 		return (AuthorizeGateway) openPage(AuthorizeGateway.class);
 	}
 	
+
+	public void selectandSaveTenantPlan( String AdName, String path ) throws Exception {
+		//this.createGlobalAd.click();
+        Thread.sleep(2000);
+		//this.selectAPlan(planName);
+          //clickElementByJavaScript(selectGold2);
+        Thread.sleep(3000);		
+		click(next, "Next button");
+		Thread.sleep(5000);
+		picture();
+		waitForElementToPresent(adname);
+		type(adname, AdName, "Advertisement name");
+		click(date, "Select Date");
+		waitForElementToPresent(adStartDatecalendar);
+		Thread.sleep(2000);
+		click(nextMonth, "Next");
+		click(nextMonth, "Next");
+		waitForElementToPresent(dateselect);
+		click(dateselect, "Date");
+		//click(this.adEndDate, "Ad End Date");
+		//waitForElementToPresent(adEndDatecalendar);
+		//Thread.sleep(1000);
+		//click(enddate, "EndDate");
+		Thread.sleep(4000);
+		waitForElementToPresent(choosefile);
+		type(choosefile, path, "Image Path");
+		scrollDownVertically();
+		click(save, "Save");
+		Thread.sleep(4000);
+		
+	}
+	
+
+
 	public AuthorizeGateway TenantPlan(String planName, String AdName, String path ) throws Exception {
 		//this.createGlobalAd.click();
         Thread.sleep(2000);
@@ -404,9 +439,36 @@ public class SelectPlanPage extends BasePage {
 		click(next, "Next btn");
 		AssertionHelper.verifyText(toastMessage.getText(), "Please select a plan.");
 		Thread.sleep(5000);
+
 	
 
 		System.out.println("Multiple error Not Displaying when double clicking Next Button");
+	}
+	
+	public void checkAdPlans() throws InterruptedException {
+		int T = this.Selectpanels.size();
+	
+		int j = 1;
+		int V = driver.findElements(By.xpath("//body/div[@class='main-home-cont']/div[@id='wrapper']/div[@id='body']/section[@id='renderBodyConatiner']/div[@id='removeinnercss']/div[@class='purchasepage']/div[@id='PurchasePromotionsController']/div[@class='reg_cont']/div[@class='row']/div[@id='msform']/fieldset[@class='ng-pristine ng-valid']/div[@ng-show='PromotionPlans.length']/div[@class='row']/ng-repeat/div[1]")).size();
+		for (int i = 1; i <= V; i++) {
+			System.out.println(i);
+			
+			if (i > 3 && i <= V) {
+          
+				scrollToElement(driver
+						.findElement(By.xpath("//ng-repeat[" + j + "]//div[1]//div[1]//div[1]//div[3]//a[1]")));
+				j++;
+			
+		     String Name = driver.findElement(By.xpath("//ng-repeat[" + i + "]//div[1]//div[1]//div[1]//div[1]//h3")).getText();
+			System.out.println(Name);
+			}
+		}
+		
+
+	
+
+		System.out.println("Multiple error Not Displaying when double clicking Next Button");
+
 	}
 	//
 	// public SelectPlan open(String url) {

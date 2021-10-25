@@ -27,7 +27,7 @@ public class TC961_Verify_CreatedCommunity_NotDisplayed_PendingCommunity extends
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();	
 		TenantAdminDashboardPage TDP = login.loginToTADashboard(data.get("email"), data.get("password"));
-		PendingCommunitiesPage PCP=TDP.naviagteToPendingCommunities();
+		PendingCommunitiesPage PCP=TDP.navigatetopendingCommunities1();
 		PCP.communityNotDisplayed(data.get("Name"));
 
 }

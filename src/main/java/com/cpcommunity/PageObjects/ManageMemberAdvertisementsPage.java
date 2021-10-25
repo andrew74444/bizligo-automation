@@ -23,7 +23,7 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 		aShot();
 
 	}
-
+//
 	@FindBy(xpath = "//h2[contains(text(),'Manage Member Advertisements')]")
 	WebElement manageMemberAdvertisements;
 
@@ -104,24 +104,21 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 	
 	@FindBy(xpath = "//tbody/tr[1]/td[2]/a[1]")
 	WebElement  edit;
-	
 	@FindBy(xpath = "//body[1]/div[3]/div[3]/table[1]/tbody[1]/tr[4]/td[4]")
 	WebElement  enddate;
-
 	@FindBy(xpath = "//a[@title='Community Dashboard']")
 	WebElement  communitydash;
-	
 	@FindBy(xpath = "//input[@id='AdImageId']")
 	WebElement adImage;
-
 	@FindBy(xpath = "//input[@id='LinkUrl']")
 	WebElement linkUrl;
-
 	@FindBy(xpath = "//*[@id='ApprovalStatusText']")
 	WebElement planStatus;
 	@FindBy(xpath = "//tr[@class='even']//span[@class='label label-danger'][normalize-space()='REJECTED']")
 	WebElement planStatusR;
-
+	@FindBy(xpath="//a[@title='Go to Member site home']")
+	WebElement bizligoBtn;
+	
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 		System.out.println(driver + "Home Page");
@@ -133,6 +130,25 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 		String query = "SELECT TOP 10 ID,Name,Price,DurationValue,DurationTypeID,Adlocation,RequiresApproval,createddate,Createdby,isactive,Viewtype,Communityid FROM PromotionPlans ORDER BY ID desc";
 	}
 
+
+	public void rejectAd(String planName,String status) throws Exception {
+		waitForElementToPresent(planStatus);
+		//type(PlanNameSearch, planName, "Plan Name Search");
+		selectUsingIndex(planStatus, 1, "Status");
+		//selectByVisibleText(planStatus, status,"planStatus");
+		click(btnSearch, "Search");
+		Thread.sleep(10000);
+		click(action, "action");
+		Thread.sleep(8000);
+		//waitForElementToPresent(adStartDate);
+//		selectStartAndEndDates();
+		click(reject, "Reject");
+		Thread.sleep(8000);
+		picture();
+				
+	}
+
+
 	public void rejectAd(String status) throws Exception {
 		Thread.sleep(5000);
 		waitForElementToPresent(statusSearch);
@@ -140,6 +156,7 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 		click(btnSearch, "Search");
 		Thread.sleep(10000);
 		
+
 		click(action, "action");
 		Thread.sleep(8000);
 		//waitForElementToPresent(adStartDate);
@@ -290,4 +307,11 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 		return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
 	}
 
+	public HomePage goToHomePage() throws InterruptedException {
+		 
+		click(bizligoBtn,"Bizligo button");
+		
+		return (HomePage) openPage(HomePage.class);
+
+	}
 }

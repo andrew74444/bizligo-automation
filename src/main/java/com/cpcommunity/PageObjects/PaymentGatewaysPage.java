@@ -1,3 +1,4 @@
+
 package com.cpcommunity.PageObjects;
 
 import org.openqa.selenium.WebElement;
@@ -52,12 +53,13 @@ public class PaymentGatewaysPage extends BasePage {
 	WebElement txtTransactionKey;
 	@FindBy(xpath = "//input[@name='txtContent']")
 	WebElement txtContent;
-	@FindBy(xpath = "//*[contains(text(),'Activate')]")
+	@FindBy(xpath = "//label[@class='btn btn-success toggle-on']")
 	WebElement Activate;
-	@FindBy(xpath = "//*[contains(text(),'InActivate')]")
+	@FindBy(xpath = "//label[@class='btn btn-danger active toggle-off']")
 	WebElement InActivate;
-	@FindBy(xpath = "//button[contains(.,'Activate')]")
-	WebElement Activaqte;
+	@FindBy(xpath = "//button[@class='btn btn-info btn-sm']")
+	WebElement update1;
+	
 	@FindBy(xpath = "html/body/div[2]/div/div[2]")
 	WebElement PaymentMethod;
 
@@ -155,27 +157,41 @@ public class PaymentGatewaysPage extends BasePage {
 
 	}
 
-	public void inActivateCheque() {
+	public void inActivateCheque() throws InterruptedException {
 		click(Cheque,"Cheque");
 		this.ClickonInActivate();
 	}
 
-	public void inActivateCash() {
+	
+	public void inActivatepaypal() throws InterruptedException {
+		PayPal.click();
+		this.ClickonInActivate();
+	}
+	
+	public void clickAuthorise() throws InterruptedException {
+		Thread.sleep(2000);
+		Authorize.click();
+	
+	}
+
+	public void inActivateCash() throws InterruptedException {
 
 		click(Cash,"Cash");
 		this.ClickonInActivate();
 	}
 
-	public void ClickonInActivate() {
-		waitForElementToPresent(InActivate);
+	public void ClickonInActivate() throws InterruptedException {
+		Thread.sleep(2000);
 		click(InActivate,"InActivate");
+		click(update1, "Update");
 		this.OkBtn();
 	}
 
-	public void ClickonActivate() {
-		waitForElementToPresent(Activate);
-		click(Activate,"Activate");
-		this.OkBtn();
+	public void ClickonActivate() throws InterruptedException {
+		Thread.sleep(3000);
+		click(InActivate,"Activate");
+		click(update1, "Update");
+		click(OkBtn,"OkBtn");
 	}
 
 	public void OkBtn() {

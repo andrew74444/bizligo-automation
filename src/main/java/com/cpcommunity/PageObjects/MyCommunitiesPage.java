@@ -18,6 +18,8 @@ import org.apache.log4j.Logger;
 
 import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
 
+import junit.framework.Assert;
+
 public class MyCommunitiesPage extends BasePage {
 
 	@FindBy(xpath = "//header[@id='global-nav']")
@@ -34,8 +36,10 @@ public class MyCommunitiesPage extends BasePage {
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 
+
 		//return ExpectedConditions.visibilityOf(CreateCommunityBtn);
 		return ExpectedConditions.visibilityOf(myCommunitiesHeader);
+
 	}
 
 	// public ZohoCRMPage gotoCRM() {
@@ -46,12 +50,18 @@ public class MyCommunitiesPage extends BasePage {
 	//
 	// return (ZohoCRMPage) openPage(ZohoCRMPage.class);
 
+	@FindBy(xpath = "//input[@placeholder='Search by Community Name']")
+	WebElement communityNameField;
+
+	//@FindBy(xpath = "//h3[@class='MyCommunitiesHeader text-uppercase']")
+
+
 
 	@FindBy(xpath = "//h3[normalize-space()='My Communities']")
 	WebElement myCommunitiesHeader;
 	@FindBy(xpath = "//button[contains(text(),'Search')]")
 	WebElement btnSearch;
-	@FindBy(xpath = "//button[@id='CreateCommunity']")
+	@FindBy(xpath = "//button[normalize-space()='Create Community']")
 	WebElement CreateCommunityBtn;
 	@FindBy(xpath = "//button[contains(.,' Yes, Proceed')]")
 	WebElement YesProceedBtn;
@@ -157,6 +167,36 @@ public class MyCommunitiesPage extends BasePage {
 	WebElement manageButton;
 	@FindBy(xpath="//span[normalize-space()='18-02-2021 -Testing']")
 	WebElement Testingcommunity;
+
+	//@FindBy(xpath="//span[normalize-space()='Resources']")
+	//WebElement resources;
+	
+	@FindBy(xpath = "//a[normalize-space()='home']")
+	WebElement home;
+	//@FindBy(xpath="//a[contains(text(),'Global Communities')]")
+	//WebElement globalCommunities;
+	
+/*	public GlobalCommunitesPage naviagtingToGlobalCommunities() throws Exception
+	{
+		
+		clickElementByJavaScript(globalCommunities);
+		Thread.sleep(1000);
+		return (GlobalCommunitesPage) openPage(GlobalCommunitesPage.class);
+//		new GlobalCommunitesPage(driver, );
+		
+	}*/
+	
+	
+/*	public MyProfilePage goToMyProfilePage() throws Exception {
+
+		click(Toggledropdownmenu,"Toggledropdownmenu");
+		Thread.sleep(1000);
+		click(myProfile,"myProfile");
+		return (MyProfilePage) openPage(MyProfilePage.class);
+		// new MyProfilePage(driver, );
+	}
+*/
+
 	@FindBy(xpath="//span[normalize-space()='Resources']")
 	WebElement resources;
 	@FindBy(xpath="//a[contains(text(),'Global Communities')]")
@@ -177,13 +217,14 @@ public class MyCommunitiesPage extends BasePage {
 	WebElement dashboardBtn;
 	@FindBy(xpath = "//span[normalize-space()='Directory']")
 	WebElement directory;
+	private WebElement communityName;
 	
 
 	
 
 
 	
-	public MyDashboardPage gotoMyDashboardPage() throws Exception {
+/*	public MyDashboardPage gotoMyDashboardPage() throws Exception {
 		Thread.sleep(8000);
 		waitForElementToPresent(Toggledropdownmenu);
 		click(Toggledropdownmenu,"Toggledropdownmenu");
@@ -193,6 +234,7 @@ public class MyCommunitiesPage extends BasePage {
 		Thread.sleep(8000);
 		return (MyDashboardPage) openPage(MyDashboardPage.class);
 	}	
+	
 	public MyProfilePage goToMyProfilePage() throws Exception {
         Thread.sleep(5000);
 		click(Toggledropdownmenu,"Toggledropdownmenu");
@@ -201,6 +243,7 @@ public class MyCommunitiesPage extends BasePage {
 		return (MyProfilePage) openPage(MyProfilePage.class);
 		// new MyProfilePage(driver, );
 	}
+
 
 	public BusinessDirectoryPage gotoBusinessDirectoryPage() throws Exception {
 		click(Directory,"Directory");
@@ -212,6 +255,38 @@ public class MyCommunitiesPage extends BasePage {
 		// new MyProfilePage(driver, );
 
 	}
+
+	public GlobalCareers gotoGlobalCareersPage() throws Exception {
+		//click(GlobalCareers,"GlobalCareers");
+		//Thread.sleep(5000);
+		waitForElementToPresent(GlobalCareers);
+		click(GlobalCareers,"GlobalCareers");
+		
+		return (GlobalCareers) openPage(GlobalCareers.class);
+		// new MyProfilePage(driver, );
+
+	}
+	public HomePage logout() throws Exception {
+		click(Toggledropdownmenu,"Toggledropdownmenu");
+		Thread.sleep(500);
+		waitForElementToPresent(Logout);
+		click(Logout,"Logout");
+		return (HomePage) openPage(HomePage.class);
+		// new HomePage(driver, );
+	}
+	public HomePage Dashboard() throws Exception {
+		click(Toggledropdownmenu,"Toggledropdownmenu");
+		Thread.sleep(500);
+		waitForElementToPresent(Logout);
+		click(Logout,"Logout");
+		return (HomePage) openPage(HomePage.class);
+		// new HomePage(driver, );
+	}
+	
+	
+
+
+
 	public MemberDirectoryPage gotoMemberDirectoryPage() throws Exception {
 		click(Directory,"Directory");
 		Thread.sleep(5000);
@@ -222,12 +297,24 @@ public class MyCommunitiesPage extends BasePage {
 		// new MyProfilePage(driver, );
 
 	}
+
+
 	
 	
+
 	public CreateCommunityPage clickOnCreateCommunity() {
 		click(CreateCommunityBtn,"CreateCommunityBtn");
 		return (CreateCommunityPage) openPage(CreateCommunityPage.class);
 		// new CreateCommunityPage(driver);
+	}
+	public ManageJobsPage clickOnmanageBtn() throws InterruptedException {
+		
+		scrollIntoView(manageButton);
+		waitForElementToPresent(manageButton);
+		//type(searchByName, Name, "Search by Name");
+		Thread.sleep(1000);
+		click(manageButton, "manage btn");
+		return (ManageJobsPage) openPage(ManageJobsPage.class);
 	}
 
 	public SelectPlanPage completeSetup(String communityName) throws Exception {
@@ -247,7 +334,6 @@ public class MyCommunitiesPage extends BasePage {
 		WebElement ele = driver.findElement(By.xpath("//a[@tooltip='" + communityName + "']"));
 		waitForElementToPresent(ele);
 		picture();
-
 	}
 
 	public void checkProperAlertDisplayedWhenOnlyOneAdmin(String communityName) throws Exception {
@@ -324,18 +410,19 @@ public class MyCommunitiesPage extends BasePage {
 			return false;
 		}
 	}
-
+	
 	public CommunityDetailsPage navigateToCommunityDetailsPage(String communityName) throws Exception {
-		communityName = communityName+getDateInDDMMMYYYY();
-		this.searchCommunity(communityName);
+		//communityName = communityName+getDateInDDMMMYYYY();
+		//this.searchCommunity(communityName);
+		type(this.communityNameField, communityName, "communityName");
+		Thread.sleep(5000);
+		click(btnSearch, "Search");
+		Thread.sleep(5000);
 		WebElement ele = driver.findElement(By.xpath("//a[@tooltip='" + communityName + "']"));
 		click(ele, communityName);
 		return (CommunityDetailsPage) openPage(CommunityDetailsPage.class);
 		// new CommunityDetailsPage(driver, );
 	}
-	
-	
-	
 	public CommunityDetailsPage navigateToExpiredCommunityDetailsPage(String communityName, String runTime) throws Exception {
 		Date date = new Date();
 		
@@ -356,7 +443,16 @@ public class MyCommunitiesPage extends BasePage {
 		return (CommunityDetailsPage) openPage(CommunityDetailsPage.class);
 		// new CommunityDetailsPage(driver, );
 	}
-
+	public ResourcesPage  gotoResourcesPage() throws Exception {
+		Thread.sleep(2000);
+		waitForElementToPresent(Testingcommunity);
+		click(Testingcommunity,"18-02-2021Testing community");
+		Thread.sleep(5000);
+		waitForElementToPresent(resources);
+		click(resources,"Resources");
+		Thread.sleep(5000);
+		return (ResourcesPage) openPage(ResourcesPage.class);
+			}
 	public boolean cancelReviewCommunity(String CommunityName) throws Exception {
 
 		this.searchCommunity(CommunityName+getDateInDDMMMYYYY());
@@ -460,18 +556,16 @@ public class MyCommunitiesPage extends BasePage {
 		picture();
 	}
 
-	public GlobalCommunitesPage naviagtingToGlobalCommunities() throws Exception
-	{
-		
-		clickElementByJavaScript(globalCommunities);
-		Thread.sleep(1000);
-		return (GlobalCommunitesPage) openPage(GlobalCommunitesPage.class);
-//		new GlobalCommunitesPage(driver, );
-		
-	}
+	
 	public CommunityDashboardPage gotoManageCommunity(String communityName) throws Exception {
+
+
+		//this.searchCommunity(communityName+getDateInDDMMMYYYY());
+		//this.searchCommunity(communityName);
+
         Thread.sleep(5000);
 		//this.searchCommunity(communityName+getDateInDDMMMYYYY());
+
 		click(MANAGEbtn, "Manage");
 		Thread.sleep(1000);
 		return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
@@ -480,11 +574,15 @@ public class MyCommunitiesPage extends BasePage {
 	
 	public CommunityDashboardPage goToManageCommunity(String communityName) throws Exception {
 
-		this.searchCommunity(communityName+getDateInDDMMMYYYY());
+		//this.searchCommunity(communityName+getDateInDDMMMYYYY());
+		//this.searchCommunity(communityName);
 		click(MANAGEbtn, "Manage");
 		return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
 		// new CommunityDashboardPage(driver, );
 	}
+
+	
+
 	public CAPDashboardPage goToManageCAP(String communityName) throws Exception {
          Thread.sleep(2000);
          waitForElementToPresent(SearchbyCommunityName);
@@ -496,6 +594,7 @@ public class MyCommunitiesPage extends BasePage {
 		return (CAPDashboardPage) openPage(CAPDashboardPage.class);
 		// new CommunityDashboardPage(driver, );
 	}
+
 	public void verifyWaitForReviewIsDisplayed(String communityName) throws Exception {
 		this.searchCommunity(communityName+getDateInDDMMMYYYY());
 		waitingForReview.isDisplayed();		
@@ -592,5 +691,11 @@ public class MyCommunitiesPage extends BasePage {
 	@FindBy(xpath="//strong[contains(text(),\"Copy Of Copy Of Functional Event 2\")]")
 	WebElement paidEvent;
 
+
+	public HomePage naviagtingToHomePage() {
+		click(home, "Home");
+		return (HomePage) openPage(HomePage.class);
+		// new GlobalCareers(driver, );
+	}
 
 }

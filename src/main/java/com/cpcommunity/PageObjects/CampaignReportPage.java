@@ -47,6 +47,7 @@ public class CampaignReportPage extends BasePage {
 	WebElement search;
 	@FindBy(xpath = "//button[normalize-space()='Reset']")
 	WebElement reset;
+	//@FindBy(xpath = "//button[@id='34017']")
 	@FindBy(xpath = "//tbody//tr[1]//td[7]//button[@class='btn btn-info']")
 	WebElement viewDetail;
 	@FindBy(xpath = "//td[@ng-bind='maininfo.CampaignName']")
@@ -68,6 +69,7 @@ public class CampaignReportPage extends BasePage {
 		waitForElementToPresent(search);
 		click(search, "Search");
 		this.SearchbyCampaign.clear();
+		Thread.sleep(3000);
 		Thread.sleep(5000);
 		waitForElementToPresent(SearchbySentAt);
 		click(SearchbySentAt, "Sentdate");
@@ -81,6 +83,7 @@ public class CampaignReportPage extends BasePage {
 		click(SearchbySentAt, "Sentdate");
 		waitForElementToPresent(clear);
 		click(clear, "Clear");
+		Thread.sleep(3000);
 		Thread.sleep(8000);
 		waitForElementToPresent(selectEmailStatus);
 		//selectUsingIndex(selectEmailStatus, 2, "Sent");
@@ -88,12 +91,23 @@ public class CampaignReportPage extends BasePage {
 		waitForElementToPresent(search);
 		click(search, "Search");
 		selectUsingIndex(selectEmailStatus, 0, "Sent");
+		Thread.sleep(3000);
 		Thread.sleep(8000);
 		waitForElementToPresent(searchbySubject);
 		type(searchbySubject, Subject, "Subject");
 		waitForElementToPresent(search);
 		click(search, "Search");
 		this.searchbySubject.clear();
+		Thread.sleep(3000);
+		waitForElementToPresent(searchbyToEmail);
+		type(searchbyToEmail, Email, "Email");
+		waitForElementToPresent(search);
+		click(search, "Search");
+		this.searchbyToEmail.clear();
+		Thread.sleep(3000);
+		waitForElementToPresent(viewDetail);
+		click(viewDetail, "ViewDetails");
+		AssertionHelper.verifyText(SuccessPopup.getText(), "Mails History Loaded");
 		Thread.sleep(8000);
 		waitForElementToPresent(searchbyToEmail);
 		type(searchbyToEmail, Email, "Email");

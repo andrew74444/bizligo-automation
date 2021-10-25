@@ -17,7 +17,7 @@ import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
 
 public class MyGroupsPage extends BasePage{
 	
-	@FindBy(xpath = "//*[@id='header']")
+	@FindBy(xpath = "//*[@id='global-nav']")
 	WebElement pageheader;
 	@Override
 	protected  void getPageScreenSot() {
@@ -34,18 +34,34 @@ public class MyGroupsPage extends BasePage{
     WebElement SearchGroup;
     @FindBy(xpath = "//button[@id='CreateCommunity']")
     WebElement CreateCommunityBtn;
-    @FindBy(xpath = "//button[contains(.,'Yes,Proceed')]")
-    WebElement YesProceed;
+
+   // @FindBy(xpath = "//button[contains(.,'Yes,Proceed')]")
+   // WebElement YesProceed;
     @FindBy(xpath = "//*[@id='toast-container']")
     WebElement ToastMessage;
+
+  //  @FindBy(xpath = "//li[@ng-if='(!appData.IsInEventManagerRole) && (appData.IsGroupActive)']")
+   // WebElement LeaveBtn;
+   
+    @FindBy(xpath = "//*[@id='toast-container']")
+    WebElement ToastMessage;
+
     @FindBy(xpath = "//button[@class='btn btn-default btn-sm btn-remove'][1]")
     List<WebElement> LeaveBtn;
+
     @FindBy(xpath = "//button[contains(.,'Cancel')]")
     WebElement CancelBtn;
     @FindBy(xpath = "//span[@title='Menu']")
     WebElement CommunityDashboardMenu;
     @FindBy(xpath = "//button[contains(.,'Search')]")
     WebElement searchbtn;
+
+    @FindBy(xpath = "//body//div[@class='container body']//div[@role='main']//div//div//div[4]//div[1]//div[1]//div[1]//div[1]//div[1]//div[2]//div[1]")
+	WebElement CommunityBox;
+    @FindBy(xpath = "//button[contains(.,'Yes,Proceed')]")
+	WebElement YesProceed;
+
+
     @FindBy(xpath = "//button[contains(.,'Ok')]")
     WebElement BtnOK;
     @FindBy(xpath = "//img[@src='/Content/Images/search.png']")
@@ -55,7 +71,14 @@ public class MyGroupsPage extends BasePage{
     @FindBy(xpath = "//*[contains(text(),'Manage Members')]")
 	WebElement ManageMembers;
     @FindBy(xpath = "//*[contains(text(),'\"Please make another member as Group Admin to leave from this Group.')]")
-   	WebElement makeAnothergroupAdminAlertMeassge;
+
+	//WebElement makeAnothergroupAdminAlertMeassge;
+
+
+	//WebElement makeAnothergroupAdminAlertMeassge;
+
+
+ //  	WebElement makeAnothergroupAdminAlertMeassge;
 	
     
     
@@ -77,6 +100,7 @@ public class MyGroupsPage extends BasePage{
 	
 
    
+
     
     public ManageGroupMembersPageByGroupAdmin manageGroupMembers(String groupName ) throws Exception {
     	groupName = groupName+" "+getDateInDDMMMYYYY();
@@ -183,13 +207,37 @@ public class MyGroupsPage extends BasePage{
 	        waitForElementToPresent(editGroup);
 	        Thread.sleep(5000);
 	        picture();
-	        click(editGroup,"Edit group");  
-	        
-	        
-	       
-	       
+	        click(editGroup,"Edit group");  	       
 	        return (Create_UpdateGroupPage) openPage(Create_UpdateGroupPage.class);
 	    }
+
+		public void checkProperAlertDisplayedWhenOnlyOneAdmin(String GroupName) throws Exception {
+			//this.searchCommunity(communityName+getDateInDDMMMYYYY());
+			//waitForElementToPresent(CommunityBox);
+			//click(CommunityBox, "Community Box");
+			//scrollIntoView(LeaveBtn);
+			waitForElementToPresent(myGroups);
+			myGroups.click();		
+			Thread.sleep(5000);
+			waitForElementToPresent(LeaveBtn);
+			click(LeaveBtn, "leave");
+			takeScreenshotByShutterBug(LeaveBtn, "Leave Btn");
+			waitForElementToPresent(YesProceed);
+			takeScreenshotByShutterBug(YesProceed, "Yes Proceed");
+			click(YesProceed, "Yes Proceed");
+			waitForElementToPresent(BtnOK);
+			takeScreenshotByShutterBug(BtnOK, "Ok");
+			click(BtnOK, "Ok");
+			picture();
+			System.out.println("Ok button click");
+			
+
+					//"Please make another member as Group Admin to leave from this Group.");
+			AssertionHelper.verifyText(makeAnothergroupAdminAlertMeassge.getText(),
+					"Please make another member as Group Admin to leave from this Group.");
+			System.out.println("Assertion done");
+		}
+
 		
 		
 
@@ -213,6 +261,7 @@ public class MyGroupsPage extends BasePage{
 		
 		
 		
+
 		
 	
 
