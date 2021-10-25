@@ -47,6 +47,9 @@ public class EventDetailsPage extends BasePage {
 	WebElement apply;
 	@FindBy(xpath = "//*[@id=\"selectticketcount\"]")
 	WebElement selectTicket;
+	@FindBy(xpath = "//body[1]/div[2]/div[1]/div[2]/div[1]/div[9]/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/table[1]/tbody[1]/tr[2]/td[4]/div[1]/h4[1]/select[1]")
+	WebElement selectTicket2;
+	
 	@FindBy(xpath = "//strong[contains(text(),\"Congratulations!\")]")
 	WebElement congratulationsMsg;
 	@FindBy(xpath = "//span[contains(text(),\"Sorry! The Promo code you have entered is not valid. Please try with a different code.\")]")
@@ -55,6 +58,19 @@ public class EventDetailsPage extends BasePage {
 	WebElement exceedMsg;
 	@FindBy(xpath = "//span[contains(text(),\"Sorry! The Promo code you have entered is not valid. Please try with a different code.\")]")
 	WebElement inactiveMsg;
+	@FindBy(xpath = "//span[contains(text(),\"Sorry! The Promo code you have entered has expired. Please try with a different code.\")]")
+	WebElement expiredMsg;
+	@FindBy(xpath = "//input[@placeholder=\"Search by Events\"]")
+	WebElement searchEvent;
+	@FindBy(xpath = "//button[contains(text(),\"Search\")]")
+	WebElement searchBtn;
+	@FindBy(xpath = "//strong[contains(text(),\"Paid Durga pooja Fest\")]")
+	WebElement poojaEvent;
+	@FindBy(xpath = "//strong[@class='text-primary book-total-price']//span[@class='ng-binding'][normalize-space()='$10.00']")
+	WebElement totalAmount;
+	@FindBy(xpath = "//strong[normalize-space()='$5.00']")
+	WebElement amountPaid;
+	
 	@FindBy(xpath = "//input[@name='PayerEmailID']")
 	WebElement PayerEmailID;
 	@FindBy(xpath = "//input[@name='PayerPhone']")
@@ -814,5 +830,115 @@ public class EventDetailsPage extends BasePage {
 		}else Assert.assertTrue(false);
 	
 	}	
+	public void checkExpiredPromoCode(String promoCode)
+			throws Exception {		
+		click(RegisterBtn,"Register");
+		Thread.sleep(1000);
+		selectByVisibleText(selectTicket, "1", "Ticket");
+		Thread.sleep(4000);
+		scrollToElement(attendeFormView);
+		click(NextBtn,"Next");
+		Thread.sleep(2000);
+		scrollToElement(iHavePromocode);
+		click(iHavePromocode,"I have promo code");
+		type(Promocode,promoCode,"PromoCode");
+		click(apply,"APPLY");
+		if(expiredMsg.getText().equals("Sorry! The Promo code you have entered has expired. Please try with a different code.")) {
+			System.out.println("Member was not able to use promocode if promocode has expired");
+			Assert.assertTrue(true);
+		}else Assert.assertTrue(false);
+	
+	}	
+	public void checkPromoCodeForSpecificEvent(String promoCode,String Event)
+			throws Exception {		
+		click(RegisterBtn,"Register");
+		Thread.sleep(1000);
+		selectByVisibleText(selectTicket, "1", "Ticket");
+		Thread.sleep(7000);
+		scrollToElement(attendeFormView);
+		click(NextBtn,"Next");
+		Thread.sleep(2000);
+		scrollToElement(iHavePromocode);
+		click(iHavePromocode,"I have promo code");
+		type(Promocode,promoCode,"PromoCode");
+		click(apply,"APPLY");
+		if(inactiveMsg.getText().equals("Sorry! The Promo code you have entered is not valid. Please try with a different code.")) {
+			System.out.println("Member was not able to use promocode if promocode is for any other specific event");
+			Assert.assertTrue(true);  //promocode is for event Paid Durga Pooja 
+		}else Assert.assertTrue(false);
+		driver.navigate().back();
+		Thread.sleep(12000);
+		waitForElementToPresent(searchEvent);
+		type(searchEvent,Event,Event);
+		click(searchBtn,"Search");
+		Thread.sleep(5000);
+		click(poojaEvent,"Event whose PC is there");
+		Thread.sleep(5000);
+		click(RegisterBtn,"Register");
+		Thread.sleep(1000);
+		selectByVisibleText(selectTicket2, "1", "Ticket");
+		Thread.sleep(4000);
+		scrollToElement(attendeFormView);
+		click(NextBtn,"Next");
+		Thread.sleep(2000);
+		scrollToElement(iHavePromocode);
+		click(iHavePromocode,"I have promo code");
+		type(Promocode,promoCode,"PromoCode");
+		click(apply,"APPLY");
+		if(congratulationsMsg.getText().contains("Congratulations")) {
+			System.out.println("Member was able to use promocode for event that is specified");
+			Assert.assertTrue(true);
+		}else Assert.assertTrue(false);
+		
+	
+	}	
+	public void checkDiscountWhenPCinPercentage(String promoCode)
+			throws Exception {		
+		click(RegisterBtn,"Register");
+		Thread.sleep(1000);
+		selectByVisibleText(selectTicket, "1", "Ticket");
+		Thread.sleep(4000);
+		scrollToElement(attendeFormView);
+		click(NextBtn,"Next");
+		Thread.sleep(2000);
+		scrollToElement(iHavePromocode);
+		click(iHavePromocode,"I have promo code");
+		type(Promocode,promoCode,"PromoCode");
+		click(apply,"APPLY");
+		if(congratulationsMsg.getText().contains("Congratulations")) {
+			System.out.println("Member was able to use promocode");		
+		}
+		System.out.println("Total amount to be paid="+ totalAmount.getText());
+		System.out.println("Amount after discount="+ amountPaid.getText());
+		if( amountPaid.getText().equals("$5.00")) {
+			System.out.println("Discount coupon of percentage is working");
+			Assert.assertTrue(true);
+			
+		}else Assert.assertTrue(false);
+	
+	}
+	public void checkPromoCodeInfoCleared(String promoCode)
+			throws Exception {		
+		click(RegisterBtn,"Register");
+		Thread.sleep(1000);
+		selectByVisibleText(selectTicket, "1", "Ticket");
+		Thread.sleep(4000);
+		scrollToElement(attendeFormView);
+		click(NextBtn,"Next");
+		Thread.sleep(2000);
+		scrollToElement(iHavePromocode);
+		click(iHavePromocode,"I have promo code");
+		type(Promocode,promoCode,"PromoCode");
+		click(apply,"APPLY");
+		System.out.println(congratulationsMsg.getText());
+		driver.navigate().refresh();
+		Thread.sleep(4000);
+		if(RegisterBtn.isDisplayed()) {
+System.out.println("After refresh promocode details still there");
+			
+		}else System.out.println("Promo code details deleted after refresh");;		
+	
+	}	
 	
 }
+

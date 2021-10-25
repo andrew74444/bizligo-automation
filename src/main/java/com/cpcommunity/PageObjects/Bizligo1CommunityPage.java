@@ -653,7 +653,7 @@ public class Bizligo1CommunityPage extends BasePage {
 	}
 	public EventDetailsPage goToPaidEvent() throws InterruptedException {
 		click(events,"Events");
-		Thread.sleep(4000);
+		Thread.sleep(7000);
 		click(eventName2,"Event upcoming");
 		return (EventDetailsPage) openPage(EventDetailsPage.class);
 	}
