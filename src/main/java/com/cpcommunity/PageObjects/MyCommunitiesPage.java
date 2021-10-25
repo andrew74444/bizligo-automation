@@ -36,7 +36,10 @@ public class MyCommunitiesPage extends BasePage {
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 
-		return ExpectedConditions.visibilityOf(btnSearch);
+
+		//return ExpectedConditions.visibilityOf(CreateCommunityBtn);
+		return ExpectedConditions.visibilityOf(myCommunitiesHeader);
+
 	}
 
 	// public ZohoCRMPage gotoCRM() {

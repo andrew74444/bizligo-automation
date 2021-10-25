@@ -2,6 +2,7 @@ package com.cpcommunity.testScripts.Connections;
 
 import java.util.Hashtable;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.Bizligo1CommunityPage;
@@ -34,4 +35,12 @@ public class TC2180_Verify_member_able_send_connection_requests_from_Community_a
 		
 
 }
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("TC2180 Test Completed");
+		
+		quit();
+		
+	}
 }
