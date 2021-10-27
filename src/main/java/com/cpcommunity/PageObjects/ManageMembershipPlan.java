@@ -24,10 +24,10 @@ public class ManageMembershipPlan extends BasePage {
 		
 		aShot();
 	}
-	@FindBy(xpath="//body//div[@class='container body']//div[@class='row']//div[@class='row']//h2[1]")
+	@FindBy(xpath="//h2[normalize-space()='Manage Membership Plans']")
 	WebElement title;
 	
-	@FindBy(xpath="//button[normalize-space()='Add New Plan']")
+	@FindBy(xpath="//button[@id='btnAddNew']")
 	WebElement addnew;
 	
 	@FindBy(xpath="//input[@id='Name']")
@@ -75,7 +75,11 @@ public class ManageMembershipPlan extends BasePage {
 	@FindBy(xpath="//button[@id='btn-ok']")
 	WebElement ok;
 	
+	@FindBy(xpath="//div[@class='swal-text']")
+	WebElement configurationError;
 	
+	@FindBy(xpath="//button[@class='swal-button swal-button--Cancel btn-danger']")
+	WebElement configurationcancel;
 	
 	
 	public void errorField() {
@@ -163,7 +167,19 @@ public class ManageMembershipPlan extends BasePage {
 	     click(ok, "Ok");
 	}
 	
-	
+	public void cannotcreatePlan(String plan,String Price) throws InterruptedException {
+		
+		 waitForElementToPresent(addnew);
+		 click(addnew, "Add new pLan");
+		 driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
+		 waitForElementToPresent(planName);
+		Thread.sleep(4000);
+		 plan=plan+" " + getDateInDDMMMYYYY();
+		 type(planName, plan, "Plan name");
+		 type(price, Price, "Price");
+		 waitForElementToPresent(configurationError);
+		click(configurationcancel, "Cancel");
+	}
 	
 	
 	

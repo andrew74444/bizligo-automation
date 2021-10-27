@@ -367,6 +367,14 @@ public class CommunityDashboardPage extends BasePage {
 		// new CommunityPendingRequestsPage(driver);
 
 	}
+	public ManageMembershipPlan navigateTomembershipPlan() throws InterruptedException {
+         Thread.sleep(5000);
+		click(MembershipPlans, "MembershipPlans");
+		
+		return (ManageMembershipPlan) openPage(ManageMembershipPlan.class);
+		// new CommunityPendingRequestsPage(driver);
+
+	}
 
 	public ManageJobsPage navigateToManageJobsPage() {
 		scrollDownVertically();
@@ -464,6 +472,30 @@ public class CommunityDashboardPage extends BasePage {
 		
 		try {
 			if(MembershipPlans.isDisplayed()) {
+				AssertionHelper.verifyFalse(true);
+			}
+			
+		} catch (Exception e) {
+			AssertionHelper.verifyTrue(true);;
+		}
+	}
+	
+    public void checkAdvertisementNotAvailable() {
+		
+		try {
+			if(advertisement.isDisplayed()) {
+				AssertionHelper.verifyFalse(true);
+			}
+			
+		} catch (Exception e) {
+			AssertionHelper.verifyTrue(true);;
+		}
+	}
+    
+ public void checkGroupNotAvailable() {
+		
+		try {
+			if(Groups.isDisplayed()) {
 				AssertionHelper.verifyFalse(true);
 			}
 			
