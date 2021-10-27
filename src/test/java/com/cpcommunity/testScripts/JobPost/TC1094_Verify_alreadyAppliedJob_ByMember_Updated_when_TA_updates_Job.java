@@ -32,7 +32,7 @@ public class TC1094_Verify_alreadyAppliedJob_ByMember_Updated_when_TA_updates_Jo
 	LoginPage login = home.clickOnLOGINBtn();
 	TenantAdminDashboardPage TDP = login.loginToTADashboard(data.get("email"), data.get("password"));
 	ManageJobsPage manageJob=TDP.navigateToManageJobsPage();
-	manageJob.UpdateJob(data.get("JobTitle"),data.get("UpdateTitle"),data.get("BillingRate"),data.get("JobTypeID"),data.get("Location"),data.get("Description"),data.get("AdditionalDetails"),data.get("reMarks"),data.get("makeGlobal"));
+	manageJob.UpdateJob(data.get("JobTitle"),data.get("BillingRate"),data.get("JobTypeID"),data.get("Location"),data.get("Description"),data.get("AdditionalDetails"),data.get("reMarks"),data.get("makeGlobal"));
 	manageJob.logout();
 	LoginPage login2 = home.clickOnLOGINBtn();
 	MyDashboardPage dashpage1 = login2.loginToDashboard(data.get("email1"), data.get("password1"));

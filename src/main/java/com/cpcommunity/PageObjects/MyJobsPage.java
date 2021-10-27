@@ -130,7 +130,8 @@ public class MyJobsPage extends BasePage {
 
 
     	
-		}
+
+
          public void FindappliedJobs(String Jobtitle) throws InterruptedException {
         	 waitForElementToPresent(searchByjobTitle);
         	type(searchByjobTitle, Jobtitle, "Job TItle");

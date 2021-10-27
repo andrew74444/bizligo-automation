@@ -56,10 +56,9 @@ public class CampaignTemplatePage extends BasePage{
 	@FindBy(xpath = "//iframe[@title='Rich Text Editor, Template']")
 	WebElement template;
 
-	@FindBy(xpath = "//button[normalize-space()='Update']")
+	//@FindBy(xpath = "//button[normalize-space()='Update']")
 
 	@FindBy(xpath = "//span[@ng-if='data.isEdit']")
-
 	WebElement update;
 	@FindBy(xpath = "//div[@class='toast-message']")
 	WebElement toastMessage;
@@ -181,6 +180,7 @@ public class CampaignTemplatePage extends BasePage{
 			click(update, "Update");
 			Thread.sleep(7000);
 		}
+	}
 		/*else {
 			click(inactive, "Active now");
 			Thread.sleep(5000);
@@ -193,19 +193,14 @@ public class CampaignTemplatePage extends BasePage{
 			
 	
 	
-	public void activate() throws InterruptedException {
-		Thread.sleep(4000);
-		waitForElementToPresent(edit3);
-		click(edit3, "Edit");
-		Thread.sleep(8000);
-		scrollDownVertically();
-		waitForElementToPresent(togglebutton);
-	
-			click(inactive, "Active now");
-			waitForElementToPresent(update);
-			click(update, "Update");
-			Thread.sleep(7000);
-		}
+		/*
+		 * public void activate() throws InterruptedException { Thread.sleep(4000);
+		 * waitForElementToPresent(edit3); click(edit3, "Edit"); Thread.sleep(8000);
+		 * scrollDownVertically(); waitForElementToPresent(togglebutton);
+		 * 
+		 * click(inactive, "Active now"); waitForElementToPresent(update); click(update,
+		 * "Update"); Thread.sleep(7000); }
+		 */
 	
 	public void Activate() throws InterruptedException {
 		Thread.sleep(4000);

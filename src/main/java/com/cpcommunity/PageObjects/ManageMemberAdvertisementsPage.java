@@ -145,9 +145,9 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 		click(reject, "Reject");
 		Thread.sleep(8000);
 		picture();
-		
-		
+				
 	}
+
 
 	public void rejectAd(String status) throws Exception {
 		Thread.sleep(5000);

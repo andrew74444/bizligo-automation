@@ -32,10 +32,9 @@ public class DraftCampaignPage extends BasePage {
 	@FindBy(xpath = "//h2[normalize-space()='DRAFT CAMPAIGN']")
 	WebElement panelTitle;
 
-	@FindBy(xpath = "//div[@id='1624298224450-0-uiGrid-0005-cell']//a[@class='ng-binding ng-scope'][contains(text(),'Bizligo Scheduler Test')]")
+//	@FindBy(xpath = "//div[@id='1624298224450-0-uiGrid-0005-cell']//a[@class='ng-binding ng-scope'][contains(text(),'Bizligo Scheduler Test')]")
 
-	@FindBy(xpath = "//*[@class='ng-binding ng-scope'][normalize-space()='Bizligo Scheduler Test']")
-
+   @FindBy(xpath = "//*[@class='ng-binding ng-scope'][normalize-space()='Bizligo Scheduler Test']")
 	WebElement ClickBizligo ;
 	@FindBy(xpath = "div[id='1624404832986-0-uiGrid-0005-cell'] a[class='ng-binding ng-scope']")
 	WebElement DraftmailList;
@@ -52,12 +51,12 @@ public class DraftCampaignPage extends BasePage {
 		return (ComposeCampaign) openPage(ComposeCampaign.class);
 	}
 
-		//waitForElementToPresent(DraftmailList);
-		waitForElementToPresent(ClickBizligo);
-		clickElementByJavaScript(ClickBizligo);
-		//click(ClickBizligo, "Click");
-		return (ComposeCampaign) openPage(ComposeCampaign.class);
-	}
+	/*
+	 * // waitForElementToPresent(ClickBizligo);
+	 * //waitForElementToPresent(ClickBizligo);
+	 * clickElementByJavaScript(ClickBizligo); //click(ClickBizligo, "Click");
+	 * return (ComposeCampaign) openPage(ComposeCampaign.class); }
+	 */
 
 	private void clickElementByJavaScript(List<WebElement> clickBizligo2) {
 		// TODO Auto-generated method stub
