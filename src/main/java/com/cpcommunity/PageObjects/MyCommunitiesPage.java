@@ -22,13 +22,13 @@ import junit.framework.Assert;
 
 public class MyCommunitiesPage extends BasePage {
 
-	@FindBy(xpath = "//header[@id='global-nav']")
+	@FindBy(xpath = "//div[@id='myNavbar']")
 	WebElement pageheader;
 
 	@Override
 	protected void getPageScreenSot() {
 
-		updateClass(pageheader, "");
+		//updateClass(pageheader, "");
 		aShot();//
 //		updateClass(pageheader, "navbar-fixed-top");
 	}
@@ -36,7 +36,7 @@ public class MyCommunitiesPage extends BasePage {
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 
-		return ExpectedConditions.visibilityOf(btnSearch);
+		return ExpectedConditions.visibilityOf(myCommunitiesHeader);
 	}
 
 	// public ZohoCRMPage gotoCRM() {
@@ -53,7 +53,7 @@ public class MyCommunitiesPage extends BasePage {
 
 	@FindBy(xpath = "//h3[normalize-space()='My Communities']")
 	WebElement myCommunitiesHeader;
-	@FindBy(xpath = "//button[contains(text(),'Search')]")
+	@FindBy(xpath = "//button[normalize-space()='Search']")
 	WebElement btnSearch;
 	@FindBy(xpath = "//button[@id='CreateCommunity']")
 	WebElement CreateCommunityBtn;
@@ -307,9 +307,9 @@ public class MyCommunitiesPage extends BasePage {
 		picture();
 		type(SearchbyCommunityName, communityName, "Search by Community");
 		click(searchbtn, "search btn");
-		Thread.sleep(6000);
-		WebElement ele = driver.findElement(By.xpath("//a[@tooltip='" + communityName + "']"));
-		waitForElementToPresent(ele);
+		//Thread.sleep(6000);
+		//WebElement ele = driver.findElement(By.xpath("//a[@tooltip='" + communityName + "']"));
+		//waitForElementToPresent(ele);
 		picture();
 	}
 
@@ -532,12 +532,7 @@ public class MyCommunitiesPage extends BasePage {
 	
 	public CommunityDashboardPage gotoManageCommunity(String communityName) throws Exception {
 
-
-		//this.searchCommunity(communityName+getDateInDDMMMYYYY());
-		//this.searchCommunity(communityName);
-
         Thread.sleep(5000);
-		//this.searchCommunity(communityName+getDateInDDMMMYYYY());
 
 		click(MANAGEbtn, "Manage");
 		Thread.sleep(1000);
@@ -545,17 +540,7 @@ public class MyCommunitiesPage extends BasePage {
 		// new CommunityDashboardPage(driver, );
 	}
 	
-	public CommunityDashboardPage goToManageCommunity(String communityName) throws Exception {
-
-		//this.searchCommunity(communityName+getDateInDDMMMYYYY());
-		//this.searchCommunity(communityName);
-		click(MANAGEbtn, "Manage");
-		return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
-		// new CommunityDashboardPage(driver, );
-	}
-
 	
-
 	public CAPDashboardPage goToManageCAP(String communityName) throws Exception {
          Thread.sleep(2000);
          waitForElementToPresent(SearchbyCommunityName);
