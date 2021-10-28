@@ -237,6 +237,12 @@ public class Discussions extends BasePage {
 	 
 	 @FindBy(xpath = "//button[@class='btn btn-primary'][normalize-space()='OK']")
 	 WebElement OkBtn;
+	 
+	 @FindBy(xpath = "(//button[@type='button'][normalize-space()='Unsubscribe'])[1]")
+	 WebElement unsubscribeBtn;
+	 
+	 @FindBy(xpath = "(//button[@type='button'][normalize-space()='Subscribe'])[1]")
+	 WebElement subscribeBtn;
 
 	 
 	//body/div[@class='ng-scope']/div[@id='appController']/div/div[@class='community-cont']/div[@class='container data-container']/div[@class='row']/div[@id='MainContainer']/div[@class='ng-scope']/div[@id='discussionController']/div[@ng-hide='appData.IsPrivate']/div[@class='panel panel-default text-left']/div/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]
@@ -447,6 +453,32 @@ public class Discussions extends BasePage {
 	AssertionHelper.verifyText(toastMessage.getText(), "Post deleted successfully");
 	Thread.sleep(7000);
 		}
+	
+	
+	public void UnsubscribeCommunitydiscussion() throws InterruptedException 
+	{
+	click(unsubscribeBtn, "unsubscribeBtn");
+	Thread.sleep(2000);
+	waitForElementToPresent(toastMessage);
+	AssertionHelper.verifyText(toastMessage.getText(), "Success!Unsubscribed. You will no longer receive notifications for this post");
+	Thread.sleep(7000);
+	}
+	
+	public void SubscribeCommunitydiscussion() throws InterruptedException 
+	{
+	click(unsubscribeBtn, "unsubscribeBtn");
+	Thread.sleep(2000);
+	waitForElementToPresent(toastMessage);
+	AssertionHelper.verifyText(toastMessage.getText(), "Success!Unsubscribed. You will no longer receive notifications for this post");
+	Thread.sleep(7000);
+	click(subscribeBtn, "subscribeBtn");
+	Thread.sleep(2000);
+	waitForElementToPresent(toastMessage);
+	AssertionHelper.verifyText(toastMessage.getText(), "Success! You will receive notifications if any user adds the comment");
+	Thread.sleep(7000);
+	
+	}
+	
 	
 	
 	public void CheckNonMemberIsNotAbleToPostLikeComment() throws Exception {

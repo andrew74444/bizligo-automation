@@ -27,7 +27,7 @@ public class TC2130_Verify_list_of_features_mentioned_present_loyalty_details_pa
 		LoginPage login = home.clickOnLOGINBtn();	
 		TenantAdminDashboardPage TDP = login.loginToTADashboard(data.get("email"), data.get("password"));
 		LoyaltyPage LP=TDP.navigateToLoyaltyPage();
-	
+	//jhjhj
 
 }
 }

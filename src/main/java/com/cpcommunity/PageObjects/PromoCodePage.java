@@ -304,6 +304,7 @@ public class PromoCodePage extends BasePage {
 		
 		
 	}
+	
 	public void checkPCcreatedByCAatTAdashboard(String promo) throws InterruptedException {
 		type(searchByPromo, promo,"Promo Code created by TA");
 		click(btnSearch,"search");
@@ -317,6 +318,7 @@ public class PromoCodePage extends BasePage {
 			Assert.assertTrue(false);
 		}
 	}
+	
 	public void caAbleToEditPromoByTA(String promo,String maxNumberofUses) throws InterruptedException {
 		type(searchByPromo, promo,"Promo Code created by TA");
 		click(btnSearch,"search");

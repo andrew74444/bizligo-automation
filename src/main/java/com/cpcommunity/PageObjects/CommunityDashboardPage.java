@@ -544,7 +544,7 @@ public class CommunityDashboardPage extends BasePage {
 		return (StatisticsManageCampaign) openPage(StatisticsManageCampaign.class);
 	}*/
 		
-	public CampaignReportPage navigateToCampaignReportPage() throws Exception {
+/*	public CampaignReportPage navigateToCampaignReportPage() throws Exception {
 		Thread.sleep(3000);
 		scrollToElement(manageCampaign);
 		click(manageCampaign, "manageCampaign");
@@ -577,19 +577,20 @@ public class CommunityDashboardPage extends BasePage {
 		//click(composeCampaign, "composeCampaign");
 		return (ImportContactsPage) openPage(ImportContactsPage.class);
 		
-	}
-	public ManageResourcesPage navigateToManageResourcesPage() throws Exception {
-		scrollDownVertically();
-		scrollToElement(manageresource);
-		click(manageresource, "manageresource");
-		return (ManageResourcesPage) openPage(ManageResourcesPage.class);
-		
-	}
+	}*/
+	/*
+	 * public ManageResourcesPage navigateToManageResourcesPage() throws Exception {
+	 * scrollDownVertically(); scrollToElement(manageresource);
+	 * click(manageresource, "manageresource"); return (ManageResourcesPage)
+	 * openPage(ManageResourcesPage.class);
+	 * 
+	 * }
+	 */
 
 		
 
 		
-	public StatisticsManageCampaign NavigatetoStatistics() throws Exception {
+	//public StatisticsManageCampaign NavigatetoStatistics() throws Exception {
 
 	/*
 	 * public StatisticsManageCampaign NavigatetoStatistics() throws Exception {
@@ -674,27 +675,22 @@ public class CommunityDashboardPage extends BasePage {
 	}
 	public ImportContactsPage navigateToImportContactsPage() throws Exception {
 		Thread.sleep(3000);
-
 		scrollDownVertically();
 		scrollToElement(manageCampaign);
 		click(manageCampaign, "manageCampaign");
 		Thread.sleep(1000);
-
-		waitForElementToPresent(Staticcampaign);
-		this.Staticcampaign.click();	
-		//click(composeCampaign, "composeCampaign");
-		return (StatisticsManageCampaign) openPage(StatisticsManageCampaign.class);
-	}
-		
-	
-	
-
 		waitForElementToPresent(importcampaign);
 		this.importcampaign.click();	
 		//click(composeCampaign, "composeCampaign");
 		return (ImportContactsPage) openPage(ImportContactsPage.class);
 		
 	}
+	/*
+	 * waitForElementToPresent(importcampaign); this.importcampaign.click();
+	 * //click(composeCampaign, "composeCampaign"); return (ImportContactsPage)
+	 * openPage(ImportContactsPage.class);
+	 */
+	//}
 	public ManageResourcesPage navigateToManageResourcesPage() throws Exception {
 		scrollDownVertically();
 		scrollToElement(manageresource);

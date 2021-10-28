@@ -229,8 +229,8 @@ public class MyAdvertisements extends BasePage {
 		   type(plansearch, planName, "Plan Name");
 		   click(search, "Search");
 		   Thread.sleep(6000);
-		   waitForElementToPresent(editt);
-		   click(editt, "Edit");
+		   waitForElementToPresent(edit);
+		   click(edit, "Edit");
 		picture();
 		waitForElementToPresent(adname);
 		type(adname, AdName, "Advertisement name");
@@ -444,8 +444,8 @@ public class MyAdvertisements extends BasePage {
 
 	public void checkIsplanInactive() {
 		
-		waitForElementToPresent(editt);
-		click(editt, "Edit");
+		waitForElementToPresent(edit);
+		click(edit, "Edit");
 		waitForElementToPresent(inactiveerror);
 		System.out.print(inactiveerror);
 		click(ok, "OK");

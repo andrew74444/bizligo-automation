@@ -176,7 +176,7 @@ public class MyCommunitiesPage extends BasePage {
 	//@FindBy(xpath="//a[contains(text(),'Global Communities')]")
 	//WebElement globalCommunities;
 	
-/*	public GlobalCommunitesPage naviagtingToGlobalCommunities() throws Exception
+	public GlobalCommunitesPage naviagtingToGlobalCommunities() throws Exception
 	{
 		
 		clickElementByJavaScript(globalCommunities);
@@ -184,7 +184,7 @@ public class MyCommunitiesPage extends BasePage {
 		return (GlobalCommunitesPage) openPage(GlobalCommunitesPage.class);
 //		new GlobalCommunitesPage(driver, );
 		
-	}*/
+	}
 	
 	
 /*	public MyProfilePage goToMyProfilePage() throws Exception {
@@ -224,7 +224,7 @@ public class MyCommunitiesPage extends BasePage {
 
 
 	
-/*	public MyDashboardPage gotoMyDashboardPage() throws Exception {
+	public MyDashboardPage gotoMyDashboardPage() throws Exception {
 		Thread.sleep(8000);
 		waitForElementToPresent(Toggledropdownmenu);
 		click(Toggledropdownmenu,"Toggledropdownmenu");
