@@ -29,7 +29,7 @@ public class TC1231_verify_RevenueReport_updated_when_CA_purchase_AdPlan extends
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1231", data.get("Runmode"), excel);
 	log.info("Inside Login Test");	
-	openBrowser(data.get("browser"));
+    openBrowser(data.get("browser"));
 	logInfo("Launched Browser : "+ data.get("browser"));		
 	logInfo("BizLigo Application Opened");
 	HomePage home = new HomePage().open(data.get("tenantType"));
@@ -39,7 +39,7 @@ public class TC1231_verify_RevenueReport_updated_when_CA_purchase_AdPlan extends
 	MAPP.GlobalAdByTA(data.get("community"),data.get("name1"),data.get("price1"), data.get("planDetails"),data.get("duration1"),data.get("durationType"),data.get("adLocation"),data.get("adType"), data.get("approvalType"));
 	RevenueReportPage revenue= MAPP.goToRevenueReport();
 	TotalRevenueReport totalrevenue=revenue.goToTotalReport();
-	totalrevenue.checkTotalRevenuebasedOnTimePeriod();
+	 int previousrev=	totalrevenue.checkTotalRevenuebasedOnTimePeriod();
 	quit();
 	
 	 openBrowser(data.get("browser"));
@@ -64,17 +64,21 @@ public class TC1231_verify_RevenueReport_updated_when_CA_purchase_AdPlan extends
 		TenantAdminDashboardPage tadashoboard2=login2.loginToTADashboard(data.get("email"), data.get("password"));
 		RevenueReportPage revenue2= tadashoboard2.goToRevenueReport();
 		TotalRevenueReport totalrevenue2=revenue2.goToTotalReport();
-		totalrevenue2.checkTotalRevenuebasedOnTimePeriod();
+		int afterrev=totalrevenue2.checkTotalRevenuebasedOnTimePeriod();
+		totalrevenue2.Comparerevenue(previousrev,afterrev);
+		
 		ManageAdPlansPage MAPP2=totalrevenue2.goToManageAdPlansPage();
 		MAPP2.inactivatePlanTA(data.get("planName"));
+		
+		
 		}
-		@AfterMethod
-		public void tearDown() {
-			
-			logInfo("TC1231 Test Completed");
-			
-			quit();
-			
-		}
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("TC1231 Test Completed");
+		
+		quit();
+		
+	}
 	}
 

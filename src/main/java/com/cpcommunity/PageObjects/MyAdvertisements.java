@@ -95,13 +95,13 @@ public class MyAdvertisements extends BasePage {
 	@FindBy(xpath = "//tr[@class='odd']//a[@title='Click to purchase this Advertisement']")
 	WebElement editPP;
 
-	@FindBy(xpath = "//a[@title='Click to purchase this Advertisement']")
-	WebElement editt;
+	//@FindBy(xpath = "//a[@title='Click to purchase this Advertisement']")
+	//WebElement editt;
 	@FindBy(xpath = "//span[@title='This Advertisement plan is In-Activated.']")
 	WebElement editinactive;
 
 	@FindBy(xpath = "//tbody/tr[1]/td[2]/span[1]")
-	WebElement editt;
+	WebElement editt1;
 
 	
 	@FindBy(xpath = "//div[@class='well well-sm']//div[@class='col-sm-12']")
@@ -168,10 +168,7 @@ public class MyAdvertisements extends BasePage {
 
 		  // 
 	   }
-	/*public UpdateADPage gotoUpdateAdpage(String planName) throws InterruptedException {
 
-		   
-	   }
 	public UpdateADPage gotoUpdateAdpage(String planName) throws InterruptedException {
 
 		//Thread.sleep(2000);
@@ -184,9 +181,9 @@ public class MyAdvertisements extends BasePage {
 		Thread.sleep(5000);
 		return (UpdateADPage) openPage(UpdateADPage.class);
 
-	}*/
-
 	}
+
+	
 
 	
 	
@@ -436,24 +433,25 @@ public class MyAdvertisements extends BasePage {
 	}
 	
 
-	public void checkinactiveplanByTA() {
+	public void checkerrorMsg() {
 		
 		waitForElementToPresent(editinactive);
 		click(editinactive, "Edit");
 		waitForElementToPresent(inactiveerror);
 		System.out.print(inactiveerror);
 		click(ok, "OK");
+	}
 
 	public void checkIsplanInactive() {
 		
-		//waitForElementToPresent(editt);
-		//click(editt, "Edit");
-		//waitForElementToPresent(inactiveerror);
-		//System.out.print(inactiveerror);
-		//click(ok, "OK");
-
-		
+		waitForElementToPresent(editt);
+		click(editt, "Edit");
+		waitForElementToPresent(inactiveerror);
+		System.out.print(inactiveerror);
+		click(ok, "OK");
+	
 	}
+  
 	public MyDashboardPage gotoMyDashboardPage() throws Exception {
 		driver.manage().timeouts().implicitlyWait(800, TimeUnit.SECONDS);
 		waitForElementToPresent(Toggledropdownmenu);
@@ -466,10 +464,7 @@ public class MyAdvertisements extends BasePage {
 	
 	}
 	
-	
-	
-
+		
 }
 
-}
 

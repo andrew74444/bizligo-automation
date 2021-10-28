@@ -21,6 +21,8 @@ import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.DataUtil;
 import com.cpcommunity.utilities.ExcelReader;
 
+import junit.framework.Assert;
+
 public class TC1224_verify_RevenueReport_updated_when_member_purchaseplan extends BaseTest{
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1224(Hashtable<String,String> data) throws Exception {
@@ -29,7 +31,7 @@ public class TC1224_verify_RevenueReport_updated_when_member_purchaseplan extend
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 	DataUtil.checkExecution("master", "TC1224", data.get("Runmode"), excel);
 	log.info("Inside Login Test");	
-	openBrowser(data.get("browser"));
+    openBrowser(data.get("browser"));
 	logInfo("Launched Browser : "+ data.get("browser"));		
 	logInfo("BizLigo Application Opened");
 	HomePage home = new HomePage().open(data.get("tenantType"));
@@ -39,7 +41,7 @@ public class TC1224_verify_RevenueReport_updated_when_member_purchaseplan extend
 	MAPP.GlobalAdByTA(data.get("community"),data.get("name1"),data.get("price1"), data.get("planDetails"),data.get("duration1"),data.get("durationType"),data.get("adLocation"),data.get("adType"), data.get("approvalType"));
 	RevenueReportPage revenue= MAPP.goToRevenueReport();
 	TotalRevenueReport totalrevenue=revenue.goToTotalReport();
-	totalrevenue.checkTotalRevenuebasedOnTimePeriod();
+    int previousrev=	totalrevenue.checkTotalRevenuebasedOnTimePeriod();
 	quit();
 	
 	openBrowser(data.get("browser"));
@@ -64,8 +66,12 @@ public class TC1224_verify_RevenueReport_updated_when_member_purchaseplan extend
 	TenantAdminDashboardPage tadashoboard2=login2.loginToTADashboard(data.get("email"), data.get("password"));
 	RevenueReportPage revenue2= tadashoboard2.goToRevenueReport();
 	TotalRevenueReport totalrevenue2=revenue2.goToTotalReport();
-	totalrevenue2.checkTotalRevenuebasedOnTimePeriod();
+	int afterrev=totalrevenue2.checkTotalRevenuebasedOnTimePeriod();
 	 
+	
+	totalrevenue.Comparerevenue(previousrev,afterrev);
+	
+	
 	}
 	@AfterMethod
 	public void tearDown() {

@@ -1,4 +1,4 @@
-package com.cpcommunity.testScripts.loginPage;
+package com.cpcommunity.testScripts.PricingPlan;
 
 import java.util.Hashtable;
 
@@ -7,51 +7,37 @@ import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
+import com.cpcommunity.PageObjects.ManagePricingPlan;
+import com.cpcommunity.PageObjects.TenantAdminDashboardPage;
 import com.cpcommunity.testScripts.community.BaseTest;
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.DataUtil;
 import com.cpcommunity.utilities.ExcelReader;
 
-public class TC999_Verify_Login_with_Valid_Credential extends BaseTest {
-	
-	
-	
-
+public class TC1288_verify_TA_cannot_ableto_update_plan_if_user_purchasePlan extends BaseTest{
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC999(Hashtable<String,String> data) throws Exception {
-
+	public void TC1288(Hashtable<String,String> data) throws Exception {
+ 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC999", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC1288", data.get("Runmode"), excel);
 		log.info("Inside Login Test");			
 		openBrowser(data.get("browser"));
-		logInfo("Launched Browser : "+data.get("browser"));		
+		logInfo("Launched Browser : "+ data.get("browser"));		
 		logInfo("BizLigo Application Opened");
-		log.info("Launched Browser : "+data.get("browser"));
-		log.info("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
-		logInfo("Username entered as "+data.get("email")+" and Password entered as "+data.get("password"));
-		log.info("Username entered as "+data.get("email")+" and Password entered as "+data.get("password"));
-		login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
-				
-		
-		
+		TenantAdminDashboardPage tadashoboard=login.loginToTADashboard(data.get("email"), data.get("password"));
+		ManagePricingPlan pricingplan=tadashoboard.navigateToManagePricingPlan();
+		pricingplan.readOnlyField(data.get("Name"));
 	}
-
+	
 	@AfterMethod
 	public void tearDown() {
 		
-		 logInfo("TC999 Test Completed");
+		logInfo("TC1288 Test Completed");
 		
 		quit();
 		
 	}
-
-
-	
-	
-	
-	
-
 }

@@ -68,7 +68,7 @@ public class TC1232_verify_Errormsg_displayed_onEdit_when_globalmember_saved_Adp
 		MyDashboardPage MDP3=login3.loginToMemberdashboard(data.get("email1"), data.get("password1"));
 		MyAdvertisements ad=MDP3.NaviagtingToMyAdvertisements();
 		ad.searchplan(data.get("planName"));
-		ad.checkinactiveplanByTA();
+		ad.checkerrorMsg();
 		
 		
 	}

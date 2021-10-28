@@ -31,7 +31,7 @@ public class TC995_Verify_Admin_Can_EditJobs extends BaseTest {
 		MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
 		 CommunityDashboardPage CDP= myCommunity.gotoManageCommunity(data.get("communityName"));
 		 ManageJobsPage MJP= CDP.navigateToManageJobsPage();
-		 MJP.UpdateJob(data.get("JobTitle"), data.get("UpdateTitle"), data.get("BillingRate"), data.get("JobTypeID"), data.get("Location"),data.get("Description"),data.get("AdditionalDetails"),data.get("reMarks"),data.get("makeGlobal"));
+		 MJP.UpdateJob(data.get("JobTitle"), data.get("BillingRate"), data.get("JobTypeID"), data.get("Location"),data.get("Description"),data.get("AdditionalDetails"),data.get("reMarks"),data.get("makeGlobal"));
 }
 	@AfterMethod
 	public void tearDown() {

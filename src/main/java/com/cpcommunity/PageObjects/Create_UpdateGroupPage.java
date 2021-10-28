@@ -60,7 +60,7 @@ public class Create_UpdateGroupPage extends BasePage {
 	@FindBy(xpath = "//*[contains(text(),'In-Active')]")
 	WebElement InActive;
 
-	@FindBy(xpath = "//span[contains(text(),'Create')]")
+	@FindBy(xpath = "//span[@class='ng-binding']")
 	WebElement Create;
 
 	@FindBy(xpath = "//*[contains(text(),'Save')]")
@@ -89,10 +89,20 @@ public class Create_UpdateGroupPage extends BasePage {
 	//
 	// return (ZohoCRMPage) openPage(ZohoCRMPage.class);
 
-	public ManageGroupsPage createGroup(String name, String Description, String City, String State, String CategoryName,
-			String GroupCategory) throws Exception {
+	public ManageGroupsPage createGroup(String name, String Description, String City, String State
+			) throws Exception {
 		name = name+getDateInDDMMMYYYY();
-		this.fillGroupDetails(name, Description, City, State, CategoryName, GroupCategory);
+		type(Name, name, "groupname");
+		type(this.Description, Description, "Description");
+		type(this.State, State, "Groupstate");
+		type(this.City, City, "Groupcity");
+			
+		Select drp = new Select(GroupType);
+		drp.selectByVisibleText("Public");
+		Thread.sleep(5000);
+		Select drp1 = new Select(GroupCategory);
+		drp1.selectByVisibleText("NGO");
+		Thread.sleep(5000);
 		waitForElementToPresent(Create);
 	    scrollToElement(Create);
 		return (ManageGroupsPage) openPage(ManageGroupsPage.class);

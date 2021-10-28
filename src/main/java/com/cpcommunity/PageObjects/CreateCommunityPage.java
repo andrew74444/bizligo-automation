@@ -23,6 +23,27 @@ public class CreateCommunityPage extends BasePage{
 	
 	@FindBy(xpath="//h4[contains(text(),'Create Community')]")
 	WebElement CreateCommunityHeading;
+	@FindBy(xpath = "//input[@id='Name']")
+	WebElement name;
+	@FindBy(xpath = "//small[contains(text(),'Community already exists. Please enter a different')]")
+	WebElement samecommunityerror;
+	@FindBy(xpath = "//div[@class='swal-text']")
+	WebElement communityrequest;
+	@FindBy(xpath = "//button[normalize-space()='Ok']")
+	WebElement ok;
+	@FindBy(xpath = "//input[@class='ng-pristine ng-untouched ng-valid ng-empty'][@value='4']")
+	WebElement networking;
+	@FindBy(xpath = "//body//p")
+	WebElement about;
+	@FindBy(xpath = "//select[@id='CommunityTypeID']")
+	WebElement Type;
+	@FindBy(xpath = "//select[@id='GroupCategoryId']")
+	WebElement categoryType;
+	@FindBy(xpath = "//body")
+	WebElement enterTextInframe;
+	@FindBy(xpath = "//button[@id='btnSave']")
+	WebElement create;
+	
 	
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
@@ -62,5 +83,42 @@ public class CreateCommunityPage extends BasePage{
 		
 		
 	}
+	public String samecommunity(String Name) throws InterruptedException {
+		waitForElementToPresent(name);
+		type(name, Name, "Name");
+		Thread.sleep(2000);
+		click(networking, "Networking");
+		String error=this.samecommunityerror.getText();
+		System.out.println(error);
+		
+		return Name;
+		
+	}
 	
+	public String CreateRejectedcommunity(String Name,String About, String Category,String type) throws InterruptedException {
+		waitForElementToPresent(name);
+		type(name, Name, "Name");
+		//type(name, Name, "Name");
+		//Thread.sleep(3000);
+		click(networking, "Networking");
+		driver.switchTo().frame(0);
+		enterTextInframe.clear();
+		enterTextInframe.sendKeys(About);
+		driver.switchTo().defaultContent();
+		selectByVisibleText(categoryType, Category, "Category");
+		driver.switchTo().frame(2);
+		enterTextInframe.clear();
+		enterTextInframe.sendKeys(About);
+		driver.switchTo().defaultContent();
+		selectUsingIndex(Type, 1, "Type");
+		
+	    click(create, "Create");
+	    waitForElementToPresent(communityrequest);
+	    String request=this.communityrequest.getText();
+	    click(ok, "Ok");
+		return Name;
+		
+		
+		
+	}
 }

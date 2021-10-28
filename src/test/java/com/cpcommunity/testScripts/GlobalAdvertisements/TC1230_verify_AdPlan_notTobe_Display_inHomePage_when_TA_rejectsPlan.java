@@ -31,14 +31,15 @@ public class TC1230_verify_AdPlan_notTobe_Display_inHomePage_when_TA_rejectsPlan
 	logInfo("Launched Browser : "+ data.get("browser"));		
 	logInfo("BizLigo Application Opened");
 	HomePage home = new HomePage().open(data.get("tenantType"));
+	home.CheckadvertiseNotDisplay();
 	LoginPage login = home.clickOnLOGINBtn();
 	TenantAdminDashboardPage tadashoboard=login.loginToTADashboard(data.get("email"), data.get("password"));
 	ManageAdPlansPage MAPP=tadashoboard.goToManageAdPlansPage();
 	MAPP.GlobalAdByTA(data.get("community"),data.get("name1"),data.get("price1"), data.get("planDetails"),data.get("duration1"),data.get("durationType"),data.get("adLocation"),data.get("adType"), data.get("approvalType"));
 	quit();
 	
-	openBrowser(data.get("browser"));
-	logInfo("Launched Browser : "+ data.get("browser"));		
+	openBrowser(data.get("browser1"));
+	logInfo("Launched Browser : "+ data.get("browser1"));		
 	logInfo("BizLigo Application Opened");
 	HomePage home1 = new HomePage().open(data.get("tenantType"));
 	LoginPage login1 = home1.clickOnLOGINBtn();
@@ -59,6 +60,8 @@ public class TC1230_verify_AdPlan_notTobe_Display_inHomePage_when_TA_rejectsPlan
 		TenantAdminDashboardPage tadashoboard2=login2.loginToTADashboard(data.get("email"), data.get("password"));
 		ManageMemberAdvertisementsPage MMA=tadashoboard2.navigateToMemberAdvertisements();
 		MMA.rejectAd(data.get("planName"),data.get("status"));
+		HomePage home3=MMA.goToHomePage();
+		home3.CheckadvertiseNotDisplay();
 		
 }
 	@AfterMethod

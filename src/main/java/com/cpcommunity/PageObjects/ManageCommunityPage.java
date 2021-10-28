@@ -6,14 +6,17 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 
 import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
 
@@ -78,7 +81,22 @@ public class ManageCommunityPage extends BasePage{
 	@FindBy(xpath = "(//*[contains(text(),'Categories')])[1]")
 	WebElement categories;
 	
+	@FindBy(xpath = "//ul[@class='nav side-menu']")
+	WebElement sidemenu;
 	
+	@FindBy(xpath = "")
+	WebElement MenuName;
+	
+	 public void checkMenuNotPresent(Object menu) {
+	    	
+	    	Object Menu=this.sidemenu.getText();
+	    	
+            System.out.println(Menu);
+            if(Menu!=menu)
+	        	Assert.assertNotEquals(menu, Menu);	
+	       
+	    }
+	 
 	public void editCommunityLogo(String about,String updatecommunity, String termandcond, String logoImagePath ) throws InterruptedException, IOException, AWTException {
 		driver.manage().timeouts().implicitlyWait(600, TimeUnit.SECONDS);
 		
@@ -204,5 +222,6 @@ public class ManageCommunityPage extends BasePage{
 		click(ManageJobs, "ManageJobs");
 		return (ManageJobsPage) openPage(ManageJobsPage.class);
 		// new ManageJobs(driver);
+		
 	}
 }

@@ -29,7 +29,7 @@ public class TC1226_verify_applicant_redirected_tothe_selectPlanPage_onclicking_
 	LoginPage login = home.clickOnLOGINBtn();
 	MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
 	HomePage home1=myCommunity.naviagtingToHomePage();
-	//home1.Createadvertise();
+	home1.Createadvertise();
 	
 	
 }

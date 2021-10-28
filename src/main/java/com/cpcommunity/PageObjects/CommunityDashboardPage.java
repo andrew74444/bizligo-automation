@@ -367,6 +367,14 @@ public class CommunityDashboardPage extends BasePage {
 		// new CommunityPendingRequestsPage(driver);
 
 	}
+	public ManageMembershipPlan navigateTomembershipPlan() throws InterruptedException {
+         Thread.sleep(5000);
+		click(MembershipPlans, "MembershipPlans");
+		
+		return (ManageMembershipPlan) openPage(ManageMembershipPlan.class);
+		// new CommunityPendingRequestsPage(driver);
+
+	}
 
 	public ManageJobsPage navigateToManageJobsPage() {
 		scrollDownVertically();
@@ -471,6 +479,30 @@ public class CommunityDashboardPage extends BasePage {
 			AssertionHelper.verifyTrue(true);;
 		}
 	}
+	
+    public void checkAdvertisementNotAvailable() {
+		
+		try {
+			if(advertisement.isDisplayed()) {
+				AssertionHelper.verifyFalse(true);
+			}
+			
+		} catch (Exception e) {
+			AssertionHelper.verifyTrue(true);;
+		}
+	}
+    
+ public void checkGroupNotAvailable() {
+		
+		try {
+			if(Groups.isDisplayed()) {
+				AssertionHelper.verifyFalse(true);
+			}
+			
+		} catch (Exception e) {
+			AssertionHelper.verifyTrue(true);;
+		}
+	}
 
 	@FindBy(xpath="(//*[@src='/Content/Images/Surveys.png'])[1]")
 	WebElement serveysMenu;
@@ -514,6 +546,9 @@ public class CommunityDashboardPage extends BasePage {
 		//click(composeCampaign, "composeCampaign");
 		return (ComposeCampaign) openPage(ComposeCampaign.class);
 		
+		
+		
+		
 	}
 	public CampaignTemplatePage navigateToCampaignTemplate() throws Exception {
 		Thread.sleep(6000);
@@ -528,7 +563,9 @@ public class CommunityDashboardPage extends BasePage {
 		return (CampaignTemplatePage) openPage(CampaignTemplatePage.class);
 
 		
-	}public StatisticsManageCampaign NavigatetoStatistics() throws Exception {
+	}
+
+	/*public StatisticsManageCampaign NavigatetoStatistics() throws Exception {
 		scrollDownVertically();
 		scrollToElement(manageCampaign);
 		click(manageCampaign, "manageCampaign");
@@ -537,7 +574,7 @@ public class CommunityDashboardPage extends BasePage {
 		this.Staticcampaign.click();	
 		//click(composeCampaign, "composeCampaign");
 		return (StatisticsManageCampaign) openPage(StatisticsManageCampaign.class);
-	}
+	}*/
 		
 	public CampaignReportPage navigateToCampaignReportPage() throws Exception {
 		Thread.sleep(3000);
@@ -580,21 +617,71 @@ public class CommunityDashboardPage extends BasePage {
 		return (ManageResourcesPage) openPage(ManageResourcesPage.class);
 		
 	}
-	public PricingPlanDetailsPage navigateToPricingPlanDetailsPage() throws Exception {
+
 		
 
 		
-	}public StatisticsManageCampaign NavigatetoStatistics() throws Exception {
-		scrollDownVertically();
-		scrollToElement(manageCampaign);
-		click(manageCampaign, "manageCampaign");
-		Thread.sleep(1000);
-		waitForElementToPresent(Staticcampaign);
-		this.Staticcampaign.click();	
-		//click(composeCampaign, "composeCampaign");
-		return (StatisticsManageCampaign) openPage(StatisticsManageCampaign.class);
-	}
+	public StatisticsManageCampaign NavigatetoStatistics() throws Exception {
+
+	/*
+	 * public StatisticsManageCampaign NavigatetoStatistics() throws Exception {
+	 * scrollDownVertically(); scrollToElement(manageCampaign);
+	 * click(manageCampaign, "manageCampaign"); Thread.sleep(1000);
+	 * waitForElementToPresent(Staticcampaign); this.Staticcampaign.click();
+	 * //click(composeCampaign, "composeCampaign"); return
+	 * (StatisticsManageCampaign) openPage(StatisticsManageCampaign.class); }
+	 */
 		
+	/*
+	 * public CampaignReportPage navigateToCampaignReportPage() throws Exception {
+	 * Thread.sleep(3000); scrollToElement(manageCampaign); click(manageCampaign,
+	 * "manageCampaign"); Thread.sleep(1000);
+	 * waitForElementToPresent(CampaignReport); this.CampaignReport.click();
+	 * //click(composeCampaign, "composeCampaign"); return (CampaignReportPage)
+	 * openPage(CampaignReportPage.class);
+	 * 
+	 * }
+	 */
+	/*
+	 * public DraftCampaignPage navigateToDraftCampaignPage() throws Exception {
+	 * scrollDownVertically(); scrollToElement(manageCampaign);
+	 * click(manageCampaign, "manageCampaign"); Thread.sleep(1000);
+	 * waitForElementToPresent(DraftCampaign); this.DraftCampaign.click();
+	 * //click(composeCampaign, "composeCampaign"); return (DraftCampaignPage)
+	 * openPage(DraftCampaignPage.class);
+	 * 
+	 * }
+	 */
+	/*
+	 * public ImportContactsPage navigateToImportContactsPage() throws Exception {
+	 * Thread.sleep(3000); scrollDownVertically(); scrollToElement(manageCampaign);
+	 * click(manageCampaign, "manageCampaign"); Thread.sleep(1000);
+	 * waitForElementToPresent(importcampaign); this.importcampaign.click();
+	 * //click(composeCampaign, "composeCampaign"); return (ImportContactsPage)
+	 * openPage(ImportContactsPage.class);
+	 * 
+	 * }
+	 */
+	/*
+	 * public ManageResourcesPage navigateToManageResourcesPage() throws Exception {
+	 * scrollDownVertically(); scrollToElement(manageresource);
+	 * click(manageresource, "manageresource"); return (ManageResourcesPage)
+	 * openPage(ManageResourcesPage.class);
+	 * 
+	 * }
+	 */
+//	public PricingPlanDetailsPage navigateToPricingPlanDetailsPage() throws Exception {
+		
+
+		
+	/*
+	 * }public StatisticsManageCampaign NavigatetoStatistics() throws Exception {
+	 * scrollDownVertically(); scrollToElement(manageCampaign);
+	 * click(manageCampaign, "manageCampaign"); Thread.sleep(1000);
+	 * waitForElementToPresent(Staticcampaign); this.Staticcampaign.click();
+	 * //click(composeCampaign, "composeCampaign"); return
+	 * (StatisticsManageCampaign) openPage(StatisticsManageCampaign.class); }
+	 */	
 	public CampaignReportPage navigateToCampaignReportPage() throws Exception {
 		Thread.sleep(3000);
 		scrollToElement(manageCampaign);
@@ -619,10 +706,21 @@ public class CommunityDashboardPage extends BasePage {
 	}
 	public ImportContactsPage navigateToImportContactsPage() throws Exception {
 		Thread.sleep(3000);
+
 		scrollDownVertically();
 		scrollToElement(manageCampaign);
 		click(manageCampaign, "manageCampaign");
 		Thread.sleep(1000);
+
+		waitForElementToPresent(Staticcampaign);
+		this.Staticcampaign.click();	
+		//click(composeCampaign, "composeCampaign");
+		return (StatisticsManageCampaign) openPage(StatisticsManageCampaign.class);
+	}
+		
+	
+	
+
 		waitForElementToPresent(importcampaign);
 		this.importcampaign.click();	
 		//click(composeCampaign, "composeCampaign");
@@ -636,6 +734,7 @@ public class CommunityDashboardPage extends BasePage {
 		return (ManageResourcesPage) openPage(ManageResourcesPage.class);
 		
 	}
+
 	public PricingPlanDetailsPage navigateToPricingPlanDetailsPage() throws Exception {
 		
 
@@ -736,7 +835,7 @@ public class CommunityDashboardPage extends BasePage {
 			// new CommunityEvents(driver);
 		}
 
-	 public boolean checkImportContactDisplay() throws Exception {
+	 public void checkImportContactDisplay() throws Exception {
 			
 			Thread.sleep(5000);
 			scrollToElement(manageCampaign);
@@ -748,11 +847,11 @@ public class CommunityDashboardPage extends BasePage {
 			Assert.assertTrue(true);
 			//Assert.assertNotEquals(list, name);
 			//click(composeCampaign, "composeCampaign");
-			return (ImportContactsPage) openPage(ImportContactsPage.class) != null;
+			
 			
 		}
 	 
-	 public boolean checkImportContactnotDisplay() throws Exception {
+	 public void checkImportContactnotDisplay() throws Exception {
 			
 			Thread.sleep(5000);
 			scrollToElement(manageCampaign);
@@ -764,10 +863,20 @@ public class CommunityDashboardPage extends BasePage {
 			Assert.assertNotSame(list, name);
 			//Assert.assertNotEquals(list, name);
 			//click(composeCampaign, "composeCampaign");
-			return (ImportContactsPage) openPage(ImportContactsPage.class) != null;
+			
 			
 		}
 
+		public StatisticsManageCampaign NavigatetoStatistics() throws Exception {
+		scrollDownVertically();
+		scrollToElement(manageCampaign);
+		click(manageCampaign, "manageCampaign");
+		Thread.sleep(1000);
+		waitForElementToPresent(Staticcampaign);
+		this.Staticcampaign.click();
+		//click(composeCampaign, "composeCampaign");
+		return (StatisticsManageCampaign) openPage(StatisticsManageCampaign.class);
+		}
 
 }
 

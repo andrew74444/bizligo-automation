@@ -12,15 +12,15 @@ import com.cpcommunity.testScripts.community.BaseTest;
 import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.ExcelReader;
 
-public class TC002_Approve_New_Organization extends BaseTest {
+public class TC520_Approve_New_Organization extends BaseTest {
 
 	PaymentReceipt PaymentReceipt;
 	
 	@Test(dataProviderClass = DataProviders.class, dataProvider = "masterDP")
-	public void TC001(Hashtable<String, String> data) throws Exception {
+	public void TC520(Hashtable<String, String> data) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC001", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC520", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		System.out.println(data.get("duration"));
 		openBrowser(data.get("browser"));

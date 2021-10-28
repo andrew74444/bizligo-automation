@@ -24,7 +24,7 @@ public class EcoSystemPage extends BasePage {
 	@FindBy(xpath = "//*[@id='global-nav']")
 	WebElement pageheader;
 
-	@FindBy(xpath = "//a[normalize-space()='Global Communities']")
+	@FindBy(xpath = "(//a[normalize-space()='Global Communities'])[2]")
 	WebElement globalCommunities;
 
 	@FindBy(xpath = "//span[@title='Toggle dropdown menu']")
@@ -61,7 +61,6 @@ public class EcoSystemPage extends BasePage {
 	@FindBy(xpath="//a[contains(text(),'Member Directory')] | //a[contains(text(),'Global Members')]")
 	WebElement memberDirectory;
 	
-	
 	//*[@class='fa fa-arrow-left'] | //*[@class='fa fa-tv']
 	
 	@FindBy(xpath="//a[contains(text(),'My Profile')]")
@@ -91,10 +90,8 @@ public class EcoSystemPage extends BasePage {
 	
 	@FindBy(xpath = "//*[contains(text(),'My Matches')]")
 	WebElement myMatches;
-
-	@FindBy(xpath = "//a[contains(text(),'Home')]")
-	WebElement Home;
-
+	//@FindBy(xpath = "//a[contains(text(),'Home')]")
+	//WebElement Home;
 	@FindBy(xpath = "//h2[normalize-space()='MY ECOSYSTEM']")
 	WebElement Home;
 	@FindBy(xpath="//a[@class=\"btn btn-default top-btn1 btn-sm dropdown-toggle\"]")
@@ -163,18 +160,19 @@ public class EcoSystemPage extends BasePage {
 		return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
 		// new CommunityDashboardPage(driver, );
 	}
-	public CommunityDashboardPage navigateToManageCommunityPage() throws Exception {
 
-		click(MANAGEbtn, "Manage");
+	/*
+	 * public CommunityDashboardPage navigateToManageCommunityPage() throws
+	 * Exception {
+	 * 
+	 * click(MANAGEbtn, "Manage");
+	 * //this.searchCommunity(communityName+getDateInDDMMMYYYY());
+	 * //this.searchCommunity(communityName); click(MANAGEbtn, "Manage");
+	 * Thread.sleep(5000); return (CommunityDashboardPage)
+	 * openPage(CommunityDashboardPage.class); // new CommunityDashboardPage(driver,
+	 * ); }
+	 */
 
-
-		//this.searchCommunity(communityName+getDateInDDMMMYYYY());
-		//this.searchCommunity(communityName);
-		click(MANAGEbtn, "Manage");
-		Thread.sleep(5000);
-		return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
-		// new CommunityDashboardPage(driver, );
-	}
 	public CommunityDashboardPage navigateToManageCommunityPage() throws Exception {
 
 		click(MANAGEbtn, "Manage");
@@ -185,9 +183,7 @@ public class EcoSystemPage extends BasePage {
 	}
 
 
-	public MyJobsPage navigateToMyJobsPage() {
-		scrollIntoView(myJobs);
-		myJobs.click();		
+
 
 	public MyJobsPage navigateToMyJobsPage() throws InterruptedException {
 		scrollIntoView(myJobs);
@@ -242,18 +238,16 @@ public class EcoSystemPage extends BasePage {
 		} catch (Exception e) {
 			
 			driver.navigate().refresh();
-			Thread.sleep(10000);
+			Thread.sleep(12000);
 			waitForElementToPresent(viewAll);
 			click(viewAll, "view All");
 			
 		}
 		
-		
-		
-		
 		return (MyCommunitiesPage) openPage(MyCommunitiesPage.class);
 	}
 
+	
 	public EcoSystemPage goToMyEcosystem() {
 		click(Toggledropdownmenu, "Toggledropdownmenu");
 		waitForElementToPresent(myEcosystemInMenu);
@@ -357,7 +351,7 @@ public class EcoSystemPage extends BasePage {
 	
 	public UpcomingEventsPage navigateToUpComingEvents() throws InterruptedException {
 		clickElementByJavaScript(globalEvents);
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		waitForElementToPresent(upcomingEvents);
 		click(upcomingEvents, "Upcoming Events");
 		return (UpcomingEventsPage) openPage(UpcomingEventsPage.class);

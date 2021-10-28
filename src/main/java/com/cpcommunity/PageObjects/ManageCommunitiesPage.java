@@ -63,26 +63,34 @@ public class ManageCommunitiesPage extends BasePage {
 	WebElement globalcommunties;
 	@FindBy(xpath = "//button[contains(.,'Yes, Proceed')]")
 	WebElement YesProceed;
-
 	@FindBy(xpath = "//select[@id='IsActiveSearch']")
 	WebElement searchbystatus;
 	@FindBy(xpath = "//tbody//td[3]")
 	List<WebElement> planList;
-	 @FindBy(xpath = "(((//*[@class='col-md-3 left_col']//img[@src='/Content/Images/adprommenu.png'])/..)/..)")
-		WebElement advertisements;
-	    @FindBy(xpath = "//img[@src='/Content/Images/setting-icon.png']/../..")
-		WebElement manage;
-	    @FindBy(xpath = "//a[contains(text(),'Manage Plans')]")
-		WebElement managePlans;
-	    @FindBy(xpath = "//span[@class='fa fa-angle-down']")
-		WebElement toggledropdown;
-	    @FindBy(xpath = "//span[@class='fa fa-angle-down']")
-		WebElement tenantmodule;
-
+	@FindBy(xpath = "(((//*[@class='col-md-3 left_col']//img[@src='/Content/Images/adprommenu.png'])/..)/..)")
+	WebElement advertisements;
+    @FindBy(xpath = "//img[@src='/Content/Images/setting-icon.png']/../..")
+	WebElement manage;
+	@FindBy(xpath = "//a[contains(text(),'Manage Plans')]")
+	WebElement managePlans;
+	@FindBy(xpath = "//span[@class='fa fa-angle-down']")
+	WebElement toggledropdown;
+    @FindBy(xpath = "//span[@class='fa fa-angle-down']")
+	WebElement tenantmodule;
+	@FindBy(xpath = "//button[@id='btnAddNew']")
+	WebElement createCommunity;
+	@FindBy(xpath = "//input[@id='Name']")
+	WebElement name;
+	@FindBy(xpath = "//small[contains(text(),'Community already exists. Please enter a different')]")
+	WebElement samecommunityerror;
+	@FindBy(xpath = "//div[@class='swal-text']")
+	WebElement communityrequest;
+	@FindBy(xpath = "//button[normalize-space()='Ok']")
+	WebElement ok;
 	
 	
 
-
+	  
 	
     public void searchCommunity(String Community) throws InterruptedException {
 	waitForElementToPresent(searchByName);
@@ -184,5 +192,15 @@ public RevenueReportPage navigateToRevenueReport() {
 	click(revenuereport, "Revenue Report");
 	return (RevenueReportPage) openPage(RevenueReportPage.class);	
 }
-
+public void createSameCommunity(String Name) {
+	
+	waitForElementToPresent(createCommunity);
+	click(createCommunity, "Create Community");
+	waitForElementToPresent(name);
+	type(name, Name, "Name");
+	click(networking, "Networking");
+	String error=this.samecommunityerror.getText();
+	System.out.println(error);
+    
+} 
 }

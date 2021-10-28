@@ -1236,9 +1236,9 @@ type(Document_Title, DocumentTitle, "Document_Title");
 		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
 		click(evetdate, "Date");
 		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
-		click(next, "Next");
-		click(evetstart, "Start date");
-		click(evetend, "Event eND");
+		//click(next, "Next");
+		//click(evetstart, "Start date");
+		//click(evetend, "Event eND");
 		click(applydate, "Apply");
 		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
 		selectByVisibleText(EventCategoryID, EventCategory, "Event Category");
@@ -1429,10 +1429,11 @@ type(Document_Title, DocumentTitle, "Document_Title");
 		driver.manage().timeouts().implicitlyWait(90,TimeUnit.MINUTES);
 		click(save, "Save");
 		driver.manage().timeouts().implicitlyWait(90,TimeUnit.MINUTES);
-		click(savecontinue3, "Save and Continue");
-		driver.manage().timeouts().implicitlyWait(90,TimeUnit.MINUTES);
+		//click(savecontinue3, "Save and Continue");
+		clickElementByJavaScript(savecontinue3);
+		driver.manage().timeouts().implicitlyWait(100,TimeUnit.MINUTES);
 		click(publish, "Publish");
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 	}
 	
 	public void checkField(String Filepath) {
@@ -1498,17 +1499,7 @@ type(Document_Title, DocumentTitle, "Document_Title");
 		click(savecontinue3, "Save and Continue");
    }
    
-   public void AddField(String Label, String order, String type) throws InterruptedException {
-		waitForElementToPresent(addfield);
-		click(addfield, "Add Field");
-		waitForElementToPresent(enterlabel);
-		type(enterlabel, Label, "Label");
-		driver.manage().timeouts().implicitlyWait(10,TimeUnit.MINUTES);
-		type(displayOrder, order, "Order");
-		selectByVisibleText(fieldtype, type, "Field Type");
-		driver.manage().timeouts().implicitlyWait(10,TimeUnit.MINUTES);
-		click(save, "Save");
-}
+   
    public void AddField1(String Label, String order, String type) throws InterruptedException {
 		waitForElementToPresent(addfield);
 		click(addfield, "Add Field");
@@ -1519,6 +1510,12 @@ type(Document_Title, DocumentTitle, "Document_Title");
 		selectByVisibleText(fieldtype, type, "Field Type");
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.MINUTES);
 		click(save, "Save");
+		 driver.manage().timeouts().implicitlyWait(90,TimeUnit.MINUTES);
+			click(savecontinue3, "Save and Continue");
+			driver.manage().timeouts().implicitlyWait(90,TimeUnit.MINUTES);
+			click(publish, "Publish");
+			Thread.sleep(5000);
+		
 }
    public void checkcustomfield() throws InterruptedException {
 	   Thread.sleep(10000);

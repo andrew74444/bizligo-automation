@@ -46,7 +46,7 @@ public class TC1252_verify_FieldValidation_of_CustomField extends BaseTest{
 	@AfterMethod
 	public void tearDown() {
 
-		logInfo("TC1253 Test Completed");
+		logInfo("TC1252 Test Completed");
 
 		quit();
 
