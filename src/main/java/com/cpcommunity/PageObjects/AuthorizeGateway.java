@@ -63,7 +63,6 @@ public class AuthorizeGateway extends BasePage {
 	WebElement managecommunity;
 	@FindBy(xpath = "//a[@title='Manage Community']")
 	WebElement managetogocommunity;
-	
 	@FindBy(xpath = "//a[normalize-space()='Advertisements']")
 	WebElement advertisement;
 	@FindBy(xpath = "//a[normalize-space()='Dashboard Reports']")
@@ -80,6 +79,8 @@ public class AuthorizeGateway extends BasePage {
 	WebElement myeco;
 	@FindBy(xpath = "//button[normalize-space()='Set']")
 	WebElement setBtn;
+	@FindBy(xpath = "//a[normalize-space()='View Community']")
+	WebElement viewcommunity;
 	
 	
 	@Override
@@ -231,13 +232,16 @@ public class AuthorizeGateway extends BasePage {
 		//
 	}
 	
-	public ManageCommunitiesPage navigateManageCommunities() {
+	public ManageCommunityPage navigateManageCommunities() {
+		waitForElementToPresent(viewcommunity);
+		click(viewcommunity, "View Community");
 		waitForElementToPresent(managecommunity);
 		click(managecommunity, "Manage Community");
 		
-		return (ManageCommunitiesPage) openPage(ManageCommunitiesPage.class);
+		return (ManageCommunityPage) openPage(ManageCommunityPage.class);
 		
 	}
+	
 	
 	public RevenueReportPage navigateToRevenueReport() throws InterruptedException {
 		Thread.sleep(8000);
