@@ -523,6 +523,7 @@ public class CommunityDetailsPage extends BasePage {
 	click(taggedmember, tagMember);
 	Thread.sleep(5000);
 	click(postBtn, "postButton");
+	Thread.sleep(5000);
 	return (Discussions) openPage(Discussions.class);
 	
 	}

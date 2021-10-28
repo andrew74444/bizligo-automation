@@ -899,7 +899,7 @@ public class ManageAdPlansPage extends BasePage {
 		picture();
 	}*/
   
-  }
+  
 
   public void CancelAdwithoutFilling() throws InterruptedException {
 		waitForElementToPresent(dataTablesInfo);
@@ -965,35 +965,31 @@ public class ManageAdPlansPage extends BasePage {
 		
 }
 	   
-  /*  public void windowhandle() throws InterruptedException, AWTException {
-
-    	 Thread.sleep(4000);
-    	 Robot robot = new Robot();                          
-         robot.keyPress(KeyEvent.VK_CONTROL); 
-         robot.keyPress(KeyEvent.VK_T); 
-         robot.keyRelease(KeyEvent.VK_CONTROL); 
-         robot.keyRelease(KeyEvent.VK_T);
-		type(this.duration, duration1, "duration");
-		selectByVisibleText(this.durationType, durationType, "duration Type");
-		selectByVisibleText(this.adLocation, adLocation, "ad Location");
-		selectByVisibleText(this.adType, adType, "Ad Type");
-		if (approvalType.equalsIgnoreCase("no")) {
-			click(chkRequiresApproval, "Approval approaval");
-		}
-		
-		click(btnSave, "Save button");
-		waitForElementToPresent(this.sameplanerror);
-		AssertionHelper.verifyText(sameplanerror.getText(), "Can't save this Plan because the specified Name already exists");
-		Thread.sleep(8000);
-		String error=this.sameplanerror.getText();
-		System.out.println(error);
-		
-        driver.switchTo().window(tabs.get(0));
-         
-       		
-
-}
-    
+/*
+ * public void windowhandle() throws InterruptedException, AWTException {
+ * 
+ * Thread.sleep(4000); Robot robot = new Robot();
+ * robot.keyPress(KeyEvent.VK_CONTROL); robot.keyPress(KeyEvent.VK_T);
+ * robot.keyRelease(KeyEvent.VK_CONTROL); robot.keyRelease(KeyEvent.VK_T);
+ * type(this.duration, duration1, "duration");
+ * selectByVisibleText(this.durationType, durationType, "duration Type");
+ * selectByVisibleText(this.adLocation, adLocation, "ad Location");
+ * selectByVisibleText(this.adType, adType, "Ad Type"); if
+ * (approvalType.equalsIgnoreCase("no")) { click(chkRequiresApproval,
+ * "Approval approaval"); }
+ * 
+ * click(btnSave, "Save button"); waitForElementToPresent(this.sameplanerror);
+ * AssertionHelper.verifyText(sameplanerror.getText(),
+ * "Can't save this Plan because the specified Name already exists");
+ * Thread.sleep(8000); String error=this.sameplanerror.getText();
+ * System.out.println(error);
+ * 
+ * driver.switchTo().window(tabs.get(0));
+ * 
+ * 
+ * 
+ * }
+ */
   
     public void windowhandle() throws InterruptedException, AWTException {
     	 Thread.sleep(4000);
@@ -1094,10 +1090,13 @@ public RevenueReportPage goToRevenueReport() {
   public void goHomePage() throws InterruptedException {
 	  Thread.sleep(5000);
 		click(bizligoBtn,"Bizligo button");
-		
+  }
+  
+}
+
 		
 
-	}
+
 
   
 
