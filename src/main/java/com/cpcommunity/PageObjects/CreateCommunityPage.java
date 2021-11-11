@@ -68,8 +68,6 @@ public class CreateCommunityPage extends BasePage{
 		new CreateOrEditCommunityPage(driver).FillCommunityDetails(Name+getDateInDDMMMYYYY(), Networking, Marketing, BuildingRelationship, Branding, GrowMyBusiness, InvestInBusiness, Other, About, Category, type);
 		picture();
 		
-		
-		
 		return (GlobalCommunitesPage) openPage(GlobalCommunitesPage.class);
 //				new GlobalCommunitesPage(driver,);
 	}
@@ -95,7 +93,8 @@ public class CreateCommunityPage extends BasePage{
 		
 	}
 	
-	public String CreateRejectedcommunity(String Name,String About, String Category,String type) throws InterruptedException {
+	public String Createcommunity(String Name,String About, String Category,String type) throws InterruptedException {
+		Name=Name+" " + getDateInDDMMMYYYY();
 		waitForElementToPresent(name);
 		type(name, Name, "Name");
 		//type(name, Name, "Name");

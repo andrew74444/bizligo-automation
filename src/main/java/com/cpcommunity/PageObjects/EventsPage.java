@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -58,6 +59,44 @@ public class EventsPage extends BasePage  {
 	List <WebElement> eventcalender;
 	@FindBy(xpath = "//span[@class='ng-binding ng-scope']")
 	WebElement Event;
+	@FindBy(xpath = "//strong[@ng-bind='Event.EventName | limitTo:40']")
+	WebElement Eventname;
+	@FindBy(xpath="//a[@class='btn btn-success']//strong[contains(text(),'REGISTER')]")
+	WebElement register;		
+	@FindBy(xpath="//select[@id='selectticketcount']")
+	WebElement noOfTickets;	
+	@FindBy(xpath="(//select[@ng-model='data.numberOfTickets[eventTicket.TicketId]'])[1]")
+	WebElement noOfTickets1;	
+	@FindBy(xpath="(//select[@ng-model='data.numberOfTickets[eventTicket.TicketId]'])[2]")
+	WebElement noOfTickets2;	
+	@FindBy(xpath="//button[@ng-disabled='data.isAutofillIsLoading']")
+	WebElement booknow;
+	@FindBy(xpath="//h3[normalize-space()='BOOKING CONFIRMATION']")
+	WebElement bookingConfirmation;
+	@FindBy(xpath="//input[@type=\"email\" and @name=\"EmailID[]\"]")
+	WebElement emailId;
+	@FindBy(xpath="(//input[@placeholder='Email Address'])[1]")
+	WebElement emailId1;
+	@FindBy(xpath="(//input[@placeholder='Email Address'])[2]")
+	WebElement emailId2;
+	@FindBy(xpath="//input[@id='AttendeeFirstName00']")
+	WebElement firstName;
+	@FindBy(xpath="//input[@id='AttendeeLastName00']")
+	WebElement lastName;
+	@FindBy(xpath="//input[@id='AttendeeFirstName10']")
+	WebElement firstName2;
+	@FindBy(xpath="(//input[@id='AttendeeLastName10'])[1]")
+	WebElement lastName2;
+	@FindBy(xpath="//div[@class='row ng-binding ng-scope']")
+	WebElement error;
+	@FindBy(xpath="//button[@class='btn btn-primary pull-right']")
+	WebElement book;
+	@FindBy(xpath="//input[@value='2']")
+	WebElement authorise;
+	@FindBy(xpath="//button[@ng-click='data.OnPaypalPaymentClick($event)']")
+	WebElement proceed;
+	@FindBy(xpath="//form[@id='GuestInvitationForm']//div[@class='panel-heading']")
+	WebElement invitees;
 	
 	
 	 public void GuestMessage() {
@@ -142,4 +181,162 @@ public class EventsPage extends BasePage  {
 		Thread.sleep(3000);
 		return (ManageCommunityPage) openPage(ManageCommunityPage.class);		
 	}
+	
+	public void searchevent(String name) throws InterruptedException {
+		waitForElementToPresent(searchEvents);
+		name=name +" " + getDateInDDMMMYYYY();
+		type(searchEvents, name, "Event Name");
+		Thread.sleep(8000);
+		click(search, "Search");
+		Thread.sleep(8000);
+		
+	}
+	
+	public void registerToAnEvent(String Event) throws InterruptedException {
+		
+		
+		
+		
+	}
+	public void registerToAnEventwithDuplicates(String Email, String Fname, String Lname) throws InterruptedException {
+		
+		click(Eventname, "Event");
+		waitForElementToPresent(register);
+		click(register,"Register");
+		Thread.sleep(2000);
+		selectUsingIndex(noOfTickets,2,"1");
+		Thread.sleep(4000);
+		type(emailId1,Email,"Email Of registered");
+		type(firstName, Fname, "First name");
+		type(lastName, Lname, "Last name");
+		type(emailId2,Email,"Email Of registered");
+		type(firstName2, Fname, "First name");
+		type(lastName2, Lname, "Last name");
+		
+		click(booknow,"Book Now");
+		
+	}
+	
+	public void AttendeesDetailNotDisplaying() throws InterruptedException {
+		click(Eventname, "Event");
+		waitForElementToPresent(register);
+		Thread.sleep(3000);
+		Assert.assertEquals(0, invitees.getSize());
+	
+		System.out.println("Attendees detail section not is displaying");
+		
+	}
+	
+	public void AttendeesDetailDisplaying() throws InterruptedException{
+		click(Eventname, "Event");
+		waitForElementToPresent(invitees);
+		Assert.assertTrue(true);
+	}
+	
+public void CannotregisterwithDuplicates(String Email, String Fname, String Lname) throws InterruptedException {
+		
+		click(Eventname, "Event");
+		waitForElementToPresent(register);
+		click(register,"Register");
+		Thread.sleep(2000);
+		selectUsingIndex(noOfTickets,2,"1");
+		Thread.sleep(4000);
+		type(emailId1,Email,"Email Of registered");
+		type(firstName, Fname, "First name");
+		type(lastName, Lname, "Last name");
+		Thread.sleep(4000);
+		type(emailId2,Email,"Email Of registered");
+		type(firstName2, Fname, "First name");
+		type(lastName2, Lname, "Last name");
+		click(booknow,"Book Now");
+		waitForElementToPresent(error);
+		System.out.println(error);
+		
+	}
+public void CannotregisterDuplicateswithDifferentTicket(String Email, String Fname, String Lname) throws InterruptedException {
+	Thread.sleep(3000);
+	click(Eventname, "Event");
+	waitForElementToPresent(register);
+	click(register,"Register");
+	Thread.sleep(2000);
+	selectUsingIndex(noOfTickets1,1,"1");
+	Thread.sleep(2000);
+	selectUsingIndex(noOfTickets2,1,"1");
+	type(emailId1,Email,"Email Of registered");
+	type(firstName, Fname, "First name");
+	type(lastName, Lname, "Last name");
+	Thread.sleep(3000);
+	type(emailId2,Email,"Email Of registered");
+	type(firstName2, Fname, "First name");
+	type(lastName2, Lname, "Last name");
+	
+	click(booknow,"Book Now");
+	waitForElementToPresent(error);
+	System.out.println(error);
+	
+}
+public void AllowDuplicatesEmailwithGuestUser(String Email, String Fname, String Lname) throws InterruptedException {
+	Thread.sleep(3000);
+	click(Eventname, "Event");
+	waitForElementToPresent(register);
+	click(register,"Register");
+	Thread.sleep(2000);
+	selectUsingIndex(noOfTickets1,2,"1");
+	Thread.sleep(2000);
+	//selectUsingIndex(noOfTickets2,1,"1");
+	type(emailId1,Email,"Email Of registered");
+	type(firstName, Fname, "First name");
+	type(lastName, Lname, "Last name");
+	Thread.sleep(3000);
+	type(emailId2,Email,"Email Of registered");
+	type(firstName2, Fname, "First name");
+	type(lastName2, Lname, "Last name");
+	
+	click(booknow,"Book Now");
+	
+
+}
+public void CannotregisterwithEmails(String Email1, String Fname, String Lname) throws InterruptedException {
+	
+	click(Eventname, "Event");
+	waitForElementToPresent(register);
+	click(register,"Register");
+	Thread.sleep(2000);
+	selectUsingIndex(noOfTickets,2,"1");
+	Thread.sleep(4000);
+	type(emailId1,Email1,"Email Of registered");
+	type(firstName, Fname, "First name");
+	type(lastName, Lname, "Last name");
+	Thread.sleep(4000);
+	type(emailId2,Email1,"Email Of registered");
+	waitForElementToPresent(error);
+	System.out.println(error);
+	
+} 
+public AuthorizeGateway cancelTransactionRegEmail(String Email1, String Fname, String Lname) throws InterruptedException {
+	
+	click(Eventname, "Event");
+	waitForElementToPresent(register);
+	click(register,"Register");
+	Thread.sleep(2000);
+	selectUsingIndex(noOfTickets,1,"1");
+	Thread.sleep(4000);
+	type(emailId1,Email1,"Email Of registered");
+	type(firstName, Fname, "First name");
+	type(lastName, Lname, "Last name");
+	Thread.sleep(4000);
+	click(booknow,"Book Now");
+	Thread.sleep(3000);
+	scrollDownVertically();
+	click(book, "Book");
+	waitForElementToPresent(authorise);
+	click(authorise, "Authorised");
+	scrollDownVertically();
+	Thread.sleep(3000);
+	click(proceed, "Proceed");
+	return (AuthorizeGateway) openPage(AuthorizeGateway.class);
+	
+	
+}
+
 }
