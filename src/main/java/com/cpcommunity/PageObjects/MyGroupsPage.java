@@ -34,12 +34,17 @@ public class MyGroupsPage extends BasePage{
     WebElement SearchGroup;
     @FindBy(xpath = "//button[@id='CreateCommunity']")
     WebElement CreateCommunityBtn;
-   
+
+   // @FindBy(xpath = "//button[contains(.,'Yes,Proceed')]")
+   // WebElement YesProceed;
     @FindBy(xpath = "//*[@id='toast-container']")
     WebElement ToastMessage;
 
-   // @FindBy(xpath = "//li[@ng-if='(!appData.IsInEventManagerRole) && (appData.IsGroupActive)']")
-    //WebElement LeaveBtn;
+  //  @FindBy(xpath = "//li[@ng-if='(!appData.IsInEventManagerRole) && (appData.IsGroupActive)']")
+   // WebElement LeaveBtn;
+   
+   // @FindBy(xpath = "//*[@id='toast-container']")
+    //WebElement ToastMessage;
 
     @FindBy(xpath = "//button[@class='btn btn-default btn-sm btn-remove'][1]")
     List<WebElement> LeaveBtn;
@@ -66,10 +71,13 @@ public class MyGroupsPage extends BasePage{
     @FindBy(xpath = "//*[contains(text(),'Manage Members')]")
 	WebElement ManageMembers;
     @FindBy(xpath = "//*[contains(text(),'\"Please make another member as Group Admin to leave from this Group.')]")
+    WebElement makeAnothergroupAdminAlertMeassge;
+
 
 	//WebElement makeAnothergroupAdminAlertMeassge;
 
-   	WebElement makeAnothergroupAdminAlertMeassge;
+
+ //  	WebElement makeAnothergroupAdminAlertMeassge;
 	
     
     

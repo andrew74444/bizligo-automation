@@ -36,8 +36,11 @@ public class ManageGroupsPage extends BasePage{
 //	
 //	return (ZohoCRMPage) openPage(ZohoCRMPage.class);
 	
-	@FindBy(xpath="//button[contains(text(),'Create')]")
+	@FindBy(xpath="//button[normalize-space()='Create']")
 	WebElement Createbtn;
+	
+	@FindBy(xpath="//span[@class='ng-binding']")
+	WebElement Creategroupbtn;
 	
 	@FindBy(xpath="//input[@placeholder='Search by Group Name']")
 	WebElement SearchbyGroupName;
@@ -114,8 +117,17 @@ public class ManageGroupsPage extends BasePage{
 			click(Createbtn," Create Btn");
 		return (Create_UpdateGroupPage) openPage(Create_UpdateGroupPage.class);
 //		new Create_UpdateGroupPage(driver, );
-		
-	}
+		}
+	
+	public ManageGroupsPage clickOnCreateGroupBtn(){
+		//scrollToElement(Createbtn);
+			click(Creategroupbtn," Creategroupbtn");
+			return (ManageGroupsPage) openPage(ManageGroupsPage.class);
+		//return (Create_UpdateGroupPage) openPage(Create_UpdateGroupPage.class);
+//		new Create_UpdateGroupPage(driver, );
+		}
+	
+	
 	public void searchGroup1(String GroupName, String Status) throws Exception {
 		type(SearchbyGroupName, GroupName,"Search by Group Name");
 		waitForElementToPresent(this.SearchByStatus);

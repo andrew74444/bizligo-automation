@@ -33,8 +33,8 @@ public class TC092_InActivate_PayMent_Gateways extends BaseTest {
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.goToManageCommunity(data.get("communityName"));
+	    MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
+	    CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
 		PaymentGatewaysPage PaymentGatewaysPage = CommunityDashboardPage.navigateToPaymentGateways();
 		PaymentGatewaysPage.inActivateCheque();
 		PaymentGatewaysPage.inActivateCash();

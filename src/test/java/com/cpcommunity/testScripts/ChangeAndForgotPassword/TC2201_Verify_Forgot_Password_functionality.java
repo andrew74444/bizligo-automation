@@ -1,8 +1,7 @@
-package com.cpcommunity.testScripts.loginPage;
+package com.cpcommunity.testScripts.ChangeAndForgotPassword;
 
 import java.util.Hashtable;
 
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.HomePage;
@@ -13,35 +12,19 @@ import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.DataUtil;
 import com.cpcommunity.utilities.ExcelReader;
 
-public class TC1002_Organization_pendingUser_NotAble_Login extends BaseTest{
-
+public class TC2201_Verify_Forgot_Password_functionality extends BaseTest{
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC1002(Hashtable<String,String> data) throws Exception {
+	public void TC2201(Hashtable<String,String> data ) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC1002", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC2201", data.get("Runmode"), excel);
 		log.info("Inside Login Test");			
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));	
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
-		logInfo("Username entered as "+data.get("email")+" and Password entered as "+data.get("password"));
-		login.waitingForApproval(data.get("email"), data.get("password"));
-		
-		
-		
-		//Assert.fail("Failing the login test");
-	}
+		login.forgotPassword(data.get("email"));
 
-	@AfterMethod
-	public void tearDown() {
-		
-		logInfo("TC1002 Test Completed");
-		
-		quit();
-		
-	}
-
-
+}
 }

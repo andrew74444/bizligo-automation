@@ -22,7 +22,7 @@ import com.uiFramework.pamTen.cpcommunity.helper.imagediffer.Imagediff;
 
 public class CommunityDetailsPage extends BasePage {
 
-	@FindBy(xpath = "(//*[@class='top-strip']/..)//*[contains(text(),'Discussion')]")
+	@FindBy(xpath = "//a[normalize-space()='Discussions']")
 	WebElement discussion;
 
 	@FindBy(xpath = "//div[@class='swal-text']")
@@ -94,6 +94,41 @@ public class CommunityDetailsPage extends BasePage {
 	// @FindBy(tagName = "body")
 	// WebElement Postfield;
 
+	@FindBy(xpath = "//header[@id='global-nav']")
+	WebElement pageheader;
+
+	@FindBy(xpath = "//a[normalize-space()='Discussions']")
+	WebElement discussions;
+
+	@FindBy(xpath = "//button[normalize-space()='Create New Post']")
+	WebElement newPostBtn;
+
+	@FindBy(xpath = "//button[normalize-space()='Post']")
+	WebElement postBtn;
+	
+	@FindBy(xpath = "body > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > ul:nth-child(1) > li:nth-child(3)")
+	WebElement discussionMenu;
+
+	@FindBy(xpath = "//span[@class='ng-scope open']//ul[@class='dropdown-menu ng-scope']//li[@class='ng-scope']//a[@href='javascript:;'][normalize-space()='Edit']")
+	WebElement editPost;
+
+	@FindBy(xpath = "//span[@class='ng-scope open']//ul[@class='dropdown-menu ng-scope']//li[@class='ng-scope']//a[@href='javascript:;'][normalize-space()='Delete']")
+	WebElement deletePost;
+
+
+	@FindBy(xpath = "//input[@id='discussionTitle']")
+	WebElement discussionTitle;
+
+	@FindBy(xpath = "//iframe[@title='Rich Text Editor, PostContent']")
+	WebElement postContent;
+
+	@FindBy(xpath = "//div[@id='copsDisable']")
+	WebElement tagMembers;
+	
+	
+	@FindBy(xpath = "//span[@class='menu-highlighted']")
+	WebElement taggedmember;
+	
 	@FindBy(xpath = "//*[@ng-show='appData.CommunityInfo.Description']")
 	WebElement About;
 
@@ -222,6 +257,12 @@ public class CommunityDetailsPage extends BasePage {
 
 	@FindBy(xpath = "//*[contains(text(),'Expiry Date')]/following-sibling::span")
 	WebElement expiryDate;
+	
+	 @FindBy(tagName = "body")
+	 WebElement enterTextInframe;
+	 
+	 @FindBy(tagName = "iframe")
+	 WebElement iframe;
 
 	@Override
 	protected void getPageScreenSot() {
@@ -464,6 +505,30 @@ public class CommunityDetailsPage extends BasePage {
 		return (Discussions) openPage(Discussions.class);
 
 	}
+	
+	
+	public Discussions postDiscussions(String discussionTitle, String postContent,String tagMember) throws Throwable //Postdiscussions is the method name
+	{
+	click(discussion, "discussion");
+	Thread.sleep(10000);
+	click(newPostBtn, "CreatePost");
+	Thread.sleep(20000);
+	type(this.discussionTitle, discussionTitle, "discussions");
+	Thread.sleep(10000);
+	switchToFrameByID(0);
+	type(enterTextInframe,postContent,"TestContent");
+	switchTodefaultContent();
+	Thread.sleep(5000);
+	type(this.tagMembers, tagMember, "TaggingMembers");
+	click(taggedmember, tagMember);
+	Thread.sleep(5000);
+	click(postBtn, "postButton");
+	Thread.sleep(5000);
+	return (Discussions) openPage(Discussions.class);
+	
+	}
+	
+	
 
 	public void searchGroup(String groupName) throws Exception {
 		Thread.sleep(4000);
@@ -479,7 +544,7 @@ public class CommunityDetailsPage extends BasePage {
 	}
 
 	public GroupDetailsPage navigateToGroupDetailsPage(String groupName) throws Exception {
-		groupName = groupName + " " + getDateInDDMMMYYYY();
+	//	groupName = groupName + " " + getDateInDDMMMYYYY();
 		this.searchGroup(groupName);
 		driver.findElement(By.xpath("//*[@tooltip='" + groupName + "']")).click();
 		return (GroupDetailsPage) openPage(GroupDetailsPage.class);
@@ -972,6 +1037,9 @@ public class CommunityDetailsPage extends BasePage {
 		Assert.assertEquals(actualServices, expected1);
 		Assert.assertEquals(actualInterested, expected2);
 		Thread.sleep(8000);
+		
+		
+	
 
 	}
 

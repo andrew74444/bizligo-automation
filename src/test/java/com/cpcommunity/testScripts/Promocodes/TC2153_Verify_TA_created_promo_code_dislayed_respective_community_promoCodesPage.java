@@ -33,5 +33,5 @@ public class TC2153_Verify_TA_created_promo_code_dislayed_respective_community_p
 	PromoCodePage PCP=communityDashboard.goToPromoCodePage();
 	PCP.checkPCatCAdashboard(data.get("promoCode1"));
 
-}
+}//
 }

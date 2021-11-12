@@ -19,8 +19,6 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
 
-import junit.framework.Assert;
-
 
 
 /**
@@ -230,6 +228,9 @@ public class GlobalCareers extends BasePage {
 		waitForElementToPresent(Applysuccess);
 		if(Applysuccess.isDisplayed()) {
 			Assert.assertTrue(true);
+		}
+	}
+	
 
 public void JobNotDisplayed(String Title1) throws InterruptedException {
 		
@@ -264,7 +265,9 @@ public void JobDisplayed(String Title1) {
 		
 	}
 
-	}
+	
+
+
 public void CheckAdditionaltitleAndRemarkNotDisplaying(String Title1) throws InterruptedException {
 	waitForElementToPresent(searchByJobTitle);
 	type(searchByJobTitle, Title1, "Software Engineer");

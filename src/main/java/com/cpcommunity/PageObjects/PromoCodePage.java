@@ -43,6 +43,8 @@ public class PromoCodePage extends BasePage {
 	WebElement communityDropdown;
 	@FindBy(xpath = "//input[@id=\"CouponNameSearch\"]")
 	WebElement searchByPromo;
+	@FindBy(xpath = "//*[@id=\"DiscountForm\"]/div[4]/div/textarea")
+	WebElement description;
 
 	@FindBy(xpath = "//input[@id='ExpiryStartDate']")
 	WebElement openCalendar;
@@ -92,6 +94,8 @@ public class PromoCodePage extends BasePage {
 	WebElement promoCodeSearchResult;
 	@FindBy(xpath = "//a[@title='Click to edit this promo code']")
 	WebElement editPromo;
+	@FindBy(xpath = "//*[contains(text(),\"Promo code already exists. Please enter a new promo code\")]")
+	WebElement msgForUniquePC;
 	
 
 	@FindBy(xpath = "//div[contains(@class,'col-md-2 col-xs-12 radio radio-primary m-pull-left')]//input[contains(@name,'MembershipTypes')]")
@@ -188,6 +192,18 @@ public class PromoCodePage extends BasePage {
 		Assert.assertTrue(true);
 		
 		}
+		}
+	public void checkUniquePromoCode(String Promo) throws InterruptedException {
+		click(addNew,"New promo");
+		type(promoCodeName, Promo, "Duplicate Promo code");
+		type(description,"ABC","Description");
+		Thread.sleep(4000);
+		System.out.println(msgForUniquePC.getText());
+		if(msgForUniquePC.getText().equals("Promo code already exists. Please enter a new promo code")) {
+			System.out.println("Promocode is unique and cannot be made again");
+			Assert.assertTrue(true);
+		}else Assert.assertTrue(false);
+		
 		}
 		
 		
@@ -288,6 +304,7 @@ public class PromoCodePage extends BasePage {
 		
 		
 	}
+	
 	public void checkPCcreatedByCAatTAdashboard(String promo) throws InterruptedException {
 		type(searchByPromo, promo,"Promo Code created by TA");
 		click(btnSearch,"search");
@@ -301,6 +318,7 @@ public class PromoCodePage extends BasePage {
 			Assert.assertTrue(false);
 		}
 	}
+	
 	public void caAbleToEditPromoByTA(String promo,String maxNumberofUses) throws InterruptedException {
 		type(searchByPromo, promo,"Promo Code created by TA");
 		click(btnSearch,"search");
@@ -317,7 +335,7 @@ public class PromoCodePage extends BasePage {
 		picture();		
 	}
 	
-}
+}//
 
 // Promo code info saved.
 

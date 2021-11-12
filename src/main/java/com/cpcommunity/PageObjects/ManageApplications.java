@@ -29,8 +29,6 @@ import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
 
 
 
-
-
 public class ManageApplications extends BasePage{
 	
 	@Override
@@ -54,7 +52,6 @@ public class ManageApplications extends BasePage{
 	@FindBy(xpath = "//input[@id='JobTitleSearch']")
 	WebElement JobTitle;
 
-	
 	@FindBy(xpath = "//td[@class='sorting_1']")
 	WebElement JobTitleName;
 	
@@ -88,7 +85,6 @@ public class ManageApplications extends BasePage{
     WebElement edit;
 	
 	@FindBy(xpath = "//button[normalize-space()='Update']")
-
     WebElement update;	
 	
 	@FindBy(xpath = "//td[contains(text(),'Candidate Name:')]")
