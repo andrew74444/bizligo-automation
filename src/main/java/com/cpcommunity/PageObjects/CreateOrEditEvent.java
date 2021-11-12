@@ -10,6 +10,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 import java.awt.AWTException;
 import java.awt.Robot;
@@ -122,6 +123,9 @@ public class CreateOrEditEvent extends BasePage {
 	WebElement AvailableDates;
 	@FindBy(xpath = "//button[@ng-click='PublishChanges=false;SubmitTicketDetails(true)']")
 	WebElement TicketsSaveAndContinueBtn;
+	@FindBy(xpath = "//button[@ng-click='SubmitTicketDetails(true,false)']")
+	WebElement TicketsSaveAndContinueBtnChange;
+	
 	@FindBy(xpath = "//span[contains(.,'  Add Reminder ')]")
 	WebElement AddReminderBtn;
 	@FindBy(xpath = "//select[@id='NotificationTypeDLL']")
@@ -225,8 +229,8 @@ public class CreateOrEditEvent extends BasePage {
 
 	@FindBy(xpath = "//input[@id='startdatetime']")
 	WebElement evetdate;
-
-
+	@FindBy(xpath = "//a[@class='site_title']")
+	WebElement homePage;
 
 	@FindBy(xpath = "//*/tbody/tr[1]/td[4]/i")
 	WebElement EditEvent;
@@ -291,9 +295,11 @@ public class CreateOrEditEvent extends BasePage {
 	WebElement EditVideoBtn;
 	@FindBy(xpath = "//*[@id='msform']/div[4]/div[3]/div[2]/div/button[4]")
 	WebElement PublishChangesBtn;
-
+	
 	@FindBy(xpath = "//*/tbody/tr[1]/td[3]/span/span")
 	WebElement EventStatus;
+	@FindBy(xpath = "//input[@placeholder='Max Num of Ticket Per Table']")
+	WebElement ticketPerTable;
 
 	@FindBy(xpath = "//input[@ng-value='true']")
 	WebElement paidEvent;
@@ -313,7 +319,7 @@ public class CreateOrEditEvent extends BasePage {
 	WebElement Toggledropdownmenu;
 
 	@FindBy(xpath = "//input[@ng-click='makeAvailableToPublic()']")
-	WebElement eventPaid;	
+	WebElement eventPublic;	
 	@FindBy(xpath = "//a[normalize-space()='Book Tickets']")
 	WebElement bookTicket;	
 	@FindBy(xpath = "//select[@id='selectticketcount']")
@@ -324,9 +330,8 @@ public class CreateOrEditEvent extends BasePage {
 	WebElement MANAGEbtn;
 	@FindBy(xpath = "//a[normalize-space()='My Ecosystem']")
 	WebElement ecosystem;
-
-
-
+	@FindBy(xpath = "//input[@ng-disabled='data.EventDetails.EventCreatedByRoleId == EventCreatedByRole.GroupAdmin']")
+	WebElement eventPaid;
 
 	@FindBy(xpath = "//*[@id='validate-dates-form']/div[1]/div[2]/div[1]/div/table/tbody/tr/td[3]/button")
 	WebElement EditAgendaBtnInEventDetails;
@@ -382,10 +387,28 @@ public class CreateOrEditEvent extends BasePage {
 	WebElement chooseFile;
 	@FindBy(xpath = "//button[@ng-disabled='data.isAutofillIsLoading']")
 	WebElement booknow;
+	@FindBy(xpath = "//input[@id='AllowDuplicateRegistration']")
+	WebElement duplicateRegchkbox;
+	@FindBy(xpath = "//input[@ng-model='Ticket.Price']")
+	WebElement ticketprice;
+	@FindBy(xpath = "//span[normalize-space()='Add Reminder']")
+	WebElement addreminder;
+	@FindBy(xpath = "//select[@id='NotificationTypeDLL']")
+	WebElement emailDropdown;
+	@FindBy(xpath = "//select[@id='NotificationDurationType']")
+	WebElement days;
+	@FindBy(xpath = "//input[@placeholder='Reminder 0']")
+	WebElement reminder;
+	@FindBy(xpath = "//div[@class='alert alert-danger ng-scope']")
+	WebElement remindererror;
+	@FindBy(xpath = "//input[@id='ShowRegisteredAttendees']")
+	WebElement ShowRegisteredAttendees;
+	@FindBy(xpath = "//input[@id='ShowInviteGuests']")
+	WebElement ShowInviteGuests;
 	
 	
 	
-
+	
 	public MyDashboardPage gotomyEcosystem() throws InterruptedException {
 		 waitForElementToPresent(Toggledropdownmenu);
 			clickElementByJavaScript(Toggledropdownmenu);
@@ -1222,7 +1245,56 @@ type(Document_Title, DocumentTitle, "Document_Title");
 	// }
 	//
 	// return (ZohoCRMPage) openPage(ZohoCRMPage.class);
+	public void editDetail() throws InterruptedException {
+		Thread.sleep(11000);
+		scrollToElement(saveandContinue);
+		//click(saveandContinue,"saveandContinue" );
+		clickElementByJavaScript(saveandContinue);
+		
+	}
 	public void AddDetails( String EventTitle , String EventCategory, String location, String Description 
+			) throws Exception {
+		EventTitle=EventTitle +" " + getDateInDDMMMYYYY();
+
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
+		type(EventName,EventTitle, "Event Name");
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
+		String d=getDateInDDMMMYYYY();
+		String t=getSystemCurrentMintues();
+		String ap=getAmPm();
+		String date1= d +" "+ t + " " + ap;
+		System.out.println(date1);
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
+		//scrollToElement(evetdate);
+		click(evetdate, "Date");
+		EventStartDate.sendKeys(date1);
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
+		click(applydate, "Apply");
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
+		type(EventLocation, location, "Location");
+        Thread.sleep(7000);
+        EventLocation.sendKeys(Keys.DOWN);
+		click(eventPublic, "Public");
+		Thread.sleep(4000);
+		
+		selectByVisibleText(EventCategoryID, EventCategory, "Event Category");
+		
+		// try {
+		// String s = startdatetime.getAttribute("value");
+		// System.out.println(s);
+		// } catch (Exception e) {
+		//
+		// }
+		scrollIntoView(Country);
+		driver.switchTo().frame(1);
+		
+		type(EventDescription, Description, "Description");
+		driver.switchTo().defaultContent();
+		Thread.sleep(5000);
+		driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
+		click(saveandContinue, "Save and Continue");
+	}
+	public void AddDetailsforduplicationReg( String EventTitle , String EventCategory, String location, String Description 
 			) throws Exception {
 		EventTitle=EventTitle +" " + getDateInDDMMMYYYY();
 
@@ -1232,7 +1304,7 @@ type(Document_Title, DocumentTitle, "Document_Title");
 		type(EventLocation, location, "Location");
         Thread.sleep(7000);
         EventLocation.sendKeys(Keys.DOWN);
-		click(eventPaid, "Paid");
+		click(eventPublic, "Paid");
 		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
 		click(evetdate, "Date");
 		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
@@ -1255,10 +1327,140 @@ type(Document_Title, DocumentTitle, "Document_Title");
 		type(EventDescription, Description, "Description");
 		driver.switchTo().defaultContent();
 		Thread.sleep(5000);
+		click(duplicateRegchkbox, "check box");
 		driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
 		click(saveandContinue, "Save and Continue");
 	}
-	public void AddTickets(String ticketquantity, String ticketName) throws AWTException, Exception {
+	public void AddDetailsforduplicationPaidReg( String EventTitle , String EventCategory, String location, String Description 
+			) throws Exception {
+		EventTitle=EventTitle +" " + getDateInDDMMMYYYY();
+
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
+		type(EventName,EventTitle, "Event Name");
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
+		type(EventLocation, location, "Location");
+        Thread.sleep(7000);
+        EventLocation.sendKeys(Keys.DOWN);
+		click(eventPaid, "Paid");
+		click(eventPublic, "Public");
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
+		click(evetdate, "Date");
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
+		//click(next, "Next");
+		//click(evetstart, "Start date");
+		//click(evetend, "Event eND");
+		click(applydate, "Apply");
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
+		selectByVisibleText(EventCategoryID, EventCategory, "Event Category");
+		
+		// try {
+		// String s = startdatetime.getAttribute("value");
+		// System.out.println(s);
+		// } catch (Exception e) {
+		//
+		// }
+		scrollIntoView(Country);
+		driver.switchTo().frame(1);
+		
+		type(EventDescription, Description, "Description");
+		driver.switchTo().defaultContent();
+		Thread.sleep(5000);
+		click(duplicateRegchkbox, "check box");
+		driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
+		click(saveandContinue, "Save and Continue");
+	}
+	
+	public void AddDetailsforPaidReg( String EventTitle , String EventCategory, String location, String Description 
+			) throws Exception {
+		EventTitle=EventTitle +" " + getDateInDDMMMYYYY();
+
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
+		type(EventName,EventTitle, "Event Name");
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
+		type(EventLocation, location, "Location");
+        Thread.sleep(7000);
+        EventLocation.sendKeys(Keys.DOWN);
+		click(eventPaid, "Paid");
+		click(eventPublic, "Public");
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
+		click(evetdate, "Date");
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
+		//click(next, "Next");
+		//click(evetstart, "Start date");
+		//click(evetend, "Event eND");
+		click(applydate, "Apply");
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
+		selectByVisibleText(EventCategoryID, EventCategory, "Event Category");
+		
+		// try {
+		// String s = startdatetime.getAttribute("value");
+		// System.out.println(s);
+		// } catch (Exception e) {
+		//
+		// }
+		scrollIntoView(Country);
+		driver.switchTo().frame(1);
+		
+		type(EventDescription, Description, "Description");
+		driver.switchTo().defaultContent();
+		Thread.sleep(5000);
+		//click(duplicateRegchkbox, "check box");
+		driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
+		click(saveandContinue, "Save and Continue");
+	}
+	public void AddTwoDifferentTickets(String ticketName,String ticketquantity ) throws AWTException, Exception {
+
+		waitForElementToPresent(AddTicketBtn);
+		driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
+		click(AddTicketBtn, "Add Ticket");
+		waitForElementToPresent(Ticket);
+		type(Ticket, ticketName, "Ticket Name");
+		type(TicketQunatity, ticketquantity, "Ticket");
+		selectUsingIndex(availableTo, 2, "All");
+		selectUsingIndex(TicketType, 1, "Ticket Type");
+		driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
+		click(AvailableDates, "Available Dates");
+		waitForElementToPresent(TicketCalendarApplyBtn);
+		TicketStartTime.click();
+		TicketStartTime.sendKeys(Keys.CONTROL + "a");
+		TicketEndTime.click();
+		TicketEndTime.sendKeys(Keys.CONTROL + "a");
+		picture();
+		click(TicketCalendarApplyBtn, "Calendar Apply");
+		click(SaveTicketInfoBtn, "Save button in the pop up");
+		waitForElementToPresent(AddTicketBtn);
+		driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
+		click(AddTicketBtn, "Add Ticket");
+		waitForElementToPresent(Ticket);
+		type(Ticket, ticketName, "Ticket Name");
+		type(TicketQunatity, ticketquantity, "Ticket");
+		selectUsingIndex(availableTo, 2, "All");
+		selectUsingIndex(TicketType, 2, "Ticket Type");
+		driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
+		click(AvailableDates, "Available Dates");
+		waitForElementToPresent(TicketCalendarApplyBtn);
+		TicketStartTime.click();
+		TicketStartTime.sendKeys(Keys.CONTROL + "a");
+		TicketEndTime.click();
+		TicketEndTime.sendKeys(Keys.CONTROL + "a");
+		picture();
+		click(TicketCalendarApplyBtn, "Calendar Apply");
+		click(SaveTicketInfoBtn, "Save button in the pop up");
+		waitForElementToPresent(TicketsSaveAndContinueBtn);
+		Thread.sleep(10000);
+		picture();
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
+		click(TicketsSaveAndContinueBtn, "Tickets Save And ContinueBtn");
+		Thread.sleep(16000);
+		//waitForElementToPresent(AddtionalinfomationSaveAndContinueBtn);
+		//scrollIntoViewAndClick(AddtionalinfomationSaveAndContinueBtn);
+		clickElementByJavaScript(AddtionalinfomationSaveAndContinueBtn);
+		//click(AddtionalinfomationSaveAndContinueBtn, "Addtional infomation Save And ContinueBtn");
+		
+		//click(AddtionalinfomationSaveAndContinueBtn, "Addtional infomation Save And ContinueBtn");
+		picture();
+	}
+	public void AddTickets(String ticketName,String ticketquantity ) throws AWTException, Exception {
 
 		waitForElementToPresent(AddTicketBtn);
 		driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
@@ -1266,29 +1468,50 @@ type(Document_Title, DocumentTitle, "Document_Title");
 		driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
 		waitForElementToPresent(Ticket);
 		type(Ticket, ticketName, "Ticket Name");
-		driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
-		TicketQunatity.click();
-		type(Ticket, ticketquantity, "Ticket");
-
-		selectUsingIndex(availableTo, 2, "All");
-		
-		TicketQunatity.click();
-		TicketQunatity.sendKeys(Keys.UP);
-//		Actions ac = new Actions(driver);
-//		ac.keyUp(TicketQunatity, keyu);
-//		Thread.sleep(2000);
-//		robot.keyPress(KeyEvent.VK_UP);
-		Thread.sleep(5000);
-//		robot.keyPress(KeyEvent.VK_DOWN);
-//		Thread.sleep(5000);
-		TicketQunatity.sendKeys(Keys.DOWN);
-		Thread.sleep(5000);
-		TicketQunatity.sendKeys(Keys.ARROW_UP);
-		Thread.sleep(5000);
-		TicketQunatity.sendKeys(Keys.ARROW_DOWN);
-		
+		//TicketQunatity.click();
+		type(TicketQunatity, ticketquantity, "Ticket");
+		selectUsingIndex(availableTo, 1, "All");
 		selectUsingIndex(TicketType, 1, "Ticket Type");
 		driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
+		click(AvailableDates, "Available Dates");
+		waitForElementToPresent(TicketCalendarApplyBtn);
+		TicketStartTime.click();
+		TicketStartTime.sendKeys(Keys.CONTROL + "a");
+		//type(TicketStartTime, StartTime, "Ticket Start Time");
+		TicketEndTime.click();
+		TicketEndTime.sendKeys(Keys.CONTROL + "a");
+		//type(TicketEndTime, endTime, "Ticket End Time");
+		picture();
+		click(TicketCalendarApplyBtn, "Calendar Apply");
+		click(SaveTicketInfoBtn, "Save button in the pop up");
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
+		waitForElementToPresent(TicketsSaveAndContinueBtn);
+		Thread.sleep(10000);
+		picture();
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
+		click(TicketsSaveAndContinueBtn, "Tickets Save And ContinueBtn");
+		Thread.sleep(16000);
+		clickElementByJavaScript(AddtionalinfomationSaveAndContinueBtn);
+		picture();
+	}
+	
+	public void AddTicketTable(String ticketName,String ticketquantity,String price, String ticketper ) throws AWTException, Exception {
+
+		waitForElementToPresent(AddTicketBtn);
+		driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
+		click(AddTicketBtn, "Add Ticket");
+		driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
+		waitForElementToPresent(Ticket);
+		type(Ticket, ticketName, "Ticket Name");
+		//TicketQunatity.click();
+		type(TicketQunatity, ticketquantity, "Ticket");
+		selectUsingIndex(availableTo, 1, "All");
+		ticketprice.clear();
+		type(ticketprice, price, "Price");
+		selectUsingIndex(TicketType, 2, "Ticket Type");
+		type(ticketPerTable, ticketper, "Ticket per table");
+		//driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
+		Thread.sleep(3000);
 		click(AvailableDates, "Available Dates");
 		waitForElementToPresent(TicketCalendarApplyBtn);
 		TicketStartTime.click();
@@ -1315,6 +1538,33 @@ type(Document_Title, DocumentTitle, "Document_Title");
 		//click(AddtionalinfomationSaveAndContinueBtn, "Addtional infomation Save And ContinueBtn");
 		picture();
 	}
+	public void AddtwoTicket(String ticketName,String ticketquantity, String ticketper ) throws InterruptedException{
+			waitForElementToPresent(AddTicketBtn);
+			driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
+			click(AddTicketBtn, "Add Ticket");
+			driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
+			waitForElementToPresent(Ticket);
+			type(Ticket, ticketName, "Ticket Name");
+			//TicketQunatity.click();
+			type(TicketQunatity, ticketquantity, "Ticket");
+			selectUsingIndex(availableTo, 1, "All");
+			selectUsingIndex(TicketType, 2, "Ticket Type");
+			type(ticketPerTable, ticketper, "Ticket per table");
+			//driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
+			Thread.sleep(3000);
+			click(AvailableDates, "Available Dates");
+			waitForElementToPresent(TicketCalendarApplyBtn);
+			TicketStartTime.click();
+			TicketStartTime.sendKeys(Keys.CONTROL + "a");
+			//type(TicketStartTime, StartTime, "Ticket Start Time");
+			TicketEndTime.click();
+			TicketEndTime.sendKeys(Keys.CONTROL + "a");
+			//type(TicketEndTime, endTime, "Ticket End Time");
+			picture();
+			click(TicketCalendarApplyBtn, "Calendar Apply");
+			click(SaveTicketInfoBtn, "Save button in the pop up");
+			driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
+}
 	public void AddTickets(String StartTime, String endTime, int hour, 
 		 int endHour, String ticketquantity, String ticketName) throws AWTException, Exception {
 
@@ -1327,9 +1577,7 @@ type(Document_Title, DocumentTitle, "Document_Title");
 		driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
 		TicketQunatity.click();
 		type(Ticket, ticketquantity, "Ticket");
-
 		selectUsingIndex(availableTo, 2, "All");
-		
 		TicketQunatity.click();
 		TicketQunatity.sendKeys(Keys.UP);
 //		Actions ac = new Actions(driver);
@@ -1344,7 +1592,6 @@ type(Document_Title, DocumentTitle, "Document_Title");
 		TicketQunatity.sendKeys(Keys.ARROW_UP);
 		Thread.sleep(5000);
 		TicketQunatity.sendKeys(Keys.ARROW_DOWN);
-		
 		selectUsingIndex(TicketType, 1, "Ticket Type");
 		driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
 		click(AvailableDates, "Available Dates");
@@ -1365,16 +1612,11 @@ type(Document_Title, DocumentTitle, "Document_Title");
 		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
 		click(TicketsSaveAndContinueBtn, "Tickets Save And ContinueBtn");
 		Thread.sleep(16000);
-		//waitForElementToPresent(AddtionalinfomationSaveAndContinueBtn);
-		//scrollIntoViewAndClick(AddtionalinfomationSaveAndContinueBtn);
 		clickElementByJavaScript(AddtionalinfomationSaveAndContinueBtn);
-		//click(AddtionalinfomationSaveAndContinueBtn, "Addtional infomation Save And ContinueBtn");
-		
-		//click(AddtionalinfomationSaveAndContinueBtn, "Addtional infomation Save And ContinueBtn");
 		picture();
 	}
+	
 		public void saveField() {
-			
 			driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
 			click(savecontinue3, "SAve and Continue");
 		}
@@ -1442,22 +1684,17 @@ type(Document_Title, DocumentTitle, "Document_Title");
 		type(chooseFile,Filepath,"FileName");
 		
 	}
+	
 	public void UpdateDetails(String EventTitleName, String Location) throws Exception {
-
 		EventTitleName=EventTitleName +" " + getDateInDDMMMYYYY();
-          
-		
-	     
 		type(EventName,EventTitleName, "Event Name");
 		type(EventLocation, Location, "Location");
         Thread.sleep(7000);
         EventLocation.sendKeys(Keys.DOWN);
-		click(eventPaid, "Paid");
-	
+		click(eventPublic, "Paid");
 		driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
 		scrollIntoViewAndClick(saveandContinueEventDetails);
-		//scrollIntoView(saveandContinue);
-		//click(saveandContinue, "Save and Continue");
+		
 	}
    public void checkFieldvalidation(String lengthm, String lengthM, String label, String lengthM1,String lengthM2) {
 	   waitForElementToPresent(saveandContinuecreateTicket);
@@ -1513,18 +1750,43 @@ type(Document_Title, DocumentTitle, "Document_Title");
 		 driver.manage().timeouts().implicitlyWait(90,TimeUnit.MINUTES);
 			click(savecontinue3, "Save and Continue");
 			driver.manage().timeouts().implicitlyWait(90,TimeUnit.MINUTES);
-			click(publish, "Publish");
-			Thread.sleep(5000);
+			showAttendeeAndShowInviteGuestDisplay();
+			
 		
 }
+   public void clickshowAttendeeAndShowInviteGuest() {
+	   
+	   this.ShowInviteGuests.click();
+	   this.ShowRegisteredAttendees.click();
+   }
+   
+   public void showAttendeeAndShowInviteGuestDisplay() {
+	this.ShowInviteGuests.isDisplayed();
+	this.ShowRegisteredAttendees.isDisplayed();
+	Assert.assertTrue(true);
+	     
+   }
+   
+   public void InviteGuestandRegAttendeeinfoMessage() throws InterruptedException {
+	   
+	   Thread.sleep(4000);
+		Actions action = new Actions(driver);
+		action.moveToElement(ShowInviteGuests).build().perform();
+		aShot();
+		Thread.sleep(3000);
+		action.moveToElement(ShowRegisteredAttendees).build().perform();
+		aShot();
+   }
+   public void publish() throws InterruptedException {
+		waitForElementToPresent(publish);
+	   click(publish, "Publish");
+		Thread.sleep(8000);
+   }
    public void checkcustomfield() throws InterruptedException {
 	   Thread.sleep(10000);
 	   //scrollToElementAndClick(saveandContinue);
 	   clickElementByJavaScript(saveandContinue);
-	  // waitForElementToPresent(saveandContinue);
-	  // click(saveandContinue, "Save and Continue");
 	   driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
-		//click(TicketsSaveAndContinueBtn, "Tickets Save And ContinueBtn");
 		clickElementByJavaScript(TicketsSaveAndContinueBtn);
 		Thread.sleep(10000);
 		clickElementByJavaScript(AddtionalinfomationSaveAndContinueBtn);
@@ -1532,4 +1794,89 @@ type(Document_Title, DocumentTitle, "Document_Title");
 	   System.out.println("Custom field not editable");
 	   
    }
+   @FindBy(xpath="//span[normalize-space()='Events']")
+	WebElement event;
+   
+   public EventsPage gotoevents() throws InterruptedException {
+		Thread.sleep(8000);
+		click(homePage, "Bizligo Home page");
+		Thread.sleep(4000);
+		click(event, "Events");
+		Thread.sleep(3000);
+		return (EventsPage) openPage(EventsPage.class);
+		
+	}
+   public HomePage gotohome() throws InterruptedException {
+	
+	   Thread.sleep(8000);
+		click(homePage, "Bizligo Home page");
+		
+	   return (HomePage) openPage(HomePage.class);   
+   }
+   
+   public void AddReminders(String Reminder) {
+	   waitForElementToPresent(addreminder);
+	  click(addreminder, "Add reminder");
+	  waitForElementToPresent(emailDropdown);
+	  selectUsingIndex(emailDropdown, 0, "Email");
+	  selectUsingIndex(days, 1, "hrs");
+	  type(reminder, Reminder, "reminder");
+	  scrollToElement(AddtionalinfomationSaveAndContinueBtn);
+	  clickElementByJavaScript(AddtionalinfomationSaveAndContinueBtn);
+	     
+   }
+   
+   public void ReminderError(String Reminder) {
+	   
+	   waitForElementToPresent(addreminder);
+		  click(addreminder, "Add reminder");
+		  waitForElementToPresent(emailDropdown);
+		  selectUsingIndex(emailDropdown, 0, "Email");
+		  selectUsingIndex(days, 1, "hrs");
+		  type(reminder, Reminder, "reminder");
+		  waitForElementToPresent(remindererror);
+		  System.out.println(remindererror.getText());
+   }
+   
+   public void editReminder(String Reminder) {
+	   
+	   waitForElementToPresent(reminder);
+	   type(reminder, Reminder, "reminder");
+	   scrollToElement(AddtionalinfomationSaveAndContinueBtn);
+		  clickElementByJavaScript(AddtionalinfomationSaveAndContinueBtn);
+   }
+   public void Addtickets(String ticketName,String ticketquantity ) throws AWTException, Exception {
+
+		waitForElementToPresent(AddTicketBtn);
+		driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
+		click(AddTicketBtn, "Add Ticket");
+		driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
+		waitForElementToPresent(Ticket);
+		type(Ticket, ticketName, "Ticket Name");
+		//TicketQunatity.click();
+		type(TicketQunatity, ticketquantity, "Ticket");
+		selectUsingIndex(availableTo, 1, "All");
+		selectUsingIndex(TicketType, 1, "Ticket Type");
+		driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
+		click(AvailableDates, "Available Dates");
+		waitForElementToPresent(TicketCalendarApplyBtn);
+		TicketStartTime.click();
+		TicketStartTime.sendKeys(Keys.CONTROL + "a");
+		//type(TicketStartTime, StartTime, "Ticket Start Time");
+		TicketEndTime.click();
+		TicketEndTime.sendKeys(Keys.CONTROL + "a");
+		//type(TicketEndTime, endTime, "Ticket End Time");
+		picture();
+		click(TicketCalendarApplyBtn, "Calendar Apply");
+		click(SaveTicketInfoBtn, "Save button in the pop up");
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
+		waitForElementToPresent(TicketsSaveAndContinueBtn);
+		Thread.sleep(10000);
+		picture();
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
+		click(TicketsSaveAndContinueBtn, "Tickets Save And ContinueBtn");
+		Thread.sleep(16000);
+		picture();
+	}
+  
 }

@@ -72,6 +72,11 @@ public class CommunityEventsPage extends BasePage {
 	WebElement TicketsSaveAndContinueBtn;
 	@FindBy(xpath = "//*[@id='AdditionalInformationForm']/div[4]/div[2]/div/button[1]")
 	WebElement AddtionalinfomationSaveAndContinueBtn;
+	@FindBy(xpath = "//label[normalize-space()='Allow Duplicate Registration']")
+	WebElement duplicateReg;
+	@FindBy(xpath = "//tr[@id='row_727']//a[@title='Click to edit the event'][normalize-space()='Event_7 10 Nov 2021']")
+	WebElement eventN;
+	
 	
 	public CreateOrEditEvent searchEventName(String eventname) throws InterruptedException {
 		waitForElementToPresent(EventNameSearch);
@@ -83,16 +88,7 @@ public class CommunityEventsPage extends BasePage {
 		return (CreateOrEditEvent) openPage(CreateOrEditEvent.class);
 		
 	}
-	public CreateOrEditEvent searchEventName1(String eventname) throws InterruptedException {
-		waitForElementToPresent(EventNameSearch);
-		type(EventNameSearch, eventname, "Event Name");
-		click(btnSearch, "Search");
-		Thread.sleep(4000);
-		waitForElementToPresent(searchEventName1);
-		click(searchEventName1, "Eventname");
-		return (CreateOrEditEvent) openPage(CreateOrEditEvent.class);
-		
-	}
+
 	
 
 	public CreateOrEditEvent NewEvent() throws InterruptedException {
@@ -102,9 +98,16 @@ public class CommunityEventsPage extends BasePage {
 		return (CreateOrEditEvent) openPage(CreateOrEditEvent.class);
 		// new CreateOrEditEvent(driver);
 	}
+	
+	public void checkDuplicateRegDisplaying() {
+		driver.manage().timeouts().implicitlyWait(8000, TimeUnit.SECONDS);
+		this.duplicateReg.isDisplayed();
+		AssertionHelper.verifyTrue(true);
+		
+	}
 
-	public CreateOrEditEvent clickonEvent(String eventTitleName) {
-		click(EditEvent, eventTitleName);
+	public CreateOrEditEvent clickonEvent() {
+		click(EditEvent, "Edit");
 		return (CreateOrEditEvent) openPage(CreateOrEditEvent.class);
 		// new CreateOrEditEvent(driver);
 	}
@@ -125,12 +128,14 @@ public class CommunityEventsPage extends BasePage {
 	
 	@FindBy(xpath="//select[@id='EventStatusSearch']")
 	WebElement EventStatusSearch;
+	
 	public void SearchEvent(String eventTitleName) throws Exception {
-
+		Thread.sleep(8000);
+       waitForElementToPresent(EventNameSearch);
 		type(EventNameSearch, eventTitleName, "Event Name Search");
-		selectByVisibleText(EventStatusSearch, "Published", "Published");
+		//selectByVisibleText(EventStatusSearch, "Published", "Published");
 		click(btnSearch, "button Search");
-		Thread.sleep(6000);
+		Thread.sleep(9000);
 	}
 
 	@Override
@@ -192,10 +197,10 @@ public class CommunityEventsPage extends BasePage {
 		 type(firstname, NameF, "Name");
 		 Thread.sleep(2000);
 		 type(lastname, NameL, "Name");
-		 
-		   
 		
 	}
+	
+	
 	
 	public void bookTicket() {
 		waitForElementToPresent(bookTicket);

@@ -37,7 +37,6 @@ public class HomePage extends BasePage {
 	@FindBy(xpath = "//span[contains(.,'Events')]")
 	WebElement Events;
 
-
 	@FindBy(xpath = "//h1[normalize-space()='building communities']")
 
 	WebElement home;
@@ -62,7 +61,6 @@ public class HomePage extends BasePage {
 	@FindBy(xpath = "//a[normalize-space()='Tenant Admin Module']")
 	WebElement tenantadminModule;
 
-
 	@FindBy(xpath = "//a[normalize-space()='Logout']")
 	WebElement logoutBtn;
 	@FindBy(xpath = "//a[normalize-space()='Contact Us']")
@@ -83,7 +81,7 @@ public class HomePage extends BasePage {
 	WebElement contact;
 	@FindBy(xpath="//li[@class='ng-scope']//span[@ng-show='ad.LinkUrl']//img[@class='img-responsive']")
 	WebElement image;
-
+	
 
 
 	
@@ -172,8 +170,8 @@ public class HomePage extends BasePage {
 		
 	}
 
-	public UpcomingEventsPage clickOnupComingEvents() {
-
+	public UpcomingEventsPage clickOnupComingEvents() throws InterruptedException {
+       Thread.sleep(4000);
 		Actions action = new Actions(driver);
 		action.moveToElement(Events).build().perform();
 		// waitHelper.waitForElementToPresent(UpcomingEvents,
@@ -186,6 +184,11 @@ public class HomePage extends BasePage {
 		// new UpcomingEventsPage(driver, );
 	}
 
+	public EventsPage gotoevents() throws InterruptedException {
+		
+		
+		return (EventsPage) openPage(EventsPage.class);
+	}
 	public GlobalCommunitesPage NavigateToCommunities() throws Exception {
 		Thread.sleep(5000);
 		click(joinCommunities, "join Communities");

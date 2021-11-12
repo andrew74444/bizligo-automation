@@ -13,6 +13,7 @@ import org.testng.asserts.SoftAssert;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Hashtable;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 
@@ -48,6 +49,9 @@ public class UpcomingEventsPage extends BasePage{
 	
 	@FindBy(xpath="//a[@class='btn btn-success']//strong[contains(text(),'REGISTER')]")
 	WebElement registe;		
+	
+	@FindBy(xpath="//div[@class='row ng-binding ng-scope']")
+	WebElement error;
 	
 	
 	@Override
@@ -235,10 +239,18 @@ public class UpcomingEventsPage extends BasePage{
 	WebElement myEvents;
 	@FindBy(xpath="//input[@type=\"email\" and @name=\"EmailID[]\"]")
 	WebElement emailId;
+	@FindBy(xpath="(//input[@placeholder='Email Address'])[1]")
+	WebElement emailId1;
+	@FindBy(xpath="(//input[@placeholder='Email Address'])[2]")
+	WebElement emailId2;
 	@FindBy(xpath="//input[@id='AttendeeFirstName00']")
 	WebElement firstName;
 	@FindBy(xpath="//input[@id='AttendeeLastName00']")
 	WebElement lastName;
+	@FindBy(xpath="//input[@id='AttendeeFirstName01']")
+	WebElement firstName2;
+	@FindBy(xpath="//input[@id='AttendeeLastName01']")
+	WebElement lastName2;
 	@FindBy(xpath="//span[normalize-space()='Next']")
 	WebElement next;
 	@FindBy(xpath="//span[@ng-bind=\"appData.jsResources.Events.BookNow\"]")
@@ -263,9 +275,12 @@ public class UpcomingEventsPage extends BasePage{
 	WebElement bookingDatePaid;
 	@FindBy(xpath="//*[@id=\"PaymentController\"]//table[1]/tbody/tr[1]/td[3]")
 	WebElement eventTypePaid;
-
-
-
+	@FindBy(css = "body > div:nth-child(3) > div:nth-child(1) > div:nth-child(2) > section:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(5) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1) > div:nth-child(2) > div:nth-child(1) > h4:nth-child(1) > strong:nth-child(2)")
+	WebElement Eventname;
+	@FindBy(xpath="//form[@id='GuestInvitationForm']//div[@class='panel-heading']")
+	List<WebElement> invitees;
+	@FindBy(xpath="//form[@id='GuestInvitationForm']//div[@class='panel-heading']")
+	WebElement invitee;
 
 	
 public  MyEventsPage goToMyEventsPage() {
@@ -380,7 +395,81 @@ public void registerTt(String Event) throws InterruptedException {
 	click(booknow,"Book Now");
 
 }
+public void searchevent(String name) throws InterruptedException {
+	waitForElementToPresent(EventNameSearch);
+	name=name +" " + getDateInDDMMMYYYY();
+	type(EventNameSearch, name, "Event Name");
+	Thread.sleep(8000);
+	click(Search, "Search");
+	Thread.sleep(8000);
+	
+}
+public void AllowDuplicatesEmailwithGuestUser(String Email, String Fname, String Lname) throws InterruptedException {
+	//Thread.sleep(3000);
+	click(EventName, "Event");
+	waitForElementToPresent(register);
+	click(register,"Register");
+	Thread.sleep(2000);
+	selectUsingIndex(noOfTickets,2,"1");
+	Thread.sleep(2000);
+	//selectUsingIndex(noOfTickets2,1,"1");
+	type(emailId1,Email,"Email Of registered");
+	type(firstName, Fname, "First name");
+	type(lastName, Lname, "Last name");
+	Thread.sleep(3000);
+	type(emailId2,Email,"Email Of registered");
+	type(firstName2, Fname, "First name");
+	type(lastName2, Lname, "Last name");
+	
+	click(booknow,"Book Now");
+	
 
+}
+public void CannotregisterwithDuplicates(String Email, String Fname, String Lname) throws InterruptedException {
 	
+	click(EventName, "Event");
+	waitForElementToPresent(register);
+	click(register,"Register");
+	Thread.sleep(2000);
+	selectUsingIndex(noOfTickets,2,"1");
+	Thread.sleep(4000);
+	type(emailId1,Email,"Email Of registered");
+	type(firstName, Fname, "First name");
+	type(lastName, Lname, "Last name");
+	//type(emailId2,Email,"Email Of registered");
+	type(firstName2, Fname, "First name");
+	type(lastName2, Lname, "Last name");
+	click(booknow,"Book Now");
+	waitForElementToPresent(error);
+	System.out.println(error);
 	
+}
+public void AttendeesDetailNotDisplaying() throws InterruptedException {
+	click(Eventname, "Event");
+	waitForElementToPresent(register);
+	Thread.sleep(3000);
+	//Assert.assertEquals(0, invitees.size());
+
+	System.out.println("Attendees detail section not is displaying");
+	
+}
+public void AttendeesDetailDisplaying() throws InterruptedException{
+	click(Eventname, "Event");
+	waitForElementToPresent(invitee);
+	Assert.assertTrue(true);
+}
+public void InviteGuestNotDisplaying() throws InterruptedException {
+	click(Eventname, "Event");
+	waitForElementToPresent(register);
+	Thread.sleep(3000);
+	//Assert.assertEquals(0, invitees.size());
+
+	System.out.println("Attendees detail section not is displaying");
+	
+}
+public void InviteGuestDisplaying() throws InterruptedException{
+	click(Eventname, "Event");
+	waitForElementToPresent(invitee);
+	Assert.assertTrue(true);
+}
 }

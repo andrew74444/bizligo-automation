@@ -679,6 +679,26 @@ public class MyCommunitiesPage extends BasePage {
 	WebElement upcomingEvents;
 	@FindBy(xpath="//strong[contains(text(),\"Copy Of Copy Of Functional Event 2\")]")
 	WebElement paidEvent;
+	@FindBy(xpath="//a[@href='/manage?title=Manage']")
+	WebElement managePassword;
+	@FindBy(xpath="//input[@id='OldPassword']")
+	WebElement currentPassword;
+	@FindBy(xpath="//input[@placeholder='New Password']")
+	WebElement newPassword;
+	@FindBy(xpath="//input[@placeholder='Confirm New Password']")
+	WebElement confirmPassword;
+	@FindBy(xpath="//a[normalize-space()='Cancel']")
+	WebElement cancelPassword;
+	@FindBy(xpath="//button[normalize-space()='Change Password']")
+	WebElement change;
+	public void changePassword(String PasswordOld) throws InterruptedException {
+		click(Toggledropdownmenu,"Toggledropdownmenu");
+		Thread.sleep(1000);
+		click(managePassword,"managePassword");
+		Thread.sleep(5000);
+		//type(currentPassword,PasswordOld,PasswordOld);
+		click(change,"Change password");
+	}
 
 
 	public HomePage naviagtingToHomePage() {
