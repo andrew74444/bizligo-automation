@@ -41,7 +41,7 @@ public class MyCommunitiesPage extends BasePage {
 
 
 		//return ExpectedConditions.visibilityOf(CreateCommunityBtn);
-		return ExpectedConditions.visibilityOf(myCommunitiesHeader);
+		//return ExpectedConditions.visibilityOf(myCommunitiesHeader);
 
 
 	}

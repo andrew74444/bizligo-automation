@@ -544,7 +544,7 @@ public class CommunityDetailsPage extends BasePage {
 	}
 
 	public GroupDetailsPage navigateToGroupDetailsPage(String groupName) throws Exception {
-		groupName = groupName + " " + getDateInDDMMMYYYY();
+	//	groupName = groupName + " " + getDateInDDMMMYYYY();
 		this.searchGroup(groupName);
 		driver.findElement(By.xpath("//*[@tooltip='" + groupName + "']")).click();
 		return (GroupDetailsPage) openPage(GroupDetailsPage.class);

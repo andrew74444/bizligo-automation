@@ -26,7 +26,7 @@ public class GroupDetailsPage extends BasePage {
 		aShot();
 		updateClass(header, "navbar-fixed-top");
 	}
-	@FindBy(xpath = "//*[@id='header']")
+	@FindBy(xpath = "//div[@id='myNavbar']")
 	WebElement header;
 	
 	@FindBy(xpath = "(//*[@type='checkbox'])[1]")
@@ -40,7 +40,7 @@ public class GroupDetailsPage extends BasePage {
 
 	@FindBy(xpath = "//*[@id='toast-container']/div/div[3]")
 	WebElement toast;
-	@FindBy(xpath = "//span[contains(text(),'Discussion')]")
+	@FindBy(xpath = "//strong[normalize-space()='Discussions']")
 	WebElement DiscussionNavbar;
 
 	@FindBy(xpath = "//*[contains(text(),'Leave')]")
@@ -52,7 +52,7 @@ public class GroupDetailsPage extends BasePage {
 	@FindBy(xpath = "//*[contains(text(),'Yes,Proceed')]")
 	WebElement YesProceedBtn;
 
-	@FindBy(xpath = "//*[contains(text(),'Ok')]")
+	@FindBy(xpath = "//button[@class='btn btn-primary'][normalize-space()='OK']")
 	WebElement OkBtn;
 
 	@FindBy(xpath = "//*[contains(text(),'Waiting for Approval')]")
@@ -79,6 +79,45 @@ public class GroupDetailsPage extends BasePage {
 	@FindBy(xpath = "//*[@class='navbar mynav group-nav']//*[contains(text(),'Members')]")
 	WebElement navbarMembers;
 	
+	@FindBy(xpath = "//button[normalize-space()='Create New Post']")
+	WebElement newPostBtn;
+	
+	@FindBy(xpath = "//input[@id='discussionTitle']")
+	WebElement discussionTitle;
+	
+	@FindBy(xpath = "//div[@id='copsDisable']")
+	WebElement taggedmember;
+	
+	@FindBy(xpath = "//button[@id='validatePostbtn']")
+	WebElement postBtn;
+	
+	@FindBy(tagName = "body")
+	WebElement enterTextInframe;
+	
+	@FindBy(xpath = "//div[@id='copsDisable']")
+	WebElement tagMembers;
+	 
+	@FindBy(xpath = "(//span[@title='Menu'])[1]")
+	WebElement GroupdiscussionMenu;
+	
+	@FindBy(xpath = "//a[normalize-space()='Edit']")
+	WebElement groupeditPost;
+	
+	@FindBy(xpath = "(//button[normalize-space()='Update'])[1]")
+	WebElement updategroupPostBtn;
+	
+	@FindBy(xpath = "//div[@class='toast-message']")
+	WebElement toastMessage;
+	
+	@FindBy(xpath = "(//a[@href='javascript:;'][normalize-space()='Delete'])[1]")
+	WebElement deletegrouppost;
+	
+	@FindBy(xpath = "(//span[contains(text(),'Unsubscribe')])[1]")
+	WebElement unsubscribeBtn;
+	
+	@FindBy(xpath = "(//span[contains(text(),'Subscribe')])[1]")
+	WebElement subscribeBtn;
+	
 	
 
 	@Override
@@ -89,11 +128,90 @@ public class GroupDetailsPage extends BasePage {
 
 	public Discussions sharePosts() throws Exception {
 		
-				
-				
+						
 				return (Discussions) openPage(Discussions.class);
 	}
 
+	
+	public Discussions postDiscussions(String discussionTitle, String postContent,String tagMember) throws InterruptedException 
+	{
+		//click(discussion, "discussion");
+		//Thread.sleep(10000);
+		click(newPostBtn, "CreatePost");
+		Thread.sleep(20000);
+		type(this.discussionTitle, discussionTitle, "discussions");
+		Thread.sleep(10000);
+		switchToFrameByID(0);
+		type(enterTextInframe,postContent,"TestContent");
+		switchTodefaultContent();
+		Thread.sleep(5000);
+		type(this.tagMembers, tagMember, "TaggingMembers");
+		click(taggedmember, tagMember);
+		Thread.sleep(5000);
+		click(postBtn, "postButton");
+		Thread.sleep(5000);
+		return (Discussions) openPage(Discussions.class);
+	}
+	
+	public void UnsubscribeGroupdiscussion() throws InterruptedException 
+	{
+	click(unsubscribeBtn, "unsubscribeBtn");
+	Thread.sleep(2000);
+	waitForElementToPresent(toastMessage);
+	AssertionHelper.verifyText(toastMessage.getText(), "Success!Unsubscribed. You will no longer receive notifications for this post");
+	Thread.sleep(7000);
+	}
+	
+	public void SubscribeGroupdiscussion() throws InterruptedException 
+	{
+	click(unsubscribeBtn, "unsubscribeBtn");
+	Thread.sleep(2000);
+	waitForElementToPresent(toastMessage);
+	AssertionHelper.verifyText(toastMessage.getText(), "Success!Unsubscribed. You will no longer receive notifications for this post");
+	Thread.sleep(7000);
+	click(subscribeBtn, "subscribeBtn");
+	Thread.sleep(2000);
+	waitForElementToPresent(toastMessage);
+	AssertionHelper.verifyText(toastMessage.getText(), "Success! You will receive notifications if any user adds the comment");
+	Thread.sleep(7000);
+	
+	}
+	
+	
+	
+	
+	public void editgroupdiscussion(String editpostContent) throws InterruptedException 
+	{
+	click(GroupdiscussionMenu, "GroupdiscussionMenu");
+	Thread.sleep(10000);
+	click(groupeditPost, "editPost");
+	Thread.sleep(20000);	
+	//type(this.discussionTitle, discussionTitle, "discussions");
+	//Thread.sleep(10000);
+	switchToFrameByID(0);
+	type(enterTextInframe,editpostContent,"TestContent");
+	switchTodefaultContent();
+	Thread.sleep(5000);
+	click(updategroupPostBtn, "updatePostBtn");
+	waitForElementToPresent(toastMessage);
+	AssertionHelper.verifyText(toastMessage.getText(), "Post Updated Successfully");
+	Thread.sleep(7000);
+		}
+	
+	public void deletegroupdiscussion() throws InterruptedException 
+	{
+	click(GroupdiscussionMenu, "GroupdiscussionMenu");
+	Thread.sleep(10000);
+	click(deletegrouppost, "deletegrouppost");
+	Thread.sleep(2000);	
+	waitForElementToPresent(OkBtn);
+	click(OkBtn,"Ok button");	
+	waitForElementToPresent(toastMessage);
+	AssertionHelper.verifyText(toastMessage.getText(), "Post deleted successfully");
+	Thread.sleep(7000);
+		}
+		
+	
 	public void Join( ) {
 
 		click(Join,"Join");

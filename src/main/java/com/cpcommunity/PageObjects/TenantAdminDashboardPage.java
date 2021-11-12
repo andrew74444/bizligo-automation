@@ -247,14 +247,14 @@ public ManageResourcesPage navigateToManageResourcesPage() throws Exception {
 	return (ManageResourcesPage) openPage(ManageResourcesPage.class);
 	
 }
-/*
+
 public ManagePricingPlan navigateToManagePricingPlan() throws Exception {
 	Thread.sleep(2000);
 	click(pricingplan, "pricingplan");
 	return (ManagePricingPlan) openPage(ManagePricingPlan.class);
 	
 }
-*/
+
    public ManageMembershipPlan navigateToMembershipPlansPage() throws Exception {
 	waitForElementToPresent(membershipplan);
 	click(membershipplan, "membership plan");

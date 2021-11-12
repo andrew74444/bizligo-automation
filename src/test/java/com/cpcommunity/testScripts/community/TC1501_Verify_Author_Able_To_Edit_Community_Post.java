@@ -15,7 +15,7 @@ import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.DataUtil;
 import com.cpcommunity.utilities.ExcelReader;
 
-public class TC1501_Verify_User_Able_To_Edit_Community_Post extends BaseTest
+public class TC1501_Verify_Author_Able_To_Edit_Community_Post extends BaseTest
 
 {
 
