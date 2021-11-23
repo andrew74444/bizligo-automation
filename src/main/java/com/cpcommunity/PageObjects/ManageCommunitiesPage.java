@@ -87,7 +87,10 @@ public class ManageCommunitiesPage extends BasePage {
 	WebElement communityrequest;
 	@FindBy(xpath = "//button[normalize-space()='Ok']")
 	WebElement ok;
-	
+	@FindBy(xpath = "//a[@class='btn btn-xs btn-primary']")
+	WebElement managecommunity;
+	@FindBy(xpath = "//h4[normalize-space()='Published Events']")
+	WebElement publishEvent;
 	
 
 	  
@@ -131,7 +134,14 @@ public class ManageCommunitiesPage extends BasePage {
  	}
 
 
+    public CommunityEventsPage clickcommunity() {
 
+    	waitForElementToPresent(managecommunity);
+    	click(managecommunity, "manage community");
+    	scrollToElement(publishEvent);
+    	click(publishEvent, "Publish event");
+    	return (CommunityEventsPage) openPage(CommunityEventsPage.class);
+    	}
 
    public void EditCommunities(String About, String Category,String type) throws InterruptedException {
 	   waitForElementToPresent(edit);

@@ -34,10 +34,10 @@ public class TC1305_verify_CA_ableto_Edit_reminder extends BaseTest{
         CEP.SearchEvent(data.get("eventname"));
         CreateOrEditEvent CEE=CEP.clickonEvent();
         CEE.editDetail();
-        CEE.Addtickets(data.get("ticketName"), data.get("ticketquantity"));
+        CEE.Edittickets(data.get("ticketName"), data.get("ticketquantity"));
         CEE.editReminder(data.get("Reminder"));
         CEE.AddField1(data.get("Label"), data.get("order"),data.get("type"));		
-        CEE.publish();	
+        CEE.publish2();	
 	
 }
 }
