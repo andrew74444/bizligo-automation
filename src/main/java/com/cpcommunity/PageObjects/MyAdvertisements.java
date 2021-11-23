@@ -95,8 +95,8 @@ public class MyAdvertisements extends BasePage {
 	@FindBy(xpath = "//tr[@class='odd']//a[@title='Click to purchase this Advertisement']")
 	WebElement editPP;
 
-	@FindBy(xpath = "//a[@title='Click to purchase this Advertisement']")
-	WebElement editt;
+	//@FindBy(xpath = "//a[@title='Click to purchase this Advertisement']")
+	//WebElement editt;
 	@FindBy(xpath = "//span[@title='This Advertisement plan is In-Activated.']")
 	WebElement editinactive;
 
@@ -168,7 +168,7 @@ public class MyAdvertisements extends BasePage {
 
 		  // 
 	   }
-	
+
 	public UpdateADPage gotoUpdateAdpage(String planName) throws InterruptedException {
 
 		//Thread.sleep(2000);
@@ -229,8 +229,8 @@ public class MyAdvertisements extends BasePage {
 		   type(plansearch, planName, "Plan Name");
 		   click(search, "Search");
 		   Thread.sleep(6000);
-		   waitForElementToPresent(editt);
-		   click(editt, "Edit");
+		   waitForElementToPresent(edit);
+		   click(edit, "Edit");
 		picture();
 		waitForElementToPresent(adname);
 		type(adname, AdName, "Advertisement name");
@@ -441,16 +441,17 @@ public class MyAdvertisements extends BasePage {
 		System.out.print(inactiveerror);
 		click(ok, "OK");
 	}
+
 	public void checkIsplanInactive() {
 		
-		//waitForElementToPresent(editt);
-		//click(editt, "Edit");
-		//waitForElementToPresent(inactiveerror);
-		//System.out.print(inactiveerror);
-		//click(ok, "OK");
-
-		
+		waitForElementToPresent(edit);
+		click(edit, "Edit");
+		waitForElementToPresent(inactiveerror);
+		System.out.print(inactiveerror);
+		click(ok, "OK");
+	
 	}
+  
 	public MyDashboardPage gotoMyDashboardPage() throws Exception {
 		driver.manage().timeouts().implicitlyWait(800, TimeUnit.SECONDS);
 		waitForElementToPresent(Toggledropdownmenu);
@@ -463,12 +464,7 @@ public class MyAdvertisements extends BasePage {
 	
 	}
 	
-	
-	
-	
-	
-	
+		
 }
-
 
 
