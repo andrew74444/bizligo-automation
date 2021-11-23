@@ -21,9 +21,6 @@ public class LoginPage extends BasePage {
 
 	}
 
-//
-
-//change
 
 	@FindBy(xpath = "//*[@id='global-nav']")
 	WebElement pageheader;
@@ -34,6 +31,9 @@ public class LoginPage extends BasePage {
 	@FindBy(xpath = "//input[@name='Password']")
 	WebElement password;
 
+	@FindBy(xpath = "//a[normalize-space()='Forgot Password?']")
+	WebElement forgetpassword;
+	
 	@FindBy(xpath = "//button[contains(.,'Login')]")
 	WebElement LoginBtn;
 
@@ -70,14 +70,16 @@ public class LoginPage extends BasePage {
 	@FindBy(xpath = "//a[@title='Go to My Endorsements']//div")
 	WebElement myEndorsement;
 	
-
-
-	
 	@FindBy(xpath = "//span[@title='Toggle dropdown menu']")
 	WebElement Toggledropdownmenu;
 	
 	@FindBy(xpath = "//a[normalize-space()='My Ecosystem']")
 	WebElement ecosystem;
+	@FindBy(xpath = "//small[normalize-space()='Email is required']")
+	WebElement emptyEmail;
+	
+	@FindBy(xpath = "//small[normalize-space()='Password is required']")
+	WebElement emptyPassword;
 
 	@FindBy(xpath = "//div[normalize-space()='My Advertisements']")
 	WebElement myads;
@@ -116,9 +118,15 @@ public class LoginPage extends BasePage {
 	//
 	//public MyDashboardPage loginToDashboard(String enterEmailAddress, String  password) throws InterruptedException
 	 {
+
+		this.login(enterEmailAddress, password);
+		// Thread.sleep(5000);
+		return (MyDashboardPage) openPage(MyDashboardPage.class);
+
 	//	this.login(enterEmailAddress, password);
 	//	 Thread.sleep(5000);
 	//	return (MyDashboardPage) openPage(MyDashboardPage.class);
+
 		 
 	 }
 	
@@ -129,8 +137,7 @@ public class LoginPage extends BasePage {
 		picture();
 
 	}
-	
-	
+	 
 	
 	//public MyProfilePage loginToMyProfilePage(String enterEmailAddress, String password) {
 	//	this.login(enterEmailAddress, password);
@@ -148,11 +155,19 @@ public class LoginPage extends BasePage {
 		return (ForgotPasswordPage) openPage(ForgotPasswordPage.class);
 
 	}
+
+	public TenantAdminDashboardPage loginToTADashboard(String enterEmailAddress, String  password) throws InterruptedException
+	 {   
+		this.login(enterEmailAddress, password);
+		//Thread.sleep(4000);
+		return (TenantAdminDashboardPage) openPage(TenantAdminDashboardPage.class);
+
 	//public TenantAdminDashboardPage loginToTADashboard(String enterEmailAddress, String  password) throws InterruptedException
 	// {   
 	//	this.login(enterEmailAddress, password);
 	//	Thread.sleep(4000);
 		//return (TenantAdminDashboardPage) openPage(TenantAdminDashboardPage.class);
+
 		 
 	// }
 
@@ -182,7 +197,7 @@ public class LoginPage extends BasePage {
 		
 	}
 	
-	public MyProfilePage loginToMyProfilePage(String enterEmailAddress, String password) {
+	/*public MyProfilePage loginToMyProfilePage(String enterEmailAddress, String password) {
 		this.login(enterEmailAddress, password);
 		return (MyProfilePage) openPage(MyProfilePage.class);
 	}
@@ -191,16 +206,16 @@ public class LoginPage extends BasePage {
 		this.login(enterEmailAddress, password);
 		return (MyCommunitiesPage) openPage(MyCommunitiesPage.class);
 	}
-	
+	*/
 	// public MyDashboardPage loginToApplication(String enterEmailAddress, String
 	// password) {
 	public EcoSystemPage loginToApplication(String enterEmailAddress, String password) throws InterruptedException {
 		this.login(enterEmailAddress, password);
-		 Thread.sleep(5000);
+		// Thread.sleep(5000);
 		return (EcoSystemPage) openPage(EcoSystemPage.class);
 		// new MyDashboardPage(driver, );
 	}
-	public MyDashboardPage loginToDashboard(String enterEmailAddress, String  password)
+	/*public MyDashboardPage loginToDashboard(String enterEmailAddress, String  password)
 	 {
 		this.login(enterEmailAddress, password);
 		return (MyDashboardPage) openPage(MyDashboardPage.class);
@@ -211,7 +226,7 @@ public class LoginPage extends BasePage {
 		this.login(enterEmailAddress, password);
 		return (TenantAdminDashboardPage) openPage(TenantAdminDashboardPage.class);
 		 
-	 }
+	 }*/
 
 	public SystemAdminDashboardPage SystemAdminloginToApplication(String EmailAddress, String password) {
 		this.login(EmailAddress, password);
@@ -225,10 +240,31 @@ public class LoginPage extends BasePage {
 	// return (PendingCommunitiesPage) openPage(PendingCommunitiesPage.class);
 	//// new PendingCommunitiesPage(driver, );
 	// }
+   public void EmptyAndInvalidCredentials(String email, String password, String email1,String email2, String password2) {
 
-	public void InvalidloginToApplication(String EmailAddress, String password) {
+		this.login(email, password);
+		waitForElementToPresent(emptyEmail);
+		emptyEmail.isDisplayed();
+		emptyPassword.isDisplayed();
+		picture();
+		wait.until(ExpectedConditions.visibilityOf(emailAddress));
+		this.emailAddress.sendKeys(email1);
+		waitForElementToPresent(emptyPassword);
+		emptyPassword.isDisplayed();
+		picture(); 
+		this.emailAddress.clear();
+		this.emailAddress.sendKeys(email2);
+		this.password.sendKeys(password2);
+		this.LoginBtn.click();
+		waitForElementToPresent(Invalidlogin);
+		Invalidlogin.isDisplayed();
+		picture();
+	   
+   }
+	
+	public void InvalidloginToApplication(String email, String password) {
 
-		this.login(EmailAddress, password);
+		this.login(email, password);
 		waitForElementToPresent(Invalidlogin);
 		Invalidlogin.isDisplayed();
 		picture();
@@ -248,7 +284,7 @@ public class LoginPage extends BasePage {
 		emailAddress.clear();
 		this.password.clear();
 		this.login(EmailAddress, password);
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
 		emailAddress.clear();
 		this.password.clear();
 		this.login(EmailAddress, password);
@@ -320,14 +356,18 @@ public class LoginPage extends BasePage {
 			return (SelectPlanPage) openPage(SelectPlanPage.class);
 		
 	}
+
+	
+
 	//public MyDashboardPage loginToMemberdashboard(String enterEmailAddress, String password) {
       //  this.login(enterEmailAddress, password);
         // return (MyDashboardPage) openPage(MyDashboardPage.class);
 
+
 	public MyDashboardPage loginToMemberdashboard(String enterEmailAddress, String password) throws InterruptedException {
-        Thread.sleep(3000);
+      
 		this.login(enterEmailAddress, password);
-        Thread.sleep(5000);
+       
         return (MyDashboardPage) openPage(MyDashboardPage.class);
 
 //        new MyDashboardPage(driver, );        
@@ -341,37 +381,37 @@ public class LoginPage extends BasePage {
 	
 	}
 	public MyDashboardPage gotoMyDashboardPage() throws Exception {
-		Thread.sleep(8000);
+		//Thread.sleep(8000);
 		waitForElementToPresent(Toggledropdownmenu);
 		//click(Toggledropdownmenu,"Toggledropdownmenu");
 		clickElementByJavaScript(Toggledropdownmenu);
-		Thread.sleep(4000);
+		//Thread.sleep(4000);
 		waitForElementToPresent(ecosystem);
 		click(ecosystem,"Ecosystem");
-		 Thread.sleep(8000);
+		// Thread.sleep(8000);
 		return (MyDashboardPage) openPage(MyDashboardPage.class);
 	}
 	public Bizligo1CommunityPage goToMyCommunity(String communityName ) throws InterruptedException {
-		Thread.sleep(4000);
+		//Thread.sleep(4000);
 		clickElementByJavaScript(globalCommunities);
 		waitForElementToPresent(SearchcommunityName);
 		picture();
 		type(SearchcommunityName, communityName, "Search by Community");
 		click(searchbtn, "search btn");
-		Thread.sleep(12000);
+		//Thread.sleep(12000);
 		//WebElement ele = driver.findElement(By.xpath("//a[@tooltip='" + communityName + "']"));
 		waitForElementToPresent(bizligo1);
 		click(bizligo1,"Bizligo 1");
 		return (Bizligo1CommunityPage) openPage(Bizligo1CommunityPage.class);
 	}
 	public Bizligo1CommunityPage goToMyBizCommunity(String communityName ) throws InterruptedException {
-		Thread.sleep(4000);
+		//Thread.sleep(4000);
 		clickElementByJavaScript(globalCommunities);
 		waitForElementToPresent(SearchcommunityName);
 		picture();
 		type(SearchcommunityName, communityName, "Search by Community");
 		click(searchbtn, "search btn");
-		Thread.sleep(12000);
+		//Thread.sleep(12000);
 		//WebElement ele = driver.findElement(By.xpath("//a[@tooltip='" + communityName + "']"));
 		waitForElementToPresent(bizligo1manage);
 		click(bizligo1manage,"Bizligo 1");

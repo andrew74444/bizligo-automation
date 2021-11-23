@@ -8,8 +8,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.testng.Assert;
+import org.testng.asserts.Assertion;
 
 import com.cpcommunity.utilities.DriverManager;
+import com.cpcommunity.utilities.waitHelper;
+import com.mongodb.event.ConnectionPoolWaitQueueEnteredEvent;
+import com.tigervnc.rdr.Exception;
+import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
 
 public class ManageMenuPage extends BasePage {
 
@@ -71,23 +78,31 @@ public class ManageMenuPage extends BasePage {
 	WebElement parentMenu;
 	@FindBy(xpath="//a[normalize-space()='Contact']")
 	WebElement contact;
+	@FindBy(xpath="//div[@class='toast toast-success']")
+	WebElement toastmsg;
+	@FindBy(xpath="//div[@class='toast-title']")
+	WebElement toastupdate;
+	
 	
 	
 	
 	
 	public void AddMenu(String Name, String display, String url) throws InterruptedException {
-		
-		waitForElementToPresent(addmenu);
+		wait.until(ExpectedConditions.elementToBeClickable(addmenu));
+		//waitForElementToPresent(addmenu);
 		click(addmenu, "Add menu");
 		waitForElementToPresent(name);
 		type(name, Name, "Name");
 		click(fromlink, "Link");
 		type(displayordre, display, "Display order");
 		type(URL, url, "url");
-		driver.manage().timeouts().implicitlyWait(3000, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(3000, TimeUnit.SECONDS);
 		click(save, "Save");
-		Thread.sleep(3000);
-		//clickElementByJavaScript(save);
+		waitForElementToPresent(toastmsg);
+		AssertionHelper.verifyText(toastmsg.getText(), "Success!");
+		String msg1=this.toastmsg.getText();
+		System.out.println(msg1);
+		
 	}
 public void AddSubMenu(String Name, String display, String url, String menu) throws InterruptedException {
 		
@@ -100,15 +115,17 @@ public void AddSubMenu(String Name, String display, String url, String menu) thr
 		type(URL, url, "url");
 		click(submenu, "SubMenu");
 		selectByVisibleText(parentMenu, menu, "Blogs");
-		driver.manage().timeouts().implicitlyWait(3000, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(3000, TimeUnit.SECONDS);
 		click(save, "Save");
-		Thread.sleep(3000);
+		AssertionHelper.verifyText(toastmsg.getText(), "Success!");
 		//clickElementByJavaScript(save);
 	}
 	
 public void InactiveMenu(String Name, String display, String url) throws InterruptedException {
-		
+       
+     
 		WebElement edit=editlast.get(editlast.size()-1);
+		waitForElementToPresent(edit);
 		click(edit, "Edit");
 		waitForElementToPresent(name);
 		type(name, Name, "Name");
@@ -116,10 +133,10 @@ public void InactiveMenu(String Name, String display, String url) throws Interru
 		type(displayordre, display, "Display order");
 		type(URL, url, "url");
 		click(inactive, "Inactive");
-		driver.manage().timeouts().implicitlyWait(3000, TimeUnit.SECONDS);
 		click(update, "Update");
-		Thread.sleep(3000);
-		//clickElementByJavaScript(save);
+		waitForElementToPresent(toastupdate);
+		AssertionHelper.verifyText(toastupdate.getText(), "Success!");
+		
 	}
 public void CheckMenu() throws InterruptedException {
 	
@@ -148,16 +165,15 @@ public void UpdateMenu(String Name, String display, String url) throws Interrupt
 	
 	WebElement edit=editlast.get(editlast.size()-1);
 	click(edit, "Edit");
-	waitForElementToPresent(name);
+	//waitForElementToPresent(name);
 	type(name, Name, "Name");
 	click(fromlink, "Link");
 	type(displayordre, display, "Display order");
 	type(URL, url, "url");
 	click(active, "Inactive");
-	driver.manage().timeouts().implicitlyWait(3000, TimeUnit.SECONDS);
 	click(update, "Update");
-	Thread.sleep(3000);
-	//clickElementByJavaScript(save);
+	waitForElementToPresent(toastupdate);
+	AssertionHelper.verifyText(toastupdate.getText(), "Success!");
 }
 
 public void CancelpopUp(String Name, String display, String url) throws InterruptedException {
@@ -169,25 +185,27 @@ public void CancelpopUp(String Name, String display, String url) throws Interrup
 	click(fromlink, "Link");
 	type(displayordre, display, "Display order");
 	type(URL, url, "url");
-	driver.manage().timeouts().implicitlyWait(3000, TimeUnit.SECONDS);
+	//driver.manage().timeouts().implicitlyWait(3000, TimeUnit.SECONDS);
 	click(cancel, "Cancel");
 	waitForElementToPresent(yesproceed);
 	click(yesproceed, "Yes Proceed");
 	//clickElementByJavaScript(save);
 }
 public void checkURLclick() throws InterruptedException{
-	Thread.sleep(4000);
-	click(bizligoBtn,"Bizligo button");
-	waitForElementToPresent(contact);
+  // Thread.sleep(3000);
+	scrollToElement(bizligoBtn);
+	//click(bizligoBtn,"Bizligo button");
+	clickElementByJavaScript(bizligoBtn);
 	clickElementByJavaScript(contact);
-	Thread.sleep(4000);
+//wait.until(ExpectedCond)
 	String name=driver.getTitle();
 	System.out.println(name);
 	   
 	    }
 public HomePage goToHomePage() throws InterruptedException {
-	 Thread.sleep(4000);
-	click(bizligoBtn,"Bizligo button");
+	//Thread.sleep(3000);
+	scrollToElement(bizligoBtn);
+	clickElementByJavaScript(bizligoBtn);
 	
 	return (HomePage) openPage(HomePage.class);
 }

@@ -297,7 +297,7 @@ public UpcomingEventsPage navigateToUpComingEvents() throws InterruptedException
 			
 		}
         public void CheckadvertiseNotDisplay() throws InterruptedException {
-       	 Thread.sleep(2000);
+       	
        	 String img=image.getTagName();
 		System.out.println(img);
 			
@@ -306,7 +306,7 @@ public UpcomingEventsPage navigateToUpComingEvents() throws InterruptedException
         	 Thread.sleep(3000);
         	 this.contact.isDisplayed();
         		clickElementByJavaScript(blogs);
-        		Thread.sleep(4000);
+        		//Thread.sleep(4000);
         		this.contact.isDisplayed();
         		Assert.assertTrue(true);
         		click(GlobalCommunities, "Global Communities");
