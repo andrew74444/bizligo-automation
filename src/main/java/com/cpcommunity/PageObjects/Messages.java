@@ -88,13 +88,13 @@ public class Messages extends BasePage{
 		String i = Integer.toString(elements.size());
 		String SharedMessage = driver.findElement(By.xpath("//*[@id='ChatController']/div/div/div[1]/div/div/div[2]/div[1]/ul/li["+i+"]/div[2]/p")).getText();	
 		AssertionHelper.verifyText(SharedMessage, Message);
-		Thread.sleep(3000);
+	
 		
 	}
 	
 	public String SendNewMessage(String MemberName,String NewMessage) throws Exception{
 		click( newMessage,"new Message");
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
 		WebElement element = driver.findElement(By.xpath("(//*[contains(text(),'"+MemberName+"')])[1]"));
 		waitForElementToPresent(element);
 		click(element,"Member Name" );
@@ -102,17 +102,18 @@ public class Messages extends BasePage{
 		DateFormat dateFormat = new SimpleDateFormat("yy-MM-dd HH-mm-ss");
 	    Date date = new Date();
 		String Message = NewMessage+" "+dateFormat.format(date);
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
+		waitForElementToPresent(txtMsg);
 		txtMsg.sendKeys(Message);
-		Thread.sleep(10000);
+		//Thread.sleep(10000);
 //		click("Send", Send);
 		clickElementByJavaScript(Send);
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
 		List<WebElement> elements = driver.findElements(By.xpath("//*[@id='ChatController']/div/div/div[1]/div/div/div[2]/div[1]/ul/li"));
 		String i = Integer.toString(elements.size());
 		String SharedMessage = driver.findElement(By.xpath("//*[@id='ChatController']/div/div/div[1]/div/div/div[2]/div[1]/ul/li["+i+"]/div[2]/p")).getText();	
 		AssertionHelper.verifyText(SharedMessage, Message);
-		Thread.sleep(4000);	
+		//Thread.sleep(4000);	
 		return Message;
 	}
 	
@@ -124,9 +125,9 @@ public class Messages extends BasePage{
 	
 	public MyDashboardPage NaviagtingToMYEcosystemPage() throws Exception
 	{
-		Thread.sleep(6000);
+		waitForElementToPresent(Toggledropdownmenu);
 		Toggledropdownmenu.click();
-		Thread.sleep(1000);
+		waitForElementToPresent(myDashboard);
 		myDashboard.click();
 		return (MyDashboardPage) openPage(MyDashboardPage.class);
 //		new MyProfilePage(driver, );
@@ -141,7 +142,7 @@ public class Messages extends BasePage{
 	}
 	public void SendMsgToNonConnectedMember(String Name) throws Exception{
 		click( newMessage,"new Message");
-		Thread.sleep(3000);
+		waitForElementToPresent(search);
 		type(search, Name, "Search");
 		System.out.println("Cannot send msg to Nonconnected members");
 		

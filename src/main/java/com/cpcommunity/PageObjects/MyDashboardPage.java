@@ -344,7 +344,8 @@ public class MyDashboardPage extends BasePage{
 //	
 //	return (ZohoCRMPage) openPage(ZohoCRMPage.class);
 	
-	public int MyGroupsCount() {		
+	public int MyGroupsCount() {	
+		
 		   String C = myGroupsCount.getText();
 	      int TC=Integer.parseInt(C);
 	      click( myGroups,"myGroups");	      
@@ -352,7 +353,8 @@ public class MyDashboardPage extends BasePage{
 	      
 	}
 	public int checkUnreadMessagecounts() throws InterruptedException {	
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
+		waitForElementToPresent(msgnotification);
 		   String C = msgnotification.getText();
 	      int TC=Integer.parseInt(C);
 	      System.out.println(C);
@@ -363,7 +365,7 @@ public class MyDashboardPage extends BasePage{
 
 
 	public GlobalCareers NavigateToGlobalCareers() throws InterruptedException{
-		Thread.sleep(4000);
+		waitForElementToPresent(GlobalCareers);
 
 		click(GlobalCareers,"click");
 		return (GlobalCareers) openPage(GlobalCareers.class);
@@ -371,7 +373,8 @@ public class MyDashboardPage extends BasePage{
 	}
 	
 	public Messages NavigateToMyMessages() throws InterruptedException{
-		Thread.sleep(5000);
+	
+		waitForElementToPresent(myMessages);
 		myMessages.click();
 		return (Messages) openPage(Messages.class);
 //		new Messages(driver, );
