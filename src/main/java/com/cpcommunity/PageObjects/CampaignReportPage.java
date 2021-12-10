@@ -47,7 +47,7 @@ public class CampaignReportPage extends BasePage {
 	WebElement search;
 	@FindBy(xpath = "//button[normalize-space()='Reset']")
 	WebElement reset;
-	@FindBy(xpath = "//button[@id='34017']")
+	//@FindBy(xpath = "//button[@id='34017']")
 	@FindBy(xpath = "//tbody//tr[1]//td[7]//button[@class='btn btn-info']")
 	WebElement viewDetail;
 	@FindBy(xpath = "//td[@ng-bind='maininfo.CampaignName']")

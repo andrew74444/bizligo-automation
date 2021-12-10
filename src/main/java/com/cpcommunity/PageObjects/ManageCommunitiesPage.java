@@ -146,7 +146,14 @@ public class ManageCommunitiesPage extends BasePage {
  	}
 
 
+    public CommunityEventsPage clickcommunity() {
 
+    	waitForElementToPresent(managecommunity);
+    	click(managecommunity, "manage community");
+    	scrollToElement(publishEvent);
+    	click(publishEvent, "Publish event");
+    	return (CommunityEventsPage) openPage(CommunityEventsPage.class);
+    	}
 
    public void EditCommunities(String Name,String About, String Category,String type) throws InterruptedException {
 	   Name=Name+" " + getDateInDDMMMYYYY();

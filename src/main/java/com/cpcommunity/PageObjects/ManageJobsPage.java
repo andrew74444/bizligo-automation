@@ -19,15 +19,11 @@ import org.apache.log4j.Logger;
 
 import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
 
-import junit.framework.Assert;
-
 public class ManageJobsPage extends BasePage {
 
 	@Override
 
-	protected void getPageScreenSot() {
-
-
+	
 	protected  void getPageScreenSot() {
 	
 
@@ -50,8 +46,8 @@ public class ManageJobsPage extends BasePage {
 	@FindBy(xpath = "(//select[@id='JobTypeID'])[2]")
 	WebElement JobTypeID;
 
-    @FindBy(xpath = "//div[@class='form-group']//input[@id='Location']")
-    WebElement searchByLocation;
+   // @FindBy(xpath = "//div[@class='form-group']//input[@id='Location']")
+    //WebElement searchByLocation;
     
     @FindBy(xpath = "//div[@id='manageJobsTable_info']")
     WebElement showingEntries;
@@ -115,8 +111,8 @@ public class ManageJobsPage extends BasePage {
 	@FindBy(xpath = "//tbody/tr/td[4]")
 	List<WebElement> totalJoblocationResult;
 	@FindBy(xpath = "//tbody/tr/td[6]")
-	List<WebElement> totalJobtypeIDResult;
-	@FindBy(xpath = "//tbody/tr/td[12]")
+//	List<WebElement> totalJobtypeIDResult;
+	//@FindBy(xpath = "//tbody/tr/td[12]")
 	List<WebElement> totalJobstatusResult;
 
 	// input[@id,'JobTitle']
@@ -571,9 +567,11 @@ public class ManageJobsPage extends BasePage {
 			click(btnSearch, "Search");
 		
 	}
-	public void inActivateJob(String jobTitle) throws Exception {
-		type(this.searchWithJobTitle, jobTitle, "searchWithJobTitle");
 
+	/*
+	 * public void inActivateJob(String jobTitle) throws Exception {
+	 * type(this.searchWithJobTitle, jobTitle, "searchWithJobTitle");
+	 */
 	public void inActivateJob(String Title) throws Exception {
 		waitForElementToPresent(searchWithJobTitle);
 		type(searchWithJobTitle, Title, "Title");
@@ -641,7 +639,8 @@ public class ManageJobsPage extends BasePage {
 		waitForElementToPresent(this.discardMsg);
 		System.out.println(discardMsg.getText());
         Assert.assertTrue(true);
-		
+	}
+	
 
 
 	public void searchJob(String jobTitle, String location, String jobTypeID,
@@ -678,22 +677,20 @@ public class ManageJobsPage extends BasePage {
 		
 		//click(btnReset, "Reset button");
 		Thread.sleep(3000);
-		
 	}
 
-		public void CheckSearchResult(List<WebElement> totalJobResult, String controlValue) throws InterruptedException {
-			Thread.sleep(2000);
-			click(btnSearch, "Search button");
-			Thread.sleep(3000);
-			System.out.println(totalJobResult.size());
-			for(int j=0; j<totalJobResult.size(); j++) {
-				String actualVal=(totalJobResult.get(j).getText());
-				Thread.sleep(2000);
-				Assert.assertEquals(controlValue.toLowerCase(), actualVal.toLowerCase());
-			}			
-		}
 
-	}
+	/*
+	 * public void CheckSearchResult(List<WebElement> totalJobResult, String
+	 * controlValue) throws InterruptedException { Thread.sleep(2000);
+	 * click(btnSearch, "Search button"); Thread.sleep(3000);
+	 * System.out.println(totalJobResult.size()); for(int j=0;
+	 * j<totalJobResult.size(); j++) { String
+	 * actualVal=(totalJobResult.get(j).getText()); Thread.sleep(2000);
+	 * Assert.assertEquals(controlValue.toLowerCase(), actualVal.toLowerCase()); } }
+	 */
+
+	
 	public void cancelEmptyJobPost() {
 		click(btnAddNewJob, "Add New Job");
 		waitForElementToPresent(this.JobTitle );

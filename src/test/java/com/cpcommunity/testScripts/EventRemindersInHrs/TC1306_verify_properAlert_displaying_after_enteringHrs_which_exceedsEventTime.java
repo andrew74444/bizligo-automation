@@ -34,6 +34,7 @@ public class TC1306_verify_properAlert_displaying_after_enteringHrs_which_exceed
         /*CEP.SearchEvent(data.get("eventname"));
         CreateOrEditEvent CEE=CEP.clickonEvent();
         CEE.editDetail();
+
         CEE.Addtickets(data.get("ticketName"), data.get("ticketquantity"));
         CEE.ReminderError(data.get("Reminder"));*/
         CreateOrEditEvent CEE=CEP.NewEvent();
@@ -41,5 +42,6 @@ public class TC1306_verify_properAlert_displaying_after_enteringHrs_which_exceed
     	 CEE.Addtickets(data.get("ticketName"), data.get("ticketquantity"));
          CEE.ReminderError(data.get("Reminder"));
     	
+
 	}
 }

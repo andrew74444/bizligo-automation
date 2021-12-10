@@ -124,6 +124,8 @@ public class CreateOrEditEvent extends BasePage {
 	@FindBy(xpath = "//button[@ng-click='PublishChanges=false;SubmitTicketDetails(true)']")
 	WebElement TicketsSaveAndContinueBtn;
 	@FindBy(xpath = "//button[@ng-click='SubmitTicketDetails(true,false)']")
+	WebElement TicketsSaveAndContinueBtn2;
+	@FindBy(xpath = "//button[@ng-click='SubmitTicketDetails(true,false)']")
 	WebElement TicketsSaveAndContinueBtnChange;
 	
 	@FindBy(xpath = "//span[contains(.,'  Add Reminder ')]")
@@ -347,7 +349,7 @@ public class CreateOrEditEvent extends BasePage {
 	WebElement savecontinue;
 	@FindBy(xpath = "//button[@class='btn btn-primary pay-btn']")
 	WebElement savecontinue2;
-	@FindBy(xpath = "//div[@class='row HideCustomFormBuilder']//button[@type='button'][normalize-space()='Save & Continue']//i[@class='fa fa-floppy-o']")
+	@FindBy(xpath = "//div[@class='row HideCustomFormBuilder']//button[@type='button'][normalize-space()='Save & Continue']")
 	WebElement savecontinue3;
 	@FindBy(xpath = "//button[normalize-space()='Add Field']")
 	WebElement addfield;
@@ -383,6 +385,8 @@ public class CreateOrEditEvent extends BasePage {
 	WebElement optionorder;
 	@FindBy(xpath = "//button[normalize-space()='Publish']")
 	WebElement publish;
+	@FindBy(xpath = "//button[@ng-click='SubmitEventResources(true, false, true)']")
+	WebElement publish2;
 	@FindBy(xpath = "//input[@class='form-control animated fadeInRight ng-pristine ng-valid ng-scope ng-empty ng-touched']")
 	WebElement chooseFile;
 	@FindBy(xpath = "//button[@ng-disabled='data.isAutofillIsLoading']")
@@ -1739,7 +1743,7 @@ type(Document_Title, DocumentTitle, "Document_Title");
    
    public void AddField1(String Label, String order, String type) throws InterruptedException {
 		waitForElementToPresent(addfield);
-		click(addfield, "Add Field");
+		/*click(addfield, "Add Field");
 		waitForElementToPresent(enterlabel);
 		type(enterlabel, Label, "Label");
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.MINUTES);
@@ -1747,7 +1751,7 @@ type(Document_Title, DocumentTitle, "Document_Title");
 		selectByVisibleText(fieldtype, type, "Field Type");
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.MINUTES);
 		click(save, "Save");
-		 driver.manage().timeouts().implicitlyWait(90,TimeUnit.MINUTES);
+		 driver.manage().timeouts().implicitlyWait(90,TimeUnit.MINUTES);*/
 			click(savecontinue3, "Save and Continue");
 			driver.manage().timeouts().implicitlyWait(90,TimeUnit.MINUTES);
 			showAttendeeAndShowInviteGuestDisplay();
@@ -1782,6 +1786,13 @@ type(Document_Title, DocumentTitle, "Document_Title");
 	   click(publish, "Publish");
 		Thread.sleep(8000);
    }
+   
+   public void publish2() throws InterruptedException {
+		waitForElementToPresent(publish2);
+	   click(publish2, "Publish2");
+		Thread.sleep(8000);
+   }
+   
    public void checkcustomfield() throws InterruptedException {
 	   Thread.sleep(10000);
 	   //scrollToElementAndClick(saveandContinue);
@@ -1878,5 +1889,38 @@ type(Document_Title, DocumentTitle, "Document_Title");
 		Thread.sleep(16000);
 		picture();
 	}
-  
+   
+   public void Edittickets(String ticketName,String ticketquantity ) throws AWTException, Exception {
+
+		waitForElementToPresent(AddTicketBtn);
+		driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
+		click(AddTicketBtn, "Add Ticket");
+		driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
+		waitForElementToPresent(Ticket);
+		type(Ticket, ticketName, "Ticket Name");
+		//TicketQunatity.click();
+		type(TicketQunatity, ticketquantity, "Ticket");
+		selectUsingIndex(availableTo, 1, "All");
+		selectUsingIndex(TicketType, 1, "Ticket Type");
+		driver.manage().timeouts().implicitlyWait(6,TimeUnit.MINUTES);
+		click(AvailableDates, "Available Dates");
+		waitForElementToPresent(TicketCalendarApplyBtn);
+		TicketStartTime.click();
+		TicketStartTime.sendKeys(Keys.CONTROL + "a");
+		//type(TicketStartTime, StartTime, "Ticket Start Time");
+		TicketEndTime.click();
+		TicketEndTime.sendKeys(Keys.CONTROL + "a");
+		//type(TicketEndTime, endTime, "Ticket End Time");
+		picture();
+		click(TicketCalendarApplyBtn, "Calendar Apply");
+		click(SaveTicketInfoBtn, "Save button in the pop up");
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
+		waitForElementToPresent(TicketsSaveAndContinueBtn2);
+		Thread.sleep(10000);
+		picture();
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
+		click(TicketsSaveAndContinueBtn2, "Tickets Save And ContinueBtn");
+		Thread.sleep(16000);
+		picture();
+   }
 }

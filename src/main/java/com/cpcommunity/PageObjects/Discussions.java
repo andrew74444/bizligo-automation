@@ -15,6 +15,8 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
+import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
+
 public class Discussions extends BasePage {
 
 	@Override
@@ -74,7 +76,13 @@ public class Discussions extends BasePage {
 	@FindBy(xpath = "//button[contains(text(),'Post')]")
 	WebElement postBtn;
 
-	@FindBy(xpath = "//a[contains(.,'File')]")
+	@FindBy(xpath = "//button[@id='validatePostbtn']")
+	WebElement updatePostBtn;
+	
+	@FindBy(xpath = "//div[@class='toast-message']")
+	WebElement toastMessage;
+	
+		@FindBy(xpath = "//a[contains(.,'File')]")
 	WebElement Filetab;
 
 	@FindBy(xpath = "//label[@name='FileUploadLabel']")
@@ -210,6 +218,33 @@ public class Discussions extends BasePage {
 	WebElement date;
 	@FindBy(xpath = "//input[@id='AdImageId']")
 	WebElement choosefile;
+	
+	
+	 @FindBy(tagName = "body")
+	 WebElement enterTextInframe;
+	 
+	 @FindBy(tagName = "iframe")
+	 WebElement iframe3;
+	 
+	 @FindBy(xpath = "(//span[@title=\"Menu\"])[1]")
+	 WebElement discussionMenu;
+
+	 @FindBy(xpath = "//span[@class='ng-scope open']//ul[@class='dropdown-menu ng-scope']//li[@class='ng-scope']//a[@href='javascript:;'][normalize-space()='Edit']")
+	 WebElement editPost;
+
+	 @FindBy(xpath = "//span[@class='ng-scope open']//ul[@class='dropdown-menu ng-scope']//li[@class='ng-scope']//a[@href='javascript:;'][normalize-space()='Delete']")
+	 WebElement deleteCommunityPost;
+	 
+	 @FindBy(xpath = "//button[@class='btn btn-primary'][normalize-space()='OK']")
+	 WebElement OkBtn;
+	 
+	 @FindBy(xpath = "(//button[@type='button'][normalize-space()='Unsubscribe'])[1]")
+	 WebElement unsubscribeBtn;
+	 
+	 @FindBy(xpath = "(//button[@type='button'][normalize-space()='Subscribe'])[1]")
+	 WebElement subscribeBtn;
+
+	 
 	//body/div[@class='ng-scope']/div[@id='appController']/div/div[@class='community-cont']/div[@class='container data-container']/div[@class='row']/div[@id='MainContainer']/div[@class='ng-scope']/div[@id='discussionController']/div[@ng-hide='appData.IsPrivate']/div[@class='panel panel-default text-left']/div/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]
 	
 	// String TCID;
@@ -385,6 +420,66 @@ public class Discussions extends BasePage {
 		click(SendC, "Send Comment");
 		Thread.sleep(10000);
 	}
+	
+	
+	public void editCommunitydiscussion(String editpostContent) throws InterruptedException 
+	{
+	click(discussionMenu, "discussionMenu");
+	Thread.sleep(10000);
+	click(editPost, "editPost");
+	Thread.sleep(20000);	
+	//type(this.discussionTitle, discussionTitle, "discussions");
+	//Thread.sleep(10000);
+	switchToFrameByID(0);
+	type(enterTextInframe,editpostContent,"TestContent");
+	switchTodefaultContent();
+	Thread.sleep(5000);
+	click(updatePostBtn, "updatePostBtn");
+	waitForElementToPresent(toastMessage);
+	AssertionHelper.verifyText(toastMessage.getText(), "Post Updated Successfully");
+	Thread.sleep(7000);
+		}
+	
+	
+	public void deleteCommunitydiscussion() throws InterruptedException 
+	{
+	click(discussionMenu, "discussionMenu");
+	Thread.sleep(10000);
+	click(deleteCommunityPost, "deleteCommunityPost");
+	Thread.sleep(20000);	
+	waitForElementToPresent(OkBtn);
+	click(OkBtn,"Ok button");	
+	waitForElementToPresent(toastMessage);
+	AssertionHelper.verifyText(toastMessage.getText(), "Post deleted successfully");
+	Thread.sleep(7000);
+		}
+	
+	
+	public void UnsubscribeCommunitydiscussion() throws InterruptedException 
+	{
+	click(unsubscribeBtn, "unsubscribeBtn");
+	Thread.sleep(2000);
+	waitForElementToPresent(toastMessage);
+	AssertionHelper.verifyText(toastMessage.getText(), "Success!Unsubscribed. You will no longer receive notifications for this post");
+	Thread.sleep(7000);
+	}
+	
+	public void SubscribeCommunitydiscussion() throws InterruptedException 
+	{
+	click(unsubscribeBtn, "unsubscribeBtn");
+	Thread.sleep(2000);
+	waitForElementToPresent(toastMessage);
+	AssertionHelper.verifyText(toastMessage.getText(), "Success!Unsubscribed. You will no longer receive notifications for this post");
+	Thread.sleep(7000);
+	click(subscribeBtn, "subscribeBtn");
+	Thread.sleep(2000);
+	waitForElementToPresent(toastMessage);
+	AssertionHelper.verifyText(toastMessage.getText(), "Success! You will receive notifications if any user adds the comment");
+	Thread.sleep(7000);
+	
+	}
+	
+	
 	
 	public void CheckNonMemberIsNotAbleToPostLikeComment() throws Exception {
 		
