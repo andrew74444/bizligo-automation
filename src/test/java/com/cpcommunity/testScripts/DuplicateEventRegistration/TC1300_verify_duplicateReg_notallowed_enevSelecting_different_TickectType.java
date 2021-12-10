@@ -34,10 +34,10 @@ public class TC1300_verify_duplicateReg_notallowed_enevSelecting_different_Ticke
         CommunityDashboardPage dash=com.gotoManageCommunity(data.get("community"));
         CommunityEventsPage CEP= dash.navigateToEvents();
         CreateOrEditEvent CEE=CEP.NewEvent();
-        CEE.AddDetails(data.get("EventTitle"), data.get("EventCategory"),data.get("location"), data.get("Description"));
-        CEE.AddTwoDifferentTickets(data.get("ticketName"), data.get("ticketquantity"));
-        CEE.AddField1(data.get("Label"), data.get("order"),data.get("type"));
-        CEE.publish();
+        //CEE.AddDetails(data.get("EventTitle"), data.get("EventCategory"),data.get("location"), data.get("Description"));
+        //CEE.AddTwoDifferentTickets(data.get("ticketName"), data.get("ticketquantity"));
+        //CEE.AddField1(data.get("Label"), data.get("order"),data.get("type"));
+        //CEE.publish();
         EventsPage event=CEE.gotoevents();
     	event.searchevent(data.get("EventTitle"));
     	 event.CannotregisterDuplicateswithDifferentTicket(data.get("email1"), data.get("fName"), data.get("Lname"));

@@ -181,7 +181,7 @@ public class TagsPage extends BasePage {
 	}
 	
 	public void updateTag(String Name, String tagName, String Description) throws InterruptedException {
-		tagName=tagName+ " " + getDateInDDMMMYYYY();
+		Name=Name+ " " + getDateInDDMMMYYYY();
 		waitForElementToPresent(searchtag);
 		type(searchtag, Name, "Category name");
 		Thread.sleep(8000);

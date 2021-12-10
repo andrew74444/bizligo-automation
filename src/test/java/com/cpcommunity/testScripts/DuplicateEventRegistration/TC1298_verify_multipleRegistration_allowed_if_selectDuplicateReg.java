@@ -41,7 +41,7 @@ public class TC1298_verify_multipleRegistration_allowed_if_selectDuplicateReg ex
     	 CEE.publish();
     	EventsPage event=CEE.gotoevents();
     	event.searchevent(data.get("EventTitle"));
-    	event.registerToAnEventwithDuplicates(data.get("email1"), data.get("fName"), data.get("Lname"));
+    	event.registerToAnEventwithDuplicates(data.get("email1"), data.get("fName"), data.get("Lname"), data.get("ph"));
     
     	
 	}
@@ -53,4 +53,5 @@ public class TC1298_verify_multipleRegistration_allowed_if_selectDuplicateReg ex
 		quit();
 		
 	}
+	
 }

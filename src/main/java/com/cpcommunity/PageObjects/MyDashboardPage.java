@@ -46,6 +46,8 @@ public class MyDashboardPage extends BasePage{
 	WebElement errorPage;
 	
 	@FindBy(xpath = "//h2[normalize-space()='MY ECOSYSTEM']")
+	//h2[normalize-space()='MY ECOSYSTEM']
+
     WebElement myDashboard;
 
 	@FindBy(xpath="//div[normalize-space()='My Advertisements']")
@@ -149,7 +151,7 @@ public class MyDashboardPage extends BasePage{
 
 	@FindBy(xpath="//a[contains(.,' Dashboard')]")
 	WebElement MyEcosystem1;
-	@FindBy(xpath="//span[contains(text(),'Global Events')]")
+	@FindBy(xpath="//span[normalize-space()='Global Events']")
 	WebElement globalEvents;
 
 	// @FindBy(xpath = "//button[contains(.,'Yes,Proceed')]")
@@ -329,7 +331,7 @@ public class MyDashboardPage extends BasePage{
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 		
-		log.info("---> DashBoard");
+		log.info("DashBoard");
 		
 		return ExpectedConditions.visibilityOf(myDashboard);
 	}

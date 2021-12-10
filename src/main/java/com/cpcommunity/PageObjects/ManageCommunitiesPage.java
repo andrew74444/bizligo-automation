@@ -3,12 +3,12 @@ package com.cpcommunity.PageObjects;
 
 import java.util.List;
 
-
-
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 
 public class ManageCommunitiesPage extends BasePage {
 
@@ -21,7 +21,7 @@ public class ManageCommunitiesPage extends BasePage {
 	@Override
 	protected void getPageScreenSot() {
 		// TODO Auto-generated method stub
-		updateClass(pageheader, "");
+		//updateClass(pageheader, "");
 		aShot();
 	}
 	
@@ -93,6 +93,15 @@ public class ManageCommunitiesPage extends BasePage {
 	WebElement publishEvent;
 	
 
+	
+	public CommunityEventsPage clickcommunity() {
+		
+		waitForElementToPresent(managecommunity);
+		click(managecommunity, "manage community");
+	scrollToElement(publishEvent);
+		click(publishEvent, "Publish event");
+		return (CommunityEventsPage) openPage(CommunityEventsPage.class);
+	}
 	  
 	
     public void searchCommunity(String Community) throws InterruptedException {
@@ -118,6 +127,9 @@ public class ManageCommunitiesPage extends BasePage {
   		//Thread.sleep(5000); 
   		
              }
+    
+   
+    
     public void clickOnAdvertisments() throws InterruptedException {
  		click(advertisements, "advertisements");
  		Thread.sleep(1000);
@@ -143,25 +155,31 @@ public class ManageCommunitiesPage extends BasePage {
     	return (CommunityEventsPage) openPage(CommunityEventsPage.class);
     	}
 
-   public void EditCommunities(String About, String Category,String type) throws InterruptedException {
+   public void EditCommunities(String Name,String About, String Category,String type) throws InterruptedException {
+	   Name=Name+" " + getDateInDDMMMYYYY();
+	   this.searchCommunity(Name);
 	   waitForElementToPresent(edit);
 		click(edit, "Edit");
 		Thread.sleep(3000);
 		waitForElementToPresent(networking);
 		click(networking, "Networking");
+		clickElementByJavaScript(networking);
 		driver.switchTo().frame(0);
 		enterTextInframe.clear();
 		enterTextInframe.sendKeys(About);
 		driver.switchTo().defaultContent();
 		selectByVisibleText(categoryType, Category, "Category");
 	    selectByVisibleText(Type, type, "Type");
-	    click(active, "Inactive");
+	   // click(active, "Inactive");
+	    clickElementByJavaScript(active);
 	    Thread.sleep(2000);
-	    waitForElementToPresent(YesProceed);
-	    click(YesProceed, "Yes Proceed");
+	    clickElementByJavaScript(save);
+	    //waitForElementToPresent(YesProceed);
+	   // click(YesProceed, "Yes Proceed");
 	    Thread.sleep(2000);
-	    click(save, "Save");
-	    Thread.sleep(6000);
+	   // click(save, "Save");
+	   
+	   
      }
    
    public void ActivateCommunities(String Community , String About, String Category,String type) throws InterruptedException {

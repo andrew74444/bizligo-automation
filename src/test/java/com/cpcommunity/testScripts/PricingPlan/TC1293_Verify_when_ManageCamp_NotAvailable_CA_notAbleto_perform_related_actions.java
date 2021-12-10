@@ -66,14 +66,6 @@ public class TC1293_Verify_when_ManageCamp_NotAvailable_CA_notAbleto_perform_rel
 		ManageCommunityPage MC=AG.navigateManageCommunities();
 		MC.checkMenuNotPresent(data.get("menu"));
 		
-		openBrowser(data.get("browser"));
-		logInfo("Launched Browser : "+ data.get("browser"));		
-		logInfo("BizLigo Application Opened");
-		HomePage home4 = new HomePage().open(data.get("tenantType"));
-		LoginPage login4 = home4.clickOnLOGINBtn();
-		TenantAdminDashboardPage tadashoboard4=login4.loginToTADashboard(data.get("email"), data.get("password"));
-		ManageCommunitiesPage Mcom=tadashoboard4.navigatetomanageCommunities();
-		Mcom.EditCommunities(data.get("Name"),data.get("About"), data.get("Category"), data.get("type"));
 		
 		
 		
