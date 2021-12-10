@@ -40,7 +40,7 @@ public class TC1299_Verify_notAllow_duplicateReg_ifNot_Selected_DuplicateReg ext
     	 CEE.publish();
     	EventsPage event=CEE.gotoevents();
     	event.searchevent(data.get("EventTitle"));
-        event.CannotregisterwithDuplicates(data.get("email1"), data.get("fName"), data.get("Lname"));
+        event.CannotregisterwithDuplicates(data.get("EventTitle"), data.get("email1"), data.get("fName"), data.get("Lname"));
         
 	}
 	@AfterMethod

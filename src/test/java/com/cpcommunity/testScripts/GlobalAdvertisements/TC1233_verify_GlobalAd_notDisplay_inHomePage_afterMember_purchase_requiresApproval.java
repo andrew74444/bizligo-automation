@@ -33,7 +33,7 @@ public class TC1233_verify_GlobalAd_notDisplay_inHomePage_afterMember_purchase_r
 	LoginPage login = home.clickOnLOGINBtn();
 	TenantAdminDashboardPage tadashoboard=login.loginToTADashboard(data.get("email"), data.get("password"));
 	ManageAdPlansPage MAPP=tadashoboard.goToManageAdPlansPage();
-	MAPP.GlobalAdByTA(data.get("community"),data.get("name1"),data.get("price1"), data.get("planDetails"),data.get("duration1"),data.get("durationType"),data.get("adLocation"),data.get("adType"), data.get("approvalType"));
+	//MAPP.GlobalAdByTA(data.get("community"),data.get("name1"),data.get("price1"), data.get("planDetails"),data.get("duration1"),data.get("durationType"),data.get("adLocation"),data.get("adType"), data.get("approvalType"));
 	quit();
 	
 	openBrowser(data.get("browser"));

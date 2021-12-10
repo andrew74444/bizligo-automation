@@ -24,10 +24,10 @@ public class ManageMembershipPlan extends BasePage {
 		
 		aShot();
 	}
-	@FindBy(xpath="//h2[normalize-space()='Manage Membership Plans']")
+	@FindBy(xpath="//body//div[@class='container body']//div[@class='row']//div[@class='row']//h2[1]")
 	WebElement title;
 	
-	@FindBy(xpath="//button[@id='btnAddNew']")
+	@FindBy(xpath="//button[@id='btnAddNewPlan']")
 	WebElement addnew;
 	
 	@FindBy(xpath="//input[@id='Name']")
@@ -63,7 +63,7 @@ public class ManageMembershipPlan extends BasePage {
 	@FindBy(xpath="//small[@data-fv-for='Details'][normalize-space()='This field is required']")
 	WebElement errorfield;
 	
-	@FindBy(xpath="input[type='search']")
+	@FindBy(xpath="//input[@type='search']")
 	WebElement search;
 	
 	@FindBy(xpath="//a[@title='Click to edit this page']")
@@ -80,13 +80,13 @@ public class ManageMembershipPlan extends BasePage {
 	
 	@FindBy(xpath="//button[@class='swal-button swal-button--Cancel btn-danger']")
 	WebElement configurationcancel;
-	
+	//h2[normalize-space()='Add/Update Plan']
 	
 	public void errorField() {
 		
 		 waitForElementToPresent(addnew);
 		 click(addnew, "Add new pLan");
-		 driver.manage().timeouts().implicitlyWait(6000, TimeUnit.SECONDS);
+		// driver.manage().timeouts().implicitlyWait(6000, TimeUnit.SECONDS);
 		 scrollToElementAndClick(save);
 		 //click(save, "Save");
 		 String error=this.errorfield.getText();
@@ -97,7 +97,7 @@ public class ManageMembershipPlan extends BasePage {
 	public void createnewmembership(String Name, String Price, String Description,String Period) throws InterruptedException {
 		 waitForElementToPresent(addnew);
 		 click(addnew, "Add new pLan");
-		 driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
+		 //driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
 		 waitForElementToPresent(planName);
 		Thread.sleep(4000);
 		 Name=Name+" " + getDateInDDMMMYYYY();
@@ -133,7 +133,8 @@ public class ManageMembershipPlan extends BasePage {
 	     EnterinFrame.clear();
 	     EnterinFrame.sendKeys(Description);
 	     driver.switchTo().defaultContent();
-	     driver.manage().timeouts().implicitlyWait(800, TimeUnit.SECONDS);
+	     //driver.manage().timeouts().implicitlyWait(800, TimeUnit.SECONDS);
+		 wait.until(ExpectedConditions.elementToBeClickable(save));
 	     click(save, "Save");
 	     waitForElementToPresent(ok);
 	     click(ok, "Ok");
@@ -159,6 +160,15 @@ public class ManageMembershipPlan extends BasePage {
 	
 	}
 	
+	public void editplan(String PlanName) {
+		PlanName=PlanName+" " + getDateInDDMMMYYYY();
+		waitForElementToPresent(search);
+		this.search.sendKeys(PlanName);
+		wait.until(ExpectedConditions.elementToBeClickable(edit));
+		click(edit, "Edit");
+		
+	}
+	
 	public void inactivate() throws InterruptedException {
 		Thread.sleep(4000);
 		scrollToElementAndClick(statusInactive);
@@ -171,7 +181,7 @@ public class ManageMembershipPlan extends BasePage {
 		
 		 waitForElementToPresent(addnew);
 		 click(addnew, "Add new pLan");
-		 driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
+		// driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
 		 waitForElementToPresent(planName);
 		Thread.sleep(4000);
 		 plan=plan+" " + getDateInDDMMMYYYY();

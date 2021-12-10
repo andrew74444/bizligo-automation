@@ -29,13 +29,17 @@ public class TC1306_verify_properAlert_displaying_after_enteringHrs_which_exceed
 		HomePage home1 = new HomePage().open(data.get("tenantType"));
 		LoginPage login1 = home1.clickOnLOGINBtn();
 		MyCommunitiesPage com=login1.loginToMyCommunitiesPage(data.get("email1"), data.get("password1"));
-        CommunityDashboardPage dash=com.gotoManageCommunity(data.get("community"));
+       CommunityDashboardPage dash=com.gotoManageCommunity(data.get("community"));
         CommunityEventsPage CEP= dash.navigateToEvents();
-        CEP.SearchEvent(data.get("eventname"));
+        /*CEP.SearchEvent(data.get("eventname"));
         CreateOrEditEvent CEE=CEP.clickonEvent();
         CEE.editDetail();
         CEE.Addtickets(data.get("ticketName"), data.get("ticketquantity"));
-        CEE.ReminderError(data.get("Reminder"));
-	
+        CEE.ReminderError(data.get("Reminder"));*/
+        CreateOrEditEvent CEE=CEP.NewEvent();
+    	CEE.AddDetails(data.get("EventTitle"), data.get("EventCategory"),data.get("location"), data.get("Description"));
+    	 CEE.Addtickets(data.get("ticketName"), data.get("ticketquantity"));
+         CEE.ReminderError(data.get("Reminder"));
+    	
 	}
 }

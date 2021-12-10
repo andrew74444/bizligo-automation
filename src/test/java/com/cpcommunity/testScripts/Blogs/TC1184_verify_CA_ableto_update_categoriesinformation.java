@@ -36,9 +36,7 @@ public class TC1184_verify_CA_ableto_update_categoriesinformation extends BaseTe
 	categories.updatecategorie(data.get("Name"),data.get("categoryName"),data.get("Description"));
 	BlogsPage blogpage=categories.gotoBlogsPage();
 	blogpage.verifychanges();
-	CommunityDashboardPage CDP=blogpage.gotoCommunityDashboard();
-	CategoriesPage categories1=CDP.gotoCategories();
-	categories1.updatecategorie(data.get("Name1"),data.get("categoryName1"),data.get("Description1"));
+	
 	
 	}
 	@AfterMethod

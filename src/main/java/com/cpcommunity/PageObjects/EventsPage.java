@@ -61,6 +61,8 @@ public class EventsPage extends BasePage  {
 	WebElement Event;
 	@FindBy(xpath = "//strong[@ng-bind='Event.EventName | limitTo:40']")
 	WebElement Eventname;
+	@FindBy(css = "body > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div > div:nth-child(1) > a:nth-child(1) > div:nth-child(2) > div:nth-child(1) > h4:nth-child(1) > strong:nth-child(2)")
+	List<WebElement> Eventnames;
 	@FindBy(xpath="//a[@class='btn btn-success']//strong[contains(text(),'REGISTER')]")
 	WebElement register;		
 	@FindBy(xpath="//select[@id='selectticketcount']")
@@ -83,9 +85,13 @@ public class EventsPage extends BasePage  {
 	WebElement firstName;
 	@FindBy(xpath="//input[@id='AttendeeLastName00']")
 	WebElement lastName;
-	@FindBy(xpath="//input[@id='AttendeeFirstName10']")
+	@FindBy(xpath="//input[@id='AttendeePhone00']")
+	WebElement phone;
+	@FindBy(xpath="//input[@id='AttendeePhone01']")
+	WebElement phone2;
+	@FindBy(xpath="//input[@id='AttendeeFirstName01']")
 	WebElement firstName2;
-	@FindBy(xpath="(//input[@id='AttendeeLastName10'])[1]")
+	@FindBy(xpath="//input[@id='AttendeeLastName01']")
 	WebElement lastName2;
 	@FindBy(xpath="//div[@class='row ng-binding ng-scope']")
 	WebElement error;
@@ -198,21 +204,25 @@ public class EventsPage extends BasePage  {
 		
 		
 	}
-	public void registerToAnEventwithDuplicates(String Email, String Fname, String Lname) throws InterruptedException {
+	public void registerToAnEventwithDuplicates(String Email, String Fname, String Lname, String ph) throws InterruptedException {
 		
 		click(Eventname, "Event");
 		waitForElementToPresent(register);
 		click(register,"Register");
 		Thread.sleep(2000);
 		selectUsingIndex(noOfTickets,2,"1");
-		Thread.sleep(4000);
-		type(emailId1,Email,"Email Of registered");
+		Thread.sleep(2000);
+		type(emailId1,Email,"Email Of registered");	
 		type(firstName, Fname, "First name");
 		type(lastName, Lname, "Last name");
+		type(phone, ph, "Phone");
+		Thread.sleep(2000);
 		type(emailId2,Email,"Email Of registered");
+		
+		//scrollToElement(firstName2);
 		type(firstName2, Fname, "First name");
 		type(lastName2, Lname, "Last name");
-		
+		type(phone2, ph, "Phone");
 		click(booknow,"Book Now");
 		
 	}
@@ -233,9 +243,19 @@ public class EventsPage extends BasePage  {
 		Assert.assertTrue(true);
 	}
 	
-public void CannotregisterwithDuplicates(String Email, String Fname, String Lname) throws InterruptedException {
-		
-		click(Eventname, "Event");
+public void CannotregisterwithDuplicates(String EventTitle, String Email, String Fname, String Lname) throws InterruptedException {
+		//waitForElementToPresent(Eventnames);
+		EventTitle=EventTitle +" " + getDateInDDMMMYYYY();
+		int T=Eventnames.size();
+		for(int i=1; i<=T; i++) {
+			String name=driver.findElement(By.cssSelector("body > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(" + i + ") > div:nth-child(1) > a:nth-child(1) > div:nth-child(2) > div:nth-child(1) > h4:nth-child(1) > strong:nth-child(2)")).getText();
+			System.out.println(i);
+		if (name.equalsIgnoreCase(EventTitle)) {
+			driver.findElement(By.cssSelector("body > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(" + i + ") > div:nth-child(1) > a:nth-child(1) > div:nth-child(2) > div:nth-child(1) > h4:nth-child(1) > strong:nth-child(2)")).isDisplayed();
+			driver.findElement(By.cssSelector("body > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(" + i + ") > div:nth-child(1) > a:nth-child(1) > div:nth-child(2) > div:nth-child(1) > h4:nth-child(1) > strong:nth-child(2)")).click();
+		    break;
+		}}
+		//click(Eventname, "Event");
 		waitForElementToPresent(register);
 		click(register,"Register");
 		Thread.sleep(2000);
@@ -259,18 +279,17 @@ public void CannotregisterDuplicateswithDifferentTicket(String Email, String Fna
 	waitForElementToPresent(register);
 	click(register,"Register");
 	Thread.sleep(2000);
-	selectUsingIndex(noOfTickets1,1,"1");
-	Thread.sleep(2000);
-	selectUsingIndex(noOfTickets2,1,"1");
+	selectUsingIndex(noOfTickets,2,"1");
+	Thread.sleep(4000);
 	type(emailId1,Email,"Email Of registered");
 	type(firstName, Fname, "First name");
 	type(lastName, Lname, "Last name");
-	Thread.sleep(3000);
+	Thread.sleep(4000);
 	type(emailId2,Email,"Email Of registered");
 	type(firstName2, Fname, "First name");
 	type(lastName2, Lname, "Last name");
-	
 	click(booknow,"Book Now");
+
 	waitForElementToPresent(error);
 	System.out.println(error);
 	

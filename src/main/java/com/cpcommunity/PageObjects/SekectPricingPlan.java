@@ -47,7 +47,9 @@ public class SekectPricingPlan extends BasePage {
 		}		}
 		//click(withoutsetup, "without setup plan");
 		//Thread.sleep(3000);
-		click(next, "Next");
+		scrollToElement(next);
+		//click(next, "Next");
+		clickElementByJavaScript(next);
 		return (MakePaymentPage) openPage(MakePaymentPage.class);
 		
 	}

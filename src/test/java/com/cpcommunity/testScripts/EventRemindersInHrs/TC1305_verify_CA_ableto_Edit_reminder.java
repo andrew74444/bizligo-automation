@@ -36,8 +36,8 @@ public class TC1305_verify_CA_ableto_Edit_reminder extends BaseTest{
         CEE.editDetail();
         CEE.Addtickets(data.get("ticketName"), data.get("ticketquantity"));
         CEE.editReminder(data.get("Reminder"));
-        CEE.AddField1(data.get("Label"), data.get("order"),data.get("type"));		
-        CEE.publish();	
+       // CEE.AddField1(data.get("Label"), data.get("order"),data.get("type"));		
+      CEE.publish2();	
 	
 }
 }
