@@ -32,7 +32,7 @@ public class TC1107_Verify_Member_Cannot_ableTo_See_CareersPage_without_Joining_
 	LoginPage login = home.clickOnLOGINBtn();
     MyDashboardPage MDP=login.loginToMemberdashboard(data.get("email"), data.get("password"));
     GlobalCommunitesPage GCP=MDP.naviagtingToGlobalCommunities();
-    GCP.searchCommunity(data.get("Community"));
+   GCP.searchCommunity(data.get("Community"));
     GCP.CheckcareerMenuNotPresent();
    
 	}

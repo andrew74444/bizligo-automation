@@ -80,6 +80,8 @@ public class GlobalCommunitesPage extends BasePage {
 	WebElement YesProceed;
 	@FindBy(xpath = "((//*[@class='cmt-groups'])[1])//*[contains(text(),'Join')]")
 	WebElement join;
+	@FindBy(xpath = "//div[@class='communities-box ng-scope col-lg-4 col-md-12 col-sm-12']//div[@id='info-card-id']//div[@class='group-cont']//div[@class='row']//a//div[@class='col-sm-12 category-img']//div[@class='category-background']//div//strong[contains(text(),'Join')]")
+	WebElement join1;
 	@FindBy(xpath = "//button[contains(.,'Cancel')]")
 	WebElement Cancel;
 	@FindBy(xpath = "//button[contains(.,'Leave')]")
@@ -149,7 +151,7 @@ public class GlobalCommunitesPage extends BasePage {
 	WebElement managetocommunity;
 	@FindBy(xpath = "//div[@class='swal-text']")
 	WebElement msgCannotApply;
-	@FindBy(xpath = "//div[@class='communities-box ng-scope col-lg-4 col-md-12 col-sm-12']//h4")
+	@FindBy(xpath = "//a[contains(text(),\"Bulk Drug Manufacturers Association India(BDMAI)\")]")
 	WebElement BDMAIcomm;
 	@FindBy(xpath = "//div[@class='col-sm-12 cm-group-name']")
 	WebElement BDMAIcomm1;
@@ -213,7 +215,7 @@ public class GlobalCommunitesPage extends BasePage {
     
     public TenantAdminDashboardPage navigateToTenantAdminDashboardPage() throws Exception {
     	click(Toggledropdownmenu,"Toggledropdownmenu");
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
 		waitForElementToPresent(TAmodule);
 		click(TAmodule,"Dashboard");		
 		return (TenantAdminDashboardPage) openPage(TenantAdminDashboardPage.class);
@@ -221,9 +223,10 @@ public class GlobalCommunitesPage extends BasePage {
 	}
     
     public EventsPage navigatetoEventsPagee() throws InterruptedException {
-		waitForElementToPresent(bizligo);
-		click(bizligo,"Bizligo 1");
-		Thread.sleep(8000);
+		//waitForElementToPresent(bizligo);
+		//click(bizligo,"Bizligo 1");
+		//Thread.sleep(8000);
+		waitForElementToPresent(events);
 		click(events, "Events");
 	return (EventsPage) openPage(EventsPage.class);	
 	}
@@ -352,7 +355,7 @@ public class GlobalCommunitesPage extends BasePage {
 	}
 
 	public void clickOnJoin() {
-		click(join, "join");
+		click(join1, "join1");
 
 	}
 	
@@ -558,9 +561,10 @@ public class GlobalCommunitesPage extends BasePage {
 		searchName.clear();
 		type(searchName, CommunityName, "search");
 		click(searchBtn, "search Btn");
-		Thread.sleep(5000);
+		waitForElementToPresent(BDMAIcomm);
+		click(BDMAIcomm, "BDMAI");
 		//waitForElementToPresent(driver.findElement(By.xpath("//a[contains(text(),'" + CommunityName + "')]")));
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
 	}
 	
 	public SelectPlanPage navigatetoselectPlanPage() throws InterruptedException {
@@ -612,14 +616,17 @@ public class GlobalCommunitesPage extends BasePage {
 		Thread.sleep(5000);
 	return (MembersPage) openPage(MembersPage.class);	
 	}
+	
 	public EventsPage gotoGuestEventPage() throws InterruptedException {
-		waitForElementToPresent(BDMAIcomm1);
-		click(BDMAIcomm1, "BDMAI");	
-		Thread.sleep(5000);
+		//waitForElementToPresent(BDMAIcomm1);
+		//click(BDMAIcomm1, "BDMAI");	
+		//Thread.sleep(5000);
+		waitForElementToPresent(Cancel1);
 		click(Cancel1, "Cancelbutton");
 		click(events, "Events");
 	return (EventsPage) openPage(EventsPage.class);	
 	}
+	
 	public EventsPage gotoEventPage() throws InterruptedException {
 		waitForElementToPresent(BDMAIcomm1);
 		click(BDMAIcomm1, "BDMAI");	
@@ -629,18 +636,20 @@ public class GlobalCommunitesPage extends BasePage {
 	}
 	
 	public GlobalCareers gotoGuestCareerPage() throws InterruptedException {
-		waitForElementToPresent(BDMAIcomm1);
-		click(BDMAIcomm1, "BDMAI");	
-		Thread.sleep(5000);
+		//waitForElementToPresent(BDMAIcomm1);
+		//click(BDMAIcomm1, "BDMAI");
+		//Thread.sleep(5000);
+		waitForElementToPresent(Cancel1);
 		click(Cancel1, "Cancelbutton");
 		click(careers, "Careers");
 	return (GlobalCareers) openPage(GlobalCareers.class);	
 	}
 	
 	public GlobalCareers gotoCareerPage() throws InterruptedException {
-		waitForElementToPresent(BDMAIcomm1);
-		click(BDMAIcomm1, "BDMAI");	
-		Thread.sleep(8000);
+		//waitForElementToPresent(BDMAIcomm1);
+		//click(BDMAIcomm1, "BDMAI");	
+		//Thread.sleep(8000);
+		waitForElementToPresent(careers);
 		click(careers, "Careers");
 	return (GlobalCareers) openPage(GlobalCareers.class);	
 	}
@@ -656,10 +665,12 @@ public class GlobalCommunitesPage extends BasePage {
     	
 }
 	public Discussions GotoGuestDiscussionPage() throws InterruptedException {
-		waitForElementToPresent(BDMAIcomm1);
-		click(BDMAIcomm1, "BDMAI");	
-		Thread.sleep(5000);
+		//waitForElementToPresent(BDMAIcomm1);
+		//click(BDMAIcomm1, "BDMAI");	
+		//Thread.sleep(5000);
+		waitForElementToPresent(Cancel1);
 		click(Cancel1, "Cancelbutton");
+		waitForElementToPresent(discussion);
 		click(discussion, "discussion");
 		return (Discussions) openPage(Discussions.class);
 	    	
@@ -676,12 +687,12 @@ public class GlobalCommunitesPage extends BasePage {
 		
 }
 	public Discussions navigatetoDiscussionPage() throws InterruptedException {
-		waitForElementToPresent(Testingcomm);
+		//waitForElementToPresent(Testingcomm);
 		//click(Testingcomm, "18-02-2021 -testing");	
-		clickElementByJavaScript(Testingcomm);
+		//clickElementByJavaScript(Testingcomm);
 		waitForElementToPresent(discussion );
 		click(discussion, "resources");
-       Thread.sleep(8000);
+       //Thread.sleep(8000);
        return (Discussions) openPage(Discussions.class);	
 		
 }
@@ -713,7 +724,6 @@ public class GlobalCommunitesPage extends BasePage {
     	String actual="Careers";
     	System.out.println("Careers is not Present for Member  without Joining Private Community ");
     	Assert.assertNotEquals(actual, expected, "Career is not present");
-		
 		
 	}
 
@@ -880,7 +890,8 @@ public class GlobalCommunitesPage extends BasePage {
 	public void checkInActivatedCommunityIsNotDisplayed(String communityName) throws Exception {
 		//communityName = communityName+getDateInDDMMMYYYY();
 		type(searchName, communityName, "search");
-		Thread.sleep(10000);
+		//Thread.sleep(10000);
+		waitForElementToPresent(searchBtn);
 		click(searchBtn, "search Btn");
 		waitForElementToPresent(noCommunitiesfound);
 		Thread.sleep(2000);
@@ -931,8 +942,8 @@ public class GlobalCommunitesPage extends BasePage {
 	public void checkCareerPage() throws InterruptedException {
 		waitForElementToPresent(actionEdge);
 		click(actionEdge,"Action Edge Community");
-		Thread.sleep(3000);
-		//waitForElementToPresent(actionEdge);
+		//Thread.sleep(3000);
+		waitForElementToPresent(careers);
 		click(careers,"Careers");	
 		if(searchByJobTitle.isDisplayed() && searchByJobType.isDisplayed() && location.isDisplayed()) {
 			System.out.println("Member can see careers of community even if not a part of it.");
@@ -942,16 +953,18 @@ public class GlobalCommunitesPage extends BasePage {
 	public void nonMemberApplyJob(String JobTitle) throws InterruptedException {
 		waitForElementToPresent(actionEdge);
 		click(actionEdge,"Action Edge Community");
-		Thread.sleep(3000);
-		//waitForElementToPresent(actionEdge);
+		//Thread.sleep(3000);
+		waitForElementToPresent(careers);
 		click(careers,"Careers");
 		type(searchByJobTitle,JobTitle,JobTitle);
 		click(searchCareer,"Search");
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
+		waitForElementToPresent(ViewandApply);
 		click(ViewandApply,"view and apply");
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
+		waitForElementToPresent(Apply);
 		click(Apply,"Apply");
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 		System.out.println(msgCannotApply.getText());
 		if(msgCannotApply.getText().equalsIgnoreCase("Please join this community to apply for these jobs.")) {
 			Assert.assertTrue(true);
@@ -961,25 +974,31 @@ public class GlobalCommunitesPage extends BasePage {
 	}	
 	public void searchCommunityTA(String CommunityName) throws Exception {
 		searchName.clear();
+		CommunityName = CommunityName+getDateInDDMMMYYYY();
 		type(searchName, CommunityName, "search");
 		click(searchBtn, "search Btn");
-		Thread.sleep(8000);
+		//Thread.sleep(8000);
 		waitForElementToPresent(driver.findElement(By.xpath("//a[contains(text(),'" + CommunityName + "')]")));
 		Assert.assertTrue(true);
 
 	}
+	
 	public void searchInactiveCommunityTA(String CommunityName) throws Exception {
 		searchName.clear();
 		type(searchName, CommunityName, "search");
 		click(searchBtn, "search Btn");
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 		if(noCommunitiesfound.getText().equalsIgnoreCase("no communities found")) {
 			System.out.println("Inactive communities are not visible in Global Communities");
 		}else System.out.println("Inactive communities are visible in Global Communities");
 	}
-    public void communityJoin(String communityName) throws Exception {
+	
+    public void communityJoin(String CommunityName) throws Exception {
 		
-		this.searchCommunity(communityName);
+    	CommunityName = CommunityName+getDateInDDMMMYYYY();
+    	type(searchName, CommunityName, "CommunityName");
+    	click(searchBtn, "search Btn");
+    	//this.searchCommunity(CommunityName);
 		this.clickOnJoin();
 		waitForElementToPresent(YesProceed);
 		click(YesProceed, "Yes Proceed");
@@ -988,7 +1007,7 @@ public class GlobalCommunitesPage extends BasePage {
 		// AssertionHelper.verifyText(waitingForApproval.getText(), "Your join request
 		// is waiting for approval");
 		OKbtn.click();
-		Thread.sleep(7000);
+		//Thread.sleep(5000);
 
 	}
 

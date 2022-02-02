@@ -109,11 +109,11 @@ public class Create_UpdateGroupPage extends BasePage {
 		// new ManageGroupsPage(driver, );
 	}
 
-	public ManageGroupsPage editGroup(String Name, String Description, String City, String State, String GroupType, String LogoImagePath ) throws Exception {
+	public GroupDetailsPage editGroup(String Name, String Description, String City, String State, String GroupType, String LogoImagePath ) throws Exception {
 
 		this.fillGroupDetails(Name, Description, City, State,  GroupType, LogoImagePath);
 		click(Save, "Save");
-		return (ManageGroupsPage) openPage(ManageGroupsPage.class);
+		return (GroupDetailsPage) openPage(GroupDetailsPage.class);
 		// new ManageGroupsPage(driver, );
 
 	}
@@ -174,16 +174,18 @@ public class Create_UpdateGroupPage extends BasePage {
 		Thread.sleep(10000);
 		picture();
 	}
+	
 	public GroupDetailsPage updateGroup(String Name, String Description, String City, String State,
 	        String GroupType, String logoImagePath,String newGroupName ) throws Exception
 	{
 	    this.fillGroupDetails(Name, Description, City, State,  GroupType, logoImagePath);
 	    type(this.Name, newGroupName+" "+getDate(), "new Group Name");
 	    click(Save, "Save");
-	    return (GroupDetailsPage) openPage(GroupPage.class);
+	    return (GroupDetailsPage) openPage(GroupDetailsPage.class);
 	}
+	
 	public GroupPage navigateToGroupPage() throws InterruptedException {
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 		waitForElementToPresent(BDMAIHomePage);
 		click(BDMAIHomePage, "HomePage");
 		waitForElementToPresent(Groups);

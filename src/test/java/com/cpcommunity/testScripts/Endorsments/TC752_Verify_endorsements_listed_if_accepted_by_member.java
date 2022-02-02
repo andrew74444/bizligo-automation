@@ -1,43 +1,45 @@
-package com.cpcommunity.Endorsments;
+package com.cpcommunity.testScripts.Endorsments;
 
 import java.util.Hashtable;
 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
-import com.cpcommunity.PageObjects.EcoSystemPage;
-import com.cpcommunity.PageObjects.EndorsementPage;
+import com.cpcommunity.PageObjects.BasePage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
+import com.cpcommunity.PageObjects.MemberDirectoryPage;
 import com.cpcommunity.PageObjects.MyCommunitiesPage;
-import com.cpcommunity.PageObjects.MyDashboardPage;
+import com.cpcommunity.PageObjects.ProfilePage;
 import com.cpcommunity.testScripts.community.BaseTest;
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.DataUtil;
 import com.cpcommunity.utilities.ExcelReader;
 
-public class TC1042_Verify_EndorsmentCount_IsDisplaying_for_PendingEndorsment extends BaseTest{
+public class TC752_Verify_endorsements_listed_if_accepted_by_member extends BaseTest{
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC1042(Hashtable<String,String> data) throws Exception {
- //
+	public void TC752(Hashtable<String,String> data) throws Exception {
+
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC1042", data.get("Runmode"), excel);
-		log.info("Inside Login Test");			
+		DataUtil.checkExecution("master", "TC752", data.get("Runmode"), excel);
+		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
-		logInfo("Launched Browser : "+ data.get("browser"));		
+		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
-		EcoSystemPage ecosystemp = login.loginToApplication(data.get("email"), data.get("password"));
-		//MyDashboardPage dashboard= ecosystemp.gotoMyDashboardPage();
-		ecosystemp.Totalendorsments();
-		
-	}
+		MyCommunitiesPage MyCP = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
+		MemberDirectoryPage MDP=MyCP.gotoMemberDirectoryPage();
+		ProfilePage PP=MDP.MemberWithRejectedEndorsement(data.get("Name"));
+	PP.IsEndorsementtDisplayed(data.get("EndorsementMessage"));
+
+
+}
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("TC1042 Test Completed");
+		logInfo("TC752 Test Completed");
 		
 		quit();
 		

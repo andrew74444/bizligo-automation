@@ -14,7 +14,7 @@ import java.io.IOException;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
-
+import com.mongodb.MongoWaitQueueFullException;
 import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
 
 public class MyProfilePage extends BasePage {
@@ -249,7 +249,8 @@ public class MyProfilePage extends BasePage {
 		picture();
 //		new TestBase().captureScreen(, driver);
 		scrollIntoView(FirstName);
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
+		waitForElementToPresent(FirstName);
 		type(FirstName, FName, "FirstName");
 		type(LastName, LName, "LastName");
 		type(JobTitle, jtitle, "JobTitle");
@@ -268,22 +269,17 @@ public class MyProfilePage extends BasePage {
 
 	public boolean UpdateProfile() throws Exception {
 		scrollIntoView(MyProfileSaveBtn);
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
+		waitForElementToPresent(MyProfileSaveBtn);
 		clickElementByJavaScript(MyProfileSaveBtn);
 		// *[contains(text(),'Save')]
-		Thread.sleep(4000);
+		//Thread.sleep(4000);
 		picture();
 //		new TestBase().captureScreen(, driver);
 //		waitHelper.waitForElementToPresent(profileSuccessPopup, 100);
 //		if (profileSuccessPopup.getText().equalsIgnoreCase("Profile updated successfully")) {
-////			
-//		{
+			
 		return true;
-//		}
-//		}
-//		{
-//			return false;
-//		}
 
 	}
 
@@ -294,12 +290,12 @@ public class MyProfilePage extends BasePage {
 		boolean PEmail = PrivateEmail.isSelected();
 		if (PEmail) {
 			click(MyProfileCancelBtn, "MyProfileCancelBtn");
-			Thread.sleep(1000);
+			//Thread.sleep(1000);
 			return PEmail;
 		} else {
 
 			click(PrivateEmail, "PrivateEmail");
-			Thread.sleep(1000);
+			//Thread.sleep(1000);
 			boolean status = this.UpdateProfile();
 			return status;
 
@@ -312,8 +308,8 @@ public class MyProfilePage extends BasePage {
 		click(PublicRdnBtn, "PublicRdnBtn");
 		boolean PEmail = PrivateEmail.isSelected();
 		if (PEmail) {
-			Thread.sleep(1000);
-
+			//Thread.sleep(1000);
+	
 			click(PrivateEmail, "PrivateEmail");
 			boolean status = this.UpdateProfile();
 			return status;
@@ -344,7 +340,7 @@ public class MyProfilePage extends BasePage {
 		else {
 
 			click(PrivatePhoneNo, "PrivatePhoneNo");
-			Thread.sleep(1000);
+			//Thread.sleep(1000);
 			boolean Status = this.UpdateProfile();
 			return Status;
 		}
@@ -362,9 +358,10 @@ public class MyProfilePage extends BasePage {
 //		new TestBase().captureScreen(, driver);
 		boolean PEmail = PrivatePhoneNo.isSelected();
 		if (PEmail) {
-			Thread.sleep(1000);
+			//Thread.sleep(1000);
+			
 			click(PrivatePhoneNo, "PrivatePhoneNo");
-			Thread.sleep(2000);
+			//Thread.sleep(2000);
 		}
 
 		Boolean status = this.UpdateProfile();
@@ -377,13 +374,15 @@ public class MyProfilePage extends BasePage {
 	public boolean PrivateRadioButton(String PPhone) throws Exception {
 
 		this.clickOnEditButton();
-		Thread.sleep(1000);
+		//Thread.sleep(1000);
+		waitForElementToPresent(Phone);
 		Phone.clear();
 
 		executeScript("arguments[0].value='" + PPhone + "';", Phone);
 		executeScript("arguments[0].scrollIntoView(true);", MyProfileSaveBtn);
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
 		picture();
+		waitForElementToPresent(PrivateRdnBtn);
 		click(PrivateRdnBtn, "PrivateRdnBtn");
 		picture();
 		boolean status = this.UpdateProfile();
@@ -397,10 +396,11 @@ public class MyProfilePage extends BasePage {
 
 		executeScript("arguments[0].value='" + PPhone + "';", Phone);
 		executeScript("arguments[0].scrollIntoView(true);", MyProfileSaveBtn);
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
+		waitForElementToPresent(PublicRdnBtn);
 		click(PublicRdnBtn, "PublicRdnBtn");
 		picture();
-		Thread.sleep(1000);
+		//Thread.sleep(1000);
 		return this.UpdateProfile();
 
 	}
@@ -415,9 +415,10 @@ public class MyProfilePage extends BasePage {
 
 		clickElementByJavaScript(AddPortfolioBtn);
 		// AddPortfolioBtn.click();
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 //		new TestBase().captureScreen(, driver);
 		picture();
+		waitForElementToPresent(PortfolioTitle);
 		type(PortfolioTitle, title, "PortfolioTitle");
 
 		type(PortfolioLink, url, "PortfolioLink");
@@ -440,9 +441,10 @@ public class MyProfilePage extends BasePage {
 		// this.scrollToProtfolio();
 		clickElementByJavaScript(EditPortfolioBtn);
 
-		Thread.sleep(1000);
+		//Thread.sleep(1000);
 		picture();
 //		new TestBase().captureScreen(, driver);
+		waitForElementToPresent(PortfolioTitle);
 		PortfolioTitle.clear();
 		PortfolioLink.clear();
 		picture();
@@ -470,8 +472,17 @@ public class MyProfilePage extends BasePage {
 	public boolean DeletePortfolio(String title, String url) throws Exception {
 		// this.scrollToProtfolio();
 		clickElementByJavaScript(DeleteportfolioBtn);
-		Thread.sleep(2000);
+		waitForElementToPresent(SuccessPopup);
+		String Message = SuccessPopup.getText();
+		AssertionHelper.verifyText(Message, "Portfolio Deleted Successfully");
 		picture();
+		
+		if (Message.equalsIgnoreCase("Portfolio Deleted Successfully")) {
+			return true;
+		} else {
+			return false;
+		//Thread.sleep(2000);
+		
 //		new TestBase().captureScreen(, driver);
 
 //		waitHelper.waitForElement(SuccessPopup, 100);
@@ -479,8 +490,8 @@ public class MyProfilePage extends BasePage {
 //		AssertionHelper.verifyText(Message, "Portfolio Deleted Successfully");
 //		new TestBase().captureScreen(, driver);
 //		if (Message.equalsIgnoreCase("Portfolio Deleted Successfully")) 
-		{
-			return true;
+	//	{
+	//		return true;
 		}
 //		return false;
 
@@ -525,7 +536,7 @@ public class MyProfilePage extends BasePage {
 		AddSkills.sendKeys(Keys.ENTER);
 		picture();
 //		new TestBase().captureScreen(, driver);
-		Thread.sleep(1000);
+		//Thread.sleep(1000);
 		return this.clickOnSkillsSavebutton();
 	}
 
@@ -539,11 +550,12 @@ public class MyProfilePage extends BasePage {
 		this.ClickOnEditInterestsBtn();
 		type(AddInterest, interests, "AddInterest");
 
-		Thread.sleep(1000);
+		//Thread.sleep(1000);
+		waitForElementToPresent(AddInterest);
 		AddInterest.sendKeys(Keys.ENTER);
 		picture();
 //		new TestBase().captureScreen(, driver);
-		Thread.sleep(1000);
+		//Thread.sleep(1000);
 		return this.clickOnInterestsSavebutton();
 
 	}
@@ -570,7 +582,7 @@ public class MyProfilePage extends BasePage {
 
 	public boolean DeleteInterests() throws Exception {
 		this.ClickOnEditInterestsBtn();
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 		waitForElementToPresent(DeleteInterestBtn);
 		picture();
 //		new TestBase().captureScreen(, driver);
@@ -756,11 +768,11 @@ public class MyProfilePage extends BasePage {
 
 	WebElement locationStatus;
 
-	@FindBy(xpath = "(//button[@type = 'button'])[7]")
+	@FindBy(xpath = "//button[normalize-space()='Add Location']")
 
 	WebElement addLocation;
 
-	@FindBy(xpath = "//*[contains(@name,'LocationName')]")
+	@FindBy(xpath = "//input[@placeholder='Location Name']")
 
 	WebElement locationName;
 
@@ -778,7 +790,7 @@ public class MyProfilePage extends BasePage {
 
 	// @FindBy(xpath = "(//*[@id='AdditionalInfoCtrl']//I[@class='fa fa-plus'])[2]")
 
-	@FindBy(xpath = "//*[@id=\"AdditionalInfoCtrl\"]/div[5]/div[2]/div/button")
+	@FindBy(xpath = "//button[normalize-space()='Add Member']")
 
 	WebElement addMember;
 
@@ -883,7 +895,7 @@ public class MyProfilePage extends BasePage {
 
 	WebElement organizationservices;
 
-	@FindBy(xpath = "(//button[contains(@type,'button')])[2]")
+	@FindBy(xpath = "//span[@aria-expanded='true']//ul[@class='select2-selection__rendered']")
 
 	WebElement addoffer;
 
@@ -915,7 +927,7 @@ public class MyProfilePage extends BasePage {
 
 	WebElement organizationservicesPage;
 
-	@FindBy(xpath = "(//*[contains(text(),'Services You Offer/Buy')])[2]")
+	@FindBy(xpath = "//h4[normalize-space()='Services You Offer/Buy']")
 
 	WebElement ServiceTitle;
 
@@ -957,45 +969,43 @@ public class MyProfilePage extends BasePage {
 
 		waitForElementToPresent(ServiceTitle);
 
-		Thread.sleep(5000);
-
+		
+		//waitForElementToPresent(addoffer);
 		click(addoffer, "Services you OFFER");
-
-		Thread.sleep(1000);
+		//Thread.sleep(1000);
+		
 
 		Select s = new Select(selectNeed1);
 
 		s.selectByVisibleText("Accounting");
 
-		Thread.sleep(1000);
+		//Thread.sleep(1000);
 
 		Select s1 = new Select(selectNeed2);
 
 		s1.selectByVisibleText("Automotive");
 
-		Thread.sleep(5000);
-
+		//Thread.sleep(5000);
+		waitForElementToPresent(addNeed);
 		click(addNeed, "Services you Need");
 
-		Thread.sleep(1000);
+		//Thread.sleep(1000);
 
 		Select s3 = new Select(SelectOffer1);
 
 		s3.selectByVisibleText("Accounting");
 
-		Thread.sleep(1000);
-
+		//Thread.sleep(1000);
+		waitForElementToPresent(addNeed);
 		click(addNeed, "Services you Need");
 
 		Select s4 = new Select(SelectOffer2);
 
 		s4.selectByVisibleText("Automotive");
 
-		Thread.sleep(2000);
-
 		click(submit, "Submit");
 
-		Thread.sleep(8000);
+		Thread.sleep(1000);
 
 	}
 
@@ -1108,13 +1118,11 @@ public class MyProfilePage extends BasePage {
 	 	
 	         {
 	 	
-	                 click(professionalMatches,"Professional Matches");
-	 	
-	                 Thread.sleep(2000);
-	 	
-	                 waitForElementToPresent(professionalMatchtitle);
-	 	
-	                 click(organizationservicesPage,"Organization Services");
+	                 
+		 waitForElementToPresent(professionalMatches);
+		 click(professionalMatches,"Professional Matches");
+	 	 waitForElementToPresent(organizationservicesPage);
+	 	 click(organizationservicesPage,"Organization Services");
 	 	
 	                 Thread.sleep(5000);
 	 	
@@ -1145,117 +1153,122 @@ public class MyProfilePage extends BasePage {
 	         }
 
 	         
-	         public void additionalInformation(String locationName, String locationAddress, String addressLine1,
-	     			String locationStreetAddress2, String locationCity, String locationState, String locationZip,
-	     			String country, String Phone, String fax) throws Throwable {
+	         public void additionalInformation(String locationName1, String locationAddress1, String addressLine2,
+	     			String locationStreetAddress3, String locationCity1, String locationState1, String locationZip1,
+	     			String country1, String Phone1, String fax1) throws Throwable {
 	     		click(additionalInfo, "AdditionalInformation");
-	     		Thread.sleep(5000);
+	     		//Thread.sleep(5000);
+	     		waitForElementToPresent(addLocation);
 	     		click(addLocation, "AddLocation");
-	     		Thread.sleep(3000);
-	     		type(this.locationName, locationName, "LocationName");
+	     		//Thread.sleep(3000);
+	     		waitForElementToPresent(locationName);
+	     		type(this.locationName, locationName1, "LocationName1");
 	     		Select s = new Select(locationType);
 	     		s.selectByIndex(1);
-	     		Thread.sleep(1000);
-	     		type(this.locationAddress, locationAddress, "LocationAddress");
-	     		Thread.sleep(1000);
-	     		type(this.addressLine1, addressLine1, "AddressLine1");
-	     		Thread.sleep(1000);
-	     		type(this.locationStreetAddress2, locationStreetAddress2, "LocationStreetAddress2");
-	     		Thread.sleep(1000);
-	     		type(this.locationCity, locationCity, "LocationCity");
-	     		Thread.sleep(1000);
-	     		type(this.locationState, locationState, "LocationState");
-	     		Thread.sleep(1000);
-	     		type(this.locationZip, locationZip, "LocationZip");
-	     		Thread.sleep(1000);
-	     		type(this.country, country, "Country");
-	     		Thread.sleep(1000);
-	     		type(this.phone, Phone, "Phone");
-	     		Thread.sleep(1000);
-	     		type(this.fax, fax, "FAX");
+	     		waitForElementToPresent(locationAddress);
+	     		type(this.locationAddress, locationAddress1, "LocationAddress1");
+	     		//Thread.sleep(1000);
+	     		waitForElementToPresent(addressLine1);
+	     		type(this.addressLine1, addressLine2, "AddressLine2");
+	     		//Thread.sleep(1000);
+	     		waitForElementToPresent(locationStreetAddress2);
+	     		type(this.locationStreetAddress2, locationStreetAddress3, "LocationStreetAddress3");
+	     		//Thread.sleep(1000);
+	     		waitForElementToPresent(locationCity);
+	     		type(this.locationCity, locationCity1, "LocationCity1");
+	     		//Thread.sleep(1000);
+	     		waitForElementToPresent(locationState);
+	     		type(this.locationState, locationState1, "LocationState1");
+	     		//Thread.sleep(1000);
+	     		waitForElementToPresent(locationZip);
+	     		type(this.locationZip, locationZip1, "LocationZip1");
+	     		//Thread.sleep(1000);
+	     		waitForElementToPresent(country);
+	     		type(this.country, country1, "Country1");
+	     		//Thread.sleep(1000);
+	     		waitForElementToPresent(phone);
+	     		type(this.phone, Phone1, "Phone1");
+	     		//Thread.sleep(1000);
+	     		waitForElementToPresent(fax);
+	     		type(this.fax, fax1, "FAX1");
+	     		waitForElementToPresent(saveLocation);
 	     		click(saveLocation, "SaveLocation");
-	     		Thread.sleep(5000);
+	     		//Thread.sleep(5000);
 	     	}
 	     	
 	     	
 	     	public void inactiveLocation() throws InterruptedException
 	     	{
 	     		click(additionalInfo, "AdditionalInformation");
-	     		Thread.sleep(2000);
+	     		//Thread.sleep(2000);
+	     		waitForElementToPresent(editLocation);
 	     		click(editLocation,"EditLocation");
-	     		Thread.sleep(3000);
+	     		//Thread.sleep(3000);
+	     		waitForElementToPresent(locationStatus);
 	     		Select s = new Select(locationStatus);
 	     		s.selectByVisibleText("InActive");
 	     		click(update,"Update");
-	     		Thread.sleep(5000);
+	     		//Thread.sleep(5000);
 	     		
 	     	}
 	     	
-	     	public void updateLocation(String locationName, String locationAddress, String addressLine1,
+public void updateLocation(String locationName1, String locationAddress, String addressLine1,
 	     			String locationStreetAddress2, String locationCity, String locationState, String locationZip,
 	     			String country, String Phone, String fax) throws Throwable {
 	     		
 	     		click(additionalInfo, "AdditionalInformation");
-	     		Thread.sleep(5000);
-	     		
+	     		//Thread.sleep(5000);
+	     		waitForElementToPresent(editLocation);
 	     		click(editLocation,"EditLocation");
-	     		Thread.sleep(3000);
+	     		//Thread.sleep(3000);
 	     		
 	     		this.locationName.clear();
-	     		Thread.sleep(2000);
-	     		type(this.locationName, locationName, "LocationName");
+	     		//Thread.sleep(2000);
+	     		waitForElementToPresent(locationName);
+	     		type(this.locationName, locationName1, "LocationName1");
 	     		
 	     		Select s = new Select(locationType);
 	     		s.selectByIndex(2);
 	     		
 	     		
 	     		this.locationAddress.clear();
-	     		Thread.sleep(1000);
+	     		//Thread.sleep(1000);
 	     		type(this.locationAddress, locationAddress, "LocationAddress");
 	     		
 	     		this.addressLine1.clear();
-	     		Thread.sleep(1000);
+	     		//Thread.sleep(1000);
 	     		type(this.addressLine1, addressLine1, "AddressLine1");
 	     		
 	     		this.locationStreetAddress2.clear();
-	     		Thread.sleep(1000);
+	     		//Thread.sleep(1000);
 	     		type(this.locationStreetAddress2, locationStreetAddress2, "LocationStreetAddress2");
 	     		
 	     		
 	     		this.locationCity.clear();
-	     		Thread.sleep(1000);
+	     		//Thread.sleep(1000);
 	     		type(this.locationCity, locationCity, "LocationCity");
 	     		
 	     		this.locationState.clear();
-	     		Thread.sleep(1000);
+	     		//Thread.sleep(1000);
 	     		type(this.locationCity, locationCity, "LocationCity");
 	     		
-	     		
-	     		
-	     		
-	     		
+	     		  		
 	     		this.locationZip.clear();
-	     		Thread.sleep(1000);
+	     		//Thread.sleep(1000);
 	     		type(this.locationZip, locationZip, "LocationZip");
 	     		
 	     		this.country.clear();
-	     		Thread.sleep(1000);
+	     		//Thread.sleep(1000);
 	     		type(this.country, country, "Country");
 	     		
 	     		this.phone.clear();
-	     		Thread.sleep(1000);
+	     		//Thread.sleep(1000);
 	     		type(this.phone, Phone, "Phone");
 	     		
 	     		click(update,"Update");
 	     		
-	     		
-	     		
-	     		
-	     		
-	     		
-	     	
 	     		//click(saveLocation, "SaveLocation");
-	     		Thread.sleep(5000);
+	     		//Thread.sleep(5000);
 	     		
 	     	}
 	     	
@@ -1276,30 +1289,30 @@ public class MyProfilePage extends BasePage {
 	     		click(additionalInfo, "AdditionalInformation");
 	     	   
 	     		waitForElementToPresent(addMember);
-	     		updateClass(pageheader, "");
-	     		scrollToElement(addMember);
+	     		//updateClass(pageheader, "");
+	     		//scrollToElement(addMember);
 	     		click(addMember, "AddMember");
-	     		Thread.sleep(2000);
+	     		//Thread.sleep(2000);
 	     		type(this.firstName, firstName, "FirstName");
-	     		Thread.sleep(2000);
+	     		//Thread.sleep(2000);
 	     		type(this.lastName, lastName, "LastName");
-	     		Thread.sleep(1000);
+	     		//Thread.sleep(1000);
 	     		type(this.job, job, "Job");
-	     		Thread.sleep(1000);
+	     		//Thread.sleep(1000);
 	     		emailAddress = emailAddress.replace("@gmail.com", "");
 	     		emailAddress = emailAddress+"+"+currentTime()+"@gmail.com";
 	     		type(this.emailAddress, emailAddress, "EmailAddress");
-	     		Thread.sleep(1000);
+	     		//Thread.sleep(1000);
 	     		type(this.password, password, "Password");
-	     		Thread.sleep(1000);
+	     		//Thread.sleep(1000);
 	     		type(this.confirmPassword, confirmPassword, "Confirm Password");
-	     		Thread.sleep(1000);
+	     		//Thread.sleep(1000);
 	     		Select s = new Select(contactType);
 	     		s.selectByIndex(1);
-	     		Thread.sleep(2000);
+	     		//Thread.sleep(2000);
 	     		Select s1 = new Select(selectLocation);
 	     		s1.selectByIndex(1);
-	     		Thread.sleep(2000);
+	     		//Thread.sleep(2000);
 	     		click(saveMember, "SaveMember");
 	     	}
 	     	

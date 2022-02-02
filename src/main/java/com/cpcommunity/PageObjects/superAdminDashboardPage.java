@@ -30,7 +30,8 @@ public class superAdminDashboardPage extends BasePage {
 	WebElement featuresConfiguration;
 	//
 	public SuperAdminFeatureConfigurationPage goToFeatureConfigurationsPage() throws InterruptedException {
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
+		waitForElementToPresent(configuration);
 		click(configuration, "configuration");
 		waitForElementToPresent(featuresConfiguration);
 		click(featuresConfiguration, "features Configuration");

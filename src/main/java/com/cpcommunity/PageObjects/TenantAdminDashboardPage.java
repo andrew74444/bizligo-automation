@@ -162,7 +162,8 @@ public class TenantAdminDashboardPage extends BasePage{
 	public ManageCommunitiesPage navigatetomanageCommunities() throws Exception {
         waitForElementToPresent(communities);
 		click(communities, "Members");
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
+		waitForElementToPresent(Managecommunities);
 		click(Managecommunities, "Manage Members");
 		return (ManageCommunitiesPage) openPage(ManageCommunitiesPage.class);
 		// new ManageCommunityMembersPage(driver);
@@ -181,7 +182,8 @@ public class TenantAdminDashboardPage extends BasePage{
 	public PendingCommunitiesPage navigatetopendingCommunities1() throws Exception {
 		waitForElementToPresent(communities);
 		click(communities, "Members");
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
+		waitForElementToPresent(pendingCommunities);
 		click(pendingCommunities, "pending Communities");
 		return (PendingCommunitiesPage) openPage(PendingCommunitiesPage.class);
 		// new ManageCommunityMembersPage(driver);
@@ -422,7 +424,7 @@ public void goHomePage() throws InterruptedException {
     		Thread.sleep(3000);
     		//clickElementByJavaScript(home);
     		//click(home, "home");
-    		Thread.sleep(1000);
+    		//Thread.sleep(1000);
     		return (HomePage) openPage(HomePage.class);
 
     	}
@@ -467,7 +469,8 @@ public void goHomePage() throws InterruptedException {
      public PendingCommunitiesPage navigatetopendingCommunities() throws Exception {
     	 waitForElementToPresent(communities);
     	 click(communities, "Members");
-    	 Thread.sleep(2000);
+    	 //Thread.sleep(2000);
+    	 waitForElementToPresent(pendingCommunities);
     	 click(pendingCommunities, "pending Communities");
     	 return (PendingCommunitiesPage) openPage(PendingCommunitiesPage.class);
     	 // new ManageCommunityMembersPage(driver);

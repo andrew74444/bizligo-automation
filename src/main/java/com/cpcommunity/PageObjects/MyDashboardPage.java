@@ -39,14 +39,15 @@ public class MyDashboardPage extends BasePage{
 	@FindBy(xpath="//*[contains(text(),'Blog')]")
 	WebElement blog;
 	
-	@FindBy(xpath = "//a[contains(text(),'testimonials')]")
+	@FindBy(xpath = "//a[normalize-space()='Testimonial']")
 	WebElement testimonialsPage;
 	
 	@FindBy(xpath = "//h2[contains(text(),'Sorry, the page or event you are looking for was n')]")
 	WebElement errorPage;
 	
-	@FindBy(xpath = "//h2[normalize-space()='MY ECOSYSTEM']")
-    WebElement myDashboard;
+	//@FindBy(xpath = "//h2[normalize-space()='MY ECOSYSTEM']")
+	@FindBy(xpath = "//div[@class='member-page-heading bg-info text-uppercase']")
+	WebElement myDashboard;
 
 	@FindBy(xpath="//div[normalize-space()='My Advertisements']")
 	WebElement myAdvertisements;
@@ -57,13 +58,13 @@ public class MyDashboardPage extends BasePage{
 	WebElement menu;
 
 	
-	// @FindBy(xpath = "//li[@ng-if='(!appData.IsInEventManagerRole) && (appData.IsGroupActive)']")
-	// WebElement LeaveBtn;
+	@FindBy(xpath = "(//strong[contains(text(),'Leave')])[1]")
+	WebElement LeaveBtn;
 
 	@FindBy(xpath = "//button[contains(.,'Search')]")
     WebElement searchbtn;
 
-	//@FindBy(xpath="")
+	
 	@FindBy(xpath = "//body//div[@id='header']//div//div//div//div//div//div//div[1]")
 	WebElement Toggledropdownmenu;
 	@FindBy (xpath="//*[@id='toast-container']/div/div[3]")
@@ -81,8 +82,7 @@ public class MyDashboardPage extends BasePage{
 	WebElement TotalendorsCount;
 	
 	//*************************************Groups****************************************
-	//@FindBy (xpath = "//*[contains(text(),'My Groups')]")
-   // WebElement myGroups;
+
 	@FindBy(xpath="//div[@class='huge'])[2]")
 	WebElement myGroupsCount;
 	@FindBy(xpath="//*[contains(text(),'My Communities')]")
@@ -152,10 +152,10 @@ public class MyDashboardPage extends BasePage{
 	@FindBy(xpath="//span[contains(text(),'Global Events')]")
 	WebElement globalEvents;
 
-	// @FindBy(xpath = "//button[contains(.,'Yes,Proceed')]")
-	//WebElement YesProceed;
-  //  @FindBy(xpath = "//button[contains(.,'Ok')]")
-   // WebElement BtnOK;
+	@FindBy(xpath = "//button[contains(.,'Yes,Proceed')]")
+	WebElement YesProceed;
+  @FindBy(xpath = "//button[normalize-space()='OK']")
+   WebElement BtnOK;
     @FindBy(xpath = "//div[@class='swal-text']")
    	WebElement makeAnothergroupAdminAlertMeassge;
    
@@ -174,7 +174,7 @@ public class MyDashboardPage extends BasePage{
 	//WebElement myReminders;
 	
 	@FindBy(xpath = "//a[@title='Go to My Reminders']//div[@class='clearfix']")
-	WebElement myReminders;//div[normalize-space()='My Reminders']
+	WebElement myReminders;
 
 	@FindBy(xpath = "//*[contains(text(),'Create')]")
 	WebElement createTask;
@@ -224,7 +224,7 @@ public class MyDashboardPage extends BasePage{
 	@FindBy(xpath = "//*[@class='btn-link dropstyles']")
 	WebElement delete;
 	
-	@FindBy(xpath = "//span[contains(text(),'Testimonials')]")
+	@FindBy(xpath = "//span[@class='pull-left'][normalize-space()='Testimonials']")
 	WebElement testimonials;
 	
 	@FindBy(xpath = "(//*[contains(text(),'Blog')])[1]")
@@ -239,7 +239,7 @@ public class MyDashboardPage extends BasePage{
 	@FindBy (xpath="//*[contains(text(),'My Jobs')]")
 	WebElement myJobs;
 	
-/*	@FindBy(xpath="//span[normalize-space()='18-02-2021 -Testing']")
+	@FindBy(xpath="//span[normalize-space()='18-02-2021 -Testing']")
 	WebElement Testingcommunity;
 	
 	@FindBy(xpath="//span[normalize-space()='Resources']")
@@ -255,13 +255,13 @@ public class MyDashboardPage extends BasePage{
 	WebElement CommunityName ;
 	
 	@FindBy(xpath="//span[normalize-space()='Groups']")
-	WebElement group ;*/
+	WebElement group ;
 	
 	@FindBy(xpath="//div[@class='post-box']//div[2]//div[1]//div[1]//div[1]//div[1]//div[1]//div[1]//div[2]//button[1]//strong[1]")
 	WebElement join ;
 	
-//	@FindBy(xpath="//div[@class='cmt-groups']//div[@class='clearfix']")
-//	WebElement joinedMessage ;
+@FindBy(xpath="//div[@class='cmt-groups']//div[@class='clearfix']")
+WebElement joinedMessage ;
 	
 	@FindBy(xpath="//div[@class='MessagenotificationBadge']")
 	WebElement msgnotification ;
@@ -530,13 +530,13 @@ public ManageAdPlansPage goToManageAdPlansPage() {
 		//scrollIntoView(LeaveBtn);
 		waitForElementToPresent(myGroups);
 		myGroups.click();		
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
 		waitForElementToPresent(LeaveBtn);
 		click(LeaveBtn, "leave");
-		takeScreenshotByShutterBug(LeaveBtn, "Leave Btn");
-		waitForElementToPresent(YesProceed);
-		takeScreenshotByShutterBug(YesProceed, "Yes Proceed");
-		click(YesProceed, "Yes Proceed");
+		//takeScreenshotByShutterBug(LeaveBtn, "Leave Btn");
+		//waitForElementToPresent(YesProceed);
+		//takeScreenshotByShutterBug(YesProceed, "Yes Proceed");
+		//click(YesProceed, "Yes Proceed");
 		waitForElementToPresent(BtnOK);
 		takeScreenshotByShutterBug(BtnOK, "Ok");
 		click(BtnOK, "Ok");
@@ -566,16 +566,17 @@ public ManageAdPlansPage goToManageAdPlansPage() {
 	{
 		Actions action = new Actions(driver);
 		 // action.moveToElement(others).perform();
-		  Thread.sleep(1000);
+		 // Thread.sleep(1000);
 		  action.moveToElement(testimonialsPage).click().perform();
 		return (TestimonialsVerifyPage) openPage(TestimonialsVerifyPage.class);
 	}
+	
 	
 	public void testimonialEnabled() throws InterruptedException
 	{
 		Actions action = new Actions(driver);
 		  action.moveToElement(testimonialsPage).click().perform();
-		  Thread.sleep(2000);
+		  //Thread.sleep(2000);
 		  waitForElementToPresent(testimonialsPage); 
 	}
 	
@@ -583,9 +584,10 @@ public ManageAdPlansPage goToManageAdPlansPage() {
 	{
 		Actions action = new Actions(driver);
 		  //action.moveToElement(others).perform();
-		  Thread.sleep(2000);
+		  //Thread.sleep(2000);
+		waitForElementToPresent(testimonialsPage);
 		  action.moveToElement(testimonialsPage).click().perform();
-		  Thread.sleep(2000);
+		  //Thread.sleep(2000);
 		  waitForElementToPresent(errorPage);
 		 	 
 	}
@@ -638,7 +640,7 @@ public ManageAdPlansPage goToManageAdPlansPage() {
 	public MyDashboardPage navigateToMyDashBoard() throws InterruptedException
 	{
 		click(Toggledropdownmenu,"Toggledropdownmenu");
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 		waitForElementToPresent(Dashboard);
 		click(Dashboard,"Dashboard");		
 		return (MyDashboardPage) openPage(MyDashboardPage.class);
@@ -666,13 +668,10 @@ public ManageAdPlansPage goToManageAdPlansPage() {
 	public TestimonialsPage naviagtingToTestimonials() throws Exception 
 	{
 		
-		//clickElementByJavaScript(testimonials);
-		//waitForElementToPresent(testimonials);
-		//JavascriptExecutor jse = (JavascriptExecutor)driver;
-		//jse.executeScript("scroll(0, 500);")
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
+		waitForElementToPresent(testimonials);
 		click(testimonials, "Testimonials");
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 		return (TestimonialsPage) openPage(TestimonialsPage.class);
 //		new GlobalCommunitesPage(driver, );
 		
@@ -688,9 +687,9 @@ public ManageAdPlansPage goToManageAdPlansPage() {
 	
    public GlobalCommunitesPage naviagtingToGlobalCommunities() throws Exception
 	{ 
-		driver.manage().timeouts().implicitlyWait(1200, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(1200, TimeUnit.SECONDS);
 		clickElementByJavaScript(globalCommunities);
-		Thread.sleep(6000);
+		//Thread.sleep(6000);
 		return (GlobalCommunitesPage) openPage(GlobalCommunitesPage.class);
 //		new GlobalCommunitesPage(driver, );
 		
@@ -892,7 +891,7 @@ public MyGroupsPage navigateToMyGroupsPage() {
 	}
 
 
-	public ResourcesPage goToBDMAIResouces(String Community) {
+/*	public ResourcesPage goToBDMAIResouces(String Community) {
 
 		waitForElementToPresent(globalCommunities);
 		click(globalCommunities, "Global Communities");
@@ -901,7 +900,7 @@ public MyGroupsPage navigateToMyGroupsPage() {
 		waitForElementToPresent(CommunityName);
 
 		return (ResourcesPage) openPage(ResourcesPage.class);
-  }
+  }*/
 	
 
 	
@@ -1333,7 +1332,7 @@ public MyGroupsPage navigateToMyGroupsPage() {
 		return new VerificationHelper(driver).isDisplayed(Toggledropdownmenu);
 	}
 
- /*   public void gotoGlobalAdPageUsingURL() throws InterruptedException{
+public void gotoGlobalAdPageUsingURL() throws InterruptedException{
    Thread.sleep(2000); 
    DriverManager.getDriver().navigate().to("https://tenant1.bizligotest.com/eventmanager/promotions#");
    Thread.sleep(8000);
@@ -1372,7 +1371,8 @@ public MyGroupsPage navigateToMyGroupsPage() {
 	public Discussions GotoDiscussionPage() throws InterruptedException {
 		waitForElementToPresent(Testingcomm);
 		click(Testingcomm, "18-02-2021 -testing");	
-		Thread.sleep(7000);
+		//Thread.sleep(7000);
+		waitForElementToPresent(discussion);
 		click(discussion, "Discussion");
 
 	return (Discussions) openPage(Discussions.class);	

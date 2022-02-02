@@ -32,11 +32,14 @@ public class TC615_Verify_Primary_Contact_Member_can_able_To_Inactive_The_locati
 		logInfo("Launched Browser : "+data.get("browser"));
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
+		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+		MyProfilePage MyProfile_Page = EcoSystemPage.goToMyProfilePage();
+		
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
-		MyDashboardPage dashboard = login.loginToMemberdashboard(data.get("email"),data.get("password"));
-		MyProfilePage profile = dashboard.NaviagtingToMyProfilePage();
-		profile.inactiveLocation();
+//		MyDashboardPage dashboard = login.loginToMemberdashboard(data.get("email"),data.get("password"));
+//		MyProfilePage profile = dashboard.NaviagtingToMyProfilePage();
+		MyProfile_Page.inactiveLocation();
 		
 		//Assert.fail("Failing the login test");
 	}

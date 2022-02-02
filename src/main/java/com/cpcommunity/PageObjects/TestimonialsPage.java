@@ -50,26 +50,32 @@ public class TestimonialsPage extends BasePage
 	{
 		String date = ": "+getSystemCurrentDate()+"-"+getSystemCurrentMonth()+"-"+getSystemCurrentYear();
 		type(this.title, Title+date, "TestimonialTitle");
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
+		waitForElementToPresent(testimonial);
 		type(this.testimonial,Testimonial+date,"Testimonial");
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
+		waitForElementToPresent(submit);
 		click(submit,"Submit button");
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
+		waitForElementToPresent(oK);
 		click(oK,"Ok");
-		Thread.sleep(6000);
+		waitForElementToPresent(okbtn);
+		//Thread.sleep(6000);
 		click(okbtn,"OKbtn");
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
 	}
 	
 	public void ResetTestimonial(String Title, String Testimonial) throws InterruptedException
 	{
 		String date = ": "+getSystemCurrentDate()+"-"+getSystemCurrentMonth()+"-"+getSystemCurrentYear();
 		type(this.title, Title+date, "TestimonialTitle");
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
+		waitForElementToPresent(testimonial);
 		type(this.testimonial,Testimonial+date,"Testimonial");
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
+		waitForElementToPresent(reset);
 		click(reset,"Reset button");
-		Thread.sleep(6000);
+		//Thread.sleep(6000);
 	}
 	
 	

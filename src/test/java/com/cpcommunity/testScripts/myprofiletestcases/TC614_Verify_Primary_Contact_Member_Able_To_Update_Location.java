@@ -32,11 +32,11 @@ public class TC614_Verify_Primary_Contact_Member_Able_To_Update_Location extends
 		logInfo("Launched Browser : "+data.get("browser"));
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
-//		login.login(data.get("username"), data.get("password"));
-//		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
-		MyDashboardPage dashboard = login.loginToMemberdashboard(data.get("email"),data.get("password"));
-		MyProfilePage profile = dashboard.NaviagtingToMyProfilePage();
-		profile.updateLocation(data.get("locationName"),data.get("locationAddress"),data.get("addressLine1"),data.get("locationStreetAddress2"),data.get("locationCity"),data.get("locationState"),data.get("locationZip"),data.get("country"),data.get("Phone"),data.get("fax"));
+		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+		MyProfilePage MyProfile_Page = EcoSystemPage.goToMyProfilePage();
+		//MyDashboardPage dashboard = login.loginToMemberdashboard(data.get("email"),data.get("password"));
+		//MyProfilePage profile = dashboard.NaviagtingToMyProfilePage();
+		MyProfile_Page.updateLocation(data.get("locationName1"),data.get("locationAddress"),data.get("addressLine1"),data.get("locationStreetAddress2"),data.get("locationCity"),data.get("locationState"),data.get("locationZip"),data.get("country"),data.get("Phone"),data.get("fax"));
 		
 		//Assert.fail("Failing the login test");
 	}

@@ -281,38 +281,42 @@ public class PaymentGatewaysPage extends BasePage {
 	}
 	public void activeAuthorizeGateway() throws InterruptedException {
 		selectByVisibleText(selectCommunity,"BizLigo1","Bizligo1");
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
 		Authorize.click();
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
+		waitForElementToPresent(inactive);
 		click(inactive,"In Active");
 		click(update,"Update");
 		waitForElementToPresent(OkBtn);
 		click(OkBtn,"OkBtn");
-		Thread.sleep(1000);
+		//Thread.sleep(1000);
 		
 	}
 	public void inactivePaypalGateway() throws InterruptedException {
 		selectByVisibleText(selectCommunity,"BizLigo1","Bizligo1");
 		Thread.sleep(3000);
 		PayPal.click();
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
+		waitForElementToPresent(active);
 		click(active,"Active");
 		click(update,"Update");
 		waitForElementToPresent(OkBtn);
 		click(OkBtn,"OkBtn");
-		Thread.sleep(1000);
+		//Thread.sleep(1000);
 		
 	}
 	public void activePayPalGateway() throws InterruptedException {
 		selectByVisibleText(selectCommunity,"BizLigo1","Bizligo1");
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
+		waitForElementToPresent(PayPal);
 		PayPal.click();
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
+		waitForElementToPresent(inactive);
 		click(inactive,"In Active");
 		click(update,"Update");
 		waitForElementToPresent(OkBtn);
 		click(OkBtn,"OkBtn");
-		Thread.sleep(1000);
+		//Thread.sleep(1000);
 		
 	}
 	

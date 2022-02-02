@@ -35,7 +35,7 @@ public class TC026_Verify_User_Is_Able_To_Update_Skills extends BaseTest {
 		
 		MyProfilePage MyProfile_Page = EcoSystemPage.goToMyProfilePage();
 		MyProfile_Page.AddSkills(data.get("skills"));	
-		Thread.sleep(15000);
+		//Thread.sleep(15000);
 		//Assert.fail("Failing the login test");
 	}
 

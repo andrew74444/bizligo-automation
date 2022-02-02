@@ -34,9 +34,9 @@ public class TC616_Verify_Primary_Contact_Able_to_Add_Member extends BaseTest {
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
-		MyDashboardPage dashboard = login.loginToMemberdashboard(data.get("email"),data.get("password"));
-		MyProfilePage profile = dashboard.NaviagtingToMyProfilePage();
-		profile.addnewMember(data.get("firstName"), data.get("lastName"), data.get("job"), data.get("emailAddress"), data.get("password"), data.get("confirmPassword"));
+		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+		MyProfilePage MyProfile_Page = EcoSystemPage.goToMyProfilePage();
+		MyProfile_Page.addnewMember(data.get("firstName"), data.get("lastName"), data.get("job"), data.get("emailAddress"), data.get("password"), data.get("confirmPassword"));
 		
 		//Assert.fail("Failing the login test");
 	}

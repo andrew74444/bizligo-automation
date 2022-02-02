@@ -14,7 +14,7 @@ public class TC189_Verify_Group_Admin_Not_Able_To_Leave_For_One_Admin_To_Group e
 
 	
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC058(Hashtable<String,String> data) throws Exception {
+	public void TC189(Hashtable<String,String> data) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC189", data.get("Runmode"), excel);

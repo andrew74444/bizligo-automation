@@ -63,6 +63,8 @@ public class MyCommunitiesPage extends BasePage {
 
 	@FindBy(xpath = "//h3[normalize-space()='My Communities']")
 	WebElement myCommunitiesHeader;
+	@FindBy(xpath = "//a[normalize-space()='Bulk Drug Manufactur...']")
+	WebElement BDMAI;
 	@FindBy(xpath = "//button[normalize-space()='Search']")
 	WebElement btnSearch;
 	@FindBy(xpath = "//button[normalize-space()='Create Community']")
@@ -165,7 +167,7 @@ public class MyCommunitiesPage extends BasePage {
 	WebElement GlobalCareers;
 	@FindBy(xpath="//a[contains(text(),'Business Directory')]")
 	WebElement businessDirectory;
-	@FindBy(xpath="//a[contains(text(),'Member Directory')]")
+	@FindBy(xpath="//a[normalize-space()='Member Directory']")
 	WebElement memberDirectory;
 	@FindBy(xpath="//*[@class='manage-button ng-scope']")
 	WebElement manageButton;
@@ -232,12 +234,16 @@ public class MyCommunitiesPage extends BasePage {
 		Thread.sleep(8000);
 		waitForElementToPresent(Toggledropdownmenu);
 		click(Toggledropdownmenu,"Toggledropdownmenu");
-		Thread.sleep(1000);
+		//Thread.sleep(1000);
 		waitForElementToPresent(DashBoard);
 		click(DashBoard,"DashBoard");
-		Thread.sleep(8000);
+		Thread.sleep(5000);
+		//waitForElementToPresent(myDashboard);
 		return (MyDashboardPage) openPage(MyDashboardPage.class);
 	}	
+	
+	@FindBy(xpath = "//h2[normalize-space()='MY ECOSYSTEM']")
+    WebElement myDashboard;
 	
 	public MyProfilePage goToMyProfilePage() throws Exception {
         Thread.sleep(5000);
@@ -293,10 +299,10 @@ public class MyCommunitiesPage extends BasePage {
 
 	public MemberDirectoryPage gotoMemberDirectoryPage() throws Exception {
 		click(Directory,"Directory");
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
 		waitForElementToPresent(memberDirectory);
 		click(memberDirectory,"MemberDirectory");
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
 		return (MemberDirectoryPage) openPage(MemberDirectoryPage.class);
 		// new MyProfilePage(driver, );
 
@@ -419,14 +425,17 @@ public class MyCommunitiesPage extends BasePage {
 		//communityName = communityName+getDateInDDMMMYYYY();
 		//this.searchCommunity(communityName);
 		type(this.communityNameField, communityName, "communityName");
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
+		waitForElementToPresent(btnSearch);
 		click(btnSearch, "Search");
-		Thread.sleep(5000);
-		WebElement ele = driver.findElement(By.xpath("//a[@tooltip='" + communityName + "']"));
-		click(ele, communityName);
+		//Thread.sleep(5000);
+		//WebElement ele = driver.findElement(By.xpath("//span[contains(text(),'"+communityName+"')]"));
+	    waitForElementToPresent(BDMAI);
+		clickElementByJavaScript(BDMAI);
 		return (CommunityDetailsPage) openPage(CommunityDetailsPage.class);
 		// new CommunityDetailsPage(driver, );
 	}
+	
 	public CommunityDetailsPage navigateToExpiredCommunityDetailsPage(String communityName, String runTime) throws Exception {
 		Date date = new Date();
 		
@@ -563,10 +572,10 @@ public class MyCommunitiesPage extends BasePage {
 	
 	public CommunityDashboardPage gotoManageCommunity(String communityName) throws Exception {
 
-        Thread.sleep(5000);
-
+        //Thread.sleep(5000);
+        waitForElementToPresent(MANAGEbtn);
 		click(MANAGEbtn, "Manage");
-		Thread.sleep(1000);
+		//Thread.sleep(1000);
 		return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
 		// new CommunityDashboardPage(driver, );
 	}
@@ -628,7 +637,7 @@ public class MyCommunitiesPage extends BasePage {
 		picture();
 		type(SearchbyCommunityName, communityName, "Search by Community");
 		click(searchbtn, "search btn");
-		Thread.sleep(6000);
+		//Thread.sleep(6000);
 		//WebElement ele = driver.findElement(By.xpath("//a[@tooltip='" + communityName + "']"));
 		waitForElementToPresent(bizligo1);
 		click(bizligo1,"Bizligo 1");

@@ -181,7 +181,7 @@ public class MyGroupsPage extends BasePage{
 		waitForElementToPresent(myGroupsbutton);
 		Thread.sleep(3000);
 		AssertionHelper.verifyText( groupNotAvailable.getText(),"This Group Is No Longer Available");
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
 		picture();
 		
 	}
@@ -196,7 +196,7 @@ public class MyGroupsPage extends BasePage{
 		
 		public Create_UpdateGroupPage navigateToEditGroupPage(String groupName) throws Exception {
 		       
-			groupName = groupName+" "+getDate();
+			groupName = groupName+" "+getDateInDDMMMYYYY();
 	        this.searchGroup(groupName);
 	        
 	        WebElement element = driver.findElement(By.xpath("//span[contains(text(),'"+groupName+"')]"));

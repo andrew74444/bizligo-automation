@@ -41,7 +41,7 @@ public class GlobalCareers extends BasePage {
 	@FindBy(xpath = "//*[contains(text(),'Current Job Openings')]")
 	WebElement CurrentJobOpenings;
 
-	@FindBy(xpath = "//div[@infinite-scroll='data.LoadGlobalJobsOnScroll()']//div[1]//div[1]//div[3]//button[1]")
+	@FindBy(xpath = "//body[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[5]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/a[1]")
 	WebElement ViewandApply;
 	@FindBy(xpath = "//button[@class='apply-button']")
 	WebElement ViewandApply1;
@@ -272,11 +272,11 @@ public void CheckAdditionaltitleAndRemarkNotDisplaying(String Title1) throws Int
 	waitForElementToPresent(searchByJobTitle);
 	type(searchByJobTitle, Title1, "Software Engineer");
 	click(search, "Search");
-	Thread.sleep(2000);
-    scrollIntoView(ViewandApply);
+	//Thread.sleep(2000);
+    //scrollIntoView(ViewandApply);
     clickElementByJavaScript(ViewandApply);
 	//click(ViewandApply, "View and Apply");
-	Thread.sleep(4000);
+	//Thread.sleep(4000);
 	//Assert.assertEquals(0, Remark.size());
 	//Assert.assertEquals(0, additionalDetails.size());
 	System.out.println("Additional details And Remarks is not  displaying");
@@ -375,7 +375,7 @@ public void CheckAdditionaltitleAndRemarkNotDisplaying(String Title1) throws Int
 		return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
 	}	
 	public void VerifyJobsNotDisplaying() throws InterruptedException {
-		Thread.sleep(500);
+		//Thread.sleep(500);
 		Assert.assertEquals(0, mostappliedJob.size());
 		Assert.assertEquals(0, YourappliedJobs.size());
 		System.out.println("Most applied Jobs and Your applied Jobs are Not Displaying");
@@ -386,13 +386,13 @@ public void CheckAdditionaltitleAndRemarkNotDisplaying(String Title1) throws Int
 		String changeevent=this.appliedJob.getText();
 		System.out.println(changeevent);
 	    String Expected="APPLIED JOBS ARE";
-	    Thread.sleep(3000);
+	    //Thread.sleep(3000);
 	    Assert.assertEquals(changeevent, Expected);
 	    
 		
 	}
 	public ManageCommunityPage gotoDashboardpage() throws InterruptedException {
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
 		waitForElementToPresent(manageBtn);
 		click(manageBtn, "Manage Button");
 		return (ManageCommunityPage) openPage(ManageCommunityPage.class);		

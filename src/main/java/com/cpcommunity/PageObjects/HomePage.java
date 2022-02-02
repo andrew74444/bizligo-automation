@@ -140,7 +140,7 @@ public class HomePage extends BasePage {
 			ExtentListeners2.testReport.get().info(m);
 			
 			
-			DriverManager.getDriver().navigate().to("https://tenant2.bizligotest.com/");
+			DriverManager.getDriver().navigate().to("https://leadindia.bizligotest.com/");
 			
 		}	
 		
@@ -262,7 +262,7 @@ public MemberDirectoryPage goToMemberDirectory() throws InterruptedException {
 public GlobalCommunitesPage NavigateToGlobalCommunities() throws Exception {
 	Thread.sleep(5000);
 	click(GlobalCommunities, "Global Communities");
-	Thread.sleep(3000);
+	//Thread.sleep(3000);
 	return (GlobalCommunitesPage) openPage(GlobalCommunitesPage.class);
 	
 }

@@ -91,7 +91,7 @@ public class ContactUsPage extends BasePage{
 		type(email,Email,Email);
 		type(comments,Comments,Comments);
 		click(submit,"Submit");
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
 		waitForElementToPresent(successMsg);
 		System.out.println(successMsg.getText());
 		if(successMsg.getText().equalsIgnoreCase("Your Enquiry is received. We will respond to you shortly.")) {
@@ -100,6 +100,8 @@ public class ContactUsPage extends BasePage{
 		}else Assert.assertTrue(false);
 		click(closeBtn,"Close");
 	}
+	
+	
 	public void clientNameBySuperAdmin(String Name) {
 		waitForElementToPresent(contentBelowComments);
 		String x=contentBelowComments.getText();

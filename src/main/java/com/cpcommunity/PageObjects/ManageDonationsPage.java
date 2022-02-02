@@ -125,20 +125,24 @@ public class ManageDonationsPage extends BasePage{
 		else System.out.println("Empty Donation form cannot be saved");
 		//click(saveBtn,"save");
 		click(AddBtn,"Add donation");
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
+		waitForElementToPresent(selectCommunity);
 		type(selectCommunity,communityName,"Community Name");
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		driver.switchTo().frame(0);
 		enterTextInframe.clear();
 		enterTextInframe.sendKeys("Charity");
 		driver.switchTo().defaultContent();
 		type(enterAmount,"10","Dollar 10");
 		type(enterAmount2,"10","Dollar 10");
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
+		waitForElementToPresent(enterAmount3);
 		type(enterAmount3,"10","Dollar 10");
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
+		waitForElementToPresent(enterAmount4);
 		type(enterAmount4,"10","Dollar 10");
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
+		waitForElementToPresent(enterAmount5);
 		type(enterAmount5,"10","Dollar 10");
 		click(saveBtn,"save");
 		
@@ -150,11 +154,11 @@ public class ManageDonationsPage extends BasePage{
 		type(selectCommunity,communityName,"Community Name");
 		Thread.sleep(2000);
 		Robot robot = new Robot();
-		//robot.keyPress(KeyEvent.VK_DOWN);
 		Thread.sleep(2000);
 		robot.keyPress(KeyEvent.VK_ENTER);
 		Thread.sleep(1000);
-		if(errorMsgForCommunity.getText().equalsIgnoreCase("Donation with this community is already configured.")) {
+		if(errorMsgForCommunity.getText().equalsIgnoreCase("Donation with this community is already configured."))
+		{
 			System.out.println("Donation cannot be made to existing society, error message comes up");
 			Assert.assertTrue(true);
 		}else Assert.assertTrue(false);
@@ -180,9 +184,10 @@ public class ManageDonationsPage extends BasePage{
 		communityInDropdown.click();
 		System.out.println(communityInDropdown.getText());
 		communityInDropdown.click();
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
+		waitForElementToPresent(errorMsgForCommunity);
 		System.out.println(errorMsgForCommunity.getText());
-		Thread.sleep(2000);  
+		//Thread.sleep(2000);  
 	   
    }
    
@@ -204,34 +209,35 @@ public class ManageDonationsPage extends BasePage{
 	   editBtn.click();
 	   status.click();
 	   update.click();
-	   Thread.sleep(2000);
+	  // Thread.sleep(2000);
 	   
    }
    public void activateDonation(String Community) throws InterruptedException {
 	   type(searchBtn,Community,Community);
 	   editBtn.click();
-	   Thread.sleep(2000);
+	   //Thread.sleep(2000);
+	   waitForElementToPresent(statusInactive);
 	   statusInactive.click();
 	   update.click();
-	   Thread.sleep(2000);
+	  // Thread.sleep(2000);
 	   
    }
    public void makeDonationExternal(String Community,String URL) throws InterruptedException {
 	   type(searchBtn,Community,Community);
 	   editBtn.click();
-	   Thread.sleep(2000);
+	   //Thread.sleep(2000);
 	   waitForElementToPresent(external);
 	   click(external,"External Donation Payment");	   
 	   type(externalURL,URL,URL);
 	   update.click();
-	   Thread.sleep(2000);
+	   //Thread.sleep(2000);
 	   
    }
    public void makeDonationInternal(String Community) throws InterruptedException {
 	   type(searchBtn,Community,Community);
 	   editBtn.click();
-	   Thread.sleep(2000);
-	   waitForElementToPresent(external);
+	   //Thread.sleep(2000);
+	   waitForElementToPresent(internal);
 	   click(internal,"Internal");
 	   type(enterAmount,"10","Dollar 10");
 		type(enterAmount2,"10","Dollar 10");

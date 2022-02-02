@@ -16,10 +16,10 @@ import com.cpcommunity.utilities.ExcelReader;
 
 public class TC989_Verify_Member_check_Total_AppliedjobsCount_MyDashboarPage extends BaseTest {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC988(Hashtable<String,String> data) throws Exception {
+	public void TC989(Hashtable<String,String> data) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC988", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC989", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
@@ -33,7 +33,7 @@ public class TC989_Verify_Member_check_Total_AppliedjobsCount_MyDashboarPage ext
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("TC988 Test Completed");
+		logInfo("TC989 Test Completed");
 		
 		quit();
 		

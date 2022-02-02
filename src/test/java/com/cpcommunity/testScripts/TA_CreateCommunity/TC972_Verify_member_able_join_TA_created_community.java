@@ -29,9 +29,10 @@ public class TC972_Verify_member_able_join_TA_created_community extends BaseTest
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
-		MyDashboardPage MDP=login.loginToMemberdashboard(data.get("email"), data.get("password"));
-		GlobalCommunitesPage GCP=MDP.naviagtingToGlobalCommunities();
-		GCP.communityJoin(data.get("Name"));
+		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+		//MyDashboardPage MDP=login.loginToMemberdashboard(data.get("email"), data.get("password"));
+		GlobalCommunitesPage GCP=EcoSystemPage.goToGlobalCommunities();
+		GCP.communityJoin(data.get("CommunityName"));
 		
 	}
 

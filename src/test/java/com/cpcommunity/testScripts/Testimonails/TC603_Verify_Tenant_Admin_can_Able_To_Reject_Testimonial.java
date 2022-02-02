@@ -20,7 +20,7 @@ import com.cpcommunity.utilities.ExcelReader;
 
 
 
-public class TC603_Verify_System_Admin_can_Able_To_Reject_Testimonial extends BaseTest
+public class TC603_Verify_Tenant_Admin_can_Able_To_Reject_Testimonial extends BaseTest
 {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC603(Hashtable<String,String> data) throws Exception {
@@ -39,7 +39,7 @@ public class TC603_Verify_System_Admin_can_Able_To_Reject_Testimonial extends Ba
 		HomePage home1 = new HomePage().open(data.get("tenantType"));
 		LoginPage login1 = home.clickOnLOGINBtn();
 		MyDashboardPage dashboard = login1.loginToMemberdashboard(data.get("email1"),data.get("password1"));
-		dashboard.navigateToMyDashBoard();
+		//dashboard.navigateToMyDashBoard();
 		TestimonialsVerifyPage testimonial1 = dashboard.NavigateTotestimonials();
 		testimonial1.TestimonialisnotVisible(data.get("actual"));
 		

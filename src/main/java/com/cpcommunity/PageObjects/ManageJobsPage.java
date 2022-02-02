@@ -202,14 +202,17 @@ public class ManageJobsPage extends BasePage {
 		AssertionHelper.verifyText(toastMessage.getText(), "Job updated.");
 		Thread.sleep(7000);
 	}
+	
 	public GlobalCareers navigateToCareerPage() {
 		waitForElementToPresent(BDMAIHomePage);
-		click(BDMAIHomePage, "HomePage");
+		//click(BDMAIHomePage, "HomePage");
+		clickElementByJavaScript(BDMAIHomePage);
 		waitForElementToPresent(careers);
 		click(careers, "Careers");
 		
 		return (GlobalCareers) openPage(GlobalCareers.class);	
 	}
+	
 	public GlobalCareers navigateToglobalCareerPage() {
 		waitForElementToPresent(homepage);
 		click(homepage, "HomePage");
@@ -236,7 +239,7 @@ public class ManageJobsPage extends BasePage {
 		return (ManageCommunitiesPage) openPage(ManageCommunitiesPage.class);
 	}
 	public void postJob(String jobTitle, String billingRate, String jobTypeID, String location, String description,
-			String additionalDetails, String remarks, String makeGlobal) throws Exception {
+		String additionalDetails, String remarks, String makeGlobal) throws Exception {
 		click(btnAddNewJob, "Add New Job");
 		waitForElementToPresent(this.JobTitle);
 		type(this.JobTitle, jobTitle, "JobTitle");
@@ -264,7 +267,7 @@ public class ManageJobsPage extends BasePage {
 		click(Update, "Post");
 		waitForElementToPresent(toastMessage);
 		AssertionHelper.verifyText(toastMessage.getText(), "Job posted.");
-		Thread.sleep(7000);
+		//Thread.sleep(7000);
 
 	}
 	public void postTAJob(String community,String jobTitle, String billingRate, String jobTypeID, String location, String description,
@@ -411,7 +414,7 @@ public class ManageJobsPage extends BasePage {
 		click(Update, "Post");
 		waitForElementToPresent(toastMessage);
 		AssertionHelper.verifyText(toastMessage.getText(), "Job posted.");
-		Thread.sleep(7000);
+		//Thread.sleep(7000);
 
 	}
 
@@ -711,14 +714,15 @@ public class ManageJobsPage extends BasePage {
 		type(this.searchWithJobTitle, jobTitle, "JobTitle");	
 		//seraching job created by CA
 		click(btnSearch, "Search");
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
+		waitForElementToPresent(Edit);
 		click(Edit,"Edit");
 		type(JobTitle, Jtitle, "JobTitle");		
 		type(Location,location, "Location");		
 		click(Update,"Update job post");
 		waitForElementToPresent(toastMessage);
 		AssertionHelper.verifyText(toastMessage.getText(), "Job updated.");
-		Thread.sleep(7000);
+		//Thread.sleep(7000);
 		
 	}
 	public void searchByJobTitle(String JobTitle,String Location,String JobTypeID,String Status) throws InterruptedException {
@@ -726,17 +730,17 @@ public class ManageJobsPage extends BasePage {
 		type(this.searchWithJobTitle, JobTitle, "JobTitle");		
 		CheckSearchResult(this.totalJobResult,JobTitle);
 		this.searchWithJobTitle.clear();
-		Thread.sleep(4000);
+		//Thread.sleep(4000);
 		waitForElementToPresent(this.searchByLocation);
 		type(this.searchByLocation, Location, "Location");		
 		CheckSearchResult(this.totalJobLocationResult,Location);
 		this.searchByLocation.clear();
-		Thread.sleep(4000);
+		//Thread.sleep(4000);
 		waitForElementToPresent(this.SearchJobTypeID);
 		selectByVisibleText(this.SearchJobTypeID,JobTypeID , "JobType");		
 		CheckSearchResult(this.totalJobtypeIDResult,JobTypeID);
 		selectByVisibleText(this.SearchJobTypeID, "Search by Job Type","Search job id ");
-		Thread.sleep(4000);
+		//Thread.sleep(4000);
 		waitForElementToPresent(this.SearchByStatus);
 		selectByVisibleText(this.SearchByStatus, Status, "Status");		
 		CheckSearchResult(this.totalJobStatusResult,Status);

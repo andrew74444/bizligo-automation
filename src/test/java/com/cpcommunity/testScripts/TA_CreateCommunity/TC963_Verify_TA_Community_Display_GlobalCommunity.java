@@ -4,6 +4,7 @@ import java.util.Hashtable;
 
 import org.testng.annotations.Test;
 
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.GlobalCommunitesPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
@@ -26,8 +27,9 @@ public class TC963_Verify_TA_Community_Display_GlobalCommunity extends BaseTest{
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();	
-		MyDashboardPage MDP=login.loginToMemberdashboard(data.get("email"), data.get("password"));
-		GlobalCommunitesPage GCP=MDP.naviagtingToGlobalCommunities();
-		GCP.searchCommunityTA(data.get("Name"));
+		//MyDashboardPage MDP=login.loginToMemberdashboard(data.get("email"), data.get("password"));
+		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+		GlobalCommunitesPage GCP=EcoSystemPage.goToGlobalCommunities();
+		GCP.searchCommunityTA(data.get("CommunityName"));
 }
 }

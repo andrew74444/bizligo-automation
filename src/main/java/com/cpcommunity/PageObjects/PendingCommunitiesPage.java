@@ -123,10 +123,11 @@ public class PendingCommunitiesPage extends BasePage{
 		 this.Searchcommmunity(communityName+" "+getDateInDDMMMYYYY());
 		waitForElementToPresent(noCommunitiesAvailable);
 	}
+	
 	public void communityNotDisplayed(String CommunityName) throws InterruptedException {
 		type(this.NameSearch, CommunityName, "Name");
 		click(btnSearch,"btn Search"); 
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
 		waitForElementToPresent(noCommunitiesAvailable);
 		
 		AssertionHelper.verifyText(noCommunitiesAvailable.getText(),"There are no Communities available");

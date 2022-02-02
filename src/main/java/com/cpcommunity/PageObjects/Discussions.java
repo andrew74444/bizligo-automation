@@ -162,7 +162,7 @@ public class Discussions extends BasePage {
 	@FindBy(xpath = "//*[contains(text(),'Create New Post')]")
 	WebElement	createNewPost;
 	
-	@FindBy(xpath = "//div[@ng-if=\"appData.CurrentModuleName == 'discussions' && data.IsMostPopularDiscussionsWidgetConfigured.IsEnabled\"]//div[@class='panel panel-default text-left']")
+	@FindBy(xpath = "//span[normalize-space()='most popular discussions'] ")
 	WebElement	MostPopularDiscussion;
 	
 	@FindBy(xpath = "//span[@ng-if='data.IsMostPopularDiscussionsWidgetConfigured.CommunityWidgetEditedName.length > 1']")
@@ -611,6 +611,7 @@ public class Discussions extends BasePage {
 	
 	public void CheckPopularDiscussion() {
 		waitForElementToPresent(MostPopularDiscussion);
+		//scrollToElement(MostPopularDiscussion);
 		if(MostPopularDiscussion.isDisplayed()) {
 			Assert.assertTrue(true);
 		}
@@ -623,6 +624,7 @@ public class Discussions extends BasePage {
     	waitForElementToPresent(noDiscussionStarted);
     	String msg=this.noDiscussionStarted.getText();
     	System.out.println(msg);
+    	waitForElementToPresent(noDiscussionStarted);
     	if(noDiscussionStarted.isDisplayed()) {
     		Assert.assertTrue(true);
 		}
@@ -669,7 +671,7 @@ public class Discussions extends BasePage {
     	int DiscussionCount=NumSubscribeDiscussion.size();
     	System.out.println("Number of Subscribe Discussion Displaying is: " +DiscussionCount);
     	Assert.assertEquals(DiscussionCount, 5);
-    	Thread.sleep(3000);
+    	//Thread.sleep(3000);
     }
 	private void waitForElementToPresent(List<WebElement> noDiscussion2) {
 		// TODO Auto-generated method stub
@@ -704,7 +706,7 @@ public class Discussions extends BasePage {
 		System.out.println(changead);
 	    String Expected="LATEST DISCUSSION";
 	    Assert.assertEquals(changead, Expected);
-	    Thread.sleep(5000);
+	   // Thread.sleep(5000);
 	}
 	public void checkAdPresent() throws InterruptedException {
 		
@@ -715,7 +717,7 @@ public class Discussions extends BasePage {
     	String present="Goldengold2";
     	System.out.println(" Plan is  present");
 		//Assert.assertEquals(Allplans, present);
-    	Thread.sleep(5000);
+    	//Thread.sleep(5000);
 	}
 	public void clickCancel(String AdName, String  path) throws InterruptedException {
 		

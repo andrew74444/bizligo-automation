@@ -268,7 +268,9 @@ public class EcoSystemPage extends BasePage {
 	}
 
 	public MyGroupsPage goToMyGroups() {
-		click(myGroups, "myGroups");
+		waitForElementToPresent(myGroups);
+		clickElementByJavaScript(myGroups);
+		//click(myGroups, "myGroups");
 		return (MyGroupsPage) openPage(MyGroupsPage.class);
 		// new MyGroupsPage(driver, );
 	}
@@ -313,7 +315,8 @@ public class EcoSystemPage extends BasePage {
 	//
 
 	public MyProfilePage goToMyProfilePage() throws Exception {
-        Thread.sleep(8000);
+        //Thread.sleep(8000);
+		waitForElementToPresent(Toggledropdownmenu);
 		click(Toggledropdownmenu,"Toggledropdownmenu");
 		Thread.sleep(1000);
 		click(myProfile,"myProfile");

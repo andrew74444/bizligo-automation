@@ -98,15 +98,16 @@ public class ChangePasswordPage extends BasePage{
 	WebElement changePasswordbtn;
 	
 	
-	public void passwordForceChanged(String currentPassword,String newPassword,String confirmPassword ) throws Throwable
+	public void passwordForceChanged(String currentPassword1,String newPassword,String confirmPassword ) throws Throwable
 	{
-		type(this.currentPassword,currentPassword,"CurrentPassword");
-		Thread.sleep(1000);
+		waitForElementToPresent(currentPassword);
+		type(this.currentPassword,currentPassword1,"CurrentPassword1");
+		//Thread.sleep(1000);
 		type(this.newPassword,newPassword,"NewPassword");
-		Thread.sleep(1000);
+		//Thread.sleep(1000);
 		type(this.confirmPassword,confirmPassword,"confirmPassword");
 		click(changePasswordbtn,"ChangePasswordButton");
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 	}
 	
 }

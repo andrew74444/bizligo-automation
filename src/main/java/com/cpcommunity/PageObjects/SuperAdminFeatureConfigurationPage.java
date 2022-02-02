@@ -40,7 +40,7 @@ public class SuperAdminFeatureConfigurationPage extends BasePage {
 		WebElement element = driver.findElement(By.xpath("//label[contains(text(),'"+feature+"')]")); 
 		scrollToElement(element);
 		click(element, "feature");
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
 		WebElement toggleButton = driver.findElement(By.xpath("//label[contains(text(),'"+feature+"')]/../../../../..//*[@class='btn btn-warning btn-lg active toggle-off']"));
 		click(toggleButton, "disabling the feature");
 		
@@ -50,10 +50,10 @@ public class SuperAdminFeatureConfigurationPage extends BasePage {
 		 * selectByVisibleText(selecteMemebershipPlan,
 		 * "0Free Plan - 1 Year (1 Year(s))", "MembershipPlan"); }
 		 */
-		Thread.sleep(4000);
+		//Thread.sleep(4000);
 		WebElement saveButton = driver.findElement(By.xpath("//label[contains(text(),'"+feature+"')]/../../../../..//*[@id='btnSave']"));
 		this.save(saveButton);
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
 	}
 
 	public void enablefeature(String feature) throws Exception {
@@ -74,13 +74,13 @@ public class SuperAdminFeatureConfigurationPage extends BasePage {
 		WebElement element = driver.findElement(By.xpath("//label[contains(text(),'"+feature+"')]")); 
 		scrollToElement(element);
 		click(element, "feature");
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
 		WebElement toggleButton = driver.findElement(By.xpath("//label[contains(text(),'"+feature+"')]/../../../../..//*[contains(text(),'Disabled')]"));
 		click(toggleButton, "enabling the feature");
-		Thread.sleep(4000);
+		//Thread.sleep(4000);
 		WebElement saveButton = driver.findElement(By.xpath("//label[contains(text(),'"+feature+"')]/../../../../..//*[@id='btnSave']"));
 		this.save(saveButton);
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
 	}
 	
 	

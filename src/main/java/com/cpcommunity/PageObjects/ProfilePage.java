@@ -92,6 +92,8 @@ public class ProfilePage extends BasePage{
 		}
 		return true;
 	}
+	
+	
 		public boolean IsEndoremsnetDisplayed(String EndormentMessage){
 			
 			try {
@@ -237,30 +239,21 @@ public void AddEndorsement(String Endorsement, String Endorsement2, String Endor
 	}
 
 	public void AddEndorsement(String Endorsement, String Endorsement2, String Endorsement3, String Endorsement4) throws InterruptedException{
-		//commited in Github
-//		log.info("Clicking on Endorsement Button...");
-//		logExtentReport("Clicking on Endorsement Button...");	
 		waitForElementToPresent(addEndorsementBtn);
 		picture();
 		click(addEndorsementBtn,"addEndorsementBtn");
 		waitForElementToPresent(content);
-//		log.info("entering email address...."+Endorsement);
-//		logExtentReport("entering email address...."+Endorsement);
 		type(EndorsementFiled,Endorsement, "Endorsement");
-//		log.info("Clicking on send Button...");
 		picture();
 		click(sendendors,"sendendorsement");		
 		AssertionHelper.verifyText(SuccessPopup.getText(), "Endorsement Sent Successfully");
 		String Message = SuccessPopup.getText();
 		picture();
 		System.out.println(Message);
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 		click(addEndorsementBtn,"addEndorsementBtn");
 		waitForElementToPresent(content);
-//		log.info("entering email address...."+Endorsement);
-//		logExtentReport("entering email address...."+Endorsement);
 		type(EndorsementFiled,Endorsement2, "Endorsement");
-//		log.info("Clicking on send Button...");
 		picture();
 		click(sendendors,"sendendorsement");		
 		AssertionHelper.verifyText(SuccessPopup.getText(), "Endorsement Sent Successfully");
@@ -270,14 +263,9 @@ public void AddEndorsement(String Endorsement, String Endorsement2, String Endor
 		Thread.sleep(6000);
 		click(addEndorsementBtn,"addEndorsementBtn");
 		waitForElementToPresent(content);
-//		log.info("entering email address...."+Endorsement);
-//		logExtentReport("entering email address...."+Endorsement);
 		type(EndorsementFiled,Endorsement3, "Endorsement");
-//		log.info("Clicking on send Button...");
 		picture();
 		click(sendendors,"sendendorsement");	
-		
-		//waitForElementToPresent(contentError1);
 		String Message2=contentError1.getText();
 	   if(Message2.equals("Content is Required")){ 
 		   System.out.println("Content is Required");
@@ -293,10 +281,7 @@ public void AddEndorsement(String Endorsement, String Endorsement2, String Endor
 		picture();
 		click(addEndorsementBtn,"addEndorsementBtn");
 	    waitForElementToPresent(content);
-//		log.info("entering email address...."+Endorsement);
-//		logExtentReport("entering email address...."+Endorsement);
 		type(EndorsementFiled,Endorsement4, "Endorsement");
-//		log.info("Clicking on send Button...");
 		picture();
 		click(sendendors,"sendendorsement");	
 		scrollIntoView(contentError2);

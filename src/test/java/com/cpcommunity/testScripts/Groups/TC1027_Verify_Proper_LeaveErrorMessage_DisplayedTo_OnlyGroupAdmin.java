@@ -35,9 +35,9 @@ public class TC1027_Verify_Proper_LeaveErrorMessage_DisplayedTo_OnlyGroupAdmin e
 	LoginPage login = home.clickOnLOGINBtn();
 	MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
 	MyDashboardPage mydash=myCommunity.gotoMyDashboardPage();
-	//MyEcosystemPage myeco=ecosystemp.gotoMyEcosystemPage();
-	//MyGroupsPage mygroup=mydash.NavigatingToMyGroups();
-	mydash.checkProperAlertDisplayedWhenOnlyOneAdmin(data.get("communityName"));
+   // MyEcosystemPage myeco=mydash.gotoMyEcosystemPage();
+	MyGroupsPage mygroup=mydash.NavigatingToMyGroups();
+	mydash.checkProperAlertDisplayedWhenOnlyOneAdmin1(data.get("communityName"));
 	
 }
 	@AfterMethod

@@ -93,10 +93,9 @@ public class Bizligo1CommunityPage extends BasePage {
 	@FindBy(xpath="//span[normalize-space()='$ 20']")
 	WebElement $20;
 	
-//	@FindBy(xpath="//span[normalize-space()='$ 10']")
-
+    
 	//@FindBy(xpath="//button[2]//span[1]")
-
+	@FindBy(xpath="//div[@class='btn-group']//button[1]")
 	WebElement $10;
 	
 	@FindBy(xpath="//button[normalize-space()='Other Amount']")
@@ -303,28 +302,33 @@ public class Bizligo1CommunityPage extends BasePage {
 	}
 	public void CAcanMakeDonation() throws InterruptedException {
 		click(donateBtn,"Donation");
-		Thread.sleep(3000);
-		Thread.sleep(8000);
+		//Thread.sleep(3000);
+		//Thread.sleep(8000);
+		waitForElementToPresent($10);
 		click($10,"$10");
 		click(authorizeBtn,"pay through Authorize.net");
 		click(payThroughCheckout,"Pay");
-		Thread.sleep(6000);
+		//Thread.sleep(6000);
 		switchToFrameByID(0);
 		waitForElementToPresent(CCnumber);
 		type(CCnumber,"4111 1111 1111 1111","card number");
 		type(expDate,"12/222","Expiry date of CC");
 		type(emailID,"ravi.pujari@xyz.com","email");
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
+		waitForElementToPresent(payBtn);
 		click(payBtn,"Pay");
-		Thread.sleep(10000);
+		//Thread.sleep(10000);
+		waitForElementToPresent(successUponPayment);
 		System.out.println(successUponPayment.getText());
 		if(successUponPayment.getText().equalsIgnoreCase("Success!")) {
 			Assert.assertTrue(true);
 		}
 	}
+	
 	public void otherOptionAvailable() throws InterruptedException {
 		click(donateBtn,"Donation");
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
+		waitForElementToPresent(otherAmount);
 		if(otherAmount.getText().equalsIgnoreCase("Other amount")) {
 			Assert.assertTrue(true);
 			System.out.println("Other amount visible if TA made custom payment available");
@@ -333,13 +337,15 @@ public class Bizligo1CommunityPage extends BasePage {
 	}
 	public void makeDonationWhenTAdisablePayment() throws InterruptedException{
 		click(donateBtn,"Donation");
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
+		waitForElementToPresent($10);
 		click($10,"$10");
 	
 	}
 	public void checkAuthorizeGatewayWhenInactivate() throws InterruptedException {
 		click(donateBtn,"Donation");
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
+		waitForElementToPresent($10);
 		click($10,"$10");
 		if(authorizeBtns.size()>0) {
 			System.out.println("Authorize.net payment gateway  displayed when TA inactivate it");
@@ -365,7 +371,8 @@ public class Bizligo1CommunityPage extends BasePage {
 	}
 	public void donationInEventsPage() throws InterruptedException {
 		click(events,"Events");
-		Thread.sleep(4000);
+		//Thread.sleep(4000);
+		waitForElementToPresent(eventName);
 		click(eventName,"Event upcoming");
 		if(donateBtns.size()>0) {
 			System.out.println("Donation button available on events page when TA activate donations for a particular community ");
@@ -411,7 +418,8 @@ public class Bizligo1CommunityPage extends BasePage {
 	}
 	public void checkPaypalGatewayWhenInactivate() throws InterruptedException {
 		click(donateBtn,"Donation");
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
+		waitForElementToPresent($10);
 		click($10,"$10");
 		if(paypalBtns.size()>0) {
 			System.out.println("PayPal payment gateway  displayed when TA inactivate it");

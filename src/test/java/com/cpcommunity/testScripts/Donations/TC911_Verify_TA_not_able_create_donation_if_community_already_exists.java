@@ -28,7 +28,7 @@ public class TC911_Verify_TA_not_able_create_donation_if_community_already_exist
 		LoginPage login = home.clickOnLOGINBtn();	
 		TenantAdminDashboardPage TDP = login.loginToTADashboard(data.get("email"), data.get("password"));
 	    ManageDonationsPage MDP=TDP.NavigatetoManageDonationsPage();
-	    MDP.addDonationToExistingCommunity(data.get("Name"));//
+	    MDP.addDonationToExistingCommunity(data.get("Name"));
 
 }
 	@AfterMethod

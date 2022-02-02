@@ -17,7 +17,7 @@ import com.cpcommunity.testScripts.community.BaseTest;
 import com.cpcommunity.utilities.*;
 
 
-public class TC602_Verify_System_Admin_can_Able_To_Approve_Testimonial extends BaseTest
+public class TC602_Verify_Tenant_Admin_can_Able_To_Approve_Testimonial extends BaseTest
 {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC602(Hashtable<String,String> data) throws Exception {
@@ -36,13 +36,11 @@ public class TC602_Verify_System_Admin_can_Able_To_Approve_Testimonial extends B
 		HomePage home1 = new HomePage().open(data.get("tenantType"));
 		LoginPage login1 = home.clickOnLOGINBtn();
 		MyDashboardPage dashboard = login1.loginToMemberdashboard(data.get("email1"),data.get("password1"));
-		dashboard.navigateToMyDashBoard();
+		//dashboard.navigateToMyDashBoard();
 		TestimonialsVerifyPage testimonial1 = dashboard.NavigateTotestimonials();
 		testimonial1.TestimonialisVisible(data.get("actual"));
 	
-		//testimonialsPage.SubmitTestimonials(TestimonialTitle, Description);
-		
-//		myDashboardPage.goToTestimonial();
+
 		
 		//Assert.fail("Failing the login test");
 	}

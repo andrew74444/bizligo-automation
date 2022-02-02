@@ -175,7 +175,7 @@ public class MemberDirectoryPage extends BasePage{
 	List<WebElement> membersDiv;
 
 
-	@FindBy(xpath = "//div[@class='row member-directory-page']//div[2]//div[1]//div[1]//div[2]//a[1]//strong[1]//div[1]")
+	@FindBy(xpath = "//a[normalize-space()='Andrew Thomson']")
 	WebElement memberNameAndrew;
 	@FindBy(xpath = "//div[@class='directory-name firstletterCap ng-binding']")
 	WebElement memberName;
@@ -289,7 +289,7 @@ public class MemberDirectoryPage extends BasePage{
 			click(MemberProfileList.get(0),"OpenMemberProfile");		
 		}
 
-		return (ProfilePage) openPage(MyProfilePage.class);
+		return (ProfilePage) openPage(ProfilePage.class);
 		// new MyProfilePage(driver, );
 	}
 	
@@ -747,8 +747,10 @@ public class MemberDirectoryPage extends BasePage{
 				type(searchByName,MemberName,"Name of Member");//search pending member
 				click(searchBtn,"search");
 				Thread.sleep(3000);
-				 memberNameAndrew.click();
-				 Thread.sleep(3000);
+				//waitForElementToPresent(BusinessCategoryList);
+				clickElementByJavaScript(memberNameAndrew);
+				// memberNameAndrew.click();
+				 //Thread.sleep(3000);
 				return (ProfilePage) openPage(ProfilePage.class);
 				
 				

@@ -25,7 +25,7 @@ public class TC604_Verify_Super_Admin_Inactive_The_Testimonial_Feature extends B
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
-		AdminHomePage home = new AdminHomePage().open("https://admin.ezysubscribe.com/account/login");
+		AdminHomePage home = new AdminHomePage().open("https://admin.bizligotest.com/account/login");
 		AdminLogin login =home.navigateToAdminLogin();
 		AdminPage admin = login.adminloginToApplication(data.get("email"), data.get("password"));
 		admin.testimonialsDisabled();

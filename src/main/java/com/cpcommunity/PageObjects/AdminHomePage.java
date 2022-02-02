@@ -40,7 +40,7 @@ public class AdminHomePage extends BasePage
 	public AdminLogin navigateToAdminLogin() throws Exception
 	{
 		waitForElementToPresent(LOGINBtn);
-		Thread.sleep(1000);
+		//Thread.sleep(1000);
 		click(LOGINBtn, "LOGIN");
 		return (AdminLogin) openPage(AdminLogin.class);	
 		

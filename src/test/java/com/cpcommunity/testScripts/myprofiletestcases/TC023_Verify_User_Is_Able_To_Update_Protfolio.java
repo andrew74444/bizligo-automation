@@ -35,7 +35,7 @@ public class TC023_Verify_User_Is_Able_To_Update_Protfolio extends BaseTest {
 		
 		MyProfilePage MyProfile_Page = EcoSystemPage.goToMyProfilePage();
 		MyProfile_Page.updatePortfolio(data.get("updateTitle"), data.get("updateUrl"));
-		Thread.sleep(20000);
+		//Thread.sleep(20000);
 		//Assert.fail("Failing the login test");
 	}
 

@@ -6,6 +6,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.Discussions;
+import com.cpcommunity.PageObjects.GlobalCommunitesPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.MyDashboardPage;
@@ -27,9 +28,13 @@ public class TC1170_verify_NoSubscription_msg_displayng_inCommunityWidget extend
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
-		login.login(data.get("email"), data.get("password"));
-		MyDashboardPage dashpage = login.gotoMyDashboardPage();
-		Discussions D=dashpage.GotoDiscussionPage();
+		//login.login(data.get("email"), data.get("password"));
+		//MyDashboardPage dashpage = login.gotoMyDashboardPage();
+		MyDashboardPage MDP=login.loginToMemberdashboard(data.get("email"), data.get("password"));
+		GlobalCommunitesPage GCP=MDP.naviagtingToGlobalCommunities();
+		GCP.searchCommunity(data.get("community"));
+		Discussions D=GCP.navigatetoDiscussionPage();
+		//Discussions D=dashpage.GotoDiscussionPage();
 		D.NoDiscussionMessage();
 	}
 	@AfterMethod

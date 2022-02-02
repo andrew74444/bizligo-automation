@@ -87,15 +87,18 @@ public class MyJobsPage extends BasePage {
 		
 		waitForElementToPresent(this.serchBLocation);
 		type(this.serchBLocation, Location, "location");
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
+		waitForElementToPresent(totalJobLocationResult);
 		CheckSearchResult(this.totalJobLocationResult,Location);
 		this.serchBLocation.clear();
 		
 		waitForElementToPresent(this.serchByJobType);
 		selectByVisibleText(this.serchByJobType, jobTypeID, "JobTypeID");
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
+		waitForElementToPresent(totalJobTypeResult);
 		CheckSearchResult(this.totalJobTypeResult,jobTypeID);
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
+		waitForElementToPresent(serchByJobType);
 		selectUsingIndex(this.serchByJobType,0,"JobTypeID");
 		
 		//waitForElementToPresent(this.serchByCommunity);
@@ -104,7 +107,7 @@ public class MyJobsPage extends BasePage {
 		//selectUsingIndex(this.serchByCommunity,0,"Community");	
 		
 		click(ResetBtn, "Reset button");
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
 		
 	}
 
@@ -117,6 +120,7 @@ public class MyJobsPage extends BasePage {
 				Assert.assertEquals(controlValue.toLowerCase(), actualVal.toLowerCase());
 			}			
 		}
+		
 		public void CheckJobs(List<WebElement> totalJobResult) {
 			
 		}
@@ -136,7 +140,8 @@ public class MyJobsPage extends BasePage {
         	 waitForElementToPresent(searchByjobTitle);
         	type(searchByjobTitle, Jobtitle, "Job TItle");
         	click(SearchBtn, "Search button");
-			Thread.sleep(3000);
+			//Thread.sleep(3000);
+        	waitForElementToPresent(view);
 			click(view, "View");
 			waitForElementToPresent(jobUpdates);
 		String Value=this.jobUpdates.getText();
@@ -164,7 +169,7 @@ public class MyJobsPage extends BasePage {
 			return (HomePage) openPage(HomePage.class);
 		}
 		public void searchJobs(String JobTitle,String Jobtype, String location, String community) throws InterruptedException {
-			Thread.sleep(3000);
+			//Thread.sleep(3000);
 			waitForElementToPresent(this.searchJobTitle);
 			type(this.searchJobTitle, JobTitle, "JobTitle");
 			//type(this.searchLocation,location,"Location");
@@ -180,12 +185,12 @@ public class MyJobsPage extends BasePage {
 			
 		}
 		public void searchJob(String JobTitle) throws InterruptedException {
-			Thread.sleep(3000);
+			//Thread.sleep(3000);
 			waitForElementToPresent(this.searchJobTitle);
 			type(this.searchJobTitle, JobTitle, "JobTitle");
 			//type(this.searchLocation,location,"Location");
 			click(btnSearch, "Search");
-			Thread.sleep(4000);
+			//Thread.sleep(4000);
 			System.out.println(searchJobTitleResult.size());
 			for(int i =0;i<searchJobTitleResult.size();i++) {
 				 String elementText = searchJobTitleResult.get(i).getText(); 

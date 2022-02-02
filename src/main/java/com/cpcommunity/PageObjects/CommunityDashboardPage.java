@@ -217,7 +217,7 @@ public class CommunityDashboardPage extends BasePage {
 	public void displayManageGroupsPage() throws Exception {
 		boolean varExists = false;
 		click(Groups, "Groups");
-		Thread.sleep(1000);
+		//Thread.sleep(1000);
 		waitForElementToPresent(ManageGroups);		
 		if(ManageGroups.isDisplayed()) {
 			varExists = true;
@@ -349,11 +349,12 @@ public class CommunityDashboardPage extends BasePage {
 		// new CommunityInviteMembersPage(driver);
 	}
 	public ManageCommunityWidgets navigateTomanageWidget() throws InterruptedException {
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
+		waitForElementToPresent(manage);
 		click(manage, "manage");
 		waitForElementToPresent(manageCommunitywidget);
 		click(manageCommunitywidget, "manage Community widget");
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
 		return (ManageCommunityWidgets) openPage(ManageCommunityWidgets.class);
 		// new CommunityInviteMembersPage(driver);
 	}
@@ -415,7 +416,8 @@ public class CommunityDashboardPage extends BasePage {
 
 	public ManageGroupsPage navigateToManageGroupsPage() throws Exception {
 		click(Groups, "Groups");
-		Thread.sleep(1000);
+		//Thread.sleep(1000);
+		waitForElementToPresent(ManageGroups);
 		click(ManageGroups, "Manage Groups"); 
 		return (ManageGroupsPage) openPage(ManageGroupsPage.class);
 		// new ManageGroupsPage(driver);

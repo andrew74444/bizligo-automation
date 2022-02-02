@@ -148,11 +148,11 @@ public void AcceptApplication(String Remark) throws Exception {
 		click(FirstRow,"FirstRow");
 		waitForElementToPresent(CandidateName);		
 		type(this.Remark,Remark,"Remark");	
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 		waitForElementToPresent(update);
 		click(update,"update");		
 		waitForElementToPresent(toastMessage);
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
 		AssertionHelper.verifyText(toastMessage.getText(), "Job application updated.");
 		
 		
@@ -181,7 +181,7 @@ public void searchJob(String jobTitle, String Location, String jobTypeID,
 	selectUsingIndex(this.JobByStatus,0,"Status");	
 	
 	//click(btnReset, "Reset button");
-	Thread.sleep(3000);
+	//Thread.sleep(3000);
 	
 }
 
@@ -211,7 +211,8 @@ public void searchJob(String jobTitle, String Location, String jobTypeID,
 		waitForElementToPresent(update);	
 		click(Accept,"Accept");
 		click(update,"update");
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
+		waitForElementToPresent(toastMessage);
 		AssertionHelper.verifyText(toastMessage.getText(), "Job application updated.");
 		
 		
@@ -253,14 +254,14 @@ public void searchJob(String jobTitle, String Location, String jobTypeID,
 		click(update, "Updates");
 		waitForElementToPresent(toastMessage);
 		AssertionHelper.verifyText(toastMessage.getText(), "Job application updated.");
-		Thread.sleep(7000);
+		//Thread.sleep(7000);
 		
 	}
 	public void searchByJobTitle1(String JobTitle,String Location) throws InterruptedException {
 		type(this.searchWithJobTitle, JobTitle, "JobTitle");
 		type(this.searchByLocation,Location,"Location");
 		click(btnSearch, "Search");
-		Thread.sleep(6000);
+		Thread.sleep(3000);
 		//List <WebElement> col=driver.findElements(By.xpath("//*[@id=\"manageJobsTable\"]/thead/tr/th[3]"));
 	    List <WebElement> col=driver.findElements(By.xpath("//*[@id=\"manageJobsTable\"]/thead/tr/th"));
 		System.out.println("The number of columns are: "+ col.size());
@@ -335,12 +336,13 @@ public void searchJob(String jobTitle, String Location, String jobTypeID,
 		type(this.searchWithJobTitle, JobTitle, "JobTitle");
 		type(this.searchByLocation,Location,"Location");
 		click(btnSearch, "Search");
-		Thread.sleep(6000);
+		//Thread.sleep(6000);
+		waitForElementToPresent(actionEdit);
 		this.actionEdit.click();
 		Thread.sleep(3000);
 		type(this.reMarks,reMarks,"Remarks");
 		click(update,"update");
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 		waitForElementToPresent(toastMessage);
 		AssertionHelper.verifyText(toastMessage.getText(), "Job application updated.");
 		Thread.sleep(7000);

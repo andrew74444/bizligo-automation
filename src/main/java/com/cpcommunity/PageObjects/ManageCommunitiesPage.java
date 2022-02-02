@@ -168,10 +168,10 @@ public class ManageCommunitiesPage extends BasePage {
 	   waitForElementToPresent(searchByName);
 		type(searchByName, Community, "Community Name");
 		click(search, "Search");
-		Thread.sleep(4000);
+		//Thread.sleep(4000);
 	   waitForElementToPresent(edit);
 		click(edit, "Edit");
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
 		waitForElementToPresent(networking);
 		click(networking, "Networking");
 		driver.switchTo().frame(0);
@@ -184,8 +184,9 @@ public class ManageCommunitiesPage extends BasePage {
 	    Thread.sleep(1000);
 	    
 	    click(save, "Save");
-	    Thread.sleep(4000);
+	   // Thread.sleep(4000);
      }
+   
 public GlobalCommunitesPage navigateToglobalcommunities() throws InterruptedException {
 	Thread.sleep(8000);
 	click(homePage, "Bizligo Home page");

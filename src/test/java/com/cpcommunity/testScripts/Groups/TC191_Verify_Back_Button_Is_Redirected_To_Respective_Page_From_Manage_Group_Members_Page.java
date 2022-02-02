@@ -33,7 +33,7 @@ public class TC191_Verify_Back_Button_Is_Redirected_To_Respective_Page_From_Mana
 		MyGroupsPage = ManageGroupMembersPageByGroupAdmin.backToMyGroups();
 		EcoSystemPage = EcoSystemPage.goToMyEcosystem();
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDetailsPage CommunityDetailsPage =MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
+		CommunityDetailsPage CommunityDetailsPage =MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		ManageGroupMembersPageByGroupAdmin = CommunityDetailsPage.navigateToManageGroupMembers(data.get("groupName"));
 		CommunityDetailsPage = ManageGroupMembersPageByGroupAdmin.backToCommunityDetailsPage();
 		EditCommunityPage editCommunityPage= CommunityDetailsPage.managecommunity();

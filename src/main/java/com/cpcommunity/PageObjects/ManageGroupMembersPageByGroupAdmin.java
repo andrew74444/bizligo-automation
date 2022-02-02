@@ -8,7 +8,7 @@ import org.apache.log4j.Logger;
 
 public class ManageGroupMembersPageByGroupAdmin extends BasePage {
 
-	@FindBy(xpath = "//*[@id='header']")
+	@FindBy(xpath = "//div[@id='myNavbar']")
 	WebElement pageheader;
 
 	@Override
@@ -16,7 +16,7 @@ public class ManageGroupMembersPageByGroupAdmin extends BasePage {
 
 		updateClass(pageheader, "");
 		aShot();
-		updateClass(pageheader, "navbar-fixed-top");
+	//	updateClass(pageheader, "navbar-fixed-top");
 	}
 
 	@FindBy(xpath = "(//*[@type='search'])[1]")
@@ -39,7 +39,7 @@ public class ManageGroupMembersPageByGroupAdmin extends BasePage {
 	@FindBy(xpath = "//*[contains(text(),'Back')]")
 	WebElement Back;
 
-	@FindBy(xpath = "//*[contains(text(),'Remove Admin')]")
+	@FindBy(xpath = "//span[normalize-space()='Remove Admin']")
 	WebElement RemoveAdmin;
 
 	@FindBy(xpath = "//*[contains(text(),'Make Admin')]")
@@ -60,7 +60,9 @@ public class ManageGroupMembersPageByGroupAdmin extends BasePage {
 	@FindBy(xpath = "(//tbody)[2]/tr[1]/td[2]")
 	WebElement Table2Row1;
 
-	@FindBy(xpath = "//*[contains(text(),'Add')]")
+	//@FindBy(xpath = "//*[contains(text(),'Add')]")
+	
+	@FindBy(xpath = "//div[@class='member-page-heading bg-info text-uppercase']")
 	WebElement AddBtn;
 
 	@FindBy(xpath = "//*[@id='CommunityUsersTable']/tbody/tr[2]/td[5]")
@@ -189,8 +191,9 @@ public class ManageGroupMembersPageByGroupAdmin extends BasePage {
 
 	public void checkMakeAnotherMemberAsAdmin(String email) throws Exception {
 
-		this.memberInSearch(email);
-		this.memberInCheckBox();
+		//this.memberInSearch(email);
+		//this.memberInCheckBox();
+		waitForElementToPresent(RemoveAdmin);
 		click(RemoveAdmin, "Remove Admin");
 		waitForElementToPresent(YesProceed);
 		click(YesProceed, "Yes, Proceed");

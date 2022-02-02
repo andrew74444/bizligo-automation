@@ -6,6 +6,8 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
+import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
+
 
 public class SATestimonials extends BasePage {
 	@FindBy(xpath="//a[contains(text(),'Testimonials')]")
@@ -17,10 +19,10 @@ public class SATestimonials extends BasePage {
 	@FindBy(xpath = "//h2[contains(text(),'Websit')]")
 	WebElement websiteTestimonial;
 	
-	@FindBy(xpath = "//*[@id=\"row_1200\"]/td[2]/a")
+	@FindBy(xpath = "//a[@title='Click to edit this entry']")
 	WebElement approved;
 	
-	@FindBy(xpath = "//*[@id=\"row_19\"]/td[2]/a")
+	@FindBy(xpath = "//a[@title='Click to edit this entry']")
 	WebElement rejected;
 	
 	@FindBy(xpath = "//select[@id='StatusID']")
@@ -56,7 +58,7 @@ public class SATestimonials extends BasePage {
 	{
 		String date = ": "+getSystemCurrentDate()+"-"+getSystemCurrentMonth()+"-"+getSystemCurrentYear();
 		type(Search, search+date, "Search");
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
 		
 	}
 	
@@ -64,16 +66,18 @@ public class SATestimonials extends BasePage {
 	{
 		String date = ": "+getSystemCurrentDate()+"-"+getSystemCurrentMonth()+"-"+getSystemCurrentYear();
 		click(approved, "Approved");
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
 		type(this.notes, notes+date, "Notes");
 		Thread.sleep(1000);
 		Select drp = new Select(statusID);
 		drp.selectByVisibleText("Approved");
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
+		waitForElementToPresent(save);
 		click(save, "Save");
 		Thread.sleep(10000);
 		click(menu, "Menu");
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
+		waitForElementToPresent(logout);
 		click(logout, "Logout");
 	}
 	
@@ -81,16 +85,19 @@ public class SATestimonials extends BasePage {
 	{
 		String date = ": "+getSystemCurrentDate()+"-"+getSystemCurrentMonth()+"-"+getSystemCurrentYear();
 		click(rejected, "Rejected");
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
 		type(this.notes, notes, "Notes");
-		Thread.sleep(1000);
+		//Thread.sleep(1000);
 		Select drp = new Select(statusID);
 		drp.selectByVisibleText("Rejected");
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
+		waitForElementToPresent(save);
 		click(save, "Save");
 		Thread.sleep(10000);
+		wait.until(ExpectedConditions.elementToBeClickable(menu));
 		click(menu, "Menu");
-		Thread.sleep(10000);
+		//Thread.sleep(10000);
+		waitForElementToPresent(logout);
 		click(logout, "Logout");
 	}
 }

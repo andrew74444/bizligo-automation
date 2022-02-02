@@ -7,7 +7,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.CommunityDetailsPage;
-
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.MyDashboardPage;
@@ -33,12 +33,12 @@ public class TC618_Verify_Whether_member_is_able_to_add_organization_services_yo
 		logInfo("Launched Browser : "+data.get("browser"));
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
-//		login.login(data.get("username"), data.get("password"));
-//		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
-		MyDashboardPage dashboard = login.loginToMemberdashboard(data.get("email"),data.get("password"));
-		MyProfilePage profile = dashboard.NaviagtingToMyProfilePage();
-		profile.professionalMatchesPage();
-		profile.serviceYouOfferandNeed();
+//		MyDashboardPage dashboard = login.loginToMemberdashboard(data.get("email"),data.get("password"));
+//		MyProfilePage profile = dashboard.NaviagtingToMyProfilePage();
+		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+		MyProfilePage MyProfile_Page = EcoSystemPage.goToMyProfilePage();
+		MyProfile_Page.professionalMatchesPage();
+		MyProfile_Page.serviceYouOfferandNeed(data.get("addofferr"));
 		
 		
 		

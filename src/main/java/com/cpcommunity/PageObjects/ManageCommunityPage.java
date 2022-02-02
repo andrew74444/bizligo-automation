@@ -198,11 +198,12 @@ public class ManageCommunityPage extends BasePage{
 	}
 
 	public ManageCommunityWidgets navigateTomanageWidget() throws InterruptedException {
-		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
+		waitForElementToPresent(manage);
 		click(manage, "manage");
 		waitForElementToPresent(manageCommunitywidget);
 		click(manageCommunitywidget, "manage Community widget");
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
 		return (ManageCommunityWidgets) openPage(ManageCommunityWidgets.class);
 		// new CommunityInviteMembersPage(driver);
 	}

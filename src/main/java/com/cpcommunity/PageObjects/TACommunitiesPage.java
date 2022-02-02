@@ -158,17 +158,14 @@ public class TACommunitiesPage extends BasePage{
 		clickElementByJavaScript(manageMembers);
 		return (ManageCommunityMembersPage) openPage(ManageCommunityMembersPage.class);
 	}
+	
     public ManageCommunityMembersPage navigateToManageMembers(String name) {
 		
-		//name = name+" "+getDateInDDMMMYYYY();
+		name = name+getDateInDDMMMYYYY();
 		searchCommunity(name);
 		clickElementByJavaScript(manageMembers);
 		return (ManageCommunityMembersPage) openPage(ManageCommunityMembersPage.class);
 	}
-
-
-	 
-
 
 
 	public int checkActivePricingPlans() {
@@ -239,17 +236,21 @@ public class TACommunitiesPage extends BasePage{
         picture();
         click(Createbtn,"Create btn");
         Thread.sleep(3000);
+        waitForElementToPresent(toastMessage);
         System.out.println( toastMessage.getText());
         if(toastMessage.getText().equalsIgnoreCase("Community created successfully")) 
         		{
         	Assert.assertTrue(true);
         		}
     }
+    
+    
         public void TA_editCommunity(String Name,String EditedName,String About,String Other,String Category) throws InterruptedException {
     		//Name = Name+getDateInDDMMMYYYY(); 
     		type(nameSearch, Name, "Community Name Search");
     		click(searchBtn, "search Button");
-    		Thread.sleep(5000);
+    		//Thread.sleep(5000);
+    		waitForElementToPresent(Editbtn);
     		click(Editbtn,"Edit Community");
     		EditedName=EditedName+getDateInDDMMMYYYY(); 
     		type(CommunityName, EditedName,"Name");
@@ -290,7 +291,7 @@ public class TACommunitiesPage extends BasePage{
         	type(CommunityName, Name,"Name");
         	CommunityName.click();
         	PNetworking.click();
-        	Thread.sleep(7000);
+        	//Thread.sleep(7000);
         	System.out.println(errorMsgOfDuplicateCommunity.getText());
         	AssertionHelper.verifyText(errorMsgOfDuplicateCommunity.getText(), "Community already exists. Please enter a different community name");
     	}

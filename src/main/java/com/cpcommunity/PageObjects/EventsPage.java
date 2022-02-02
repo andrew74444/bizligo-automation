@@ -178,7 +178,7 @@ public class EventsPage extends BasePage  {
 	public ManageCommunityPage gotoDashboardpage() throws InterruptedException {
 		waitForElementToPresent(manageBtn);
 		click(manageBtn, "Manage Button");
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
 		return (ManageCommunityPage) openPage(ManageCommunityPage.class);		
 	}
 	

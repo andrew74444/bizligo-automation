@@ -1,4 +1,4 @@
-package com.cpcommunity.Endorsments;
+package com.cpcommunity.testScripts.Endorsments;
 
 import java.util.Hashtable;
 

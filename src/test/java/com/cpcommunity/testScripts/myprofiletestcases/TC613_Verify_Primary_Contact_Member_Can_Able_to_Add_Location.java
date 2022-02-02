@@ -36,9 +36,12 @@ public class TC613_Verify_Primary_Contact_Member_Can_Able_to_Add_Location extend
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
-		MyDashboardPage dashboard = login.loginToMemberdashboard(data.get("email"),data.get("password"));
-		MyProfilePage profile = dashboard.NaviagtingToMyProfilePage();
-		profile.additionalInformation(data.get("locationName"),data.get("locationAddress"),data.get("addressLine1"),data.get("locationStreetAddress2"),data.get("locationCity"),data.get("locationState"),data.get("locationZip"),data.get("country"),data.get("Phone"),data.get("fax"));
+        EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+		MyProfilePage MyProfile_Page = EcoSystemPage.goToMyProfilePage();
+		
+		//MyDashboardPage dashboard = login.loginToMemberdashboard(data.get("email"),data.get("password"));
+		//MyProfilePage profile = dashboard.NaviagtingToMyProfilePage();
+		MyProfile_Page.additionalInformation(data.get("locationName1"),data.get("locationAddress1"),data.get("addressLine2"),data.get("locationStreetAddress3"),data.get("locationCity1"),data.get("locationState1"),data.get("locationZip1"),data.get("country1"),data.get("Phone1"),data.get("fax1"));
 		//GlobalCommunitesPage globalcommunities = profile.NavigateToGlobalcommunities();
 		//CommunityDetailsPage community = globalcommunities.navigateToCommunityDetailsPage(data.get("communityName"));
 		

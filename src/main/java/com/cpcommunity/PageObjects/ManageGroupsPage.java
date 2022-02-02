@@ -78,11 +78,13 @@ public class ManageGroupsPage extends BasePage{
 	
 	public Create_UpdateGroupPage editGroup() throws Exception {
 		click(Menu,"Menu");
-		driver.manage().timeouts().implicitlyWait(300, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(300, TimeUnit.SECONDS);
+		waitForElementToPresent(editGroup);
 		click(editGroup,"editGroup");
 		return (Create_UpdateGroupPage) openPage(Create_UpdateGroupPage.class);
 //		new Create_UpdateGroupPage(driver, );
 	}
+	
       public Create_UpdateGroupPage navigateToEditGroupPage(String groupName) throws Exception {
 		
 		type(SearchbyGroupName, groupName,"Search by Group Name");   
@@ -92,7 +94,7 @@ public class ManageGroupsPage extends BasePage{
         picture();
         click(element,"Group name");
         waitForElementToPresent(editGroup1);
-        driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
         picture();
         click(editGroup1,"Edit group"); 
         

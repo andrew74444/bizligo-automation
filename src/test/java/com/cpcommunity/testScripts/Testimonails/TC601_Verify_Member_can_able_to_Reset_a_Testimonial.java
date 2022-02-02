@@ -28,7 +28,7 @@ public class TC601_Verify_Member_can_able_to_Reset_a_Testimonial extends BaseTes
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
 		MyDashboardPage dashboard = login.loginToMemberdashboard(data.get("email"),data.get("password"));
-	    dashboard.navigateToMyDashBoard();
+	    //dashboard.navigateToMyDashBoard();
 	    TestimonialsPage testimonial = dashboard.naviagtingToTestimonials();
 	    testimonial.ResetTestimonial(data.get("title"), data.get("description"));
 		

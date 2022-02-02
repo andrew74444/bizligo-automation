@@ -45,7 +45,8 @@ public class AdminLogin extends BasePage
 	}
 	public superAdminDashboardPage superAdminloginToApplication(String emailAddress, String password) throws InterruptedException 
 	{
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
+		waitForElementToPresent(LoginBtn);
 		type(this.emailAddress, emailAddress, "email address");
 		type(this.password, password, "password");
 		click(LoginBtn, "Login");
