@@ -281,6 +281,8 @@ public class UpcomingEventsPage extends BasePage{
 	List<WebElement> invitees;
 	@FindBy(xpath="//form[@id='GuestInvitationForm']//div[@class='panel-heading']")
 	WebElement invitee;
+	@FindBy(css="body > div:nth-child(3) > div:nth-child(1) > div:nth-child(2) > section:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(5) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1) > div:nth-child(2) > div:nth-child(1) > h4:nth-child(1) > strong:nth-child(2)")
+	WebElement element;
 
 	
 public  MyEventsPage goToMyEventsPage() {
@@ -385,7 +387,8 @@ public void registerTt(String Event) throws InterruptedException {
 	type(EventNameSearch, Event, "eventName");
 	click(Search,"Search");
 	Thread.sleep(3000);
-	driver.findElement(By.xpath("//strong[contains(text(),'" + Event + "')]")).click();
+	//driver.findElement(By.xpath("body > div:nth-child(3) > div:nth-child(1) > div:nth-child(2) > section:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(5) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1) > div:nth-child(2) > div:nth-child(1) > h4:nth-child(1) > strong:nth-child(2)")).click();
+	this.element.click();
 	waitForElementToPresent(registe);
 	click(registe,"Register");
 	Thread.sleep(2000);

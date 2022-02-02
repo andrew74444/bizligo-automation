@@ -17,10 +17,10 @@ import com.cpcommunity.utilities.ExcelReader;
 
 public class TC1277_verify_TA_ableto_Inactivate_MembershipPlan extends BaseTest{
 	@Test(dataProviderClass = DataProviders.class, dataProvider = "masterDP")
-	public void TC1276(Hashtable<String, String> data) throws Exception {
+	public void TC1277(Hashtable<String, String> data) throws Exception {
 	
 	ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-	DataUtil.checkExecution("master", "TC1276", data.get("Runmode"), excel);
+	DataUtil.checkExecution("master", "TC1277", data.get("Runmode"), excel);
 	log.info("Inside Login Test");			
 	openBrowser(data.get("browser"));
 	logInfo("Launched Browser : "+ data.get("browser"));		
@@ -29,7 +29,7 @@ public class TC1277_verify_TA_ableto_Inactivate_MembershipPlan extends BaseTest{
 	LoginPage login = home.clickOnLOGINBtn();
 	TenantAdminDashboardPage tadashoboard=login.loginToTADashboard(data.get("email"), data.get("password"));
     ManageMembershipPlan manageMP= tadashoboard.navigateToMembershipPlansPage();
-    manageMP.EditPlan(data.get("PlanName"));
+    manageMP.editplan(data.get("PlanName"));
     manageMP.inactivate();
 	
 	

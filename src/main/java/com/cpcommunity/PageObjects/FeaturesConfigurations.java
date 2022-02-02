@@ -149,7 +149,7 @@ public void EnableImportContact() throws InterruptedException {
     }
  
  public HomePage logout() throws InterruptedException {
-	Thread.sleep(8000);
+	    wait.until(ExpectedConditions.elementToBeClickable(toggledropdown));
 		click(toggledropdown, " Menu Drop down");
 		waitForElementToPresent(logout);
 		click(logout, "logout");
@@ -157,35 +157,40 @@ public void EnableImportContact() throws InterruptedException {
 	}
  public void disablefeature(String feature) throws Exception {
 		
-		
-		WebElement element = driver.findElement(By.xpath("//label[contains(text(),'"+feature+"')]")); 
+	//label[@class='ng-binding'][contains(text(),'Create Community')]
+		WebElement element = driver.findElement(By.xpath("//label[@class='ng-binding'][contains(text(),'"+feature+"')]")); 
 		scrollToElement(element);
 		click(element, "feature");
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
 		WebElement toggleButton = driver.findElement(By.xpath("//label[contains(text(),'"+feature+"')]/../../../../..//*[@class='btn btn-warning btn-lg active toggle-off']"));
+		wait.until(ExpectedConditions.elementToBeClickable(toggleButton));
 		click(toggleButton, "disabling the feature");
-		
+		Thread.sleep(3000);
 		WebElement saveButton = driver.findElement(By.xpath("//label[contains(text(),'"+feature+"')]/../../../../..//*[@id='btnSave']"));
 		this.save(saveButton);
-		Thread.sleep(3000);
+		
 	}
  
  public void enableFeature(String feature) throws Exception {
 		WebElement element = driver.findElement(By.xpath("//label[contains(text(),'"+feature+"')]")); 
 		scrollToElement(element);
 		click(element, "feature");
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
 		WebElement toggleButton = driver.findElement(By.xpath("//label[contains(text(),'"+feature+"')]/../../../../..//*[contains(text(),'Disabled')]"));
+		wait.until(ExpectedConditions.elementToBeClickable(toggleButton));
 		click(toggleButton, "enabling the feature");
-		Thread.sleep(2000);
+		Thread.sleep(3000);
+		wait.until(ExpectedConditions.textToBePresentInElement(toggleButton, "Enable"));
 		WebElement saveButton = driver.findElement(By.xpath("//label[contains(text(),'"+feature+"')]/../../../../..//*[@id='btnSave']"));
+		wait.until(ExpectedConditions.elementToBeClickable(saveButton));
 		this.save(saveButton);
-		Thread.sleep(4000);
+		//Thread.sleep(4000);
 	}
 	public void clickfeature(String feature) throws InterruptedException {
-		Thread.sleep(3000);
-		WebElement element = driver.findElement(By.xpath("//label[contains(text(),'"+feature+"')]")); 
+		//Thread.sleep(3000);
 		
+		WebElement element = driver.findElement(By.xpath("//label[contains(text(),'"+feature+"')]")); 
+		wait.until(ExpectedConditions.elementToBeClickable(element));
 		click(element, "feature");
 		Thread.sleep(3000);
 	}

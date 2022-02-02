@@ -28,7 +28,7 @@ public class TC1295_verify_AdvertisementPlan_not_available extends BaseTest{
 	public void TC1295(Hashtable<String,String> data) throws Exception {
  
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC1046", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC1295", data.get("Runmode"), excel);
 		log.info("Inside Login Test");			
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+ data.get("browser"));		

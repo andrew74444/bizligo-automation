@@ -29,7 +29,7 @@ public class TC1276_verify_TA_ableto_update_membershipPlan extends BaseTest{
 	LoginPage login = home.clickOnLOGINBtn();
 	TenantAdminDashboardPage tadashoboard=login.loginToTADashboard(data.get("email"), data.get("password"));
     ManageMembershipPlan manageMP= tadashoboard.navigateToMembershipPlansPage();
-    manageMP.EditPlan(data.get("PlanName"));
+    manageMP.editplan(data.get("PlanName"));
     manageMP.UpdatePlan(data.get("Name"),data.get("Price"), data.get("Description"));
     
     
