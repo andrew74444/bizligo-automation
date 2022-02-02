@@ -94,15 +94,15 @@ public class ManageCommunitiesPage extends BasePage {
 	
 
 	
-	public CommunityEventsPage clickcommunity() {
+/*	public CommunityEventsPage clickcommunity() {
 		
 		waitForElementToPresent(managecommunity);
 		click(managecommunity, "manage community");
 	scrollToElement(publishEvent);
 		click(publishEvent, "Publish event");
 		return (CommunityEventsPage) openPage(CommunityEventsPage.class);
-	}
-	  
+	}*/
+	 
 	
     public void searchCommunity(String Community) throws InterruptedException {
 	waitForElementToPresent(searchByName);
@@ -146,7 +146,7 @@ public class ManageCommunitiesPage extends BasePage {
  	}
 
 
-    public CommunityEventsPage clickcommunity() {
+  public CommunityEventsPage clickcommunity() {
 
     	waitForElementToPresent(managecommunity);
     	click(managecommunity, "manage community");

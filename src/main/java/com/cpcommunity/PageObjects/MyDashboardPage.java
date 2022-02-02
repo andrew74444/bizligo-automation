@@ -45,9 +45,15 @@ public class MyDashboardPage extends BasePage{
 	@FindBy(xpath = "//h2[contains(text(),'Sorry, the page or event you are looking for was n')]")
 	WebElement errorPage;
 	
+
 	//@FindBy(xpath = "//h2[normalize-space()='MY ECOSYSTEM']")
-	@FindBy(xpath = "//div[@class='member-page-heading bg-info text-uppercase']")
-	WebElement myDashboard;
+	//@FindBy(xpath = "//div[@class='member-page-heading bg-info text-uppercase']")
+	//WebElement myDashboard;
+
+	@FindBy(xpath = "//h2[normalize-space()='MY ECOSYSTEM']")
+	//h2[normalize-space()='MY ECOSYSTEM']
+  WebElement myDashboard;
+//>>>>>>> 76cb67c052ad4e8adb1ade1afe195876e131ae62
 
 	@FindBy(xpath="//div[normalize-space()='My Advertisements']")
 	WebElement myAdvertisements;
@@ -149,7 +155,7 @@ public class MyDashboardPage extends BasePage{
 
 	@FindBy(xpath="//a[contains(.,' Dashboard')]")
 	WebElement MyEcosystem1;
-	@FindBy(xpath="//span[contains(text(),'Global Events')]")
+	@FindBy(xpath="//span[normalize-space()='Global Events']")
 	WebElement globalEvents;
 
 	@FindBy(xpath = "//button[contains(.,'Yes,Proceed')]")
@@ -329,7 +335,7 @@ WebElement joinedMessage ;
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 		
-		log.info("---> DashBoard");
+		log.info("DashBoard");
 		
 		return ExpectedConditions.visibilityOf(myDashboard);
 	}
