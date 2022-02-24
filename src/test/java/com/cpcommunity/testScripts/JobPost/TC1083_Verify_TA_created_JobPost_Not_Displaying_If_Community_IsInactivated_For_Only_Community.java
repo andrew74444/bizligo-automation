@@ -34,7 +34,7 @@ public class TC1083_Verify_TA_created_JobPost_Not_Displaying_If_Community_IsInac
 	manageJob.postTAJob(data.get("community"),data.get("JobTitle"),data.get("billingRate"),data.get("jobTypeID"),data.get("location"),data.get("description"),data.get("additionalDetails"),data.get("remarks"),data.get("makeGlobal"));
 	ManageCommunitiesPage MCP=manageJob.navigateToManageCommunitiesPage();
 	MCP.searchCommunity(data.get("Community2"));
-	MCP.EditCommunities(data.get("About"), data.get("Category"), data.get("type"));
+	MCP.EditCommunities(data.get("Name"),data.get("About"), data.get("Category"), data.get("type"));
 	GlobalCommunitesPage GCP=MCP.navigateToglobalcommunities();
 	GCP.checkInActivatedCommunityIsNotDisplayed(data.get("Community1"));
 	TenantAdminDashboardPage TAdash=GCP.navigateToTenantAdminDashboardPage();

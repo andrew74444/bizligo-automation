@@ -354,7 +354,7 @@ public class EcoSystemPage extends BasePage {
 	
 	public UpcomingEventsPage navigateToUpComingEvents() throws InterruptedException {
 		clickElementByJavaScript(globalEvents);
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
 		waitForElementToPresent(upcomingEvents);
 		click(upcomingEvents, "Upcoming Events");
 		return (UpcomingEventsPage) openPage(UpcomingEventsPage.class);

@@ -75,7 +75,7 @@ public class TC1290_Verify_when_JobBoard_NotAvailable_CA_notAbleto_perform_relat
 		LoginPage login4 = home4.clickOnLOGINBtn();
 		TenantAdminDashboardPage tadashoboard4=login4.loginToTADashboard(data.get("email"), data.get("password"));
 		ManageCommunitiesPage Mcom=tadashoboard4.navigatetomanageCommunities();
-		Mcom.EditCommunities(data.get("Name"),data.get("About"), data.get("Category"));
+		Mcom.EditCommunities(data.get("Name"),data.get("About"), data.get("type"),data.get("Category"));
 		
 	}
 	@AfterMethod

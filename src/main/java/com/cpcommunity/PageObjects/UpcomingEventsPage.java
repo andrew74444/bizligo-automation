@@ -192,6 +192,7 @@ public class UpcomingEventsPage extends BasePage{
 		st.assertAll();
 
 	}
+	
 	public void registerToAnEvent(String Event) throws InterruptedException {
 		type(EventNameSearch, Event, "eventName");
 		click(Search,"Search");
@@ -205,7 +206,7 @@ public class UpcomingEventsPage extends BasePage{
 		//type(AuthoriseNet, label, Event)
 		click(booknow,"Book Now");
 		waitForElementToPresent(bookingConfirmation);
-		Thread.sleep(4000);
+		//Thread.sleep(4000);
 		if(bookingConfirmation.isDisplayed()) {
 			Assert.assertTrue(true);
 		}else Assert.assertTrue(false);
@@ -291,6 +292,7 @@ public  MyEventsPage goToMyEventsPage() {
 		click(myEvents,"My events");
 		return (MyEventsPage) openPage(MyEventsPage.class);
 	}
+
 public void registerToAnEventAsGuest(String Event,String Email) throws InterruptedException {
 	type(EventNameSearch, Event, "eventName");
 	click(Search,"Search");
@@ -299,7 +301,8 @@ public void registerToAnEventAsGuest(String Event,String Email) throws Interrupt
 	waitForElementToPresent(register);
 	click(register,"Register");
 	selectUsingIndex(noOfTickets,1,"1");
-	Thread.sleep(4000);
+	//Thread.sleep(4000);
+	waitForElementToPresent(emailId);
 	type(emailId,Email,"Email Of registered Guest User");
 	emailId.sendKeys(Keys.ENTER);
 	click(booknow,"Book Now");
@@ -314,8 +317,8 @@ public void registerToAnEventAsGuest(String Event,String Email) throws Interrupt
 	System.out.println(bookingDate.getText());
 	System.out.println(eventType.getText());
 	System.out.println(eventDetails.getText());
-	
-}
+	}
+
 public void registerToAnEventThroughOtherMember(String Event,String Email,String Fname,String Lname) throws InterruptedException {
 	type(EventNameSearch, Event, "eventName");
 	click(Search,"Search");
@@ -324,14 +327,15 @@ public void registerToAnEventThroughOtherMember(String Event,String Email,String
 	waitForElementToPresent(register);
 	click(register,"Register");
 	selectUsingIndex(noOfTickets,1,"1");
-	Thread.sleep(2000);
+	//Thread.sleep(2000);
+	waitForElementToPresent(emailId);
 	type(emailId,Email,"Email Of registered Guest User");
 	type(firstName,Fname,"First name Of registered Guest User");
 	type(lastName,Lname,"Last Name Of registered Guest User");
 	//emailId.sendKeys(Keys.ENTER);
 	//Thread.sleep(6000);
 	click(booknow,"Book Now");
-	Thread.sleep(8000);
+	//Thread.sleep(8000);
 	waitForElementToPresent(bookingConfirmation);
 	Thread.sleep(3000);
 	if(bookingConfirmation.isDisplayed()) {
@@ -342,8 +346,8 @@ public void registerToAnEventThroughOtherMember(String Event,String Email,String
 	System.out.println(bookingDate.getText());
 	System.out.println(eventType.getText());
 	System.out.println(eventDetails.getText());
-	
 }
+
 public void registerToPaidEvent(String Event) throws InterruptedException {
 	type(EventNameSearch, Event, "eventName");
 	click(Search,"Search");
@@ -351,7 +355,8 @@ public void registerToPaidEvent(String Event) throws InterruptedException {
 	driver.findElement(By.xpath("//strong[contains(text(),'" + Event + "')]")).click();
 	waitForElementToPresent(register);
 	click(register,"Register");
-	Thread.sleep(2000);
+	//Thread.sleep(2000);
+	waitForElementToPresent(noOfTickets);
 	selectUsingIndex(noOfTickets,1,"1");
 	Thread.sleep(2000);
 	click(next,"Next");

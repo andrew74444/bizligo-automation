@@ -407,6 +407,7 @@ public class MyCommunitiesPage extends BasePage {
 			return false;
 		}
 	}
+	
 	public boolean leaveCommunityWithName(String communityName) throws Exception {
 		this.searchCommunity(communityName);
 		click(LeaveBtn,"LeaveBtn");

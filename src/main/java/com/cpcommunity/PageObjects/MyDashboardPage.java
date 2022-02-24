@@ -1048,13 +1048,15 @@ public MyGroupsPage navigateToMyGroupsPage() {
 			}
 		}
 	 public Bizligo1CommunityPage goToMyCommunity() throws InterruptedException {
-		 Thread.sleep(6000);
+		 //Thread.sleep(6000);
+		 waitForElementToPresent(viewAllBtn);
 			click(viewAllBtn,"view all");
-			Thread.sleep(6000);
+			//Thread.sleep(6000);
+			waitForElementToPresent(bizligo1);
 			scrollIntoView(bizligo1);
 			//waitForElementToPresent(bizligo1);
 			click(bizligo1,"Bizligo 1");
-			Thread.sleep(8000);
+			//Thread.sleep(8000);
 			return (Bizligo1CommunityPage) openPage(Bizligo1CommunityPage.class);
 		}
 	 
@@ -1077,7 +1079,8 @@ public MyGroupsPage navigateToMyGroupsPage() {
 //			new MyProfilePage(driver, );
 		}
 	 public void cancelConnectionRequest() throws InterruptedException {
-		 Thread.sleep(6000);
+		 //Thread.sleep(6000);
+		 waitForElementToPresent(requests);
 		 click(requests,"Requests");
 		 waitForElementToPresent(reject);
 		 click(reject,"Reject");
@@ -1085,7 +1088,8 @@ public MyGroupsPage navigateToMyGroupsPage() {
 		 
 	 }
 	 public void checkConnectionMsg(String Notes) throws InterruptedException {
-		 Thread.sleep(6000);
+		 //Thread.sleep(6000);
+		 waitForElementToPresent(requests);
 		 click(requests,"Requests");
 		 waitForElementToPresent(reject);
 		 System.out.println(connectionNote.getText());
@@ -1098,7 +1102,8 @@ public MyGroupsPage navigateToMyGroupsPage() {
 		 
 	 }
 	 public void checkConnectionMsgIsEditable(String Notes) throws InterruptedException {
-		 Thread.sleep(6000);
+		 //Thread.sleep(6000);
+		 waitForElementToPresent(requests);
 		 click(requests,"Requests");
 		 waitForElementToPresent(reject);
 		 System.out.println(connectionNote.getText());
@@ -1106,7 +1111,8 @@ public MyGroupsPage navigateToMyGroupsPage() {
 		 System.out.println(x);
 	 }
 	 public void checkSeeMoreOption(String Notes) throws InterruptedException {
-		 Thread.sleep(6000);
+		 //Thread.sleep(6000);
+		 waitForElementToPresent(requests);
 		 click(requests,"Requests");
 		 waitForElementToPresent(reject);
 		 System.out.println(connectionNote.getText());

@@ -65,7 +65,9 @@ public class TC1291_Verify_when_SurveyFeature_NotAvailable_CA_notAbleto_perform_
 		AG.makePayment();
 		ManageCommunityPage MC=AG.navigateManageCommunities();
 		MC.checkMenuNotPresent(data.get("menu"));
+		quit();
 		
+
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+ data.get("browser"));		
 		logInfo("BizLigo Application Opened");
@@ -73,9 +75,9 @@ public class TC1291_Verify_when_SurveyFeature_NotAvailable_CA_notAbleto_perform_
 		LoginPage login4 = home4.clickOnLOGINBtn();
 		TenantAdminDashboardPage tadashoboard4=login4.loginToTADashboard(data.get("email"), data.get("password"));
 		ManageCommunitiesPage Mcom=tadashoboard4.navigatetomanageCommunities();
-		Mcom.EditCommunities(data.get("Name"),data.get("About"), data.get("Category"));
+		Mcom.EditCommunities(data.get("Name"),data.get("About"), data.get("type"),data.get("Category"));
 		
-		
+	
 		
 	}
 	@AfterMethod

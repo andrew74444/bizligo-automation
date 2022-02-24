@@ -30,7 +30,7 @@ public class TC1292_Verify_when_ZoomFeature_NotAvailable_CA_notAbleto_perform_re
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC1292", data.get("Runmode"), excel);
 		log.info("Inside Login Test");			
-	   openBrowser(data.get("browser"));
+	    openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+ data.get("browser"));		
 		logInfo("BizLigo Application Opened");
 		HomePage home1 = new HomePage().open(data.get("tenantType"));
@@ -65,6 +65,7 @@ public class TC1292_Verify_when_ZoomFeature_NotAvailable_CA_notAbleto_perform_re
 		AG.makePayment();
 		ManageCommunityPage MC=AG.navigateManageCommunities();
 		MC.checkMenuNotPresent(data.get("menu"));
+
 		
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+ data.get("browser"));		
@@ -73,9 +74,10 @@ public class TC1292_Verify_when_ZoomFeature_NotAvailable_CA_notAbleto_perform_re
 		LoginPage login4 = home4.clickOnLOGINBtn();
 		TenantAdminDashboardPage tadashoboard4=login4.loginToTADashboard(data.get("email"), data.get("password"));
 		ManageCommunitiesPage Mcom=tadashoboard4.navigatetomanageCommunities();
-		Mcom.EditCommunities(data.get("Name"),data.get("About"), data.get("Category"));
-		
-		
+		Mcom.EditCommunities(data.get("type"),data.get("Name"),data.get("About"), data.get("Category"));
+
+		quit();
+
 		
 	}
 	@AfterMethod
