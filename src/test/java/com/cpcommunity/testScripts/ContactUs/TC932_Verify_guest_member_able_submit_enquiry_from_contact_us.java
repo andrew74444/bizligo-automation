@@ -28,12 +28,12 @@ public class TC932_Verify_guest_member_able_submit_enquiry_from_contact_us exten
 		CP.checkAndSubmitEquiryForm(data.get("Name"),data.get("Organization") ,data.get("Address"),data.get("Phone"),data.get("Email"), data.get("Comments"));
 		
 	}
-	@AfterMethod
-	public void tearDown() {
-		
-		logInfo("Login Test Completed");
-		
-		quit();
-		
-	}
+//	@AfterMethod
+//	public void tearDown() {
+//		
+//		logInfo("Login Test Completed");
+//		
+//		quit();
+//		
+//	}
 }

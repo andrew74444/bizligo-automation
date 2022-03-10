@@ -45,7 +45,7 @@ import com.assertthat.selenium_shutterbug.core.Shutterbug;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.cpcommunity.ExtentListeners.ExtentListeners;
 import com.cpcommunity.ExtentListeners.ExtentManager;
-import com.cpcommunity.ExtentListeners2.ExtentListeners2;
+//import com.cpcommunity.ExtentListeners2.ExtentListeners2;
 import com.cpcommunity.utilities.DriverCapabilities;
 import com.cpcommunity.utilities.DriverManager;
 import com.cpcommunity.utilities.JavaScript;
@@ -63,8 +63,10 @@ public abstract class BasePage<T> {
 	protected String ID;
 	public Logger log = Logger.getLogger(BasePage.class);
 	// private long LOAD_TIMEOUT = 200;
-	private int AJAX_ELEMENT_TIMEOUT = 20;
-	public int expTime = 20;
+	private int AJAX_ELEMENT_TIMEOUT = 10;
+	//private int AJAX_ELEMENT_TIMEOUT = 20;
+	public int expTime = 1;
+	//public int expTime = 20;
 	protected JavascriptExecutor exe;
 	protected Robot robot;
 	protected WebDriverWait wait;
@@ -88,7 +90,7 @@ public abstract class BasePage<T> {
 			PageFactory.initElements(ajaxElemFactory, page);
 			ExpectedCondition pageLoadCondition = ((BasePage) page).getPageLoadCondition();
 			waitForPageToLoad(pageLoadCondition);
-			((BasePage) page).getPageScreenSot();
+			//((BasePage) page).getPageScreenSot();//commented by me
 		} catch (NoSuchElementException e) {
 			/*
 			 * String error_screenshot = System.getProperty("user.dir") +
@@ -147,19 +149,19 @@ try {
 		}
 
 		scrollUpVertically();
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//		Thread.sleep(2000);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			Thread.sleep(3000);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		
 } catch (Exception e) {
@@ -196,12 +198,12 @@ try {
 		wait.until(ExpectedConditions.visibilityOf(element));
 		log.info(element.toString().substring(60) + "is displayed");
 
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-
-			e.printStackTrace();
-		}
+//		try {
+//			Thread.sleep(2000);
+//		} catch (InterruptedException e) {
+//
+//			e.printStackTrace();
+//		}
 
 	}
 
@@ -213,14 +215,14 @@ try {
 	public void click(WebElement element, String elementName) {
 
 		ExtentListeners.testReport.get().info("Clicking on : " + elementName);
-		ExtentListeners2.testReport.get().info("Clicking on : " + elementName);
+	//	ExtentListeners2.testReport.get().info("Clicking on : " + elementName);
 		// System.out.println("Clicking on : "+elementName);
 		log.info("Clicking on : " + elementName);
 		highlightElement(element);
 		element.click();
 		log.info("Clicked on : " + elementName);
 		ExtentListeners.testReport.get().info("Clicked on : " + elementName);
-		ExtentListeners2.testReport.get().info("Clicked on : " + elementName);
+	//	ExtentListeners2.testReport.get().info("Clicked on : " + elementName);
 //		ExtentListeners2.testReport.get().info("Clicked on : " + elementName);
 	}
 
@@ -229,7 +231,7 @@ try {
 		// "+value);
 		log.info("Typing in : " + elementName + " entered the value as : " + value);
 		ExtentListeners.testReport.get().info("Typing in : " + elementName + " entered the value as : " + value);
-		ExtentListeners2.testReport.get().info("Typing in : " + elementName + " entered the value as : " + value);
+	//	ExtentListeners2.testReport.get().info("Typing in : " + elementName + " entered the value as : " + value);
 		element.clear();
 		highlightElement(element);
 		element.sendKeys(value);
@@ -259,7 +261,7 @@ try {
 	public void selectByVisibleText(WebElement element, String value, String elementName) {
 		log.info("Selecting the " + elementName + "value as : " + value);
 		ExtentListeners.testReport.get().info("Selecting the " + elementName + " value as : " + value);
-		ExtentListeners2.testReport.get().info("Selecting the " + elementName + " value as : " + value);
+	//	ExtentListeners2.testReport.get().info("Selecting the " + elementName + " value as : " + value);
 		Select sel = new Select(element);
 		highlightElement(element);
 		sel.selectByVisibleText(value);
@@ -270,7 +272,7 @@ try {
 	public void selectUsingIndex(WebElement element, int index, String elementName) {
 		Select select = new Select(element);
 		ExtentListeners.testReport.get().info("Selecting the " + elementName + " value as : " + index);
-		ExtentListeners2.testReport.get().info("Selecting the " + elementName + " value as : " + index);
+	//	ExtentListeners2.testReport.get().info("Selecting the " + elementName + " value as : " + index);
 		log.info("selectUsingIndex and index is: " + index);
 		select.selectByIndex(index);
 //		ExtentListeners2.testReport.get().info("Selected the " + elementName + " value as : " + index);
@@ -323,7 +325,7 @@ try {
 
 	public void picture() {
 		try {
-			ExtentManager.captureScreenshot();
+	//		ExtentManager.captureScreenshot();
 			ExtentListeners.testReport.get().info(
 					"<b>" + "<font color=" + "yellow>" + "Screenshot of new Page Navigation" + "</font>" + "</b>",
 					MediaEntityBuilder.createScreenCaptureFromPath(ExtentManager.screenshotName).build());
@@ -335,7 +337,7 @@ try {
 
 	public void newPageScreenShot() {
 		try {
-			ExtentManager.aShot();
+		//	ExtentManager.aShot();
 			ExtentListeners.testReport.get().info(
 					"<b>" + "<font color=" + "yellow>" + "Screenshot of new Page Navigation" + "</font>" + "</b>",
 					MediaEntityBuilder.createScreenCaptureFromPath(ExtentManager.screenshotName).build());

@@ -99,7 +99,8 @@ public class EcoSystemPage extends BasePage {
 	@FindBy(xpath="//a[normalize-space()='My Events']")
 	WebElement myEvents;
 
-	
+	@FindBy(xpath="//*[text()=' Articles']")//added by me
+	WebElement articles;
 	
 	
 	@Override
@@ -117,8 +118,12 @@ public class EcoSystemPage extends BasePage {
 	}
 
 	public HomePage logout() throws Exception {
+		waitForElementToPresent(articles);//added by me
+		waitForElementToPresent(Toggledropdownmenu);// added by me
+		
 		click(Toggledropdownmenu,"Toggledropdownmenu");
-		Thread.sleep(500);
+		//Thread.sleep(500);
+		
 		waitForElementToPresent(Logout);
 		click(Logout,"Logout");
 		return (HomePage) openPage(HomePage.class);
@@ -355,6 +360,7 @@ public class EcoSystemPage extends BasePage {
 	public UpcomingEventsPage navigateToUpComingEvents() throws InterruptedException {
 		clickElementByJavaScript(globalEvents);
 		//Thread.sleep(5000);
+		click(globalEvents,"Global Events");
 		waitForElementToPresent(upcomingEvents);
 		click(upcomingEvents, "Upcoming Events");
 		return (UpcomingEventsPage) openPage(UpcomingEventsPage.class);

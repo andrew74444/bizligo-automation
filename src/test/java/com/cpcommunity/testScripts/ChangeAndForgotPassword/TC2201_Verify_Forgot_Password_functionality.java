@@ -24,7 +24,7 @@ public class TC2201_Verify_Forgot_Password_functionality extends BaseTest{
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
-		login.forgotPassword(data.get("email"));
+		//login.forgotPassword(data.get("email"));
 
 }
 }

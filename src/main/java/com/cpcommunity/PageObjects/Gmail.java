@@ -5,6 +5,7 @@ import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
@@ -73,18 +74,21 @@ public class Gmail extends BasePage {
 	public Gmail open(String url) {
 
 		DriverManager.getDriver().navigate().to(
-				"https://accounts.google.com/signin/v2/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&service=mail&sacu=1&rip=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin");
-
-		picture();
+				"https://accounts.google.com/signin/v2/identifier?elo=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin");
+		
+		////https://accounts.google.com/signin/v2/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&service=mail&sacu=1&rip=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin
+	//	picture();
 		return (Gmail) openPage(Gmail.class);
 	}
 
 	public Gmail open() {
 
 		DriverManager.getDriver().navigate().to(
-				"https://accounts.google.com/o/oauth2/auth/identifier?client_id=717762328687-iludtf96g1hinl76e4lc1b9a82g457nn.apps.googleusercontent.com&scope=profile%20email&redirect_uri=https%3A%2F%2Fstackauth.com%2Fauth%2Foauth2%2Fgoogle&state=%7B%22sid%22%3A1%2C%22st%22%3A%2259%3A3%3Abbc%2C16%3Ab9ac33d13d48edea%2C10%3A1602037935%2C16%3A9718ddac74e7f6e0%2C8ee44d90224dd142a8bfb6cc2b0ac2b8016d306d13ace572b24f1c89d12d7427%22%2C%22cdl%22%3Anull%2C%22cid%22%3A%22717762328687-iludtf96g1hinl76e4lc1b9a82g457nn.apps.googleusercontent.com%22%2C%22k%22%3A%22Google%22%2C%22ses%22%3A%22e0ab48c7efe74f8ab4a9cbdd205004cf%22%7D&response_type=code&flowName=GeneralOAuthFlow");
-
-		picture();
+				"https://accounts.google.com/signin/v2/identifier?elo=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin");
+	////	https://accounts.google.com/o/oauth2/auth/identifier?client_id=717762328687-iludtf96g1hinl76e4lc1b9a82g457nn.apps.googleusercontent.com&scope=profile%20email&redirect_uri=https%3A%2F%2Fstackauth.com%2Fauth%2Foauth2%2Fgoogle&state=%7B%22sid%22%3A1%2C%22st%22%3A%2259%3A3%3Abbc%2C16%3Ab9ac33d13d48edea%2C10%3A1602037935%2C16%3A9718ddac74e7f6e0%2C8ee44d90224dd142a8bfb6cc2b0ac2b8016d306d13ace572b24f1c89d12d7427%22%2C%22cdl%22%3Anull%2C%22cid%22%3A%22717762328687-iludtf96g1hinl76e4lc1b9a82g457nn.apps.googleusercontent.com%22%2C%22k%22%3A%22Google%22%2C%22ses%22%3A%22e0ab48c7efe74f8ab4a9cbdd205004cf%22%7D&response_type=code&flowName=GeneralOAuthFlow
+		
+		//	https://accounts.google.com/signin/v2/identifier?elo=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin
+		//picture();
 		return (Gmail) openPage(Gmail.class);
 	}
 
@@ -112,17 +116,17 @@ try {
 	log.info("Navigating to Gmail - 1");
 	DriverManager.getDriver().get("https://mail.google.com/mail/u/0/");
 	waitForElementToPresent(RefreshBtn);
-	clickElementByJavaScript(RefreshBtn);
-	log.info("Navigating to Gmail - 2");
-	clickElementByJavaScript(RefreshBtn);
-	
-	DriverManager.getDriver().get("https://mail.google.com/mail/u/0/");
-	log.info("Navigating to Gmail - 3");
-	DriverManager.getDriver().get("https://mail.google.com/mail/u/0/");
-	log.info("Navigating to Gmail - 4");
-	DriverManager.getDriver().get("https://mail.google.com/mail/u/0/");
-	waitForElementToPresent(RefreshBtn);
-	
+//	clickElementByJavaScript(RefreshBtn);
+//	log.info("Navigating to Gmail - 2");
+//	clickElementByJavaScript(RefreshBtn);
+//	
+//	DriverManager.getDriver().get("https://mail.google.com/mail/u/0/");// 118 to 128 commented by me
+//	log.info("Navigating to Gmail - 3");
+//	DriverManager.getDriver().get("https://mail.google.com/mail/u/0/");
+//	log.info("Navigating to Gmail - 4");
+//	DriverManager.getDriver().get("https://mail.google.com/mail/u/0/");
+//	waitForElementToPresent(RefreshBtn);
+//	
 } catch (Exception e) {
 	log.info("Navigating to Gmail - 5");
 
@@ -130,7 +134,7 @@ try {
 //	Thread.sleep(30000);
 	
 	waitForElementToPresent(RefreshBtn);
-	// click(RefreshBtn, "Refresh Btn");
+	 click(RefreshBtn, "Refresh Btn");//removed the comment by me
 	
 }		
 	
@@ -259,5 +263,77 @@ try {
 	// }
 	//
 	// return (ZohoCRMPage) openPage(ZohoCRMPage.class);
+ @FindBy(xpath="//*[text()='Password Reset']")
+ WebElement reset;
+ 
+ @FindBy(xpath=" (//*[text()='Password Reset'])[2]")
+ WebElement reset1;
+ 
+ @FindBy(xpath="//*[text()='Reset Your Password']")
+ WebElement clickReset;
+ 
+ @FindBy(xpath="//*[text()='Reset Password']")
+ WebElement passwordRestConfirmation;
+
+ @FindBy(xpath = "//input[@name='Password']")
+	WebElement Password;
+
+	@FindBy(xpath = "//input[@name='ConfirmPassword']")
+	WebElement ConfirmPassword;
+
+	@FindBy(xpath = "//button[contains(text(),'Reset')]")
+	WebElement Reset;
+ 
+public void reset() throws InterruptedException {
+	
+	Thread.sleep(5000);
+	click(reset1,"Password Reset Mail");
+	
+	Thread.sleep(2000);
+	click(clickReset,"Reset link");
+	
+	String currentHandle= driver.getWindowHandle();
+
+	
+	Thread.sleep(2000);
+
+	
+	//Get all the handles currently available
+	Set<String> handles=driver.getWindowHandles();
+	for(String actual: handles) {
+	
+	//Switch to the opened tab
+		
+	driver.switchTo().window(actual);
+
+	}
+	
+	
+	
+	
+	
+	Thread.sleep(2000);
+	 String text=passwordRestConfirmation.getText();
+	 System.out.println(text);
+	 
+	 Thread.sleep(2000);
+	 TypeByJavaScript("Pamten@789",Password);
+
+	 
+	 Thread.sleep(2000);
+	 TypeByJavaScript("Pamten@789",ConfirmPassword);
+	 
+	 Thread.sleep(5000);
+//JavascriptExecutor js=(JavascriptExecutor)driver;
+//js.executeScript("arguments[0].click();", Reset)
+	 
+
+	 
+	 click(Reset,"resetting the password");
+	 Thread.sleep(5000);
+	 
+	 }
+
+ 
 
 }

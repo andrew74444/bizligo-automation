@@ -44,8 +44,9 @@ public class ForgotPasswordPage extends BasePage{
 //	
 //	return (ZohoCRMPage) openPage(ZohoCRMPage.class);	
 
-	public LoginPage SendForgotPasswordEmail(String emailAddress){		
-		
+	public LoginPage SendForgotPasswordEmail(String emailAddress) throws InterruptedException{		
+		//waitForElementToPresent (Submit);//added by me
+		Thread.sleep(3000);//added by me
 		type(this.emailAddress, emailAddress, "Email");
 		click(Submit,"Submit");
 		return (LoginPage) openPage(LoginPage.class);

@@ -15,7 +15,7 @@ import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.Markup;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.cpcommunity.ExtentListeners.ExtentListeners;
-import com.cpcommunity.ExtentListeners2.ExtentListeners2;
+//import com.cpcommunity.ExtentListeners2.ExtentListeners2;
 import com.cpcommunity.utilities.DriverManager;
 
 public class HomePage extends BasePage {
@@ -129,15 +129,16 @@ public class HomePage extends BasePage {
 		if(tenantType.equalsIgnoreCase("B2B")) {
 			
 			Markup m = MarkupHelper.createLabel("<b>" + "<font color=" + "White>" + "https://tenant1.bizligotest.com/"+ "</font>" + "</b>", ExtentColor.GREEN);
-			ExtentListeners2.testReport.get().info(m);
+	//		ExtentListeners2.testReport.get().info(m);
 			
-			DriverManager.getDriver().navigate().to("https://tenant1.bizligotest.com/");
+		//	DriverManager.getDriver().navigate().to("https://tenant1.bizligotest.com/");
+			DriverManager.getDriver().navigate().to("https://tenant2.bizligotest.com/");
 		}
 		else if(tenantType.equalsIgnoreCase("B2C")) {
 			
 			
 			Markup m = MarkupHelper.createLabel("<b>" + "<font color=" + "White>" + "https://tenant2.bizligotest.com/"+ "</font>" + "</b>", ExtentColor.GREEN);
-			ExtentListeners2.testReport.get().info(m);
+		//	ExtentListeners2.testReport.get().info(m);
 			
 			
 			DriverManager.getDriver().navigate().to("https://leadindia.bizligotest.com/");
@@ -149,7 +150,7 @@ public class HomePage extends BasePage {
 	
 	public LoginPage clickOnLOGINBtn() throws Exception {
 		
-		waitForElementToPresent(LOGINBtn);
+		waitForElementToPresent (LOGINBtn);
 		
 		click(LOGINBtn, "LOGIN");
 		return (LoginPage) openPage(LoginPage.class);
@@ -157,7 +158,13 @@ public class HomePage extends BasePage {
 
 	}
 	public HomePage logout() {
+		
+	//	waitForElementToPresent (toggleDropDown);//added by me
+		
 		toggleDropDown.click();
+		
+		waitForElementToPresent (logoutBtn);//added by me
+
 		logoutBtn.click();
 		return (HomePage) openPage(HomePage.class);
 		
