@@ -38,7 +38,7 @@ public class TC618_Verify_Whether_member_is_able_to_add_organization_services_yo
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		MyProfilePage MyProfile_Page = EcoSystemPage.goToMyProfilePage();
 		MyProfile_Page.professionalMatchesPage();
-		MyProfile_Page.serviceYouOfferandNeed(data.get("addofferr"));
+		//MyProfile_Page.serviceYouOfferandNeed(data.get("addofferr"));
 		
 		
 		
