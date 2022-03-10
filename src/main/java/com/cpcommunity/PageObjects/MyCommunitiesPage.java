@@ -39,6 +39,7 @@ public class MyCommunitiesPage extends BasePage {
 
 		return ExpectedConditions.visibilityOf(myCommunitiesHeader);
 
+		
 
 		//return ExpectedConditions.visibilityOf(CreateCommunityBtn);
 		//return ExpectedConditions.visibilityOf(myCommunitiesHeader);
@@ -651,7 +652,16 @@ public class MyCommunitiesPage extends BasePage {
 		
 		return (MyAdvertisements) openPage(MyAdvertisements.class);	
 	}
-	public ContactUsPage NavigateToContactUsPage() {
+	
+	@FindBy(xpath="(//*[@class='col-sm-12'])[2]//*[@class='ng-binding'][1]")//added by me
+	WebElement show;// this element for below method for waiting 
+	public ContactUsPage NavigateToContactUsPage() throws InterruptedException {
+		
+	//	Thread.sleep(20000);//added by me
+	//	scrollDownVertically();//added by me
+	
+	waitForElementToPresent(show);//added by me
+		
 		click(contactUs, "Contact Us");
 		return (ContactUsPage) openPage(ContactUsPage.class);
 		// new GlobalCareers(driver, );

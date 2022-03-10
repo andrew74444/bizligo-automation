@@ -6,6 +6,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.ContactUsPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.MyCommunitiesPage;
@@ -27,18 +28,19 @@ public class TC931_Verify_member_able_submit_enquiry_from_contactUsPage extends 
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
+	      
 		MyCommunitiesPage MyCP = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
 		ContactUsPage CP=MyCP.NavigateToContactUsPage();
 		CP.checkAndSubmitEquiryForm(data.get("Name"),data.get("Organization") ,data.get("Address"),data.get("Phone"),data.get("Email"), data.get("Comments"));
 		
 //comments
 }
-	@AfterMethod
-	public void tearDown() {
-		
-		logInfo("Login Test Completed");
-		
-		quit();
-		
-	}
+//	@AfterMethod
+//	public void tearDown() {
+//		
+//		logInfo("Login Test Completed");
+//		
+//		quit();
+//		
+//	}
 }

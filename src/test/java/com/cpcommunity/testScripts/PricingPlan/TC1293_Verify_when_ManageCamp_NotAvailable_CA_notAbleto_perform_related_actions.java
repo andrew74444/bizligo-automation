@@ -24,6 +24,7 @@ import com.cpcommunity.utilities.DataUtil;
 import com.cpcommunity.utilities.ExcelReader;
 
 public class TC1293_Verify_when_ManageCamp_NotAvailable_CA_notAbleto_perform_related_actions extends BaseTest {
+	private static final Object Type = null;
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
 	public void TC1293(Hashtable<String,String> data) throws Exception {
  
@@ -66,7 +67,7 @@ public class TC1293_Verify_when_ManageCamp_NotAvailable_CA_notAbleto_perform_rel
 		ManageCommunityPage MC=AG.navigateManageCommunities();
 		MC.checkMenuNotPresent(data.get("menu"));
 		
-<<<<<<< HEAD
+//<<<<<<< HEAD
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+ data.get("browser"));		
 		logInfo("BizLigo Application Opened");
@@ -74,9 +75,9 @@ public class TC1293_Verify_when_ManageCamp_NotAvailable_CA_notAbleto_perform_rel
 		LoginPage login4 = home4.clickOnLOGINBtn();
 		TenantAdminDashboardPage tadashoboard4=login4.loginToTADashboard(data.get("email"), data.get("password"));
 		ManageCommunitiesPage Mcom=tadashoboard4.navigatetomanageCommunities();
-		Mcom.EditCommunities(data.get("Name"),data.get("About"), data.get("Category"));
-=======
->>>>>>> 76cb67c052ad4e8adb1ade1afe195876e131ae62
+		Mcom.EditCommunities(data.get("Name"),data.get("About"), data.get("Category") ,data.get("type"));
+//=======
+//>>>>>>> 76cb67c052ad4e8adb1ade1afe195876e131ae62
 		
 		
 		

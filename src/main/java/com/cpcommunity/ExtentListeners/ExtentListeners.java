@@ -23,14 +23,14 @@ public class ExtentListeners implements ITestListener {
 	static String fileName2 = "Extent_" + d.toString().replace(":", "_").replace(" ", "_") + ".html";
 
 	static Date date = new Date();  
-    static SimpleDateFormat formatter=new SimpleDateFormat("dd MMMM yyyy");  
+    static SimpleDateFormat formatter=new SimpleDateFormat("ddMMMyyyy_hh.mm.ss");  
     static String strDate = formatter.format(date);    
-    static String fileName = "Extent_" + strDate.toString().replace(" ", "_") + ".html";
+    static String fileName = "Bizligo_Automation_" + strDate.toString().replace(" ", "_") + ".html";
     
 	
 	
 	private static ExtentReports extent = ExtentManager
-			.createInstance(System.getProperty("user.dir") + "\\reports\\" + fileName);
+			.createInstance(System.getProperty("user.dir") + "/reports/" + fileName);
 	public static ThreadLocal<ExtentTest> testReport = new ThreadLocal<ExtentTest>();
 
 	public void onTestStart(ITestResult result) {
@@ -73,7 +73,7 @@ public class ExtentListeners implements ITestListener {
 
 		try {
 			String TC = result.getTestClass().getName();
-			ExtentManager.captureScreenshot();
+		//	ExtentManager.captureScreenshot();
 			testReport.get().fail("<b>" + "<font color=" + "red>" + "Screenshot of failure" + "</font>" + "</b>",
 					MediaEntityBuilder.createScreenCaptureFromPath(ExtentManager.screenshotName).build());
 		} catch (IOException e) {
@@ -93,7 +93,7 @@ public class ExtentListeners implements ITestListener {
 		testReport.get().skip(m);
 		try {
 			String TC = result.getTestClass().getName();
-			ExtentManager.captureScreenshot();
+		//	ExtentManager.captureScreenshot();
 			testReport.get().info("<b>" + "<font color=" + "blue>" + "Screenshot of failure" + "</font>" + "</b>",
 					MediaEntityBuilder.createScreenCaptureFromPath(ExtentManager.screenshotName).build());
 		} catch (IOException e) {

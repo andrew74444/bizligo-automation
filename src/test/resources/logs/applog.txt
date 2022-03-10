@@ -1,0 +1,49 @@
+INFO    2022-03-10 14:45:19,941 [main] com.cpcommunity.testScripts.community.BaseTest  - Config properties file loaded
+INFO    2022-03-10 14:45:22,631 [main] com.cpcommunity.testScripts.community.BaseTest  - Inside Login Test
+INFO    2022-03-10 14:45:23,916 [main] io.github.bonigarcia.wdm.WebDriverManager  - Using chromedriver 99.0.4844.51 (resolved driver for Chrome 99)
+INFO    2022-03-10 14:45:23,979 [main] io.github.bonigarcia.wdm.WebDriverManager  - Exporting webdriver.chrome.driver as C:\Users\VenkataRambabuKodi\.cache\selenium\chromedriver\win32\99.0.4844.51\chromedriver.exe
+INFO    2022-03-10 14:45:26,616 [main] com.cpcommunity.testScripts.community.BaseTest  - Driver Initialized !!!
+INFO    2022-03-10 14:45:26,769 [main] com.cpcommunity.testScripts.community.BaseTest  - C:\Users\VenkataRambabuKodi\Documents\bizligo-automation\src\test\resources\testdata\test\10 Mar 2022\ExecutionRunTime\runTime.txt
+INFO    2022-03-10 14:45:26,769 [main] com.cpcommunity.testScripts.community.BaseTest  - 1
+INFO    2022-03-10 14:45:34,029 [main] com.cpcommunity.PageObjects.BasePage  - waiting for visibility of [[ChromeDriver: chrome on WINDOWS (24428d2730d4303993a1d38f9ce77ff7)] -> xpath: //h1[normalize-space()='building communities']]
+INFO    2022-03-10 14:45:34,148 [main] com.cpcommunity.PageObjects.BasePage  - pageLoad visibility of [[ChromeDriver: chrome on WINDOWS (24428d2730d4303993a1d38f9ce77ff7)] -> xpath: //h1[normalize-space()='building communities']]
+INFO    2022-03-10 14:45:34,173 [main] com.cpcommunity.PageObjects.BasePage  - waiting for :f7)] -> xpath: //a[contains(.,'Login')]] for :1 seconds
+INFO    2022-03-10 14:45:34,264 [main] com.cpcommunity.PageObjects.BasePage  - ce77ff7)] -> xpath: //a[contains(.,'Login')]]is displayed
+INFO    2022-03-10 14:45:34,265 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : LOGIN
+INFO    2022-03-10 14:45:38,955 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : LOGIN
+INFO    2022-03-10 14:45:38,991 [main] com.cpcommunity.PageObjects.BasePage  - waiting for visibility of [[ChromeDriver: chrome on WINDOWS (24428d2730d4303993a1d38f9ce77ff7)] -> xpath: //button[contains(.,'Login')]]
+INFO    2022-03-10 14:45:39,039 [main] com.cpcommunity.PageObjects.BasePage  - pageLoad visibility of [[ChromeDriver: chrome on WINDOWS (24428d2730d4303993a1d38f9ce77ff7)] -> xpath: //button[contains(.,'Login')]]
+INFO    2022-03-10 14:45:39,039 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : forgot Password
+INFO    2022-03-10 14:45:43,252 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : forgot Password
+INFO    2022-03-10 14:45:43,299 [main] com.cpcommunity.PageObjects.BasePage  - waiting for visibility of [[ChromeDriver: chrome on WINDOWS (24428d2730d4303993a1d38f9ce77ff7)] -> xpath: //input[@name='Email']]
+INFO    2022-03-10 14:45:43,369 [main] com.cpcommunity.PageObjects.BasePage  - pageLoad visibility of [[ChromeDriver: chrome on WINDOWS (24428d2730d4303993a1d38f9ce77ff7)] -> xpath: //input[@name='Email']]
+INFO    2022-03-10 14:45:46,382 [main] com.cpcommunity.PageObjects.BasePage  - Typing in : Email entered the value as : venkatakodi7@gmail.com
+INFO    2022-03-10 14:45:46,634 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : Submit
+INFO    2022-03-10 14:45:46,760 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : Submit
+INFO    2022-03-10 14:45:51,204 [main] com.cpcommunity.PageObjects.BasePage  - waiting for visibility of [[ChromeDriver: chrome on WINDOWS (24428d2730d4303993a1d38f9ce77ff7)] -> xpath: //button[contains(.,'Login')]]
+INFO    2022-03-10 14:45:51,322 [main] com.cpcommunity.PageObjects.BasePage  - pageLoad visibility of [[ChromeDriver: chrome on WINDOWS (24428d2730d4303993a1d38f9ce77ff7)] -> xpath: //button[contains(.,'Login')]]
+INFO    2022-03-10 14:45:53,020 [main] com.cpcommunity.testScripts.community.BaseTest  - Launched Browser : Bizligo@123
+INFO    2022-03-10 14:45:53,022 [main] com.cpcommunity.testScripts.community.BaseTest  - Launched Browser : venkatakodi7@gmail.com
+INFO    2022-03-10 14:45:56,594 [main] com.cpcommunity.PageObjects.BasePage  - waiting for visibility of [[ChromeDriver: chrome on WINDOWS (24428d2730d4303993a1d38f9ce77ff7)] -> xpath: //input[@type='email']]
+INFO    2022-03-10 14:45:56,719 [main] com.cpcommunity.PageObjects.BasePage  - pageLoad visibility of [[ChromeDriver: chrome on WINDOWS (24428d2730d4303993a1d38f9ce77ff7)] -> xpath: //input[@type='email']]
+INFO    2022-03-10 14:45:56,736 [main] com.cpcommunity.PageObjects.BasePage  - waiting for :f7)] -> xpath: //input[@type='email']] for :1 seconds
+INFO    2022-03-10 14:45:56,794 [main] com.cpcommunity.PageObjects.BasePage  - ce77ff7)] -> xpath: //input[@type='email']]is displayed
+INFO    2022-03-10 14:45:56,794 [main] com.cpcommunity.PageObjects.BasePage  - Typing in : Email entered the value as : venkatakodi7@gmail.com
+INFO    2022-03-10 14:45:57,303 [main] com.cpcommunity.PageObjects.BasePage  - Clickingf7)] -> xpath: //span[contains(.,'Next')]]
+INFO    2022-03-10 14:45:59,388 [main] com.cpcommunity.PageObjects.BasePage  - Clickedf7)] -> xpath: //span[contains(.,'Next')]]
+INFO    2022-03-10 14:45:59,452 [main] com.cpcommunity.PageObjects.BasePage  - waiting for :f7)] -> xpath: //input[@type='password']] for :1 seconds
+INFO    2022-03-10 14:45:59,561 [main] com.cpcommunity.PageObjects.BasePage  - ce77ff7)] -> xpath: //input[@type='password']]is displayed
+INFO    2022-03-10 14:45:59,561 [main] com.cpcommunity.PageObjects.BasePage  - Typing in : password entered the value as : Bizligo@123
+INFO    2022-03-10 14:45:59,788 [main] com.cpcommunity.PageObjects.BasePage  - waiting for :f7)] -> xpath: //span[contains(.,'Next')]] for :1 seconds
+INFO    2022-03-10 14:45:59,832 [main] com.cpcommunity.PageObjects.BasePage  - ce77ff7)] -> xpath: //span[contains(.,'Next')]]is displayed
+INFO    2022-03-10 14:45:59,856 [main] com.cpcommunity.PageObjects.BasePage  - Clickingf7)] -> xpath: //span[contains(.,'Next')]]
+INFO    2022-03-10 14:46:35,323 [main] com.cpcommunity.PageObjects.BasePage  - Clicked.,'Next')]'
+INFO    2022-03-10 14:46:35,324 [main] com.cpcommunity.PageObjects.BasePage  - Navigating to Gmail - 1
+INFO    2022-03-10 14:46:48,948 [main] com.cpcommunity.PageObjects.BasePage  - waiting for :f7)] -> xpath: //*[@class='asf T-I-J3 J-J5-Ji']] for :1 seconds
+INFO    2022-03-10 14:46:49,003 [main] com.cpcommunity.PageObjects.BasePage  - ce77ff7)] -> xpath: //*[@class='asf T-I-J3 J-J5-Ji']]is displayed
+INFO    2022-03-10 14:46:54,018 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : Password Reset Mail
+INFO    2022-03-10 14:46:54,248 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : Password Reset Mail
+INFO    2022-03-10 14:46:56,263 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : Reset link
+INFO    2022-03-10 14:46:56,782 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : Reset link
+INFO    2022-03-10 14:47:19,287 [main] com.cpcommunity.PageObjects.BasePage  - Clicking on : resetting the password
+INFO    2022-03-10 14:47:19,502 [main] com.cpcommunity.PageObjects.BasePage  - Clicked on : resetting the password

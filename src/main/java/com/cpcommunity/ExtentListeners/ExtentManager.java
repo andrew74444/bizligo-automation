@@ -64,94 +64,94 @@ public class ExtentManager {
 //		screenshotName = ID + d.toString().replace(":", "_").replace(" ", "_") + ".jpg";
 //
 //		try {
+//		FileUtils.copyFile(scrFile, new File(System.getProperty("user.dir") + "\\reports\\" + screenshotName));
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+//	public static void captureScreenshot() {
+//
+//		
+////		WebDriver augment = new Augmenter().augment(DriverManager.getDriver());
+////	TakesScreenshot shot = (TakesScreenshot) augment;
+////	File screenshot = shot.getScreenshotAs(OutputType.FILE);
+//		 int t = (int) (Math.random()*1000);
+//		try {
+//			Thread.sleep(t);
+//		} catch (InterruptedException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+//		
+//		File scrFile = ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.FILE);
+//
+//		Date d = new Date();
+//
+//		screenshotName = d.toString().replace(":", "_").replace(" ", "_") + ".jpg";
+//
+//		try {
 //			FileUtils.copyFile(scrFile, new File(System.getProperty("user.dir") + "\\reports\\" + screenshotName));
 //		} catch (IOException e) {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
 //	}
-	public static void captureScreenshot() {
+//	public static void captureNewPageScreenshot(String ID) {
+//
+//		File scrFile = ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.FILE);
+//
+//		Date d = new Date();
+//		screenshotName = ID + d.toString().replace(":", "_").replace(" ", "_") + ".jpg";
+//
+//		try {
+//			FileUtils.copyFile(scrFile, new File(System.getProperty("user.dir") + "\\reports\\" + screenshotName));
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 
-		
-//		WebDriver augment = new Augmenter().augment(DriverManager.getDriver());
-//		TakesScreenshot shot = (TakesScreenshot) augment;
-//		File screenshot = shot.getScreenshotAs(OutputType.FILE);
-		int t = (int) (Math.random()*1000);
-		try {
-			Thread.sleep(t);
-		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
-		File scrFile = ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.FILE);
-
-		Date d = new Date();
-
-		screenshotName = d.toString().replace(":", "_").replace(" ", "_") + ".jpg";
-
-		try {
-			FileUtils.copyFile(scrFile, new File(System.getProperty("user.dir") + "\\reports\\" + screenshotName));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	public static void captureNewPageScreenshot(String ID) {
-
-		File scrFile = ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.FILE);
-
-		Date d = new Date();
-		screenshotName = ID + d.toString().replace(":", "_").replace(" ", "_") + ".jpg";
-
-		try {
-			FileUtils.copyFile(scrFile, new File(System.getProperty("user.dir") + "\\reports\\" + screenshotName));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	public static void aShot() {		
-		Screenshot fpScreenshot;		
-		WebElement element = DriverManager.getDriver().findElement(By.xpath("//*[@id='header']"));
-		JavascriptExecutor js1 = (JavascriptExecutor) DriverManager.getDriver();
-		js1.executeScript("arguments[0].setAttribute('class','');", element);
-		
-		
-		try {
-			fpScreenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000))
-					.takeScreenshot(DriverManager.getDriver());
-		} catch (Exception e) {
-			fpScreenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000))
-					.takeScreenshot(DriverManager.getDriver());
-		}
-		
-		Date d = new Date();
-		screenshotName = d.toString().replace(":", "_").replace(" ", "_") + SessionID.getSessionID()+".jpg";
-
-		try {
-			ImageIO.write(fpScreenshot.getImage(), "PNG",
-					new File(System.getProperty("user.dir") + "\\reports\\" + screenshotName));
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		js1.executeScript("arguments[0].setAttribute('class','navbar-fixed-top');", element);
-
-		
-		File scrFile = ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.FILE);
-
-		Date d1 = new Date();
-		screenshotName = SessionID.getSessionID()+d1.toString().replace(":", "_").replace(" ", "_") + ".jpg";
-
-		try {
-			FileUtils.copyFile(scrFile, new File(System.getProperty("user.dir") + "\\reports\\" + screenshotName));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//	public static void aShot() {		
+//		Screenshot fpScreenshot;		
+//		WebElement element = DriverManager.getDriver().findElement(By.xpath("//*[@id='header']"));
+//		JavascriptExecutor js1 = (JavascriptExecutor) DriverManager.getDriver();
+//		js1.executeScript("arguments[0].setAttribute('class','');", element);
+//		
+//		
+//		try {
+//			fpScreenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000))
+//					.takeScreenshot(DriverManager.getDriver());
+//		} catch (Exception e) {
+//			fpScreenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000))
+//					.takeScreenshot(DriverManager.getDriver());
+//		}
+//		
+//		Date d = new Date();
+//		screenshotName = d.toString().replace(":", "_").replace(" ", "_") + SessionID.getSessionID()+".jpg";
+//
+//		try {
+//			ImageIO.write(fpScreenshot.getImage(), "PNG",
+//					new File(System.getProperty("user.dir") + "\\reports\\" + screenshotName));
+//
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		js1.executeScript("arguments[0].setAttribute('class','navbar-fixed-top');", element);
+//
+//		
+//		File scrFile = ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.FILE);
+//
+//		Date d1 = new Date();
+//		screenshotName = SessionID.getSessionID()+d1.toString().replace(":", "_").replace(" ", "_") + ".jpg";
+//
+//		try {
+//			FileUtils.copyFile(scrFile, new File(System.getProperty("user.dir") + "\\reports\\" + screenshotName));
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 
 		
 		
@@ -167,6 +167,6 @@ public class ExtentManager {
 //		 js1.executeScript("arguments[0].setAttribute('class','navbar-fixed-top');", element);
 		 
 
-	}
+//	}
 
 }

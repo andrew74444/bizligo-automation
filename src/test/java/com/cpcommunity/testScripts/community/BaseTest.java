@@ -30,18 +30,20 @@ import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import com.cpcommunity.ExtentListeners.ExtentListeners;
-import com.cpcommunity.ExtentListeners2.ExtentListeners2;
+//import com.cpcommunity.ExtentListeners2.ExtentListeners2;
 import com.cpcommunity.utilities.DriverCapabilities;
 import com.cpcommunity.utilities.DriverFactory;
 import com.cpcommunity.utilities.DriverManager;
@@ -457,7 +459,7 @@ public class BaseTest {
 	public void logInfo(String message) {
 
 		ExtentListeners.testReport.get().info(message);
-		ExtentListeners2.testReport.get().info(message);
+//		ExtentListeners2.testReport.get().info(message);
 	}
 
 	public void configureLogging() {
@@ -553,7 +555,8 @@ public class BaseTest {
 		System.out.println(ID);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		JavaScript.setJavaScriptObject(js);
-		WebDriverWait wait = new WebDriverWait(driver, 20);
+	//	WebDriverWait wait = new WebDriverWait(driver, 20); 
+		WebDriverWait wait = new WebDriverWait(driver, 10);
 		waitHelper.setWebDriverWaitObject(wait);
 		try {
 			Robot robot = new Robot();
@@ -575,7 +578,8 @@ public class BaseTest {
 		log.info("Driver Initialized !!!");
 		DriverManager.getDriver().manage().window().maximize();
 		System.out.println(driver.manage().window().getSize());
-		DriverManager.getDriver().manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	//	DriverManager.getDriver().manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		DriverManager.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		// SessionId sessionid = ((RemoteWebDriver) driver).getSessionId();
 		// System.out.println(sessionid);
 		// System.out.println(DriverManager.getDriver().toString());
@@ -902,20 +906,20 @@ public class BaseTest {
 		return strDate;
 	}
 
-	@AfterSuite
-	public void sendmail() throws Exception {
-		MonitoringMail1 mail = new MonitoringMail1();
-		mail.Sendmail();
-		String path = System.getProperty("user.dir")+"\\src\\test\\resources\\testdata\\test\\"+getDate()+"\\ExecutionRunTime\\runTime.txt";
-		log.info(path);
-		String runTime = readInNotePadFile(path);
-		int i = Integer.parseInt(runTime);
-		i++;
-		runTime = String.valueOf(i);
-		deleteFile(path);
-		writeInNotePad(runTime, path);
-		
-	}
+//	@AfterSuite
+//	public void sendmail() throws Exception {
+//		MonitoringMail1 mail = new MonitoringMail1();
+//		mail.Sendmail();
+//		String path = System.getProperty("user.dir")+"\\src\\test\\resources\\testdata\\test\\"+getDate()+"\\ExecutionRunTime\\runTime.txt";
+//		log.info(path);
+//		String runTime = readInNotePadFile(path);
+//		int i = Integer.parseInt(runTime);
+//		i++;
+//		runTime = String.valueOf(i);
+//		deleteFile(path);
+//		writeInNotePad(runTime, path);
+//		
+//	}
 
 	public Date subtractDays(Date date, int days) {
 		GregorianCalendar cal = new GregorianCalendar();
@@ -933,5 +937,10 @@ public class BaseTest {
 		System.out.println(cal.getTime());
 		return cal.getTime();
 	}
+//for navigating left to right side
+//	public void actions() {
+//	Actions action =new Actions(driver);
+//	action.keyDown(Keys.CONTROL).sendKeys(Keys.TAB).build().perform();
+	//}
 
 }

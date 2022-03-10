@@ -59,11 +59,12 @@ public class ResetPasswordPage extends BasePage{
 //	return (ZohoCRMPage) openPage(ZohoCRMPage.class);
 
 	public void enterDetails(String Email, String Password, String ConfirmPassword) {
-
-		String EMail = this.Email.getText();
-		AssertionHelper.verifyText(EMail, Email);
+		//ResetPasswordPage
+	//	String EMail = this.Email.getText();
+	//	AssertionHelper.verifyText(EMail, Email);
 		type( this.Password, Password,"Password");
 		type( this.ConfirmPassword, ConfirmPassword,"Confirm Password");
+		
 		click( Reset,"Reset");
 
 	}
