@@ -38,7 +38,9 @@ public class HomePage extends BasePage {
 	WebElement Events;
 
 	@FindBy(xpath = "//h1[normalize-space()='building communities']")
-
+	
+//@FindBy(xpath = "//*[@class='shetek-banner-btn']")// for Shetek tenant
+	
 	WebElement home;
 	
 	@FindBy(xpath = "//span[normalize-space()='Directory']")
@@ -55,7 +57,8 @@ public class HomePage extends BasePage {
 	
 	@FindBy(xpath = "//a[normalize-space()='Careers']")
 	WebElement careers;
-	@FindBy(xpath = "//span[@title='Toggle dropdown menu']")
+//	@FindBy(xpath = "//span[@title='Toggle dropdown menu']")
+	@FindBy(xpath = "//*[@data-toggle='dropdown']//span[@title='Toggle dropdown menu']")//added on 31/03
 	WebElement toggleDropDown;
 
 	@FindBy(xpath = "//a[normalize-space()='Tenant Admin Module']")
@@ -97,7 +100,8 @@ public class HomePage extends BasePage {
 
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
-
+		waitForElementToPresent (newConnection);//added 0n 31/03 for wait purpose
+		waitForElementToPresent (join);//added 0n 31/03 for wait purpose
 		return ExpectedConditions.visibilityOf(home);
 	}
 
@@ -131,8 +135,9 @@ public class HomePage extends BasePage {
 			Markup m = MarkupHelper.createLabel("<b>" + "<font color=" + "White>" + "https://tenant1.bizligotest.com/"+ "</font>" + "</b>", ExtentColor.GREEN);
 	//		ExtentListeners2.testReport.get().info(m);
 			
-		//	DriverManager.getDriver().navigate().to("https://tenant1.bizligotest.com/");
-			DriverManager.getDriver().navigate().to("https://tenant2.bizligotest.com/");
+			DriverManager.getDriver().navigate().to("https://tenant1.bizligotest.com/");//tenant1
+		//	DriverManager.getDriver().navigate().to("https://tenant2.bizligotest.com/");//tenant2
+		
 		}
 		else if(tenantType.equalsIgnoreCase("B2C")) {
 			
@@ -140,32 +145,44 @@ public class HomePage extends BasePage {
 			Markup m = MarkupHelper.createLabel("<b>" + "<font color=" + "White>" + "https://tenant2.bizligotest.com/"+ "</font>" + "</b>", ExtentColor.GREEN);
 		//	ExtentListeners2.testReport.get().info(m);
 			
-			
-			DriverManager.getDriver().navigate().to("https://leadindia.bizligotest.com/");
+			DriverManager.getDriver().navigate().to("https://shetekuat.bizligo.com/");
+			//DriverManager.getDriver().navigate().to("https://leadindia.bizligotest.com/");
 			
 		}	
 		
 		return (HomePage) openPage(HomePage.class);
 	}
 	
+	@FindBy(xpath="	//h5[contains(text(),'grow connections')]")
+	WebElement grow;
 	public LoginPage clickOnLOGINBtn() throws Exception {
+		waitForElementToPresent (newConnection);//added 0n 31/03 for wait purpose
+		waitForElementToPresent (join);//added 0n 31/03 for wait purpose
 		
+		waitForElementToPresent (grow);//added 0n 31/03 for wait purpose
 		waitForElementToPresent (LOGINBtn);
 		
-		click(LOGINBtn, "LOGIN");
+		clickElementByJavaScript(LOGINBtn);
+		
 		return (LoginPage) openPage(LoginPage.class);
-		// new LoginPage(driver, );
+		
 
 	}
-	public HomePage logout() {
+	@FindBy(xpath="//h5[contains(text(),'New Connections')]")
+	WebElement newConnection;
+	@FindBy(xpath="//a[contains(text(),'join communities')]")
+	WebElement join;
+	public HomePage logout() throws InterruptedException {
+		waitForElementToPresent (newConnection);//added 0n 31/03 for wait purpose
+		waitForElementToPresent (join);//added 0n 31/03 for wait purpose
 		
-	//	waitForElementToPresent (toggleDropDown);//added by me
-		
-		toggleDropDown.click();
-		
-		waitForElementToPresent (logoutBtn);//added by me
-
-		logoutBtn.click();
+		waitForElementToPresent (toggleDropDown);//added on for wait
+	//	toggleDropDown.click();
+		hardClick(toggleDropDown);//added on 31/03
+		waitForElementToPresent (logoutBtn);//added on for wait
+	//	logoutBtn.click();
+		hardClick(logoutBtn);//added on 31/03
+		Thread.sleep(3000);
 		return (HomePage) openPage(HomePage.class);
 		
 	}

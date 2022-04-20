@@ -30,25 +30,37 @@ public class TC063_Member_to_Join_Private_Communities_From_Community_Details ext
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
-//		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
+		logInfo("Username entered as "+data.get("email")+" and Password entered as "+data.get("password"));
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
-		CommunityDetailsPage CommunityDetailsPage = GlobalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));
-		CommunityDetailsPage.joinCommunity();
-		Thread.sleep(4000);
-		home = EcoSystemPage.logout();
-		login = home.clickOnLOGINBtn();
+		GlobalCommunitesPage.communityJoinWithOutDate(data.get("communityName"));
+//***********************commented below  lines for joining to one community only***********************\\on 22/03	
+		
+//		CommunityDetailsPage CommunityDetailsPage = GlobalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));
+//		CommunityDetailsPage.joinCommunity();
+//		Thread.sleep(4000);
+//		home = EcoSystemPage.logout();
+	//	login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
-		EcoSystemPage = login.loginToApplication(data.get("email1"),data.get("password"));
 		
-		GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
-		CommunityDetailsPage = GlobalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));
-		CommunityDetailsPage.joinCommunity();
+	
+//		EcoSystemPage = login.loginToApplication(data.get("email1"),data.get("password"));
+//		
+//		GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
+//		CommunityDetailsPage = GlobalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));
+//		CommunityDetailsPage.joinCommunity();
 		
 		
 		//Assert.fail("Failing the login test");
+		
+		Yahoo yahoo= new Yahoo().open();
+
+	//	yahoo.Login(data.get("email1"), data.get("password1"));//for member checking mail
+	//	yahoo.requestCommunity();//for member checking mail purpose
+		yahoo.Login(data.get("email2"), data.get("password2"));//for community admin checking mail
+		yahoo.memberRequestChecking();//for CA checking mail
 	}
 
 	@AfterMethod

@@ -232,13 +232,13 @@ public class MyCommunitiesPage extends BasePage {
 
 	
 	public MyDashboardPage gotoMyDashboardPage() throws Exception {
-		Thread.sleep(8000);
+	//	Thread.sleep(8000);
 		waitForElementToPresent(Toggledropdownmenu);
 		click(Toggledropdownmenu,"Toggledropdownmenu");
 		//Thread.sleep(1000);
 		waitForElementToPresent(DashBoard);
 		click(DashBoard,"DashBoard");
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
 		//waitForElementToPresent(myDashboard);
 		return (MyDashboardPage) openPage(MyDashboardPage.class);
 	}	
@@ -312,8 +312,10 @@ public class MyCommunitiesPage extends BasePage {
 
 	
 	
-
+	@FindBy(xpath="(//*[@class='col-sm-12 cm-group-name'])[1]")
+			WebElement waitt;
 	public CreateCommunityPage clickOnCreateCommunity() {
+		waitForElementToPresent(waitt);//added on 07/04 foe wait purpose
 		click(CreateCommunityBtn,"CreateCommunityBtn");
 		return (CreateCommunityPage) openPage(CreateCommunityPage.class);
 		// new CreateCommunityPage(driver);
@@ -329,22 +331,24 @@ public class MyCommunitiesPage extends BasePage {
 	}
 
 	public SelectPlanPage completeSetup(String communityName) throws Exception {
-		this.searchCommunity(communityName+getDateInDDMMMYYYY());
+		this.searchCommunity(communityName);//+getDateInDDMMMYYYY()
 		click(completeSetup, "complete Set up Community");
 		return (SelectPlanPage) openPage(SelectPlanPage.class);
 	}// button
-
+	@FindBy(xpath="(//*[@class='col-sm-12 cm-group-name'])[1]")
+			WebElement wait2;
 	public void searchCommunity(String communityName) throws Exception {
-		waitForElementToPresent(viewAll);
-		click(viewAll, "Global Communities");
+	//	waitForElementToPresent(viewAll);
+	//	click(viewAll, "Global Communities");
+		waitForElementToPresent(wait2);//added on 07/04  for wait purpose
 		waitForElementToPresent(SearchbyCommunityName);
-		picture();
+	//	picture();
 		type(SearchbyCommunityName, communityName, "Search by Community");
 		click(searchbtn, "search btn");
 		//Thread.sleep(6000);
 		//WebElement ele = driver.findElement(By.xpath("//a[@tooltip='" + communityName + "']"));
 		//waitForElementToPresent(ele);
-		picture();
+	//	picture();
 	}
 
 	public void checkProperAlertDisplayedWhenOnlyOneAdmin(String communityName) throws Exception {
@@ -378,18 +382,18 @@ public class MyCommunitiesPage extends BasePage {
 	}
 
 	public void activateCommunity(String communityName) throws Exception {
-		this.searchCommunity(communityName+getDateInDDMMMYYYY());
+		this.searchCommunity(communityName);//+getDateInDDMMMYYYY()
 		click(Activate,"Activate");
-		picture();
+	//	picture();
 		waitForElementToPresent(YesProceed);
-		picture();
+	//	picture();
 		click(YesProceed,"YesProceed");
 		waitForElementToPresent(Okbtn);
-		picture();
+	//	picture();
 		click(Okbtn,"Okbtn");
 		waitForElementToPresent(LeaveBtn);
 		LeaveBtn.isDisplayed();
-		picture();
+	//	picture();
 		// picture();
 		Thread.sleep(2000);
 
@@ -414,7 +418,7 @@ public class MyCommunitiesPage extends BasePage {
 		click(LeaveBtn,"LeaveBtn");
 		waitForElementToPresent(YesProceed);
 		click(YesProceed,"YesProceed");
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
 		AssertionHelper.verifyText(noResultsFound.getText(), "No results found matching your search criteria");
 		if (noresultfound.isDisplayed()) {
 			return true;
@@ -422,18 +426,24 @@ public class MyCommunitiesPage extends BasePage {
 			return false;
 		}
 	}
-	
+	@FindBy(xpath="(//*[@class='col-sm-12 cm-group-name'])[1]")
+			WebElement wait;
+	@FindBy(xpath="//*[@class='col-sm-12 cm-group-name']/*/*[@tooltip-placement='top']")
+	WebElement name;
 	public CommunityDetailsPage navigateToCommunityDetailsPage(String communityName) throws Exception {
 		//communityName = communityName+getDateInDDMMMYYYY();
 		//this.searchCommunity(communityName);
+		waitForElementToPresent(wait);//added on 06/05 for wait purpose
 		type(this.communityNameField, communityName, "communityName");
-		//Thread.sleep(5000);
+		
 		waitForElementToPresent(btnSearch);
 		click(btnSearch, "Search");
-		//Thread.sleep(5000);
-		//WebElement ele = driver.findElement(By.xpath("//span[contains(text(),'"+communityName+"')]"));
-	    waitForElementToPresent(BDMAI);
-		clickElementByJavaScript(BDMAI);
+		waitForElementToPresent(name);
+		click(name, "Community name");//added on 06/04
+	
+	//	WebElement ele = driver.findElement(By.xpath("//span[contains(text(),'"+communityName+"')]"));
+	//   waitForElementToPresent(BDMAI);
+	//	clickElementByJavaScript(BDMAI);
 		return (CommunityDetailsPage) openPage(CommunityDetailsPage.class);
 		// new CommunityDetailsPage(driver, );
 	}
@@ -571,13 +581,20 @@ public class MyCommunitiesPage extends BasePage {
 		picture();
 	}
 
-	
+	@FindBy(xpath="//*[@placeholder='Search by Community Name']")
+	WebElement searchBox;
+	@FindBy(xpath="(//*[@class='btn btn-primary'])[1]")
+	WebElement search;
 	public CommunityDashboardPage gotoManageCommunity(String communityName) throws Exception {
-
-        //Thread.sleep(5000);
+		 waitForElementToPresent(searchBox);
+		 waitForElementToPresent(MANAGEbtn);//for wait purpose
+      type(searchBox,communityName,"searching");//added on 30/03
+        waitForElementToPresent(search);
+        clickElementByJavaScript(search);//added on 30/03
+     
         waitForElementToPresent(MANAGEbtn);
 		click(MANAGEbtn, "Manage");
-		//Thread.sleep(1000);
+		
 		return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
 		// new CommunityDashboardPage(driver, );
 	}
@@ -654,13 +671,12 @@ public class MyCommunitiesPage extends BasePage {
 	}
 	
 	@FindBy(xpath="(//*[@class='col-sm-12'])[2]//*[@class='ng-binding'][1]")//added by me
-	WebElement show;// this element for below method for waiting 
+	WebElement show;// this element in below method for waiting 
 	public ContactUsPage NavigateToContactUsPage() throws InterruptedException {
 		
-	//	Thread.sleep(20000);//added by me
-	//	scrollDownVertically();//added by me
+		//	scrollDownVertically();
 	
-	waitForElementToPresent(show);//added by me
+	waitForElementToPresent(show);
 		
 		click(contactUs, "Contact Us");
 		return (ContactUsPage) openPage(ContactUsPage.class);

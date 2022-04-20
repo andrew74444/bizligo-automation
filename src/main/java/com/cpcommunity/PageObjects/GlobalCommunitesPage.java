@@ -78,9 +78,12 @@ public class GlobalCommunitesPage extends BasePage {
 
 	@FindBy(xpath = "//button[contains(.,'Yes, Proceed')]")
 	WebElement YesProceed;
-	@FindBy(xpath = "((//*[@class='cmt-groups'])[1])//*[contains(text(),'Join')]")
+//	@FindBy(xpath = "((//*[@class='cmt-groups'])[1])//*[contains(text(),'Join')]")
+	@FindBy(xpath = "(//*[@ng-if='community.CommunityUserStatus == 0 && !data.CurrentUserIsInrole'])[1]")//added on 22/03
+//	@FindBy(xpath = "//body[1]/div[3]/div[1]/div[1]/section[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/a[1]/div[1]/div[1]/div[1]/div[3]/button[1]/strong[1]")
 	WebElement join;
 	@FindBy(xpath = "//div[@class='communities-box ng-scope col-lg-4 col-md-12 col-sm-12']//div[@id='info-card-id']//div[@class='group-cont']//div[@class='row']//a//div[@class='col-sm-12 category-img']//div[@class='category-background']//div//strong[contains(text(),'Join')]")
+	
 	WebElement join1;
 	@FindBy(xpath = "//button[contains(.,'Cancel')]")
 	WebElement Cancel;
@@ -349,13 +352,14 @@ public class GlobalCommunitesPage extends BasePage {
 	}
 
 	public MembershipPlansPage joinCommunityWithMembershipPlan(String communityName) throws Exception {
-		this.searchCommunity(communityName + " " + getDateInDDMMMYYYY());
+		this.searchCommunity(communityName );//+ " " + getDateInDDMMMYYYY()
 		this.clickOnJoin();
 		return (MembershipPlansPage) openPage(MembershipPlansPage.class);
 	}
 
 	public void clickOnJoin() {
-		click(join1, "join1");
+		waitForElementToPresent(join);//added on 06/04
+		click(join, "join button");
 
 	}
 	
@@ -364,14 +368,16 @@ public class GlobalCommunitesPage extends BasePage {
 	public void communityJoinWithOutDate(String communityName) throws Exception {
 		
 		this.searchCommunity(communityName);
+	//	Thread.sleep(2000);
 		this.clickOnJoin();
+		
 		waitForElementToPresent(YesProceed);
 		click(YesProceed, "Yes Proceed");
 		waitForElementToPresent(OKbtn);
 		// AssertionHelper.verifyText(waitingForApproval.getText(), "Your join request
 		// is waiting for approval");
 		OKbtn.click();
-		Thread.sleep(10000);
+		Thread.sleep(5000);
 
 	}
 	
@@ -556,13 +562,16 @@ public class GlobalCommunitesPage extends BasePage {
 		Thread.sleep(5000);
 		return (MyDashboardPage) openPage(MyDashboardPage.class);
 	}	
-	
+	@FindBy(xpath="(//*[@class='btn btn-primary btn-sm btn-join'])[1]")
+			WebElement join12;
 	public void searchCommunity(String CommunityName) throws Exception {
-		searchName.clear();
+	//	searchName.clear();
+		waitForElementToPresent(join12);//added on 06/04 for wait purpose
 		type(searchName, CommunityName, "search");
 		click(searchBtn, "search Btn");
-		waitForElementToPresent(BDMAIcomm);
-		click(BDMAIcomm, "BDMAI");
+		
+//		waitForElementToPresent(BDMAIcomm);//commented on 22/03
+//		click(BDMAIcomm, "BDMAI");
 		//waitForElementToPresent(driver.findElement(By.xpath("//a[contains(text(),'" + CommunityName + "')]")));
 		//Thread.sleep(5000);
 	}
@@ -886,15 +895,17 @@ public class GlobalCommunitesPage extends BasePage {
 		return (CommunityDetailsPage) openPage(CommunityDetailsPage.class);
 		// CommunityDetailsPage(driver);
 	}
-
+	@FindBy(xpath="(//*[@class='category-btn ng-scope'])[1]")
+			WebElement wait;
 	public void checkInActivatedCommunityIsNotDisplayed(String communityName) throws Exception {
 		//communityName = communityName+getDateInDDMMMYYYY();
+		waitForElementToPresent(wait);//added on 07/04 for wait purpose
 		type(searchName, communityName, "search");
 		//Thread.sleep(10000);
 		waitForElementToPresent(searchBtn);
 		click(searchBtn, "search Btn");
 		waitForElementToPresent(noCommunitiesfound);
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
 	}
 
 	public CommunityDetailsPage navigateToExpiredCommunityDetailsPage(String communityName) throws Exception {

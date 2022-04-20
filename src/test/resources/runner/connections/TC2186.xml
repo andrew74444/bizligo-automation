@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+<listeners>
+		<listener class-name="com.cpcommunity.ExtentListeners.ExtentListeners" />
+		<listener class-name="com.uiFramework.pamTen.cpcommunity.helper.listener.RetryListener" />
+   </listeners>
+  <test thread-count="5" name="Test">
+    <classes>
+      <class name="com.cpcommunity.testScripts.Connections.TC2186_verify_details_except_contact_email_visible_memberCard_when_profile_private"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

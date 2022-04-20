@@ -6,6 +6,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.CommunityDashboardPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.ManageApplications;
@@ -31,8 +32,12 @@ public class TC980_Verify_CA_able_add_JobPost extends BaseTest{
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
-		MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
-		CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
+EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+		
+		MyCommunitiesPage myCommunitiesPage = EcoSystemPage.goToMyCommunities();
+	//	MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
+	//	CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
+		CommunityDashboardPage communityDashboard = myCommunitiesPage.gotoManageCommunity(data.get("communityName"));
 		 ManageJobsPage MJP= communityDashboard.navigateToManageJobsPage();
 		 MJP.postJob(data.get("jobTitle"),data.get("billingRate"),data.get("jobTypeID"),data.get("location"),data.get("description"),data.get("additionalDetails"),data.get("remarks"),data.get("makeGlobal"));
 

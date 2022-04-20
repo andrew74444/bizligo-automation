@@ -91,10 +91,11 @@ public class PaymentReceipt extends BasePage {
 		
 		waitForElementToPresent(Success);
 		Success.isDisplayed();
-		picture();
+	//	picture();
 	}
 	
 	public CommunityDetailsPage viewCommunity() {
+		waitForElementToPresent(viewCommunity);//added on 18/04
 		click(viewCommunity,"View Community");
 		return (CommunityDetailsPage) openPage(CommunityDetailsPage.class);
 	}

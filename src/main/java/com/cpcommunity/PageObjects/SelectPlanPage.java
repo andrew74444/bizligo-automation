@@ -21,7 +21,8 @@ import junit.framework.Assert;
 
 public class SelectPlanPage extends BasePage {
 
-	@FindBy(xpath = "//button[normalize-space()='Next']")
+//	@FindBy(xpath = "//button[normalize-space()='Next']")
+	@FindBy(xpath = "//*[@class='text-center next-btn-section']/*/*[@ng-hide='data.IsFreePricingPlan']")
 	WebElement next;
 
 	@FindBy(xpath = "//button[@id='pricing_plan_20']")
@@ -224,14 +225,42 @@ public class SelectPlanPage extends BasePage {
 
 	public void selectPaidPlan(String planName) throws Exception {
 		this.selectAPlan(planName);
-		Thread.sleep(2000);		
+		waitForElementToPresent(next);	//added on 14/04	
 		click(next, "Next button");
-		Thread.sleep(5000);
-		picture();
+		Thread.sleep(2000);
+	//	picture();
 		
 		//waitForElementToPresent(PAYMENTMETHODS);
 		
 	}
+	@FindBy(xpath="//*[@type='button']/*[text()='Submit ']")
+	WebElement submit;
+	
+	public void changeFreePlan(String planName) throws Exception {
+		this.selectAPlan(planName);
+		scrollDownVertically();//added on 14/04
+		waitForElementToPresent(submit);	//added on 14/04
+		click(submit, "Submit button");
+		Thread.sleep(2000);
+	//	picture();
+		
+		//waitForElementToPresent(PAYMENTMETHODS);
+		
+	}
+	
+	public void renewalFreePlan(String planName) throws Exception {
+		this.selectAPlan(planName);
+		scrollDownVertically();//added on 14/04
+		waitForElementToPresent(submit);	//added on 14/04
+		click(submit, "Submit button");
+		Thread.sleep(2000);
+		waitForElementToPresent(Success);
+		Success.isDisplayed();
+		
+	}
+	@FindBy(xpath = "//h4[contains(text(),'Success')]")
+	 WebElement Success;
+
 	
 	public AuthorizeGateway selectPlan(String planName, String AdName, String path ) throws Exception {
 		//this.createGlobalAd.click();
@@ -414,13 +443,16 @@ public class SelectPlanPage extends BasePage {
 		click(payPalProceedbtn,"Proceed button");		
 		return (PayPalPayment) openPage(PayPalPayment.class);
 	}
-	
+	@FindBy(xpath="//*[@class='col-lg-8 col-sm-8 col-xs-8']/*[@class='text-warning ng-binding']")
+	WebElement planname;
 	public AuthorizeGateway paymentByauthorize() throws Exception {
 		waitForElementToPresent(authorize);
 		click(authorize, "authorize button");
+		waitForElementToPresent(planname);
 		waitForElementToPresent(authorizeProccedbtn);
-		click(authorizeProccedbtn,"Proceed button");
-		Thread.sleep(10000);
+		clickElementByJavaScript(authorizeProccedbtn);//added 0n 14/04
+	//	click(authorizeProccedbtn,"Proceed button");
+		Thread.sleep(7000);
 		return (AuthorizeGateway) openPage(AuthorizeGateway.class);
 	}
 	

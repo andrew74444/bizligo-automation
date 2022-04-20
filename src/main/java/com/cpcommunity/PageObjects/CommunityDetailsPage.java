@@ -284,12 +284,13 @@ public class CommunityDetailsPage extends BasePage {
 		// click(Advertisements, "Advertisements link");
 		return (AdvertismentPurchasePage) openPage(AdvertismentPurchasePage.class);
 	}
-
+	@FindBy(xpath="//*[@class='anchorLink pointer ng-scope']")
+	WebElement home;
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 
 		scrollUpVertically();
-		return ExpectedConditions.visibilityOf(Groups);
+		return ExpectedConditions.visibilityOf(home);//Groups
 	}
 
 	public EditCommunityPage managecommunity() throws InterruptedException {
@@ -529,17 +530,22 @@ public class CommunityDetailsPage extends BasePage {
 	}
 	
 	
-
+@FindBy(xpath="//*[@class='text-uppercase']/*[text()='Champions']")
+	WebElement champion;
+@FindBy(xpath="//*[@class='col-sm-12 cm-group-name']/*/*/*[@ng-bind='group.GroupName']")
+WebElement Name;
 	public void searchGroup(String groupName) throws Exception {
-		Thread.sleep(4000);
+	//	Thread.sleep(4000);
+		waitForElementToPresent(champion);//added on 06/04 for wait purpose
 		click(Groups, "Groups");
+		waitForElementToPresent(Name);//added on 06/04 for wait purpose
 		waitForElementToPresent(SearchbyGroupName);
-		Thread.sleep(6000);
-		picture();
-		SearchbyGroupName.clear();
+	//	Thread.sleep(6000);
+	//	picture();
+	//	SearchbyGroupName.clear();
 		type(SearchbyGroupName, groupName, "Group Name");
 		click(GroupsSearchBtn, "Groups Search Btn");
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
 
 	}
 
@@ -562,7 +568,7 @@ public class CommunityDetailsPage extends BasePage {
 	}
 
 	public void JoinGroups(String groupName) throws Exception {
-		groupName = groupName + " " + getDateInDDMMMYYYY();
+	//	groupName = groupName + " " + getDateInDDMMMYYYY();
 		this.searchGroup(groupName);
 		clickElementByJavaScript(JoinGroup);
 		waitForElementToPresent(GroupsYesProceed);
@@ -581,7 +587,7 @@ public class CommunityDetailsPage extends BasePage {
 	public void PrivateGroupJoinedSuccessfully(String GroupName) throws Exception {
 		this.JoinGroups(GroupName);
 		AssertionHelper.verifyText(toastMessage.getText(), "Your request processed successfully");
-
+Thread.sleep(2000);
 	}
 
 	public boolean LeaveGroup(String publicGroup) throws Exception {
@@ -641,10 +647,10 @@ public class CommunityDetailsPage extends BasePage {
 
 		click(AcceptBtn, "AcceptBtn");
 		waitForElementToPresent(YesProceed);
-		picture();
+	//	picture();
 		click(YesProceed, "Yes Proceed");
 		Thread.sleep(4000);
-		picture();
+	//	picture();
 		try {
 			if (AcceptBtn.isDisplayed()) {
 				return false;
@@ -696,15 +702,16 @@ public class CommunityDetailsPage extends BasePage {
 		click(RejectBtn, "RejectBtn");
 		waitForElementToPresent(YesProceed);
 		click(YesProceed, "YesProceed");
-		Thread.sleep(15000);
-		waitForElementToPresent(Join);
-		picture();
-		try {
-			if (Join.isDisplayed()) {
-				return true;
+		//commented on 12/04
+	//	Thread.sleep(5000);
+		//waitForElementToPresent(Join);
+	//	picture();
+	try {
+		if (RejectBtn.isDisplayed()) {
+			return false;
 			}
 		} catch (Exception e) {
-			return false;
+			return true;
 		}
 		return false;
 	}
@@ -749,11 +756,11 @@ public class CommunityDetailsPage extends BasePage {
 		type(EmailID, data.get("friendEmail"), "invite");
 		type(firstName, "Ellis", "invite");
 		type(lastName, "watson", "invite");
-		picture();
+	//	picture();
 		click(invitebtn, "invite button");
 		waitForElementToPresent(toastMessage);
 		AssertionHelper.verifyText(toastMessage.getText(), "Invitation sent successfully");
-		picture();
+	//	picture();
 
 	}
 
@@ -807,6 +814,10 @@ public class CommunityDetailsPage extends BasePage {
 		System.out.println(expiryDate);
 		AssertionHelper.verifyText(this.expiryDate.getText(), expiryDate);
 	}
+	public void verifyMembershipPlan(String membershipPlan) throws Exception {
+		waitForElementToPresent(planName);//added on 18/04
+		AssertionHelper.verifyText(planName.getText(), membershipPlan);
+		}
 
 	@FindBy(xpath = "//*[contains(text(),'RENEW')]")
 	WebElement renew;
@@ -817,6 +828,32 @@ public class CommunityDetailsPage extends BasePage {
 //		updateClass(header, "");
 		Thread.sleep(4000);
 		click(renew, "renew");
+		return (MembershipPlansPage) openPage(MembershipPlansPage.class);
+	}
+//**********below method for changing membership plan added on 18/04**********\\	
+	@FindBy(xpath="//*[text()='Membership Plan Details']")
+	WebElement plan;
+	@FindBy(xpath="//*[text()='UPGRADE']")
+	WebElement upgrade;
+	public MembershipPlansPage changeMemberShipPlan() throws Exception {
+
+		waitForElementToPresent(plan);
+		
+		waitForElementToPresent(upgrade);
+		click(upgrade,"upgrade");
+		
+		return (MembershipPlansPage) openPage(MembershipPlansPage.class);
+	}
+	@FindBy(xpath="//*[text()='RENEW']")
+	WebElement Renew;
+	public MembershipPlansPage renewFreeMemberShipPlan() throws Exception {
+
+		waitForElementToPresent(plan);
+		
+		waitForElementToPresent(Renew);
+		scrollToElement(Renew);
+		click(Renew,"Renew");
+		
 		return (MembershipPlansPage) openPage(MembershipPlansPage.class);
 	}
 
@@ -1042,6 +1079,77 @@ public class CommunityDetailsPage extends BasePage {
 	
 
 	}
+	public HomePage logout() throws Exception {
+		Thread.sleep(2000);
+	
+		clickElementByJavaScript(Toggledropdownmenu);
+		
+				
+		waitForElementToPresent(Logout);
+		click(Logout,"Logout");
+		return (HomePage) openPage(HomePage.class);
+		
+	}
+@FindBy(xpath="//*[@ng-click='data.goToDonationsSection()']")
+	WebElement donate;
+
+@FindBy(xpath="//*[text()='Champions']")
+WebElement wait1;
+@FindBy(xpath="//*[text()='select payment method']")
+WebElement selectMethod;
+@FindBy(xpath="(//*[@ng-model='data.SelectedinternalPrice'])[1]")
+		WebElement USD;
+@FindBy(xpath="(//*[@ng-value='payment.Id'])[2]")
+		WebElement authorize;
+@FindBy(xpath="(//*[@class='btn btn-primary center-block']/*)[1]")
+		WebElement proceed;
+public void makingDonation() throws InterruptedException {
+	waitForElementToPresent(wait1);
+	waitForElementToPresent(donate);
+	click(donate,"donate");
+
+}
+@FindBy(xpath = "//input[@id='cardNum']")
+WebElement cardNum;
+
+@FindBy(xpath = "//input[@id='expiryDate']")
+WebElement ExpiryDate;
+
+@FindBy(xpath = "//input[@id='cvv']")
+WebElement CVV;
+@FindBy(xpath = "//*[@name='email']")
+WebElement email;
+
+@FindBy(xpath = "//*[@id='payBtn']")
+WebElement PayBtn;
+
+@FindBy(xpath = "//*[@class='text-center']/*[text()='Your Payment processed successfully and Thanks for Donating.']")
+WebElement success;
+public void makingPayment() {
+	waitForElementToPresent(cardNum);
+	type(cardNum, "4111111111111111", "card Num");
+	waitForElementToPresent(ExpiryDate);
+	type(ExpiryDate, "0525", "Expiry Date");
+	waitForElementToPresent(CVV);
+	type(CVV, "025", "CVV");
+	waitForElementToPresent(email);
+	type(email, "yogesh.bhor141@yahoo.com", "email");
+	waitForElementToPresent(PayBtn);
+    click(PayBtn, "payBtn");
+    waitForElementToPresent(success);
+    System.out.println(success.getText());
+}
+public AuthorizeGateway paymentByauthorize() throws Exception {
+	waitForElementToPresent(selectMethod);
+	waitForElementToPresent(USD);
+	click(USD,"1 USD");
+	waitForElementToPresent(authorize);
+	click(authorize,"authorize");
+	waitForElementToPresent(proceed);
+	click(proceed,"proceed");
+	Thread.sleep(10000);
+	return (AuthorizeGateway) openPage(AuthorizeGateway.class);
+}
 
 	// public ZohoCRMPage gotoCRM() {
 	//

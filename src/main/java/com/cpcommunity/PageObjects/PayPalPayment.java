@@ -202,13 +202,36 @@ public class PayPalPayment extends BasePage{
 		return (PaymentConfirmation) openPage(PaymentConfirmation.class);
 		
 	}
-	
-	
+	@FindBy(xpath="//*[text()='Log In']")
+	WebElement login;
+	@FindBy(xpath="//*[@id='payment-submit-btn']")
+	WebElement submit;
+	@FindBy(xpath="//*[@data-testid='header-cart-total']")
+	WebElement amount;
+	public String PayPalpayment1(String PEmail, String PPwd) throws Exception{
+		click(login,"login button");
+		waitForElementToPresent(EmailID);
+		type(EmailID,PEmail,"EmailID");
+		click(btnNext,"next button");
+		
+		type(PayPalPWd,PPwd,"PayPalPWd");
+		click(LoginBtn,"btnLogin");
+		
+	String text=	amount.getText();
+	String Amount=text.substring(1,3);
+	System.out.println(Amount);
+	waitForElementToPresent(submit);
+	//	click(submit,"submit button");
+		clickElementByJavaScript(submit);
+		Thread.sleep(5000);
+		return Amount;
+		
+	}
 	public String PayPalpayment(String PEmail, String PPwd) throws Exception
 	
 	{
 		
-		Thread.sleep(10000);
+		Thread.sleep(5000);
 		WebDriverWait wait = new WebDriverWait(driver, 20);
 		waitForElementToPresent(driver.findElement(By.xpath("//button[contains(.,'Log In')]")));
 		
@@ -296,7 +319,8 @@ public class PayPalPayment extends BasePage{
 //	}
 	
 	public EventTicketPage MakePayment() throws Exception{
-		this.PayPalpayment("andrew74444@gmail.com", "Admin@123");		
+	//	this.PayPalpayment("andrew74444@gmail.com", "Admin@123");	
+		this.PayPalpayment1("andrew74444@gmail.com", "Admin@123");
 		return (EventTicketPage) openPage(EventTicketPage.class);
 //				new EventTicket(driver, );
 	}
@@ -305,7 +329,9 @@ public class PayPalPayment extends BasePage{
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 		
-		return ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[@class='css-1pkzf9g eshn35a0']")));
+	//	return ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[@class='css-1pkzf9g eshn35a0']")));
+		return ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[text()='Log In']")));//added on 29/03
+		
 	}
 	
 	

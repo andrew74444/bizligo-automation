@@ -66,24 +66,29 @@ public class MeetingAccountsPage extends BasePage{
 //	
 //	return (ZohoCRMPage) openPage(ZohoCRMPage.class);
 
-	
+	@FindBy(xpath="//*[@class='swal-button-container']/*[text()='Ok']")//added on 06/04
+	WebElement okBtn;
 	public MeetingAccountsPage inActivateZoom() throws Exception {
-
+		click(action,"action");//added on 06/04
 		waitForElementToPresent(activeBtn);
 		click(activeBtn,"activeBtn");
 		Thread.sleep(500);
 		click(Update,"Update");
+		waitForElementToPresent(okBtn);//added on 06/04
+		click(okBtn,"okBtn");//added on 06/04
 		return (MeetingAccountsPage) openPage(MeetingAccountsPage.class);
 //		new MeetingAccountsPage(driver, );
 
 	}
 
 	public MeetingAccountsPage activateZoom() throws Exception {
-
+		click(action,"action");//added on 06/04
 		waitForElementToPresent(inActiveBtn);
 		click(inActiveBtn,"inActiveBtn");
 		Thread.sleep(500);
 		click(Update,"Update");
+		waitForElementToPresent(okBtn);//added on 06/04
+		click(okBtn,"okBtn");//added on 06/04
 		return (MeetingAccountsPage) openPage(MeetingAccountsPage.class);
 //				new MeetingAccountsPage(driver, );
 

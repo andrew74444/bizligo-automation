@@ -28,35 +28,53 @@ public class TC067_Join_Leave_Public_And_Join_Cance_Private_Groups_From_Communit
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
-
-		// int T1 = Dashboard_Page.totalGroupsCount();
-		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage
-				.navigateToCommunityDetailsPage(data.get("communityName") + " " + runTime);
-		try {
-
-			CommunityDetailsPage.PublicGroupJoinedSuccessfully(data.get("name1"));
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		// int T2 = Dashboard_Page.totalGroupsCount();
-		// T1++;
-		// AssertionHelper.verifyText(String.valueOf(T1), String.valueOf(T2));
-		EcoSystemPage = EcoSystemPage.goToMyEcosystem();
-		MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDetailsPage = MyCommunitiesPage
-				.navigateToCommunityDetailsPage(data.get("communityName") + " " + runTime);
-		CommunityDetailsPage.LeaveGroup(data.get("name1"));
-		try {
-			CommunityDetailsPage.PrivateGroupJoinedSuccessfully(data.get("name2"));	
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
 		
-		CommunityDetailsPage.cancelRequest(data.get("name2"));
-		Thread.sleep(5000);
+		
+		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
+		CommunityDetailsPage CommunityDetailsPage = GlobalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));//+" "+runTime
+			CommunityDetailsPage.JoinGroups(data.get("name2"));
+		
+		
+		
+		Yahoo yahoo=new Yahoo().open();
+		yahoo.Login(data.get("email2"), data.get("password2"));
+		yahoo.memberRequestedJoinPrivateGroup();
 
-		// Assert.fail("Failing the login test");
+		
+		
+		
+		
+//		----------- commented lines for the reason is only join private group purpose-----------\\
+//		// int T1 = Dashboard_Page.totalGroupsCount();
+//		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
+//		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage
+//				.navigateToCommunityDetailsPage(data.get("communityName"));// + " " + runTime
+//
+//		try {
+//
+//			CommunityDetailsPage.PublicGroupJoinedSuccessfully(data.get("name1"));
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
+//		// int T2 = Dashboard_Page.totalGroupsCount();
+//		// T1++;
+//		// AssertionHelper.verifyText(String.valueOf(T1), String.valueOf(T2));
+//		EcoSystemPage = EcoSystemPage.goToMyEcosystem();
+//		MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
+//		CommunityDetailsPage = MyCommunitiesPage
+//				.navigateToCommunityDetailsPage(data.get("communityName") + " " + runTime);
+//		CommunityDetailsPage.LeaveGroup(data.get("name1"));
+// 
+//		try {
+//			CommunityDetailsPage.PrivateGroupJoinedSuccessfully(data.get("name2"));	
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
+//		
+//	//	CommunityDetailsPage.cancelRequest(data.get("name2"));//commented on 23/03
+//		Thread.sleep(5000);
+//
+//		// Assert.fail("Failing the login test");
 	}
 
 	@AfterMethod

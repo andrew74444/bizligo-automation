@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" thread-count="5" parallel="classes">
+
+	<listeners>
+		<listener
+			class-name="com.cpcommunity.ExtentListeners.ExtentListeners"></listener>
+		<listener
+			class-name="com.uiFramework.pamTen.cpcommunity.helper.listener.RetryListener" />
+	</listeners>
+
+	<test name="My Profile">
+		<packages>
+			<package name="com.w2a.zoho.myprofiletestcases" />
+		</packages>
+	</test> <!-- Test -->
+
+	<test name="Community">
+		<classes>
+			<class name="com.cpcommunity.testScripts.community.TC001_Purchase_Pricing_Plan_With_PayPal" />
+			<class name="com.cpcommunity.testScripts.community.TC029_Create_community_From_My_Communites" />
+			<class	name="com.cpcommunity.testScripts.community.TC031_Create_community_From_Global_Communities_page" />
+			<class name="com.cpcommunity.testScripts.community.TC035_Create_community_From_My_Communites" />
+			<class name="com.cpcommunity.testScripts.community.TC081_Member_Join_And_Leave_Public_Community_From_Global_Communities" />
+			<class name="com.cpcommunity.testScripts.community.TC084_Member_Leave_community_from_My_Communities________" />
+			<class name="com.cpcommunity.testScripts.community." />
+			<class name="com.cpcommunity.testScripts.community." />
+			
+		</classes>
+	</test>
+	<test name="Community2">
+		<classes>
+			<class	name="com.cpcommunity.testScripts.community.TC030_System_Admin_Community_Rejection" />
+			<class	name="com.cpcommunity.testScripts.community.TC032_System_Admin_Community_Approval" />
+			<class name="com.cpcommunity.testScripts.community." />
+			
+		</classes>
+	</test>
+	<test name="Community2">
+		<classes>
+			<class	name="com.cpcommunity.testScripts.community.TC033_Complete_Community_Setup" />
+
+		</classes>
+	</test>
+
+
+	<test name="Community3">
+		<classes>
+
+			<class	name="com.cpcommunity.testScripts.community.TC035_Create_Community_With_Rejected_Community_Name" />
+			<class	name="com.cpcommunity.testScripts.community.TC039_Edit_Community" />
+			<class	name="com.cpcommunity.testScripts.community.TC040_Community_Admin_Invite_Members" />
+			<class	name="com.cpcommunity.testScripts.community.TC047_Community_Admin_Able_To_Manage_Community_Members" />
+			<class	name="com.cpcommunity.testScripts.community.TC052_Community_Admin_Create_Groups" />
+			<class  name="com.cpcommunity.testScripts.community.TC079_Share_Posts_in_Communities" />
+			<class name="com.cpcommunity.testScripts.community.TC087_Configure_Cash_Payment" />
+			<class name="com.cpcommunity.testScripts.community.TC088_Configure_Cheque_Payment" />
+			<class name="com.cpcommunity.testScripts.community.TC089_Configure_Paypal_Payment_Gateway" />
+			<class name="com.cpcommunity.testScripts.community.TC090_Configure_AuthorizeNet_Payment_Gateway_____" />
+			<class name="com.cpcommunity.testScripts.community.TC127_Zoom_Meeting_Configuration" />
+			<class name="com.cpcommunity.testScripts.community.TC128_Create_Job_Requirement" />
+			<class name="com.cpcommunity.testScripts.community.TC160_Verify_CA_Not_Able_To_Leave_Community_From_MyCommunities_When_Only_One_Admin" />
+			<class name="com.cpcommunity.testScripts.community." />
+			<class name="com.cpcommunity.testScripts.community." />
+			<class name="com.cpcommunity.testScripts.community." />
+
+		</classes>
+	</test>
+	<test name="Community">
+		<classes>
+			<class				name="com.cpcommunity.testScripts.community.TC041_Member_Reject_Community_request_from_My_Communities" />
+			<class				name="com.cpcommunity.testScripts.community.TC042_Member_Reject_community_Request_from_Community_details_page" />
+			<class				name="com.cpcommunity.testScripts.community.TC043_Member_Reject_Community_Request_From_Global_Community" />
+			<class				name="com.cpcommunity.testScripts.community.TC044_Member_Accept_Community_Request_From_Community_details_page" />
+			<class				name="com.cpcommunity.testScripts.community.TC045_Member_Accept_Community_Request_From_Global_Community" />
+			<class				name="com.cpcommunity.testScripts.community.TC046_Member_Accept_Community_Request_from_My_Communities" />
+			<class				name="com.cpcommunity.testScripts.community.TC046_Member_Already_Joined_In_Community" />
+			<class				name="com.cpcommunity.testScripts.community.TC063_Member_to_Join_Private_Communities_From_Community_Details" />
+			<class				name="com.cpcommunity.testScripts.community.TC064_Community_Admin_Approve_And_Reject_Community_Requests" />
+			<class				name="com.cpcommunity.testScripts.community.TC067_Join_Leave_Public_And_Join_Cance_Private_Groups_From_Community_Details" />
+			<class				name="com.cpcommunity.testScripts.community.TC072_Community_Admin_Approve_And_Reject_Group_Requests" />
+			<class				name="com.cpcommunity.testScripts.community.TC075_Member_Cancel_Community_Join_Request_from_My_Communities________" />
+			<class				name="com.cpcommunity.testScripts.community.TC077_Member_Join_And_Cancel_Community_From_Global_Communities_______" />
+			<class name="com.cpcommunity.testScripts.community." />
+			<class name="com.cpcommunity.testScripts.community." />
+
+
+
+		</classes>
+	</test>
+
+	<test name="Community">
+		<classes>
+			<class
+				name="com.cpcommunity.testScripts.community.TC053_Community_Admin_Manage_Group_Members" />
+			<class
+				name="com.cpcommunity.testScripts.community.TC058_Group_Admin_Manage_Group_Members" />
+			<class name="com.cpcommunity.testScripts.community.TC106_Join_And_Leave_Public_Group_From_My_Groups_Page" />
+			<class name="com.cpcommunity.testScripts.community.TC107_Member_Cancel_Groups_Request_From_MyGroups" />
+			<class name="com.cpcommunity.testScripts.community.TC108_Share_Posts_in_Group" />
+			<class name="com.cpcommunity.testScripts.community." />
+			<class name="com.cpcommunity.testScripts.community." />
+			<class name="com.cpcommunity.testScripts.community." />
+			<class name="com.cpcommunity.testScripts.community." />
+			<class name="com.cpcommunity.testScripts.community." />
+			<class name="com.cpcommunity.testScripts.community." />
+			
+		</classes>
+	</test>
+
+
+
+	<test name="Emails">
+		<packages>
+			<package name="com.cpcommunity.emailtestcases" />
+		</packages>
+	</test>
+
+
+
+
+</suite> <!-- Suite -->

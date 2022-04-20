@@ -75,10 +75,13 @@ public class CreateOrEditEvent extends BasePage {
 	@FindBy(xpath = "//input[@id='country']")
 	WebElement Country;
 	@FindBy(xpath = "//body//p")
-	WebElement EventDescription;
+		WebElement EventDescription;
+	
+		
 	@FindBy(tagName = "body")
 	WebElement CommunityAbout;
-	@FindBy(xpath = "//*[@id='changeImageLink']")
+	//@FindBy(xpath = "//*[@id='changeImageLink']")
+	@FindBy(xpath = "//*[@ng-click='ChangeImagePic()']")//ADDED ON 24/03
 	WebElement changeImageLink;
 
 	@FindBy(xpath = "//button[contains(text(),'Browse')]")
@@ -145,9 +148,11 @@ public class CreateOrEditEvent extends BasePage {
 	@FindBy(xpath = "//input[@name='SpeakerEmail']")
 	WebElement SpeakerEmail;
 	
-	@FindBy(xpath = "//input[@id='SpeakerImage']")
+	//@FindBy(xpath = "//input[@id='SpeakerImage']")
+	@FindBy(xpath = "//*[@class='col-lg-3 col-md-3 col-sm-3 col-xs-12']/*[@class='btn btn-info']")
 	WebElement Speaker_Image;
-	@FindBy(xpath = "//textarea[@name='SpeakerBIO']")
+//	@FindBy(xpath = "//textarea[@name='SpeakerBIO']")
+	@FindBy(xpath = "(//*[@dir='ltr'])[1]")
 	WebElement Speaker_BIO;
 	@FindBy(xpath = "//input[@id='SpeakerLinkedUrl']")
 	WebElement SpeakerLinked_Url;
@@ -305,7 +310,8 @@ public class CreateOrEditEvent extends BasePage {
 
 	@FindBy(xpath = "//input[@ng-value='true']")
 	WebElement paidEvent;
-	@FindBy(xpath = "//*[@class='form-group has-success']//*[@value='2']")
+//	@FindBy(xpath = "//*[@class='form-group has-success']//*[@value='2']")
+	@FindBy(xpath = "(//*[@class='radio-inline']/*[@name='EventAvailableTo'])[2]")
 	WebElement privateEvent;
 	@FindBy(xpath = "//input[@id='ForActiveCommunities']")
 	WebElement CommunityEvent;
@@ -437,8 +443,13 @@ public class CreateOrEditEvent extends BasePage {
 
 		// String m = "55";
 		String y = getSystemCurrentYear();
-		String date = getSystemCurrentDate();
-		String month = getSystemCurrentMonth();
+		String date = getSystemCurrentDate();//for current day
+		String date1=newDay();//for new day
+		
+		String month = getSystemCurrentMonth();//for current month
+		String month1=newMonth();//for new month
+		
+		
 		int hour = stringToInt(h);
 
 		int i = stringToInt(m);
@@ -461,7 +472,8 @@ public class CreateOrEditEvent extends BasePage {
 		// hour = stringToInt(h)+1;
 		// }
 
-		String StartTime = month + "/" + date + "/" + y + " " + hour + ":" + m + " " + AmPm;
+		String StartTime = month1 + "/" + date1 + "/" + y + " " + hour + ":" + m + " " + AmPm;
+		String StartTime1 = month + "/" + date + "/" + y + " " + hour + ":" + m + " " + AmPm;//added on 29/03
 		System.out.println(StartTime);
 		// 11/05/2019 7:45 PM
 		// String t = getPositionAt(StartTime, 1);
@@ -472,17 +484,20 @@ public class CreateOrEditEvent extends BasePage {
 		if (stringToInt(h) > 8) {
 			endHour = 11;
 		}
-		String endTime = month + "/" + date + "/" + y + " " + "11" + ":" + m + " " + "PM";
+		String endTime = month1 + "/" + date1 + "/" + y + " " + "11" + ":" + m + " " + "PM";
+		String endTime1 = month + "/" + date + "/" + y + " " + "11" + ":" + m + " " + "PM";//added on 29/03
 		// String endTime = month + "/" + date + "/" + y + " " + endHour + ":" + m + " "
 		// + AmPm;
 
 		this.FillEventDetails(data, StartTime, endTime, hour, m, AmPm, endHour);
 		clickElementByJavaScript(SaveEventdetailsBtn);
-		this.AddTicketDetails(data, StartTime, endTime, hour, m, AmPm, endHour);
+		Thread.sleep(5000);
+		this.AddTicketDetails(data, StartTime1, endTime1, hour, m, AmPm, endHour);
 		Thread.sleep(1000);
 		
 		click(TicketsSaveAndContinueBtn, "Save And Continue");
 		this.AdditionalInformationDetails(data, StartTime, endTime, hour, m, AmPm, endHour);
+		this.customField(data);//added on 24/03
 		this.EventResources(data);
 		return (CommunityEventsPage) openPage(CommunityEventsPage.class);
 	}
@@ -511,15 +526,18 @@ public class CreateOrEditEvent extends BasePage {
 				Thread.sleep(500);
 			}
 			click(PrivateEventsSaveBtn, "Private Events Save");
+			Thread.sleep(1000);
 		}
 	}
 
 	public void FillEventDetails(Hashtable<String, String> data, String StartTime, String endTime, int hour, String m,
 			String AmPm, int endHour) throws Exception {
 
-		enterLocation(data.get("location"));
-
-		type(EventName, data.get("eventTitleName") + " " + getDateInDDMMMYYYY(), "Event Name");
+		
+		enterLocation(data.get("Location"),data.get("StreetName"),data.get("City"),data.get("State")
+				,data.get("Zip"),data.get("Country"));
+		
+		type(EventName, data.get("eventTitleName") , "Event Name");//+ " " + getDateInDDMMMYYYY()
 		selectEventType(data.get("isPaidEvent"));
 		selectEventMode(data.get("eventModeTo"));
 		selectByVisibleText(EventCategoryID, data.get("eventCategory"), "Event Category");
@@ -535,12 +553,12 @@ public class CreateOrEditEvent extends BasePage {
 		// } catch (Exception e) {
 		//
 		// }
-
-		scrollToElement(EventCountry);
+		
+	//	scrollToElement(EventCountry);
 		switchToFrameByID(1);
-		Thread.sleep(1000);
+	//	Thread.sleep(1000);
 		EventDescription.click();
-		Thread.sleep(1000);
+		//Thread.sleep(1000);
 		type(EventDescription, data.get("eventDescription"), "Description");
 		switchTodefaultContent();
 		click(changeImageLink, "change Image Link");
@@ -599,11 +617,26 @@ public class CreateOrEditEvent extends BasePage {
 		}
 	}
 
-	private void enterLocation(String Location) throws InterruptedException {
+	@FindBy(xpath="//*[@id='street_number']")
+	WebElement streetName;
+	@FindBy(xpath="//*[@id='locality']")
+	WebElement city;
+	@FindBy(xpath="//*[@id='administrative_area_level_1']")
+	WebElement state;
+	@FindBy(xpath="//*[@id='postal_code']")
+	WebElement zip;
+	@FindBy(xpath="//*[@id='country']")
+	WebElement country;
+	private void enterLocation(String Location,String Streetname,String City,String State,String Zip,String Country) throws InterruptedException {
 		type(EventLocation, Location, "Location");
-		Thread.sleep(5000);
-		EventLocation.sendKeys(Keys.ARROW_DOWN);
-		Thread.sleep(5000);
+		Thread.sleep(1000);
+		type(streetName, Streetname, "Street Name");
+		type(city, City, "City");
+		type(state,State , "State");
+		type(zip,Zip , "Zip code");
+		type(country, Country, "Country");
+	//	EventLocation.sendKeys(Keys.ARROW_DOWN);
+	//	Thread.sleep(5000);
 //		EventLocation.sendKeys(Keys.ENTER);
 	}
 
@@ -658,7 +691,7 @@ public class CreateOrEditEvent extends BasePage {
 		TicketEndTime.click();
 		TicketEndTime.sendKeys(Keys.CONTROL + "a");
 		type(TicketEndTime, endTime, "Ticket End Time");
-		picture();
+	//	picture();
 		click(TicketCalendarApplyBtn, "Calendar Apply");
 		click(SaveTicketInfoBtn, "Save button in the pop up");
 		Thread.sleep(2000);
@@ -683,31 +716,52 @@ public class CreateOrEditEvent extends BasePage {
 
 		waitForElementToPresent(AddReminderBtn);
 
-		Thread.sleep(7000);
+		Thread.sleep(5000);
 		click(AddReminderBtn, "Add Reminder");
 		selectByVisibleText(NotificationType, "SMS", "Notification Type");
-		click(AddReminderBtn, "Add Reminder");
+	//	click(AddReminderBtn, "Add Reminder");
+		Thread.sleep(3000);
 		click(AddSpeakerBtn, "Add Speaker");
+		
 		waitForElementToPresent(Speaker_Name);
 		type(Speaker_Name, data.get("speakerName"), "Speaker_Name");
-		type(Speaker_Image, System.getProperty("user.dir") + "/src/test/resources/testImages/Files/ChromeImage8.jpg",
-				"Speaker Image");
-
 		type(SpeakerEmail,"andrew74444@gmail.com","Speaker Email");
+		
+		
+		
+		click(Speaker_Image, " Image");
+		String path = projectFloder("\\src\\test\\resources\\testImages\\ExeFiles\\ChromeImage8.exe");
+		uploadImage(path);
+	//	String path1 = projectFloder("\\src\\test\\resources\\testImages\\Files\\ChromeImage8.jpg");
+	//	uploadImage(path1);
+		
+	//	type(Speaker_Image, System.getProperty("user.dir") + "/src/test/resources/testImages/Files/ChromeImage8.jpg",
+		//		"Speaker Image");
+
+		
 		
 		Thread.sleep(2000);
 		// Runtime.getRuntime().exec(SpeakerImagePath);
 		// Thread.sleep(5000);
 
 		type(SpeakerLinked_Url, data.get("speakerLinkedUrl"), "Speaker Linked Url");
-		type(Speaker_BIO, data.get("speakerBio"), "speakerBio");
+		//temporary commented out bio details
+	//	switchToFrameByID(1);
+	//	type(Speaker_BIO, data.get("speakerBio"), "speakerBio");
+	//	switchTodefaultContent();
+		
+		
 		click(SaveSpeakerDetails, "Save Speaker Details");
-		scrollToElement(AddAgendaBtn);
+		
+		
+	//	scrollToElement(AddAgendaBtn);
 		Thread.sleep(2000);
-		click(AddAgendaBtn, "Add Agenda");
+		//click(AddAgendaBtn, "Add Agenda");
+		clickElementByJavaScript(AddAgendaBtn);
 		Thread.sleep(1000);
 		this.AddAgendadetails(StartTime, endTime, hour, m, AmPm, endHour, data.get("agendaVenue"),
 				data.get("agendaDescription"));
+		
 		clickElementByJavaScript(AddSponsorType);
 		Thread.sleep(1000);
 		type(SponsorTypeName, data.get("sponsorType"), "Sponsor Type");
@@ -719,8 +773,8 @@ public class CreateOrEditEvent extends BasePage {
 		selectByVisibleText(sponsorTypeDropDown, data.get("sponsorType"), "SponsorType");
 		type(Sponsor_Name, data.get("sponsorName"), "Sponsor Name");
 		type(Sponsor_Url, data.get("sponsorUrl"), "Sponsor Url");
-		String path = projectFloder(data.get("sponsorImage"));
-		type(Sponsor_Image, path, "Sponsor Image");
+		String path1 = projectFloder(data.get("sponsorImage"));
+		type(Sponsor_Image, path1, "Sponsor Image");
 
 		// Thread.sleep(3000);
 		//
@@ -729,6 +783,7 @@ public class CreateOrEditEvent extends BasePage {
 		click(SaveSponsorBtn, "Save Sponsor");
 		Thread.sleep(1000);
 		clickElementByJavaScript(AddtionalinfomationSaveAndContinueBtn);
+		Thread.sleep(20000);
 
 	}
 
@@ -754,9 +809,57 @@ public class CreateOrEditEvent extends BasePage {
 		Thread.sleep(2000);
 
 	}
-
+	//added on 24/03 customField method
+	@FindBy(xpath="(//*[@class='col-sm-6 col-xs-12']/*[@class='pull-right']/*[@type='button']/*[@class='fa fa-floppy-o'])[2]")
+	//@FindBy(xpath="	//body/div[1]/div[1]/div[3]/div[1]/div[4]/div[1]/div[1]/div[1]/div[1]/div[1]/div[4]/div[3]/div[2]/div[1]/button[1]")
+	WebElement customFieldSave;
+////****************addField method created for adding Field in customField page on 25/03***********\\\\\\\\\\\\\\\\\\\\\	
+	@FindBy(xpath="//*[@ng-click='addCustomFieldForm()']")
+	WebElement addField;
+	
+	@FindBy(xpath="//*[@ng-model='newField.label']")
+	WebElement fieldLabel;
+	@FindBy(xpath="//*[@id='newField-required']")
+	WebElement required;
+	@FindBy(xpath="//*[@id='newField-order']")
+	WebElement order;
+	
+	@FindBy(xpath="//*[@ng-model='newField.type']")//its drop down element
+	WebElement fieldType;
+//****for feild type TEXT below elements****\\\\\\	
+	@FindBy(xpath="//*[@placeholder='Enter Instruction Text']")
+	WebElement instructionText;
+	@FindBy(xpath="//*[@id='newField-minLength']")
+	WebElement minlengt;
+	@FindBy(xpath="//*[@id='newField-maxLength']")
+	WebElement maxLengt;
+	@FindBy(xpath="//*[@name='FieldValidationType']")//its drop down element
+	WebElement validation;
+//----------------*******---------------------------\\\	
+	public void addField(Hashtable<String, String> data) throws Exception {
+		
+		waitForElementToPresent(addField);
+		click(addField, "AddField button");
+		
+		type(fieldLabel,data.get(""),"Field Label");
+		type(order,data.get(""),"order of display");
+		
+		Select select=new Select(fieldType);
+		select.selectByVisibleText("");
+		
+		}
+	
+	public void customField(Hashtable<String, String> data) throws Exception {
+		Thread.sleep(8000);
+	//	waitForElementToPresent(customFieldSave);
+		click(customFieldSave, "customFieldSave button");
+		}
+	
+	@FindBy(xpath="//*[@class='checkbox checkbox-primary']/*[@for='notify-on-publish']")
+	WebElement notify;
 	public void EventResources(Hashtable<String, String> data) throws Exception {
-
+		Thread.sleep(5000);
+		
 		waitForElementToPresent(AddAlbumBtn);
 		Thread.sleep(7000);
 		click(AddAlbumBtn, "AddAlbumBtn");
@@ -778,14 +881,21 @@ public class CreateOrEditEvent extends BasePage {
 		click(DocumentFormSaveBtn, "Document Form Save");
 		Thread.sleep(2000);
 		scrollToElement(AddVideoBtn);
-		click(AddVideoBtn, "Add Video");
+	//	click(AddVideoBtn, "Add Video");
+		clickElementByJavaScript(AddVideoBtn);
 		waitForElementToPresent(Video_Title);
 
 		type(Video_Title, data.get("videoTitle"), "Video Title");
 		type(Video_Description, data.get("videoDescription"), "Video Description");
 		type(Video_URL, data.get("videoURL"), "Video URL");
 		click(VideoFormSaveBtn, "VideoFormSaveBtn");
+		
+		waitForElementToPresent(notify);
+		click(notify,"notify");
+		Thread.sleep(1000);
+		
 		clickElementByJavaScript(Publishbtn);
+		Thread.sleep(20000);
 
 	}
 

@@ -56,8 +56,8 @@ public class SATestimonials extends BasePage {
 	
 	public void searchTestimonial(String search) throws InterruptedException
 	{
-		String date = ": "+getSystemCurrentDate()+"-"+getSystemCurrentMonth()+"-"+getSystemCurrentYear();
-		type(Search, search+date, "Search");
+	//	String date = ": "+getSystemCurrentDate()+"-"+getSystemCurrentMonth()+"-"+getSystemCurrentYear();
+		type(Search, search, "Search");//+date
 		//Thread.sleep(5000);
 		
 	}
@@ -80,10 +80,29 @@ public class SATestimonials extends BasePage {
 		waitForElementToPresent(logout);
 		click(logout, "Logout");
 	}
-	
+	public void pendingTestimonial(String notes) throws Exception
+	{
+		
+		click(approved, "Approved");
+		//Thread.sleep(5000);
+		type(this.notes, notes, "Notes");
+		Thread.sleep(1000);
+		Select drp = new Select(statusID);
+		drp.selectByVisibleText("Pending");
+		//Thread.sleep(5000);
+		waitForElementToPresent(save);
+		click(save, "Save");
+		Thread.sleep(10000);
+		click(menu, "Menu");
+		//Thread.sleep(5000);
+		waitForElementToPresent(logout);
+		click(logout, "Logout");
+	}
+	@FindBy(xpath="(//*[@class='form-control input-sm'])[2]")
+			WebElement search;
 	public void rejectTestimonial(String notes) throws Exception
 	{
-		String date = ": "+getSystemCurrentDate()+"-"+getSystemCurrentMonth()+"-"+getSystemCurrentYear();
+	//	String date = ": "+getSystemCurrentDate()+"-"+getSystemCurrentMonth()+"-"+getSystemCurrentYear();
 		click(rejected, "Rejected");
 		//Thread.sleep(5000);
 		type(this.notes, notes, "Notes");
@@ -94,8 +113,12 @@ public class SATestimonials extends BasePage {
 		waitForElementToPresent(save);
 		click(save, "Save");
 		Thread.sleep(10000);
-		wait.until(ExpectedConditions.elementToBeClickable(menu));
-		click(menu, "Menu");
+		waitForElementToPresent(search);
+		waitForElementToPresent(menu);
+	//	wait.until(ExpectedConditions.elementToBeClickable(menu));
+	
+	//	click(menu, "Menu");
+		hardClick(menu);
 		//Thread.sleep(10000);
 		waitForElementToPresent(logout);
 		click(logout, "Logout");

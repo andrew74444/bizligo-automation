@@ -10,6 +10,7 @@ import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.MyCommunitiesPage;
+import com.cpcommunity.PageObjects.Yahoo;
 import com.cpcommunity.testScripts.community.BaseTest;
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataProviders;
@@ -29,18 +30,25 @@ public class TC931_Verify_member_able_submit_enquiry_from_contactUsPage extends 
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
 	      
-		MyCommunitiesPage MyCP = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
-		ContactUsPage CP=MyCP.NavigateToContactUsPage();
+	//	MyCommunitiesPage MyCP = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
+	//	ContactUsPage CP=MyCP.NavigateToContactUsPage();
+		
+		logInfo("Username entered as "+data.get("email")+" and Password entered as "+data.get("password"));
+		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+		ContactUsPage CP=EcoSystemPage.NavigateToContactUsPage();
 		CP.checkAndSubmitEquiryForm(data.get("Name"),data.get("Organization") ,data.get("Address"),data.get("Phone"),data.get("Email"), data.get("Comments"));
 		
-//comments
+		Yahoo yahoo= new Yahoo().open();
+		yahoo.Login(data.get("email1"), data.get("password1"));
+		yahoo.tAdminEnqiryMail();
+		
 }
-//	@AfterMethod
-//	public void tearDown() {
-//		
-//		logInfo("Login Test Completed");
-//		
-//		quit();
-//		
-//	}
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("Login Test Completed");
+		
+		quit();
+		
+	}
 }

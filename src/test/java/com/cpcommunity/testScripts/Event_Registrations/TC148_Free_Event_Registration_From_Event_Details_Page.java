@@ -30,7 +30,10 @@ public class TC148_Free_Event_Registration_From_Event_Details_Page extends BaseT
 		UpcomingEventsPage UpcomingEventsPage = EcoSystemPage.goToUpComingEvents();
 		EventDetailsPage eventDetailsPage = UpcomingEventsPage.goToEventDetailsPage(data);
 		eventDetailsPage.registerFreeEvent(data);
-
+		
+		Yahoo yahoo= new Yahoo().open();
+		yahoo.Login(data.get("email1"), data.get("password1"));
+		yahoo.EventRegsNotification();
 	}
 
 	@AfterMethod

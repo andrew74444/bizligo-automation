@@ -29,7 +29,7 @@ public class TC149_Paid_Event_Registration_With_PayPal_From_Event_CheckIn extend
 		
 		MyCommunitiesPage myCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CommunityDashboardPage communityDashboardPage = myCommunitiesPage
-				.gotoManageCommunity(data.get("communityName")+" "+runTime);
+				.gotoManageCommunity(data.get("communityName"));//+" "+runTime
 		CommunityEventsPage CommunityEvents = communityDashboardPage.navigateToEvents();
 		CheckInPage checkInPage = CommunityEvents.checkIn(data);
 		PayPalPayment payPalPayment = checkInPage.registerEventByPayPal(data);
@@ -37,13 +37,13 @@ public class TC149_Paid_Event_Registration_With_PayPal_From_Event_CheckIn extend
 		eventTicketPage.successfulRegistration();
 	}
 
-	@AfterMethod
-	public void tearDown() {
-
-		logInfo("TC149 Test Completed");
-
-		quit();
-
-	}
+//	@AfterMethod
+//	public void tearDown() {
+//
+//		logInfo("TC149 Test Completed");
+//
+//		quit();
+//
+//	}
 
 }

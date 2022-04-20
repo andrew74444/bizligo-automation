@@ -59,15 +59,16 @@ public class ManageRequests extends BasePage{
 
 	
 	public void approveRequest(String email) throws Exception {
-		Thread.sleep(2000);
-		memberSearch.clear();
+	//	Thread.sleep(2000);
+	//	memberSearch.clear();
 		type(memberSearch, email,"Searching in member to Approve");
-		Thread.sleep(10000);
+		Thread.sleep(5000);
 		click(selectCheckBox,"selectCheckBox");
 		Thread.sleep(500);
 		click(Approve,"Approve");
 		waitForElementToPresent(ApproveYesProceed);
-		click(ApproveYesProceed,"Yes Proceed");
+	//	click(ApproveYesProceed,"Yes Proceed");
+		clickElementByJavaScript(ApproveYesProceed);
 		waitForElementToPresent(OkBth);
 		click( OkBth,"Yes, Proceed");
 		Thread.sleep(3000);
@@ -75,16 +76,18 @@ public class ManageRequests extends BasePage{
 	
 	
 	public void rejectRequest(String email, String rejectReason) throws Exception {
-		Thread.sleep(2000);
-		memberSearch.clear();
+	//	Thread.sleep(2000);
+	//	memberSearch.clear();
 		type(memberSearch, email,"Searching in member to reject");
-		Thread.sleep(10000);
+		Thread.sleep(5000);
 		click(selectCheckBox,"selectCheckBox");
 		Thread.sleep(500);
 		click(Reject,"Reject");
 		waitForElementToPresent(RejectYesProceed);
 		type(this.rejectReason, rejectReason,"Reject for Reason");
-		click(RejectYesProceed,"Yes Proceed");
+	//	click(RejectYesProceed,"Yes Proceed");
+		clickElementByJavaScript(RejectYesProceed);
+		Thread.sleep(2000);
 		waitForElementToPresent(OkBth);
 		click( OkBth,"Yes, Proceed");
 		Thread.sleep(4000);

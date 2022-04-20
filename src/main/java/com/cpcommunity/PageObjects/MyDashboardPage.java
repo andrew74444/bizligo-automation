@@ -50,8 +50,8 @@ public class MyDashboardPage extends BasePage{
 	//@FindBy(xpath = "//div[@class='member-page-heading bg-info text-uppercase']")
 	//WebElement myDashboard;
 
-	@FindBy(xpath = "//h2[normalize-space()='MY ECOSYSTEM']")
-	//h2[normalize-space()='MY ECOSYSTEM']
+	//@FindBy(xpath = "//h2[normalize-space()='MY ECOSYSTEM']")
+	@FindBy(xpath = "//div[contains(text(),'My Dashboard')]")//added on 11/04
   WebElement myDashboard;
 //>>>>>>> 76cb67c052ad4e8adb1ade1afe195876e131ae62
 
@@ -331,7 +331,7 @@ WebElement joinedMessage ;
 	  	WebElement searcH;
 	    
 	  
-
+	 
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 		
@@ -670,11 +670,13 @@ public ManageAdPlansPage goToManageAdPlansPage() {
 	
 		
 //		new MyDashboardPage(driver, );
-	
+	@FindBy(xpath="//span[contains(text(),'My Jobs')]")
+	WebElement jobs;
 	public TestimonialsPage naviagtingToTestimonials() throws Exception 
 	{
 		
-		//Thread.sleep(3000);
+		Thread.sleep(2000);
+		waitForElementToPresent(jobs);//added on 11/04
 		waitForElementToPresent(testimonials);
 		click(testimonials, "Testimonials");
 		//Thread.sleep(2000);
@@ -752,7 +754,8 @@ public ManageAdPlansPage goToManageAdPlansPage() {
 	
 	public MyProfilePage NaviagtingToMyProfilePage() throws Exception
 	{
-	
+		
+		
 		Toggledropdownmenu.click();
 		Thread.sleep(1000);
 		myProfile.click();
@@ -1047,18 +1050,32 @@ public MyGroupsPage navigateToMyGroupsPage() {
 				Assert.assertTrue(true);
 			}
 		}
+	@FindBy(xpath="//*[@class='form-group']/*[@placeholder='Search by Community Name']")
+	 WebElement searchBox;
+	@FindBy(xpath="//*[@class='form-group']/*[@ng-click='data.SearchUserCommunities()']")
+	WebElement searchButton;
+	
 	 public Bizligo1CommunityPage goToMyCommunity() throws InterruptedException {
-		 //Thread.sleep(6000);
+		 Thread.sleep(3000);
+		 
 		 waitForElementToPresent(viewAllBtn);
-			click(viewAllBtn,"view all");
-			//Thread.sleep(6000);
-			waitForElementToPresent(bizligo1);
-			scrollIntoView(bizligo1);
-			//waitForElementToPresent(bizligo1);
-			click(bizligo1,"Bizligo 1");
-			//Thread.sleep(8000);
+		click(viewAllBtn,"view all");
+			
+			waitForElementToPresent(bizligo1);//added on 31/03 for wait purpose
+			waitForElementToPresent(searchBox);
+			type(searchBox,"bizligo1","serching community");//added on 31/03
+			click(searchButton,"search button");
+			
+		
+		waitForElementToPresent(bizligo1);
+		scrollIntoView(bizligo1);
+		click(bizligo1,"Bizligo 1");
+		
 			return (Bizligo1CommunityPage) openPage(Bizligo1CommunityPage.class);
 		}
+	 
+	
+	 
 	 
 	 public void viewall() throws InterruptedException {
 		 Thread.sleep(6000);
@@ -1084,7 +1101,7 @@ public MyGroupsPage navigateToMyGroupsPage() {
 		 click(requests,"Requests");
 		 waitForElementToPresent(reject);
 		 click(reject,"Reject");
-		 Thread.sleep(3000);
+		// Thread.sleep(3000);
 		 
 	 }
 	 public void checkConnectionMsg(String Notes) throws InterruptedException {
@@ -1108,7 +1125,7 @@ public MyGroupsPage navigateToMyGroupsPage() {
 		 waitForElementToPresent(reject);
 		 System.out.println(connectionNote.getText());
 		 Boolean x=connectionNote.isEnabled();
-		 System.out.println(x);
+	 System.out.println(x);
 	 }
 	 public void checkSeeMoreOption(String Notes) throws InterruptedException {
 		 //Thread.sleep(6000);

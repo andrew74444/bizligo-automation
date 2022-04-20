@@ -66,10 +66,10 @@ public class PaymentConfirmation extends BasePage {
 
 		Thread.sleep(3000);
 		// new TestBase().captureScreen(, driver);
-		picture();
+	//	picture();
 		click(SubmitBtn, "SubmitBtn");
 		waitForElementToPresent(OkBtn);
-		picture();
+	//	picture();
 
 		click(OkBtn, "OkBtn");
 		return (PaymentGatewaysPage) openPage(PaymentGatewaysPage.class);

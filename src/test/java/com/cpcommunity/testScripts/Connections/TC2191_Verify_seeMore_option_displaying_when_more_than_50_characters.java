@@ -36,6 +36,7 @@ public class TC2191_Verify_seeMore_option_displaying_when_more_than_50_character
 		MyDashboardPage MDP1 = login1.loginToMemberdashboard(data.get("email1"), data.get("password1"));		
 		MDP1.checkSeeMoreOption(data.get("Notes"));
 		MDP1.cancelConnectionRequest();
+		
 }
 	@AfterMethod
 	public void tearDown() {

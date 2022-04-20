@@ -46,13 +46,22 @@ public class TC081_Member_Join_And_Leave_Public_Community_From_Global_Communitie
 //		int TotalCommunities=  Integer.parseInt(T1);
 //		TotalCommunities++;
 //		AssertionHelper.verifyText(String.valueOf(TotalCommunities), T2);
-		GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
-		GlobalCommunitesPage.leaveCommunityWithoutDate(data.get("communityName"));
+		
+		//commented below two lines for only join the community purpose
+		
+	       //GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();//commented on 22/03
+		    //GlobalCommunitesPage.leaveCommunityWithoutDate(data.get("communityName"));
 		
 //		String T3 = EcoSystemPage.totalCommunitiesCount();
 //		AssertionHelper.verifyText(T1, T3);	
 		
 		//Assert.fail("Failing the login test");
+		
+		Yahoo yahoo= new Yahoo().open();
+
+		yahoo.Login(data.get("email1"), data.get("password1"));
+		yahoo.joinedCommunity();
+		
 	}
 
 	@AfterMethod

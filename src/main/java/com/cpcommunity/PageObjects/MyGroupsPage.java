@@ -46,8 +46,8 @@ public class MyGroupsPage extends BasePage{
    // @FindBy(xpath = "//*[@id='toast-container']")
     //WebElement ToastMessage;
 
-    @FindBy(xpath = "//button[@class='btn btn-default btn-sm btn-remove'][1]")
-    List<WebElement> LeaveBtn;
+    @FindBy(xpath = " (//*[@ng-hide='!GroupData.Isactive'])[1]")
+    WebElement LeaveBtn;
 
     @FindBy(xpath = "//button[contains(.,'Cancel')]")
     WebElement CancelBtn;
@@ -126,47 +126,53 @@ public class MyGroupsPage extends BasePage{
 //    	new GroupDetailsPage(driver, );
     }
     
-    
+   @FindBy(xpath=" (//*[@ng-hide='!GroupData.Isactive'])[1]")
+    		WebElement leave;
     public void searchGroup(String groupName) throws Exception{
-    	SearchGroup.clear();
+    //	SearchGroup.clear();
     	log.info(groupName);
+    	waitForElementToPresent(leave);//added on 13/04 for wait purpose
     	type( SearchGroup, groupName,"Search by Group Name");
     	click(searchbtn,"search btn");
-    	Thread.sleep(6000); 
+   // 	Thread.sleep(6000); 
     	
     }
 
     
-    public boolean cancel(String groupName) throws Exception {
-    	groupName = groupName+" "+getDateInDDMMMYYYY();
+    public void cancel(String groupName) throws Exception {
+    	//boolean
+    //	groupName = groupName+" "+getDateInDDMMMYYYY();
     	this.searchGroup(groupName);
 		click(CancelBtn,"Leave"); 
 		waitForElementToPresent(ToastMessage);
 		AssertionHelper.verifyText(ToastMessage.getText(), "Your request processed successfully");
-		this.searchGroup(groupName);
-		if(searchImage.isDisplayed())
-		{
-			return true;
-		}
-		else {
-			return false;
-		}
+		//commented on 13/04
+		//	this.searchGroup(groupName);
+//		if(searchImage.isDisplayed())
+//		{
+//			return true;
+//		}
+//		else {
+//			return false;
+//		}
 		
 	}
-    public boolean LeaveGroup(String groupName) throws Exception  {
-    	groupName = groupName+" "+getDateInDDMMMYYYY();
+    public  void LeaveGroup(String groupName) throws Exception  {
+    	//boolean 
+    //	groupName = groupName+" "+getDateInDDMMMYYYY();
     	this.searchGroup(groupName);
+    	waitForElementToPresent(LeaveBtn);//added on 13/04
 		click(LeaveBtn,"Leave"); 
 		waitForElementToPresent(ToastMessage);
 		AssertionHelper.verifyText(ToastMessage.getText(), "You have removed successfully from the Group");
-		
-		if(searchImage.isDisplayed())
-		{
-			return true;
-		}
-		else {
-			return false;
-		}	
+//******commented on 13/04 because not identified the element searchImage**********\\		
+//		if(searchImage.isDisplayed())
+//		{
+//			return true;
+//		}
+//		else {
+//			return false;
+//		}	
 	}
     
     

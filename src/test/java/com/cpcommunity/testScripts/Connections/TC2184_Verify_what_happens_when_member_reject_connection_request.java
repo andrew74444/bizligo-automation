@@ -34,17 +34,22 @@ public class TC2184_Verify_what_happens_when_member_reject_connection_request ex
 		HomePage home1 = new HomePage().open(data.get("tenantType"));
 		home1.logout();
 		LoginPage login1 = home1.clickOnLOGINBtn();
-		MyCommunitiesPage MyCP = login1.loginToMyCommunitiesPage(data.get("email1"), data.get("password1"));
-		MyDashboardPage MDP1=MyCP.gotoMyDashboardPage();
-		MDP1.cancelConnectionRequest();
+		
+		MyDashboardPage MD= login.loginToMemberdashboard(data.get("email1"), data.get("password1"));
+		//*************commented below 3 lines on 31/03**************\\
+//		MyCommunitiesPage MyCP = login1.loginToMyCommunitiesPage(data.get("email1"), data.get("password1"));
+//		MyDashboardPage MDP1=MyCP.gotoMyDashboardPage();
+//		MDP1.cancelConnectionRequest();
+		MD.cancelConnectionRequest();
 		HomePage home2 = new HomePage().open(data.get("tenantType"));
 		home2.logout();
+		
 		LoginPage login2 = home2.clickOnLOGINBtn();
 		MyDashboardPage MDP2= login2.loginToMemberdashboard(data.get("email"), data.get("password"));
 		Bizligo1CommunityPage BCP1=MDP2.goToMyCommunity();
 		BCP1.checkStatusWhenMemberCancel(data.get("Name"));
 		
-		
+	
 	       
 
 }

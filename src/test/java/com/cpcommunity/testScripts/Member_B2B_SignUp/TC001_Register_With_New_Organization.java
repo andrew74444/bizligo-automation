@@ -17,11 +17,11 @@ public class TC001_Register_With_New_Organization extends BaseTest {
 	PaymentReceipt PaymentReceipt;
 	
 	@Test(dataProviderClass = DataProviders.class, dataProvider = "masterDP")
-	public void TC222(Hashtable<String, String> data) throws Exception {
+	public void TC223(Hashtable<String, String> data) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC222", data.get("Runmode"), excel);
-		log.info("Inside TC222 Test");
+		DataUtil.checkExecution("master", "TC223", data.get("Runmode"), excel);
+		log.info("Inside TC223 Test");
 		System.out.println(data.get("duration"));
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
@@ -29,7 +29,12 @@ public class TC001_Register_With_New_Organization extends BaseTest {
 		LoginPage loginPage = home.clickOnLOGINBtn();
 		SignupPage signupPage = loginPage.clickonSignup();
 		signupPage.signup(data.get("firstName"), data.get("lastName"), data.get("emailAddress"), data.get("phNo"), data.get("password"), data.get("isB2B"), data.get("isNewOrg"), data.get("corporateAddress"), data.get("organizationName"), data.get("website"), data.get("businessDescription"), data.get("businessCategories"), data.get("isOrgRequired"));
-		
+		signupPage.send();
+	//	switching();
+		Yahoo yahoo= new Yahoo().open();
+
+		yahoo.Login(data.get("email2"), data.get("password2"));
+		yahoo.emailVerfication();
 	}
 
 	
@@ -37,13 +42,13 @@ public class TC001_Register_With_New_Organization extends BaseTest {
 	
 	
 	
-	@AfterMethod
-	public void tearDown() {
-
-		logInfo("TC222 Test Completed");
-
-		quit();
-
-	}
+//	@AfterMethod
+//	public void tearDown() {
+//
+//		logInfo("TC223 Test Completed");
+//
+//		quit();
+//
+//	}
 
 }

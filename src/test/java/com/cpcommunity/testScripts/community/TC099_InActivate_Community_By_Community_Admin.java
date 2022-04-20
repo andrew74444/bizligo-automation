@@ -38,6 +38,10 @@ public class TC099_InActivate_Community_By_Community_Admin extends BaseTest {
 		EcoSystemPage = EditCommunityPage.inActiveCommunity();
 		GlobalCommunitesPage globalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
 		globalCommunitesPage.checkInActivatedCommunityIsNotDisplayed(data.get("communityName"));
+		
+		Yahoo yahoo= new Yahoo().open();
+			yahoo.Login(data.get("email1"), data.get("password1"));//for other admin receiving mail about inactive community
+			yahoo.communityInActivated();
 //		//Assert.fail("Failing the login test");
 	}
 	

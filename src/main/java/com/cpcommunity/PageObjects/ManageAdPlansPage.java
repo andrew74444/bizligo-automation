@@ -348,7 +348,7 @@ public class ManageAdPlansPage extends BasePage {
 		//int T2 = getString(str, 3);
 		click(btnAddNewPlan, "Add New Plan");
 		waitForElementToPresent(this.name);
-		name=name+ "" + getDateInDDMMMYYYY();
+	//	name=name+ "" + getDateInDDMMMYYYY();
 		type(this.name, name, "name");
 		type(this.price, price, "price");
 		driver.switchTo().frame(0);
@@ -365,7 +365,7 @@ public class ManageAdPlansPage extends BasePage {
 		}
 		
 		click(btnSave, "Save button");
-		Thread.sleep(12000);
+		Thread.sleep(8000);
 		//waitForElementToPresent(this.toaster);
 		//AssertionHelper.verifyText(toaster.getText(), "Advertisement plan details saved.");
 		//T1++;
@@ -376,9 +376,37 @@ public class ManageAdPlansPage extends BasePage {
 //			ele = driver.findElement(By.xpath("//*[contains(text(),'Showing 1 to " + T1 + " of " + T1 + " entries')]"));
 //		}
 //		waitForElement(ele);
-		picture();
+	//	picture();
 	}
-	
+//**********added on 19/04 for creating ad and publishing also ***********\\	
+	@FindBy(xpath="//*[@id='IsNotify']")
+	WebElement notify;
+	public void createAdPlanAndPublish(String name, String price, String planDetails, String duration, String durationType,
+			String adLocation, String adType, String approvalType) throws InterruptedException {
+		waitForElementToPresent(dataTablesInfo);
+		
+		click(btnAddNewPlan, "Add New Plan");
+		waitForElementToPresent(this.name);
+		type(this.name, name, "name");
+		type(this.price, price, "price");
+		driver.switchTo().frame(0);
+		enterTextInframe.clear();
+		enterTextInframe.sendKeys(planDetails);
+		//type(this.planDetails, "please check soon", "plan Details");
+		driver.switchTo().defaultContent();
+		type(this.duration, duration, "duration");
+		selectByVisibleText(this.durationType, durationType, "duration Type");
+		selectByVisibleText(this.adLocation, adLocation, "ad Location");
+		selectByVisibleText(this.adType, adType, "Ad Type");
+		if (approvalType.equalsIgnoreCase("no")) {
+			click(chkRequiresApproval, "Approval approaval");
+		}
+		click(notify,"notify");
+		click(btnSave, "Save button");
+		Thread.sleep(8000);
+		//waitForElementToPresent(this.toaster);
+		//AssertionHelper.verifyText(toaster.getText(), "Advertisement plan details saved.");
+	}
 	public void createAdPlanwithsameName(String name, String price, String planDetails, String duration, String durationType,
 			String adLocation, String adType, String approvalType) throws InterruptedException {
 		waitForElementToPresent(dataTablesInfo);

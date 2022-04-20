@@ -25,7 +25,7 @@ public class Atest extends BaseTest{
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP",priority=1)
 	public void TC001(Hashtable<String,String> data) throws Exception {
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC001", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC3001", data.get("Runmode"), excel);
 		log.info("Inside Login Test");			
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));		
@@ -35,19 +35,9 @@ public class Atest extends BaseTest{
      	logInfo("Username entered as "+data.get("email")+" and Password entered as "+data.get("password"));
     // login.loginToApplication(data.get("email"), data.get("password"));
      	ForgotPasswordPage pass=login.clickOnForgotpassword();
-     	pass.SendForgotPasswordEmail("venkatakodi7@gmail.com");
-
-		//	actions();
-     	}
+     	pass.SendForgotPasswordEmail("yogesh.bhor141@yahoo.com");
      	
-     	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP",priority=2)
-    	public void EmailVerification(Hashtable<String,String> data) throws Exception {
-    	
-    		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-    		DataUtil.checkExecution("master", "TC002", data.get("Runmode"), excel);
-    		log.info("Launched Browser : "+data.get("password"));
-    		log.info("Launched Browser : "+data.get("email"));
-    	
+    	switching();
     	
     		Gmail gmail= new Gmail().open("https://accounts.google.com/signin/v2/identifier?elo=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin");
     

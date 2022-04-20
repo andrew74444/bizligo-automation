@@ -29,18 +29,23 @@ public class TC143_Paid_Event_Registration_With_PayPal_From_Event_Details_Page e
 		
 		UpcomingEventsPage upcomingEventsPage = EcoSystemPage.goToUpComingEvents();
 		EventDetailsPage eventDetailsPage = upcomingEventsPage.goToEventDetailsPage(data);
-		PayPalPayment payPalGateway= eventDetailsPage.registerEventByPayPal(data);
+	//	PayPalPayment payPalGateway= eventDetailsPage.registerEventByPayPal(data);
+		PayPalPayment payPalGateway= eventDetailsPage.registerEventByPayPal2(data);
 		EventTicketPage eventTicketPage = payPalGateway.MakePayment();
 		eventTicketPage.successfulRegistration();
+		
+		Yahoo yahoo= new Yahoo().open();
+		yahoo.Login(data.get("email1"), data.get("password1"));
+		yahoo.purchaseNotification();
 	}
 
-	@AfterMethod
-	public void tearDown() {
-
-		logInfo("TC143 Test Completed");
-
-		quit();
-
-	}
+//	@AfterMethod
+//	public void tearDown() {
+//
+//		logInfo("TC143 Test Completed");
+//
+//		quit();
+//
+//	}
 
 }

@@ -6,6 +6,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.Bizligo1CommunityPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
+import com.cpcommunity.PageObjects.GlobalMembersPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.MyDashboardPage;
@@ -27,10 +29,19 @@ public class TC2188_Verify_member_able_send_connection_adding_notes_Global_membe
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
-		MyDashboardPage MDP= login.loginToMemberdashboard(data.get("email"), data.get("password"));
-		Bizligo1CommunityPage BCP=MDP.goToMyCommunity();
-		BCP.sendingConnectionAddingNotes(data.get("Name"),data.get("Notes"));
+//*****commented below code because it will go to community 	then send connection**************\\\\\\\\\\\	
+		
+//		MyDashboardPage MDP= login.loginToMemberdashboard(data.get("email"), data.get("password"));
+//		Bizligo1CommunityPage BCP=MDP.goToMyCommunity();
+//		BCP.sendingConnectionAddingNotes(data.get("Name"),data.get("Notes"));
+		
+///********added below code because we want to send connection to global members ****************************\\\		
+		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+		
+		GlobalMembersPage GlobalMembersPage = EcoSystemPage.goToMembersPage();
 	
+		GlobalMembersPage.sendConnectionAddingNotes(data.get("Name"),data.get("Notes"));
+
 }
 	@AfterMethod
 	public void tearDown() {

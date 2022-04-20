@@ -31,7 +31,6 @@ public class TC2187_Verify_Member_details_show_consistency_BusinessDirectory_Com
 		Bizligo1CommunityPage BCP=MDP.goToMyCommunity();
 		BCP.memberDetailsCommunityAndGroup(data.get("Name"));
 	
-
 }
 	@AfterMethod
 	public void tearDown() {

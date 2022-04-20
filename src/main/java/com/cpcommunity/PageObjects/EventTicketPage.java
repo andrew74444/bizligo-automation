@@ -32,19 +32,23 @@ public class EventTicketPage extends BasePage {
 	WebElement onlineEventRegistrationSuccess;
 	@FindBy(xpath = "//*[@class='panel panel-default']")
 	WebElement bookingSummary;
+	@FindBy(xpath = "//*[@class='col-md-6 pull-left']/*")
+	WebElement booking;
 
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
-		return ExpectedConditions.visibilityOf(success);
+		return ExpectedConditions.visibilityOf(booking);//success
 	}
 
 	public void successfulRegistration() throws Exception {
 
 		waitForElementToPresent(ticketsProcessed);
-		Thread.sleep(5000);
-		AssertionHelper.verifyText(ticketsProcessed.getText(), "Your tickets have processed");
 		
-
+		Thread.sleep(3000);
+		AssertionHelper.verifyText(ticketsProcessed.getText(),
+		
+		"Your tickets have processed. You will receive an email with the details.");
+		// "Your tickets have processed"
 		// Your tickets have processed.. You will receive an email with the details to
 		// join the online meeting.
 

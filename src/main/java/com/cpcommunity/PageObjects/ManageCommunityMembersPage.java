@@ -107,9 +107,10 @@ public class ManageCommunityMembersPage extends BasePage {
 	//
 
 	public boolean ManageMembers(String email) throws Exception {
-		this.addmember(email);
-		this.makeAdmin(email);
-		this.removeAdmin(email);
+//**************below four methods we can use accordingly our purpose**************||||||||
+	//	this.addmember(email);
+	//	this.makeAdmin(email);
+	//	this.removeAdmin(email);
 		this.removeMember(email);
 		Thread.sleep(4000);
 		return true;
@@ -126,19 +127,19 @@ public class ManageCommunityMembersPage extends BasePage {
 
 	public void memberOutSearch(String email) throws Exception {
 		Thread.sleep(2000);
-		memberOutSearch.clear();
+	//	memberOutSearch.clear();
 		type(memberOutSearch, email, "Searching in members not joined");
 		waitForElementToPresent(waitForTheSearchOut);
-		Thread.sleep(10000);
+		Thread.sleep(5000);
 
 	}
 
 	public void memberInSearch(String email) throws Exception {
 
-		Thread.sleep(2000);
-		memberinSearch.clear();
+	//	Thread.sleep(2000);
+	//	memberinSearch.clear();
 		type(memberinSearch, email, "Searching in members joined");
-		waitForElementToPresent(waitForTheSearchIn);
+	//	waitForElementToPresent(waitForTheSearchIn);
 		Thread.sleep(10000);
 
 	}

@@ -31,7 +31,7 @@ public class TC2192_Verify_Add_note_PopUp_displaying_user_clicks_send_connection
 		Bizligo1CommunityPage BCP=MDP.goToMyCommunity();
 		BCP.checkAddNotesAppearWhenConnect(data.get("Name"),data.get("Notes"));
 		
-	
+
 }
 	@AfterMethod
 	public void tearDown() {

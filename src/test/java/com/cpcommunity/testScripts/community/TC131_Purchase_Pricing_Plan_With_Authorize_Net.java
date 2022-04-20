@@ -30,7 +30,7 @@ public class TC131_Purchase_Pricing_Plan_With_Authorize_Net extends BaseTest {
 
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CreateCommunityPage CreateCommunityPage = MyCommunitiesPage.clickOnCreateCommunity();
-		String communityName = data.get("communityName") + " " + runTime;
+		String communityName = data.get("communityName");// + " " + runTime;
 		try {
 			CreateCommunityPage.CreateCommunity(communityName, data.get("Networking"), data.get("Marketing"),
 					data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"),
@@ -42,9 +42,9 @@ public class TC131_Purchase_Pricing_Plan_With_Authorize_Net extends BaseTest {
 
 		home = EcoSystemPage.logout();
 		home.clickOnLOGINBtn();
-		logInfo("Username entered as " + data.get("email1") + " and Password entered as " + data.get("password"));
+		logInfo("Username entered as " + data.get("email1") + " and Password entered as " + data.get("password1"));
 		SystemAdminDashboardPage systemAdminDashboardPage = login.SystemAdminloginToApplication(data.get("email1"),
-				data.get("password"));
+				data.get("password1"));
 		PendingCommunitiesPage PendingCommunitiesPage = systemAdminDashboardPage.naviagteToPendingCommunities();
 		try {
 			PendingCommunitiesPage.approveCommunity(communityName);	
@@ -68,6 +68,16 @@ public class TC131_Purchase_Pricing_Plan_With_Authorize_Net extends BaseTest {
 			PaymentReceipt = AuthorizeGateway.payment();
 		}
 		PaymentReceipt.paymentSuccess();
+		
+		Yahoo yahoo= new Yahoo().open();
+//***********To check community admin mail*******************************//		
+		yahoo.Login(data.get("email3"), data.get("password3"));//Community admin
+		yahoo.pricingPlanNotificationToCA();//pricing plan notification to CA
+		
+//***********To check Tenant admin mail*******************************//		
+	//	yahoo.Login(data.get("email4"), data.get("password4"));//Tenant admin
+	//	yahoo.pricingPlanNotificationToTA();//pricing plan notification to TA
+		
 	}
 
 	@AfterMethod

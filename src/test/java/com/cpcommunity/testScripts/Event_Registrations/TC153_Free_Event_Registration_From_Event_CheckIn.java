@@ -26,10 +26,14 @@ public class TC153_Free_Event_Registration_From_Event_CheckIn extends BaseTest {
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage myCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage communityDashboardPage = myCommunitiesPage.gotoManageCommunity(data.get("communityName")+" "+runTime);
+		CommunityDashboardPage communityDashboardPage = myCommunitiesPage.gotoManageCommunity(data.get("communityName"));//+" "+runTime
 		CommunityEventsPage CommunityEvents = communityDashboardPage.navigateToEvents();
 		CheckInPage checkInPage = CommunityEvents.checkIn(data);
 		checkInPage.registerFreeEvent(data);
+		
+		Yahoo yahoo= new Yahoo().open();
+		yahoo.Login(data.get("email1"), data.get("password1"));
+		yahoo.EventRegsNotification();
 	}
 
 	@AfterMethod

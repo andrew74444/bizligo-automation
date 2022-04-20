@@ -24,7 +24,8 @@ public class EcoSystemPage extends BasePage {
 	@FindBy(xpath = "//*[@id='global-nav']")
 	WebElement pageheader;
 
-	@FindBy(xpath = "(//a[normalize-space()='Global Communities'])[2]")
+//	@FindBy(xpath = "(//a[normalize-space()='Global Communities'])[2]")
+	@FindBy(xpath = "//*[@class='nav navbar-nav navbar-right']/*/*[text()='Global Communities']")//added 0n 22/03
 	WebElement globalCommunities;
 
 	@FindBy(xpath = "//span[@title='Toggle dropdown menu']")
@@ -58,7 +59,10 @@ public class EcoSystemPage extends BasePage {
 	@FindBy (xpath = "//*[contains(text(),'My Messages')]")
 	WebElement myMessages;
 	
-	@FindBy(xpath="//a[contains(text(),'Member Directory')] | //a[contains(text(),'Global Members')]")
+	@FindBy (xpath = "//*[@class='dropdown']/*[@class='dropdown-toggle']/*[text()='Directory ']")//added on 21/03
+	WebElement directory; 
+	//@FindBy(xpath="//a[contains(text(),'Member Directory')] | //a[contains(text(),'Global Members')]")//commented on 21/03
+	@FindBy(xpath="//*[@class='dropdown-menu']/*/*[text()='Member Directory']")//added on 21/03
 	WebElement memberDirectory;
 	
 	//*[@class='fa fa-arrow-left'] | //*[@class='fa fa-tv']
@@ -79,7 +83,8 @@ public class EcoSystemPage extends BasePage {
 	@FindBy(xpath="//a[contains(text(),'Past Events')]")
 	WebElement PastEvents;
 	
-	@FindBy(xpath="//a[contains(text(),'Careers')]")
+//	@FindBy(xpath="//a[contains(text(),'Careers')]")
+	@FindBy(xpath="//*[@class='nav navbar-nav navbar-right']/*/*[text()='Careers']")//added on 05/04
 	WebElement GlobalCareers;
 	@FindBy(xpath = "(((//*[@class='col-md-3 left_col']//img[@src='/Content/Images/Jobs/Jobs-active.png'])/..)/..)")
 	WebElement Jobs;
@@ -99,9 +104,12 @@ public class EcoSystemPage extends BasePage {
 	@FindBy(xpath="//a[normalize-space()='My Events']")
 	WebElement myEvents;
 
-	@FindBy(xpath="//*[text()=' Articles']")//added by me
+	@FindBy(xpath="//*[text()=' Articles']")//added 0n 21/03
 	WebElement articles;
-	
+	@FindBy(xpath="//*[@class='col-lg-6 col-sm-6 col-md-6 col-xs-12 footer-logo']/*[@alt='Bizligo']")//added on 28/03
+	WebElement logo;
+	@FindBy(xpath="//*[@class='progress']/*[@role='progressbar']")
+	WebElement progress;
 	
 	@Override
 	protected void getPageScreenSot() {
@@ -113,12 +121,15 @@ public class EcoSystemPage extends BasePage {
 
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
-
+	
+	//	waitForElementToPresent(articles);//added on 21/03 //for wait purpose
+		waitForElementToPresent(logo);//for wait purpose
+		waitForElementToPresent(progress);//for wait purpose
 		return ExpectedConditions.visibilityOf(Home);
 	}
 
 	public HomePage logout() throws Exception {
-		waitForElementToPresent(articles);//added by me
+	
 		waitForElementToPresent(Toggledropdownmenu);// added by me
 		
 		click(Toggledropdownmenu,"Toggledropdownmenu");
@@ -234,34 +245,55 @@ public class EcoSystemPage extends BasePage {
 		
 	        }
 	
-	
+	@FindBy(xpath="//*[@class='category-img']")
+			WebElement wait;
+	@FindBy(xpath="(//*[@ng-click='data.SearchSimilarBusiness()'])")
+			WebElement wait2;
 	public MyCommunitiesPage goToMyCommunities() throws Exception {
 		
-		try {
-			waitForElementToPresent(viewAll);
+		waitForElementToPresent(viewAll);
+		waitForElementToPresent(wait);//added 0n 05/04 for waiting purpose
+		waitForElementToPresent(wait2);//added 0n 05/04 for waiting purpose
 			click(viewAll, "view All");	
-		} catch (Exception e) {
 			
-			driver.navigate().refresh();
-			Thread.sleep(12000);
-			waitForElementToPresent(viewAll);
-			click(viewAll, "view All");
-			
-		}
+//		try {
+//			waitForElementToPresent(viewAll);
+//			click(viewAll, "view All");	
+//		//	clickByJavaExecutor(viewAll);	
+//		} catch (Exception e) {
+//			
+//			driver.navigate().refresh();
+//			Thread.sleep(12000);
+//			waitForElementToPresent(viewAll);
+//			click(viewAll, "view All");
+//			
+//		}
 		
 		return (MyCommunitiesPage) openPage(MyCommunitiesPage.class);
 	}
 
 	
+	private void clickByJavaExecutor(WebElement viewAll2) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	public EcoSystemPage goToMyEcosystem() {
 		click(Toggledropdownmenu, "Toggledropdownmenu");
 		waitForElementToPresent(myEcosystemInMenu);
 		click(myEcosystemInMenu, "My Ecosystem In Menu Drop Down");
 		return (EcoSystemPage) openPage(EcoSystemPage.class);
 	}
+	@FindBy(xpath="//*[@class='text-right']/*[@title='Go to My Communities']")
+	WebElement view;
+	public GlobalCareers goToGlobalCareers() throws InterruptedException {
 
-	public GlobalCareers goToGlobalCareers() {
-		click(GlobalCareers, "click");
+		scrollDownVertically();//added on 05/04
+		waitForElementToPresent(GlobalCareers);//added on 05/04
+		waitForElementToPresent(view);//added on 05/04
+	
+		click(GlobalCareers, "Global careers");
+		
 		return (GlobalCareers) openPage(GlobalCareers.class);
 		// new GlobalCareers(driver, );
 	}
@@ -271,8 +303,13 @@ public class EcoSystemPage extends BasePage {
 		return (Messages) openPage(Messages.class);
 		// new Messages(driver, );
 	}
-
+	@FindBy(xpath="(//*[@class='cm-group-name']/*/*/*)[1]")
+			WebElement wait1;
+	@FindBy(xpath="(//*[@class='text-right']/*[text()='VIEW ALL'])[1]")
+			WebElement wait22;
 	public MyGroupsPage goToMyGroups() {
+		waitForElementToPresent(wait1);//added on 13/04 
+		waitForElementToPresent(wait22);//added on 13/04 
 		waitForElementToPresent(myGroups);
 		clickElementByJavaScript(myGroups);
 		//click(myGroups, "myGroups");
@@ -320,10 +357,16 @@ public class EcoSystemPage extends BasePage {
 	//
 
 	public MyProfilePage goToMyProfilePage() throws Exception {
-        //Thread.sleep(8000);
+		
+		Thread.sleep(2000);	
+		
+		waitForElementToPresent(articles);//added on 14/03
+			
 		waitForElementToPresent(Toggledropdownmenu);
 		click(Toggledropdownmenu,"Toggledropdownmenu");
-		Thread.sleep(1000);
+		//Thread.sleep(1000);
+		waitForElementToPresent(myProfile);//added on 14/03
+		
 		click(myProfile,"myProfile");
 		return (MyProfilePage) openPage(MyProfilePage.class);
 		// new MyProfilePage(driver, );
@@ -331,8 +374,11 @@ public class EcoSystemPage extends BasePage {
 	}
 
 	public GlobalMembersPage goToMembersPage() {
-
-		click(memberDirectory,"memberDirectory");
+		
+		click(directory,"Directory");//added on 21/03
+		
+      waitForElementToPresent(memberDirectory);//added on 21/03
+		hardClick(memberDirectory);
 		return (GlobalMembersPage) openPage(GlobalMembersPage.class);
 		// new GlobalMembersPage(driver, );
 	}
@@ -446,6 +492,22 @@ public  MyEventsPage goToMyEventsPage() {
 		click(myEvents,"My events");
 		return (MyEventsPage) openPage(MyEventsPage.class);
 	}
+@FindBy(xpath = "//*[@class='nav navbar-nav navbar-right']/*/*[text()='Contact Us']")
+WebElement contactUs;
+@FindBy(xpath = "//*[@ng-click='data.SearchSimilarBusiness()']")
+WebElement search;
+
+public ContactUsPage NavigateToContactUsPage() throws InterruptedException {
+	
+Thread.sleep(10000);
+	scrollDownVertically();
+	waitForElementToPresent(search);//added on 11/04
+waitForElementToPresent(contactUs);//added on 11/04
+
+	click(contactUs, "Contact Us");
+	return (ContactUsPage) openPage(ContactUsPage.class);
+	
+}
 
 }
 

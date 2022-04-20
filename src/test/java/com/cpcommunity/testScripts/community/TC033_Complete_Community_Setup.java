@@ -44,8 +44,16 @@ public class TC033_Complete_Community_Setup extends BaseTest {
 		}
 
 		PaymentReceipt.paymentSuccess();
-
-		// Assert.fail("Failing the login test");
+		Yahoo yahoo= new Yahoo().open();
+		//***********To check community admin mail*******************************//		
+				yahoo.Login(data.get("email2"), data.get("password2"));//Community admin
+				yahoo.pricingPlanNotificationToCA();//pricing plan notification to CA
+				
+		//***********To check Tenant admin mail*******************************//		
+			//	yahoo.Login(data.get("email3"), data.get("password3"));//Tenant admin
+			//	yahoo.pricingPlanNotificationToTA();//pricing plan notification to TA
+				
+		
 	}
 
 	@AfterMethod

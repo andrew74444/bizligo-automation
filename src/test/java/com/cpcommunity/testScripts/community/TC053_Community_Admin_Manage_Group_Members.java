@@ -33,18 +33,24 @@ public class TC053_Community_Admin_Manage_Group_Members extends BaseTest {
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName")+" "+runTime);
+		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));//+" "+runTime
 		ManageGroupsPage ManageGroupsPage = CommunityDashboardPage.navigateToManageGroupsPage();
-		ManageGroupMembersPage ManageGroupMembersPage = ManageGroupsPage.navigateToManageGroupMembers(data.get("groupName"));
-		ManageGroupMembersPage.ManageMembers(data.get("email1"));
 		
-		//Assert.fail("Failing the login test");
+		ManageGroupMembersPage ManageGroupMembersPage = ManageGroupsPage.navigateToManageGroupMembers(data.get("groupName"));
+		ManageGroupMembersPage.ManageMembers(data.get("email2"));
+		
+		Yahoo yahoo= new Yahoo().open();
+
+		yahoo.Login(data.get("email1"), data.get("password1"));
+	//	yahoo.added();        //when add member method used.
+	//	yahoo.caMadeAdmin();  // when make Admin method used
+	//	yahoo.caRemovedAdmin();//when remove Admin method used
+		yahoo.removed();//when removed from group member checking mail
 	}
 
 	@AfterMethod
 	public void tearDown() {
-		
-		logInfo("TC053 Test Completed");
+				logInfo("TC053 Test Completed");
 		
 		quit();
 		

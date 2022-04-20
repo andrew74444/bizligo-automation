@@ -33,7 +33,10 @@ public class TC142_Create_Paid_Event extends BaseTest {
 		CreateOrEditEvent CreateOrEditEvent = CommunityEvents.NewEvent();
 		CreateOrEditEvent.createEvent(data);
 		
-
+		Yahoo yahoo= new Yahoo().open();
+	//	yahoo.Login(data.get("email1"), data.get("password1"));//member
+		yahoo.Login(data.get("email2"), data.get("password2"));// Community Admin
+		yahoo.newEventMail();
 	}
 
 	@AfterMethod

@@ -134,7 +134,7 @@ try {
 //	Thread.sleep(30000);
 	
 	waitForElementToPresent(RefreshBtn);
-	 click(RefreshBtn, "Refresh Btn");//removed the comment by me
+	 click(RefreshBtn, "Refresh Btn");//removed the comment
 	
 }		
 	
@@ -266,11 +266,14 @@ try {
  @FindBy(xpath="//*[text()='Password Reset']")
  WebElement reset;
  
- @FindBy(xpath=" (//*[text()='Password Reset'])[2]")
+ @FindBy(xpath=" (//*[text()='Password Reset'])[2]") //for tenant2
+ //@FindBy(xpath="(//*[text()='SheTek- Password Reset'])[2]")//for shetek
  WebElement reset1;
  
- @FindBy(xpath="//*[text()='Reset Your Password']")
+ @FindBy(xpath="//*[text()='Reset Your Password']")//for tenant2
+// @FindBy(xpath="(//*[text()='Reset Your Password'])") // for shetek
  WebElement clickReset;
+
  
  @FindBy(xpath="//*[text()='Reset Password']")
  WebElement passwordRestConfirmation;
@@ -283,6 +286,9 @@ try {
 
 	@FindBy(xpath = "//button[contains(text(),'Reset')]")
 	WebElement Reset;
+	
+	@FindBy(xpath = "//*[@class='btn btn-success btn-sm']")
+	WebElement clickLogin;
  
 public void reset() throws InterruptedException {
 	
@@ -291,6 +297,7 @@ public void reset() throws InterruptedException {
 	
 	Thread.sleep(2000);
 	click(clickReset,"Reset link");
+
 	
 	String currentHandle= driver.getWindowHandle();
 
@@ -317,23 +324,143 @@ public void reset() throws InterruptedException {
 	 System.out.println(text);
 	 
 	 Thread.sleep(2000);
-	 TypeByJavaScript("Pamten@789",Password);
-
+	// TypeByJavaScript("Pamten@789",Password);
+type(Password,"Pamten@12345","password");
 	 
 	 Thread.sleep(2000);
-	 TypeByJavaScript("Pamten@789",ConfirmPassword);
+	// TypeByJavaScript("Pamten@789",ConfirmPassword);
+	 type(ConfirmPassword,"Pamten@12345","confirm password");
 	 
-	 Thread.sleep(5000);
+	 Thread.sleep(2000);
 //JavascriptExecutor js=(JavascriptExecutor)driver;
 //js.executeScript("arguments[0].click();", Reset)
 	 
 
 	 
 	 click(Reset,"resetting the password");
-	 Thread.sleep(5000);
+	 Thread.sleep(2000);
+	 
+	// click(clickLogin,"for login page");
+	 JavascriptExecutor js=(JavascriptExecutor)driver;
+	js.executeScript("arguments[0].click();", clickLogin);
 	 
 	 }
+//added on 31/03
+//@FindBy(xpath="//*[text()='You have a new connection request.'])[2]")
+@FindBy(xpath="//tbody/tr[@id=':25']/td[@id=':2b']/div[1]/div[1]/div[1]/span[1]/span[1]")
+		WebElement connection;
 
+@FindBy(xpath="//*[@class='gb_nf gb_of']")
+WebElement searchbutton;
+public void newConnectionMail() throws InterruptedException {
+	Thread.sleep(2000);
+	waitForElementToPresent(connection);
+	click(connection,"new connection mail");
+}
+@FindBy(xpath="(//*[text()='Your Account has been Re-Activated'])[2]")
+		WebElement reactive;
+ public void reactiveMember() {
+	 waitForElementToPresent(reactive);
+		click(reactive,"ReActived the account confirmation mail");
+	 
+ }
+ @FindBy(xpath="(//*[text()='You have been added to Bizligo Network'])[2]")
+		 WebElement added;
+public void addedToBizligo() {
+	waitForElementToPresent(added);
+	click(added,"You have been added to Bizligo Network mail");
+}
+@FindBy(xpath="(//*[contains(text(),'almost there')])[2]")
+		WebElement almost;
+
+@FindBy(xpath="//*[@valign='top']/*/*[text()='Please use this verification code to verify your email address: ']/*")
+WebElement text;
+
+public String code;
+public void registMail() {
+	waitForElementToPresent(almost);
+	click(almost,"email verification mail");
+	waitForElementToPresent(text);
+	String code2=text.getText();
+	code=code2.replace(".","");
+	System.out.println(code);
+}
+@FindBy(xpath="(//*[text()='Payment Confirmation'])[2]")
+		WebElement paymentCnfr;
+@FindBy(xpath="//*[@class='asa']/*[@class='ar6 T-I-J3 J-J5-Ji']")
+
+WebElement backArrow;
+ @FindBy(xpath="//*[@class='asa']/*[@class='asf T-I-J3 J-J5-Ji']")
  
+WebElement refresh;
+ 
+ @FindBy(xpath="//*[@class='aio UKr6le']/*/*[text()='Inbox']")
+ WebElement inbox;
+public void payementMail() throws InterruptedException {
+	Thread.sleep(5000);
+	waitForElementToPresent(inbox);
+	 JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", inbox);
+//	clickElementByJavaScript(inbox);
+	waitForElementToPresent(refresh);
+	 JavascriptExecutor js1=(JavascriptExecutor)driver;
+		js1.executeScript("arguments[0].click();", refresh);
+//	clickElementByJavaScript(refresh);
+	waitForElementToPresent(paymentCnfr);
+	click(paymentCnfr,"payment confirmation mail");
+	
+}	 @FindBy(xpath = "//*[@form='code-verify']")
+WebElement textBox;
+@FindBy(xpath = "//*[@value='VERIFY']")
+WebElement verify;
+@FindBy(xpath = "//*[@class='swal-button-container']/*[text()='Ok']")
+WebElement ok;
+public void enterCode() {
+	
 
+System.out.println(code);
+textBox.sendKeys(code);
+waitForElementToPresent(verify);
+click(verify,"verify");
+waitForElementToPresent(ok);
+click(ok,"ok button");
+}
+public void backToOldTab() {
+	
+	ArrayList<String> tabs=new ArrayList<String>(driver.getWindowHandles());
+	driver.switchTo().window(tabs.get(0));
+	}
+public void newTab() {
+	
+	ArrayList<String> tabs=new ArrayList<String>(driver.getWindowHandles());
+	driver.switchTo().window(tabs.get(1));
+	}
+public void openAndGoToNewTab() {
+	
+		JavascriptExecutor jse=(JavascriptExecutor)driver;
+		jse.executeScript("window.open()");
+		ArrayList<String> tabs=new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(tabs.get(1));
+}
+@FindBy(xpath="(//*[@ng-data='plan.data'])[21]")
+WebElement unlimitedPlan;
+@FindBy(xpath="(//*[@ng-data='plan.data'])[1]")
+WebElement Plan;
+@FindBy(xpath="//*[@ng-click='OnSubmitPlan()']")
+WebElement submitBtn;
+@FindBy(xpath="//*[@id='btnconfirm']")
+WebElement okBtn;
+
+                 public void selectPlan() {
+scrollDownVertically();
+waitForElementToPresent(Plan);//wait purpose
+waitForElementToPresent(unlimitedPlan);
+click(unlimitedPlan,"select plan");
+waitForElementToPresent(submitBtn);
+//click(submitBtn,"Submit button");
+hardClick(submitBtn);
+waitForElementToPresent(okBtn);
+click(okBtn,"OK button");
+
+}
 }

@@ -38,6 +38,7 @@ public class TC2190_Verify_receiver_not_able_edit_connection_notes extends BaseT
 		MDP1.cancelConnectionRequest();
 		HomePage home2 = new HomePage().open(data.get("tenantType"));
 		home2.logout();
+	
 }
 	@AfterMethod
 	public void tearDown() {

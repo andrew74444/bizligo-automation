@@ -1,9 +1,12 @@
 package com.cpcommunity.PageObjects;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.Set;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -41,10 +44,12 @@ public class SignupPage extends BasePage {
 	@FindBy(xpath = "//*[@id='Phone']")
 	WebElement phone;
 
-	@FindBy(xpath = "//input[@id='CompanyName']")
+//	@FindBy(xpath = "//input[@id='CompanyName']")
+	@FindBy(xpath = "//*[@class='input-group b2cSelectOrgDiv']/*[@id='organizationName']")//added on 21/03
 	WebElement organizationName;
 
-	@FindBy(xpath = "(//*[@id='BusinessCategories']/..)//input")
+	//@FindBy(xpath = "(//*[@id='BusinessCategories']/..)//input")
+	@FindBy(xpath = "//*[@class='select2-search select2-search--inline']/*[@role='textbox']")//added on 21/03
 	WebElement businessCategories;
 
 	@FindBy(xpath = "//*[@id='NoOfEmployees']")
@@ -71,8 +76,7 @@ public class SignupPage extends BasePage {
 	@FindBy(xpath = "//*[contains(text(),'Organization is already exists')]")
 	WebElement organizationIsAlreadyExists;
 	
-	// @FindBy(xpath = "")
-	// WebElement ;
+	
 
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
@@ -95,9 +99,9 @@ public class SignupPage extends BasePage {
 
 		type(this.firstName, firstName, "first Name");
 		type(this.lastName, lastName, "last Name");
-		emailAddress = emailAddress.replace("@gmail.com", "");
-		emailAddress = emailAddress + "+" + currentTime() + "@gmail.com";
-		list.put("email", emailAddress);
+	//	emailAddress = emailAddress.replace("@gmail.com", "");//commented on 21/03
+	//	emailAddress = emailAddress + "+" + currentTime() + "@gmail.com";	
+//		list.put("email", emailAddress);
 		type(this.emailAddress, emailAddress, "email Address");
 		type(this.phone, phNo, "phone No");
 		type(this.password, password, "password");
@@ -118,6 +122,7 @@ public class SignupPage extends BasePage {
 				log.info(this.businessCategories.isEnabled());
 			}
 		}
+		waitForElementToPresent(saveAndContinue);
 		click(saveAndContinue, "Save And Continue");
 		return (AccountVerificationCodePage) openPage(AccountVerificationCodePage.class);
 
@@ -131,18 +136,19 @@ public class SignupPage extends BasePage {
 			this.corporateAddress.sendKeys(Keys.ARROW_DOWN);
 			Thread.sleep(1000);
 			this.corporateAddress.sendKeys(Keys.ENTER);
-			organizationName = organizationName + getDateInDDMMMYYYY();
+		//	organizationName = organizationName + getDateInDDMMMYYYY();
 
 			type(this.organizationName, organizationName, "organization Name");
-			type(this.website, website, "website");
-			type(this.businessDescription, businessDescription, "business Description");
-			selectByVisibleText(noOfEmployees, "151-200", "151-200");
-
+			
 			click(this.businessCategories, "business Categories");
 			type(this.businessCategories, businessCategories, "business Categories");
 			// this.corporateAddress.sendKeys(Keys.ENTER);
 			WebElement element = driver.findElement(By.xpath("//li[contains(text(),'" + businessCategories + "')]"));
 			click(element, businessCategories);
+
+			type(this.website, website, "website");
+			type(this.businessDescription, businessDescription, "business Description");
+			selectByVisibleText(noOfEmployees, "151-200", "151-200");
 
 		} else {
 			type(this.organizationName, organizationName, "organization Name");
@@ -170,7 +176,7 @@ public class SignupPage extends BasePage {
 		type(this.organizationName, orgName, "org Name");
 		click(password, "password");
 		waitForElementToPresent(organizationIsAlreadyExists);
-		picture();
+	//	picture();
 
 	}
 
@@ -255,4 +261,54 @@ public class SignupPage extends BasePage {
 		click(saveAndContinue, "Save And Continue");
 		return (AccountVerificationCodePage) openPage(AccountVerificationCodePage.class);
 	}
+	//added on 21/03 for send button
+	 @FindBy(xpath = "//*[@class='form-group']/*[@ng-click='SiData.SendVerificationCode(SiData.Sendcodeby)']")
+	 WebElement sendButton ;
+	public void send() throws InterruptedException {
+		
+		waitForElementToPresent(sendButton);
+		click(sendButton,"send button");
+		
+		
+	}
+	 @FindBy(xpath = "//*[@form='code-verify']")
+	WebElement textBox;
+	 @FindBy(xpath = "//*[@value='VERIFY']")
+	 WebElement verify;
+	 Gmail gmail=new Gmail();
+	 public void enterCode() {
+		
+
+	System.out.println(gmail.code);
+//	textBox.sendKeys(gmail.code);
+//	click(verify,"verify");
+	
+	 }
+	public void newTab() {
+	//	driver.switchTo().Window(WindowType.TAB);
+		JavascriptExecutor jse=(JavascriptExecutor)driver;
+		jse.executeScript("window.open()");
+		ArrayList<String> tabs=new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(tabs.get(1));
 }
+	public void backToOldTab() {
+		
+		ArrayList<String> tabs=new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(tabs.get(0));
+		}
+	@FindBy(xpath="(//*[@ng-data='plan.data'])[21]")
+			WebElement unlimitedPlan;
+	@FindBy(xpath="//*[@ng-click='OnSubmitPlan()']")
+	WebElement submitBtn;
+	@FindBy(xpath="//*[@id='btnconfirm']")
+	WebElement okBtn;
+	public void selectPlan() {
+		scrollDownVertically();
+		click(unlimitedPlan,"select plan");
+		waitForElementToPresent(submitBtn);
+		click(submitBtn,"Submit button");
+		waitForElementToPresent(okBtn);
+		click(okBtn,"OK button");
+
+	}
+	}

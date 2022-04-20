@@ -67,6 +67,7 @@ public class SystemAdminDashboardPage extends BasePage {
 	
 	
 	public PendingCommunitiesPage naviagteToPendingCommunities() {
+		waitForElementToPresent(CommunitiesNavSideMenu);//added on 13/04
 		clickElementByJavaScript(CommunitiesNavSideMenu);
 		// click(CommunitiesNavSideMenu,"Communities");
 		waitForElementToPresent(pendingCommunities);
@@ -110,16 +111,16 @@ public class SystemAdminDashboardPage extends BasePage {
 		return (TenantAdminMemberShipPlansPage) openPage(TenantAdminMemberShipPlansPage.class);
 	}
 	
-	
+	@FindBy(xpath = "//*[@title='Website Inquiries']")
+	WebElement inquiries;
 	public SATestimonials navigatetoTestimonials() throws Exception
 	
 	        {
-		
+		scrollToElement(inquiries);//added on 11/04
+		 waitForElementToPresent(testimonials);//added on 11/04
 	                click(testimonials,"Testimonials");
 	
 	                waitForElementToPresent(websiteTestimonial);
-		
-	                Thread.sleep(5000);
 	
 	                return (SATestimonials) openPage(SATestimonials.class);
 		

@@ -8,7 +8,6 @@ import org.testng.annotations.Test;
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataUtil;
 import com.cpcommunity.PageObjects.*;
-import com.cpcommunity.PageObjects.MyGroupsPage;
 import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.ExcelReader;
 
@@ -31,7 +30,7 @@ public class TC107_Member_Cancel_Groups_Request_From_MyGroups extends BaseTest {
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage
-				.navigateToCommunityDetailsPage(data.get("communityName") + " " + runTime);
+				.navigateToCommunityDetailsPage(data.get("communityName"));// + " " + runTime
 		GroupDetailsPage GroupDetailsPage = CommunityDetailsPage.navigateToGroupDetailsPage(data.get("groupName"));
 		try {
 			GroupDetailsPage.JoinPrivateGroup();
@@ -39,10 +38,16 @@ public class TC107_Member_Cancel_Groups_Request_From_MyGroups extends BaseTest {
 			// TODO: handle exception
 		}
 
-		Thread.sleep(7000);
+	//	Thread.sleep(7000);
 		EcoSystemPage = EcoSystemPage.goToMyEcosystem();
 		MyGroupsPage MyGroupsPage = EcoSystemPage.goToMyGroups();
 		MyGroupsPage.cancel(data.get("groupName"));
+		
+		
+		Yahoo yahoo=new Yahoo().open();
+		yahoo.Login(data.get("email1"), data.get("password1"));
+		yahoo.cancelRequestPrivateGroup();
+
 
 		// Assert.fail("Failing the login test");
 	}

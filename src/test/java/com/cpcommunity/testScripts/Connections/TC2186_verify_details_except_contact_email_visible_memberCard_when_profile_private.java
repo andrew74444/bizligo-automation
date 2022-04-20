@@ -17,10 +17,10 @@ import com.cpcommunity.utilities.ExcelReader;
 
 public class TC2186_verify_details_except_contact_email_visible_memberCard_when_profile_private extends BaseTest{
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC2180(Hashtable<String,String> data) throws Exception {
+	public void TC2186(Hashtable<String,String> data) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC2180", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC2186", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));

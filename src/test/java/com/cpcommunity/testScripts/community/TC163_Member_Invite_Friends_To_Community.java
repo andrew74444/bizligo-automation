@@ -34,6 +34,12 @@ public class TC163_Member_Invite_Friends_To_Community extends BaseTest {
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CommunityDetailsPage communityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		communityDetailsPage.inviteFriends(data);
+		
+		Yahoo yahoo= new Yahoo().open();
+
+		yahoo.Login(data.get("email1"), data.get("password1"));
+		yahoo.communityJoinInvitation();//member invited to join community checking confirmation mail 
+		
 		//Assert.fail("Failing the login test");
 	}
 

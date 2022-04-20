@@ -30,27 +30,28 @@ public class TC072_Community_Admin_Approve_And_Reject_Group_Requests extends Bas
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
-		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email1"), data.get("password"));
+		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email1"), data.get("password1"));
 		
 
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
+		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));//+" "+runTime
 		CommunityDetailsPage.PrivateGroupJoinedSuccessfully(data.get("groupName"));
-		Thread.sleep(8000);	
-		home = EcoSystemPage.logout();
+	//	Thread.sleep(5000);
+//		home = EcoSystemPage.logout();	
+		home = CommunityDetailsPage.logout();//added on 06/04
 		
 		
-
-		home.clickOnLOGINBtn();
-		EcoSystemPage = login.loginToApplication(data.get("email2"), data.get("password"));
-		
-//		EcoSystemPage.verifySuccessLogin();
-		MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
-		CommunityDetailsPage.PrivateGroupJoinedSuccessfully(data.get("groupName"));
-		Thread.sleep(8000);	
-		home = EcoSystemPage.logout();	
-		
+//*********commented below code for same member  approve and reject checking***************\\\
+//		home.clickOnLOGINBtn();
+//		EcoSystemPage = login.loginToApplication(data.get("email2"), data.get("password"));
+//		
+////		EcoSystemPage.verifySuccessLogin();
+//		MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
+//		CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));//+" "+runTime
+//		CommunityDetailsPage.PrivateGroupJoinedSuccessfully(data.get("groupName"));
+//		Thread.sleep(8000);	
+//		home = EcoSystemPage.logout();	
+//		
 		
 		
 		home.clickOnLOGINBtn();
@@ -58,12 +59,16 @@ public class TC072_Community_Admin_Approve_And_Reject_Group_Requests extends Bas
 			
 //		EcoSystemPage.verifySuccessLogin();
 		MyCommunitiesPage = EcoSystemPage.goToMyCommunities();		
-		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName")+" "+runTime);		
+		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));//+" "+runTime		
 		GroupsPendingRequestsPage GroupsPendingRequestsPage = CommunityDashboardPage.NavigateToCommunitygroupPendingRequets();
-		GroupsPendingRequestsPage.approveMember(data.get("email1"));
-		GroupsPendingRequestsPage.rejectMember(data.get("email2"), data.get("rejectReason"));
-		// Udate te emai
+		GroupsPendingRequestsPage.approveMember(data.get("email1"));//Approved
+	//	GroupsPendingRequestsPage.rejectMember(data.get("email1"), data.get("rejectReason"));//Rejected
+		
 		//Assert.fail("Failing the login test");
+		Yahoo yahoo= new Yahoo().open();
+		yahoo.Login(data.get("email1"), data.get("password2"));
+	//	yahoo.notApproved();//when CA Rejected group request member receiving mail checking purpose
+		yahoo.Approved();//when CA Approved group request member receiving mail checking purpose
 	}
 
 	@AfterMethod

@@ -34,18 +34,25 @@ public class TC084_Member_Leave_community_from_My_Communities________ extends Ba
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 //		Dashboard_Page.verifySuccessLogin();
-		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
-		try {
-			GlobalCommunitesPage.communityJoinWithOutDate(data.get("communityName"));	
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+//*************only leaving community thats why commented below code"***********************\\\ 
+		
+//		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
+//		try {
+//			GlobalCommunitesPage.communityJoinWithOutDate(data.get("communityName"));	
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
 
 		
 		
-		EcoSystemPage = EcoSystemPage.goToMyEcosystem();
+	//	EcoSystemPage = EcoSystemPage.goToMyEcosystem();
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		MyCommunitiesPage.leaveCommunityWithName(data.get("communityName"));
+		
+		Yahoo yahoo= new Yahoo().open();
+
+		yahoo.Login(data.get("email1"), data.get("password1"));
+		yahoo.memberLeftCommunity();//CA  checking confirmation mail about member left community 
 		
 		//Assert.fail("Failing the login test");
 	}

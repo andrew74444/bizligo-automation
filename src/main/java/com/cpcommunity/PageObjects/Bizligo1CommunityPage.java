@@ -156,6 +156,8 @@ public class Bizligo1CommunityPage extends BasePage {
 	WebElement pendingBtn;
 	@FindBy(xpath = "//span[@ng-bind='group.GroupName'][normalize-space()='Group 2']")
 	WebElement group2;
+	@FindBy(xpath = "//*[@tooltip='Group 1']")//added on 31/03
+	WebElement group1;
 	@FindBy(xpath = "//span[normalize-space()='Members']")
 	WebElement memberGroup;//input[@placeholder='Search Members...']
 	@FindBy(xpath = "//input[@placeholder='Search Members...']")
@@ -170,13 +172,15 @@ public class Bizligo1CommunityPage extends BasePage {
 	WebElement connectLinkIcon;
 	@FindBy(xpath = "//span[@ng-bind=\"member.EmailAddress | limitTo:27\"]")
 	WebElement memberEmail;
+	
 	@FindBy(xpath = "//span[@ng-bind=\"member.Phone\"]")
 	WebElement memberPhone;
 	@FindBy(xpath = "//textarea[@id='ConnectionNoteArea']")
 	WebElement addNote;
 	@FindBy(xpath = "//a[@ng-click=\"data.redirectToMenu('group');\"]")
 	WebElement group;
-	@FindBy(xpath = "//label[normalize-space()='Add Note :']")
+	//@FindBy(xpath = "//label[normalize-space()='Add Note :']")
+	@FindBy(xpath = "//label[contains(text(),'Add Note :')]")//added on 01/04
 	WebElement addNotePopUp;
 	@FindBy(xpath = "//button[normalize-space()='Close']")
 	WebElement closeConnectionPopUp;
@@ -428,16 +432,16 @@ public class Bizligo1CommunityPage extends BasePage {
 	}
 	public void sendConnectionToMember(String Name) throws InterruptedException {
 		click(member,"Member");
-		//Thread.sleep(3000);
+		waitForElementToPresent(connect);//for wait purpose
 		waitForElementToPresent(searchByMember);
 		type(searchByMember,Name,"Name of member to connect");
-		//Thread.sleep(6000);
+		
 		waitForElementToPresent(searchBtn);
 		click(searchBtn,"search");
 		waitForElementToPresent(connect);
 		click(connect,"Connect");
 		click(send,"Send Connect request");
-		//Thread.sleep(4000);
+
 		waitForElementToPresent(toastMessage);
 		System.out.println(toastMessage.getText());
 		if(toastMessage.getText().equalsIgnoreCase("Connection request has been sent.")) {
@@ -446,24 +450,38 @@ public class Bizligo1CommunityPage extends BasePage {
 		}else Assert.assertTrue(false);
 		waitForElementToPresent(memberName);
 		click(memberName,"Member Name");
+		waitForElementToPresent(connection);//for wait purpose
+		waitForElementToPresent(profile);// for wait purpose
 		waitForElementToPresent(cancelConnectionReq);
 		click(cancelConnectionReq,"Cancel connection");
 		
 	}
-	
+	@FindBy(xpath="//*[@class='select2-search select2-search--inline']/*[@placeholder='Search by Groups (Upto 3)']")
+	WebElement searchGroups;
+	@FindBy(xpath="//*[@class='text-uppercase']/*[text()='MEMBERSHIP plan']")
+	WebElement plan;
+	@FindBy(xpath="//*[@class='text-uppercase']/*[text()='Champions']")
+	WebElement champion;
+	@FindBy(xpath="(//*[text()='Connect'])")
+			WebElement connects;
 	public void checkConnectionStatus(String Name) throws InterruptedException {
 		click(member,"Member");
-		//Thread.sleep(6000);
+	
+		waitForElementToPresent(plan);//added on 31/03 for wait purpose
 		waitForElementToPresent(searchByMember);
 		type(searchByMember,Name,"Name of member to connect");
-		//Thread.sleep(6000);
+		
+		
+	
+		waitForElementToPresent(connect);//added on 31/03 for wait purpose
 		waitForElementToPresent(searchBtn);
-		click(searchBtn,"search");
-		//Thread.sleep(4000);
+		hardClick(searchBtn);//added on 31/03
+	//	click(searchBtn,"search");
+	
 		waitForElementToPresent(connect);
 		click(connect,"Connect");
 		click(send,"Send Connect request");
-		//Thread.sleep(4000);
+	
 		waitForElementToPresent(toastMessage);
 		System.out.println(toastMessage.getText());
 		if(toastMessage.getText().equalsIgnoreCase("Connection request has been sent.")) {
@@ -474,20 +492,26 @@ public class Bizligo1CommunityPage extends BasePage {
 		if(pendingBtn.getText().equalsIgnoreCase("pending")) {
 			System.out.println("Status of connection is pending");
 		}
-		//Thread.sleep(3000);
+		Thread.sleep(3000);
 		waitForElementToPresent(Groups);
-		click(Groups,"Groups");
-		//Thread.sleep(5000);
-		waitForElementToPresent(group2);
-		click(group2,"Group 2");
+		hardClick(Groups);//added on 31/03
+	//	click(Groups,"Groups");
+		
+		waitForElementToPresent(group1);//added on 31/03
+		click(group1,"Group 1");
+	//	waitForElementToPresent(group2);
+	//	click(group2,"Group 2");
 		click(memberGroup,"Members");
-		//Thread.sleep(9000);
+
+		waitForElementToPresent(champion);//added on 31/03 for wait purpose
 		waitForElementToPresent(searchGroupMember);
 		type(searchGroupMember,Name,"Name of member");
-		//Thread.sleep(3000);
+		
+		waitForElementToPresent(connects);//added on 31/03 for wait purpose
+		waitForElementToPresent(pendingBtn);//added on 31/03 for wait purpose
 		waitForElementToPresent(searchBtn);
 		click(searchBtn,"Search");
-		//Thread.sleep(3000);
+	
 		waitForElementToPresent(pendingBtn);
 		System.out.println(pendingBtn.getText());
 		if(pendingBtn.getText().equalsIgnoreCase("pending")) {
@@ -513,19 +537,24 @@ public class Bizligo1CommunityPage extends BasePage {
 	        }
 		
 	}
-	
+	@FindBy(xpath="//*[@ng-class='profile.panelClass']/*[text()='CONNECTIONS']")
+	WebElement connection;
+	@FindBy(xpath="//*[@class='active']/*[text()='Profile']")
+	WebElement profile;
 	public void cancelConnectrequest(String Name) throws InterruptedException {
 		click(member,"Member");
-		//Thread.sleep(9000);
+		
+		waitForElementToPresent(connect);//added on 31/03 for wait purpose
 		waitForElementToPresent(searchByMember);
 		type(searchByMember,Name,"Name of member to connect");
-		//Thread.sleep(9000);
+		
 		waitForElementToPresent(searchBtn);
 		click(searchBtn,"search");
+		
 		waitForElementToPresent(connect);
 		click(connect,"Connect");
 		click(send,"Send Connect request");
-		//Thread.sleep(4000);
+
 		waitForElementToPresent(toastMessage);
 		System.out.println(toastMessage.getText());
 		if(toastMessage.getText().equalsIgnoreCase("Connection request has been sent.")) {
@@ -534,18 +563,24 @@ public class Bizligo1CommunityPage extends BasePage {
 		}else Assert.assertTrue(false);
 		waitForElementToPresent(memberName);
 		click(memberName,"Member Name");
+		
+		waitForElementToPresent(connection);//added on 31/03 for wait purpose
+		waitForElementToPresent(profile);//added on 31/03 for wait purpose
+		
 		waitForElementToPresent(cancelConnectionReq);
 		click(cancelConnectionReq,"Cancel connection");
 		Thread.sleep(5000);
 		driver.navigate().back();
 		driver.navigate().refresh();
-		//Thread.sleep(9000);
+		
+		waitForElementToPresent(connect);//added on 31/03 for wait purpose
 		waitForElementToPresent(searchByMember);
 		type(searchByMember,Name,"Name of member to connect");
-		//Thread.sleep(9000);
+		
 		waitForElementToPresent(searchBtn);
-		click(searchBtn,"search");
 		waitForElementToPresent(connect);
+		click(searchBtn,"search");
+	
 		if(connect.isDisplayed()) {
 			Assert.assertTrue(true);
 			System.out.println("Connection status is again Connect");
@@ -554,17 +589,17 @@ public class Bizligo1CommunityPage extends BasePage {
 	}
 	public void connectionRequestToMember(String Name) throws InterruptedException {
 		click(member,"Member");
-		//Thread.sleep(6000);
+		
+		waitForElementToPresent(connect);//added on 31/03 for wait purpose
 		waitForElementToPresent(searchByMember);
 		type(searchByMember,Name,"Name of member to connect");
-		//Thread.sleep(6000);
 		waitForElementToPresent(searchBtn);
 		click(searchBtn,"search");
-		//Thread.sleep(4000);
+	
 		waitForElementToPresent(connect);
 		click(connect,"Connect");
 		click(send,"Send Connect request");
-		//Thread.sleep(4000);
+		
 		waitForElementToPresent(toastMessage);
 		System.out.println(toastMessage.getText());
 		if(toastMessage.getText().equalsIgnoreCase("Connection request has been sent.")) {
@@ -574,13 +609,14 @@ public class Bizligo1CommunityPage extends BasePage {
 	}
 	public void checkStatusWhenMemberCancel(String Name) throws InterruptedException {
 		click(member,"Member");
-		//Thread.sleep(6000);
+		
+		waitForElementToPresent(connect);
 		waitForElementToPresent(searchByMember);
 		type(searchByMember,Name,"Name of member to connect");
-		//Thread.sleep(6000);
+
 		waitForElementToPresent(searchBtn);
 		click(searchBtn,"search");
-		//Thread.sleep(4000);
+		
 		waitForElementToPresent(connect);
 		if(connect.isDisplayed()) {
 			System.out.println("If member rejects connection request Connect symbol is seen on member template");
@@ -589,13 +625,14 @@ public class Bizligo1CommunityPage extends BasePage {
 	}
 	public void checkConnectedIconOnMember(String Name) throws InterruptedException {
 		click(member,"Member");
-		//Thread.sleep(6000);
+	
+		waitForElementToPresent(connect);//added on 31/03 for wait purpose
 		waitForElementToPresent(searchByMember);
 		type(searchByMember,Name,"Name of member to connect");
-		//Thread.sleep(6000);
+	
 		waitForElementToPresent(searchBtn);
 		click(searchBtn,"search");
-		//Thread.sleep(4000);
+		
 		waitForElementToPresent(connectLinkIcon);
 		if(connectLinkIcon.isDisplayed()) {
 			System.out.println("Link icon is present on connected members");
@@ -605,13 +642,13 @@ public class Bizligo1CommunityPage extends BasePage {
 	}
 	public void memberIsPrivate(String Name) throws InterruptedException {
 		click(member,"Member");
-		//Thread.sleep(6000);
+		waitForElementToPresent(connect);//added on 01/04 for wait purpose
 		waitForElementToPresent(searchByMember);
 		type(searchByMember,Name,"Name of member to connect");
-		//Thread.sleep(6000);
+
 		waitForElementToPresent(searchBtn);
 		click(searchBtn,"search");
-		Thread.sleep(4000);
+		
 		if(memberEmail.isDisplayed()&&memberPhone.isDisplayed()) {
 			System.out.println("Member if private , email and phone is dispalyed");
 		}else {
@@ -620,78 +657,104 @@ public class Bizligo1CommunityPage extends BasePage {
 		}
 		
 	}
+//**************this two elements in under community page   //added on 01/04**********************************\\
+	@FindBy(xpath = "//*[@ng-show='member.EmailAddress']")
+	WebElement memberEmail1;
+	@FindBy(xpath = "//*[@ng-show='member.Phone']")
+	WebElement memberPhone1;
+//**************this two elements in under groups section     //added on 01/04***************************\\	
+	@FindBy(xpath = "//*[@ng-show='approvedMember.EmailId']")
+	WebElement memberEmail2;
+	@FindBy(xpath = "//*[@ng-show='approvedMember.PhoneNO']")
+	WebElement memberPhone2;
+	@FindBy(xpath = "//*[@class='icon-addon addon-sm']/*[@placeholder='Search Members...']")
+	WebElement searchBox;
 	public void memberDetailsCommunityAndGroup(String Name) throws InterruptedException {
 		click(member,"Member");
-		//Thread.sleep(6000);
+		
+		waitForElementToPresent(connect);//added on 01/04 for wait purpose
 		waitForElementToPresent(searchByMember);
 		type(searchByMember,Name,"Name of member to connect");
-		//Thread.sleep(6000);
+		
 		waitForElementToPresent(searchBtn);
 		click(searchBtn,"search");
-		Thread.sleep(4000);
-		if(memberEmail.isDisplayed()&&memberPhone.isDisplayed()) {
+		
+	
+		if(memberEmail1.isDisplayed()&&memberPhone1.isDisplayed()) {
 			System.out.println("Email and Phone of member is dispalyed in Community details");
 		}
 		click(Groups,"Groups");
-		//Thread.sleep(5000);
-		waitForElementToPresent(group2);
-		click(group2,"Group 2");
+		waitForElementToPresent(group1);//added on 01/04
+		click(group1,"Group 1");
+	
+	
 		click(memberGroup,"Members");
-		//Thread.sleep(9000);
-		waitForElementToPresent(searchByMember);
-		type(searchGroupMember,Name,"Name of member");
-		//Thread.sleep(3000);
+		
+		waitForElementToPresent(connect);//added on 01/04 for wait purpose
+		waitForElementToPresent(searchBox);
+		type(searchBox,Name,"Name of member");//added on 01/04
+	//	waitForElementToPresent(searchByMember);//commented on 01/04
+	//	type(searchGroupMember,Name,"Name of member");
+		
 		waitForElementToPresent(searchBtn);
 		click(searchBtn,"Search");
-		Thread.sleep(3000);
-		if(memberEmail.isDisplayed()&&memberPhone.isDisplayed()) {
+	
+		if(memberEmail2.isDisplayed()&&memberPhone2.isDisplayed()) {
 			System.out.println("Email and Phone of member is dispalyed in Groups also");
 		}		
 		
 	}
 	public void sendingConnectionAddingNotes(String Name, String Notes) throws InterruptedException {
 		click(member,"Member");
-		//Thread.sleep(6000);
+		waitForElementToPresent(connect);//added on 01/04 for wait purpose
 		waitForElementToPresent(searchByMember);
 		type(searchByMember,Name,"Name of member to connect");
-		//Thread.sleep(6000);
+		
 		waitForElementToPresent(searchBtn);
 		click(searchBtn,"search");
-		//Thread.sleep(4000);
+		
 		waitForElementToPresent(connect);
 		click(connect,"Connect");
+		
 		type(addNote,Notes,"Notes");
 		click(send,"Send Connect request");
-		//Thread.sleep(6000);
+		
 		waitForElementToPresent(toastMessage);
 		System.out.println(toastMessage.getText());
 		if(toastMessage.getText().equalsIgnoreCase("Connection request has been sent.")) {
 			System.out.println("Member Able to Send request after adding notes");
 			Assert.assertTrue(true);
 		}else Assert.assertTrue(false);
+		
 		waitForElementToPresent(memberName);
 		click(memberName,"Member Name");
+		
+		waitForElementToPresent(connection);//added on 01/04 for wait purpose
+		waitForElementToPresent(profile);//added on 01/04 for wait purpose
+		
 		waitForElementToPresent(cancelConnectionReq);
 		click(cancelConnectionReq,"Cancel connection");
-		//Thread.sleep(3000);
+		
 		waitForElementToPresent(group);
 		click(group,"Groups");
-		//Thread.sleep(5000);
-		waitForElementToPresent(group2);
-		click(group2,"Group 2");
+		waitForElementToPresent(group1);//added on 01/04
+		click(group1,"Group 1");
+	//	waitForElementToPresent(group2);
+	//	click(group2,"Group 2");
 		click(memberGroup,"Members");
-		//Thread.sleep(9000);
+		
+		waitForElementToPresent(connect);//added on 01/04 for wait purpose
 		waitForElementToPresent(searchGroupMember);
 		type(searchGroupMember,Name,"Name of member");
-		//Thread.sleep(6000);
+		
 		waitForElementToPresent(searchBtn);
 		click(searchBtn,"Search");
-		//Thread.sleep(3000);
+		
 		waitForElementToPresent(connect);
 		click(connect,"Connect");
 		type(addNote,Notes,"Notes");
 		click(send,"Send Connect request");
-		//Thread.sleep(6000);
+		
 		waitForElementToPresent(toastMessage);
 		System.out.println(toastMessage.getText());
 		if(toastMessage.getText().equalsIgnoreCase("Connection request has been sent.")) {
@@ -719,18 +782,19 @@ public class Bizligo1CommunityPage extends BasePage {
 
 	public void sendingConnectionWithNotes(String Name, String Notes) throws InterruptedException {
 		click(member,"Member");
-		//Thread.sleep(6000);
+		waitForElementToPresent(connect);//added on 01/04 for wait purpose
 		waitForElementToPresent(searchByMember);
 		type(searchByMember,Name,"Name of member to connect");
-		//Thread.sleep(6000);
+	
 		waitForElementToPresent(searchBtn);
 		click(searchBtn,"search");
-		//Thread.sleep(4000);
+		
 		waitForElementToPresent(connect);
 		click(connect,"Connect");
+		waitForElementToPresent(addNote);//added on 01/04 for wait purpose
 		type(addNote,Notes,"Notes");
 		click(send,"Send Connect request");
-		//Thread.sleep(6000);
+		
 		waitForElementToPresent(toastMessage);;
 		System.out.println(toastMessage.getText());
 		if(toastMessage.getText().equalsIgnoreCase("Connection request has been sent.")) {
@@ -739,14 +803,14 @@ public class Bizligo1CommunityPage extends BasePage {
 	}
 	public void checkAddNotesAppearWhenConnect(String Name, String Notes) throws InterruptedException {
 		click(member,"Member");
-		Thread.sleep(6000);
+		waitForElementToPresent(connect);//added on 01/04 for wait purpose
 		type(searchByMember,Name,"Name of member to connect");
-		Thread.sleep(6000);
+	
 		click(searchBtn,"search");
-		Thread.sleep(4000);
+		
 		waitForElementToPresent(connect);
 		click(connect,"Connect");
-		Thread.sleep(2000);
+		waitForElementToPresent(addNotePopUp);
 		if(addNotePopUp.getText().contains("Add Note")) {
 		System.out.println("Add note pops up when clicking connect on member profile");
 		Assert.assertTrue(true);

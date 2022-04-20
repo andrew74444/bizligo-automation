@@ -140,11 +140,14 @@ public class PaymentGatewaysPage extends BasePage {
 		return (PaymentConfirmation) openPage(PaymentConfirmation.class);
 		// new SetupAuthorizePage(driver, );
 	}
-	
+	@FindBy(xpath="//*[@class='swal-button-container']/*[text()='Activate']")
+	WebElement activateBtn;
 	public void activateCash() throws Exception {
 
 		click(Cash,"Cash");
-		this.ClickonActivate();
+		waitForElementToPresent(activateBtn);
+		click(activateBtn,"Activate Button");//added on 05/04
+	//this.ClickonActivate();//commented 0n 05/04
 		Thread.sleep(2000);
 
 	}

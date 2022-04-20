@@ -2,15 +2,18 @@ package com.cpcommunity.testScripts.ZoomAndPayment;
 
 import java.util.Hashtable;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.CommunityDashboardPage;
 import com.cpcommunity.PageObjects.CommunityEventsPage;
 import com.cpcommunity.PageObjects.CreateOrEditEvent;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.MeetingAccountsPage;
 import com.cpcommunity.PageObjects.MyCommunitiesPage;
+import com.cpcommunity.PageObjects.Yahoo;
 import com.cpcommunity.testScripts.community.BaseTest;
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataProviders;
@@ -29,12 +32,29 @@ public class TC2170_Verify_TA_able_configure_Zoom_account_successfully extends B
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
-		MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
-		CommunityDashboardPage CDP=myCommunity.gotoManageCommunity(data.get("community"));
-		MeetingAccountsPage MAP=CDP.navigateToMeetingAccounts();
+		
+	//	MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
+//		CommunityDashboardPage CDP=myCommunity.gotoManageCommunity(data.get("community"));
+		
+		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+		MyCommunitiesPage myCommunitiesPage = EcoSystemPage.goToMyCommunities();
+		CommunityDashboardPage communityDashboard = myCommunitiesPage.gotoManageCommunity(data.get("communityName"));
+		MeetingAccountsPage MAP=communityDashboard.navigateToMeetingAccounts();
 		MAP.configureZoom(data.get("APIKey"),data.get("APISecret"),data.get("EmailID"));
+		
+		Yahoo yahoo= new Yahoo().open();
+		yahoo.Login(data.get("email1"), data.get("password1"));
+		yahoo.meetingAccount();
+}
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("TC2170 Test Completed");
+		
+		quit();
+		}
 		 
 	}
 
 
-}
+

@@ -404,6 +404,21 @@ try {
 		String strDate = formatter.format(date);
 		return strDate;
 	}
+	
+	public String newDay() {
+		Date date = new Date();
+		date.setDate(date.getDate()+3);//+3 means adding to current date value(ex:---29 (march) +3=01(april))
+		SimpleDateFormat df1 = new SimpleDateFormat("d");
+		String formattedDate1 = df1.format(date);
+		return formattedDate1;
+	}
+	public String newMonth() {
+		Date date = new Date();
+		date.setMonth(date.getMonth()+1);//+1 means it gives next month from current month
+		SimpleDateFormat df1 = new SimpleDateFormat("M");
+		String formattedDate1 = df1.format(date);
+		return formattedDate1;
+	}
 
 	public String getSystemCurrentHourIn12Hour() {
 		Date date = new Date();
@@ -412,6 +427,7 @@ try {
 		System.out.println("Date Format with dd-M-yyyy hh:mm:ss : " + strDate);
 		return strDate;
 	}
+	
 
 	public String getSystemCurrentMintues() {
 
@@ -534,7 +550,7 @@ try {
 		Pattern img = new Pattern(pathOfTheImage);
 
 		screen.wait(img, expTime);
-		System.out.println(screen.wait(img, expTime));
+	System.out.println(screen.wait(img, expTime));
 		// screen.click(img);
 		// screen.type(img,value);
 
@@ -885,6 +901,11 @@ try {
 	         System.out.println(contents[i]);
 	         deleteFile(System.getProperty("user.dir")+"//src//test//resources//testdata//test//"+contents[i]);
 	      }
+	}
+	//added 0n 22/03
+	public void hardClick(WebElement element) {
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", element);
 	}
 	
 		

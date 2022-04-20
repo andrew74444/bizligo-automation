@@ -27,7 +27,8 @@ public class Create_UpdateGroupPage extends BasePage {
 	}
 	
 
-	@FindBy(xpath = "//input[@id='Name']")
+	//@FindBy(xpath = "//input[@id='Name']")
+	@FindBy(xpath = "//*[@class='col-md-6 col-sm-6 col-xs-12']/*[@id='Name']")//added on 23/03
 	WebElement Name;
 
 	@FindBy(xpath = "//textarea[@id='Description']")
@@ -91,10 +92,17 @@ public class Create_UpdateGroupPage extends BasePage {
 
 	public ManageGroupsPage createGroup(String name, String Description, String City, String State
 			) throws Exception {
-		name = name+getDateInDDMMMYYYY();
-		type(Name, name, "groupname");
+	//	name = name+getDateInDDMMMYYYY();//commented on 23/03
+		Thread.sleep(5000);
+		waitForElementToPresent(Name);
+		type(Name, name, "groupname");//commented on 23/03
+	
+	//	Name.sendKeys(name);
+		waitForElementToPresent(this.Description);
 		type(this.Description, Description, "Description");
+		waitForElementToPresent(this.State);
 		type(this.State, State, "Groupstate");
+		waitForElementToPresent(this.City);
 		type(this.City, City, "Groupcity");
 			
 		Select drp = new Select(GroupType);
@@ -104,7 +112,7 @@ public class Create_UpdateGroupPage extends BasePage {
 		drp1.selectByVisibleText("NGO");
 		Thread.sleep(5000);
 		waitForElementToPresent(Create);
-	    scrollToElement(Create);
+	 //   scrollToElement(Create);
 		return (ManageGroupsPage) openPage(ManageGroupsPage.class);
 		// new ManageGroupsPage(driver, );
 	}
@@ -154,7 +162,7 @@ public class Create_UpdateGroupPage extends BasePage {
 		 Thread.sleep(1000);
 		click(Browse," Browse");
 		 StringSelection ss = new StringSelection(logoImagePath);
-		  Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
+	//	  Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);//commented error is coming
 		  Robot robot = new Robot();
 		     robot.delay(350);
 		     robot.keyPress(KeyEvent.VK_ENTER);

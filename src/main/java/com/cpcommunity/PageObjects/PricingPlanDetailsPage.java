@@ -153,4 +153,24 @@ public class PricingPlanDetailsPage extends BasePage {
 		click(emailtemplate, "Email Template");
 		return (EmailTemplatePage) openPage(EmailTemplatePage.class);
 	}
+ //************Added this method 0n 14/04 for upgrade pricing plan purpose***************\\\\\\\\\\   
+ @FindBy(xpath=" //*[@ng-if='data.PricingPlanDetails.IsUpgrade']")
+    WebElement upgrade;
+ @FindBy(xpath="//*[@class='text-primary']/*[@ng-bind='data.PricingPlanDetails.Name']")
+ WebElement planname;
+    public SelectPlanPage upgradePlan() {
+		waitForElementToPresent(upgrade);
+		waitForElementToPresent(planname);
+    	click(upgrade,"upgrade");
+    	return (SelectPlanPage) openPage(SelectPlanPage.class);
+    }
+    @FindBy(xpath="//*[@ng-if='data.PricingPlanDetails.IsRenew']")
+    WebElement renew;
+    public SelectPlanPage renewalPlan() {
+  		waitForElementToPresent(renew);
+  		waitForElementToPresent(planname);
+      	click(renew,"Renew");
+      	return (SelectPlanPage) openPage(SelectPlanPage.class);
+      }
+    
 }

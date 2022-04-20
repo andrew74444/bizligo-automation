@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+<listeners>
+		<listener class-name="com.cpcommunity.ExtentListeners.ExtentListeners" />
+		<listener class-name="com.uiFramework.pamTen.cpcommunity.helper.listener.RetryListener" />
+   </listeners>
+  <test thread-count="5" name="Test">
+    <classes>
+      <class name="com.cpcommunity.testScripts.Connections.TC2192_Verify_Add_note_PopUp_displaying_user_clicks_send_connection_request"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

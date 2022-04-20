@@ -29,7 +29,7 @@ public class TC150_Paid_Event_Registration_With_Authorize_From_Event_CheckIn ext
 		
 		MyCommunitiesPage myCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CommunityDashboardPage communityDashboardPage = myCommunitiesPage
-				.gotoManageCommunity(data.get("communityName")+" "+runTime);
+				.gotoManageCommunity(data.get("communityName"));//+" "+runTime
 		CommunityEventsPage CommunityEvents = communityDashboardPage.navigateToEvents();
 		CheckInPage checkInPage = CommunityEvents.checkIn(data);
 		AuthorizeGateway authorizeGateway = checkInPage.registerEventbyAuthorizeNet(data);
@@ -37,13 +37,13 @@ public class TC150_Paid_Event_Registration_With_Authorize_From_Event_CheckIn ext
 		eventTicketPage.successfulRegistration();
 	}
 
-	@AfterMethod
-	public void tearDown() {
-
-		logInfo("TC150 Test Completed");
-
-		quit();
-
-	}
+//	@AfterMethod
+//	public void tearDown() {
+//
+//		logInfo("TC150 Test Completed");
+//
+//		quit();
+//
+//	}
 
 }

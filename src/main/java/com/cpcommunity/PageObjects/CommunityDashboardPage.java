@@ -236,6 +236,8 @@ public class CommunityDashboardPage extends BasePage {
 	}
 	
 	public void clickOnAdvertisments() {
+		waitForElementToPresent(advertisements);//added 0n 19/04
+		scrollToElement(advertisements);//added 0n 19/04
 		click(advertisements, "advertisements");
 	}
 
@@ -251,11 +253,11 @@ public class CommunityDashboardPage extends BasePage {
 		// new CommunityPendingRequestsPage(driver);
 	}
 	public ManageAdPlansPage goToManageAdPlansPage() throws InterruptedException {
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
 		this.clickOnAdvertisments();
 		waitForElementToPresent(managePlans);
 		click(managePlans, "Manage Plans");
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
 		return (ManageAdPlansPage) openPage(ManageAdPlansPage.class);
 		// new CommunityPendingRequestsPage(driver);
 	}
@@ -294,7 +296,7 @@ public class CommunityDashboardPage extends BasePage {
 
 	public MeetingAccountsPage navigateToMeetingAccounts() throws Exception {
 		scrollToElement(Events);
-		Thread.sleep(500);
+		//Thread.sleep(500);
 		click(MeetingAccounts, "Meeting Accounts");
 		return (MeetingAccountsPage) openPage(MeetingAccountsPage.class);
 		// new MeetingAccountsPage(driver);
@@ -509,10 +511,12 @@ public class CommunityDashboardPage extends BasePage {
 	@FindBy(xpath="(//*[@src='/Content/Images/Surveys.png'])[1]")
 	WebElement serveysMenu;
 	
-	@FindBy(xpath="(//*[@src='/Content/Images/Surveys.png'])[2]")
+	// @FindBy(xpath="(//*[@src='/Content/Images/Surveys.png'])[2]")
+	@FindBy(xpath="//*[@title='Surveys']")
 	WebElement serveys;
 	
 	public ServeysPage GoToServeysPage() {
+		scrollDownVertically();//added on 13/04
 		click(serveysMenu,"serveys Menu");
 		waitForElementToPresent(serveys);
 		click(serveys,"serveys");
@@ -735,7 +739,7 @@ public class CommunityDashboardPage extends BasePage {
 
 	public PricingPlanDetailsPage navigateToPricingPlanDetailsPage() throws Exception {
 		
-
+		scrollToElement(pricingplan);//added on 14/04
 		click(pricingplan, "Pricing Plan");
 		return (PricingPlanDetailsPage) openPage(PricingPlanDetailsPage.class);
 		

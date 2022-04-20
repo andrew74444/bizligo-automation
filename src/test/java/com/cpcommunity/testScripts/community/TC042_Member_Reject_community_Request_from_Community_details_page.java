@@ -18,10 +18,10 @@ public class TC042_Member_Reject_community_Request_from_Community_details_page e
 		
 	
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC041ToTC046(Hashtable<String,String> data) throws Exception {
+	public void TC044(Hashtable<String,String> data) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC042", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC044", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
@@ -30,10 +30,15 @@ public class TC042_Member_Reject_community_Request_from_Community_details_page e
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+getElizabeth()+" and Password entered as "+getPassword());
-		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email6"),data.get("password"));
+		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"),data.get("password"));
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		CommunityDetailsPage.rejectCommunityRequest();
+		
+		Yahoo yahoo= new Yahoo().open();
+
+		yahoo.Login(data.get("email"), data.get("password1"));
+		yahoo.communityJoinInvitationRejected();
 		
 		//Assert.fail("Failing the login test");
 	}

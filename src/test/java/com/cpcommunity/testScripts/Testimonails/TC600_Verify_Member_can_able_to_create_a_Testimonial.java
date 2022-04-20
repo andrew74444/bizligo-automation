@@ -8,6 +8,7 @@ import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.MyDashboardPage;
 import com.cpcommunity.PageObjects.TestimonialsPage;
+import com.cpcommunity.PageObjects.Yahoo;
 import com.cpcommunity.testScripts.community.BaseTest;
 
 import com.cpcommunity.utilities.*;
@@ -32,7 +33,9 @@ public class TC600_Verify_Member_can_able_to_create_a_Testimonial extends BaseTe
 	    TestimonialsPage testimonial = dashboard.naviagtingToTestimonials();
 	    testimonial.SubmitTestimonials(data.get("title"), data.get("description"));
 	    
-		//testimonialsPage.SubmitTestimonials(TestimonialTitle, Description);
+		Yahoo yahoo= new Yahoo().open();
+		yahoo.Login(data.get("email1"), data.get("password1"));
+		yahoo.newTestimonials();
 		
 //		myDashboardPage.goToTestimonial();
 		

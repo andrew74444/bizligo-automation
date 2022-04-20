@@ -128,14 +128,16 @@ public class CommunityEventsPage extends BasePage {
 	
 	@FindBy(xpath="//select[@id='EventStatusSearch']")
 	WebElement EventStatusSearch;
-	
+	@FindBy(xpath="(//*[@class='fa fa-lock text-danger'])[1]")
+			WebElement wait;
 	public void SearchEvent(String eventTitleName) throws Exception {
-		Thread.sleep(8000);
+		//Thread.sleep(8000);
+		 waitForElementToPresent(wait);//added on 08/04
        waitForElementToPresent(EventNameSearch);
 		type(EventNameSearch, eventTitleName, "Event Name Search");
-		//selectByVisibleText(EventStatusSearch, "Published", "Published");
+		selectByVisibleText(EventStatusSearch, "Published", "Published");
 		click(btnSearch, "button Search");
-		Thread.sleep(9000);
+	//	Thread.sleep(9000);
 	}
 
 	@Override
@@ -168,13 +170,17 @@ public class CommunityEventsPage extends BasePage {
 		   System.out.println("Custom field not editable");
 		   
 	   }
+	
 	public CheckInPage checkIn(Hashtable<String, String> data) throws Exception {
-		this.SearchEvent(data.get("eventName")+" "+getDateInDDMMMYYYY());
+		this.SearchEvent(data.get("eventName"));//+" "+getDateInDDMMMYYYY()
+		
 		click(firstEventRowCheckBox,"firstEventRowCheckBox");
+		 
 		Thread.sleep(1000);
 		click(btnCheckinEvent, "Checkin Event");		
 		return (CheckInPage) openPage(CheckInPage.class);
 	}
+	
 	public void gotoCheckin(String eventname, String email1, String NameF, String NameL) throws Exception {
 		this.SearchEvent(eventname+" "+getDateInDDMMMYYYY());
 

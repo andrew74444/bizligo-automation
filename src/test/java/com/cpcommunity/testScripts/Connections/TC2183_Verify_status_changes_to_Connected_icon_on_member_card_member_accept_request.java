@@ -30,7 +30,7 @@ public class TC2183_Verify_status_changes_to_Connected_icon_on_member_card_membe
 		MyDashboardPage MDP= login.loginToMemberdashboard(data.get("email"), data.get("password"));
 		Bizligo1CommunityPage BCP=MDP.goToMyCommunity();
 		BCP.checkConnectedIconOnMember(data.get("Name"));
-	
+
 }
 	@AfterMethod
 	public void tearDown() {

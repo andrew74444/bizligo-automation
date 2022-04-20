@@ -214,14 +214,14 @@ public class CreateOrEditCommunityPage extends BasePage{
 //				
 //			}     
 	        
-	        picture();
+	   //     picture();
 	        click(Createbtn,"Create btn");
 	       
 	        try {
 	        	waitForElementToPresent(OkBtn);
 	        	 scrollToElement(Createbtn);
 	        	 click(OkBtn,"Ok Btn");
-	        	 picture();
+	       // 	 picture();
 	           	
 			} catch (Exception e) {
 

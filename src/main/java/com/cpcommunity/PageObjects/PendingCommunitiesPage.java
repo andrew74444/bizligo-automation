@@ -73,19 +73,22 @@ public class PendingCommunitiesPage extends BasePage{
 //	
 //	return (ZohoCRMPage) openPage(ZohoCRMPage.class);
 	
-
+	@FindBy(xpath="(//*[@title='Click to view this Community Details'])[1]")
+			WebElement view1;
 	public void Searchcommmunity(String communityname ) throws Exception{
-		
+		waitForElementToPresent(view1);//added on 13/04
+		waitForElementToPresent(NameSearch);//added on 13/04
 		type(this.NameSearch, communityname, "Name");
 		click(btnSearch,"btn Search"); 
 		Thread.sleep(7000);
-		picture();
+	//	picture();
 			
 	}
 	
 	public void viewCommunityDetails() throws Exception
 	{
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
+		waitForElementToPresent(Viewbtn);//added on 13/04
 		click(Viewbtn,"View btn");
 		waitForElementToPresent(Name);
 	}
@@ -107,15 +110,16 @@ public class PendingCommunitiesPage extends BasePage{
 	}
 	
 	public void approveCommunity(String communityName ) throws Exception{
-		this.Searchcommmunity(communityName+" " + getDateInDDMMMYYYY());
+		this.Searchcommmunity(communityName);//+" " + getDateInDDMMMYYYY()
 		this.viewCommunityDetails();
+		waitForElementToPresent(btnApprove);
 		clickElementByJavaScript(btnApprove);	
 		waitForElementToPresent(this.ApproveYesProceed);
 		click(ApproveYesProceed,"Yes Proceed"); 
 		waitForElementToPresent(this.OkBtn);
 		click(OkBtn,"Ok Btn"); 
 		Thread.sleep(6000);
-		picture();
+	//	picture();
 	}
 
 

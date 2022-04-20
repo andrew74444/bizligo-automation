@@ -44,13 +44,13 @@ public class TC617_Verify_Added_Member_is_Forced_to_Update_the_Password extends 
 		//Assert.fail("Failing the login test");
 	}
 
-	@AfterMethod
-	public void tearDown() {
-		
-		logInfo("Login Test Completed");
-		
-		quit();
-		
-	}
+//	@AfterMethod
+//	public void tearDown() {
+//		
+//		logInfo("Login Test Completed");
+//		
+//		quit();
+//		
+//	}
 
 }

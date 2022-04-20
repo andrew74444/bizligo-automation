@@ -32,10 +32,14 @@ public class TC179_Verify_Member_Is_Able_Update_Membership_Plan extends BaseTest
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToExpiredCommunityDetailsPage(data.get("communityName")+" "+runTime,runTime);
-		MembershipPlansPage membershipPlansPage = CommunityDetailsPage.renewMemberShipPlan();
-		membershipPlansPage.renewThePurchasedMembershipPlan();
-
+//		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToExpiredCommunityDetailsPage(data.get("communityName")+" "+runTime,runTime);
+//		MembershipPlansPage membershipPlansPage = communityDetailsPage.renewMemberShipPlan();
+//		membershipPlansPage.renewThePurchasedMembershipPlan();
+//		membershipPlansPage.renewThePurchasedMembershipPlan();
+		CommunityDetailsPage communityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
+				
+		MembershipPlansPage membershipPlansPage = communityDetailsPage.changeMemberShipPlan();
+		membershipPlansPage.upgradeToPaidMembershipPlan(data.get("membershipPlan"));
 		if (data.get("paymentMethod").equalsIgnoreCase("paypal")) 
 		{
 			PayPalPayment PayPalPayment = membershipPlansPage.paymentByPayPal();
@@ -45,12 +49,25 @@ public class TC179_Verify_Member_Is_Able_Update_Membership_Plan extends BaseTest
 			paymentReceipt = AuthorizeGateway.payment();
 		}
 		paymentReceipt.paymentSuccess();
-		CommunityDetailsPage = paymentReceipt.viewCommunity();
+		communityDetailsPage = paymentReceipt.viewCommunity();
 		
 //		CommunityDetailsPage.verifyMembershipDetails(membershipPlan, data.get("duration"));
 		
 		
 		//Assert.fail("Failing the login test");
+		//***********To check member mail*******************************//	
+	      Yahoo yahoo= new Yahoo().open();
+	      
+			yahoo.Login(data.get("email2"), data.get("password2"));//member
+			yahoo.membershipPlanUpgradedMail();
+			yahoo.openAndGoToNewTab();
+			
+	//***********To check community admin mail*******************************//	
+			Yahoo yahoo1= new Yahoo().open();
+			yahoo1.Login(data.get("email3"), data.get("password3"));//community admin
+			yahoo1.membershipPlanUpgradedMailToCA();
+		
+			
 	}
 
 

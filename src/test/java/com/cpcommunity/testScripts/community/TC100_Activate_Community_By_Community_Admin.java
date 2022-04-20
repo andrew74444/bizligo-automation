@@ -35,6 +35,9 @@ public class TC100_Activate_Community_By_Community_Admin extends BaseTest {
 		MyCommunitiesPage.activateCommunity(data.get("communityName"));
 
 		
+		Yahoo yahoo= new Yahoo().open();
+			yahoo.Login(data.get("email1"), data.get("password1"));//for other admin receiving mail about active community
+			yahoo.communityActivated();
 	}
 
 	@AfterMethod

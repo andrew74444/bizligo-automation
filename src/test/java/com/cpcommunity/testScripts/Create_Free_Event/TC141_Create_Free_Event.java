@@ -18,7 +18,7 @@ public class TC141_Create_Free_Event extends BaseTest {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC141", data.get("Runmode"), excel);
-		log.info(data.get("imagePath"));
+	//	log.info(data.get("imagePath"));
 		
 		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
@@ -32,6 +32,12 @@ public class TC141_Create_Free_Event extends BaseTest {
 		CommunityEventsPage CommunityEvents = communityDashboardPage.navigateToEvents();
 		CreateOrEditEvent CreateOrEditEvent = CommunityEvents.NewEvent();
 		CreateOrEditEvent.createEvent(data);
+		
+		
+		Yahoo yahoo= new Yahoo().open();
+		yahoo.Login(data.get("email1"), data.get("password1"));//member
+	//	yahoo.Login(data.get("email2"), data.get("password2"));// Community Admin
+		yahoo.newEventMail();
 	}
 
 	@AfterMethod

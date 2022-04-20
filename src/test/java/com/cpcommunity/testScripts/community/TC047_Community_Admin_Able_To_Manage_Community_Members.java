@@ -30,14 +30,22 @@ public class TC047_Community_Admin_Able_To_Manage_Community_Members extends Base
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
-//		logInfo("Username entered as "+getAndrew()+" and Password entered as "+getPassword());
+//	logInfo("Username entered as "+getAndrew()+" and Password entered as "+getPassword());
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
 		ManageCommunityMembersPage ManageCommunityMembersPage = CommunityDashboardPage.navigateToManageCommunityMembers();
-		ManageCommunityMembersPage.ManageMembers(data.get("email1"));
+		ManageCommunityMembersPage.ManageMembers(data.get("email1"));//in this method admin can make or remove admin  and also member
 		
+		Yahoo yahoo= new Yahoo().open();
+
+		yahoo.Login(data.get("email1"), data.get("password1"));
+		
+	//	yahoo.adminNow();//when CA make as admin checking mail purpose
+	//	yahoo.removedCAdmin();//when CA removed as admin checking mail purpose
+	//	yahoo.addedToCommunity();//when CA added to community checking mail purpose
+		yahoo.removedFromCommunity();//when CA removed from Community member mail ckecking
 		//Assert.fail("Failing the login test");
 	}
 

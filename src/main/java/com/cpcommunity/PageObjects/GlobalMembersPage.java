@@ -17,30 +17,38 @@ public class GlobalMembersPage extends BasePage {
 	WebElement pageheader;
 	@Override
 	protected  void getPageScreenSot() {
-	
-		updateClass(pageheader, "");
-		aShot();
-		updateClass(pageheader, "navbar-fixed-top");
+	//commented all code here
+	//	updateClass(pageheader, "");
+	//	aShot();
+	//	updateClass(pageheader, "navbar-fixed-top");
 	}
 	
 	
 
 	@FindBy(xpath = "//*[contains(text(),'Cliq')]")
 	public WebElement crm;
+	
+	@FindBy(xpath = "//*[@class='col-sm-10']/*[@class='DirectoryHeader']")
+	WebElement title;
 
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 		
-		return ExpectedConditions.visibilityOf(SearchBtn);
+	//	scrollDownVertically();//added on 21/03
+		
+		
+		return ExpectedConditions.visibilityOf(title);//SearchBtn
 	}
 
 	@FindBy(xpath = "//input[@id='membername']")
+//	@FindBy(xpath = "//*[@class='col-lg-4 col-sm-4']/*/*[@id='membername']")//added on 21/03
 	WebElement membername;
 	@FindBy(xpath = "//input[@id='companyname']")
 	WebElement companyname;
 	@FindBy(xpath = "//input[@id='memberlocation']")
 	WebElement memberlocation;
-	@FindBy(xpath = "//button[contains(.,' Search')]")
+//	@FindBy(xpath = "//button[contains(.,' Search')]")
+	@FindBy(xpath = "//*[@class='col-lg-4 col-sm-4']/*/*[@class='fa fa-search']")//added on 21/03
 	WebElement SearchBtn;
 	@FindBy(xpath = "//span[contains(.,'Pending')]")
 	WebElement Pending;
@@ -79,6 +87,7 @@ public class GlobalMembersPage extends BasePage {
 	WebElement targetBlank;
 	@FindBy(xpath = "//button[contains(text(),'Connect')]")
 	WebElement Connect;
+	//*[@class='ng-scope']/*[@title='Send Connection Request']
 	//
 	@FindAll({ @FindBy(xpath = "//*[@class='col-lg-6 col-md-6 col-sm-6 organizations-profile-card ng-scope']") })
 	List<WebElement> Members;
@@ -160,33 +169,82 @@ public class GlobalMembersPage extends BasePage {
 		}
 	}
 
+
+//	public ProfilePage SearchMemberByName(String MemberName) throws Exception {
+//
+//		//type(membername, MemberName, "MemberName");
+//	
+//		Thread.sleep(2000);
+//		waitForElementToPresent(memberlocation);
+//		waitForElementToPresent(membername);
+//		       membername.sendKeys(MemberName);
+//				click(SearchBtn,"SearchBtn");
+//				Thread.sleep(3000);
+//	//	picture();
+//				return (ProfilePage) openPage(ProfilePage.class);
+//	}
 	public void SearchMemberByName(String MemberName) throws Exception {
 
-		type(membername, MemberName, "MemberName");
+		//type(membername, MemberName, "MemberName");
 	
-		Thread.sleep(500);
-
-		click(SearchBtn,"SearchBtn");
-		Thread.sleep(5000);
-		picture();
+		Thread.sleep(2000);
+		waitForElementToPresent(memberlocation);
+		waitForElementToPresent(membername);
+		       membername.sendKeys(MemberName);
+				click(SearchBtn,"SearchBtn");
+				Thread.sleep(3000);
+	//	picture();
 	}
 
 	public ProfilePage NavigateToMemberProfile(String MemberName) throws Exception {
 		this.SearchMemberByName(MemberName);
 
-		String Url = target_blank(targetBlank);
-		driver.get(Url);
+	//	String Url = target_blank(targetBlank);//commented on 22/03
+	//	driver.get(Url);
 
 		return (ProfilePage) openPage(ProfilePage.class);
 		// new ProfilePage(driver, );
 	}
-
+	@FindBy(xpath="//*[@class='col-xs-12 text-right']/*[@class='btn btn-primary']")//added on 22/03
+	WebElement send;
+	
 	public void sendConnection(String MemberName ) throws Exception {
-		this.SearchMemberByName(MemberName);
+		//this.SearchMemberByName(MemberName);//commented on 21/03
+	
+		waitForElementToPresent(Connect);	//added on 01/04 for wait purpose
+		
+	waitForElementToPresent(membername);
+	       membername.sendKeys(MemberName);
+			click(SearchBtn,"SearchBtn");
+			waitForElementToPresent(Connect);	//added on 01/04 for wait purpose
 		click(Connect,"Connect");
-		waitForElementToPresent(SuccessPopup);
+		waitForElementToPresent(send);
+		click(send,"send button");
+	waitForElementToPresent(SuccessPopup);
 		AssertionHelper.verifyText(SuccessPopup.getText(), "Connection Request has been sent Successfully.");
-		picture();
+	//	picture();
+	}
+//***this method created for sending connection to global members with notes*********************///	on 01/03
+	@FindBy(xpath="//*[@class='col-sm-12']/*[@class='form-group ConnectionNote']/*[@placeholder='Add Note...']")
+	WebElement note;
+	
+	public void sendConnectionAddingNotes(String MemberName ,String Notes ) throws Exception {
+		
+	waitForElementToPresent(Connect);	//added on 01/04 for wait purpose
+		
+	waitForElementToPresent(membername);
+	type(membername,MemberName,"Searching member");
+	       
+	click(SearchBtn,"SearchBtn");
+		waitForElementToPresent(Connect);	//added on 01/04 for wait purpose
+		click(Connect,"Connect");
+		waitForElementToPresent(note);
+		type(note,Notes,"Adding Notes");
+		waitForElementToPresent(send);
+		click(send,"send button");
+	waitForElementToPresent(SuccessPopup);
+		AssertionHelper.verifyText(SuccessPopup.getText(), "Connection Request has been sent Successfully.");
+	
 	}
 	// public ZohoCRMPage gotoCRM() {
 	//

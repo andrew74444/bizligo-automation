@@ -64,6 +64,8 @@ public class MyProfilePage extends BasePage {
 	WebElement MyProfileCancelBtn;
 	@FindBy(xpath = "//*[@id='toast-container']/div/div[3]")
 	WebElement SuccessPopup;
+	@FindBy(xpath="//*[@class='toast-message']")
+		WebElement success;	
 
 	@FindBy(xpath = "//*[@id='toast-container']/div/div[3]")
 	WebElement profileSuccessPopup;
@@ -84,15 +86,24 @@ public class MyProfilePage extends BasePage {
 	// Portfolio
 	@FindBy(xpath = "//button[contains(@ng-click,'OIdata.ShowOtherInfoModel()')]")
 	WebElement AddPortfolioBtn;
+	
+	@FindBy(xpath="//*[@ng-click='SIdata.ShowOtherInfoModel()']")
+	WebElement AddPortfolio;//added on 14/03/2022
+	
 	@FindBy(xpath = "//input[@name='PortfolioTitle']")
 	WebElement PortfolioTitle;
 	@FindBy(xpath = "//input[@name='PortfolioLink']")
 	WebElement PortfolioLink;
 	@FindBy(xpath = "//span[@ng-show='OIdata.IsSaveMode']")
 	WebElement PortfolioSaveBtn;
+	@FindBy(xpath = "//*[@ng-show='SIdata.IsSaveMode']")
+	WebElement PortfolioSave;//added on 14/03/2022
+	
 
 	@FindBy(xpath = "(//a[@class='text-primary pull-right'])[1]")
 	WebElement EditPortfolioBtn;
+	
+	
 	@FindBy(xpath = "//a[@class='text-danger pull-right profile-edit-link']")
 	WebElement DeleteportfolioBtn;
 
@@ -100,12 +111,15 @@ public class MyProfilePage extends BasePage {
 	WebElement Skills_Interests;
 
 	// Skills
+	
+	
 	@FindBy(xpath = "//input[@placeholder='Add Skills']")
 	WebElement AddSkills;
 	@FindBy(xpath = "(//*[@class='panel-body Communities']//i[@class='fa fa-pencil-square-o'])[1]")
 	WebElement UpdateSkillsBtn;
 
-	@FindBy(xpath = "//span[@ng-click='SIdata.RemoveSkills(Skill)']")
+//	@FindBy(xpath = "//span[@ng-click='SIdata.RemoveSkills(Skill)']")
+	@FindBy(xpath = "//*[@ng-click='SIdata.RemoveSkills(Skill)']") // added on 18/03
 	WebElement DeleteSkillsBtn;
 	@FindBy(xpath = "//form[@id='EditMySkillsForm']//i[@class='fa fa-floppy-o']")
 
@@ -113,10 +127,15 @@ public class MyProfilePage extends BasePage {
 
 	// Interests
 	@FindBy(xpath = "(//*[@class='panel-body Communities']//i[@class='fa fa-pencil-square-o'])[2]")
+	
 	WebElement UpdateInterestsBtn;
-	@FindBy(xpath = "//input[@placeholder='Add Interest']")
+	@FindBy(xpath = "//*[@ng-click='SIdata.AddInterest()']//*[@class='fa fa-pencil-square-o']")//added on 18/03
+	WebElement EditInterestBtn;
+//	@FindBy(xpath = "//input[@placeholder='Add Interest']")
+	@FindBy(xpath = "//*[@class='form-group']//*[@id='InterestsSearch']")//added on 18/03
 	WebElement AddInterest;
-	@FindBy(xpath = "//span[@ng-click='SIdata.RemoveInterest(Interest)']")
+//	@FindBy(xpath = "//span[@ng-click='SIdata.RemoveInterest(Interest)']")
+	@FindBy(xpath = "//*[@class='pointer']//*[@ng-click='SIdata.RemoveInterest(Interest)']")//added on 18/03
 	WebElement DeleteInterestBtn;
 	@FindBy(xpath = "//form[@id='EditMyInterestsForm']//i[@class='fa fa-floppy-o']")
 	WebElement InterestsSaveBtn;
@@ -323,13 +342,13 @@ public class MyProfilePage extends BasePage {
 	public boolean SelectPhonePrivate(String PPhone) throws Exception {
 
 		this.clickOnEditButton();
-		Phone.clear();
-
-		executeScript("arguments[0].value='" + PPhone + "';", Phone);
-		executeScript("arguments[0].scrollIntoView(true);", MyProfileSaveBtn);
-		picture();
+//		Phone.clear();
+//
+//		executeScript("arguments[0].value='" + PPhone + "';", Phone);
+//		executeScript("arguments[0].scrollIntoView(true);", MyProfileSaveBtn);//commented 0n 17/03
+//		picture();
 		click(PublicRdnBtn, "PublicRdnBtn");
-		picture();
+	//	picture();
 		boolean PEmail = PrivatePhoneNo.isSelected();
 		System.out.println(PEmail);
 		if (PEmail) {
@@ -348,13 +367,13 @@ public class MyProfilePage extends BasePage {
 
 	public boolean UnSelectPhonePrivate(String PPhone) throws Exception {
 		this.clickOnEditButton();
-		Phone.clear();
-
-		executeScript("arguments[0].value='" + PPhone + "';", Phone);
-		executeScript("arguments[0].scrollIntoView(true);", MyProfileSaveBtn);
-		picture();
+//		Phone.clear();
+//
+//		executeScript("arguments[0].value='" + PPhone + "';", Phone);//commented on 17/03
+//		executeScript("arguments[0].scrollIntoView(true);", MyProfileSaveBtn);
+//		picture();
 		click(PublicRdnBtn, "PublicRdnBtn");
-		picture();
+	//	picture();
 //		new TestBase().captureScreen(, driver);
 		boolean PEmail = PrivatePhoneNo.isSelected();
 		if (PEmail) {
@@ -375,16 +394,16 @@ public class MyProfilePage extends BasePage {
 
 		this.clickOnEditButton();
 		//Thread.sleep(1000);
-		waitForElementToPresent(Phone);
-		Phone.clear();
+		//waitForElementToPresent(Phone);
+	//	Phone.clear();
 
-		executeScript("arguments[0].value='" + PPhone + "';", Phone);
-		executeScript("arguments[0].scrollIntoView(true);", MyProfileSaveBtn);
+	//	executeScript("arguments[0].value='" + PPhone + "';", Phone);//commented on------here no need to give number
+	//	executeScript("arguments[0].scrollIntoView(true);", MyProfileSaveBtn);
 		//Thread.sleep(5000);
-		picture();
+		//picture();//commented on 17/03
 		waitForElementToPresent(PrivateRdnBtn);
 		click(PrivateRdnBtn, "PrivateRdnBtn");
-		picture();
+		//picture();//commented on17/03
 		boolean status = this.UpdateProfile();
 		return status;
 	}
@@ -392,16 +411,18 @@ public class MyProfilePage extends BasePage {
 	public boolean publicRadioButton(String PPhone) throws Exception {
 
 		this.clickOnEditButton();
-		Phone.clear();
-
-		executeScript("arguments[0].value='" + PPhone + "';", Phone);
-		executeScript("arguments[0].scrollIntoView(true);", MyProfileSaveBtn);
-		//Thread.sleep(5000);
+//		waitForElementToPresent(Phone);//addedon 17/03
+//		Phone.clear();
+//
+//		executeScript("arguments[0].value='" + PPhone + "';", Phone);//commented on------here no need to give number
+//		executeScript("arguments[0].scrollIntoView(true);", MyProfileSaveBtn);
+//		//Thread.sleep(5000);
 		waitForElementToPresent(PublicRdnBtn);
 		click(PublicRdnBtn, "PublicRdnBtn");
-		picture();
+		//picture();//commented on 17/03
 		//Thread.sleep(1000);
-		return this.UpdateProfile();
+		boolean status = this.UpdateProfile();//added on 17/03
+		return status;
 
 	}
 
@@ -412,54 +433,70 @@ public class MyProfilePage extends BasePage {
 	public boolean AddProtfolio(String title, String url) throws Exception {
 
 		// this.scrollToProtfolio();
-
-		clickElementByJavaScript(AddPortfolioBtn);
+		waitForElementToPresent(AddPortfolio);//ADDED ON 14/03/2022
+		clickElementByJavaScript(AddPortfolio);//ADDED ON 14/03/2022
+		
+	//	waitForElementToPresent(AddPortfolioBtn);//ADDED ON 14/03/2022
+	//	clickElementByJavaScript(AddPortfolioBtn);//commented on14/03/2022
+		
 		// AddPortfolioBtn.click();
 		//Thread.sleep(2000);
 //		new TestBase().captureScreen(, driver);
-		picture();
+	//	picture();
 		waitForElementToPresent(PortfolioTitle);
 		type(PortfolioTitle, title, "PortfolioTitle");
 
 		type(PortfolioLink, url, "PortfolioLink");
-		picture();
+	//	picture();
 //		new TestBase().captureScreen(, driver);
-		click(PortfolioSaveBtn, "PortfolioSaveBtn");
-		waitForElementToPresent(SuccessPopup);
-		AssertionHelper.verifyText(SuccessPopup.getText(), "Portfolio Saved Successfully");
-		picture();
-//		new TestBase().captureScreen(, driver);
-		if (SuccessPopup.getText().equalsIgnoreCase("Portfolio Saved Successfully")) {
+		click(PortfolioSave, "PortfolioSaveButton");
+//		waitForElementToPresent(SuccessPopup);// commented 448 to 452 on 17/03
+//		AssertionHelper.verifyText(SuccessPopup.getText(), "Portfolio Saved Successfully");
+//	//	picture();
+////		new TestBase().captureScreen(, driver);
+//		if (SuccessPopup.getText().equalsIgnoreCase("Portfolio Saved Successfully")) {
+			 waitForElementToPresent(Success);
+				String Message = Success.getText();
+				System.out.println(Message);//added on 17/03
+				AssertionHelper.verifyText(Message, "Portfolio saved");//added on 17/03
+			if (Message.equalsIgnoreCase("Portfolio saved")) {
 			return true;
 		} else {
 			return false;
 		}
 
 	}
-
+	@FindBy(xpath="(//*[@class='modal-title text-left'])[1]")
+	WebElement outside;
 	public boolean updatePortfolio(String title, String url) throws Exception {
 		// this.scrollToProtfolio();
 		clickElementByJavaScript(EditPortfolioBtn);
 
 		//Thread.sleep(1000);
-		picture();
+	//	picture();
 //		new TestBase().captureScreen(, driver);
 		waitForElementToPresent(PortfolioTitle);
 		PortfolioTitle.clear();
-		PortfolioLink.clear();
-		picture();
-//		new TestBase().captureScreen(, driver);
 		type(PortfolioTitle, title, "PortfolioTitle");
-
-		type(PortfolioLink, url, "PortfolioLink");
-		picture();
+	//	picture();
 //		new TestBase().captureScreen(, driver);
-		click(PortfolioTitle, "PortfolioTitle");
-		click(UpdateBtn, "UpdateBtn");
+		
+		PortfolioLink.clear();
+		type(PortfolioLink, url, "PortfolioLink");
+	//	picture();
+//		new TestBase().captureScreen(, driver);
+		click(outside, "PortfolioTitle");//for clicking outside text box
+		
+//		click(PortfolioTitle, "PortfolioTitle");
+		waitForElementToPresent(UpdateBtn);
+		 JavascriptExecutor js=(JavascriptExecutor)driver;
+			js.executeScript("arguments[0].click();",UpdateBtn );
+	//	click(UpdateBtn, "UpdateBtn");
 		waitForElementToPresent(SuccessPopup);
 		String Message = SuccessPopup.getText();
+		System.out.println(Message);//added on 17/03
 		AssertionHelper.verifyText(Message, "Portfolio Updated Successfully");
-		picture();
+	//	picture();
 //		new TestBase().captureScreen(, driver);
 		if (Message.equalsIgnoreCase("Portfolio Updated Successfully")) {
 			return true;
@@ -469,45 +506,50 @@ public class MyProfilePage extends BasePage {
 
 	}
 
-	public boolean DeletePortfolio(String title, String url) throws Exception {
-		// this.scrollToProtfolio();
-		clickElementByJavaScript(DeleteportfolioBtn);
-		waitForElementToPresent(SuccessPopup);
-		String Message = SuccessPopup.getText();
-		AssertionHelper.verifyText(Message, "Portfolio Deleted Successfully");
-		picture();
+@FindBy(xpath="//*[@id='toast-container']//*[@class='toast-message']")//added on 17/03
+	WebElement Success;
+		public boolean DeletePortfolio() throws Exception { 
 		
-		if (Message.equalsIgnoreCase("Portfolio Deleted Successfully")) {
-			return true;
-		} else {
-			return false;
+		// this.scrollToProtfolio();
+	waitForElementToPresent(DeleteportfolioBtn);//added on 14/03/2022
+	click(DeleteportfolioBtn,"DeleteportfolioBtn");
+	
+//		picture();
+		
 		//Thread.sleep(2000);
 		
 //		new TestBase().captureScreen(, driver);
 
-//		waitHelper.waitForElement(SuccessPopup, 100);
-//		String Message = SuccessPopup.getText();
-//		AssertionHelper.verifyText(Message, "Portfolio Deleted Successfully");
-//		new TestBase().captureScreen(, driver);
-//		if (Message.equalsIgnoreCase("Portfolio Deleted Successfully")) 
-	//	{
-	//		return true;
+	// waitForElementToPresent(SuccessPopup);//commented 517 to 519 on 17/03
+	//	String Message = SuccessPopup.getText();
+	//	AssertionHelper.verifyText(Message, "Portfolio Deleted Successfully");
+	//	new TestBase().captureScreen(, driver);
+		 waitForElementToPresent(Success);
+			String Message = Success.getText();
+			System.out.println(Message);//added on 17/03
+			AssertionHelper.verifyText(Message, "Portfolio deleted");//added on 17/03
+		if (Message.equalsIgnoreCase("Portfolio deleted")) 
+	{
+		return true;
 		}
-//		return false;
+		return false;
 
 	}
 
 	public void ClickOnEditSkillsBtn() {
-
 		scrollIntoView(UpdateSkillsBtn);
 		clickElementByJavaScript(UpdateSkillsBtn);
+	
 	}
 
 	public boolean clickOnSkillsSavebutton() throws Exception {
-		Thread.sleep(1000);
+		//Thread.sleep(1000);
+		waitForElementToPresent(SkillsSaveBtn);
 		click(SkillsSaveBtn, "SkillsSaveBtn");
+	//	waitForElementToPresent(saveButton);//added on 18/03
+	//	click(saveButton,"save button");
 		Thread.sleep(2000);
-		picture();
+	//	picture();
 //		new TestBase().captureScreen(, driver);
 //		waitHelper.waitForElement(SuccessPopup, 100);
 //		AssertionHelper.verifyText(SuccessPopup.getText(), "Skills and Interests Saved Successfully");
@@ -526,15 +568,28 @@ public class MyProfilePage extends BasePage {
 		
 	}
 
+//this elements added on 18/03 for adding skills method
 	
-
+	@FindBy(xpath="//*[@class='form-group']//*[@id='SkillsSearch']")//added on 18/03
+	WebElement addSkill;
+	
+	@FindBy(xpath="//*[@class='ng-scope']//*[text()=' java ']")
+	WebElement addingSkill;
+	@FindBy(xpath="(//*[@class='pull-right']//*[@type='submit'])[1]")
+	WebElement saveButton;
 	public boolean AddSkills(String Skills) throws Exception {
 		this.ClickOnEditSkillsBtn();
-		type(AddSkills, Skills, "AddSkills");
-
+	//	type(AddSkills, Skills, "AddSkills");
+		type(addSkill, Skills, "AddSkills");//added on 18/03
+		
+		click(addingSkill,"Adding Skill");
 		Thread.sleep(1000);
-		AddSkills.sendKeys(Keys.ENTER);
-		picture();
+		
+	
+		
+	//	AddSkills.sendKeys(Keys.ENTER);
+		
+	//	picture();
 //		new TestBase().captureScreen(, driver);
 		//Thread.sleep(1000);
 		return this.clickOnSkillsSavebutton();
@@ -542,18 +597,23 @@ public class MyProfilePage extends BasePage {
 
 	public boolean DeleteSkills() throws Exception {
 		this.ClickOnEditSkillsBtn();
+		
 		click(DeleteSkillsBtn, "DeleteSkillsBtn");
 		return this.clickOnSkillsSavebutton();
 	}
-
+	//added this element on 18/03 for adding Interest(baseball)
+	@FindBy(xpath="//*[@ng-if='SIdata.UserInterests.indexOf(interest.Name) === -1']//*[text()=' Base Ball ']")
+	WebElement baseball;
 	public boolean AddInterests(String interests) throws Exception {
 		this.ClickOnEditInterestsBtn();
 		type(AddInterest, interests, "AddInterest");
-
+		
+		click(baseball,"Adding Skill");
+		
 		//Thread.sleep(1000);
-		waitForElementToPresent(AddInterest);
-		AddInterest.sendKeys(Keys.ENTER);
-		picture();
+	//	waitForElementToPresent(AddInterest);
+	//	AddInterest.sendKeys(Keys.ENTER);
+	//	picture();
 //		new TestBase().captureScreen(, driver);
 		//Thread.sleep(1000);
 		return this.clickOnInterestsSavebutton();
@@ -562,8 +622,11 @@ public class MyProfilePage extends BasePage {
 
 	public void ClickOnEditInterestsBtn() {
 
-		scrollIntoView(UpdateInterestsBtn);
-		clickElementByJavaScript(UpdateInterestsBtn);
+//		scrollIntoView(UpdateInterestsBtn);//commented on 18/03
+//		clickElementByJavaScript(UpdateInterestsBtn);
+		scrollIntoView(EditInterestBtn);
+		clickElementByJavaScript(EditInterestBtn);//added on 18/03
+		
 
 	}
 
@@ -572,7 +635,7 @@ public class MyProfilePage extends BasePage {
 		click(InterestsSaveBtn, "InterestsSaveBtn");
 		waitForElementToPresent(SuccessPopup);
 		AssertionHelper.verifyText(SuccessPopup.getText(), "Skills and Interests Saved Successfully");
-		picture();
+	//	picture();
 //		new TestBase().captureScreen(, driver);
 		if (SuccessPopup.getText().equalsIgnoreCase("Skills and Interests Saved Successfully")) {
 			return true;
@@ -583,11 +646,11 @@ public class MyProfilePage extends BasePage {
 	public boolean DeleteInterests() throws Exception {
 		this.ClickOnEditInterestsBtn();
 		//Thread.sleep(2000);
-		waitForElementToPresent(DeleteInterestBtn);
-		picture();
+	//	waitForElementToPresent(DeleteInterestBtn);
+		//picture();
 //		new TestBase().captureScreen(, driver);
 		click(DeleteInterestBtn, "DeleteInterestBtn");
-		picture();
+	//	picture();
 //		new TestBase().captureScreen(, driver);
 		return this.clickOnInterestsSavebutton();
 	}
@@ -756,7 +819,8 @@ public class MyProfilePage extends BasePage {
 
 	WebElement myEcosystem;
 
-	@FindBy(xpath = "//a[contains(text(),'See')]")
+	//@FindBy(xpath = "//a[contains(text(),'See')]")
+	@FindBy(xpath = "//*[@ng-if='SIdata.SimilarInterests.length>0']/*[text()='See More..']")//added on 18/03
 
 	WebElement seeMore;
 
@@ -784,8 +848,8 @@ public class MyProfilePage extends BasePage {
 
 	WebElement locationAddress;
 
-	@FindBy(xpath = "//*[@id=\"AdditionalInfoCtrl\"]/div[2]/div/div[3]/div/div[1]/div/div[2]/button/i")
-
+	//@FindBy(xpath = "//*[@id=\"AdditionalInfoCtrl\"]/div[2]/div/div[3]/div/div[1]/div/div[2]/button/i")//commented on 16/03
+	@FindBy(xpath = "(//*[@ng-click='additionalData.EditLocation(location)'])[2]")
 	WebElement editLocation;
 
 	// @FindBy(xpath = "(//*[@id='AdditionalInfoCtrl']//I[@class='fa fa-plus'])[2]")
@@ -839,6 +903,9 @@ public class MyProfilePage extends BasePage {
 	@FindBy(xpath = "(//*[contains(text(),'Save')])[9]")
 
 	WebElement saveLocation;
+	
+	@FindBy(xpath = "//*[@ng-show='additionalData.IsLocationSaveMode']")//added on 15/03
+	WebElement saveLoc;
 
 	@FindBy(xpath = "(//*[contains(text(),'Save')])[10]")
 
@@ -868,12 +935,12 @@ public class MyProfilePage extends BasePage {
 
 	WebElement confirmPassword;
 
-	@FindBy(xpath = "//*[contains(@name,'MemberContactTypeID')]")
-
+//	@FindBy(xpath = "//*[contains(@name,'MemberContactTypeID')]")
+	@FindBy(xpath = "//*[@name='MemberContactTypeID']")//added on 18/03
 	WebElement contactType;
 
-	@FindBy(xpath = "//*[contains(@name,'LocationDetailID')]")
-
+//	@FindBy(xpath = "//*[contains(@name,'LocationDetailID')]")
+	@FindBy(xpath = "//*[@name='LocationDetailID']")//added on 18/03
 	WebElement selectLocation;
 
 	@FindBy(xpath = "//*[contains(text(),'Additional Information')]")
@@ -895,12 +962,12 @@ public class MyProfilePage extends BasePage {
 
 	WebElement organizationservices;
 
-	@FindBy(xpath = "//span[@aria-expanded='true']//ul[@class='select2-selection__rendered']")
-
+//	@FindBy(xpath = "//span[@aria-expanded='true']//ul[@class='select2-selection__rendered']")
+	@FindBy(xpath = "(//*[@class='select2-search__field'])[1]")// added on 18/03
 	WebElement addoffer;
 
-	@FindBy(xpath = "//*[@id=\"OrganizationServicesForm\"]/div[1]/div[2]/div[2]/div/button")
-
+	//@FindBy(xpath = "//*[@id=\"OrganizationServicesForm\"]/div[1]/div[2]/div[2]/div/button")
+	@FindBy(xpath = "(//*[@class='select2-search__field'])[2]")// added on 18/03
 	WebElement addNeed;
 
 	@FindBy(xpath = "(//*[contains(@name,'ServicesOffering[]')])[2]")
@@ -962,53 +1029,101 @@ public class MyProfilePage extends BasePage {
 		return (ProfessionalServicesPage) openPage(ProfessionalServicesPage.class);
 
 	}
-
+	
+	//all of this below elements added on 18/03 for adding service offer and need
+	@FindBy(xpath="//*[@class='select2-results__options']//*[contains(text(),'Business Services')]")
+	
+	WebElement Business;
+	
+	@FindBy(xpath="//*[@class='select2-results__options']//*[text()='Automotive']")
+	WebElement Automotive;
+	
+	@FindBy(xpath="//*[@class='select2-results__options']//*[text()='Printing & Publishing']")
+	WebElement print;
+	
+	@FindBy(xpath="//*[@class='select2-results__options']//*[text()='Real Estate']")
+	WebElement real;
+	
+	@FindBy(xpath="//*[@class='text-center top-move']//*[@class='btn btn-primary']")
+	WebElement submitbutton;
 	public void serviceYouOfferandNeed() throws Throwable
 
 	{
 
 		waitForElementToPresent(ServiceTitle);
-
 		
+		waitForElementToPresent(addoffer);
+		
+		addoffer.sendKeys("bus");
+		waitForElementToPresent(Business);
+		click(Business,"business Services");
+		//JavascriptExecutor js=(JavascriptExecutor)driver;
+	//	js.executeScript("arguments[0].click();", Business);
+	
+		addoffer.sendKeys("auto");
+		waitForElementToPresent(Automotive);
+		click(Automotive,"Automotive");
+		
+		 	
+		waitForElementToPresent(addNeed);
+		
+		addNeed.sendKeys("print");
+		waitForElementToPresent(print);
+		click(print,"Printing");
+		
+		addNeed.sendKeys("real");
+		waitForElementToPresent(real);
+		click(real,"Real Estae");
+		
+
+		click(submitbutton, "Submit");
+		
+		
+		
+		;
+	// commented the all old code lines on 18/03	
 		//waitForElementToPresent(addoffer);
-		click(addoffer, "Services you OFFER");
+	//	click(addoffer, "Services you OFFER");
+		
 		//Thread.sleep(1000);
 		
 
-		Select s = new Select(selectNeed1);
-
-		s.selectByVisibleText("Accounting");
-
-		//Thread.sleep(1000);
-
-		Select s1 = new Select(selectNeed2);
-
-		s1.selectByVisibleText("Automotive");
-
-		//Thread.sleep(5000);
-		waitForElementToPresent(addNeed);
-		click(addNeed, "Services you Need");
-
-		//Thread.sleep(1000);
-
-		Select s3 = new Select(SelectOffer1);
-
-		s3.selectByVisibleText("Accounting");
+//		Select s = new Select(selectNeed1); //commented on 18/03
+//
+//		s.selectByVisibleText("Accounting");
+//
+//		//Thread.sleep(1000);
+//
+//		Select s1 = new Select(selectNeed2);
+//
+//		s1.selectByVisibleText("Automotive");
+//
+     	//Thread.sleep(5000);
+//		waitForElementToPresent(addNeed);
+//		click(addNeed, "Services you Need");
 
 		//Thread.sleep(1000);
-		waitForElementToPresent(addNeed);
-		click(addNeed, "Services you Need");
 
-		Select s4 = new Select(SelectOffer2);
+//		Select s3 = new Select(SelectOffer1);//commented on 18/03
+//
+//		s3.selectByVisibleText("Accounting");
+//
+//		//Thread.sleep(1000);
+//		waitForElementToPresent(addNeed);
+//		click(addNeed, "Services you Need");
+//
+//		Select s4 = new Select(SelectOffer2);
+//
+//		s4.selectByVisibleText("Automotive");
+//
+//	click(submit, "Submit");
 
-		s4.selectByVisibleText("Automotive");
-
-		click(submit, "Submit");
-
-		Thread.sleep(1000);
+//		Thread.sleep(1000);
 
 	}
-
+	//added this element on 18/03 for getting text of updated business category
+@FindBy(xpath="//*[@ng-repeat='BusinessCategory in CPData.CompanyProfile.BusinessCategories']//*[text()='Business Schools']")
+	WebElement updated;
 	public void organizationDetails(String actual) throws Throwable
 
 	{
@@ -1017,47 +1132,68 @@ public class MyProfilePage extends BasePage {
 
 		Thread.sleep(2000);
 
-		String expected = expecteddata.getText();
-
+	//	String expected = expecteddata.getText();//commented on 18/03
+String expected=updated.getText(); //added on 18/03
 		Assert.assertEquals(expected, actual);
-
+System.out.println("Businee categories is updated");//added on 18/03
 	}
-
+	
+//both these elements added on 18/03 for update service offer and need
+	
+@FindBy(xpath="//*[@class='select2-results__options']//*[text()='Business Schools']")
+WebElement businessSchools;
+@FindBy(xpath="//*[@class='select2-results__options']//*[text()='Broadcasting (except Internet)']")
+WebElement boardcasting;
 	public void UpdateserviceYouOfferandNeed() throws Throwable
 
 	{
+       waitForElementToPresent(ServiceTitle);
+   	waitForElementToPresent(addoffer);
+	
+	addoffer.sendKeys("bus");
+	waitForElementToPresent(businessSchools);
+	click(businessSchools,"business Schools");
+	
+	
+	
+	waitForElementToPresent(addNeed);
+	
+	addNeed.sendKeys("Bro");
+	waitForElementToPresent(boardcasting);
+	click(boardcasting,"BoardCasting");
+	
+	click(submitbutton, "Submit");
 
-		waitForElementToPresent(ServiceTitle);
+	Thread.sleep(3000);
 
-		Thread.sleep(5000);
+        //commented old code lines on 18/03
+//		Select s = new Select(selectNeed1);
+//
+//		s.selectByVisibleText("Business Schools");
+//
+//		Thread.sleep(1000);
+//
+//		Select s1 = new Select(selectNeed2);
+//
+//		s1.selectByVisibleText("Packaging");
+//
+//		Thread.sleep(5000);
+//
+//		Select s3 = new Select(SelectOffer1);
+//
+//		s3.selectByVisibleText("Business Schools");
+//
+//		Thread.sleep(1000);
+//
+//		Select s4 = new Select(SelectOffer2);
+//
+//		s4.selectByVisibleText("Packaging");
+//
+//		Thread.sleep(2000);
+//
+//		click(submit, "Submit");
 
-		Select s = new Select(selectNeed1);
-
-		s.selectByVisibleText("Business Schools");
-
-		Thread.sleep(1000);
-
-		Select s1 = new Select(selectNeed2);
-
-		s1.selectByVisibleText("Packaging");
-
-		Thread.sleep(5000);
-
-		Select s3 = new Select(SelectOffer1);
-
-		s3.selectByVisibleText("Business Schools");
-
-		Thread.sleep(1000);
-
-		Select s4 = new Select(SelectOffer2);
-
-		s4.selectByVisibleText("Packaging");
-
-		Thread.sleep(2000);
-
-		click(submit, "Submit");
-
-		Thread.sleep(8000);
+//		Thread.sleep(5000);
 
 	}
 
@@ -1151,8 +1287,13 @@ public class MyProfilePage extends BasePage {
 	                 Thread.sleep(2000);
 	 	
 	         }
+//added on 15/03
+@FindBy(xpath="(//*[@class='iti iti--allow-dropdown']//*[@class='iti__flag-container']//*[@title='United States: +1'])[3]")
+WebElement drop;
+//added on 15/03
+@FindBy(xpath="(//*[@data-dial-code='91'])[6]")
+WebElement india;
 
-	         
 	         public void additionalInformation(String locationName1, String locationAddress1, String addressLine2,
 	     			String locationStreetAddress3, String locationCity1, String locationState1, String locationZip1,
 	     			String country1, String Phone1, String fax1) throws Throwable {
@@ -1164,7 +1305,7 @@ public class MyProfilePage extends BasePage {
 	     		waitForElementToPresent(locationName);
 	     		type(this.locationName, locationName1, "LocationName1");
 	     		Select s = new Select(locationType);
-	     		s.selectByIndex(1);
+	     		s.selectByIndex(4);
 	     		waitForElementToPresent(locationAddress);
 	     		type(this.locationAddress, locationAddress1, "LocationAddress1");
 	     		//Thread.sleep(1000);
@@ -1186,14 +1327,30 @@ public class MyProfilePage extends BasePage {
 	     		waitForElementToPresent(country);
 	     		type(this.country, country1, "Country1");
 	     		//Thread.sleep(1000);
+	     		
+//	     		waitForElementToPresent(drop);
+//	     		JavascriptExecutor js=(JavascriptExecutor)driver;    //added on 15/03
+//	         		js.executeScript("arguments[0].click();", drop);
+//	     		
+//	     		waitForElementToPresent(india);        //added on 15/03
+//	     		JavascriptExecutor js1=(JavascriptExecutor)driver;
+//	     		js1.executeScript("arguments[0].click();", india);
+
+	     		
 	     		waitForElementToPresent(phone);
 	     		type(this.phone, Phone1, "Phone1");
 	     		//Thread.sleep(1000);
-	     		waitForElementToPresent(fax);
-	     		type(this.fax, fax1, "FAX1");
-	     		waitForElementToPresent(saveLocation);
-	     		click(saveLocation, "SaveLocation");
-	     		//Thread.sleep(5000);
+	     		waitForElementToPresent(fax);//commented on 15/03
+	     		click(fax,"fax");
+	     	//	waitForElementToPresent(saveLocation);//commented on15/03
+	     	//	click(saveLocation, "SaveLocation");
+                Thread.sleep(2000);// added on 15/03
+	     		waitForElementToPresent(saveLoc);//added on 15/03
+	     		click(saveLoc, "SaveLocation");
+	     		
+	     		String msg=Success.getText();//added on 17/03
+	     		System.out.println(msg);
+     	
 	     	}
 	     	
 	     	
@@ -1209,6 +1366,8 @@ public class MyProfilePage extends BasePage {
 	     		s.selectByVisibleText("InActive");
 	     		click(update,"Update");
 	     		//Thread.sleep(5000);
+	     		String msg=Success.getText();//added on 17/03
+	     		System.out.println(msg);
 	     		
 	     	}
 	     	
@@ -1250,7 +1409,7 @@ public void updateLocation(String locationName1, String locationAddress, String 
 	     		
 	     		this.locationState.clear();
 	     		//Thread.sleep(1000);
-	     		type(this.locationCity, locationCity, "LocationCity");
+	     		type(this.locationState, locationCity, "LocationState");// ADDED ON 16/03
 	     		
 	     		  		
 	     		this.locationZip.clear();
@@ -1265,11 +1424,16 @@ public void updateLocation(String locationName1, String locationAddress, String 
 	     		//Thread.sleep(1000);
 	     		type(this.phone, Phone, "Phone");
 	     		
-	     		click(update,"Update");
+	     		waitForElementToPresent(this.fax);//added on 16/03
+	     		click(this.fax,"fax");
 	     		
-	     		//click(saveLocation, "SaveLocation");
-	     		//Thread.sleep(5000);
+	     	//	click(update,"Update");
 	     		
+	     		JavascriptExecutor js=(JavascriptExecutor)driver;    //added on 16/03
+         		js.executeScript("arguments[0].click();", update);
+         		
+         		String msg=Success.getText();//added on 17/03
+	     		System.out.println(msg);
 	     	}
 	     	
 	     	
@@ -1280,6 +1444,49 @@ public void updateLocation(String locationName1, String locationAddress, String 
 	     		click(myEcosystem,"MyEcosystem");
 	     		return (EcoSystemPage) openPage(EcoSystemPage.class);
 	     		// new MyGroupsPage(driver, );
+	     	}
+	     @FindBy(xpath="(//*[@ng-click='additionalData.EditContact(contacts)']/*[@class='fa fa-pencil-square-o fa-lg'])[1]")
+	     			WebElement edit;
+	     @FindBy(xpath="   //*[@class='input-group']/*[@placeholder='Search By Member Name']")
+	     WebElement   searchBox;
+	     @FindBy(xpath=" //*[@ng-click='additionalData.GetContacts()']/*[@class='glyphicon glyphicon-search']")
+	     WebElement searchBtn;
+	     	public void searchMember(String name) throws InterruptedException {
+	     		//*******added this method on 08/04**********\\
+	     		waitForElementToPresent(additionalInfo);
+	     		click(additionalInfo, "AdditionalInformation");
+	     		waitForElementToPresent(edit);
+	     		waitForElementToPresent(searchBox);
+	     		type(searchBox, name, "MemberName");
+	     		click(searchBtn, "SearchBtn");
+	     		
+	     		Thread.sleep(3000);
+	     		
+	     	}
+	     @FindBy(xpath="//*[@name='ContactStatus']")
+	     	WebElement status;
+	     @FindBy(xpath="  //*[@class='btn btn-primary']/*[@ng-hide='additionalData.IsContactSaveMode']")
+	     WebElement upDate;
+	     	public void inActiveMember() throws InterruptedException {
+	     		//*******added this method on 08/04**********\\
+	     		waitForElementToPresent(edit);
+	     	click(edit, "EditBtn");
+	     	waitForElementToPresent(status);
+	     	Select s = new Select(status);
+     		s.selectByVisibleText("InActive");
+     		click(upDate, "Update button");
+     		Thread.sleep(3000);
+	     	}
+	     	public void activeMember() throws InterruptedException {
+	     		//*******added this method on 08/04**********\\
+	     		waitForElementToPresent(edit);
+	     	click(edit, "EditBtn");
+	     	waitForElementToPresent(status);
+	     	Select s = new Select(status);
+     		s.selectByVisibleText("Active");
+     		click(upDate, "Update button");
+     	
+     		Thread.sleep(3000);
 	     	}
 
 	     	public void addnewMember(String firstName, String lastName, String job, String emailAddress, String password,
@@ -1314,6 +1521,9 @@ public void updateLocation(String locationName1, String locationAddress, String 
 	     		s1.selectByIndex(1);
 	     		//Thread.sleep(2000);
 	     		click(saveMember, "SaveMember");
+	     		
+	     		String msg=Success.getText();//added on 18/03
+	     		System.out.println(msg);
 	     	}
 	     	
 	     	public void updateMemberDetails(String firstName, String lastName, String job, String emailAddress, String password,

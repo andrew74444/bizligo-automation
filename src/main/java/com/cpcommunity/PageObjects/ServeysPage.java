@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 public class ServeysPage extends BasePage
@@ -93,7 +94,8 @@ public class ServeysPage extends BasePage
 	@FindBy(xpath="//*[contains(text(),'Save')]")
 	WebElement Save;
 	
-	@FindBy(xpath="//*[@type='submit']")
+	//@FindBy(xpath="//*[@type='submit']")
+	@FindBy(xpath="//*[@class='form-actions']/*[@value='Save Survey']")//added on 13/04
 	WebElement saveSurvey;
 	
 	
@@ -128,21 +130,34 @@ public class ServeysPage extends BasePage
 		
 
 	}
-	public void createSurveyByCA(String Name,String Ques) throws Exception {
+	@FindBy(xpath="//*[@class='span6 accordion-toggle']/*[@data-parent='#questions']")
+	WebElement questions;
+	public void createSurveyByCA(String Name,String Ques,String eventName) throws Exception {
 		waitForElementToPresent(addBtn);
 		click(addBtn, "create new survey");
+		
 		waitForElementToPresent(name);
-		Name = Name+getDateInDDMMMYYYY();
+	//	Name = Name+getDateInDDMMMYYYY();
 		type(name,Name,Name);
-		getDateInDDMMYYYY();
+	//	getDateInDDMMYYYY();
 		System.out.println(startDate.getAttribute("value"));
-		selectUsingIndex(eventID,1,"Event selected");		
+	//	selectUsingIndex(eventID,1,"Event selected");//commented on 13/04	
+		
+		Select select = new Select(eventID);
+		select.selectByVisibleText(eventName);//added on 13/04
+		waitForElementToPresent(addQues);//added on 13/04
 		click(addQues,"Add Question");
+		
 		waitForElementToPresent(title);
 		type(title,Ques, Ques);		
-		click(Save,"Save");
-		click(saveSurvey,"Save Survey");
-		Thread.sleep(3000);
+		waitForElementToPresent(Save);//added on 13/04
+        click(Save,"Save");
+        waitForElementToPresent(questions);//added on 13/04
+		waitForElementToPresent(saveSurvey);//added on 13/04
+	//	click(saveSurvey,"Save Survey");
+		clickElementByJavaScript(saveSurvey);
+	//	Thread.sleep(3000);
+		 waitForElementToPresent(toastMsg);//added on 13/04
 		System.out.println( toastMsg.getText());
 		if(toastMsg.getText().equalsIgnoreCase("Success! Survey created.")) {
 			System.out.println("Survey created byCA");

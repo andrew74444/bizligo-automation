@@ -40,7 +40,8 @@ public class GroupDetailsPage extends BasePage {
 
 	@FindBy(xpath = "//*[@id='toast-container']/div/div[3]")
 	WebElement toast;
-	@FindBy(xpath = "//strong[normalize-space()='Discussions']")
+//	@FindBy(xpath = "//strong[normalize-space()='Discussions']")
+	@FindBy(xpath = "//*[@ui-sref='group.discussions']/*[text()='Discussions']")//added on 13/04
 	WebElement DiscussionNavbar;
 
 	@FindBy(xpath = "//*[contains(text(),'Leave')]")
@@ -52,7 +53,8 @@ public class GroupDetailsPage extends BasePage {
 	@FindBy(xpath = "//*[contains(text(),'Yes,Proceed')]")
 	WebElement YesProceedBtn;
 
-	@FindBy(xpath = "//button[@class='btn btn-primary'][normalize-space()='OK']")
+//	@FindBy(xpath = "//button[@class='btn btn-primary'][normalize-space()='OK']")
+	@FindBy(xpath = "//*[@class='modal-footer']/*[text()='Ok']")//added on 13/04
 	WebElement OkBtn;
 
 	@FindBy(xpath = "//*[contains(text(),'Waiting for Approval')]")
@@ -119,10 +121,11 @@ public class GroupDetailsPage extends BasePage {
 	WebElement subscribeBtn;
 	
 	
-
+	@FindBy(xpath = "//*[@ng-bind='data.GroupMemberInfoinitialData.Name']")
+	WebElement name;
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
-		
+		waitForElementToPresent(name);//added on 13/04
 		return ExpectedConditions.visibilityOf(DiscussionNavbar);
 	}
 
@@ -210,16 +213,16 @@ public class GroupDetailsPage extends BasePage {
 	AssertionHelper.verifyText(toastMessage.getText(), "Post deleted successfully");
 	Thread.sleep(7000);
 		}
-		
+	
 	
 	public void Join( ) {
 
 		click(Join,"Join");
 		waitForElementToPresent(YesProceedBtn);
-		picture();
+	//	picture();
 		click(YesProceedBtn,"Yes Proceed");
 		waitForElementToPresent(OkBtn);
-		picture();
+//		picture();
 		click(OkBtn,"Ok");
 	}
 
@@ -294,8 +297,8 @@ public class GroupDetailsPage extends BasePage {
 	public void JoinPrivateGroup( ) throws Exception {
 		this.Join();
 		WaitingforApproval.isDisplayed();
-		picture();
-		Thread.sleep(6000);
+	//	picture();
+	//	Thread.sleep(6000);
 	}
 
 	public void JoinPublicGroup( ) {

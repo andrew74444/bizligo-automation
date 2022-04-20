@@ -112,15 +112,27 @@ public class AuthorizeGateway extends BasePage {
 		writeInNotePad(amount, name);
 		return amount;
 	}
+	public String makePayment1() throws Exception {
+		type(cardNum, "4111111111111111", "card Num");
+		type(ExpiryDate, "0525", "Expiry Date");
+		type(CVV, "025", "CVV");
+		type(email, "yogesh.bhor141@yahoo.com", "email");
 
+		String text = orderTotalAmount.getText();
+		String amount=text.substring(0,2);
+		System.out.println(amount);
+      //  click(PayBtn, "payBtn");
+		clickElementByJavaScript(PayBtn);
+		return amount;
+	}
 	public String makePayment() throws Exception {
 
 		//type(cardNum, "4242424242424242", "card Num");
 		//type(ExpiryDate, "0223", "Expiry Date");
 		//type(CVV, "024", "CVV");
 		type(cardNum, "4111111111111111", "card Num");
-		type(ExpiryDate, "1221", "Expiry Date");
-		type(CVV, "523", "CVV");
+		type(ExpiryDate, "0525", "Expiry Date");
+		type(CVV, "025", "CVV");
 
 		while (true) {
 			if (cardNum.getAttribute("value").length() == 19) {
@@ -163,30 +175,30 @@ public class AuthorizeGateway extends BasePage {
 			Thread.sleep(1000);
 		}
 
-		if (ExpiryDate.getAttribute("value").equalsIgnoreCase("12/21")) {
+		if (ExpiryDate.getAttribute("value").equalsIgnoreCase("05/25")) {
 
 		} else {
 			while (true) {
-				if (ExpiryDate.getAttribute("value").equalsIgnoreCase("12/21")) {
+				if (ExpiryDate.getAttribute("value").equalsIgnoreCase("05/25")) {
 					break;
 				}
 				ExpiryDate.clear();
 				Thread.sleep(1000);
-				ExpiryDate.sendKeys("1221");
+				ExpiryDate.sendKeys("0525");
 				Thread.sleep(1000);
 			}
 		}
 
-		if (ExpiryDate.getAttribute("value").equalsIgnoreCase("12/21")) {
+		if (ExpiryDate.getAttribute("value").equalsIgnoreCase("05/25")) {
 
 		} else {
 			while (true) {
-				if (CVV.getAttribute("value").equalsIgnoreCase("523")) {
+				if (CVV.getAttribute("value").equalsIgnoreCase("025")) {
 					break;
 				}
 				CVV.clear();
 				Thread.sleep(1000);
-				CVV.sendKeys("523");
+				CVV.sendKeys("025");
 				Thread.sleep(1000);
 			}
 			System.out.println("=" + CVV.getAttribute("value") + "=");
@@ -208,7 +220,7 @@ public class AuthorizeGateway extends BasePage {
 		// type(State, String.valueOf(ObjectReader.reader.phNo()), "State");
 
 		//type(email, "andrew74444@gmail.com", "email");
-		type(email, "nancycarton2@gmail.com", "email");
+		type(email, "venkatakodi7@gmail.com", "email");
 
 		String orderTotalAmount = this.orderTotalAmount.getText();
         click(PayBtn, "payBtn");
@@ -226,7 +238,8 @@ public class AuthorizeGateway extends BasePage {
 
 	public EventTicketPage MakePaymentToEvent() throws Exception {
 
-		this.makePayment();
+	//	this.makePayment();
+		this.makePayment1();//added on 30/03
 
 		return (EventTicketPage) openPage(EventTicketPage.class);
 		//

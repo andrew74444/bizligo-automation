@@ -38,7 +38,18 @@ public class TC029_Create_community_From_My_Communites extends BaseTest {
 		MyCommunitiesPage MyCommunitiesPage= EcoSystemPage.goToMyCommunities();
 		CreateCommunityPage CreateCommunityPage = MyCommunitiesPage.clickOnCreateCommunity();
 		CreateCommunityPage.CreateCommunity(data.get("communityName"), data.get("Networking"), data.get("Marketing"), data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"), data.get("InvestInBusiness"), data.get("Other"), data.get("About"), data.get("Category"), data.get("type"));
-		
+//***********below code added for  TA to approve community and also checking mail about the approval****************//
+
+//		HomePage home1 = new HomePage().open(data.get("tenantType"));
+//		home1.logout();
+//		LoginPage login = home1.clickOnLOGINBtn();	
+//		SystemAdminDashboardPage Dashboard_Page = login.SystemAdminloginToApplication(data.get("email1"), data.get("password1"));
+//		PendingCommunitiesPage PendingCommunitiesPage = Dashboard_Page.naviagteToPendingCommunities();
+//		PendingCommunitiesPage.approveCommunity(data.get("communityName"));
+//		
+//		Yahoo yahoo= new Yahoo().open();
+//		yahoo.Login(data.get("email2"), data.get("password2"));
+//		yahoo.tAdminApprovedCommunity();
 
 	}
 

@@ -124,7 +124,7 @@ public class ManageCommunityPage extends BasePage{
 		click(Browse," Browse");
 		
 			  StringSelection ss = new StringSelection(logoImagePath);
-			  Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
+	//		  Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
 			  Robot robot = new Robot();
 			     robot.delay(350);
 			     robot.keyPress(KeyEvent.VK_ENTER);

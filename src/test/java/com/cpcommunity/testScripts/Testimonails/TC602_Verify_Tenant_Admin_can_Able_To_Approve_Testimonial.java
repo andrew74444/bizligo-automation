@@ -12,6 +12,7 @@ import com.cpcommunity.PageObjects.SATestimonials;
 import com.cpcommunity.PageObjects.SystemAdminDashboardPage;
 import com.cpcommunity.PageObjects.TestimonialsPage;
 import com.cpcommunity.PageObjects.TestimonialsVerifyPage;
+import com.cpcommunity.PageObjects.Yahoo;
 import com.cpcommunity.testScripts.community.BaseTest;
 
 import com.cpcommunity.utilities.*;
@@ -33,14 +34,18 @@ public class TC602_Verify_Tenant_Admin_can_Able_To_Approve_Testimonial extends B
 		SATestimonials Edit= SA.navigatetoTestimonials();
 		Edit.searchTestimonial(data.get("search"));
 		Edit.approveTestimonial(data.get("notes"));
-		HomePage home1 = new HomePage().open(data.get("tenantType"));
-		LoginPage login1 = home.clickOnLOGINBtn();
-		MyDashboardPage dashboard = login1.loginToMemberdashboard(data.get("email1"),data.get("password1"));
-		//dashboard.navigateToMyDashBoard();
-		TestimonialsVerifyPage testimonial1 = dashboard.NavigateTotestimonials();
-		testimonial1.TestimonialisVisible(data.get("actual"));
-	
-
+		//commented 0n 11/04
+//		HomePage home1 = new HomePage().open(data.get("tenantType"));
+//		LoginPage login1 = home.clickOnLOGINBtn();
+//		MyDashboardPage dashboard = login1.loginToMemberdashboard(data.get("email1"),data.get("password1"));
+//		//dashboard.navigateToMyDashBoard();
+//		TestimonialsVerifyPage testimonial1 = dashboard.NavigateTotestimonials();
+//		testimonial1.TestimonialisVisible(data.get("actual"));
+//	
+		Yahoo yahoo= new Yahoo().open();
+		yahoo.Login(data.get("email2"), data.get("password2"));
+		yahoo.testimonialsApproved();
+       
 		
 		//Assert.fail("Failing the login test");
 	}

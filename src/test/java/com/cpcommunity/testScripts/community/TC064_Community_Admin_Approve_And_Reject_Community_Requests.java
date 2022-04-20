@@ -30,14 +30,25 @@ public class TC064_Community_Admin_Approve_And_Reject_Community_Requests extends
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
-//		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
+		logInfo("Username entered as "+data.get("email")+" and Password entered as "+data.get("password"));
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+		
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
 		CommunityPendingRequestsPage CommunityPendingRequestsPage = CommunityDashboardPage.navigateToPendingRequests();
-		CommunityPendingRequestsPage.approveMember(data.get("email1"));
-		CommunityPendingRequestsPage.rejectMember(data.get("email2"), data.get("rejectReason"));
+	//	CommunityPendingRequestsPage.approveMember(data.get("email3"));
+		
+		CommunityPendingRequestsPage.rejectMember(data.get("email3"), data.get("rejectReason"));
+		
+		Yahoo yahoo= new Yahoo().open();
+
+		yahoo.Login(data.get("email3"), data.get("password3"));
+	//	yahoo.appovedByCA();//when ca approved member checking mail
+		yahoo.notAppovedByCA();//when ca not approved member checking mail
+		
+		
+	
 		
 		//Assert.fail("Failing the login test");
 	}

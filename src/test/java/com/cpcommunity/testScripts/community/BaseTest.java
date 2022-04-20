@@ -17,12 +17,14 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
@@ -942,5 +944,17 @@ public class BaseTest {
 //	Actions action =new Actions(driver);
 //	action.keyDown(Keys.CONTROL).sendKeys(Keys.TAB).build().perform();
 	//}
+	public void switching() throws InterruptedException {
+
+		String oldTab= driver.getWindowHandle();
+
+		
+		Thread.sleep(2000);
+     ArrayList<String> newTab=new ArrayList<String>(driver.getWindowHandles());
+
+     newTab.remove(oldTab); 
+
+	driver.switchTo().window(newTab.get(0));
+		}
 
 }

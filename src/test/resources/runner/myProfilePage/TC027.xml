@@ -3,13 +3,11 @@
 <suite name="Suite">
 <listeners>
 		<listener class-name="com.cpcommunity.ExtentListeners.ExtentListeners" />
-
-		<!---<listener class-name="com.uiFramework.pamTen.cpcommunity.helper.listener.RetryListener" />-->
-	</listeners>
-
+		<listener class-name="com.uiFramework.pamTen.cpcommunity.helper.listener.RetryListener" />
+   </listeners>
   <test thread-count="5" name="Test">
     <classes>
-      <class name="com.cpcommunity.emailtestcases.TC032_Create_Community_Email_Notification_to_System_Admin"/>
+      <class name="com.cpcommunity.testScripts.myprofiletestcases.TC027_Verify_User_Is_Able_To_Update_Interests"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

@@ -39,7 +39,7 @@ public class TC2189_Verify_connection_note_displaying_New_Connection_Requests_of
 		MDP1.cancelConnectionRequest();
 		HomePage home2 = new HomePage().open(data.get("tenantType"));
 		home2.logout();
-		
+	
 }
 	@AfterMethod
 	public void tearDown() {

@@ -13,6 +13,7 @@ import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.PendingCommunitiesPage;
 import com.cpcommunity.PageObjects.SystemAdminDashboardPage;
+import com.cpcommunity.PageObjects.Yahoo;
 import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.ExcelReader;
 
@@ -32,6 +33,10 @@ public class TC032_System_Admin_Community_Approval extends BaseTest {
 		SystemAdminDashboardPage Dashboard_Page = login.SystemAdminloginToApplication(data.get("email"), data.get("password"));
 		PendingCommunitiesPage PendingCommunitiesPage = Dashboard_Page.naviagteToPendingCommunities();
 		PendingCommunitiesPage.approveCommunity(data.get("communityName"));
+		
+		Yahoo yahoo= new Yahoo().open();
+		yahoo.Login(data.get("email2"), data.get("password2"));
+		yahoo.tAdminApprovedCommunity();
 //		Assert.fail("Failing the login test");
 	}
 

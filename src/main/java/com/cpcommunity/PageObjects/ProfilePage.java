@@ -60,9 +60,11 @@ public class ProfilePage extends BasePage{
 	WebElement AddSkills;
 	@FindBy(xpath = "//form[@id='EditMySkillsForm']//i[@class='fa fa-floppy-o']")
 	WebElement SkillsSaveBtn;
-	@FindBy(xpath = "//label[contains(.,'Content :')]")
+//	@FindBy(xpath = "//label[contains(.,'Content :')]")
+	@FindBy(xpath = "//*[@class='col-sm-12']/*[@class='form-group has-feedback']/*[@ng-model='profile.endorsement.Content']")//added on 22/03
 	WebElement content;
 	@FindBy(xpath = "//form[@id='EndorsementForm']//button[contains(text(),'Send')]")
+	
 	WebElement sendendors;
 	@FindBy(xpath = "//small[@class='help-block'][contains(text(),'Content is Required')]")
 	WebElement contentError1;
@@ -234,8 +236,9 @@ public void AddEndorsement(String Endorsement, String Endorsement2, String Endor
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 		// TODO Auto-generated method stub
-		//return ExpectedConditions.visibilityOf(profilePage);
-		return ExpectedConditions.visibilityOf(ProfileCategory);
+	//	return ExpectedConditions.visibilityOf(profilePage);
+		//return ExpectedConditions.visibilityOf(ProfileCategory);//commented on 22/03
+		return ExpectedConditions.visibilityOf(memberName);//for add endorsement method
 	}
 
 	public void AddEndorsement(String Endorsement, String Endorsement2, String Endorsement3, String Endorsement4) throws InterruptedException{
@@ -300,25 +303,39 @@ public void AddEndorsement(String Endorsement, String Endorsement2, String Endor
 //	}
 //	
 //	return (ZohoCRMPage) openPage(ZohoCRMPage.class);
-	public void AddEndorsement(String Endorsement ) throws InterruptedException{
-		Thread.sleep(5000);
+	
+	//all this elements for add endorsement through my ecosystems page
+	@FindBy(xpath="//*[@ng-bind='member.MemberName']")//added on 22/03
+	WebElement memberName;
+	@FindBy(xpath="//*[@class='modal-header']/*[text()='Endorsements ']")//added on 22/03
+	WebElement outside;
+
+	public void AddEndorsement(String Endorsement) throws InterruptedException{
+		Thread.sleep(3000);
+		waitForElementToPresent(memberName);//added on 22/03
+		click(memberName,"memberName");
 //		log.info("Clicking on Endorsement Button...");
 //		logExtentReport("Clicking on Endorsement Button...");	
 		waitForElementToPresent(addEndorsementBtn);
-		picture();
+	//	picture();
 		click(addEndorsementBtn,"addEndorsementBtn");
 		waitForElementToPresent(content);		
 //		log.info("entering email address...."+Endorsement);
 //		logExtentReport("entering email address...."+Endorsement);
-		type(EndorsementFiled, Endorsement, "Endorsement");
+	//	type(EndorsementFiled, Endorsement, "Endorsement");//commented 0n 22/03
+	//	type(content, Endorsement, "Endorsement");//added on 22/03
 		
 //		log.info("Clicking on send Button...");
 		
-		picture();
-		click(sendendors,"sendendorsement");		
+	//	picture();
+		content.sendKeys(Endorsement);//added on 22/03
+		//click(sendendors,"sendendorsement");
+		outside.click();
+		hardClick(sendendors);
+		Thread.sleep(2000);
 		AssertionHelper.verifyText(SuccessPopup.getText(), "Endorsement Sent Successfully");
 		String Message = SuccessPopup.getText();
-		picture();
+	//	picture();
 		System.out.println(Message);
 		if(Message.equals("Endorsement Sent Successfully")){
 			Assert.assertTrue(true);;

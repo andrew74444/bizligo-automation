@@ -49,6 +49,7 @@ public class ForgotPasswordPage extends BasePage{
 		Thread.sleep(3000);//added by me
 		type(this.emailAddress, emailAddress, "Email");
 		click(Submit,"Submit");
+		Thread.sleep(3000);//added on 15/03
 		return (LoginPage) openPage(LoginPage.class);
 //		new LoginPage(driver);
 	}

@@ -35,17 +35,15 @@ public class TC620_Verify_whether_Business_categories_Updated extends BaseTest {
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
-//		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
-		MyDashboardPage dashboard = login.loginToMemberdashboard(data.get("email"), data.get("password"));
-		MyProfilePage profile = dashboard.NaviagtingToMyProfilePage();
-		profile.professionalMatchesPage();
-		profile.UpdateserviceYouOfferandNeed();
+		logInfo("Username entered as "+data.get("email")+" and Password entered as "+data.get("password"));
+		//commented this 4 lines on 18/03
+	//	MyDashboardPage dashboard = login.loginToMemberdashboard(data.get("email"), data.get("password"));
+	//	MyProfilePage profile = dashboard.NaviagtingToMyProfilePage();
+	//	profile.professionalMatchesPage();
+	//	profile.UpdateserviceYouOfferandNeed();//commented on 18/03
+		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+		MyProfilePage profile= EcoSystemPage.goToMyProfilePage();
 		profile.organizationDetails(data.get("actual"));
-		
-	
-		
-		
-		
 		
 		
 		//Assert.fail("Failing the login test");

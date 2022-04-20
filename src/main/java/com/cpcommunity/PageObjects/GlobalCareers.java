@@ -43,7 +43,8 @@ public class GlobalCareers extends BasePage {
 
 	@FindBy(xpath = "//body[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[5]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/a[1]")
 	WebElement ViewandApply;
-	@FindBy(xpath = "//button[@class='apply-button']")
+//	@FindBy(xpath = "//button[@class='apply-button']")
+	@FindBy(xpath = "(//button[@class='apply-button'])[1]")//added on 22/03
 	WebElement ViewandApply1;
 	//button[contains(text(),'View and Apply')]
 	@FindBy(xpath = "//button[@class='apply-button']")
@@ -110,7 +111,8 @@ public class GlobalCareers extends BasePage {
 	WebElement manageBtn;
 	@FindBy(xpath = "//button[normalize-space()='Apply']")
 	WebElement Apply;
-	@FindBy(xpath = "//input[@id='Resume']")
+//	@FindBy(xpath = "//input[@id='Resume']")
+	@FindBy(xpath = "//*[@class='col-md-5 col-sm-6']/*[@id='Resume']")
 	WebElement chooseFile;
 	@FindBy(xpath = "//button[normalize-space()='Submit']")
 	WebElement submitBtn;
@@ -299,18 +301,29 @@ public void CheckAdditionaltitleAndRemarkNotDisplaying(String Title1) throws Int
 		
 		picture();
 	}
+	@FindBy(xpath="//*[@class='form-group']/*[@placeholder='Search by Job Title']")
+	WebElement searchBox;
+	@FindBy(xpath="//*[@ng-click='data.SearchJobs()']")
+	WebElement searchBtn;
 	public void applyToJob(String path) throws InterruptedException {
-		Thread.sleep(8000);
+	//	Thread.sleep(3000);
+		waitForElementToPresent(ViewandApply1);//added on 05/04 for wait purpose
+		type(searchBox,"Senior Software Engineer","searching the job");//added on 05/04
+		click(searchBtn,"search button");//added on 05/04
+		
+		waitForElementToPresent(ViewandApply1);//added on 05/04 for wait purpose
+		
 		clickElementByJavaScript(ViewandApply1);
-		//click(ViewandApply1, "ViewandApply");
-		Thread.sleep(7000);
+	//	click(ViewandApply1, "ViewandApply");
+//		Thread.sleep(3000);
 		waitForElementToPresent(Apply);
 		click(Apply, "Apply");
-		Thread.sleep(5000);
+	//	Thread.sleep(3000);
 		waitForElementToPresent(chooseFile);
-		type(chooseFile,path,"FileName");
-		//chooseFile.sendKeys(path);
-		//Thread.sleep(2000);
+	//	type(chooseFile,path,"FileName");//commented on 22/03
+		//added on 22/03
+		chooseFile.sendKeys("C:/Users/VenkataRambabuKodi/Documents/bizligo-automation/src/test/resources/testImages/test.doc");
+	//	Thread.sleep(2000);
         waitForElementToPresent(submitBtn);
 		click(submitBtn,"submit");
         

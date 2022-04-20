@@ -123,7 +123,8 @@ public class ManageGroupsPage extends BasePage{
 	
 	public ManageGroupsPage clickOnCreateGroupBtn(){
 		//scrollToElement(Createbtn);
-			click(Creategroupbtn," Creategroupbtn");
+		//	click(Creategroupbtn," Creategroupbtn");
+			hardClick(Creategroupbtn);
 			return (ManageGroupsPage) openPage(ManageGroupsPage.class);
 		//return (Create_UpdateGroupPage) openPage(Create_UpdateGroupPage.class);
 //		new Create_UpdateGroupPage(driver, );

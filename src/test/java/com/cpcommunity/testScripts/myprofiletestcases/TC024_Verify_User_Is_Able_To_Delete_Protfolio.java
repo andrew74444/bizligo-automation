@@ -30,11 +30,11 @@ public class TC024_Verify_User_Is_Able_To_Delete_Protfolio extends BaseTest {
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
-//		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
+		logInfo("Username entered as "+data.get("email")+" and Password entered as "+data.get("password"));
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyProfilePage MyProfile_Page = EcoSystemPage.goToMyProfilePage();
-		MyProfile_Page.DeletePortfolio(data.get("title"),data.get("url"));
+		MyProfile_Page.DeletePortfolio();
 		
 		//Assert.fail("Failing the login test");
 	}

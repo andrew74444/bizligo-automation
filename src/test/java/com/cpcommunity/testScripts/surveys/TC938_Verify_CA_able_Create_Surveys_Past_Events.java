@@ -6,10 +6,12 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.CommunityDashboardPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.MyCommunitiesPage;
 import com.cpcommunity.PageObjects.ServeysPage;
+import com.cpcommunity.PageObjects.Yahoo;
 import com.cpcommunity.testScripts.community.BaseTest;
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataProviders;
@@ -28,10 +30,18 @@ public class TC938_Verify_CA_able_Create_Surveys_Past_Events extends BaseTest{
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
-		MyCommunitiesPage MyCP = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
-		CommunityDashboardPage CDP= MyCP.gotoManageCommunity(data.get("communityName"));
-		ServeysPage SP=CDP.GoToServeysPage();
-		SP.createSurveyByCA(data.get("Name"),data.get("Ques"));
+EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+		
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
+		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
+	//	MyCommunitiesPage MyCP = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
+	//	CommunityDashboardPage CDP= MyCP.gotoManageCommunity(data.get("communityName"));
+		ServeysPage SP=CommunityDashboardPage.GoToServeysPage();
+		SP.createSurveyByCA(data.get("Name"),data.get("Ques"),data.get("eventName"));
+		
+		Yahoo yahoo= new Yahoo().open();
+		yahoo.Login(data.get("email1"), data.get("password1"));
+		yahoo.surveyNotification();
 
 }
 	@AfterMethod

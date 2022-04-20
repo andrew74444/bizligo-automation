@@ -103,15 +103,15 @@ public class CommunityInviteMembersPage extends BasePage{
 	
 	public void invite(String Email) throws Exception {
 		
-		search.clear();
+	//	search.clear();
 		type(search, Email,"Search");
 		WebElement ele = driver.findElement(By.xpath("//*[contains(text(),'"+Email+"')]"));
 		waitForElementToPresent(ele);
 		waitForElementToPresent(Showing1to1of1entries);
 		click(select_Checkbox,"select_Checkbox");
-		waitForElementToPresent(rowselected);
+	//	waitForElementToPresent(rowselected);
 		click(btnInvite,"btnInvite" );
-		picture();
+	//	picture();
 		waitForElementToPresent(YesProceed);
 		click(YesProceed,"Yes Proceed");
 		waitForElementToPresent(OkBtn);

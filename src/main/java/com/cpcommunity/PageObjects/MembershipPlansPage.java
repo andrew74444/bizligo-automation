@@ -81,7 +81,7 @@ public class MembershipPlansPage extends BasePage {
 			String Name = driver.findElement(By.xpath("(//*[@class='pop-plan-title ng-binding'])[" + i + "]"))
 					.getText();
 			if (Name.contains(membershipPlan)) {
-				WebElement ele = driver.findElement(By.xpath("(//*[contains(text(),'SELECT')])[" + i + "]"));
+				WebElement ele = driver.findElement(By.xpath("((//*[@class='btn btn-lg mpop-button btn-primary'])/*[@ng-bind='data.GetButtonTitle(MemberShipPlan)'])[" + i + "]"));//(//*[contains(text(),'SELECT')])
 
 				if (membershipPlan.contains("Advertisements")) {
 					WebElement ele1 = driver.findElement(
@@ -106,12 +106,77 @@ public class MembershipPlansPage extends BasePage {
 		}
 
 	}
+	public void changeMemberShipPlan(String membershipPlan) throws Exception {
+		int t = driver.findElements(By.xpath("//*[@class='pop-plan-title ng-binding']")).size();
+		System.out.println(t);
+		for (int i = 1; i <= t; i++) {
+			String Name = driver.findElement(By.xpath("(//*[@class='pop-plan-title ng-binding'])[" + i + "]"))
+					.getText();
+			System.out.println(Name);
+			if (Name.contains(membershipPlan)) {
+				WebElement ele = driver.findElement(By.xpath("((//*[@class='btn btn-lg mpop-button btn-primary'])/*[@ng-bind='data.GetButtonTitle(MemberShipPlan)'])[" + i + "]"));
+	
+				click(ele, "Change Plan button");
+			
+				break;
+			}
+		}
+
+	}
+	public void upgradeMemberShipPlan(String membershipPlan) throws Exception {
+		int t = driver.findElements(By.xpath("//*[@class='pop-plan-title ng-binding']")).size();
+		System.out.println(t);
+		for (int i = 1; i <= t; i++) {
+			String Name = driver.findElement(By.xpath("(//*[@class='pop-plan-title ng-binding'])[" + i + "]"))
+					.getText();
+			System.out.println(Name);
+			if (Name.contains(membershipPlan)) {
+				WebElement ele = driver.findElement(By.xpath("((//*[@class='btn btn-lg mpop-button btn-primary'])/*[@ng-bind='data.GetButtonTitle(MemberShipPlan)'])[" + i + "]"));
+	
+				click(ele, "Upgrade button");
+			
+				break;
+			}
+		}
+
+	}
+
 
 	public void purchaseMembershipPlan(String membershipPlan) throws Exception {
 		this.selectMemberShipPlan(membershipPlan);
 		
 		click(Next, "Next");
 	}
+//*******Below method for 	purchasing free membership Plan added on 18/04**********//
+	@FindBy(xpath="//*[@type='button']//*[text()='Submit ']")
+	WebElement submit;
+	public void freeMembershipPlan(String membershipPlan) throws Exception {
+		this.selectMemberShipPlan(membershipPlan);
+		waitForElementToPresent(submit);
+		click(submit, "submit");
+	}
+	public void changeFreeMembershipPlan(String membershipPlan) throws Exception {
+		this.changeMemberShipPlan(membershipPlan);
+		scrollDownVertically();
+		waitForElementToPresent(submit);
+		clickElementByJavaScript(submit);
+	}
+	public void upgradeToPaidMembershipPlan(String membershipPlan) throws Exception {
+		this.upgradeMemberShipPlan(membershipPlan);
+		scrollDownVertically();
+		waitForElementToPresent(Next);
+		clickElementByJavaScript(Next);
+	}
+	@FindBy(xpath="//*[text()='RENEW']")
+	WebElement Renew;
+	public void renewMembershipPlan() throws Exception {
+		waitForElementToPresent(Renew);
+		clickElementByJavaScript(Renew);
+		scrollDownVertically();
+		waitForElementToPresent(submit);
+		clickElementByJavaScript(submit);
+	}
+
 
 	public PayPalPayment paymentByPayPal() {
 		waitForElementToPresent(payPal);
@@ -133,6 +198,14 @@ public class MembershipPlansPage extends BasePage {
 		click(proceedToPaymentGateway, "Proceed To Payment Gateway");
 		picture();
 	}
+	@FindBy(xpath = "//*[contains(text(),'View Community')]")
+	WebElement viewCommunity;
+	public CommunityDetailsPage viewCommunity() {
+		waitForElementToPresent(viewCommunity);//added on 18/04
+		click(viewCommunity,"View Community");
+		return (CommunityDetailsPage) openPage(CommunityDetailsPage.class);
+	}
+
 
 	// public ZohoCRMPage gotoCRM() {
 	//

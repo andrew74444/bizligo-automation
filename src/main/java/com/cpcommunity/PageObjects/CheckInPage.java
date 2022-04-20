@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
 import com.uiFramework.pamTen.cpcommunity.helper.calendar.DateManager;
 
 public class CheckInPage extends BasePage {
@@ -49,9 +50,11 @@ public class CheckInPage extends BasePage {
 	WebElement BookNowBtn;
 	@FindBy(xpath = "//input[@value='1']")
 	WebElement btnPayPal;
-	@FindBy(xpath = "//input[@value='2']")
+	//@FindBy(xpath = "//input[@value='2']")
+	@FindBy(xpath = "//*[@class='radio-inline']/*[@value='2']")//added on 30/03
 	WebElement authorizeNet;
-	@FindBy(xpath = "//input[@value='3']")
+	//@FindBy(xpath = "//input[@value='3']")
+	@FindBy(xpath = "//*[@class='radio-inline']/*[@alt='Cash']")//added on 29/03
 	WebElement cash;
 	@FindBy(xpath = "//input[@value='4']")
 	WebElement cheuque;
@@ -94,43 +97,85 @@ public class CheckInPage extends BasePage {
 		Thread.sleep(2000);
 		scrollToElement(attendeFormView);
 		Thread.sleep(2000);
-		AttendeeEmailID.clear();
+	//	AttendeeEmailID.clear();
 		type(AttendeeEmailID, data.get("attendeeEmailID"), "Attendee Email ID");
 		click(AttendeePhone,"Attendee Phone");
 		Thread.sleep(2000);
-		FirstName.clear();
-		LastName.clear();
-		this.companyName.clear();
+	//	FirstName.clear();
+	//	LastName.clear();
+	//	this.companyName.clear();
 		type(FirstName, data.get("attendeeFirstName"), "First Name");
 		type(LastName, data.get("attendeLastName"), "Last Name");
 		type(companyName, data.get("companyName"), "Company Name");
-		takeScreenshotByShutterBug(eventAttendeesForm, "event Attendees Form");
+	//	takeScreenshotByShutterBug(eventAttendeesForm, "event Attendees Form");
+		
 	}
-
+	@FindBy(xpath="//*[@name='PayerFirstName']")
+	WebElement payerFirstName;
+	@FindBy(xpath="//*[@name='PayerLastName']")
+	WebElement payerLastName;
+	@FindBy(xpath="//*[@name='PayerCompany']")
+	WebElement payerCompany;
 	public void addPayerDetails(Hashtable<String, String> data) throws Exception {
-		click(NextBtn, "next");
+		
+		waitForElementToPresent(NextBtn);
+		click(NextBtn, "next");//added on 29/03
 		waitForElementToPresent(PayerEmailID);
 		scrollToElement(BookingInformation);
-		PayerEmailID.clear();
+	//	PayerEmailID.clear();
 		type(PayerEmailID, data.get("payerEmailID"), "Payer Email ID");
-		click(PayerPhone," Payer Phone");
-		Thread.sleep(4000);
-		takeScreenshotByShutterBug(payerForm, "Payer Form");
+		type(PayerPhone, data.get("payerPhone"), "Payer Phone");
+		type(payerFirstName, data.get("payerFirstName"), "Payer First Name");
+		type(payerLastName, data.get("payerLastName"), "Payer Last name");
+		type(payerCompany, data.get("payerCompany"), "Payer company");
+	//	click(PayerPhone," Payer Phone");
+	//	Thread.sleep(4000);
+	//	takeScreenshotByShutterBug(payerForm, "Payer Form");
 	}
 
 	public void clickOnBookNow() {
 		click(BookNowBtn, "BookNowBtn");
 	}
-
+	@FindBy(xpath="//*[@class='btn btn-primary']/*[@ng-hide='data.allTicketsTotalPrice() > 0']")//added on 30/03
+	WebElement BookNow;
 	public void registerFreeEvent(Hashtable<String, String> data) throws Exception {
 		this.clickOnBookTicketsTab();		
 		this.addAttendeeDetails(data);
-		picture();
-		clickElementByJavaScript(BookNowBtn);
+	//	picture();
+		clickElementByJavaScript(BookNow);
 		waitForElementToPresent(freeEventRegistrationProcessed);
 		
-		this.registeredEventsuccessfully();
+		System.out.println(freeEventRegistrationProcessed.getText());//added on 30/03
+		Thread.sleep(2000);
+		AssertionHelper.verifyText(freeEventRegistrationProcessed.getText(),
+		
+		"Your tickets have processed. You will receive an email with the details.");//added on 30/03
+		// "Your tickets have processed"
+		// Your tickets have processed.. You will receive an email with the details to
+		// join the online meeting.
+	//	this.registeredEventsuccessfully();//commented on 30/03
 	}
+	@FindBy(xpath="(//*[@class='btn btn-sm btn-info'])[1]")
+	WebElement wait2;
+@FindBy(xpath="//*[@class='form-control input-sm']")
+WebElement searchBox;
+@FindBy(xpath="//*[@title='Click to reject this ticket']")
+WebElement reject;
+@FindBy(xpath="//*[@placeholder='Enter the reason for rejection']")
+WebElement note;
+@FindBy(xpath="//*[@class='btn btn-danger']")
+WebElement rejectBtn;
+      
+          public void declineComplimentryTicket(String email) {
+ waitForElementToPresent(wait2);
+ waitForElementToPresent(searchBox);
+ type(searchBox,email,"mail");
+ waitForElementToPresent(reject);
+ click(reject,"reject complimentry ticket");
+ waitForElementToPresent(note);
+ type(note,"Try Again","reason");
+ click(rejectBtn,"Reject Button");
+}
 
 	public AuthorizeGateway registerEventbyAuthorizeNet(Hashtable<String, String> data) throws Exception {
 		this.clickOnBookTicketsTab();
@@ -138,10 +183,13 @@ public class CheckInPage extends BasePage {
 		
 		this.addPayerDetails(data);
 		clickElementByJavaScript(BookNowBtn);
+		Thread.sleep(3000);
 		waitForElementToPresent(authorizeNet);
 		click(authorizeNet, "Selecting AuthorizeNet");
+		
 		waitForElementToPresent(proceed);
-		click(proceed, "Proceed");
+		clickElementByJavaScript(proceed);
+	//	click(proceed, "Proceed");
 		return (AuthorizeGateway) openPage(AuthorizeGateway.class);
 	}
 
@@ -151,7 +199,8 @@ public class CheckInPage extends BasePage {
 		
 		this.addPayerDetails(data);
 		clickElementByJavaScript(BookNowBtn);
-		waitForElementToPresent(btnPayPal);
+		Thread.sleep(10000);
+	//	waitForElementToPresent(btnPayPal);
 		click(btnPayPal, "Selecting PayPal");
 		waitForElementToPresent(paypalProceed);
 		click(paypalProceed, "paypalProceed");
@@ -163,11 +212,14 @@ public class CheckInPage extends BasePage {
 		this.addAttendeeDetails(data);
 		this.addPayerDetails(data);
 		clickElementByJavaScript(BookNowBtn);
+		Thread.sleep(5000);
 		waitForElementToPresent(cash);
-		click(cash, "cash");
+		clickElementByJavaScript(cash);
+	//	click(cash, "cash");
 		waitForElementToPresent(payment);
-		picture();
+	//	picture();
 		click(payment, "payment");
+		
 		this.registeredEventsuccessfully();
 	}
 
@@ -190,15 +242,15 @@ public class CheckInPage extends BasePage {
 		String currentDate = d.getCurrentDateString();
 		d.selectDate("//*[@class='daterangepicker dropdown-menu ltr single openscenter show-calendar']", currentDate);
 		Thread.sleep(1000);
-		picture();
+	//	picture();
 		click(payment, "payment");
-		this.registeredEventsuccessfully();
+	//	this.registeredEventsuccessfully();
 		
 	}
 
 	public void registeredEventsuccessfully() {
 		waitForElementToPresent(success);
-		aShot();
+		//aShot();
 	}
 
 }

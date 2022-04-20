@@ -32,8 +32,14 @@ public class TC040_Community_Admin_Invite_Members extends BaseTest {
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
 		CommunityInviteMembersPage CommunityInviteMembersPage = CommunityDashboardPage.navigateToinvitePeople();
-		CommunityInviteMembersPage.InviteMembers(data.get("email1"),data.get("email2"),data.get("email3"),data.get("email4"),data.get("email5"),data.get("email6"),	data.get("email7"));
+	//	CommunityInviteMembersPage.InviteMembers(data.get("email1"),data.get("email2"),data.get("email3"),data.get("email4"),data.get("email5"),data.get("email6"),	data.get("email7"));
+		CommunityInviteMembersPage.	invite(data.get("email1"));//for  one member
 		
+		
+		Yahoo yahoo= new Yahoo().open();
+
+		yahoo.Login(data.get("email1"), data.get("password1"));
+		yahoo.communityInvitation();
 
 		//Assert.fail("Failing the login test");
 	}

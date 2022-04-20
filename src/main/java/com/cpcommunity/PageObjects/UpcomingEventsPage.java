@@ -70,10 +70,13 @@ public class UpcomingEventsPage extends BasePage{
 //	return (ZohoCRMPage) openPage(ZohoCRMPage.class);
 	
 	public void searchEvent(Hashtable<String, String> data) throws Exception {
-		EventNameSearch.clear();
-		type(EventNameSearch, data.get("eventName")+" "+getDateInDDMMMYYYY(), "eventName");
-		click(Search,"Search");
-		Thread.sleep(5000);
+		//EventNameSearch.clear();
+		type(EventNameSearch, data.get("eventName"),"eventName");//+" "+getDateInDDMMMYYYY() COMMENTED on 22/03
+		
+		waitForElementToPresent(Search);
+		clickElementByJavaScript(Search);
+	//	click(Search,"Search");
+		Thread.sleep(3000);
 	}
 	public CreateOrEditEvent searchEvent(String Eventname) throws Exception {
 		Eventname=Eventname+" "+getDateInDDMMMYYYY();

@@ -36,8 +36,10 @@ public class TC619_Verify_if_member_is_able_to_update_organization_services_you_
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
-		MyDashboardPage dashboard = login.loginToMemberdashboard(data.get("email"), data.get("password"));
-		MyProfilePage profile = dashboard.NaviagtingToMyProfilePage();
+		//MyDashboardPage dashboard = login.loginToMemberdashboard(data.get("email"), data.get("password"));
+	//	MyProfilePage profile = dashboard.NaviagtingToMyProfilePage();
+		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+		MyProfilePage profile= EcoSystemPage.goToMyProfilePage();
 		profile.professionalMatchesPage();
 		profile.UpdateserviceYouOfferandNeed();
 	

@@ -45,8 +45,9 @@ public class TC090_Configure_AuthorizeNet_Payment_Gateway_____ extends BaseTest 
 			AuthorizeGateway = SetupAuthorizePage.SetUpAuthorizeGateway();
 
 		} catch (Exception e) {
-			// TODO: handle exception
-		}
+			// TODO: handle exception		
+			}
+			
 		String amount;
 		PaymentConfirmation PaymentConfirmation = null;
 		try {
@@ -63,6 +64,9 @@ public class TC090_Configure_AuthorizeNet_Payment_Gateway_____ extends BaseTest 
 		PaymentGatewaysPage = PaymentConfirmation.EnterTransactionDetails(amount, TransactionID);
 
 		// Assert.fail("Failing the login test");
+		Yahoo yahoo= new Yahoo().open();
+		yahoo.Login(data.get("email1"), data.get("password1"));
+		yahoo.paymentGateway();
 	}
 
 	@AfterMethod

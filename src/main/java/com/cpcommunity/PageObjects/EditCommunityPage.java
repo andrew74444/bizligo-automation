@@ -86,16 +86,20 @@ public class EditCommunityPage extends BasePage{
 
 	public EcoSystemPage inActiveCommunity() throws Exception{
 		
-		picture();
-		
+	//	picture();
+		Thread.sleep(5000);
+		scrollDownVertically();//added on 07/04
+		 scrollIntoView(toggleOn);//added on 07/04
 		clickElementByJavaScript(toggleOn);
 		waitForElementToPresent(YesProceed);
-		picture();
+	//	picture();
 		click(YesProceed,"YesProceed");
-		picture();
-		Thread.sleep(1000);
+	//	picture();
+		
+		 scrollIntoView(Save);//added on 07/04
 		clickElementByJavaScript(Save);
-		picture();
+		Thread.sleep(2000);
+	//	picture();
 		return (EcoSystemPage) openPage(EcoSystemPage.class);
 //		new MyCommunitiesPage(driver);
 		

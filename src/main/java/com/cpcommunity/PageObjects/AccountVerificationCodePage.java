@@ -31,6 +31,8 @@ public class AccountVerificationCodePage extends BasePage {
 	WebElement phone;
 	@FindBy(xpath = "//input[@value='SEND']")
 	WebElement send;
+	
+	 
 	@FindBy(xpath = "//input[@ng-click='SiData.SendVerificationCode(SiData.Sendcodeby)']")
 	WebElement send1;
 

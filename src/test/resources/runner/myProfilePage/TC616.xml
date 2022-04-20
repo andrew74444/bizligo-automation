@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+<listeners>
+		<listener class-name="com.cpcommunity.ExtentListeners.ExtentListeners" />
+		<listener class-name="com.uiFramework.pamTen.cpcommunity.helper.listener.RetryListener" />
+   </listeners>
+  <test thread-count="5" name="Test">
+    <classes>
+      <class name="com.cpcommunity.testScripts.myprofiletestcases.TC616_Verify_Primary_Contact_Able_to_Add_Member"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

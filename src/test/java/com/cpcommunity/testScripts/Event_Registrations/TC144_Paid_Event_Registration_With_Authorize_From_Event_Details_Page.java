@@ -30,7 +30,8 @@ public class TC144_Paid_Event_Registration_With_Authorize_From_Event_Details_Pag
 		
 		UpcomingEventsPage UpcomingEventsPage = EcoSystemPage.goToUpComingEvents();
 		EventDetailsPage eventDetailsPage =UpcomingEventsPage.goToEventDetailsPage(data);
-		AuthorizeGateway authorizeGateway = eventDetailsPage.registerEventbyAuthorizeNet(data);
+	//	AuthorizeGateway authorizeGateway = eventDetailsPage.registerEventbyAuthorizeNet(data);
+		AuthorizeGateway authorizeGateway = eventDetailsPage.registerEventbyAuthorizeNet2(data);
 		EventTicketPage eventTicket = authorizeGateway.MakePaymentToEvent();
 		eventTicket.successfulRegistration();
 
