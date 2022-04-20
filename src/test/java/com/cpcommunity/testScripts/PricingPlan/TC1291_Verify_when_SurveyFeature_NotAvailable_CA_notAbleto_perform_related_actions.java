@@ -76,8 +76,7 @@ public class TC1291_Verify_when_SurveyFeature_NotAvailable_CA_notAbleto_perform_
 		TenantAdminDashboardPage tadashoboard4=login4.loginToTADashboard(data.get("email"), data.get("password"));
 		ManageCommunitiesPage Mcom=tadashoboard4.navigatetomanageCommunities();
 		Mcom.EditCommunities(data.get("Name"),data.get("About"), data.get("type"),data.get("Category"));
-		
-	
+			
 		
 	}
 	@AfterMethod
