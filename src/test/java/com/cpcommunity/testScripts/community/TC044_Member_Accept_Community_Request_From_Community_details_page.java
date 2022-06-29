@@ -31,14 +31,25 @@ public class TC044_Member_Accept_Community_Request_From_Community_details_page e
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+getNancycarton()+" and Password entered as "+getPassword());
-		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"),data.get("password"));
+		
+		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
-		CommunityDetailsPage.acceptCommunityRequest();
+		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
+		CommunityInviteMembersPage CommunityInviteMembersPage = CommunityDashboardPage.navigateToinvitePeople();
+		CommunityInviteMembersPage.	invite(data.get("email1"));
+		
+		HomePage home1= CommunityInviteMembersPage.logOut();
+		LoginPage login1 = home1.clickOnLOGINBtn();
+
+		
+		EcoSystemPage EcoSystemPage1 = login1.loginToApplication(data.get("email1"),data.get("password1"));
+		MyCommunitiesPage MyCommunitiesPage1 = EcoSystemPage1.goToMyCommunities();
+		CommunityDetailsPage CommunityDetailsPage1 = MyCommunitiesPage1.navigateToCommunityDetailsPage(data.get("communityName"));
+		CommunityDetailsPage1.acceptCommunityRequest();
 		
 		Yahoo yahoo= new Yahoo().open();
 
-		yahoo.Login(data.get("email"), data.get("password1"));
+		yahoo.Login(data.get("email3"), data.get("password3"));
 		yahoo.communityJoinInvitationAccepted();
 		
 		//Assert.fail("Failing the login test");

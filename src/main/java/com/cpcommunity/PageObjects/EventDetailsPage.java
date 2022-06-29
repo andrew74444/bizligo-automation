@@ -210,22 +210,35 @@ public class EventDetailsPage extends BasePage {
 
 		}	
    
-	@FindBy(xpath = "(//*[@id='selectticketcount'])[5]")//added on 30/03
+	@FindBy(xpath = "(//*[@id='selectticketcount'])[2]")//added on 30/03
 	WebElement paidTicket;
+	@FindBy(xpath = "//*[@name='Home_Email_1_2']")
+	WebElement homeEmail;
 	public void addAttendeeDetailsPaid(Hashtable<String, String> data)
 			throws Exception {
+		waitForElementToPresent(RegisterBtn);
 		click(RegisterBtn,"Register");
-		Thread.sleep(2000);
-		selectByVisibleText(paidTicket, "1", "Ticket");//for paid ticket
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
+		waitForElementToPresent(paidTicket);
+		selectByVisibleText(paidTicket, "1", "Ticket");//for paid ticket based on event page tickets list
+	//	Thread.sleep(2000);
 		scrollToElement(attendeFormView);
-		
+		AttendeeEmailID.clear();
+		FirstName.clear();
+		LastName.clear();
+		companyName.clear();
 		type(AttendeeEmailID,data.get("attendeeEmailID"),"Attendee Email ID");;
-		
+	scrollDownVertically();
 		type(AttendeePhone,data.get("attendeePhone"),"Attendee Phone");
+		FirstName.clear();
+		LastName.clear();
+		companyName.clear();
+		waitForElementToPresent(FirstName);
 		type(FirstName,data.get("attendeeFirstName"),"First Name");
+		waitForElementToPresent(LastName);
 		type(LastName,data.get("attendeLastName"),"Last Name");
 		type(companyName,data.get("companyName"),"Company Name");
+		type(homeEmail,data.get("attendeeEmailID"),"Home Email");;
 		
 
 	}
@@ -234,27 +247,33 @@ public class EventDetailsPage extends BasePage {
 	public void addAttendeeDetails(Hashtable<String, String> data)
 			throws Exception {
 
-//		updateClass(header, "");		
+//		updateClass(header, "");
+		waitForElementToPresent(RegisterBtn);
 		click(RegisterBtn,"Register");
 		Thread.sleep(2000);
-	//	selectByVisibleText(Ticket, "1", "Ticket");//for free ticket (if it is in first position in list at event page)
-		selectByVisibleText(Ticket2, "1", "Ticket");//for free ticket (if it is in second position in list at event page)
-		Thread.sleep(2000);
+		waitForElementToPresent(Ticket);
+		selectByVisibleText(Ticket, "1", "Ticket");//for free ticket (if it is in first position in list at event page)
+	//	selectByVisibleText(Ticket2, "1", "Ticket");//for free ticket (if it is in second position in list at event page)
+	//	Thread.sleep(2000);
 		scrollToElement(attendeFormView);
 	//	Thread.sleep(2000);
-	//	AttendeeEmailID.clear();
-	//	FirstName.clear();
-	//	LastName.clear();
-	//	this.companyName.clear();
+		AttendeeEmailID.clear();
+		FirstName.clear();
+		LastName.clear();
+		this.companyName.clear();
 		
 		type(AttendeeEmailID,data.get("attendeeEmailID"),"Attendee Email ID");
 		type(AttendeePhone,data.get("attendeePhone"),"Attendee Phone");
+		FirstName.clear();
+		LastName.clear();
+		waitForElementToPresent(FirstName);
 		type(FirstName,data.get("attendeeFirstName"),"First Name");
+		waitForElementToPresent(LastName);
 		type(LastName,data.get("attendeLastName"),"Last Name");
 		type(companyName,data.get("companyName"),"Company Name");
 		
-		Thread.sleep(2000);
-	//	AttendeePhone.click();
+	//	Thread.sleep(2000);
+		AttendeePhone.click();
 	//	Thread.sleep(3000);
 	//	updateClass(header, "");
 	//	takeScreenshotByShutterBug(eventAttendeesForm, "event Attendees Form");
@@ -263,7 +282,7 @@ public class EventDetailsPage extends BasePage {
 	}		
 
 
-	public void registerFreeEvent(Hashtable<String, String> data) throws Exception {
+	public void registerEvent(Hashtable<String, String> data) throws Exception {
 		this.addAttendeeDetails(data);
 		waitForElementToPresent(BookNowBtn);//added on 04/04
 		clickElementByJavaScript(BookNowBtn);
@@ -271,7 +290,7 @@ public class EventDetailsPage extends BasePage {
 	//	updateClass(header, "");
 	//	aShot();
 	}
-	@FindBy(xpath="//*[@ng-click='data.AddGuestToGuestsObj()']")
+	@FindBy(xpath="//*[@ng-click='data.AddGuestToGuestsObj()']/*[text()='Add Guest']")
 	WebElement addGuest;
 	@FindBy(xpath="//*[@ng-model='Invitee.FirstName']")
 	WebElement inviteeFirstName;
@@ -283,22 +302,32 @@ public class EventDetailsPage extends BasePage {
 	WebElement inviteGuest;
 	@FindBy(xpath="//*[@class='modal-footer']/*[@class='btn btn-primary']")
 	WebElement ok;
-	public void inviteMember(String mail) throws InterruptedException {
+	public void inviteMember(String mail,String name1,String name2) throws InterruptedException {
+		
+		waitForElementToPresent(title);
 		scrollDownVertically();
+		waitForElementToPresent(addGuest);
 		scrollToElement(addGuest);
-		click(addGuest,"add Guest");
-		type(inviteeFirstName,"Ram","First Name");
-		type(inviteeLastName,"ss","Last Name");
+	//	Thread.sleep(10000);
+		
+		clickElementByJavaScript(addGuest,"add Guest");
+		waitForElementToPresent(mailID);
 		type(mailID,mail,"MailId");
-		Thread.sleep(5000);
+		inviteeFirstName.clear();
+		inviteeLastName.clear();
+		type(inviteeFirstName,name1,"First Name");
+		type(inviteeLastName,name2,"Last Name");
+		
+	//	Thread.sleep(5000);
+		waitForElementToPresent(inviteGuest);
 		clickElementByJavaScript(inviteGuest);
 		waitForElementToPresent(ok);
 		click(ok,"ok");
 	}
 	
 	
-   @FindBy(xpath="//*[@class='btn btn-primary event-btn']/*[text()='View All']")
-	WebElement view;
+   @FindBy(xpath="//*[@class='text-center']/*/*[@ng-bind='appData.EventInfo.EventDetails.Title']")
+	WebElement title;
    @FindBy(xpath="//*[@id='btnResendConfirmation']")
    WebElement resend;
    @FindBy(xpath="//*[@id='confirmationEmail']")
@@ -309,16 +338,19 @@ public class EventDetailsPage extends BasePage {
    WebElement text;
    @FindBy(xpath=" //*[@class='modal-footer']/*[@class='btn btn-primary']")
    WebElement okButton;
-	public void resendingConfirmationMail(String email) {
+	public void resendingConfirmationMail(String email) throws InterruptedException {
 		
-		waitForElementToPresent(view);
+		waitForElementToPresent(title);
 	//	waitForElementToPresent(resend);
 		scrollToElement(resend);
 	//	click(resend,"resending confirmation mail");
-		hardClick(resend);
+		clickElementByJavaScript(resend,"resend");
 		waitForElementToPresent(mail);
 		type(mail,email,"confirmation mail");
-		click(submit,"submitting the mail");
+		Thread.sleep(1000);
+		waitForElementToPresent(submit);
+		clickElementByJavaScript(submit,"submitting the mail");
+		Thread.sleep(5000);
 		waitForElementToPresent(text);
 		System.out.println(text.getText());
 		
@@ -401,9 +433,11 @@ public class EventDetailsPage extends BasePage {
 
 		this.addAttendeeDetailsPaid(data);//for paid tickets
 	//	click(NextBtn,"Next");
+		waitForElementToPresent(NextBtn);
+		clickElementByJavaScript(NextBtn);
 		this.addPayerDetails(data);			
 		clickElementByJavaScript(BookNowBtn);
-		Thread.sleep(2000);
+		Thread.sleep(10000);
 		waitForElementToPresent(AuthorizeNet);
 		click(AuthorizeNet,"Selecting AuthorizeNet");
 		waitForElementToPresent(BtnPaythroughCheckout);
@@ -434,7 +468,7 @@ public class EventDetailsPage extends BasePage {
 			clickElementByJavaScript(NextBtn);
 			this.addPayerDetails(data);			
 			clickElementByJavaScript(BookNowBtn);	
-			Thread.sleep(3000);//for wait purpose wail saving data
+			Thread.sleep(15000);//for wait purpose wail saving data
 			waitForElementToPresent(BtnPayPal);
 			click(BtnPayPal,"Selecting PayPal");
 			waitForElementToPresent(BtnPayment);

@@ -5,6 +5,7 @@ import java.util.Hashtable;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.GlobalCommunitesPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
@@ -27,9 +28,12 @@ public class TC852_Verify_user_cannot_view_resources_if_not_part_of_community ex
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
-		MyDashboardPage MDP=login.loginToMemberdashboard(data.get("email"), data.get("password"));
-		GlobalCommunitesPage GCP=MDP.naviagtingToGlobalCommunities();
-		GCP.checkResources();
+//		MyDashboardPage MDP=login.loginToMemberdashboard(data.get("email"), data.get("password"));
+//		GlobalCommunitesPage GCP=MDP.naviagtingToGlobalCommunities();
+
+		 EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+		 GlobalCommunitesPage GCP=	EcoSystemPage. goToGlobalCommunities();
+				GCP.checkResources();
 
 }
 	@AfterMethod

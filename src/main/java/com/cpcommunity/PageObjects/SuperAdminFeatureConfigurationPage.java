@@ -53,14 +53,14 @@ public class SuperAdminFeatureConfigurationPage extends BasePage {
 		//Thread.sleep(4000);
 		WebElement saveButton = driver.findElement(By.xpath("//label[contains(text(),'"+feature+"')]/../../../../..//*[@id='btnSave']"));
 		this.save(saveButton);
-		//Thread.sleep(3000);
+		Thread.sleep(3000);
 	}
 
 	public void enablefeature(String feature) throws Exception {
 	
-		//WebElement element = driver.findElement(By.xpath("//label[contains(text(),'"+feature+"')]")); 
-		//scrollToElement(element);
-		//click(element, "feature");
+		WebElement element = driver.findElement(By.xpath("//*[@href='#BLOG_1_1']")); 
+		scrollToElement(element);
+		click(element, "feature");
 		Thread.sleep(3000);
 		WebElement toggleButton = driver.findElement(By.xpath("//label[contains(text(),'"+feature+"')]/../../../../..//*[contains(text(),'Disabled')]"));
 		click(toggleButton, "enabling the feature");

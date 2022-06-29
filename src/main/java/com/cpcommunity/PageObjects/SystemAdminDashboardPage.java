@@ -160,19 +160,24 @@ public class SystemAdminDashboardPage extends BasePage {
 	WebElement logOUT;
 	
 	
-		
+	@FindBy(xpath="//*[text()=' Communities ']")
+	WebElement wait;
+	@FindBy(xpath = "//a[contains(text(),'Blogs')]")
+	WebElement Blogs;
 	        public BlogsBySystemAdmin navigateToSystemAdminBlogs() throws Exception
 		
 	        {
+	        	Thread.sleep(2000);
+	waitForElementToPresent(wait);
+	waitForElementToPresent(Blogs);
+	                click(Blogs,"Blogs");
 	
-	                click(blogs,"Blogs");
-	
-	                Thread.sleep(5000);
-		
+	          //      Thread.sleep(5000);
+	                waitForElementToPresent(posts);
 	                click(posts,"posts");
 		
-	                Thread.sleep(5000);
-	
+	         //       Thread.sleep(5000);
+	//
 	                return (BlogsBySystemAdmin) openPage(BlogsBySystemAdmin.class);
 		
 	        }

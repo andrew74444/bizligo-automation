@@ -6,6 +6,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.CommunityDashboardPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.MyCommunitiesPage;
@@ -28,9 +29,16 @@ public class TC942_Verify_CA_able_add_infinite_questions_in_Add_survey_form exte
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
-		MyCommunitiesPage MyCP = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
-		CommunityDashboardPage CDP= MyCP.gotoManageCommunity(data.get("communityName"));
-		ServeysPage SP=CDP.GoToServeysPage();
+		/*
+		 * MyCommunitiesPage MyCP = login.loginToMyCommunitiesPage(data.get("email"),
+		 * data.get("password")); CommunityDashboardPage CDP=
+		 * MyCP.gotoManageCommunity(data.get("communityName")); ServeysPage
+		 * SP=CDP.GoToServeysPage();
+		 */
+		 EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));	
+			MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
+			CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
+		ServeysPage SP=CommunityDashboardPage.GoToServeysPage();
 		SP.infiniteQuestionsByCA(data.get("Name"),data.get("Ques"),data.get("Ques2"),data.get("Ques3"),data.get("Ques4"),data.get("Ques5"),data.get("Ques6"));
 	}
 	@AfterMethod

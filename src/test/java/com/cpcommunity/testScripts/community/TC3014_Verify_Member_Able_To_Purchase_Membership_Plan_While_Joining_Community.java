@@ -52,12 +52,13 @@ public class TC3014_Verify_Member_Able_To_Purchase_Membership_Plan_While_Joining
 	      
 			yahoo.Login(data.get("email2"), data.get("password2"));//member
 			yahoo.membershipPlanMail();
-			yahoo.openAndGoToNewTab();
+			
 			
 	//***********To check community admin mail*******************************//	
-			Yahoo yahoo1= new Yahoo().open();
-			yahoo1.Login(data.get("email3"), data.get("password3"));//community admin
-			yahoo1.membershipPlanMailToCA();
+//			yahoo.openAndGoToNewTab();
+//			Yahoo yahoo1= new Yahoo().open();
+//			yahoo1.Login(data.get("email3"), data.get("password3"));//community admin
+//			yahoo1.membershipPlanMailToCA();
 		
 			
 	}

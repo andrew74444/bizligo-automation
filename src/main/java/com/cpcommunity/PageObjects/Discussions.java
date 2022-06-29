@@ -229,10 +229,12 @@ public class Discussions extends BasePage {
 	 @FindBy(xpath = "(//span[@title=\"Menu\"])[1]")
 	 WebElement discussionMenu;
 
-	 @FindBy(xpath = "//span[@class='ng-scope open']//ul[@class='dropdown-menu ng-scope']//li[@class='ng-scope']//a[@href='javascript:;'][normalize-space()='Edit']")
+//	 @FindBy(xpath = "//span[@class='ng-scope open']//ul[@class='dropdown-menu ng-scope']//li[@class='ng-scope']//a[@href='javascript:;'][normalize-space()='Edit']")
+	 @FindBy(xpath = " (//*[@ng-click='data.EditCommunityDiscussion(discussion.DiscussionId)'])[1]")
 	 WebElement editPost;
 
-	 @FindBy(xpath = "//span[@class='ng-scope open']//ul[@class='dropdown-menu ng-scope']//li[@class='ng-scope']//a[@href='javascript:;'][normalize-space()='Delete']")
+//	 @FindBy(xpath = "//span[@class='ng-scope open']//ul[@class='dropdown-menu ng-scope']//li[@class='ng-scope']//a[@href='javascript:;'][normalize-space()='Delete']")
+	 @FindBy(xpath = " (//*[@ng-click='data.DeleteCommunityDiscussion(discussion.DiscussionId)'])[1]")
 	 WebElement deleteCommunityPost;
 	 
 	 @FindBy(xpath = "//button[@class='btn btn-primary'][normalize-space()='OK']")
@@ -266,7 +268,7 @@ public class Discussions extends BasePage {
 
 //		click(, "Post");
 		clickElementByJavaScript(PostBtn);
-		Thread.sleep(20000);
+//		Thread.sleep(20000);
 		
 		
 		type(searchDiscussion, postMessage, "searchDiscussion");
@@ -411,25 +413,37 @@ public class Discussions extends BasePage {
 //		waitForElementToPresent(noResultsFound);
 //		noResultsFound.isDisplayed();
 	}
-
+@FindBy(xpath="(//*[@class='btn btn-subscribe ng-scope'])[1]")
+			WebElement subscribe;
+@FindBy(xpath="(//*[@class='title-section media-body'])[1]")
+		WebElement title;
 	public void addComment(String Disccusion, String postComment) throws InterruptedException {
+		click(discussions, "discussions");
+		waitForElementToPresent(subscribe);
 		type(searchDiscussion, Disccusion, "searchDiscussion");
 		click(Searchbtn, "Search");
-		Thread.sleep(6000);
+	//	Thread.sleep(6000);
+		waitForElementToPresent(title);
+		waitForElementToPresent(FirstPostComment);
 		type(FirstPostComment, postComment, "First Post Comment");
 		click(SendC, "Send Comment");
-		Thread.sleep(10000);
+	//	Thread.sleep(10000);
 	}
 	
-	
+	@FindBy(xpath="(//*[@class='col-md-4 col-sm-12 col-xs-12']/*/*[@class='dropdown'])[1]")
+			WebElement dropdown;
 	public void editCommunitydiscussion(String editpostContent) throws InterruptedException 
 	{
-	click(discussionMenu, "discussionMenu");
-	Thread.sleep(10000);
-	click(editPost, "editPost");
-	Thread.sleep(20000);	
+		Thread.sleep(5000);
+		waitForElementToPresent(dropdown);
+		click(dropdown, "dropdown");
+//	click(discussionMenu, "discussionMenu");
+//	Thread.sleep(10000);
+		waitForElementToPresent(editPost);	
+	clickElementByJavaScript(editPost, "editPost");
+//	Thread.sleep(20000);	
 	//type(this.discussionTitle, discussionTitle, "discussions");
-	//Thread.sleep(10000);
+	Thread.sleep(10000);
 	switchToFrameByID(0);
 	type(enterTextInframe,editpostContent,"TestContent");
 	switchTodefaultContent();
@@ -437,21 +451,26 @@ public class Discussions extends BasePage {
 	click(updatePostBtn, "updatePostBtn");
 	waitForElementToPresent(toastMessage);
 	AssertionHelper.verifyText(toastMessage.getText(), "Post Updated Successfully");
-	Thread.sleep(7000);
+//	Thread.sleep(7000);
 		}
 	
 	
 	public void deleteCommunitydiscussion() throws InterruptedException 
 	{
-	click(discussionMenu, "discussionMenu");
-	Thread.sleep(10000);
+//	click(discussionMenu, "discussionMenu");
+//	Thread.sleep(10000);
+		Thread.sleep(5000);
+		waitForElementToPresent(dropdown);
+		click(dropdown, "dropdown");
+		
+		waitForElementToPresent(deleteCommunityPost);
 	click(deleteCommunityPost, "deleteCommunityPost");
-	Thread.sleep(20000);	
+//	Thread.sleep(20000);	
 	waitForElementToPresent(OkBtn);
 	click(OkBtn,"Ok button");	
 	waitForElementToPresent(toastMessage);
 	AssertionHelper.verifyText(toastMessage.getText(), "Post deleted successfully");
-	Thread.sleep(7000);
+//	Thread.sleep(7000);
 		}
 	
 	
@@ -466,16 +485,18 @@ public class Discussions extends BasePage {
 	
 	public void SubscribeCommunitydiscussion() throws InterruptedException 
 	{
+		waitForElementToPresent(unsubscribeBtn);
 	click(unsubscribeBtn, "unsubscribeBtn");
-	Thread.sleep(2000);
+//	Thread.sleep(2000);
 	waitForElementToPresent(toastMessage);
 	AssertionHelper.verifyText(toastMessage.getText(), "Success!Unsubscribed. You will no longer receive notifications for this post");
-	Thread.sleep(7000);
+//	Thread.sleep(7000);
+	waitForElementToPresent(subscribeBtn);
 	click(subscribeBtn, "subscribeBtn");
-	Thread.sleep(2000);
+//	Thread.sleep(2000);
 	waitForElementToPresent(toastMessage);
 	AssertionHelper.verifyText(toastMessage.getText(), "Success! You will receive notifications if any user adds the comment");
-	Thread.sleep(7000);
+//	Thread.sleep(7000);
 	
 	}
 	
@@ -526,13 +547,19 @@ public class Discussions extends BasePage {
 		Thread.sleep(1000);
 
 	}
-
-	public void tagMemberInComment(String postComment,String memberName) throws Exception {
-
-		type(FirstPostComment, postComment, "First Post Comment");
+@FindBy(xpath="(//*[@class='list-group-item pointer ng-scope ng-isolate-scope active'])[2]")
+			WebElement name;
+	public void tagMemberInComment(String memberName,String postComment) throws Exception {
+		memberName = "@"+memberName;
+		type(FirstPostComment, memberName, "First Post Comment");
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//*[@class='list-group-item pointer ng-scope ng-isolate-scope active'])[2]")).click();
-		Thread.sleep(2000);
+	//	driver.findElement(By.xpath("(//*[@class='list-group-item pointer ng-scope ng-isolate-scope active'])[2]")).click();
+	//	waitForElementToPresent(name);
+		click(name, "Member Name");
+	//	Thread.sleep(2000);
+		FirstPostComment.sendKeys(postComment);
+	
+		waitForElementToPresent(SendCommentBtn);
 		click(SendCommentBtn, "Send Comment");
 		Thread.sleep(10000);
 	}
@@ -544,15 +571,15 @@ public class Discussions extends BasePage {
 		waitForElementToPresent(createNewPost);
 		click(createNewPost, "create New Post");
 		waitForElementToPresent(PostBtn);
-		try {
-			updateClass(header, "");
-		} catch (Exception e) {
-			updateClass(groupPageHeader, "");
-		}
+//		try {
+//			updateClass(header, "");
+//		} catch (Exception e) {
+//			updateClass(groupPageHeader, "");
+//		}
 
 		scrollIntoView(Searchbtn);
 
-		type(discussionTitle, "discussion Title", "discussion Title");
+		type(discussionTitle, "Title02", "discussion Title");
 
 		driver.switchTo().frame(iframe);
 		Thread.sleep(10000);
@@ -568,10 +595,11 @@ public class Discussions extends BasePage {
 		addPost(postMessage);
 		memberName = "@"+memberName;
 		type(tagInPost, memberName, "Tag");
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
 		
 		driver.findElement(By.xpath("((//*[@class='list-group user-search'])[1])//li")).click();
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
+		waitForElementToPresent(PostBtn);
 		click(PostBtn, "Post");
 		Thread.sleep(20000);
 	}

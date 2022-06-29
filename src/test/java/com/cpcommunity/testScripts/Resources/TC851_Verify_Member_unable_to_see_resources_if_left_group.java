@@ -6,8 +6,11 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.Bizligo1CommunityPage;
+import com.cpcommunity.PageObjects.CommunityDetailsPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
+import com.cpcommunity.PageObjects.MyCommunitiesPage;
 import com.cpcommunity.PageObjects.MyDashboardPage;
 import com.cpcommunity.testScripts.community.BaseTest;
 import com.cpcommunity.utilities.Constants;
@@ -27,9 +30,16 @@ public class TC851_Verify_Member_unable_to_see_resources_if_left_group extends B
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
-		 MyDashboardPage MDP=login.loginToMemberdashboard(data.get("email"), data.get("password"));
-		 Bizligo1CommunityPage BCP=MDP.goToMyCommunity();
-		 BCP.resourceWhenLeftGroup();
+//		 MyDashboardPage MDP=login.loginToMemberdashboard(data.get("email"), data.get("password"));
+//		 Bizligo1CommunityPage BCP=MDP.goToMyCommunity();
+//		 BCP.resourceWhenLeftGroup();
+		 EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+		  MyCommunitiesPage MyCommunitiesPage=	  EcoSystemPage.goToMyCommunities();
+		  CommunityDetailsPage CommunityDetailsPage=  MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
+		  CommunityDetailsPage.  JoinGroups(data.get("name"));
+		  CommunityDetailsPage.  checkingResources();
+		  CommunityDetailsPage.  LeaveGroup(data.get("name"));
+		  CommunityDetailsPage.checkgroupResource();
 
 }
 	@AfterMethod

@@ -1,5 +1,6 @@
 package com.cpcommunity.PageObjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -35,13 +36,16 @@ public class ManageCommunityMembersPage extends BasePage {
 	@FindBy(xpath = "//*[contains(text(),'Back')]")
 	WebElement Back;
 
-	@FindBy(xpath = "//*[contains(text(),'Remove Admin')]")
+	//@FindBy(xpath = "//*[contains(text(),'Remove Admin')]")
+	@FindBy(xpath = "(//*[@class='btn btn-warning btn-xs']/*[text()='Remove Admin'])[1]")
 	WebElement RemoveAdmin;
 
-	@FindBy(xpath = "//*[contains(text(),'Make Admin')]")
+//	@FindBy(xpath = "//*[contains(text(),'Make Admin')]")
+	@FindBy(xpath = "//*[@class='btn btn-info btn-xs']/*[text()='Make Admin']")
 	WebElement MakeAdmin;
 
-	@FindBy(xpath = "//button[contains(.,'Yes, Proceed')]")
+	//@FindBy(xpath = "//button[contains(.,'Yes, Proceed')]")
+	@FindBy(xpath = "//*[@class='modal-footer']/*[@class='btn btn-success']")
 	WebElement YesProceed;
 
 	@FindBy(xpath = "//button[contains(.,'Ok')]")
@@ -68,7 +72,7 @@ public class ManageCommunityMembersPage extends BasePage {
 	@FindBy(xpath = "//tr[@id='row_1071']//td[contains(@class,'select-checkbox')]")//*[@id=\"row_758\"]/td[2]
 	WebElement checkBoxMemberAdded;
 	
-	@FindBy(xpath = "//tr[@id='row_1073']//td[@class=' select-checkbox']")//*[@id=\"row_758\"]/td[2]
+	@FindBy(xpath = "//*[@id='CommunityUsersTable']/*/*[@role='row']/*[@class=' select-checkbox']")//*[@id=\"row_758\"]/td[2]
 	WebElement checkBoxMemberAdded1;
 	
 			
@@ -107,30 +111,31 @@ public class ManageCommunityMembersPage extends BasePage {
 	//
 
 	public boolean ManageMembers(String email) throws Exception {
-//**************below four methods we can use accordingly our purpose**************||||||||
-	//	this.addmember(email);
+
+		this.addmember(email);
 	//	this.makeAdmin(email);
 	//	this.removeAdmin(email);
 		this.removeMember(email);
-		Thread.sleep(4000);
+	//	Thread.sleep(4000);
 		return true;
 
 	}
 
 	public void clickOnYesProceed() throws Exception {
 		waitForElementToPresent(YesProceed);
-		picture();
+	//	picture();
 		click(YesProceed, "Yes, Proceed");
 		waitForElementToPresent(OkBth);
 		click(OkBth, "Ok Button");
 	}
 
 	public void memberOutSearch(String email) throws Exception {
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
 	//	memberOutSearch.clear();
+		waitForElementToPresent(memberOutSearch);
 		type(memberOutSearch, email, "Searching in members not joined");
 		waitForElementToPresent(waitForTheSearchOut);
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
 
 	}
 
@@ -140,13 +145,13 @@ public class ManageCommunityMembersPage extends BasePage {
 	//	memberinSearch.clear();
 		type(memberinSearch, email, "Searching in members joined");
 	//	waitForElementToPresent(waitForTheSearchIn);
-		Thread.sleep(10000);
+		Thread.sleep(5000);
 
 	}
 
 	public void memberInCheckBox() throws Exception {
-		Thread.sleep(1000);
-
+	//	Thread.sleep(1000);
+		waitForElementToPresent(memberInCheckBox);
 		click(memberInCheckBox, "Selecting Check box");
 
 		while (true) {
@@ -154,19 +159,19 @@ public class ManageCommunityMembersPage extends BasePage {
 				break;
 			}
 			click(memberInCheckBox, "Selecting Check box");
-			Thread.sleep(3000);
+		//	Thread.sleep(3000);
 		}
 
-		Thread.sleep(1000);
+	//	Thread.sleep(1000);
 	}
 
 	public void memberOutCheckBox() throws Exception {
 
-		Thread.sleep(2000);
-
+	//	Thread.sleep(2000);
+waitForElementToPresent(memberOutCheckBox);
 		click(memberOutCheckBox, "Selecting Check box");
 
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
 
 	}
 
@@ -217,7 +222,7 @@ public class ManageCommunityMembersPage extends BasePage {
 		this.memberOutCheckBox();
 		click(Add, "Add");
 		waitForElementToPresent(YesProceed);
-		picture();
+	//	picture();
 		click(YesProceed, "Yes, Proceed");		
 		waitForElementToPresent(OkBth);
 		System.out.println(successMsg.getText());
@@ -271,19 +276,23 @@ public void memberAsAdmin(String email) throws Exception {
 		//System.out.println(successMsg.getText());
 		//click(OkBth, "Ok Button");		
 	}
-
+@FindBy(xpath="//*[@id='CommunityUsersTable_filter']/*/*[@placeholder='Search by Member Name']")
+WebElement searchBox;
 public void removeMemberTA(String email) throws Exception{
 	
 	this.memberOutSearch(email);
 	this.memberOutCheckBox();
 	click(Add, "Add");
 	waitForElementToPresent(YesProceed);
-	picture();
+//	picture();
 	click(YesProceed, "Yes, Proceed");		
 	waitForElementToPresent(OkBth);
 	System.out.println(successMsg.getText());
 	click(OkBth, "Ok Button");		
-	//Thread.sleep(2000);
+driver.navigate().refresh();
+	waitForElementToPresent(searchBox);
+	type(searchBox, email, "Searching in members joined");
+	Thread.sleep(3000);
 	waitForElementToPresent(checkBoxMemberAdded1);
 	checkBoxMemberAdded1.click();
 	Remove.click();
@@ -300,7 +309,7 @@ public void removeMemberAsAdmin(String email) throws Exception {
 	this.memberOutCheckBox();
 	click(Add, "Add");
 	waitForElementToPresent(YesProceed);
-	picture();
+//	picture();
 	click(YesProceed, "Yes, Proceed");		
 	waitForElementToPresent(OkBth);
 	click(OkBth, "Ok Button");
@@ -313,6 +322,7 @@ public void removeMemberAsAdmin(String email) throws Exception {
 	System.out.println(successMsg.getText());
 	click(OkBth, "Ok Button");
 	//Thread.sleep(4000);
+	
 	waitForElementToPresent(RemoveAdmin);
 	RemoveAdmin.click();
 	waitForElementToPresent(YesProceed);
@@ -332,6 +342,44 @@ public void removeMemberAsAdmin(String email) throws Exception {
 //	System.out.println(successMsg.getText());
 	//click(OkBth, "Ok Button");		
 }
+public void removeMemberAsAdmin(String email,String name) throws Exception {
+	
+	this.memberOutSearch(email);
+	this.memberOutCheckBox();
+	click(Add, "Add");
+	waitForElementToPresent(YesProceed);
+//	picture();
+	click(YesProceed, "Yes, Proceed");		
+	waitForElementToPresent(OkBth);
+	click(OkBth, "Ok Button");
+	driver.navigate().refresh();
+	
+	waitForElementToPresent(searchMemberInCommunity);
+	type(searchMemberInCommunity,name,name);
+	Thread.sleep(5000);
+	waitForElementToPresent(MakeAdmin);
+	clickElementByJavaScript(MakeAdmin,"MakeAdmin");
+//	click(MakeAdmin,"MakeAdmin");
+	waitForElementToPresent(YesProceed);
+	click(YesProceed, "Yes, Proceed");
+	waitForElementToPresent(OkBth);
+	System.out.println(successMsg.getText());
+	click(OkBth, "Ok Button");
+	
+	driver.navigate().refresh();
+	type(searchMemberInCommunity,name,name);
+	Thread.sleep(5000);
+	waitForElementToPresent(RemoveAdmin);
+	clickElementByJavaScript(RemoveAdmin,"RemoveAdmin");
+//	click(RemoveAdmin,"RemoveAdmin");
+	waitForElementToPresent(YesProceed);
+	click(YesProceed, "Yes, Proceed");		
+	waitForElementToPresent(OkBth);
+	System.out.println(successMsg.getText());
+	AssertionHelper.verifyText(successMsg.getText(), "Community Admin removed successfully");
+	
+	click(OkBth, "Ok Button");
+}
 
 
 public void TAunAbleToRemoveAdminOnlyOneAdmin(String name) throws Exception {
@@ -339,8 +387,10 @@ public void TAunAbleToRemoveAdminOnlyOneAdmin(String name) throws Exception {
     //Thread.sleep(4000);
 	//this.memberInSearch(email);
     waitForElementToPresent(RemoveAdmin);
-	click(RemoveAdmin, "Remove Admin");
-	waitForElementToPresent(YesProceed);
+    clickElementByJavaScript(RemoveAdmin, "Remove Admin");
+//	click(RemoveAdmin, "Remove Admin");
+//	waitForElementToPresent(YesProceed);
+	wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[contains(.,'Yes, Proceed')]")));
 	click(YesProceed, "Yes, Proceed");
 	//Thread.sleep(3000);
 	System.out.println(successMsg.getText());

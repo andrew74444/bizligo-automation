@@ -28,7 +28,7 @@ public class TC166_Verify_Rejected_Community_Is_Not_Displayed_In_MyCommunities e
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage myCommunitiesPage= EcoSystemPage.goToMyCommunities();
-		myCommunitiesPage.verifyRejectCommunityIsNotDisplayedInMyCommunities(data.get("communityName")+" "+runTime);
+		myCommunitiesPage.verifyRejectCommunityIsNotDisplayedInMyCommunities(data.get("communityName"));//+" "+runTime
 		//Assert.fail("Failing the login test");
 	}
 

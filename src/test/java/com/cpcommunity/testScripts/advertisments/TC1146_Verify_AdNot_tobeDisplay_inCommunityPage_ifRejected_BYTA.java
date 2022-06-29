@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.AuthorizeGateway;
 import com.cpcommunity.PageObjects.CommunityDashboardPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.GlobalCommunitesPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
@@ -15,6 +16,7 @@ import com.cpcommunity.PageObjects.MyCommunitiesPage;
 import com.cpcommunity.PageObjects.MyDashboardPage;
 import com.cpcommunity.PageObjects.SelectPlanPage;
 import com.cpcommunity.PageObjects.TenantAdminDashboardPage;
+import com.cpcommunity.PageObjects.Yahoo;
 import com.cpcommunity.testScripts.community.BaseTest;
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataProviders;
@@ -33,22 +35,28 @@ public class TC1146_Verify_AdNot_tobeDisplay_inCommunityPage_ifRejected_BYTA ext
 	logInfo("BizLigo Application Opened");
 	HomePage home = new HomePage().open(data.get("tenantType"));
 	LoginPage login = home.clickOnLOGINBtn();
-	 MyDashboardPage MDP=login.loginToMemberdashboard(data.get("email"), data.get("password"));
-	 GlobalCommunitesPage GCP=MDP.naviagtingToGlobalCommunities();
+//
+	EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+	GlobalCommunitesPage GCP = EcoSystemPage.goToGlobalCommunities();
 	 GCP.searchCommunity(data.get("community"));
+	 GCP.goTocommunityPage(data.get("community"));
 	 SelectPlanPage SPP= GCP.navigatetoselectPlanPage();
 	 AuthorizeGateway AG=SPP.selectPlan1(data.get("planName"),data.get("AdName"),data.get("path"));
 	 AG.makePayment();
-	 quit();
-	 openBrowser(data.get("browser"));
-	logInfo("Launched Browser : "+ data.get("browser"));				
-	logInfo("BizLigo Application Opened");
+	 
+	
 	HomePage home1 = new HomePage().open(data.get("tenantType"));
+	home1.logout();
 	LoginPage login1 = home1.clickOnLOGINBtn();
 	TenantAdminDashboardPage tadashoboard=login1.loginToTADashboard(data.get("email1"), data.get("password1"));
 	 ManageMemberAdvertisementsPage MMA=tadashoboard.navigateToMemberAdvertisements();
 	 MMA.rejectAd(data.get("status"));
 	// MMA.approveRejectedAd(data.get("plan1"), data.get("adImage"),data.get("linkUrl"));
+	 
+	 
+	 Yahoo yahoo= new Yahoo().open();
+		yahoo.Login(data.get("email2"), data.get("password2"));//member verifying mail about rejection
+   yahoo.AdRejectedNotification();
 }
 	@AfterMethod
 	public void tearDown() {

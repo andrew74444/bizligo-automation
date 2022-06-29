@@ -6,7 +6,9 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.CommunityDashboardPage;
+import com.cpcommunity.PageObjects.CommunityDetailsPage;
 import com.cpcommunity.PageObjects.Discussions;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.GlobalCommunitesPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
@@ -34,24 +36,31 @@ public class TC1122_Verify_Inactive_AdStatusPlan_notTo_Display_InAdPage extends 
 	HomePage home = new HomePage().open(data.get("tenantType"));
 	LoginPage login = home.clickOnLOGINBtn();
 	//MyProfilePage myprofile = login.loginToMyProfilePage(data.get("email"), data.get("password"));
-	MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
-	CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
+//	MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
+EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+//	
+	MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
+	CommunityDashboardPage communityDashboard = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
 	ManageAdPlansPage MAPP=communityDashboard.goToManageAdPlansPage();
 	MAPP.createInactiveAdPlan(data.get("name1"),data.get("price"), data.get("planDetails"),data.get("duration"),data.get("durationType"),data.get("adLocation"),data.get("adType"), data.get("approvalType"));
-	quit();
-	
-	openBrowser(data.get("browser"));
-	logInfo("Launched Browser : "+data.get("browser"));
-	logInfo("BizLigo Application Opened");
+//	quit();
+//	
+//	openBrowser(data.get("browser"));
+//	logInfo("Launched Browser : "+data.get("browser"));
+//	logInfo("BizLigo Application Opened");
 	HomePage home1 = new HomePage().open(data.get("tenantType"));
+	home1.logout();
 	LoginPage login1 = home1.clickOnLOGINBtn();
-	 MyDashboardPage MDP=login1.loginToMemberdashboard(data.get("email1"), data.get("password1"));
-	 GlobalCommunitesPage GCP=MDP.naviagtingToGlobalCommunities();
-	 GCP.searchCommunity(data.get("community"));
 	
-	 GCP.checkInactiveAdvertisementNotPresent();
+//	 MyDashboardPage MDP=login1.loginToMemberdashboard(data.get("email1"), data.get("password1"));
+//	 GlobalCommunitesPage GCP=MDP.naviagtingToGlobalCommunities();
+//	 GCP.searchCommunity(data.get("community"));	
+//	 GCP.checkInactiveAdvertisementNotPresent();
 	 
-	
+	EcoSystemPage EcoSystemPage1 = login1.loginToApplication(data.get("email1"), data.get("password1"));
+	GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage1.goToGlobalCommunities();
+	CommunityDetailsPage CommunityDetailsPage = GlobalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));
+	CommunityDetailsPage.inActivePlanIsNotPresent(data.get("name1"));
 	}
 	@AfterMethod
 	public void tearDown() {

@@ -6,6 +6,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.CommunityDashboardPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.ManageResourcesPage;
@@ -28,9 +29,18 @@ public class TC1073_Verify_CA_ableTo_Create_Resources_Without_GroupAndMembership
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
-		MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
-		CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
-		ManageResourcesPage manageres=communityDashboard.navigateToManageResourcesPage();
+		/*
+		 * MyCommunitiesPage myCommunity =
+		 * login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
+		 * CommunityDashboardPage communityDashboard =
+		 * myCommunity.gotoManageCommunity(data.get("communityName"));
+		 * ManageResourcesPage
+		 * manageres=communityDashboard.navigateToManageResourcesPage();
+		 */
+		 EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));	
+			MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
+			CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
+		ManageResourcesPage manageres=CommunityDashboardPage.navigateToManageResourcesPage();
 		manageres.AddFieldswithoutGroup(data.get("Title"),data.get("Title1"), data.get("Description"),data.get("url"));
 		manageres.checkResouces();
 }

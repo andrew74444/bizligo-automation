@@ -32,7 +32,7 @@ public class TC180_Verify_Expired_Membership_Member_Not_Able_Access_Community ex
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
-		CommunityDetailsPage CommunityDetailsPage = GlobalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
+		CommunityDetailsPage CommunityDetailsPage = GlobalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));//+" "+runTime
 		Discussions discussions =CommunityDetailsPage.CheckNonMemberNotAbleTosharePosts();
 		discussions.CheckNonMemberIsNotAbleToPostLikeComment();
 		//Assert.fail("Failing the login test");

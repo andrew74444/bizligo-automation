@@ -37,7 +37,7 @@ public class TC089_Configure_Paypal_Payment_Gateway extends BaseTest {
 		PaymentGatewaysPage PaymentGatewaysPage  = CommunityDashboardPage.navigateToPaymentGateways();
 		SetupPayPalPage SetupPayPalPage = PaymentGatewaysPage.SetPayPal();
 		PayPalPayment PayPalPayment = SetupPayPalPage.SetUpPayPalPaymentGateway(data.get("payPalAPIUsername"), data.get("payPalAPIPassword"), data.get("payPalAPISignature"));
-		String PaidAmount = PayPalPayment.PayPalpayment(data.get("email"),data.get("password"));
+		String PaidAmount = PayPalPayment.PayPalpayment1(data.get("email1"),data.get("password1"));
 		PaymentConfirmation PaymentConfirmation = PayPalPayment.payPalconfirmation();
 		String Url = DriverManager.getDriver().getCurrentUrl();		
 		PayPalMerchant PayPalMerchant = PaymentConfirmation.payPallogin();

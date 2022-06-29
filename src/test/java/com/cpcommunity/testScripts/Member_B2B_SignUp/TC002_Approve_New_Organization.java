@@ -17,17 +17,21 @@ public class TC002_Approve_New_Organization extends BaseTest {
 	PaymentReceipt PaymentReceipt;
 	
 	@Test(dataProviderClass = DataProviders.class, dataProvider = "masterDP")
-	public void TC001(Hashtable<String, String> data) throws Exception {
+	public void TC1198(Hashtable<String, String> data) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC001", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC1198", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		System.out.println(data.get("duration"));
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
 		HomePage home = new HomePage().open(data.get("tenantType"));
-		LoginPage loginPage = home.clickOnLOGINBtn();
-		loginPage.clickonSignup();
+		LoginPage login = home.clickOnLOGINBtn();
+	//	loginPage.clickonSignup();
+		
+		   TenantAdminDashboardPage tadashoboard=login.loginToTADashboard(data.get("email1"), data.get("password1"));
+		    OrganizationsPage organisation=	tadashoboard.goToOrganizationsPage();
+		    organisation.approveOrganization(data.get("orgName"));
 	}
 
 	
@@ -38,7 +42,7 @@ public class TC002_Approve_New_Organization extends BaseTest {
 	@AfterMethod
 	public void tearDown() {
 
-		logInfo("Login Test Completed");
+		logInfo("TC002 Test Completed");
 
 		quit();
 

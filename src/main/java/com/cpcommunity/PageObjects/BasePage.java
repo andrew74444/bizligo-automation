@@ -206,6 +206,25 @@ try {
 //		}
 
 	}
+protected void waitForElementToClickable(WebElement element) {
+
+		
+		log.info("waiting for :" + element.toString().substring(65) + " for :" + expTime + " seconds");
+		// System.out.println("waiting for :" + element.toString() + " for :" +
+		// timeOutInSeconds + " seconds");
+
+		wait.until(ExpectedConditions.elementToBeClickable(element));
+		log.info(element.toString().substring(60) + "is displayed");
+
+//		try {
+//			Thread.sleep(2000);
+//		} catch (InterruptedException e) {
+//
+//			e.printStackTrace();
+//		}
+
+	}
+
 
 	public void moveToElement(WebElement element) {
 		Actions actions = new Actions(DriverManager.getDriver());
@@ -736,6 +755,21 @@ try {
 		}
 		log.info("Clicked" + element.toString().substring(65));
 	}
+	public void clickElementByJavaScript(WebElement element, String elementName) {
+		ExtentListeners.testReport.get().info("Clicking on : " + elementName);
+		highlightElement(element);
+		log.info("Clicking" + element.toString().substring(65));
+		executeScript("arguments[0].click();", element);
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+
+			e.printStackTrace();
+		}
+		log.info("Clicked" + element.toString().substring(65));
+		ExtentListeners.testReport.get().info("Clicked on : " + elementName);
+		
+	}
 
 	public HashMap<String, String> getBrowserInstance() {
 		HashMap<String, String> instanceDetails = new HashMap<String, String>();
@@ -772,17 +806,18 @@ try {
 			throws Exception {
 
 		Thread.sleep(1000);
-		Thread.sleep(1000);
-		Thread.sleep(1000);
+	//	Thread.sleep(1000);
+	//	Thread.sleep(1000);
 
-		if (promo.contains("PROMO")) {
+	//	if (promo.contains("PROMO")) {
+		waitForElementToPresent(driver.findElement(By.xpath("//*[@for='IHavePromoCode']")));
 			driver.findElement(By.xpath("//*[@for='IHavePromoCode']")).click();
-			type(promoCode, promo + getSystemCurrentMonth() + getSystemCurrentDate() + getSystemCurrentYear(),
-					"promo Code");
+			type(promoCode, promo ,
+					"promo Code");//+ getSystemCurrentMonth() + getSystemCurrentDate() + getSystemCurrentYear()
 			click(applybtn, "apply button");
 			waitForElementToPresent(promoCodeApplied);
 
-		}
+	//	}
 	}
 
 	public void clickByVisibleScreen(String imagePath) throws FindFailed {

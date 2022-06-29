@@ -70,7 +70,8 @@ public class CreateOrEditCommunityPage extends BasePage{
 //    WebElement termsAndConditions;
 
     
-    @FindBy(xpath = "//button[contains(.,'Ok')]")
+   //   @FindBy(xpath = "//*[@class='swal-button-container']/*[text()='Ok']")
+      @FindBy(xpath = "  //*[@class='swal-modal']/*/*/*[@class='swal-button__loader']")
     WebElement OkBtn;
     @FindBy(xpath = "//input[@name='State']")
     WebElement State;
@@ -133,16 +134,17 @@ public class CreateOrEditCommunityPage extends BasePage{
 		
 	}
 	
-	
+
 	 public void TC(String TC) throws InterruptedException{
 		 
 		 scrollIntoView(CommunityUpdatelabel);
 		 List<WebElement> elements = driver.findElements(By.tagName("iframe"));
-//		 System.out.println(elements.size());
+		 System.out.println(elements.size());
 		 driver.switchTo().frame(2);
 		 enterTextInframe.clear();
 		 type(enterTextInframe, TC, "Terms and conditons");		 
 		 driver.switchTo().defaultContent();
+	
 		 clickElementByJavaScript(Savebtn);
 		 Thread.sleep(5000);
 	 }
@@ -159,6 +161,7 @@ public class CreateOrEditCommunityPage extends BasePage{
 	        String type ) throws Exception {	       
 	       
 			CommunityName.clear();
+			Name =Name+" " + getDateInDDMMMYYYY();//added on 04/05
 			type(CommunityName, Name,"Name");
 	       
 	        driver.switchTo().frame(iframe);
@@ -216,14 +219,17 @@ public class CreateOrEditCommunityPage extends BasePage{
 	        
 	   //     picture();
 	        click(Createbtn,"Create btn");
-	       
+	     
+	       Thread.sleep(3000);
 	        try {
-	        	waitForElementToPresent(OkBtn);
+	        	
 	        	 scrollToElement(Createbtn);
+	        	 driver.navigate().forward();
 	        	 click(OkBtn,"Ok Btn");
-	       // 	 picture();
-	           	
+	        
+	       // 	 picture();	           	
 			} catch (Exception e) {
+				
 
 			}
 	        Thread.sleep(5000);
@@ -252,7 +258,8 @@ public class CreateOrEditCommunityPage extends BasePage{
 //	        GPlus.clear();
 	        scrollToElement(this.CommunityName);
 	        
-	        Thread.sleep(2000);
+	 //       Thread.sleep(2000);
+	        waitForElementToPresent(PNetworking);
 	        if (PNetworking.isSelected()) {
 	        	
 	            click(PNetworking,"Networking");
@@ -291,10 +298,10 @@ public class CreateOrEditCommunityPage extends BasePage{
 	        scrollToElement(State);
 	        City.clear();
 	        State.clear();
-	        picture();
+	//        picture();
 	       
 	        
-	        Thread.sleep(2000);
+	//        Thread.sleep(2000);
 	        type(City, CityName,"City");
 	        type(State, StateName,"StateName");	        	
 	        Select Cat = new Select(CommunityCategory);
@@ -316,9 +323,9 @@ public class CreateOrEditCommunityPage extends BasePage{
 //	        waitForElementToPresent(LogoBrowseBtn);
 //	       
 //	        LogoBrowseBtn.click();
-	        Thread.sleep(8000);
+	//        Thread.sleep(8000);
 //	        Runtime.getRuntime().exec(LogoImagePath);
-	        Thread.sleep(5000);
+	  //      Thread.sleep(5000);
 	       
 //	        LogoUploadBtn.click();
 //	        Thread.sleep(3000);
@@ -331,53 +338,55 @@ public class CreateOrEditCommunityPage extends BasePage{
 //	        ImageBrowseBtn.click();
 //	        Thread.sleep(8000);
 //	        Runtime.getRuntime().exec(ImagePath);
-	        Thread.sleep(5000);	        
+	//        Thread.sleep(5000);	        
 //	        ImageUploadBtn.click();
-	        Thread.sleep(5000);
+	 //       Thread.sleep(5000);
 	        scrollToElement(this.CommunityName);
 	        
 	        type(this.CommunityName, CommunityNameUpdate,"Name");
 	        
 	        driver.switchTo().frame(iframe);
 	        enterTextInframe.clear();
-	        Thread.sleep(3000);
+	//        Thread.sleep(3000);
 	        type(this.enterTextInframe, About,"About");
 	       
 	        driver.switchTo().defaultContent();
 	        driver.switchTo().frame(1);
 	        enterTextInframe.clear();
-	       Thread.sleep(3000);
+	 //      Thread.sleep(3000);
 	       type(this.enterTextInframe, communityUpdate,"communityUpdate");
 	        
 	        driver.switchTo().defaultContent();
 	        
+	        waitForElementToPresent(PNetworking);
 	        if ("Networking".equalsIgnoreCase(Networking)) {
 	        	
-	            click(PNetworking,"Networking");
+	        //    click(PNetworking,"Networking");
+	            clickElementByJavaScript(PNetworking,"Networking");
 	        }
 	        if ("Marketing".equalsIgnoreCase(Marketing)) {
-	        	
-	            click(PMarketing,"Marketing");
+	        	 clickElementByJavaScript(PMarketing,"Marketing");
+	        //    click(PMarketing,"Marketing");
 	        }
 	        if ("BuildingRelationship".equalsIgnoreCase(BuildingRelationship)) {
-	        	
-	        	click(PBuildingRelationship,"BuildingRelationship");
+	        	 clickElementByJavaScript(PBuildingRelationship,"BuildingRelationship");
+	      //  	click(PBuildingRelationship,"BuildingRelationship");
 	        }
 	        if ("Branding".equalsIgnoreCase(Branding)) {
-	        	
-	            click(PBranding,"Branding");
+	        	 clickElementByJavaScript(PBranding,"Branding");
+	        //    click(PBranding,"Branding");
 	        }
 	        if ("GrowMyBusiness".equalsIgnoreCase(GrowMyBusiness)) {
-	        	
-	            click(PGrowMyBusiness,"GrowMyBusiness");
+	        	 clickElementByJavaScript(PGrowMyBusiness,"GrowMyBusiness");
+	       //     click(PGrowMyBusiness,"GrowMyBusiness");
 	        }
 	        if ("InvestInBusiness".equalsIgnoreCase(InvestInBusiness)) {
-	        	
-	            click(PInvestInBusiness,"InvestInBusiness");
+	        	 clickElementByJavaScript(PInvestInBusiness,"InvestInBusiness");
+	          //  click(PInvestInBusiness,"InvestInBusiness");
 	        }
 	        if ("Other".equalsIgnoreCase(OtherName)) {
-	        	
-	            click(POther,"Other");
+	        	 clickElementByJavaScript(POther,"Other");
+	       //     click(POther,"Other");
 	        }
 	        
 	        scrollToElement(ChangeLogo);
@@ -391,16 +400,17 @@ public class CreateOrEditCommunityPage extends BasePage{
 	       
 	        Type.selectByVisibleText(type);
 	        try {
-			
+	        	 waitForElementToPresent(YesProceedBtn);
 				click(YesProceedBtn,"Yes Proceed");
 				Thread.sleep(2000);
 			} catch (Exception e) {
 				
 			}
 	       
-	       aShot();
+	  //     aShot();
+	        waitForElementToPresent(Savebtn);
 	       clickElementByJavaScript(Savebtn);
-	        Thread.sleep(10000);
+	        Thread.sleep(5000);
 	        
 			//logger.log(LogStatus.INFO,"After Filling community information");
 	        //Createbtn.click();

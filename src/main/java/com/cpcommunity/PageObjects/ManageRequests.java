@@ -78,19 +78,20 @@ public class ManageRequests extends BasePage{
 	public void rejectRequest(String email, String rejectReason) throws Exception {
 	//	Thread.sleep(2000);
 	//	memberSearch.clear();
+		waitForElementToPresent(memberSearch);
 		type(memberSearch, email,"Searching in member to reject");
-		Thread.sleep(5000);
+		waitForElementToPresent(selectCheckBox);
 		click(selectCheckBox,"selectCheckBox");
-		Thread.sleep(500);
+		waitForElementToPresent(Reject);
 		click(Reject,"Reject");
 		waitForElementToPresent(RejectYesProceed);
 		type(this.rejectReason, rejectReason,"Reject for Reason");
 	//	click(RejectYesProceed,"Yes Proceed");
-		clickElementByJavaScript(RejectYesProceed);
-		Thread.sleep(2000);
+		clickElementByJavaScript(RejectYesProceed,"RejectYesProceed");
+	
 		waitForElementToPresent(OkBth);
-		click( OkBth,"Yes, Proceed");
-		Thread.sleep(4000);
+		click( OkBth,"OK");
+		Thread.sleep(2000);
 	}
 
 

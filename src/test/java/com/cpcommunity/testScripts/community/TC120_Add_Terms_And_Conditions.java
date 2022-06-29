@@ -34,8 +34,8 @@ public class TC120_Add_Terms_And_Conditions extends BaseTest {
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		DriverManager.getDriver().manage().window().maximize();
-		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName")+" "+runTime);
+	//	DriverManager.getDriver().manage().window().maximize();
+		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));//+" "+runTime
 		EditCommunityPage EditCommunityPage = CommunityDashboardPage.navigateToEditCommunityPage();
 		EditCommunityPage.addTermsAndConditions(data.get("termsAndConditions"));
 		

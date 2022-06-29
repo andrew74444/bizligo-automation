@@ -53,16 +53,18 @@ public class UpdateADPage  extends BasePage{
 	WebElement adType;
 	@FindBy(xpath = "//*[@for='chkRequiresApproval']")
 	WebElement chkRequiresApproval;
-
+	@FindBy(xpath = "//*[@ng-show='ShowCreateAdInfo']")
+	WebElement info;
 	public void editPaymentpendingAD(String AdName, String  path) throws InterruptedException {
-		
+		Thread.sleep(2000);
+		waitForElementToPresent(info);
 	waitForElementToPresent(planname);
 		type(planname, AdName, "Name");
 		scrollDownVertically();
 		click(save, "Save");
 		//waitForElementToPresent(toastemessage);
 		//AssertionHelper.verifyText(toastemessage.getText(), "Advertisement details saved.");
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		
 	}
 	

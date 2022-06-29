@@ -33,15 +33,15 @@ LoginPage login = home.clickOnLOGINBtn();
 EcoSystemPage ecosystem = login.loginToApplication(data.get("email"),data.get("password"));
 GlobalCommunitesPage GL = ecosystem.goToGlobalCommunities();
 CommunityDetailsPage communityDetails = GL.navigateToCommunityDetailsPage(data.get("communityName"));
-Discussions Discussions = communityDetails.postDiscussions(data.get("discussionTitle"),data.get("postContent"), data.get("tagMembers"));
-Discussions.UnsubscribeCommunitydiscussion();
-
+//Discussions Discussions = communityDetails.postDiscussions(data.get("discussionTitle"),data.get("postContent"), data.get("tagMembers"));
+//Discussions.UnsubscribeCommunitydiscussion();
+communityDetails.UnsubscribeCommunitydiscussion();
 }
 
 @AfterMethod
 public void tearDown() {
 
-logInfo("TC1501 Test Completed");
+logInfo("TC1504 Test Completed");
 
 quit();
 

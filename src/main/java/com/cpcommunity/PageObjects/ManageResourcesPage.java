@@ -108,7 +108,7 @@ public class ManageResourcesPage  extends BasePage{
 	WebElement selectCommuntiy;
 	@FindBy(xpath = "//input[@class='ng-pristine ng-valid ng-not-empty ng-touched']")
 	WebElement internalBtn;
-	@FindBy(xpath = "//tbody/tr[2]/td[2]/p[1]")
+	@FindBy(xpath = "//*[@ng-click='data.EditResourceForm(resource)']/*")
 	WebElement editSecond;
 	@FindBy(xpath = "//button[normalize-space()='Update']")
 	WebElement updateBtn;
@@ -121,9 +121,10 @@ public class ManageResourcesPage  extends BasePage{
 	//a[normalize-space()='Logout']
 	public void AddFields(String Title, String Title1, String Group, String Description, String url) throws InterruptedException {
 		waitForElementToPresent(addResource);
-		click(addResource, "Add Resource");
+		clickElementByJavaScript(addResource, "Add Resource");
+	//	click(addResource, "Add Resource");
 		waitForElementToPresent(enterTitle);
-		this.enterTitle.clear();
+	//	this.enterTitle.clear();
 		type(enterTitle, Title, "Resource Title");
 		waitForElementToPresent(titleError);
 		if(titleError.isDisplayed()) {
@@ -135,23 +136,24 @@ public class ManageResourcesPage  extends BasePage{
 
 		
 			waitForElementToPresent(selectGroup);
-			this.selectGroup.sendKeys("test123");
+			this.selectGroup.sendKeys("Green");
 			//type(this.selectGroup,Group,"Group");
 			//waitForElementToPresent(GroupName);
 			//click(GroupName,"Test123");
 			//selectUsingIndex(selectGroup,3,"Test123");
 			//selectByVisibleText(this.selectGroup,Group,"Group");
-            Thread.sleep(2000);
+    //        Thread.sleep(2000);
 			waitForElementToPresent(description);
 			type(this.description, Description, "Description");
 			waitForElementToPresent(external);
 			click(external, "External");
 
-			waitForElementToPresent(external);
-			click(external, "External");
-			waitForElementToPresent(description);
-			type(this.description, Description, "Description");
-
+			/*
+			 * waitForElementToPresent(external); 
+			 * click(external, "External");
+			 * waitForElementToPresent(description);
+			 *  type(this.description, Description,"Description");
+			 */
 			waitForElementToPresent(URL);
 			type(this.URL, url, "Url");
 			waitForElementToPresent(resourceImage);
@@ -160,8 +162,8 @@ public class ManageResourcesPage  extends BasePage{
 			click(Active, "Inactive It");
 
 
-			waitForElementToPresent(selectGroup);
-			type(this.selectGroup,Group,"Group");
+		//	waitForElementToPresent(selectGroup);
+		//	type(this.selectGroup,Group,"Group");
 			//waitForElementToPresent(GroupName);
 			//click(GroupName,"Test123");
 			//selectUsingIndex(selectGroup,3,"Test123");
@@ -187,14 +189,17 @@ public class ManageResourcesPage  extends BasePage{
 		scrollUpVertically();
 		waitForElementToPresent(title);
 		String value=this.title.getText();
-		AssertionHelper.verifyText(title.getText(), "Resource1");
+		AssertionHelper.verifyText(value, "Resource1");
 			
 	}
 	public void AddFieldswithoutGroup(String Title, String Title1,String Description, String url) throws InterruptedException {
 		waitForElementToPresent(addResource);
+		waitForElementToPresent(info);
+		waitForElementToPresent(table);
+		waitForElementToPresent(edit);
 		click(addResource, "Add Resource");
 		waitForElementToPresent(enterTitle);
-		this.enterTitle.clear();
+	//	this.enterTitle.clear();
 		type(enterTitle, Title, "Resource Title");
 		waitForElementToPresent(titleError);
 		if(titleError.isDisplayed()) {
@@ -202,7 +207,7 @@ public class ManageResourcesPage  extends BasePage{
 			type(this.enterTitle, Title1, "Resource Title");
 			waitForElementToPresent(free);
 			click(free, "Free");
-			Thread.sleep(2000);
+	//		Thread.sleep(2000);
 			waitForElementToPresent(description);
 			type(this.description, Description, "Description");
 			waitForElementToPresent(external);
@@ -218,24 +223,34 @@ public class ManageResourcesPage  extends BasePage{
 			AssertionHelper.verifyText(toastMessage.getText(), "Success! Resources saved");
 
 
-		Thread.sleep(3000);
+	//	Thread.sleep(3000);
 
 		}
 		}
 
-
+	@FindBy(xpath="//*[@id='ResourcesTable_info']")
+	WebElement info;
+	@FindBy(xpath="//*[@id='ResourcesTable']")
+	WebElement table;
+	@FindBy(xpath="//*[@ng-click='data.EditResourceForm(resource)']")
+	WebElement edit;
 	public void AddFieldswithCommunity( String Title1, String community, String Description, String url) throws InterruptedException {
+		waitForElementToPresent(info);
+		waitForElementToPresent(table);
+		waitForElementToPresent(edit);
+
 		waitForElementToPresent(addResource);
-		click(addResource, "Add Resource");
+	//	click(addResource, "Add Resource");
+		clickElementByJavaScript(addResource, "Add Resource");
 		waitForElementToPresent(enterTitle);
 		this.enterTitle.clear();
 			type(this.enterTitle, Title1, "Resource Title");
 			waitForElementToPresent(free);
 			click(free, "Free");
-			Thread.sleep(2000);
+	//		Thread.sleep(2000);
 			waitForElementToPresent(Community);
 			selectByVisibleText(this.Community,community,"Community");
-			Thread.sleep(2000);
+	//		Thread.sleep(2000);
 			waitForElementToPresent(description);
 			type(this.description, Description, "Description");
 			waitForElementToPresent(external);
@@ -248,12 +263,50 @@ public class ManageResourcesPage  extends BasePage{
 			click(save, "Save");
 			AssertionHelper.verifyText(toastMessage.getText(), "Success! Resources saved");
 		}
+	@FindBy(xpath="//*[@id='ResourcesTable_filter']/*/*")
+	WebElement searchBox;
+	@FindBy(xpath="(//*[@ng-click='data.EditResourceForm(resource)'])[1]")
+	WebElement Edit;
+	@FindBy(xpath="//*[@id='btnSave']")
+	WebElement update;
+	public void updateResource( String Title,String Title1, String community, String Description, String url) throws InterruptedException {
+		waitForElementToPresent(info);
+		waitForElementToPresent(table);
+		waitForElementToPresent(edit);
+
+		waitForElementToPresent(searchBox);
+		type(searchBox, Title, "Old Resource Title");
+		waitForElementToPresent(Edit);
+		click(Edit, "Edit");
+		waitForElementToPresent(enterTitle);
+		this.enterTitle.clear();
+			type(this.enterTitle, Title1, "New Resource Title");
+			waitForElementToPresent(free);
+			click(free, "Free");
+	//		Thread.sleep(2000);
+			waitForElementToPresent(Community);
+			selectByVisibleText(this.Community,community,"Community");
+	//		Thread.sleep(2000);
+			waitForElementToPresent(description);
+			type(this.description, Description, "Description");
+			waitForElementToPresent(external);
+			click(external, "External");
+			waitForElementToPresent(URL);
+			type(this.URL, url, "Url");
+			waitForElementToPresent(resourceImage);
+			click(resourceImage, "Image");
+			waitForElementToPresent(update);
+			click(update, "update");
+			AssertionHelper.verifyText(toastMessage.getText(), "Success! Resources saved");
+		}
 	
 		public HomePage logout() throws InterruptedException{
-			Thread.sleep(4000);
+		//	Thread.sleep(4000);
+			waitForElementToPresent(info);
 			waitForElementToPresent(Toggledropdownmenu);
-			click(Toggledropdownmenu,"Toggledropdownmenu");
-			Thread.sleep(1000);
+			clickElementByJavaScript(Toggledropdownmenu,"Toggledropdownmenu");
+		//	click(Toggledropdownmenu,"Toggledropdownmenu");
+		//	Thread.sleep(1000);
 			waitForElementToPresent(Logout);
 			click(Logout,"Logout");
 			return (HomePage) openPage(HomePage.class);
@@ -268,8 +321,21 @@ public class ManageResourcesPage  extends BasePage{
 	
 
 	
+	@FindBy(xpath="//*[@class='col-md-4 ng-scope']/*")
+	WebElement resourceTitle;
 	
 	
+	public void checkResource(String title) {
+		waitForElementToPresent(resourceTitle);
+		String Value=resourceTitle.getAttribute("data-title");
+		
+	    if(title.equals(Value)) {
+	    	Assert.assertTrue(true);
+		}
+		else {
+			Assert.assertTrue(false);
+		}
+	    }
 	
 	
 	

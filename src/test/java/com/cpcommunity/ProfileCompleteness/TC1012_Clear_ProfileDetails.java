@@ -39,6 +39,7 @@ public class TC1012_Clear_ProfileDetails extends BaseTest{
 		boolean val=myProfile.CompareProgressBars(prevProgress,afterProgress);
 		
 		
+		
 }
 	
 	@AfterMethod

@@ -40,8 +40,6 @@ public class TC072_Community_Admin_Approve_And_Reject_Group_Requests extends Bas
 //		home = EcoSystemPage.logout();	
 		home = CommunityDetailsPage.logout();//added on 06/04
 		
-		
-//*********commented below code for same member  approve and reject checking***************\\\
 //		home.clickOnLOGINBtn();
 //		EcoSystemPage = login.loginToApplication(data.get("email2"), data.get("password"));
 //		
@@ -61,14 +59,14 @@ public class TC072_Community_Admin_Approve_And_Reject_Group_Requests extends Bas
 		MyCommunitiesPage = EcoSystemPage.goToMyCommunities();		
 		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));//+" "+runTime		
 		GroupsPendingRequestsPage GroupsPendingRequestsPage = CommunityDashboardPage.NavigateToCommunitygroupPendingRequets();
-		GroupsPendingRequestsPage.approveMember(data.get("email1"));//Approved
-	//	GroupsPendingRequestsPage.rejectMember(data.get("email1"), data.get("rejectReason"));//Rejected
+	//	GroupsPendingRequestsPage.approveMember(data.get("email1"));//Approved
+		GroupsPendingRequestsPage.rejectMember(data.get("email1"), data.get("rejectReason"));//Rejected
 		
 		//Assert.fail("Failing the login test");
 		Yahoo yahoo= new Yahoo().open();
 		yahoo.Login(data.get("email1"), data.get("password2"));
-	//	yahoo.notApproved();//when CA Rejected group request member receiving mail checking purpose
-		yahoo.Approved();//when CA Approved group request member receiving mail checking purpose
+		yahoo.notApproved();//when CA Rejected group request member receiving mail checking purpose
+	//	yahoo.Approved();//when CA Approved group request member receiving mail checking purpose
 	}
 
 	@AfterMethod

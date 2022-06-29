@@ -48,9 +48,13 @@ public class TC998_Verify_Profilepage_updatedetails extends BaseTest{
 		//MyProfile_Page.validate_ProfileProgress(intialProgressPercent,finalProgressPercent);
       // boolean diff=MyProfile_Page.validate_NoProgress(intialProgressPercent,finalProgressPercent);
       
-       Assert.assertEquals(finalProgressPercent, intialProgressPercent);
+   //    Assert.assertEquals(finalProgressPercent, intialProgressPercent);
 		
 		//MyProfile_Page.validate_progress(diff);
+       
+       boolean val=MyProfile_Page.CompareProgressBars(intialProgressPercent,finalProgressPercent);
+		//myProfile.valid_Progress(val);
+		Assert.assertEquals(true, val);
 	
 	}
 	@AfterMethod

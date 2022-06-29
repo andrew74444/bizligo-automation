@@ -38,7 +38,8 @@ public class TC119_Send_Connection_From_Group_Details_Page extends BaseTest {
 		
 		GroupDetailsPage GroupDetailsPage = CommunityDetailsPage.navigateToGroupDetailsPageWithoutDate(data.get("groupName"));
 		
-		GroupDetailsPage.sendconnection();
+	//	GroupDetailsPage.sendconnection();
+		GroupDetailsPage.sendConnection(data.get("name"));//added on 08/05
 		
 		//Assert.fail("Failing the login test");
 	}

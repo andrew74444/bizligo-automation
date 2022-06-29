@@ -64,7 +64,15 @@ public class AdvertismentPurchasePage extends BasePage {
 			
 		return ExpectedConditions.visibilityOf(selectPlan);
 	}
-
+	@FindBy(xpath = "//input[@id='AdStartDate']")
+	WebElement date;
+	@FindBy(xpath = "//input[@id='DisplayStartDate']")
+	WebElement adStartDate1;
+	
+	@FindBy(xpath = "//*[@name='DisplayEndDate']")
+	WebElement adEndDate;
+	@FindBy(xpath = "//div[@class='datetimepicker datetimepicker-dropdown-bottom-right dropdown-menu']")//
+	WebElement  adStartDatecalendar;
 	public PaymentOptionsPage SelectPlan(String planName, String adImage, String linkUrl,
 			String additionalInstructions) throws Exception {
 		int i = planNames.size();
@@ -89,13 +97,22 @@ public class AdvertismentPurchasePage extends BasePage {
 				WebElement ele = driver.findElement(By.xpath(
 						"(//*[@class='panel panel-warning panel-pricing']//*[contains(text(),'Select')])[" + j + "]"));
 				click(ele, "Select");
+				scrollDownVertically();
 				waitForElementToPresent(next);
 				click(next, "next");
 				waitForElementToPresent(adName);
+				scrollDownVertically();
 				type(this.adName, planName, "adName");
-
-				selectCurrentDate();
-				
+Thread.sleep(2000);
+			//	selectCurrentDate();//commented on 23/05
+				waitForElementToPresent(date);
+				click(date, "Select Date");
+				Thread.sleep(2000);
+				waitForElementToPresent(adStartDatecalendar);
+				Thread.sleep(2000);
+				waitForElementToPresent(today);
+				click(today, "Date");
+				adImage="\\src\\test\\resources\\testImages\\Files\\ChromeImage3.jpeg";
 				type(this.adImage, projectFloder(adImage), "Ad Image");
 				type(this.linkUrl, linkUrl, "Link Url");
 				type(this.additionalInstructions, additionalInstructions, "Additional Instructions");
@@ -131,6 +148,8 @@ public class AdvertismentPurchasePage extends BasePage {
 		
 
 	}
+	@FindBy(xpath="//tbody/*/td[@class='day active']")
+	WebElement today;
 
 	private void selectCurrentDate() {
 		click(this.adStartDate, "Ad Start Date");

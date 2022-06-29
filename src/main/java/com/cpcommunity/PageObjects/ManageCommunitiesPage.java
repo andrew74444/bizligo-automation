@@ -156,7 +156,7 @@ public class ManageCommunitiesPage extends BasePage {
     	}
 
    public void EditCommunities(String Name,String About, String Category,String type) throws InterruptedException {
-	   Name=Name+" " + getDateInDDMMMYYYY();
+	//   Name=Name+" " + getDateInDDMMMYYYY();
 	   this.searchCommunity(Name);
 	   waitForElementToPresent(edit);
 		click(edit, "Edit");

@@ -147,6 +147,33 @@ public class MembershipPlansPage extends BasePage {
 		
 		click(Next, "Next");
 	}
+	@FindBy(xpath="//body[1]/div[3]/div[1]/div[1]/section[1]/div[1]/div[2]/div[4]/div[1]/div[1]/div[1]/div[1]/div[2]/div[3]/div[1]/div[1]/div[1]/label[1]")
+	WebElement checkBox;
+	@FindBy(xpath="//*[@placeholder='Enter Promo code']")
+	WebElement textBox;
+	@FindBy(xpath="//*[@ng-hide='data.AppliedPromoCodeResponce.IsValid']/*[text()='APPLY']")
+	WebElement apply;
+	@FindBy(xpath="//*[@class='text-success']")
+	WebElement success;
+	@FindBy(xpath="//*[@ng-click='data.PurchaseMembershipPlanWith100PerDiscountCoupon()']")
+	WebElement submit1;
+	@FindBy(xpath="//*[@alt='Authorize.net']")
+	WebElement wait;
+	@FindBy(xpath="//*[text()='ORDER SUMMARY']")
+	WebElement wait2;
+	public PaymentReceipt usingPromoCode(String code) {
+		waitForElementToPresent(wait);
+		waitForElementToPresent(wait2);
+		waitForElementToPresent(checkBox);
+		click(checkBox,"checkBox");
+		waitForElementToPresent(textBox);
+		type(textBox,code,"Promo Code");
+		click(apply,"Apply");
+		waitForElementToPresent(success);
+		click(submit1,"submit");
+		
+		return (PaymentReceipt) openPage(PaymentReceipt.class);
+	}
 //*******Below method for 	purchasing free membership Plan added on 18/04**********//
 	@FindBy(xpath="//*[@type='button']//*[text()='Submit ']")
 	WebElement submit;

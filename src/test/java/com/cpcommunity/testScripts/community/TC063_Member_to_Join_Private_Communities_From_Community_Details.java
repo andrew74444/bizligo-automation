@@ -57,10 +57,10 @@ public class TC063_Member_to_Join_Private_Communities_From_Community_Details ext
 		
 		Yahoo yahoo= new Yahoo().open();
 
-	//	yahoo.Login(data.get("email1"), data.get("password1"));//for member checking mail
-	//	yahoo.requestCommunity();//for member checking mail purpose
-		yahoo.Login(data.get("email2"), data.get("password2"));//for community admin checking mail
-		yahoo.memberRequestChecking();//for CA checking mail
+		yahoo.Login(data.get("email1"), data.get("password1"));//for member checking mail
+		yahoo.requestCommunity();//for member checking mail purpose
+		//	yahoo.Login(data.get("email2"), data.get("password2"));//for community admin checking mail
+		//	yahoo.memberRequestChecking();//for CA checking mail
 	}
 
 	@AfterMethod

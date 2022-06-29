@@ -37,7 +37,7 @@ public class TC039_Edit_Community extends BaseTest {
 		home.open(data.get("tenantType"));
 		EcoSystemPage = EcoSystemPage.goToMyEcosystem();
 		MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
+		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage2(data.get("communityName"));
 		CommunityDetailsPage.verifycommunityDetails(data.get("communityName"), data.get("About"), data.get("StateName"), data.get("CityName"), data.get("FacebookUrl"), data.get("LinkedInUrl"), data.get("TwitterUrl"), data.get("type"));
 //		CommunityDetailsPage.clickonLogo();
 		//Assert.fail("Failing the login test");

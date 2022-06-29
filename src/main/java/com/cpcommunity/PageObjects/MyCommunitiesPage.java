@@ -247,9 +247,12 @@ public class MyCommunitiesPage extends BasePage {
     WebElement myDashboard;
 	
 	public MyProfilePage goToMyProfilePage() throws Exception {
-        Thread.sleep(5000);
-		click(Toggledropdownmenu,"Toggledropdownmenu");
-		Thread.sleep(1000);
+     //   Thread.sleep(5000);
+		waitForElementToPresent(Toggledropdownmenu);//added on 27/04
+		clickElementByJavaScript(Toggledropdownmenu,"Toggledropdownmenu");
+	//	click(Toggledropdownmenu,"Toggledropdownmenu");
+	//	Thread.sleep(1000);
+		waitForElementToPresent(myProfile);//added on 27/04
 		click(myProfile,"myProfile");
 		return (MyProfilePage) openPage(MyProfilePage.class);
 		// new MyProfilePage(driver, );
@@ -299,7 +302,9 @@ public class MyCommunitiesPage extends BasePage {
 
 
 	public MemberDirectoryPage gotoMemberDirectoryPage() throws Exception {
-		click(Directory,"Directory");
+		waitForElementToPresent(Directory);
+		clickElementByJavaScript(Directory,"Directory");
+	//	click(Directory,"Directory");
 		//Thread.sleep(5000);
 		waitForElementToPresent(memberDirectory);
 		click(memberDirectory,"MemberDirectory");
@@ -314,8 +319,9 @@ public class MyCommunitiesPage extends BasePage {
 	
 	@FindBy(xpath="(//*[@class='col-sm-12 cm-group-name'])[1]")
 			WebElement waitt;
+	
 	public CreateCommunityPage clickOnCreateCommunity() {
-		waitForElementToPresent(waitt);//added on 07/04 foe wait purpose
+		waitForElementToPresent(waitt);//added on 07/04 for wait purpose
 		click(CreateCommunityBtn,"CreateCommunityBtn");
 		return (CreateCommunityPage) openPage(CreateCommunityPage.class);
 		// new CreateCommunityPage(driver);
@@ -331,7 +337,7 @@ public class MyCommunitiesPage extends BasePage {
 	}
 
 	public SelectPlanPage completeSetup(String communityName) throws Exception {
-		this.searchCommunity(communityName);//+getDateInDDMMMYYYY()
+		this.searchCommunity(communityName+" "+getDateInDDMMMYYYY());//
 		click(completeSetup, "complete Set up Community");
 		return (SelectPlanPage) openPage(SelectPlanPage.class);
 	}// button
@@ -352,27 +358,28 @@ public class MyCommunitiesPage extends BasePage {
 	}
 
 	public void checkProperAlertDisplayedWhenOnlyOneAdmin(String communityName) throws Exception {
-		this.searchCommunity(communityName+getDateInDDMMMYYYY());
+		this.searchCommunity(communityName);//+getDateInDDMMMYYYY()
+		waitForElementToPresent(LeaveBtn);
 		click(LeaveBtn, "leave");
-		takeScreenshotByShutterBug(LeaveBtn, "Leave Btn");
+	//	takeScreenshotByShutterBug(LeaveBtn, "Leave Btn");
 		waitForElementToPresent(YesProceed);
-		takeScreenshotByShutterBug(YesProceed, "Yes Proceed");
+	//	takeScreenshotByShutterBug(YesProceed, "Yes Proceed");
 		click(YesProceed, "Yes Proceed");
 		waitForElementToPresent(BtnOK);
-		picture();
+	//	picture();
 		AssertionHelper.verifyText(makeAnotherAdminAlertMeassge.getText(),
 				"Please make another member as Community Admin to remove this member as Community Admin");
 
 	}
 
 	public boolean cancelCommunityRequest(String CommunityName) throws Exception {
-		this.searchCommunity(CommunityName+" "+getDateInDDMMMYYYY());
+		this.searchCommunity(CommunityName);//+" "+getDateInDDMMMYYYY()
 		click(Cancel, "Cancel");
 		waitForElementToPresent(YesProceed);
 		click(YesProceed,"YesProceed");
 		waitForElementToPresent(SuccessPopUp);
 		AssertionHelper.verifyText(SuccessPopUp.getText(), "Your request processed successfully");
-		Thread.sleep(3000);
+	//	Thread.sleep(3000);
 		AssertionHelper.verifyText(noResultsFound.getText(), "No results found matching your search criteria");
 		if (noresultfound.isDisplayed()) {
 			return true;
@@ -447,6 +454,19 @@ public class MyCommunitiesPage extends BasePage {
 		return (CommunityDetailsPage) openPage(CommunityDetailsPage.class);
 		// new CommunityDetailsPage(driver, );
 	}
+	public CommunityDetailsPage navigateToCommunityDetailsPage2(String communityName) throws Exception {
+		communityName = communityName+getDateInDDMMMYYYY();
+		waitForElementToPresent(wait);//added on 06/05 for wait purpose
+		type(this.communityNameField, communityName, "communityName");
+		
+		waitForElementToPresent(btnSearch);
+		click(btnSearch, "Search");
+		waitForElementToPresent(name);
+		click(name, "Community name");//added on 06/04
+	
+		return (CommunityDetailsPage) openPage(CommunityDetailsPage.class);
+		
+	}
 	
 	public CommunityDetailsPage navigateToExpiredCommunityDetailsPage(String communityName, String runTime) throws Exception {
 		Date date = new Date();
@@ -480,8 +500,8 @@ public class MyCommunitiesPage extends BasePage {
 			}
 	public boolean cancelReviewCommunity(String CommunityName) throws Exception {
 
-		this.searchCommunity(CommunityName+getDateInDDMMMYYYY());
-		Zero.isDisplayed();
+		this.searchCommunity(CommunityName);//+getDateInDDMMMYYYY()
+	//	Zero.isDisplayed();
 		click(Cancel,"Cancel");
 		waitForElementToPresent(YesProceed);
 		click(YesProceed,"YesProceed");
@@ -511,13 +531,19 @@ public class MyCommunitiesPage extends BasePage {
 
 	public boolean rejectcommunity(String CommunityName) throws Exception {
 
-		this.searchCommunity(CommunityName+getDateInDDMMMYYYY());
+//		this.searchCommunity(CommunityName+getDateInDDMMMYYYY());
+		waitForElementToPresent(wait2);
+		waitForElementToPresent(SearchbyCommunityName);
+	//	picture();
+		type(SearchbyCommunityName, CommunityName, "Search by Community");
+		click(searchbtn, "search btn");
+		waitForElementToPresent(RejectBtn);
 		click(RejectBtn,"RejectBtn");
 		waitForElementToPresent(YesProceed);
 		click(YesProceed,"YesProceed");
 		waitForElementToPresent(toastMessage);
 		AssertionHelper.verifyText(toastMessage.getText(), "Your request is successfully processed");
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
 		AssertionHelper.verifyText(noResultsFound.getText(), "No results found matching your search criteria");
 		// try {
 		// if (RejectBtn.isDisplayed())
@@ -530,29 +556,29 @@ public class MyCommunitiesPage extends BasePage {
 	}
 
 	public void acceptcommunity(String CommunityName) throws Exception {
-		this.searchCommunity(CommunityName+getDateInDDMMMYYYY());
-
-		click(AcceptBtn,"");
+		this.searchCommunity(CommunityName);//+getDateInDDMMMYYYY()
+		waitForElementToPresent(AcceptBtn);
+		click(AcceptBtn,"AcceptBtn");
 		waitForElementToPresent(YesProceed);
-		String parent = driver.getWindowHandle();
-		picture();
+	//	String parent = driver.getWindowHandle();
+	//	picture();
 		// picture();
 		click(YesProceed,"YesProceed");
 		waitForElementToPresent(toastMessage);
 		AssertionHelper.verifyText(toastMessage.getText(), "Your request is successfully processed");
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
 		waitForElementToPresent(LeaveBtn);
-		picture();
+	//	picture();
 		// picture();
 	}
 
 	public void acceptcommunity(String CommunityName, String TC) throws Exception {
-		this.searchCommunity(CommunityName+" "+getDateInDDMMMYYYY());
+		this.searchCommunity(CommunityName);//+" "+getDateInDDMMMYYYY()
 
 		click(AcceptBtn,"AcceptBtn");
 		waitForElementToPresent(YesProceed);
 		String parent = driver.getWindowHandle();
-		picture();
+	//	picture();
 		// picture();
 		click(termsAndConditions,"termsAndConditions");
 		Set<String> s1 = driver.getWindowHandles();
@@ -565,7 +591,7 @@ public class MyCommunitiesPage extends BasePage {
 				WebElement ele = driver.findElement(By.xpath("//*[contains(text(),'" + TC + "')]"));
 				waitForElementToPresent(ele);
 				AssertionHelper.verifyText(ele.getText(), TC);
-				picture();
+		//		picture();
 				// picture();
 				driver.close();
 				driver.switchTo().window(parent);
@@ -578,7 +604,7 @@ public class MyCommunitiesPage extends BasePage {
 		Thread.sleep(2000);
 		waitForElementToPresent(LeaveBtn);
 		// picture();
-		picture();
+	//	picture();
 	}
 
 	@FindBy(xpath="//*[@placeholder='Search by Community Name']")
@@ -613,17 +639,21 @@ public class MyCommunitiesPage extends BasePage {
 	}
 
 	public void verifyWaitForReviewIsDisplayed(String communityName) throws Exception {
-		this.searchCommunity(communityName+getDateInDDMMMYYYY());
+		this.searchCommunity(communityName+" "+getDateInDDMMMYYYY());
 		waitingForReview.isDisplayed();		
 	}
-
+	@FindBy(xpath="(//*[@class='col-sm-12 cm-group-name'])[1]")
+			WebElement name1;
 	public void verifyRejectCommunityIsNotDisplayedInMyCommunities(String communityName) throws Exception {
+		waitForElementToPresent(name1);
 		waitForElementToPresent(SearchbyCommunityName);
 		type(SearchbyCommunityName, communityName, "Search by Community");
+		waitForElementToPresent(searchbtn);
 		click(searchbtn, "search btn");
-		Thread.sleep(3000);
+	//	Thread.sleep(3000);
+		
 		noresultfound.isDisplayed();
-		picture();	
+	//	picture();	
 	}
 
 	@FindBy(xpath = "(//*[contains(text(),'Showing 1 to')]//*)[1]")
@@ -638,7 +668,7 @@ public class MyCommunitiesPage extends BasePage {
 	}
 
 	public void verifyPaymentPendindDisplayed(String communityName) throws Exception {
-		this.searchCommunity(communityName+" "+getDateInDDMMMYYYY());
+		this.searchCommunity(communityName);//+" "+getDateInDDMMMYYYY()
 		waitForElementToPresent(paymentPending);
 		paymentPending.isDisplayed();
 		

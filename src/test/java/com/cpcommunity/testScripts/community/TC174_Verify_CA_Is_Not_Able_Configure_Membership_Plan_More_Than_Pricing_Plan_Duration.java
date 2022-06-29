@@ -16,10 +16,10 @@ public class TC174_Verify_CA_Is_Not_Able_Configure_Membership_Plan_More_Than_Pri
 	PaymentReceipt PaymentReceipt;
 	
 	@Test(dataProviderClass = DataProviders.class, dataProvider = "masterDP")
-	public void TC501(Hashtable<String, String> data) throws Exception {
+	public void TC174(Hashtable<String, String> data) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC501", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC174", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
@@ -29,7 +29,7 @@ public class TC174_Verify_CA_Is_Not_Able_Configure_Membership_Plan_More_Than_Pri
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage communityDashboardPage= MyCommunitiesPage.gotoManageCommunity(data.get("communityName")+" "+runTime);
+		CommunityDashboardPage communityDashboardPage= MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));//+" "+runTime
 		PlansPage plansPage = communityDashboardPage.navigateToMembershipPlans();
 		plansPage.createMembershipPlan(data.get("name"), data.get("price"),	"99", data.get("durationType"), data.get("membershipPlanDescription"));
 		plansPage.checkMembershipPlanDurationCannotExceedThePricingPlanDuration();

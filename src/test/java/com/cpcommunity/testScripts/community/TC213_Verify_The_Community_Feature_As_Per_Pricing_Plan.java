@@ -47,9 +47,9 @@ public class TC213_Verify_The_Community_Feature_As_Per_Pricing_Plan extends Base
 		HashMap<String, String> Ftr_list = plansPage.getPricingPlanFeatures(data.get("PlanName"));
 		home = Dashboard_Page.logout();
 		login = home.clickOnLOGINBtn();
-		EcoSystemPage ecoSystemPage = login.loginToApplication(data.get("communityAdminEmail"), data.get("password"));
+		EcoSystemPage ecoSystemPage = login.loginToApplication(data.get("communityAdminEmail"), data.get("password1"));
 		GlobalCommunitesPage globalCommunitesPage = ecoSystemPage.goToGlobalCommunities();
-		CommunityDetailsPage communityDetailsPage = globalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
+		CommunityDetailsPage communityDetailsPage = globalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));//+" "+runTime
 		EditCommunityPage editCommunityPage = communityDetailsPage.managecommunity();
 		CommunityDashboardPage communityDashboardPage =editCommunityPage.saveCommunity();
 		PricingPlanDetailsPage pricingPlanDetailsPage = communityDashboardPage.navigateToPricingPlansDetailsPage();

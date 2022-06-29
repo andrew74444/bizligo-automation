@@ -65,7 +65,7 @@ public class TC090_Configure_AuthorizeNet_Payment_Gateway_____ extends BaseTest 
 
 		// Assert.fail("Failing the login test");
 		Yahoo yahoo= new Yahoo().open();
-		yahoo.Login(data.get("email1"), data.get("password1"));
+		yahoo.Login(data.get("email"), data.get("password"));
 		yahoo.paymentGateway();
 	}
 

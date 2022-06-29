@@ -19,7 +19,7 @@ public class TC046_Member_Accept_Community_Request_from_My_Communities extends B
 	
 	
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC041ToTC046(Hashtable<String,String> data) throws Exception {
+	public void TC046(Hashtable<String,String> data) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
 		DataUtil.checkExecution("master", "TC046", data.get("Runmode"), excel);
@@ -28,13 +28,22 @@ public class TC046_Member_Accept_Community_Request_from_My_Communities extends B
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
-		LoginPage loginPage = home.clickOnLOGINBtn();
+		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+getNancykemper()+" and Password entered as "+getPassword());
-		EcoSystemPage EcoSystemPage = loginPage.loginToApplication(data.get("email2"), data.get("password"));
-		
+		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		MyCommunitiesPage.acceptcommunity(data.get("communityName"));
+		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
+		CommunityInviteMembersPage CommunityInviteMembersPage = CommunityDashboardPage.navigateToinvitePeople();
+		CommunityInviteMembersPage.	invite(data.get("email1"));
+		
+		HomePage home1= CommunityInviteMembersPage.logOut();
+		LoginPage login1 = home1.clickOnLOGINBtn();
+		
+		EcoSystemPage EcoSystemPage1 = login1.loginToApplication(data.get("email1"), data.get("password1"));
+		
+		MyCommunitiesPage MyCommunitiesPage1 = EcoSystemPage1.goToMyCommunities();
+		MyCommunitiesPage1.acceptcommunity(data.get("communityName"));
 		
 		//Assert.fail("Failing the login test");
 	}

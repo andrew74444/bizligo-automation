@@ -80,7 +80,7 @@ public class PendingCommunitiesPage extends BasePage{
 		waitForElementToPresent(NameSearch);//added on 13/04
 		type(this.NameSearch, communityname, "Name");
 		click(btnSearch,"btn Search"); 
-		Thread.sleep(7000);
+		Thread.sleep(5000);
 	//	picture();
 			
 	}
@@ -94,8 +94,8 @@ public class PendingCommunitiesPage extends BasePage{
 	}
 	
 	
-	public void rejectCommunity(String communityName, String rejectReason ) throws Exception{
-		this.Searchcommmunity(communityName);
+	public void rejectCommunity(String communityName , String rejectReason ) throws Exception{
+		this.Searchcommmunity(communityName+" " + getDateInDDMMMYYYY());
 		this.viewCommunityDetails();
 		clickElementByJavaScript(btnReject);
 		waitForElementToPresent(this.rejectReason); 
@@ -103,14 +103,14 @@ public class PendingCommunitiesPage extends BasePage{
 		click(rejectYesProceed,"Yes Proceed"); 
 		waitForElementToPresent(this.OkBtn);
 		click( OkBtn,"Ok Btn");
-		Thread.sleep(1000);
-		picture();
+	//	Thread.sleep(1000);
+	//	picture();
 //		new TestBase().captureScreen(rejectReason, driver);
 		
 	}
 	
 	public void approveCommunity(String communityName ) throws Exception{
-		this.Searchcommmunity(communityName);//+" " + getDateInDDMMMYYYY()
+		this.Searchcommmunity(communityName+" " + getDateInDDMMMYYYY());
 		this.viewCommunityDetails();
 		waitForElementToPresent(btnApprove);
 		clickElementByJavaScript(btnApprove);	

@@ -2,6 +2,7 @@ package com.cpcommunity.testScripts.TA_CreateCommunity;
 
 import java.util.Hashtable;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.EcoSystemPage;
@@ -32,4 +33,14 @@ public class TC963_Verify_TA_Community_Display_GlobalCommunity extends BaseTest{
 		GlobalCommunitesPage GCP=EcoSystemPage.goToGlobalCommunities();
 		GCP.searchCommunityTA(data.get("CommunityName"));
 }
+
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("TC963 Test Completed");
+		
+		quit();
+		
+	}
+
 }

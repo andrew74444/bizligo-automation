@@ -6,6 +6,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.AuthorizeGateway;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.GlobalCommunitesPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
@@ -33,12 +34,17 @@ public class TC1162_verify_RevenueAmt_Updated_If_CA_Purchase_AdPlan extends Base
 	HomePage home = new HomePage().open(data.get("tenantType"));
 	LoginPage login = home.clickOnLOGINBtn();
 	//MyProfilePage myprofile = login.loginToMyProfilePage(data.get("email"), data.get("password"));
-	MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
-	 GlobalCommunitesPage GCP=myCommunity.naviagtingToGlobalCommunities();
+	//MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
+	EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));	
+	GlobalCommunitesPage GCP=EcoSystemPage.goToGlobalCommunities();
 	 GCP.searchCommunity(data.get("community"));
+	 GCP.goTocommunityPage(data.get("community"));
+	
+	
 	 SelectPlanPage SPP= GCP.navigatetoselectPlanPage();
 	 AuthorizeGateway AG=SPP.selectPlan1(data.get("planName"),data.get("AdName"),data.get("path"));
 	 AG.makePayment();
+	 
 	 RevenueReportPage RRP=AG.navigateToRevenueReport();
 	 MemberRevenueReport MRR=RRP.goTomemberReport();
 	 MRR.checkRevenue(data.get("member"));

@@ -863,11 +863,11 @@ public ManageAdPlansPage goToManageAdPlansPage() {
 
 
 	public MyAdvertisements NaviagtingToMyAdvertisements() throws InterruptedException
-	{		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);Thread.sleep(5000);
+	{	//	driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);Thread.sleep(5000);
 		scrollToElement(myAdvertisements);
 		clickElementByJavaScript(myAdvertisements);
 		//click(myAdvertisements,"My Advertisements");	
-		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
 
 		return (MyAdvertisements) openPage(MyAdvertisements.class);
 //		new MyProfilePage(driver, );
@@ -915,13 +915,13 @@ public MyGroupsPage navigateToMyGroupsPage() {
 	
 	public ResourcesPage  gotoResourcesPage() throws Exception {
 
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
 		waitForElementToPresent(Testingcommunity);
 		click(Testingcommunity,"18-02-2021Testing community");
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
 		waitForElementToPresent(resources);
 		click(resources,"Resources");
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
 		return (ResourcesPage) openPage(ResourcesPage.class);
 			}
 	
@@ -959,10 +959,11 @@ public MyGroupsPage navigateToMyGroupsPage() {
 
 	public void searchcommunity(String Community) throws InterruptedException {
 		this.viewall();
-		Thread.sleep(3000);
+	//	Thread.sleep(3000);
 		waitForElementToPresent(serachbyCommunity);
 		type(serachbyCommunity, Community, "Communities");
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
+		waitForElementToPresent(searcH);
 		click(searcH, "search");
 		
 	}
@@ -1054,11 +1055,16 @@ public MyGroupsPage navigateToMyGroupsPage() {
 	 WebElement searchBox;
 	@FindBy(xpath="//*[@class='form-group']/*[@ng-click='data.SearchUserCommunities()']")
 	WebElement searchButton;
-	
+	@FindBy(xpath="//*[@class='category-img']")
+	WebElement wait;
+@FindBy(xpath="(//*[@ng-click='data.SearchSimilarBusiness()'])")
+	WebElement wait2;
 	 public Bizligo1CommunityPage goToMyCommunity() throws InterruptedException {
-		 Thread.sleep(3000);
+		// Thread.sleep(3000);
 		 
 		 waitForElementToPresent(viewAllBtn);
+			waitForElementToPresent(wait);//added 0n 05/04 for waiting purpose
+			waitForElementToPresent(wait2);//added 0n 05/04 for waiting purpose
 		click(viewAllBtn,"view all");
 			
 			waitForElementToPresent(bizligo1);//added on 31/03 for wait purpose
@@ -1078,13 +1084,15 @@ public MyGroupsPage navigateToMyGroupsPage() {
 	 
 	 
 	 public void viewall() throws InterruptedException {
-		 Thread.sleep(6000);
+	//	 Thread.sleep(6000);
+		 waitForElementToPresent(viewAllBtn);
 			click(viewAllBtn,"view all");
 	 }
 	 public CreateCommunityPage createcommunity() throws InterruptedException {
-			Thread.sleep(4000);
+		//	Thread.sleep(4000);
 			this.viewall();
-			Thread.sleep(4000);
+		//	Thread.sleep(4000);
+			waitForElementToPresent(CreateCommunityBtn);
 			click(CreateCommunityBtn,"CreateCommunityBtn");
 			return (CreateCommunityPage) openPage(CreateCommunityPage.class);
 	 }
@@ -1371,9 +1379,9 @@ public void gotoGlobalAdPageUsingURL() throws InterruptedException{
 
     
     public void gotoPricingPlanUsingURL() throws InterruptedException{
-    	   Thread.sleep(2000); 
+    	//   Thread.sleep(2000); 
     	   DriverManager.getDriver().navigate().to("https://tenant1.bizligotest.com/eventmanager/pricing");
-    	   Thread.sleep(8000);
+    //	   Thread.sleep(8000);
     	   System.out.println("User cannot open Pricing Plan page using URl");
     	   
     	    }

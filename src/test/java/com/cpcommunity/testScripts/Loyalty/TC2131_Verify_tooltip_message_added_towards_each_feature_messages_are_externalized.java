@@ -2,6 +2,7 @@ package com.cpcommunity.testScripts.Loyalty;
 
 import java.util.Hashtable;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.HomePage;
@@ -27,6 +28,14 @@ public class TC2131_Verify_tooltip_message_added_towards_each_feature_messages_a
 		LoginPage login = home.clickOnLOGINBtn();	
 		TenantAdminDashboardPage TDP = login.loginToTADashboard(data.get("email"), data.get("password"));
 		LoyaltyPage LP=TDP.navigateToLoyaltyPage();
+	}
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("TC2131 Test Completed");
+		
+		quit();
+		
 	}
 
 }

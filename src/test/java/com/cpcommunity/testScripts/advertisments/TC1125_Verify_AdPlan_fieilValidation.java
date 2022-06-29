@@ -6,6 +6,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.CommunityDashboardPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.ManageAdPlansPage;
@@ -30,9 +31,13 @@ public class TC1125_Verify_AdPlan_fieilValidation  extends BaseTest{
 	HomePage home = new HomePage().open(data.get("tenantType"));
 	LoginPage login = home.clickOnLOGINBtn();
 	//MyProfilePage myprofile = login.loginToMyProfilePage(data.get("email"), data.get("password"));
-	MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
-	CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
+//	MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
+//	CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
+EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+	MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
+	CommunityDashboardPage communityDashboard =MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
 	ManageAdPlansPage MAPP=communityDashboard.goToManageAdPlansPage();
+	
 	MAPP.saveWithoutenteringField();
 	MAPP.checkFieldValidations(data.get("name"),data.get("name1"),data.get("price"),data.get("price1"), data.get("planDetails"),data.get("duration"),data.get("duration1"),data.get("durationType"),data.get("adLocation"),data.get("adType"), data.get("approvalType"));
 	MAPP.inactivatePlan(data.get("plan"));

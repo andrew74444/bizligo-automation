@@ -31,14 +31,20 @@ public class TC1507_Verify_User_Able_To_Delete_Group_Post extends BaseTest {
 		GlobalCommunitesPage GL = ecosystem.goToGlobalCommunities();
 		CommunityDetailsPage communityDetails = GL.navigateToCommunityDetailsPage(data.get("communityName"));
 		GroupDetailsPage GroupDetailsPage = communityDetails.navigateToGroupDetailsPage(data.get("groupName"));
-		GroupDetailsPage.postDiscussions(data.get("discussionTitle"),data.get("postContent"), data.get("tagMembers"));
+	//	GroupDetailsPage.postDiscussions(data.get("discussionTitle"),data.get("postContent"), data.get("tagMembers"));
+		try {
+			GroupDetailsPage.searchDiscussions(data.get("discussionTitle"));//added on 09/05
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		GroupDetailsPage.deletegroupdiscussion();
 	}
 
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("TC1506 Test Completed");
+		logInfo("TC1507 Test Completed");
 		
 		quit();
 		

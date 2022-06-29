@@ -2,6 +2,7 @@ package com.cpcommunity.testScripts.Loyalty;
 
 import java.util.Hashtable;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.HomePage;
@@ -29,4 +30,12 @@ public class TC2132_Verify_loyalty_point_text_box_disabled_mode_until_checkbox_a
 		LoyaltyPage LP=TDP.navigateToLoyaltyPage();
 	}
 
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("TC2132 Test Completed");
+		
+		quit();
+		
+	}
 }

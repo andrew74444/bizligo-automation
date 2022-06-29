@@ -32,7 +32,7 @@ public class TC203_GroupTagMemberInPost extends BaseTest {
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
-		CommunityDetailsPage CommunityDetailsPage = GlobalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
+		CommunityDetailsPage CommunityDetailsPage = GlobalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));//+" "+runTime
 		GroupDetailsPage GroupDetailsPage = CommunityDetailsPage.navigateToGroupDetailsPage(data.get("groupName"));
 		Discussions discussions = GroupDetailsPage.sharePosts();
 		discussions.tagMemberInPost(data.get("postMessage"), data.get("tag"),data.get("tag"));

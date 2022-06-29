@@ -5,6 +5,7 @@ import java.util.Hashtable;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.MemberDirectoryPage;
@@ -27,8 +28,10 @@ public class TC1040_Verify_excelAndwordDocument_Not_Displaying_In_memberDirector
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
-		MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
-		MemberDirectoryPage memberdirectory= myCommunity.gotoMemberDirectoryPage();
+	//	MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
+	//	MemberDirectoryPage memberdirectory= myCommunity.gotoMemberDirectoryPage();
+		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+		MemberDirectoryPage memberdirectory= EcoSystemPage.gotoMemberDirectoryPage();
 		memberdirectory.excelAndwordDisplay();
 		
 }

@@ -152,10 +152,10 @@ public class GlobalMembersPage extends BasePage {
 				}
 				click(connectButton, "connectButton");
 				waitForElementToPresent(connectionSendbtn);
-				picture();
+		//		picture();
 				click(connectionSendbtn, "connection Send btn");
 				Thread.sleep(2000);
-				picture();
+	//			picture();
 				return;
 			} catch (Exception e) {
 				i++;

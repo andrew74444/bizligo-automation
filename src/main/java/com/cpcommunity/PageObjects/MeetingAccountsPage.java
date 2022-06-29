@@ -94,6 +94,7 @@ public class MeetingAccountsPage extends BasePage{
 
 	}
 	public MeetingAccountsPage configureZoom(String APIKey, String APISecret, String EmailID) {
+		waitForElementToPresent(action);
 		click(action,"action");
 		waitForElementToPresent(OkBtn);
 		click(OkBtn,"OkBtn");

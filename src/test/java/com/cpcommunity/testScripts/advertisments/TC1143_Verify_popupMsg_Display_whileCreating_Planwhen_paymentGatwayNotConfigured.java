@@ -6,6 +6,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.CAPDashboardPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.ManageAdPlansPage;
@@ -30,8 +31,10 @@ public class TC1143_Verify_popupMsg_Display_whileCreating_Planwhen_paymentGatway
 	HomePage home = new HomePage().open(data.get("tenantType"));
 	LoginPage login = home.clickOnLOGINBtn();
 	//MyProfilePage myprofile = login.loginToMyProfilePage(data.get("email"), data.get("password"));
-	MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
-	CAPDashboardPage CAP=myCommunity.goToManageCAP(data.get("community"));
+//	MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
+	EcoSystemPage EcoSystemPage3 = login.loginToApplication(data.get("email"), data.get("password"));
+	MyCommunitiesPage MyCommunitiesPage = EcoSystemPage3.goToMyCommunities();
+	CAPDashboardPage CAP=MyCommunitiesPage .goToManageCAP(data.get("community"));
 	ManageAdPlansPage MAP=CAP.goToManageAdPlansPage();
 	MAP.noncommunityPaymentGatewaymsg();
 	

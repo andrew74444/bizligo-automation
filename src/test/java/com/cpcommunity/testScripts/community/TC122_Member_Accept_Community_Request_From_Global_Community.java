@@ -34,7 +34,7 @@ public class TC122_Member_Accept_Community_Request_From_Global_Community extends
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
-		GlobalCommunitesPage.acceptCommunity(data.get("communityName")+" "+runTime,data.get("termsAndConditions"));
+		GlobalCommunitesPage.acceptCommunity(data.get("communityName"),data.get("termsAndConditions"));//+" "+runTime
 		
 		//Assert.fail("Failing the login test");
 	}

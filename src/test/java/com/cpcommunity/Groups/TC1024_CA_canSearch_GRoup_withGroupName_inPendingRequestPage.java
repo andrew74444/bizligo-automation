@@ -38,7 +38,7 @@ public class TC1024_CA_canSearch_GRoup_withGroupName_inPendingRequestPage extend
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("TC1027 Test Completed");
+		logInfo("TC1024 Test Completed");
 		
 		quit();
 		

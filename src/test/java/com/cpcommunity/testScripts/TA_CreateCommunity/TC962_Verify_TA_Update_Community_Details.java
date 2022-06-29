@@ -2,6 +2,7 @@ package com.cpcommunity.testScripts.TA_CreateCommunity;
 
 import java.util.Hashtable;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.HomePage;
@@ -30,4 +31,14 @@ public class TC962_Verify_TA_Update_Community_Details extends BaseTest{
 		TCP.TA_editCommunity(data.get("Name"),data.get("EditedName"),data.get("About"),data.get("Other"),data.get("Category"));
 
 }
+
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("TC962 Test Completed");
+		
+		quit();
+		
+	}
+
 }

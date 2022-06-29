@@ -2,6 +2,7 @@ package com.cpcommunity.testScripts.TA_CreateCommunity;
 
 import java.util.Hashtable;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.HomePage;
@@ -30,6 +31,15 @@ public class TC968_Verify_TA_able_to_make_member_CA extends BaseTest{
 		TACommunitiesPage TCP = TDP.navigateToCommunitiesPage();
 		ManageCommunityMembersPage MCMP =TCP.navigateToManageMembers(data.get("Name"));
 		MCMP.memberAsAdmin(data.get("Email"));
+		
+	}
+
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("TC968 Test Completed");
+		
+		quit();
 		
 	}
 

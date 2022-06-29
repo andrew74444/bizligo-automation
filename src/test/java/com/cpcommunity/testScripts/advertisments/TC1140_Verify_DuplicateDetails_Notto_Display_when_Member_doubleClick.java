@@ -5,6 +5,7 @@ import java.util.Hashtable;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.MyAdvertisements;
@@ -28,8 +29,11 @@ public class TC1140_Verify_DuplicateDetails_Notto_Display_when_Member_doubleClic
 	logInfo("BizLigo Application Opened");
 	HomePage home1 = new HomePage().open(data.get("tenantType"));
 	LoginPage login1 = home1.clickOnLOGINBtn();
-	 MyDashboardPage MDP=login1.loginToMemberdashboard(data.get("email"), data.get("password"));
-	 MyAdvertisements myad=MDP.NaviagtingToMyAdvertisements();
+	// MyDashboardPage MDP=login1.loginToMemberdashboard(data.get("email"), data.get("password"));
+	//MyAdvertisements myad=MDP.NaviagtingToMyAdvertisements();
+	 EcoSystemPage EcoSystemPage = login1.loginToApplication(data.get("email"), data.get("password"));	
+		 MyAdvertisements myad=EcoSystemPage.NaviagtingToMyAdvertisements();
+	 
 	 myad.createGlobalAd1(data.get("planName"),data.get("AdName"),data.get("path"));
 	
 }

@@ -35,7 +35,7 @@ public class TC204_GroupTagMemberInComment extends BaseTest {
 		CommunityDetailsPage CommunityDetailsPage = GlobalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		GroupDetailsPage GroupDetailsPage = CommunityDetailsPage.navigateToGroupDetailsPage(data.get("groupName"));
 		Discussions discussions = GroupDetailsPage.sharePosts();
-		discussions.tagMemberInComment(data.get("postMessage"), data.get("postComment"));
+		discussions.tagMemberInComment(data.get("tag"), data.get("postComment"));
 		//Assert.fail("Failing the login test");
 	}
 

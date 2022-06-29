@@ -35,7 +35,7 @@ public class TC3008_Verify_Member_Able_To_Purchase_Complimentry_Ticket_From_Even
 		
 		UpcomingEventsPage UpcomingEventsPage = EcoSystemPage.goToUpComingEvents();
 		EventDetailsPage eventDetailsPage = UpcomingEventsPage.goToEventDetailsPage(data);
-		eventDetailsPage.registerFreeEvent(data);
+		eventDetailsPage.registerEvent(data);
 		
 		Yahoo yahoo= new Yahoo().open();
 		yahoo.Login(data.get("email1"), data.get("password1"));//member checking mail about event registration

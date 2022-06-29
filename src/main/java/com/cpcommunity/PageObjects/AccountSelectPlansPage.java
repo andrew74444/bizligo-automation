@@ -29,10 +29,11 @@ public class AccountSelectPlansPage extends BasePage {
 
 	@FindBy(xpath = "//button[contains(text(),'Next')]")
 	WebElement next;
-
+	@FindBy(xpath = "(//*[@ng-click='OnPlanSelected(plan)'])[1]")
+			WebElement selectBtn;
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
-
+waitForElementToPresent(selectBtn);//added on 27/04
 		return ExpectedConditions.visibilityOf(Select);
 	}
 

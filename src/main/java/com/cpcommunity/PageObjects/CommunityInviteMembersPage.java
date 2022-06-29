@@ -116,7 +116,7 @@ public class CommunityInviteMembersPage extends BasePage{
 		click(YesProceed,"Yes Proceed");
 		waitForElementToPresent(OkBtn);
 		click(OkBtn,"Ok Btn");
-		Thread.sleep(1000);
+	//	Thread.sleep(1000);
 //		waitForElementToPresent(noMembersAvailable);
 //		
 //		search.clear();
@@ -131,53 +131,60 @@ public class CommunityInviteMembersPage extends BasePage{
 		type(search, Email1,"Search");
 		Thread.sleep(5000);
 		click(select_Checkbox,"select_Checkbox");
-		Thread.sleep(1000);
+//		Thread.sleep(1000);
+		waitForElementToPresent(btnInvite);
 		click(btnInvite,"btnInvite");
-		picture();
+//		picture();
 		waitForElementToPresent(YesProceed);
 		click(YesProceed,"Yes Proceed");
 		waitForElementToPresent(OkBtn);
 		click(OkBtn,"Ok Btn");
-		Thread.sleep(1000);
+//		Thread.sleep(1000);
+		driver.navigate().refresh();
 		search.clear();
 
 		type(search, Email2,"Search");
 		Thread.sleep(5000);
 		click(select_Checkbox,"select_Checkbox");
-		Thread.sleep(1000);
+	//	Thread.sleep(1000);
+		waitForElementToPresent(btnInvite);
 		click( btnInvite,"btnInvite");
-		picture();
+	//	picture();
 		waitForElementToPresent(YesProceed);
 		click( YesProceed,"Yes Proceed");
 		waitForElementToPresent(OkBtn);
 		click( OkBtn,"Ok Btn");
-		Thread.sleep(1000);
+	//	Thread.sleep(1000);
+		driver.navigate().refresh();
 		search.clear();
 
 		type(search, Email3,"Search");
 		Thread.sleep(5000);
 		click(select_Checkbox,"select_Checkbox");
-		Thread.sleep(1000);
+//		Thread.sleep(1000);
+		waitForElementToPresent(btnInvite);
 		click(btnInvite,"btnInvite");
-		picture();
+//		picture();
 		waitForElementToPresent(YesProceed);
 		click(YesProceed,"Yes Proceed");
 		waitForElementToPresent(OkBtn);
 		click(OkBtn,"Ok Btn");
-		Thread.sleep(1000);
+	//	Thread.sleep(1000);
+		driver.navigate().refresh();
 		search.clear();
 
 		type(search, Email4,"Search");
 		Thread.sleep(5000);
 		click(select_Checkbox,"select_Checkbox");
-		Thread.sleep(1000);
+	//	Thread.sleep(1000);
+		waitForElementToPresent(btnInvite);
 		click(btnInvite,"btnInvite");
-		picture();
+	//	picture();
 		waitForElementToPresent(YesProceed);
 		click(YesProceed,"Yes Proceed");
 		waitForElementToPresent(OkBtn);
 		click(OkBtn,"Ok Btn");
-		Thread.sleep(1000);
+	//	Thread.sleep(1000);
 		search.clear();		
 
 	}
@@ -191,7 +198,20 @@ public class CommunityInviteMembersPage extends BasePage{
 		return ExpectedConditions.visibilityOf(btnInvite);
 	}
 
-	
+@FindBy(xpath="//*[@id='AllUsersTable']")
+	WebElement info;
+@FindBy(xpath="//*[@class='user-profile dropdown-toggle']")
+WebElement dropDown;
+@FindBy(xpath="//*[@class='LogOutNewAdmin']")
+WebElement logout;
+public HomePage logOut() {
+	waitForElementToPresent(info);
+	waitForElementToPresent(dropDown);
+	clickElementByJavaScript(dropDown,"dropDown");
+	waitForElementToPresent(logout);
+	click(logout,"logout");
+	return (HomePage) openPage(HomePage.class);
+}
 //	public ZohoCRMPage gotoCRM() {
 //		
 //		click(crm,"CRM Link");

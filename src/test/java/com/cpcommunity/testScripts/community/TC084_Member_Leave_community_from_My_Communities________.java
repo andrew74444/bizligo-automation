@@ -34,18 +34,17 @@ public class TC084_Member_Leave_community_from_My_Communities________ extends Ba
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 //		Dashboard_Page.verifySuccessLogin();
-//*************only leaving community thats why commented below code"***********************\\\ 
 		
-//		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
-//		try {
-//			GlobalCommunitesPage.communityJoinWithOutDate(data.get("communityName"));	
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//		}
+		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
+		try {
+			GlobalCommunitesPage.communityJoinWithOutDate(data.get("communityName"));	
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 
 		
 		
-	//	EcoSystemPage = EcoSystemPage.goToMyEcosystem();
+		EcoSystemPage = EcoSystemPage.goToMyEcosystem();
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		MyCommunitiesPage.leaveCommunityWithName(data.get("communityName"));
 		

@@ -68,10 +68,10 @@ public class GlobalCareers extends BasePage {
 	@FindBy(xpath = "(//div[@class='job-right-heading ng-binding'])[1]")
 	WebElement JobDescription;
 
-	@FindBy(xpath = "(//div[@class='job-right-heading ng-binding'])[2]")
+	@FindBy(xpath = "(//*[@class='job-right-heading ng-binding'])[2]")
 	WebElement AdditionalDetails;
 
-	@FindBy(xpath = "(//div[@class='job-right-heading ng-binding'])[3]")
+	@FindBy(xpath = "(//*[@class='job-right-heading ng-binding'])[3]")
 	WebElement Remarks;
 
 	@FindBy(xpath = "//*[contains(text(),'no results found matching your search criteria.')]")
@@ -193,17 +193,19 @@ public class GlobalCareers extends BasePage {
 	    }
 	
 	public void verifyTheDetails(String JobTitle, String AdditionalDetails, String Remarks) {
+		waitForElementToPresent(ViewandApply1);
 		type(searchByJobTitle, JobTitle, "JobTitle");
 		click(search, "Searchbtn");
 		waitForElementToPresent(CurrentJobOpenings);
 		WebElement ele = driver.findElement(By.xpath("//*[contains(text(),'" + JobTitle + "')]"));
 		waitForElementToPresent(ele);
-		click(ViewandApply, "ViewandApply");
+		waitForElementToPresent(ViewandApply1);
+		clickElementByJavaScript(ViewandApply1, "ViewandApply");
 		waitForElementToPresent(JobRequirementDetails);
 		AssertionHelper.verifyText(this.JobTitle.getText(), JobTitle);
 		AssertionHelper.verifyText(this.AdditionalDetails.getText(), AdditionalDetails);
 		AssertionHelper.verifyText(this.Remarks.getText(), Remarks);
-		picture();
+	//	picture();
 	}
 
 	public void verifyNoResultsFound(String JobTitle) {
@@ -214,12 +216,13 @@ public class GlobalCareers extends BasePage {
 	}
 
 	public void searchJob(String jobTitle) {
+		waitForElementToPresent(searchByJobTitle);
 		type(searchByJobTitle, jobTitle, "job Title");
 		click(search, "Searchbtn");
 		waitForElementToPresent(CurrentJobOpenings);
 		WebElement ele = driver.findElement(By.xpath("//*[contains(text(),'" + jobTitle + "')]"));
 		waitForElementToPresent(ele);
-		picture();
+	//	picture();
 	}
 
     
@@ -305,13 +308,13 @@ public void CheckAdditionaltitleAndRemarkNotDisplaying(String Title1) throws Int
 	WebElement searchBox;
 	@FindBy(xpath="//*[@ng-click='data.SearchJobs()']")
 	WebElement searchBtn;
-	public void applyToJob(String path) throws InterruptedException {
+	public void applyToJob(String jobName,String path) throws InterruptedException {
 	//	Thread.sleep(3000);
 		waitForElementToPresent(ViewandApply1);//added on 05/04 for wait purpose
-		type(searchBox,"Senior Software Engineer","searching the job");//added on 05/04
+		type(searchBox,jobName,"searching the job");//added on 05/04
 		click(searchBtn,"search button");//added on 05/04
 		
-		waitForElementToPresent(ViewandApply1);//added on 05/04 for wait purpose
+		waitForElementToPresent(ViewandApply1);//added on 05/04 
 		
 		clickElementByJavaScript(ViewandApply1);
 	//	click(ViewandApply1, "ViewandApply");

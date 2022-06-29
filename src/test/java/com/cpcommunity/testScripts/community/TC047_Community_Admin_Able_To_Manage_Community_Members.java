@@ -40,11 +40,11 @@ public class TC047_Community_Admin_Able_To_Manage_Community_Members extends Base
 		
 		Yahoo yahoo= new Yahoo().open();
 
-		yahoo.Login(data.get("email1"), data.get("password1"));
+		yahoo.Login(data.get("email1"), data.get("password"));
 		
 	//	yahoo.adminNow();//when CA make as admin checking mail purpose
 	//	yahoo.removedCAdmin();//when CA removed as admin checking mail purpose
-	//	yahoo.addedToCommunity();//when CA added to community checking mail purpose
+		//	yahoo.addedToCommunity();//when CA added to community checking mail purpose
 		yahoo.removedFromCommunity();//when CA removed from Community member mail ckecking
 		//Assert.fail("Failing the login test");
 	}

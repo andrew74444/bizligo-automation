@@ -34,10 +34,10 @@ public class TC104_Manage_Community_Type extends BaseTest {
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		
-		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName")+" "+runTime);
+		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));//+" "+runTime
 		EditCommunityPage EditCommunityPage = CommunityDashboardPage.navigateToEditCommunityPage();
-		EditCommunityPage.editcommunity(data.get("communityName")+" "+runTime, data.get("Networking"), data.get("Marketing"), data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"), data.get("InvestInBusiness"), data.get("OtherName"), data.get("About"), data.get("Category"), data.get("type"), data.get("StateName"), data.get("CityName"), data.get("FacebookUrl"), data.get("TwitterUrl"), data.get("LinkedInUrl"), data.get("LogoImagePath"), data.get("website"),data.get("ImagePath"), data.get("CommunityUpdate"), data.get("communityNameUpdate"));
-		
+		EditCommunityPage.editcommunity(data.get("communityName"), data.get("Networking"), data.get("Marketing"), data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"), data.get("InvestInBusiness"), data.get("OtherName"), data.get("About"), data.get("Category"), data.get("type"), data.get("StateName"), data.get("CityName"), data.get("FacebookUrl"), data.get("TwitterUrl"), data.get("LinkedInUrl"), data.get("LogoImagePath"), data.get("website"),data.get("ImagePath"), data.get("CommunityUpdate"), data.get("communityNameUpdate"));
+		//+" "+runTime
 		//Assert.fail("Failing the login test");
 	}
 

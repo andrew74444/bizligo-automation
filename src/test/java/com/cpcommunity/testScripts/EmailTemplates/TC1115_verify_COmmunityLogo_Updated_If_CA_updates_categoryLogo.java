@@ -6,6 +6,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.CommunityDashboardPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
+import com.cpcommunity.PageObjects.EditCommunityPage;
 import com.cpcommunity.PageObjects.GlobalCommunitesPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
@@ -31,29 +33,43 @@ public class TC1115_verify_COmmunityLogo_Updated_If_CA_updates_categoryLogo exte
 	HomePage home = new HomePage().open(data.get("tenantType"));
 	LoginPage login = home.clickOnLOGINBtn();
 	//MyProfilePage myprofile = login.loginToMyProfilePage(data.get("email"), data.get("password"));
-	MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
-	CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
-	ManageCommunityPage managecomm=communityDashboard.goToManagecommunityPage();
-	managecomm.editCommunityLogo(data.get("about"),data.get("updatecommunity"),data.get("termandcond"),data.get("logoImagePath"));
-	quit();
-	openBrowser(data.get("browser"));
-	logInfo("Launched Browser : "+data.get("browser"));
-	logInfo("BizLigo Application Opened");
-	HomePage home1 = new HomePage().open(data.get("tenantType"));
-	LoginPage login1 = home1.clickOnLOGINBtn();
-	 MyDashboardPage MDP=login1.loginToMemberdashboard(data.get("email1"), data.get("password1"));
-	 GlobalCommunitesPage GCP=MDP.naviagtingToGlobalCommunities();
-	 GCP.searchCommunity(data.get("community"));
-	 quit();
-	 openBrowser(data.get("browser"));
-		logInfo("Launched Browser : "+data.get("browser"));
-		logInfo("BizLigo Application Opened");
-		HomePage home2 = new HomePage().open(data.get("tenantType"));
-		LoginPage login2 = home2.clickOnLOGINBtn();
-		MyCommunitiesPage myCommunity2 = login2.loginToMyCommunitiesPage(data.get("email2"), data.get("password2"));
-		CommunityDashboardPage communityDashboard2 = myCommunity2.gotoManageCommunity(data.get("communityName"));
-		ManageCommunityPage managecomm2=communityDashboard2.goToManagecommunityPage();
-		managecomm2.editCommunityLogo(data.get("about2"),data.get("updatecommunity2"),data.get("termandcond2"),data.get("logoImagePath2"));
+	//MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
+	EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));	
+	MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
+	CommunityDashboardPage communityDashboard =MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
+	EditCommunityPage EditCommunityPage = communityDashboard.navigateToEditCommunityPage();
+	EditCommunityPage.updateCommunitycategoryAndVerifyingCommunityLogo(data.get("Category1"),data.get("Category2"));
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//	ManageCommunityPage managecomm=communityDashboard.goToManagecommunityPage();
+//	managecomm.editCommunityLogo(data.get("about"),data.get("updatecommunity"),data.get("termandcond"),data.get("logoImagePath"));
+//	quit();
+//	openBrowser(data.get("browser"));
+//	logInfo("Launched Browser : "+data.get("browser"));
+//	logInfo("BizLigo Application Opened");
+//	HomePage home1 = new HomePage().open(data.get("tenantType"));
+//	LoginPage login1 = home1.clickOnLOGINBtn();
+//	 MyDashboardPage MDP=login1.loginToMemberdashboard(data.get("email1"), data.get("password1"));
+//	 GlobalCommunitesPage GCP=MDP.naviagtingToGlobalCommunities();
+//	 GCP.searchCommunity(data.get("community"));
+//	 quit();
+//	 openBrowser(data.get("browser"));
+//		logInfo("Launched Browser : "+data.get("browser"));
+//		logInfo("BizLigo Application Opened");
+//		HomePage home2 = new HomePage().open(data.get("tenantType"));
+//		LoginPage login2 = home2.clickOnLOGINBtn();
+//		MyCommunitiesPage myCommunity2 = login2.loginToMyCommunitiesPage(data.get("email2"), data.get("password2"));
+//		CommunityDashboardPage communityDashboard2 = myCommunity2.gotoManageCommunity(data.get("communityName"));
+//		ManageCommunityPage managecomm2=communityDashboard2.goToManagecommunityPage();
+//		managecomm2.editCommunityLogo(data.get("about2"),data.get("updatecommunity2"),data.get("termandcond2"),data.get("logoImagePath2"));
 	}
 	@AfterMethod
 	public void tearDown() {

@@ -101,14 +101,14 @@ WebElement sumbit;
 
 	public PaymentReceipt makePayment(String paymentMethod,String promo) throws Exception {
 		
-		promo = chanageToUpperCase(promo).toString();
+	//	promo = chanageToUpperCase(promo).toString();
 		applyPromoCode(promo,this.promoCode,applybtn,promoCodeApplied);
-		Thread.sleep(7000);
-		if(promo.contains("PROMO")){
+	//	Thread.sleep(7000);
+	//	if(promo.contains("PROMO")){
 			
 				waitForElementToPresent(amountToBePaid);	
 			
-		}
+	//	}
 		
 		
 		

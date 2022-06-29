@@ -6,6 +6,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.CommunityDashboardPage;
+import com.cpcommunity.PageObjects.CommunityDetailsPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.ManageResourcesPage;
@@ -31,14 +33,19 @@ public class TC1076_Verify_TA_ablTo_Update_Resources extends BaseTest{
 		LoginPage login = home.clickOnLOGINBtn();
 		TenantAdminDashboardPage tadashoboard=login.loginToTADashboard(data.get("email"), data.get("password"));
 		ManageResourcesPage manageres=tadashoboard.navigateToManageResourcesPage();
-		manageres.AddFieldswithCommunity(data.get("Title1"),data.get("community"), data.get("Description"),data.get("url"));
+	//	manageres.AddFieldswithCommunity(data.get("Title1"),data.get("community"), data.get("Description"),data.get("url"));
+		manageres.updateResource(data.get("Title"),data.get("Title1"),data.get("community"), data.get("Description"),data.get("url"));
 		HomePage home1= manageres.logout();
 		LoginPage login1 = home1.clickOnLOGINBtn();
-		MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email11"), data.get("password11"));
-		CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
-		ManageResourcesPage manageres1=communityDashboard.navigateToManageResourcesPage();
-		manageres1.checkResources();
-	    
+//		MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email11"), data.get("password11"));
+//		CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
+//		ManageResourcesPage manageres1=communityDashboard.navigateToManageResourcesPage();
+//		manageres1.checkResources();
+		
+		EcoSystemPage EcoSystemPage = login1.loginToApplication(data.get("email1"),data.get("password1"));
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
+		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
+		CommunityDetailsPage.checkResource(data.get("Title1"));
 	
 	}
 	@AfterMethod

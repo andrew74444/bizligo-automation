@@ -33,7 +33,8 @@ LoginPage login = home.clickOnLOGINBtn();
 EcoSystemPage ecosystem = login.loginToApplication(data.get("email"),data.get("password"));
 GlobalCommunitesPage GL = ecosystem.goToGlobalCommunities();
 CommunityDetailsPage communityDetails = GL.navigateToCommunityDetailsPage(data.get("communityName"));
-Discussions Discussions = communityDetails.postDiscussions(data.get("discussionTitle"),data.get("postContent"), data.get("tagMembers"));
+//Discussions Discussions = communityDetails.postDiscussions(data.get("discussionTitle"),data.get("postContent"), data.get("tagMembers"));
+Discussions Discussions = communityDetails.searchDiscussions(data.get("discussionTitle"));//added on 09/05
 Discussions.deleteCommunitydiscussion();
 
 }

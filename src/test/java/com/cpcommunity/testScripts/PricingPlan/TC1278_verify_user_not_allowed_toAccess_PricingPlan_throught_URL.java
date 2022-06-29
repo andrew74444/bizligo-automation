@@ -5,6 +5,7 @@ import java.util.Hashtable;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.MyDashboardPage;
@@ -26,9 +27,10 @@ public class TC1278_verify_user_not_allowed_toAccess_PricingPlan_throught_URL ex
 	logInfo("BizLigo Application Opened");
 	HomePage home = new HomePage().open(data.get("tenantType"));
 	LoginPage login = home.clickOnLOGINBtn();
-	MyDashboardPage dashpage = login.loginToDashboard(data.get("email"), data.get("password"));
-	dashpage.gotoPricingPlanUsingURL();
-	
+//	MyDashboardPage dashpage = login.loginToDashboard(data.get("email"), data.get("password"));
+//	dashpage.gotoPricingPlanUsingURL();
+	EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+	EcoSystemPage.gotoPricingPlanUsingURL();
 }
 	@AfterMethod
 	public void tearDown() {

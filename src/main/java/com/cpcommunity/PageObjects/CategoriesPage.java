@@ -51,7 +51,7 @@ public class CategoriesPage extends BasePage {
 	@FindBy(css = "td:nth-child(5)")
 	WebElement postcount;
 	
-	@FindBy(xpath = "//td[@class='sorting_1']")
+	@FindBy(xpath = "(//td[@class='sorting_1'])[1]")
 	WebElement selectcat;
 	
 	@FindBy(xpath = "//input[@type='search']")
@@ -98,14 +98,15 @@ public class CategoriesPage extends BasePage {
 	}
 
 	public void createCategorie(Hashtable<String,String> data) throws InterruptedException {
+		waitForElementToPresent(newcategory);
 		click(newcategory, "NewCategory");
 		waitForElementToPresent(categoryname);
-		type(categoryname, data.get("categoryName"), "CategoryName");
+		type(categoryname, data.get("categoryName")+getSystemCurrentMintues(), "CategoryName");
 
 		type(this.description, data.get("description"), "Description");
 		click(save, "Save");
-		Thread.sleep(4000);
-		picture();
+	//	Thread.sleep(4000);
+	//	picture();
 	}
 
 	public void updatecategorie(Hashtable<String,String> data) throws InterruptedException {
@@ -127,7 +128,7 @@ public class CategoriesPage extends BasePage {
 		return (BlogsSummary) openPage(BlogsSummary.class);
 	}
 	public void createCategorie(String categoryName,String Statusis, String Description) throws InterruptedException {
-		categoryName=categoryName+ " " + getDateInDDMMMYYYY();
+		categoryName=categoryName+ " " + getSystemCurrentMintues(); // getDateInDDMMMYYYY();
 		click(newcategory, "NewCategory");
 		waitForElementToPresent(categoryname);
 		type(categoryname, categoryName, "CategoryName");
@@ -137,8 +138,8 @@ public class CategoriesPage extends BasePage {
 		click(save, "Save");
 		waitForElementToPresent(ok);
 		click(ok, "OK");
-		Thread.sleep(4000);
-		picture();
+	//	Thread.sleep(4000);
+	//	picture();
 	}
 	public void checkCancel() {
 		click(newcategory, "NewCategory");
@@ -148,34 +149,38 @@ public class CategoriesPage extends BasePage {
 	}
 	
 	public void createSameNameCategorie(String categoryName, String Description) throws InterruptedException {
+		waitForElementToPresent(newcategory);
 		click(newcategory, "NewCategory");
 		waitForElementToPresent(categoryname);
 		type(categoryname, categoryName, "CategoryName");
 		type(this.description,Description, "Description");
 		selectUsingIndex(status, 0, "Inactive");
 		click(save, "Save");
-		Thread.sleep(1000);
+	//	Thread.sleep(1000);
 		waitForElementToPresent(error);
 		String errormsg=this.error.getText();
 		System.out.println(errormsg);
 		
-		picture();
+	//	picture();
 	}
 	
 	public void InactiveCategory(String Name) throws InterruptedException {
 		//Name=Name+ " " + getDateInDDMMMYYYY();
 		waitForElementToPresent(searchcat);
 		type(searchcat, Name, "Category name");
-		Thread.sleep(15000);
+	//	Thread.sleep(15000);
 		waitForElementToPresent(selectcat);
 		click(selectcat, "Select Category");
 		waitForElementToPresent(edit);
 		click(edit, "edit");
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
+		waitForElementToPresent(status);
 		selectUsingIndex(status, 0, "Inactive");
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
+		waitForElementToPresent(update);
 		click(update, "Update");
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
+		waitForElementToPresent(ok);
 		click(ok, "OK");
 		
 	}
@@ -184,16 +189,19 @@ public class CategoriesPage extends BasePage {
 		//Name=Name+ " " + getDateInDDMMMYYYY();
 		waitForElementToPresent(searchcat);
 		type(searchcat, Name, "Category name");
-		Thread.sleep(15000);
+	//	Thread.sleep(15000);
 		waitForElementToPresent(selectcat);
 		click(selectcat, "Select Category");
 		waitForElementToPresent(edit);
 		click(edit, "edit");
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
+		waitForElementToPresent(status);
 		selectUsingIndex(status, 1, "Inactive");
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
+		waitForElementToPresent(update);
 		click(update, "Update");
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
+		waitForElementToPresent(ok);
 		click(ok, "OK");
 		
 	}
@@ -202,10 +210,10 @@ public class CategoriesPage extends BasePage {
 		click(siteTitle, "Site title");
 		waitForElementToPresent(Toggledropdownmenu);
 		clickElementByJavaScript(Toggledropdownmenu);
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
 		waitForElementToPresent(ecosystem);
 		click(ecosystem,"Ecosystem");
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
 		waitForElementToPresent(blogs);
 		//click(blogs, "Blogs");
 		clickElementByJavaScript(blogs);
@@ -214,16 +222,17 @@ public class CategoriesPage extends BasePage {
 	}
 	
 	public void updatecategorie(String Name, String categoryName, String Description) throws InterruptedException {
-		Name=Name+ " " + getDateInDDMMMYYYY();
+	//	Name=Name+ " " + getDateInDDMMMYYYY();
 		waitForElementToPresent(searchcat);
 		type(searchcat, Name, "Category name");
-		Thread.sleep(15000);
-		categoryName=categoryName+ " " + getDateInDDMMMYYYY();
+	//	Thread.sleep(15000);
+	//	categoryName=categoryName+ " " + getDateInDDMMMYYYY();
 		waitForElementToPresent(selectcat);
 		click(selectcat, "Select Category");
 		waitForElementToPresent(edit);
 		click(edit, "edit");
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
+		waitForElementToPresent(categoryname);
 		click(categoryname, "Category Name");
 		this.categoryname.clear();
 		click(update, "Update");
@@ -233,11 +242,14 @@ public class CategoriesPage extends BasePage {
 		type(categoryname, categoryName, "Category Name");
 		this.description.clear();
 		type(this.description,Description, "Description");
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
+		waitForElementToPresent(status);
 		selectUsingIndex(status, 1, "Inactive");
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
+		waitForElementToPresent(update);
 		click(update, "Update");
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
+		waitForElementToPresent(ok);
 		click(ok, "OK");
 		
 	}

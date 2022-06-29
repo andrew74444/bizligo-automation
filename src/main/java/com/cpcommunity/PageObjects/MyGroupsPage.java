@@ -102,13 +102,13 @@ public class MyGroupsPage extends BasePage{
 
     
     public ManageGroupMembersPageByGroupAdmin manageGroupMembers(String groupName ) throws Exception {
-    	groupName = groupName+" "+getDateInDDMMMYYYY();
+   // 	groupName = groupName+" "+getDateInDDMMMYYYY();
     	this.searchGroup(groupName);
     	waitForElementToPresent(Menu);
-    	picture();
+    //	picture();
     	click(Menu,"Menu");
     	waitForElementToPresent(ManageMembers);
-    	picture();
+    //	picture();
     	click(ManageMembers,"ManageMembers");
     	
 		return (ManageGroupMembersPageByGroupAdmin) openPage(ManageGroupMembersPageByGroupAdmin.class);

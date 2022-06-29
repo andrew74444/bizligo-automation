@@ -36,16 +36,16 @@ public class TC092_InActivate_PayMent_Gateways extends BaseTest {
 	    MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 	    CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
 		PaymentGatewaysPage PaymentGatewaysPage = CommunityDashboardPage.navigateToPaymentGateways();
-	//	PaymentGatewaysPage.inActivateCheque();
-	//	PaymentGatewaysPage.inActivateCash();
+		PaymentGatewaysPage.inActivateCheque();
+		PaymentGatewaysPage.inActivateCash();
 		//SetupPayPalPage SetupPayPalPage = PaymentGatewaysPage.navigateToActivatePayPal();
 		//SetupPayPalPage.inActiavtePayPalPaymentGateway();
 		SetupAuthorizePage SetupAuthorizePage =PaymentGatewaysPage.navigateActivateAuthorize();
 		SetupAuthorizePage.inActiveAuthorizeGateway();
 		
 		Yahoo yahoo= new Yahoo().open();
-		//	yahoo.Login(data.get("email1"), data.get("password1"));//CA created community mail checking purpose
-			yahoo.Login(data.get("email2"), data.get("password2"));//other CA mail checking purpose
+			yahoo.Login(data.get("email1"), data.get("password1"));//CA created community mail checking purpose
+		//	yahoo.Login(data.get("email2"), data.get("password2"));//other CA mail checking purpose
 			yahoo.paymentGatewayInActive();
 		
 		//Assert.fail("Failing the login test");

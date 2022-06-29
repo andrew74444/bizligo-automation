@@ -27,12 +27,24 @@ public class TC145_PromoCode_Event_Registration_With_PayPal_From_Event_Details_P
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 	
-		UpcomingEventsPage upcomingEventsPage = EcoSystemPage.goToUpComingEvents();
-		EventDetailsPage eventDetailsPage = upcomingEventsPage.goToEventDetailsPage(data);
-		PayPalPayment payPalGateway= eventDetailsPage.registerEventByPayPal(data);
-		EventTicketPage eventTicketPage = payPalGateway.MakePayment();
-		eventTicketPage.successfulRegistration();
+//		UpcomingEventsPage upcomingEventsPage = EcoSystemPage.goToUpComingEvents();
+//		EventDetailsPage eventDetailsPage = upcomingEventsPage.goToEventDetailsPage(data);
+//		PayPalPayment payPalGateway= eventDetailsPage.registerEventByPayPal(data);
+//		EventTicketPage eventTicketPage = payPalGateway.MakePayment();
+//		eventTicketPage.successfulRegistration();
 
+	
+		
+	
+		MyCommunitiesPage MyCommunitiesPage1 = EcoSystemPage.goToMyCommunities();
+		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage1.navigateToCommunityDetailsPage(data.get("communityName"));
+		EventsPage event=CommunityDetailsPage.gotoevents();	
+		PayPalPayment payPalPayment = event.registerEventByPayPalWithPromo(data);
+		EventTicketPage eventTicketPage = payPalPayment.MakePayment();
+		eventTicketPage.successfulRegistration();
+	
+	
+	
 	}
 
 	@AfterMethod

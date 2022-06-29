@@ -32,9 +32,11 @@ public class TC2122_Verify_Events_displaying_in_MyEvents_when_guest_user_registe
 	HomePage home1 = new HomePage().open(data.get("tenantType"));
 	LoginPage login = home1.clickOnLOGINBtn();
 	EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));		
-	UpcomingEventsPage UpcomingEventsPage = EcoSystemPage.navigateToUpComingEvents();
-	MyEventsPage MEP=UpcomingEventsPage.goToMyEventsPage();
-	MEP.registeredEventPresentInMyevents(data.get("UpcomingEvent"));
+//	UpcomingEventsPage UpcomingEventsPage = EcoSystemPage.navigateToUpComingEvents();
+//	MyEventsPage MEP=UpcomingEventsPage.goToMyEventsPage();
+	MyEventsPage MEP=EcoSystemPage.goToMyEventsPage();
+//	MEP.registeredEventPresentInMyevents(data.get("UpcomingEvent"));
+	MEP.searchByEventDate(data.get("Start Date"),data.get("End Date"),data.get("UpcomingEvent"));//added on 12/05
 	
 
 }

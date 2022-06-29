@@ -6,8 +6,11 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.Bizligo1CommunityPage;
+import com.cpcommunity.PageObjects.CommunityDetailsPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
+import com.cpcommunity.PageObjects.MyCommunitiesPage;
 import com.cpcommunity.PageObjects.MyDashboardPage;
 import com.cpcommunity.testScripts.community.BaseTest;
 import com.cpcommunity.utilities.Constants;
@@ -27,9 +30,13 @@ public class TC850_Verify_Member_Not_In_group_cannot_see_resources extends BaseT
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
-		 MyDashboardPage MDP=login.loginToMemberdashboard(data.get("email"), data.get("password"));
-		 Bizligo1CommunityPage BCP=MDP.goToMyCommunity();
-		 BCP.checkgroupResource();
+		 EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+		  MyCommunitiesPage MyCommunitiesPage=	  EcoSystemPage.goToMyCommunities();
+		  CommunityDetailsPage CommunityDetailsPage=  MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
+		  CommunityDetailsPage.checkgroupResource();
+//		 MyDashboardPage MDP=login.loginToMemberdashboard(data.get("email"), data.get("password"));
+//		 Bizligo1CommunityPage BCP=MDP.goToMyCommunity();
+//		 BCP.checkgroupResource();
 
 }
 	@AfterMethod

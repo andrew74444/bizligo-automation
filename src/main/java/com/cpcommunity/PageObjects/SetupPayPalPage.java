@@ -91,24 +91,30 @@ public class SetupPayPalPage extends BasePage{
 		 if(CheckBoxSelected.equalsIgnoreCase("false"))
 		 {
 			 UseSandboxCheckBox.click();
-		 } 
+		 }
 	 }
 	 
-	
-	
+	@FindBy(xpath="//*[@name='txtClientID']")
+	WebElement cilentId;
+	@FindBy(xpath="//*[@name='txtsecretkey']")
+	WebElement key;
 	public PayPalPayment SetUpPayPalPaymentGateway(String APIUsername, String APIPassword, String APISignature) throws Exception
 	{
-		 this.SelectCheckBox();
-		 txtAPIUsername.clear();
-		 type(txtAPIUsername, APIUsername, "txtAPIUsername");
-		 
-		 txtAPIPassword.clear();
-		 type(txtAPIPassword, APIPassword, "txtAPIPassword");
-		 
-		 txtAPISignature.clear();
-		 type(txtAPISignature, APISignature, "txtAPISignature");
-		 
-		 Thread.sleep(500);
+//		 this.SelectCheckBox();
+//		 txtAPIUsername.clear();
+//		 type(txtAPIUsername, APIUsername, "txtAPIUsername");
+//		 
+//		 txtAPIPassword.clear();
+//		 type(txtAPIPassword, APIPassword, "txtAPIPassword");
+//		 
+//		 txtAPISignature.clear();
+//		 type(txtAPISignature, APISignature, "txtAPISignature");
+//		 cilentId.clear();
+//		 type(cilentId,"AWPSKPOxwxaKlgxjkv8EWc9dVSLN3cDrd6XmlBewH12BnsY7_K02Xo9RkooXtdCccZhK3yYFMTDW1Guq", "Cilent Id");
+//		 key.clear();
+//		 type(key,"EE40TaZcshYtCrNQhlpFRHggWdSxDq1DiK-AT23gcGU0FER8PzfXnImEnk_LgqEASqlzpQ_s4PcaB5Qb", "Secret key");
+//		 
+	//	 Thread.sleep(500);
 		 click(ValidateBtn,"ValidateBtn");
 		 waitForElementToPresent(OkBtn);
 		 click(OkBtn,"OkBtn");	

@@ -37,9 +37,9 @@ public class TC128_Create_Job_Requirement extends BaseTest {
 		CommunityDetailsPage cdp = manageJobsPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		cdp.searchJob(data.get("JobTitle"));
 		EcoSystemPage =EcoSystemPage.goToMyEcosystem();
-		EcoSystemPage.goToGlobalCommunities();
+	//	EcoSystemPage.goToGlobalCommunities();
 		GlobalCareers GC = EcoSystemPage.goToGlobalCareers();
-		GC.searchJob(data.get("JobTitle"));
+//		GC.searchJob(data.get("JobTitle"));
 		GC.verifyTheDetails(data.get("JobTitle"), data.get("AdditionalDetails"), data.get("remarks"));
 		
 		//Assert.fail("Failing the login test");

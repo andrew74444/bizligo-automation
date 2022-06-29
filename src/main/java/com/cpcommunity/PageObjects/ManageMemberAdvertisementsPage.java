@@ -148,22 +148,31 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 				
 	}
 
-
+	@FindBy(xpath="(//*[text()='WAITING FOR APPROVAL'])[2]")
+	WebElement info1;
+	@FindBy(xpath="(//*[@role='row'])[2]")
+			WebElement table;
+	@FindBy(xpath="(//*[@class='x_panel'])[2]")
+			WebElement data;
 	public void rejectAd(String status) throws Exception {
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
+		waitForElementToPresent(table);
 		waitForElementToPresent(statusSearch);
 		selectByVisibleText(statusSearch, status, "waiting for approval");
 		click(btnSearch, "Search");
-		Thread.sleep(10000);
-		
-
+		Thread.sleep(5000);
+		waitForElementToPresent(info1);
+		waitForElementToPresent(action);
 		click(action, "action");
-		Thread.sleep(8000);
+		//Thread.sleep(8000);
 		//waitForElementToPresent(adStartDate);
 //		selectStartAndEndDates();
+		waitForElementToPresent(data);
+		scrollDownVertically();
+		waitForElementToPresent(reject);
 		click(reject, "Reject");
-		Thread.sleep(8000);
-		picture();
+	//	Thread.sleep(8000);
+	//	picture();
 		
 	}
 	public void RejectAd(String status) throws Exception {
@@ -183,14 +192,16 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 	}
 	
 	public void approveAd (String planName,String AdImage,String LinkUrl) throws Exception {
-		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
+		waitForElementToPresent(table);
 		waitForElementToPresent(PlanNameSearch);
 		//type(PlanNameSearch, planName, "Plan Name Search");
 		selectUsingIndex(statusSearch, 1, "Status");
 		click(btnSearch, "Search");
-		Thread.sleep(18000);
+		Thread.sleep(8000);
 		//String s = status.getText();
-		
+		waitForElementToPresent(info1);
+		waitForElementToPresent(edit);
 			click(edit, "action");
 			//click(date, "Select Date");
 			//waitForElementToPresent(adStartDatecalendar);
@@ -205,28 +216,42 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 			//waitForElementToPresent(adImage);
 			//type(this.adImage, AdImage, "Ad Image");
 			//type(this.linkUrl, LinkUrl, "Link Url");
+		    waitForElementToPresent(approve);
 			click(approve, "Approve");
 			
 		}
 			//Advertisement details saved.
 		
-	
-		
+	@FindBy(xpath="(//*[@id='userPromotionPlansTable'])[1]")
+			WebElement tableinfo;
+	@FindBy(xpath="(//*[@class='label label-success'])[1]")
+			WebElement statusInfo;
+	@FindBy(xpath="(//*[text()='Update Member Advertisement'])[1]")
+			WebElement text1;
 	public void changeDateAd(String planName,String adImage,String linkUrl) throws Exception {
-       Thread.sleep(2000);
+     //  Thread.sleep(2000);
+		waitForElementToPresent(tableinfo);
 		waitForElementToPresent(PlanNameSearch);
 		//type(PlanNameSearch, planName, "Plan Name Search");
-		selectUsingIndex(statusSearch, 2, linkUrl);
-		Thread.sleep(5000);
+		waitForElementToPresent(statusSearch);
+		selectUsingIndex(statusSearch, 2, "Approved");
+	//	Thread.sleep(5000);
+		waitForElementToPresent(btnSearch);
 		click(btnSearch, "Search");
-		Thread.sleep(8000);
+		Thread.sleep(5000);
+		waitForElementToPresent(statusInfo);
+		waitForElementToPresent(action);
 		click(action, "action");
-		Thread.sleep(7000);
-			click(date, "Select Date");
+		waitForElementToPresent(statusInfo);
+		Thread.sleep(5000);
+		scrollDownVertically();
+		scrollToElement(date);
+		waitForElementToPresent(date);
+			clickElementByJavaScript(date, "Select Date");
 			waitForElementToPresent(adStartDatecalendar);
 			Thread.sleep(1000);
 			click(nextMonth, "Next");
-			click(nextMonth, "Next");
+		//	click(nextMonth, "Next");
 			waitForElementToPresent(changeDate);
 			click(changeDate, "Date");
 			click(adEndDate, "Select Date");
@@ -235,18 +260,25 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 			waitForElementToPresent(changeendDate);
 			click(changeendDate, "Date");
 			
-			Thread.sleep(2000);
+	//		Thread.sleep(2000);
+			waitForElementToPresent(btnSave);
 			click(btnSave, "Save");
 			
 			//Advertisement details saved.
 		
 	}
+	@FindBy(xpath="//*[@class='label label-danger']")
+	WebElement statusinfo;
 		public void approveRejectedAd(String planName,String adImage,String linkUrl,String status) throws Exception {
-            Thread.sleep(3000);
+        //    Thread.sleep(3000);
 			waitForElementToPresent(planStatus);
-			selectUsingIndex(planStatus, 1,"planStatus");
+			selectUsingIndex(planStatus, 3,"planStatus");
+			waitForElementToPresent(btnSearch);
 			click(btnSearch, "Search");
-			Thread.sleep(12000);
+			Thread.sleep(5000);
+		
+			waitForElementToPresent(statusinfo);
+			waitForElementToPresent(action);
 				click(action, "action");
 				//waitForElementToPresent(adStartDate);
 				
@@ -254,6 +286,7 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 			    scrollDownVertically();
 				//type(this.adImage, adImage, "Ad Image");
 				//type(this.linkUrl, linkUrl, "Link Url");
+			    waitForElementToPresent(approve);
 				click(approve, "Approve");
 				
 				//Advertisement details saved.
@@ -286,8 +319,49 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 		
 		selectByVisibleText(planStatus, "WAITING FOR APPROVAL","planStatus");
 		click(btnSearch, "Search");
-		Thread.sleep(6000);
+	//	Thread.sleep(6000);
 	}
+	@FindBy(xpath="(//*[@title='Click to edit'])")
+			WebElement editAd;
+	@FindBy(xpath="(//*[text()='Showing 1 to 1 of 1 entries'])")
+			WebElement info;
+	@FindBy(xpath="(//*[@class='switch'])/*[@class='slider round']")
+			WebElement statusBtn;
+	@FindBy(xpath="(//*[@id='btnSave'])")
+			WebElement saveBtn;
+	public void inactiveAd(String adName) throws Exception{
+		
+		waitForElementToPresent(PlanNameSearch);
+		type(PlanNameSearch, adName, "Plan Name Search");
+		
+		waitForElementToPresent(btnSearch);
+		click(btnSearch, "Search");
+		waitForElementToPresent(info);
+		waitForElementToPresent(editAd);
+		click(editAd, "Edit Ad");
+		scrollDownVertically();
+		waitForElementToPresent(statusBtn);
+		click(statusBtn, "InActive");
+		waitForElementToPresent(saveBtn);
+		click(saveBtn, "save");
+	}
+public void activeAd(String adName) throws Exception{
+		
+		waitForElementToPresent(PlanNameSearch);
+		type(PlanNameSearch, adName, "Plan Name Search");
+		
+		waitForElementToPresent(btnSearch);
+		click(btnSearch, "Search");
+		waitForElementToPresent(info);
+		waitForElementToPresent(editAd);
+		click(editAd, "Edit Ad");
+		scrollDownVertically();
+		waitForElementToPresent(statusBtn);
+		click(statusBtn, "Active");
+		waitForElementToPresent(saveBtn);
+		click(saveBtn, "save");
+	}
+		
 	
 	public void verifyPurchasedAdisDisplayed(String planName) throws Exception {
 		this.searchAd(planName);
@@ -299,6 +373,7 @@ public class ManageMemberAdvertisementsPage extends BasePage {
 	public CommunityDashboardPage gotoCommunityDashboard() throws InterruptedException {
 		
 		scrollUpVertically();
+		driver.navigate().refresh();
 		waitForElementToPresent(dashboardreport);
 		click(dashboardreport, "Dashboard Reports");
 		waitForElementToPresent(communitydash);

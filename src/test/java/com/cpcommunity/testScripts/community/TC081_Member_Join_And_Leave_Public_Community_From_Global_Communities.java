@@ -47,10 +47,9 @@ public class TC081_Member_Join_And_Leave_Public_Community_From_Global_Communitie
 //		TotalCommunities++;
 //		AssertionHelper.verifyText(String.valueOf(TotalCommunities), T2);
 		
-		//commented below two lines for only join the community purpose
 		
-	       //GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();//commented on 22/03
-		    //GlobalCommunitesPage.leaveCommunityWithoutDate(data.get("communityName"));
+	       GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
+		    GlobalCommunitesPage.leaveCommunityWithoutDate(data.get("communityName"));
 		
 //		String T3 = EcoSystemPage.totalCommunitiesCount();
 //		AssertionHelper.verifyText(T1, T3);	

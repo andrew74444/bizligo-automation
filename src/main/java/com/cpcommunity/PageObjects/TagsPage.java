@@ -93,14 +93,15 @@ public class TagsPage extends BasePage {
 		aShot();
 	}
 	public void createTag(Hashtable<String, String> data) throws Exception {
-		
+		waitForElementToPresent(createtag);
 		click(createtag, "CreateTag");
 		waitForElementToPresent(tagname);
-		type(tagname, data.get("tagName"), "tagName");
+		type(tagname, data.get("tagName")+getSystemCurrentMintues(), "tagName");
 		type(tagdescription, data.get("description"), "Description");
+		waitForElementToPresent(save);
 		click(save, "Save");
-		Thread.sleep(3000);
-		picture();
+	//	Thread.sleep(3000);
+	//	picture();
 		
 	}
 
@@ -111,28 +112,32 @@ public class TagsPage extends BasePage {
 	}
 
 	public void createTag(String Name, String Description) throws Exception {
-		Name=Name+ " " + getDateInDDMMMYYYY();
+		Name=Name+ " " +getSystemCurrentMintues();// getDateInDDMMMYYYY();
+		waitForElementToPresent(createtag);
 		click(createtag, "CreateTag");
 		waitForElementToPresent(tagname);
 		type(tagname, Name, "tagName");
 		type(tagdescription, Description, "Description");
+		waitForElementToPresent(save);
 		click(save, "Save");
 		waitForElementToPresent(ok);
 		click(ok, "OK");
-		Thread.sleep(4000);
-		picture();
+	//	Thread.sleep(4000);
+	//	picture();
 		
 	}
 	
 	public void sameNameTag(String Name, String Description) throws Exception {
-		Thread.sleep(7000);
+	//	Thread.sleep(7000);
+		waitForElementToPresent(createtag);
 		click(createtag, "CreateTag");
 		waitForElementToPresent(tagname);
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
 		type(tagname, Name, "tagName");
 		type(tagdescription, Description, "Description");
+		waitForElementToPresent(save);
 		click(save, "Save");
-		Thread.sleep(3000);
+	//	Thread.sleep(3000);
 		waitForElementToPresent(error);
 		String errormsg=this.error.getText();
 		System.out.println(errormsg);
@@ -142,23 +147,26 @@ public class TagsPage extends BasePage {
 		click(createtag, "CreateTag");
 		waitForElementToPresent(tagname);
 		click(cancel, "Cancel");
-		Thread.sleep(3000);
-		picture();
+	//	Thread.sleep(3000);
+	//	picture();
 		
 	}
 	public void Inactivetag(String Name) throws InterruptedException {
 		waitForElementToPresent(searchtag);
 		type(searchtag, Name, "Category name");
-		Thread.sleep(15000);
+		Thread.sleep(10000);
 		waitForElementToPresent(selectcat);
 		click(selectcat, "Select Category");
 		waitForElementToPresent(edit);
 		click(edit, "edit");
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
+		waitForElementToPresent(status);
 		selectUsingIndex(status, 0, "Inactive");
-		Thread.sleep(3000);
+	//	Thread.sleep(3000);
+		waitForElementToPresent(update);
 		click(update, "Update");
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
+		waitForElementToPresent(ok);
 		click(ok, "OK");
 		
 	}
@@ -166,33 +174,37 @@ public class TagsPage extends BasePage {
 	public void activeTags(String Name) throws InterruptedException {
 		waitForElementToPresent(searchtag);
 		type(searchtag, Name, "Category name");
-		Thread.sleep(15000);
+		Thread.sleep(10000);
 		waitForElementToPresent(selectcat);
 		click(selectcat, "Select Category");
 		waitForElementToPresent(edit);
 		click(edit, "edit");
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
+		waitForElementToPresent(status);
 		selectUsingIndex(status, 1, "Inactive");
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
+		waitForElementToPresent(update);
 		click(update, "Update");
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
+		waitForElementToPresent(ok);
 		click(ok, "OK");
 		
 	}
 	
 	public void updateTag(String Name, String tagName, String Description) throws InterruptedException {
-		Name=Name+ " " + getDateInDDMMMYYYY();
+	//	Name=Name+ " " + getDateInDDMMMYYYY();
 		waitForElementToPresent(searchtag);
-		type(searchtag, Name, "Category name");
+		type(searchtag, Name, "Tag name");
 		Thread.sleep(8000);
 		waitForElementToPresent(selectcat);
 		click(selectcat, "Select Category");
-		Thread.sleep(3000);
+	//	Thread.sleep(3000);
 		waitForElementToPresent(edit);
 		click(edit, "edit");
-		Thread.sleep(8000);
-		click(tagname, "Category Name");
+	//	Thread.sleep(8000);
+		click(tagname, "Tag Name");
 		this.tagname.clear();
+		waitForElementToPresent(update);
 		click(update, "Update");
 		waitForElementToPresent(tagnameError);
 		String Error=this.tagnameError.getText();
@@ -200,11 +212,14 @@ public class TagsPage extends BasePage {
 		type(tagname, tagName, "Category Name");
 		this.description.clear();
 		type(this.description,Description, "Description");
-		Thread.sleep(6000);
-		selectUsingIndex(status, 1, "Inactive");
-		Thread.sleep(5000);
+	//	Thread.sleep(6000);
+		waitForElementToPresent(status);
+		selectUsingIndex(status, 1, "active");
+	//	Thread.sleep(5000);
+		waitForElementToPresent(update);
 		click(update, "Update");
-		Thread.sleep(7000);
+	//	Thread.sleep(7000);
+		waitForElementToPresent(ok);
 		click(ok, "OK");
 		
 	}
@@ -213,14 +228,14 @@ public class TagsPage extends BasePage {
 		click(siteTitle, "Site title");
 		waitForElementToPresent(Toggledropdownmenu);
 		clickElementByJavaScript(Toggledropdownmenu);
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
 		waitForElementToPresent(ecosystem);
 		click(ecosystem,"Ecosystem");
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
 		waitForElementToPresent(blogs);
 		//click(blogs, "Blogs");
 		clickElementByJavaScript(blogs);
-	Thread.sleep(2000);
+//	Thread.sleep(2000);
 		return (BlogsPage) openPage(BlogsPage.class);	
 	}
 	 public CategoriesPage navigatetoCategoriesPagepage() {

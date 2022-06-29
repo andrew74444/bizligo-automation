@@ -63,7 +63,7 @@ public class TC224_Register_With_Existing_Organization extends BaseTest {
 	@AfterMethod
 	public void tearDown() {
 
-		logInfo("Login Test Completed");
+		logInfo("TC224 Test Completed");
 
 		quit();
 

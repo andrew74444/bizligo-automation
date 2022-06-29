@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.CommunityDashboardPage;
 import com.cpcommunity.PageObjects.CommunityEventsPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.MyCommunitiesPage;
@@ -26,11 +27,16 @@ public class TC1297_verify_DuplicateReg_option_Displaying extends BaseTest{
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+ data.get("browser"));		
 		logInfo("BizLigo Application Opened");
-		HomePage home1 = new HomePage().open(data.get("tenantType"));
-		LoginPage login1 = home1.clickOnLOGINBtn();
-		MyCommunitiesPage com=login1.loginToMyCommunitiesPage(data.get("email1"), data.get("password1"));
-        CommunityDashboardPage dash=com.gotoManageCommunity(data.get("community"));
-        CommunityEventsPage CEP= dash.navigateToEvents();
+		HomePage home = new HomePage().open(data.get("tenantType"));
+		LoginPage login = home.clickOnLOGINBtn();
+//		MyCommunitiesPage com=login1.loginToMyCommunitiesPage(data.get("email1"), data.get("password1"));
+//        CommunityDashboardPage dash=com.gotoManageCommunity(data.get("community"));
+
+		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));	
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();	
+		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
+      
+		CommunityEventsPage CEP= CommunityDashboardPage.navigateToEvents();
         CEP.NewEvent();
         CEP.checkDuplicateRegDisplaying();
         

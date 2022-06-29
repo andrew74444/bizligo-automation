@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import com.cpcommunity.PageObjects.BlogsBySystemAdmin;
 import com.cpcommunity.PageObjects.BlogsPage;
 import com.cpcommunity.PageObjects.CommunityBlogsPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.MyDashboardPage;
@@ -34,8 +35,9 @@ public class TC610_Verify_System_Admin_Inactive_Blogs_Are_Not_Displaying_in_Blog
 		edit.logOut();
 		HomePage home1 = new HomePage().open(data.get("tenantType"));
 		LoginPage login1 = home1.clickOnLOGINBtn();
-		MyDashboardPage dashboard = login1.loginToMemberdashboard(data.get("email1"),data.get("password1"));
-		BlogsPage blog = dashboard.navigateToBlogs();
+	//	MyDashboardPage dashboard = login1.loginToMemberdashboard(data.get("email1"),data.get("password1"));
+		 EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email1"), data.get("password1"));
+		BlogsPage blog = EcoSystemPage.goToBlogsPage() ;
 		blog.searchPostByMember(data.get("search"));
 		
 		

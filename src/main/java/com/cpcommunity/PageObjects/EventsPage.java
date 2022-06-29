@@ -2,6 +2,7 @@ package com.cpcommunity.PageObjects;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Hashtable;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -71,7 +72,7 @@ public class EventsPage extends BasePage  {
 	WebElement noOfTickets1;	
 	@FindBy(xpath="(//select[@ng-model='data.numberOfTickets[eventTicket.TicketId]'])[2]")
 	WebElement noOfTickets2;	
-	@FindBy(xpath="//button[@ng-disabled='data.isAutofillIsLoading']")
+	@FindBy(xpath="//*[text()='Book Now']")
 	WebElement booknow;
 	@FindBy(xpath="//h3[normalize-space()='BOOKING CONFIRMATION']")
 	WebElement bookingConfirmation;
@@ -81,17 +82,17 @@ public class EventsPage extends BasePage  {
 	WebElement emailId1;
 	@FindBy(xpath="(//input[@placeholder='Email Address'])[2]")
 	WebElement emailId2;
-	@FindBy(xpath="//input[@id='AttendeeFirstName00']")
+	@FindBy(xpath="(//*[@placeholder='First Name'])[1]")
 	WebElement firstName;
-	@FindBy(xpath="//input[@id='AttendeeLastName00']")
+	@FindBy(xpath="(//*[@placeholder='Last Name'])[1]")
 	WebElement lastName;
 	@FindBy(xpath="//input[@id='AttendeePhone00']")
 	WebElement phone;
 	@FindBy(xpath="//input[@id='AttendeePhone01']")
 	WebElement phone2;
-	@FindBy(xpath="//input[@id='AttendeeFirstName01']")
+	@FindBy(xpath="(//*[@placeholder='First Name'])[2]")
 	WebElement firstName2;
-	@FindBy(xpath="//input[@id='AttendeeLastName01']")
+	@FindBy(xpath="(//*[@placeholder='Last Name'])[2]")
 	WebElement lastName2;
 	@FindBy(xpath="//div[@class='row ng-binding ng-scope']")
 	WebElement error;
@@ -187,44 +188,230 @@ public class EventsPage extends BasePage  {
 		//Thread.sleep(3000);
 		return (ManageCommunityPage) openPage(ManageCommunityPage.class);		
 	}
-	
+	@FindBy(xpath="(//*[@class='event-image']/*/*)[1]")
+	WebElement eventname;
 	public void searchevent(String name) throws InterruptedException {
+		waitForElementToPresent(eventname);
 		waitForElementToPresent(searchEvents);
-		name=name +" " + getDateInDDMMMYYYY();
+	//	name=name +" " + getDateInDDMMMYYYY();
 		type(searchEvents, name, "Event Name");
-		Thread.sleep(8000);
+		
 		click(search, "Search");
-		Thread.sleep(8000);
+
 		
 	}
+	public void goToEventPage(String name) throws InterruptedException {
+		this.searchevent(name);
+		waitForElementToPresent(eventname);
+		click(eventname,"Event name");
+
+		
+	}
+	public AuthorizeGateway registerEventbyAuthorizeNetWithPromo(Hashtable<String, String> data) throws Exception {
+		this.goToEventPage(data.get("eventName"));
+
+		this.addAttendeeDetails(data);
+		waitForElementToPresent(NextBtn);
+		clickElementByJavaScript(NextBtn, "next");
+		this.addPayerDetails(data);
+		this.usingPromoCode( data.get("promoCode1"));
+		waitForElementToPresent(BookNowBtn);
+		clickElementByJavaScript(BookNowBtn);
+		Thread.sleep(15000);
+		waitForElementToPresent(authorizeNet);
+		click(authorizeNet, "Selecting AuthorizeNet");
+		
+		waitForElementToPresent(proceed);
+		clickElementByJavaScript(proceed);
+	//	click(proceed, "Proceed");
+		return (AuthorizeGateway) openPage(AuthorizeGateway.class);
+	}
+	@FindBy(xpath = "//*[contains(text(),'Your tickets have processed')]")
+	WebElement ticketsProcessed;
+	public void purchaseWithPromoCodeOnly(Hashtable<String, String> data) throws Exception {
+		this.goToEventPage(data.get("eventName"));
+
+		this.addAttendeeDetails(data);
+		waitForElementToPresent(NextBtn);
+		clickElementByJavaScript(NextBtn, "next");
+		this.addPayerDetails(data);
+		this.usingPromoCode( data.get("promoCode1"));
+		waitForElementToPresent(BookNowBtn);
+		clickElementByJavaScript(BookNowBtn);
+		Thread.sleep(15000);
+
+		waitForElementToPresent(ticketsProcessed);
+
+		}
+	public PayPalPayment registerEventByPayPalWithPromo(Hashtable<String, String> data) throws Exception {
+			this.goToEventPage(data.get("eventName"));
+		this.addAttendeeDetails(data);
+		waitForElementToPresent(NextBtn);
+		clickElementByJavaScript(NextBtn, "next");
+		Thread.sleep(3000);
+		this.addPayerDetails(data);
+		this.usingPromoCode( data.get("promoCode1"));
+		waitForElementToPresent(BookNowBtn);
+		clickElementByJavaScript(BookNowBtn);
+		Thread.sleep(15000);
+		waitForElementToPresent(btnPayPal);
+		click(btnPayPal, "Selecting PayPal");
+		waitForElementToPresent(paypalProceed);
+		click(paypalProceed, "paypalProceed");
+		return (PayPalPayment) openPage(PayPalPayment.class);
+	}
+
+	@FindBy(xpath = "//*[@ng-show='data.ShowPaymentPaypal']/*/*[@class='btn btn-primary center-block']/*[text()='Proceed']")
+	WebElement paypalProceed;
+	@FindBy(xpath="//*[@for='IHavePromoCode']")
+	WebElement checkBox;
+	@FindBy(xpath="//*[@placeholder='Enter Promo code']")
+	WebElement textBox;
+	@FindBy(xpath="//*[@type='button']/*[text()='APPLY']")
+	WebElement apply;
+	@FindBy(xpath="//*[@class='text-success']")
+	WebElement success1;
+	public void usingPromoCode(String code) {
+	//	scrollDownVertically();
+		waitForElementToPresent(checkBox);
+	click(checkBox,"checkBox");
+	waitForElementToPresent(textBox);
+	type(textBox,code,"Promo Code");
+	waitForElementToPresent(apply);
+	click(apply,"Apply");
+	waitForElementToPresent(success1);
 	
+	}
+	@FindBy(xpath="(//select)[1]")
+	WebElement paidTicket;
+	@FindBy(xpath = "//h4[contains(.,'Event Attendees')]")
+	WebElement attendeFormView;
+	@FindBy(xpath = "//*[@name='FirstName[]']")
+	WebElement FirstName;
+	@FindBy(xpath = "//*[@name='LastName[]']")
+	WebElement LastName;
+	@FindBy(xpath = "")
+	WebElement Phone;
+	@FindBy(xpath = "//*[@name='Company[]']")
+	WebElement companyName;
+	@FindBy(xpath = "//input[@name='EmailID[]']")
+	WebElement AttendeeEmailID;
+	@FindBy(xpath = "//*[@name='Phone[]']")
+	WebElement AttendeePhone;
+	@FindBy(xpath = "//*[@id='eventAttendeesForm']")
+	WebElement eventAttendeesForm;
+	@FindBy(xpath = "//*[@type='submit']/*[text()='Next']")
+	WebElement NextBtn;
+	@FindBy(xpath = "//h4[contains(text(),'Booking Information')]")
+	WebElement BookingInformation;
+	
+	
+	@FindBy(xpath = "//input[@name='PayerEmailID']")
+	WebElement PayerEmailID;
+	@FindBy(xpath = "//input[@name='PayerPhone']")
+	WebElement PayerPhone;
+	@FindBy(xpath = "(//*[@id='PayerInfoForm']//*[@class='panel panel-default'])[1]")
+	WebElement payerForm;
+	@FindBy(xpath = "//*[contains(text(),'Book Now')]")
+	WebElement BookNowBtn;
+	@FindBy(xpath = "//*[@class='registration-gateway']/*/*/*/*[@value='1']")
+	WebElement btnPayPal;
+	//@FindBy(xpath = "//input[@value='2']")
+	@FindBy(xpath = "//*[@class='registration-gateway']/*/*/*/*[@value='2']")//added on 30/03
+	WebElement authorizeNet;
+public void addAttendeeDetails(Hashtable<String, String> data) throws Exception {
+//waitForElementToPresent(selectTickets);
+//selectByVisibleText(selectTickets, "1", "Selecting Tickets");
+waitForElementToPresent(paidTicket);
+selectByVisibleText(paidTicket, "1", "Selecting Ticket");//based on events page ticket list 
+//	Thread.sleep(2000);
+scrollToElement(attendeFormView);
+//	Thread.sleep(2000);
+waitForElementToPresent(AttendeeEmailID);
+	AttendeeEmailID.clear();
+	FirstName.clear();
+	LastName.clear();
+	this.companyName.clear();
+
+Thread.sleep(2000);
+type(AttendeeEmailID, data.get("attendeeEmailID"), "Attendee Email ID");
+//	scrollDownVertically();
+Thread.sleep(2000);
+click(AttendeePhone,"Attendee Phone");
+FirstName.clear();
+LastName.clear();
+this.companyName.clear();
+//Thread.sleep(2000);
+type(FirstName, data.get("attendeeFirstName"), "First Name");
+type(LastName, data.get("attendeLastName"), "Last Name");
+type(companyName, data.get("companyName"), "Company Name");
+//	takeScreenshotByShutterBug(eventAttendeesForm, "event Attendees Form");
+
+}
+@FindBy(xpath="//*[@name='PayerFirstName']")
+WebElement payerFirstName;
+@FindBy(xpath="//*[@name='PayerLastName']")
+WebElement payerLastName;
+@FindBy(xpath="//*[@name='PayerCompany']")
+WebElement payerCompany;
+public void addPayerDetails(Hashtable<String, String> data) throws Exception {
+	
+
+	waitForElementToPresent(PayerEmailID);
+	scrollToElement(BookingInformation);
+	
+	PayerEmailID.clear();
+	payerFirstName.clear();
+	payerLastName.clear();
+	Thread.sleep(2000);
+	type(PayerEmailID, data.get("payerEmailID"), "Payer Email ID");
+	type(PayerPhone, data.get("payerPhone"), "Payer Phone");
+	Thread.sleep(3000);
+	payerFirstName.clear();
+	payerLastName.clear();
+	waitForElementToPresent(payerFirstName);
+	type(payerFirstName, data.get("payerFirstName"), "Payer First Name");
+	waitForElementToPresent(payerLastName);
+	type(payerLastName, data.get("payerLastName"), "Payer Last name");
+	type(payerCompany, data.get("payerCompany"), "Payer company");
+//	click(PayerPhone," Payer Phone");
+//	Thread.sleep(4000);
+//	takeScreenshotByShutterBug(payerForm, "Payer Form");
+	
+}
+
 	public void registerToAnEvent(String Event) throws InterruptedException {
 		
 		
 		
 		
 	}
+	@FindBy(xpath="(//*[@class='event-image']/*/*)[1]")
+	WebElement eventname1;
+	@FindBy(xpath="(//select[@id='selectticketcount'])[1]")
+	WebElement memberTickets;	
 	public void registerToAnEventwithDuplicates(String Email, String Fname, String Lname, String ph) throws InterruptedException {
 		
-		click(Eventname, "Event");
+		click(eventname1, "Event");
 		waitForElementToPresent(register);
 		click(register,"Register");
 		Thread.sleep(2000);
-		selectUsingIndex(noOfTickets,2,"1");
-		Thread.sleep(2000);
+		selectUsingIndex(memberTickets,2,"1");
+		scrollDownVertically();
 		type(emailId1,Email,"Email Of registered");	
+		Thread.sleep(2000);
 		type(firstName, Fname, "First name");
 		type(lastName, Lname, "Last name");
-		type(phone, ph, "Phone");
+	//	type(phone, ph, "Phone");
 		Thread.sleep(2000);
 		type(emailId2,Email,"Email Of registered");
-		
+		Thread.sleep(2000);
 		//scrollToElement(firstName2);
 		type(firstName2, Fname, "First name");
 		type(lastName2, Lname, "Last name");
-		type(phone2, ph, "Phone");
+	//	type(phone2, ph, "Phone");
 		click(booknow,"Book Now");
-		
+		Thread.sleep(10000);
 	}
 	
 	public void AttendeesDetailNotDisplaying() throws InterruptedException {
@@ -242,24 +429,30 @@ public class EventsPage extends BasePage  {
 		waitForElementToPresent(invitees);
 		Assert.assertTrue(true);
 	}
-	
+	@FindBy(xpath="(//select[@id='selectticketcount'])[2]")
+	WebElement memberTickets1;	
+
 public void CannotregisterwithDuplicates(String EventTitle, String Email, String Fname, String Lname) throws InterruptedException {
 		//waitForElementToPresent(Eventnames);
-		EventTitle=EventTitle +" " + getDateInDDMMMYYYY();
-		int T=Eventnames.size();
-		for(int i=1; i<=T; i++) {
-			String name=driver.findElement(By.cssSelector("body > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(" + i + ") > div:nth-child(1) > a:nth-child(1) > div:nth-child(2) > div:nth-child(1) > h4:nth-child(1) > strong:nth-child(2)")).getText();
-			System.out.println(i);
-		if (name.equalsIgnoreCase(EventTitle)) {
-			driver.findElement(By.cssSelector("body > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(" + i + ") > div:nth-child(1) > a:nth-child(1) > div:nth-child(2) > div:nth-child(1) > h4:nth-child(1) > strong:nth-child(2)")).isDisplayed();
-			driver.findElement(By.cssSelector("body > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(" + i + ") > div:nth-child(1) > a:nth-child(1) > div:nth-child(2) > div:nth-child(1) > h4:nth-child(1) > strong:nth-child(2)")).click();
-		    break;
-		}}
+	//	EventTitle=EventTitle +" " + getDateInDDMMMYYYY();
+//		int T=Eventnames.size();
+//		for(int i=1; i<=T; i++) {
+//			String name=driver.findElement(By.cssSelector("body > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(" + i + ") > div:nth-child(1) > a:nth-child(1) > div:nth-child(2) > div:nth-child(1) > h4:nth-child(1) > strong:nth-child(2)")).getText();
+//			System.out.println(i);
+//		if (name.equalsIgnoreCase(EventTitle)) {
+//			driver.findElement(By.cssSelector("body > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(" + i + ") > div:nth-child(1) > a:nth-child(1) > div:nth-child(2) > div:nth-child(1) > h4:nth-child(1) > strong:nth-child(2)")).isDisplayed();
+//			driver.findElement(By.cssSelector("body > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(" + i + ") > div:nth-child(1) > a:nth-child(1) > div:nth-child(2) > div:nth-child(1) > h4:nth-child(1) > strong:nth-child(2)")).click();
+//		    break;
+//		}}
 		//click(Eventname, "Event");
+	click(eventname1, "Event");
 		waitForElementToPresent(register);
 		click(register,"Register");
-		Thread.sleep(2000);
-		selectUsingIndex(noOfTickets,2,"1");
+	//	Thread.sleep(2000);
+//		waitForElementToPresent(noOfTickets);
+//		selectUsingIndex(noOfTickets,2,"1");
+		waitForElementToPresent(memberTickets1);
+		selectUsingIndex(memberTickets1,2,"1");
 		Thread.sleep(4000);
 		type(emailId1,Email,"Email Of registered");
 		type(firstName, Fname, "First name");
@@ -273,14 +466,19 @@ public void CannotregisterwithDuplicates(String EventTitle, String Email, String
 		System.out.println(error);
 		
 	}
+@FindBy(xpath="(//select[@id='selectticketcount'])[1]")
+WebElement tableTicket;	
+
 public void CannotregisterDuplicateswithDifferentTicket(String Email, String Fname, String Lname) throws InterruptedException {
 	Thread.sleep(3000);
 	click(Eventname, "Event");
 	waitForElementToPresent(register);
 	click(register,"Register");
+//	Thread.sleep(2000);
+	waitForElementToPresent(tableTicket);
+	selectUsingIndex(tableTicket,1,"1");
 	Thread.sleep(2000);
-	selectUsingIndex(noOfTickets,2,"1");
-	Thread.sleep(4000);
+	scrollDownVertically();
 	type(emailId1,Email,"Email Of registered");
 	type(firstName, Fname, "First name");
 	type(lastName, Lname, "Last name");
@@ -316,13 +514,16 @@ public void AllowDuplicatesEmailwithGuestUser(String Email, String Fname, String
 
 }
 public void CannotregisterwithEmails(String Email1, String Fname, String Lname) throws InterruptedException {
-	
-	click(Eventname, "Event");
+	waitForElementToPresent(eventname);
+	click(eventname, "Event");
+
+//	click(Eventname, "Event");
 	waitForElementToPresent(register);
 	click(register,"Register");
-	Thread.sleep(2000);
-	selectUsingIndex(noOfTickets,2,"1");
-	Thread.sleep(4000);
+//	Thread.sleep(2000);
+	selectUsingIndex(tableTicket,2,"1");
+//	Thread.sleep(4000);
+	scrollDownVertically();
 	type(emailId1,Email1,"Email Of registered");
 	type(firstName, Fname, "First name");
 	type(lastName, Lname, "Last name");
@@ -332,26 +533,86 @@ public void CannotregisterwithEmails(String Email1, String Fname, String Lname) 
 	System.out.println(error);
 	
 } 
+@FindBy(xpath="//*[@name='PayerFirstName']")
+WebElement payername1;
+@FindBy(xpath="//*[@name='PayerLastName']")
+WebElement payername2;
+@FindBy(xpath="//*[@name='PayerEmailID']")
+WebElement payerEmail;
+@FindBy(xpath="//*[@type='submit']/*[text()='Next']")
+WebElement next;
+@FindBy(xpath="//*[@name='PayerComments']")
+WebElement comments;
 public AuthorizeGateway cancelTransactionRegEmail(String Email1, String Fname, String Lname) throws InterruptedException {
-	
-	click(Eventname, "Event");
+	waitForElementToPresent(eventname);
+	click(eventname, "Event");
+
+//	click(Eventname, "Event");
 	waitForElementToPresent(register);
 	click(register,"Register");
-	Thread.sleep(2000);
+//	Thread.sleep(2000);
+	waitForElementToPresent(noOfTickets);
 	selectUsingIndex(noOfTickets,1,"1");
-	Thread.sleep(4000);
+//	Thread.sleep(4000);
+	scrollDownVertically();
+	type(emailId1,Email1,"Email Of registered");
+	Thread.sleep(2000);
+	type(firstName, Fname, "First name");
+	type(lastName, Lname, "Last name");
+	click(next,"next");
+	Thread.sleep(10000);
+	waitForElementToPresent(payerEmail);
+	scrollDownVertically();
+//	type(payerEmail,Email1,"Email Of registered");
+	Thread.sleep(2000);
+	type(payername1, "yogesh", "First name");
+	type(payername2, "bhor", "Last name");
+	comments.click();
+	waitForElementToPresent(booknow);
+	clickElementByJavaScript(booknow,"Book Now");
+	Thread.sleep(15000);
+//	scrollDownVertically();
+//	click(book, "Book");
+	waitForElementToPresent(authorise);
+	click(authorise, "Authorised");
+//	scrollDownVertically();
+//	Thread.sleep(3000);
+	waitForElementToPresent(proceed);
+	click(proceed, "Proceed");
+	return (AuthorizeGateway) openPage(AuthorizeGateway.class);
+	
+	
+}public AuthorizeGateway completeTransactionRegEmail(String Email1, String Fname, String Lname) throws InterruptedException {
+
+//	click(Eventname, "Event");
+	waitForElementToPresent(register);
+	click(register,"Register");
+//	Thread.sleep(2000);
+	waitForElementToPresent(noOfTickets);
+	selectUsingIndex(noOfTickets,1,"1");
+//	Thread.sleep(4000);
+	scrollDownVertically();
 	type(emailId1,Email1,"Email Of registered");
 	type(firstName, Fname, "First name");
 	type(lastName, Lname, "Last name");
+	click(next,"next");
 	Thread.sleep(4000);
-	click(booknow,"Book Now");
-	Thread.sleep(3000);
+	waitForElementToPresent(payerEmail);
 	scrollDownVertically();
-	click(book, "Book");
+	type(payerEmail,Email1,"Email Of registered");
+	type(payername1, Fname, "First name");
+	type(payername2, Lname, "Last name");
+	comments.click();
+	waitForElementToPresent(booknow);
+	clickElementByJavaScript(booknow,"Book Now");
+	Thread.sleep(15000);
+//	scrollDownVertically();
+//	click(book, "Book");
 	waitForElementToPresent(authorise);
 	click(authorise, "Authorised");
-	scrollDownVertically();
-	Thread.sleep(3000);
+//	scrollDownVertically();
+//	Thread.sleep(3000);
+	waitForElementToPresent(proceed);
 	click(proceed, "Proceed");
 	return (AuthorizeGateway) openPage(AuthorizeGateway.class);
 	

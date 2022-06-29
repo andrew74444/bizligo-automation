@@ -6,6 +6,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.CommunityDashboardPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.ManageMemberAdvertisementsPage;
@@ -30,8 +31,10 @@ public class TC1155_Verify_PublishedAd_If_Duration_Change extends BaseTest {
 	HomePage home = new HomePage().open(data.get("tenantType"));
 	LoginPage login = home.clickOnLOGINBtn();
 	//MyProfilePage myprofile = login.loginToMyProfilePage(data.get("email"), data.get("password"));
-	MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
-	CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
+	//MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
+	EcoSystemPage EcoSystemPage1 = login.loginToApplication(data.get("email"), data.get("password"));
+	MyCommunitiesPage MyCommunitiesPage = EcoSystemPage1.goToMyCommunities();
+	CommunityDashboardPage communityDashboard = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
 	ManageMemberAdvertisementsPage MMAP= communityDashboard.navigateToMemberAdvertisements();
 	MMAP.changeDateAd(data.get("plan"), data.get("adImage"),data.get("linkUrl"));
 	}

@@ -43,7 +43,7 @@ public class TC652_Verify_User_Not_Able_To_Register_With_Existing_Organization e
 	@AfterMethod
 	public void tearDown() {
 
-		logInfo("Login Test Completed");
+		logInfo("TC652 Test Completed");
 
 		quit();
 

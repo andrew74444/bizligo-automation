@@ -2,6 +2,7 @@ package com.cpcommunity.testScrips.communityWidget;
 
 import java.util.Hashtable;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.GlobalCareers;
@@ -33,5 +34,13 @@ public class TC1180_verify_recentlyApplied_5Jobs_displaying_in_yourApplied_widge
 	GCP.searchCommunity(data.get("community"));
 	GlobalCareers career=GCP.gotoCareerPage();
 	
+	}
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("TC1180 Test Completed");
+		
+		quit();
+		
 	}
 }

@@ -2,6 +2,7 @@ package com.cpcommunity.testScripts.Loyalty;
 
 import java.util.Hashtable;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.HomePage;
@@ -30,4 +31,12 @@ public class TC2130_Verify_list_of_features_mentioned_present_loyalty_details_pa
 	
 
 }
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("TC2130 Test Completed");
+		
+		quit();
+		
+	}
 }

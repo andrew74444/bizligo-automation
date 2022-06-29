@@ -6,6 +6,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.CommunityDashboardPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.GlobalCommunitesPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
@@ -31,10 +32,14 @@ public class TC1138_Verify_multiple_Errormsg_NotDisplay_when_doubleClicking_Next
 	logInfo("BizLigo Application Opened");
 	HomePage home1 = new HomePage().open(data.get("tenantType"));
 	LoginPage login = home1.clickOnLOGINBtn();
-	MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
+	//MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
 	//CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
-	 GlobalCommunitesPage GCP=myCommunity.naviagtingToGlobalCommunities();
+	// GlobalCommunitesPage GCP=myCommunity.naviagtingToGlobalCommunities();
+	// GCP.searchCommunity(data.get("community"));
+	EcoSystemPage EcoSystemPage1 = login.loginToApplication(data.get("email"), data.get("password"));
+	GlobalCommunitesPage GCP = EcoSystemPage1.goToGlobalCommunities();
 	 GCP.searchCommunity(data.get("community"));
+	 GCP.goTocommunityPage(data.get("community"));
 	 SelectPlanPage SPP=GCP.navigatetoselectPlanPage();
 	 SPP.checkNextbtnError();
 	 

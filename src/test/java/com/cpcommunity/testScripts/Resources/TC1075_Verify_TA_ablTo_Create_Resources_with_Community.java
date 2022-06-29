@@ -5,9 +5,12 @@ import java.util.Hashtable;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
+import com.cpcommunity.PageObjects.CommunityDetailsPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.ManageResourcesPage;
+import com.cpcommunity.PageObjects.MyCommunitiesPage;
 import com.cpcommunity.PageObjects.MyDashboardPage;
 import com.cpcommunity.PageObjects.ResourcesPage;
 import com.cpcommunity.PageObjects.TenantAdminDashboardPage;
@@ -34,9 +37,14 @@ public class TC1075_Verify_TA_ablTo_Create_Resources_with_Community extends Base
 		manageres.AddFieldswithCommunity(data.get("Title1"),data.get("community"), data.get("Description"),data.get("url"));
 		HomePage home1= manageres.logout();
 		LoginPage login1 = home1.clickOnLOGINBtn();
-		MyDashboardPage dashpage = login.loginToDashboard(data.get("email11"), data.get("password11"));
-		ResourcesPage resource=dashpage.gotoResourcesPage();
-		resource.checkResources1();
+//		MyDashboardPage dashpage = login.loginToDashboard(data.get("email11"), data.get("password11"));
+//		ResourcesPage resource=dashpage.gotoResourcesPage();
+//		resource.checkResources1();
+		
+		EcoSystemPage EcoSystemPage = login1.loginToApplication(data.get("email1"),data.get("password1"));
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
+		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
+		CommunityDetailsPage.checkingResources();
 	    
 	
 	}

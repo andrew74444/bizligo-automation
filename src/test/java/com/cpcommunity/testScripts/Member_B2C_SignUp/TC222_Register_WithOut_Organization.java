@@ -76,7 +76,7 @@ public class TC222_Register_WithOut_Organization extends BaseTest {
 	@AfterMethod
 	public void tearDown() {
 
-		logInfo("Login Test Completed");
+		logInfo("TC222 Test Completed");
 
 		quit();
 

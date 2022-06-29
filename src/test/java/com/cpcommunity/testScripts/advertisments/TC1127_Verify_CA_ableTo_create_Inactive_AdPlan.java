@@ -6,6 +6,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.CommunityDashboardPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.ManageAdPlansPage;
@@ -29,8 +30,10 @@ public class TC1127_Verify_CA_ableTo_create_Inactive_AdPlan extends BaseTest{
 	logInfo("BizLigo Application Opened");
 	HomePage home = new HomePage().open(data.get("tenantType"));
 	LoginPage login = home.clickOnLOGINBtn();
-	MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
-	CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
+	//MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
+	EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+	MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
+	CommunityDashboardPage communityDashboard = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
 	ManageAdPlansPage MAPP=communityDashboard.goToManageAdPlansPage();
 	MAPP.createInactiveAdPlan(data.get("name"),data.get("price"), data.get("planDetails"),data.get("duration"),data.get("durationType"),data.get("adLocation"),data.get("adType"), data.get("approvalType"));
 	

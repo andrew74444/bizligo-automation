@@ -39,13 +39,13 @@ public class TC143_Paid_Event_Registration_With_PayPal_From_Event_Details_Page e
 		yahoo.purchaseNotification();
 	}
 
-//	@AfterMethod
-//	public void tearDown() {
-//
-//		logInfo("TC143 Test Completed");
-//
-//		quit();
-//
-//	}
+	@AfterMethod
+	public void tearDown() {
+
+		logInfo("TC143 Test Completed");
+
+		quit();
+
+	}
 
 }

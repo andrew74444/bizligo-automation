@@ -5,6 +5,9 @@ import java.util.Hashtable;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
+import com.cpcommunity.PageObjects.CommunityDetailsPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
+import com.cpcommunity.PageObjects.GlobalCommunitesPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.MyAdvertisements;
@@ -27,11 +30,17 @@ public class TC1121_Verify_adPlan_Not_Displaying_ToUser_ifUser_NotMember_OfCommu
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
-		login.login(data.get("email"), data.get("password"));
-		MyDashboardPage dashpage = login.gotoMyDashboardPage();
-		MyAdvertisements myad=dashpage.NaviagtingToMyAdvertisements();
-		myad.NonCommunityMemberCannotSeeAds();
-			
+//		login.login(data.get("email"), data.get("password"));
+//		MyDashboardPage dashpage = login.gotoMyDashboardPage();
+//		MyAdvertisements myad=dashpage.NaviagtingToMyAdvertisements();
+//		myad.NonCommunityMemberCannotSeeAds();
+//		
+		
+EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+		
+		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
+		CommunityDetailsPage CommunityDetailsPage = GlobalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));
+		CommunityDetailsPage.NonCommunityMemberCannotSeeAdPalns();
 		}
 	@AfterMethod
 	public void tearDown() {

@@ -33,13 +33,12 @@ public class TC1111_Verify_CA_ableTo_create_AdvertisementPlan extends BaseTest {
 	LoginPage login = home.clickOnLOGINBtn();
 	
 	EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
-	
 	MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 	//MyProfilePage myprofile = login.loginToMyProfilePage(data.get("email"), data.get("password"));
 	//MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
 	CommunityDashboardPage communityDashboard =MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
 	ManageAdPlansPage MAPP=communityDashboard.goToManageAdPlansPage();
-	//*********below method only for creating ad************\\
+	//*********below method only for creating ad and status inactive************\\
 //	MAPP.createAdPlan(data.get("name"),data.get("price"), data.get("planDetails"),data.get("duration"),data.get("durationType"),data.get("adLocation"),data.get("adType"), data.get("approvalType"));
 //	MAPP.inactivatePlan(data.get("plan"));
 	//*********below method added on 19/04 for creating and publishing ad************\\

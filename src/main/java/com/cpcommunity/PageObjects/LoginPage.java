@@ -129,12 +129,15 @@ public class LoginPage extends BasePage {
 
 		 
 	 }
+	@FindBy(xpath = "//*[contains(text(),'Your request is pending for organization review. You can login post approval.')]")
+	WebElement pendingForApproval1;
 	
-	public void waitingForTAApproval(String email, String password) {
 
+	public void waitingForTAApproval(String email, String password) {
+//
 		this.login(email, password);
-		waitForElementToPresent(pendingForApproval);
-		picture();
+		waitForElementToPresent(pendingForApproval1);
+	//	picture();
 
 	}
 	 
@@ -192,7 +195,7 @@ public class LoginPage extends BasePage {
 //		this.password.clear();
 //		this.password.sendKeys(password);
 	
-		picture();
+	//	picture();
 		click(LoginBtn, "Login");
 		
 	}
@@ -267,7 +270,7 @@ public class LoginPage extends BasePage {
 		this.login(email, password);
 		waitForElementToPresent(Invalidlogin);
 		Invalidlogin.isDisplayed();
-		picture();
+	//	picture();
 		// new LoginPage(driver, );
 	}
 	
@@ -294,11 +297,11 @@ public class LoginPage extends BasePage {
 
 		this.login(EmailAddress, password);
 		waitForElementToPresent(ClickHere);
-		picture();
+	//	picture();
 		click(ClickHere, "Click Here");
 		waitForElementToPresent(submitBtn);
 		AssertionHelper.verifyText(EmailAddress, ResendEmail.getText());
-		picture();
+	//	picture();
 //		click(submitBtn, "submitBtn");
 //		waitForElementToPresent(toastMessage);
 //
@@ -309,7 +312,7 @@ public class LoginPage extends BasePage {
 	}
 
 	public SignupPage clickonSignup() {
-
+waitForElementToPresent(signup);
 		click(signup, "sign up");
 		return (SignupPage) openPage(SignupPage.class);
 	}
@@ -327,7 +330,7 @@ public class LoginPage extends BasePage {
 
 		this.login(email, password);
 		waitForElementToPresent(suspended);
-		picture();
+	//	picture();
 
 	}
 
@@ -335,7 +338,7 @@ public class LoginPage extends BasePage {
 
 		this.login(email, password);
 		waitForElementToPresent(pendingForApproval);
-		picture();
+	//	picture();
 
 	}
 

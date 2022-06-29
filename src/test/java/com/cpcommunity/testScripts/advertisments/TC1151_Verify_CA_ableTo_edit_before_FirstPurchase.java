@@ -6,6 +6,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.CommunityDashboardPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.ManageAdPlansPage;
@@ -30,10 +31,13 @@ public class TC1151_Verify_CA_ableTo_edit_before_FirstPurchase extends BaseTest 
 	HomePage home = new HomePage().open(data.get("tenantType"));
 	LoginPage login = home.clickOnLOGINBtn();
 	//MyProfilePage myprofile = login.loginToMyProfilePage(data.get("email"), data.get("password"));
-	MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
-	CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
+//	MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
+//	CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
+	EcoSystemPage EcoSystemPage1 = login.loginToApplication(data.get("email"), data.get("password"));
+	MyCommunitiesPage MyCommunitiesPage = EcoSystemPage1.goToMyCommunities();
+	CommunityDashboardPage communityDashboard = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
 	ManageAdPlansPage MAPP=communityDashboard.goToManageAdPlansPage();
-	MAPP.editPlan();
+	MAPP.editPlan("GoldandGold2");
 }
 	@AfterMethod
 	public void tearDown() {

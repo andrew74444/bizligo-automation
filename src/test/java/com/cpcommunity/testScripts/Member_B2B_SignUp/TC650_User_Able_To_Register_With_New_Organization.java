@@ -43,7 +43,7 @@ public class TC650_User_Able_To_Register_With_New_Organization extends BaseTest 
 	@AfterMethod
 	public void tearDown() {
 
-		logInfo("TC222 Test Completed");
+		logInfo("TC650 Test Completed");
 
 		quit();
 

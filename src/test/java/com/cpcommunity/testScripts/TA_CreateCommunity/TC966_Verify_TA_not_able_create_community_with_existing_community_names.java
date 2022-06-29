@@ -30,14 +30,14 @@ public class TC966_Verify_TA_not_able_create_community_with_existing_community_n
 		TACommunitiesPage TCP = TDP.navigateToCommunitiesPage();
 		TCP.createCommunityWithExistingName(data.get("Name"));
 }
-	/*@AfterMethod
+	@AfterMethod
 	public void tearDown() {
 		
 		logInfo("TC966 Test Completed");
 		
 		quit();
 		
-	}*/
+	}
 
 
 }

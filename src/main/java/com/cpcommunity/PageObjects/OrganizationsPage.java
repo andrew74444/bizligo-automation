@@ -189,7 +189,10 @@ public class OrganizationsPage extends BasePage {
 		selectByVisibleText(this.membershipPlan, membershipPlan, "membership Plan");
 		}
 		Thread.sleep(8000);
-		String path = projectFloder(companyLogoImage);
+	//	String path = projectFloder(companyLogoImage);
+		String path = projectFloder("\\src\\test\\resources\\testImages\\ChromeImage7.jpg");
+		
+		//\\src\\test\\resources\\testImages\\ExeFiles\\ChromeImage8.exe
 		this.companyLogoImage.sendKeys(path);
 		// type(this.companyLogoImage, companyLogoImage, "company Logo Image");
 		if(tenantType.equalsIgnoreCase("B2B")) {
@@ -197,10 +200,10 @@ public class OrganizationsPage extends BasePage {
 		}
 		click(btnSave, "Save");
 		waitForElementToPresent(toastMessage);
-		Thread.sleep(1000);
+	//	Thread.sleep(1000);
 		System.out.println(toastMessage.getText());
-		Thread.sleep(3000);
-		picture();
+	//	Thread.sleep(3000);
+	//	picture();
 	}
 	public void UpdateOrganization(String companyNameSearch, String name, String noOfEmp, String description, String Categories, String email,
 			String phone, String extension, String fax, String membershipPlan, String status)
@@ -208,8 +211,8 @@ public class OrganizationsPage extends BasePage {
 		organizationSearch(companyNameSearch);
 		click(editorganisation, "Edit");
 		waitForElementToPresent(orgName);
-		Thread.sleep(3000);
-		waitForElementToPresent(orgName);
+	//	Thread.sleep(3000);
+	//	waitForElementToPresent(orgName);
 		type(orgName, name, "org Name");
 		type(businessDescription, description, "business Description");
 		selectUsingIndex(numberOfEmployeesID, 3, "noOfEmp");
@@ -227,19 +230,19 @@ public class OrganizationsPage extends BasePage {
 		
 		selectByVisibleText(this.membershipPlan, membershipPlan, "membership Plan");
 	
-		Thread.sleep(3000);
+	//	Thread.sleep(3000);
 		//String path = projectFloder(companyLogoImage);
 		//this.companyLogoImage.sendKeys(path);
 		// type(this.companyLogoImage, companyLogoImage, "company Logo Image");
-		
+		waitForElementToPresent(EntityStatusID);
 		selectByVisibleText(this.EntityStatusID, status, "Status");
 	
 		click(btnSave, "Save");
 		waitForElementToPresent(toastMessage);
-		Thread.sleep(1000);
+//		Thread.sleep(1000);
 		System.out.println(toastMessage.getText());
-		Thread.sleep(3000);
-		picture();
+		// Thread.sleep(3000);
+	//	picture();
 	}
 
 	public void addMember(String companyNameSearch, String firstName, String LastName, String username, String password,
@@ -287,11 +290,11 @@ public class OrganizationsPage extends BasePage {
         String date=getDateInDDMMMYYYY().replace(" ", "");
 		click(manageMembers, "manage Members");
 		waitForElementToPresent(addNew);
-		Thread.sleep(5000);
+//		Thread.sleep(5000);
 
 		click(addNew, "Add");
 		waitForElementToPresent(firstname);
-		Thread.sleep(3000);
+	//	Thread.sleep(3000);
 		type(firstname, firstName, "last Name");
 		type(lastname, LastName, "last Name");
 		if (username.length() == 0) {
@@ -313,12 +316,12 @@ public class OrganizationsPage extends BasePage {
 		//} else {
 			//selectByVisibleText(this.contactType, " Secondary Contact ", "Secondary Contact");
 		//}
-		picture();
+	//	picture();
 		click(save, "save");
 		waitForElementToPresent(okBtn);
 		click(okBtn, "Ok Button");
 		//waitForElementToPresent(showing1To1Of1Entries);
-		picture();
+	//	picture();
 	}
 
 	public void addLocation(String companyNameSearch, String locationName, String locationType, String address,
@@ -327,26 +330,26 @@ public class OrganizationsPage extends BasePage {
 		
 		organizationSearch(companyNameSearch);
 		waitForElementToPresent(this.manageLocation);
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
 
 		click(manageLocation, "manageLocation");
 		waitForElementToPresent(this.addLocation);
 		click(addLocation, "addLocation");
 		waitForElementToPresent(this.locationName);
-		Thread.sleep(1000);
+	//	Thread.sleep(1000);
 		type(this.locationName, locationName, "location Name");
 		selectByVisibleText(this.locationType, locationType, locationType);
 		type(locationAddress, address, "Address");
-		Thread.sleep(7000);
+		Thread.sleep(5000);
 //		robot.keyPress(KeyEvent.VK_DOWN);
 		locationAddress.sendKeys(Keys.DOWN);
-		Thread.sleep(5000);
+		Thread.sleep(3000);
 		type(locationPhone, ph, "ph");
 		type(locationPhoneExtention, ext, "ext");
 		type(locationFax, fax, "fax");
 		click(savebtn, "Save");
 		waitForElementToPresent(locationPanel);
-		picture();
+	//	picture();
 	}
 	
 	public void AddLocation(String companyNameSearch, String locationName, String locationType, String address,
@@ -355,13 +358,13 @@ public class OrganizationsPage extends BasePage {
 		
 		organizationSearch(companyNameSearch);
 		waitForElementToPresent(this.manageLocation);
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
 
 		click(manageLocation, "manageLocation");
 		waitForElementToPresent(this.addLocation);
 		click(addLocation, "addLocation");
 		waitForElementToPresent(this.locationName);
-		Thread.sleep(1000);
+//		Thread.sleep(1000);
 		type(this.locationName, locationName, "location Name");
 		selectByVisibleText(this.locationType, locationType, locationType);
 		type(locationAddress, address, "Address");
@@ -374,51 +377,55 @@ public class OrganizationsPage extends BasePage {
 		type(locationFax, fax, "fax");
 		click(savebtn, "Save");
 		waitForElementToPresent(locationPanel);
-		picture();
+	//	picture();
 	}
 	
 	public void updateStatusLocation(String companyNameSearch) throws Exception {
 		organizationSearch(companyNameSearch);
-		Thread.sleep(3000);
+	//	Thread.sleep(3000);
+		waitForElementToPresent(manageMembers);
 		click(manageMembers, "manage Members");
 		waitForElementToPresent(actionEdit);
 		click(actionEdit, "Edit");
 		waitForElementToPresent(memberStatus);
 		selectUsingIndex(memberStatus, 1, "Member Status");
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
+		waitForElementToPresent(memberlocation);
 		selectUsingIndex(memberlocation, 1, "Location");
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
+		waitForElementToPresent(update);
 		click(update, "Update");
 		
 		
 	}
 	public void UpdateLocation(String companyNameSearch, String locationName, String locationType, String address,String street,String status,
 			String ph, String ext, String fax) throws Exception {
-		companyNameSearch = companyNameSearch ;
+//		companyNameSearch = companyNameSearch ;
 		
 		organizationSearch(companyNameSearch);
 		waitForElementToPresent(this.manageLocation);
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
 
 		click(manageLocation, "manageLocation");
 		waitForElementToPresent(this.editLocation);
 		click(editLocation, "editLocation");
 		waitForElementToPresent(this.locationName);
-		Thread.sleep(1000);
+	//	Thread.sleep(1000);
 		type(this.locationName, locationName, "location Name");
 		selectByVisibleText(this.locationType, locationType, locationType);
 		type(locationAddress, address, "Address");
-		Thread.sleep(7000);
+	//	Thread.sleep(7000);
 //		robot.keyPress(KeyEvent.VK_DOWN);
-		locationAddress.sendKeys(Keys.DOWN);
-		Thread.sleep(5000);
+	//	locationAddress.sendKeys(Keys.DOWN);
+	//	Thread.sleep(5000);
+		type(locationAddress1, street, "Street Address");
 		type(locationPhone, ph, "ph");
 		type(locationPhoneExtention, ext, "ext");
 		type(locationFax, fax, "fax");
-		type(locationAddress1, street, "Street Address");
+		
 		selectByVisibleText(locationStatusID, status, "Location status");
 		click(update, "Upate");
-		picture();
+	//	picture();
 	}
 
 	// table[@id='orgTable']//td[3]
@@ -428,25 +435,26 @@ public class OrganizationsPage extends BasePage {
 		type(this.companyNameSearch, companyNameSearch, "company Name Search");
 		click(btnSearch, "Search");
 		waitForElementToPresent(showing1To1Of1Entries);
-		Thread.sleep(3000);
+//		Thread.sleep(3000);
 
 	}
 
 	public void approveOrganization(String orgName) throws Exception {
 		type(this.companyNameSearch, orgName, "Org Name Search");
 		click(btnSearch, "Search");
-		picture();
+	//	picture();
 		waitForElementToPresent(showing1To1Of1Entries);
-		Thread.sleep(3000);
+	//	Thread.sleep(3000);
+		waitForElementToPresent(approve);
 		click(approve, "approve");
 		waitForElementToPresent(YesProceed);
-		picture();
+	//	picture();
 		click(YesProceed, "Yes Proceed");
-		picture();
+	//	picture();
 		waitForElementToPresent(okBtn);
 		click(okBtn, "Ok");
 		waitForElementToPresent(active);
-		picture();
+	//	picture();
 		// this.organizationSearch(orgName);
 
 	}

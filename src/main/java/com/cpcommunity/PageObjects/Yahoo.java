@@ -13,6 +13,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import com.cpcommunity.utilities.DriverManager;
 
+import junit.framework.Assert;
+
 public class Yahoo extends BasePage {
 	
 	
@@ -452,6 +454,20 @@ public void notApproved() {
 	waitForElementToPresent(notapproved);
 	click(notapproved,"Your Request to Join Private Group is not Approved Mail");
 }
+@FindBy(xpath="(//*[text()='Your Request to Join Private Group is rejected'])[1]")
+WebElement check;
+@FindBy(xpath="(//*[@data-test-id='message-from'])[1]")
+WebElement fromEmail;
+public void checkingFromEmailAddress() {
+waitForElementToPresent(check);
+click(check,"Your Request to Join Private Group is rejected Mail");
+waitForElementToPresent(fromEmail);
+String text=fromEmail.getText();
+if(text.contains("venkatakodi7@gmail.com")) {
+	Assert.assertTrue(true);
+	System.out.println("Group Email Template is updated successfully!");
+}
+}
 @FindBy(xpath="(//*[text()='Your Request to Join Private Group is Approved'])[1]")
 WebElement approved;
       public void Approved() {
@@ -686,6 +702,27 @@ click(pricingplan,"Pricing Plan Purchase Successful Notification mail");
         public void newAdNotificationToMember() {
         	waitForElementToPresent(ad);
         	  click(ad,"New Advertisement Plan Publish Notification mail");
+        	
+        }
+        @FindBy(xpath="  (//*[text()='Advertisement Publish Notification'])[1]")
+        		WebElement adpublish;
+        public void AdPublishedNotification() {
+        	waitForElementToPresent(adpublish);
+        	  click(adpublish,"Advertisement Publish Notification mail");
+        	
+        }
+        @FindBy(xpath="   (//*[text()='Advertisement Purchase Successful Notification'])[1]")
+        		WebElement adPurchase;
+        public void AdPurchasedNotification() {
+        	waitForElementToPresent(adPurchase);
+        	  click(adPurchase,"Advertisement Purchase Successful Notification mail");
+        	
+        }
+        @FindBy(xpath="  (//*[text()='Advertisement Rejected Notification'])[1]")
+        		WebElement adReject;
+        public void AdRejectedNotification() {
+        	waitForElementToPresent(adReject);
+        	  click(adReject,"Advertisement Rejected Notification mail");
         	
         }
 }

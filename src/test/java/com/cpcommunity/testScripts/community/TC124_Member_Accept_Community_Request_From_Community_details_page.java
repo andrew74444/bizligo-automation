@@ -33,7 +33,7 @@ public class TC124_Member_Accept_Community_Request_From_Community_details_page e
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
+		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));//+" "+runTime
 		CommunityDetailsPage.acceptCommunityRequest(data.get("termsAndConditions"));
 		
 		//Assert.fail("Failing the login test");

@@ -113,23 +113,38 @@ public class AuthorizeGateway extends BasePage {
 		return amount;
 	}
 	public String makePayment1() throws Exception {
+		waitForElementToPresent(cardNum);
 		type(cardNum, "4111111111111111", "card Num");
 		type(ExpiryDate, "0525", "Expiry Date");
 		type(CVV, "025", "CVV");
 		type(email, "yogesh.bhor141@yahoo.com", "email");
 
-		String text = orderTotalAmount.getText();
-		String amount=text.substring(0,2);
-		System.out.println(amount);
+	//	String text = orderTotalAmount.getText();
+	//	String amount=text.substring(0,2);
+	//	System.out.println(amount);
       //  click(PayBtn, "payBtn");
 		clickElementByJavaScript(PayBtn);
-		return amount;
+		return null;
+	}
+	@FindBy(xpath="//*[@id='cancelBtn']")
+	WebElement cancel;
+	@FindBy(xpath="//*[text()='click here']")
+	WebElement back;
+	public void cancelPayment() throws InterruptedException {
+		//   switchToFrameByID(0);
+		   waitForElementToPresent(cancel);
+		//   clickElementByJavaScript(cancel,"Cancel");
+		//	driver.switchTo().defaultContent();
+			Thread.sleep(5000);
+		//	  waitForElementToPresent(back);
+		//	   click(back,"Back to Event Page");
 	}
 	public String makePayment() throws Exception {
 
 		//type(cardNum, "4242424242424242", "card Num");
 		//type(ExpiryDate, "0223", "Expiry Date");
 		//type(CVV, "024", "CVV");
+		waitForElementToPresent(cardNum);
 		type(cardNum, "4111111111111111", "card Num");
 		type(ExpiryDate, "0525", "Expiry Date");
 		type(CVV, "025", "CVV");
@@ -223,9 +238,9 @@ public class AuthorizeGateway extends BasePage {
 		type(email, "venkatakodi7@gmail.com", "email");
 
 		String orderTotalAmount = this.orderTotalAmount.getText();
-        click(PayBtn, "payBtn");
+        clickElementByJavaScript(PayBtn, "payBtn");
 		//clickElementByJavaScript(PayBtn);
-
+       
 		driver.switchTo().defaultContent();
 
 		Thread.sleep(10000);
@@ -240,7 +255,7 @@ public class AuthorizeGateway extends BasePage {
 
 	//	this.makePayment();
 		this.makePayment1();//added on 30/03
-
+Thread.sleep(10000);
 		return (EventTicketPage) openPage(EventTicketPage.class);
 		//
 	}
@@ -257,17 +272,19 @@ public class AuthorizeGateway extends BasePage {
 	
 	
 	public RevenueReportPage navigateToRevenueReport() throws InterruptedException {
-		Thread.sleep(8000);
-		//scrollDownVertically();
+		Thread.sleep(5000);
+		scrollDownVertically();
+		waitForElementToPresent(advertisement);
 		click(advertisement, "Advertisement");
-		waitForElementToPresent(managetogocommunity);
+		
 		//scrollUpVertically();
+		waitForElementToPresent(managetogocommunity);
 		click(managetogocommunity, "Manage button");
-		Thread.sleep(8000);
+		Thread.sleep(3000);
 		scrollUpVertically();
 		waitForElementToPresent(dashboardreport);
 		click(dashboardreport, "Dashboard Reports");
-		Thread.sleep(8000);
+		Thread.sleep(3000);
 		waitForElementToPresent(revenuereport);
 		click(revenuereport, "Revenue Report");
 		return (RevenueReportPage) openPage(RevenueReportPage.class);	
@@ -341,10 +358,20 @@ public class AuthorizeGateway extends BasePage {
 		scrollUpVertically();
 		waitForElementToPresent(toggledropdown);
 		click(toggledropdown, "Toggle dropdown");
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
 		waitForElementToPresent(myeco);
         click(myeco, "My Ecosystem");
-        Thread.sleep(8000);
+     //   Thread.sleep(8000);
 		return (MyDashboardPage) openPage(MyDashboardPage.class);
+	}
+	public EcoSystemPage gotoEcoSystemPage() throws InterruptedException {
+		scrollUpVertically();
+		waitForElementToPresent(toggledropdown);
+		click(toggledropdown, "Toggle dropdown");
+	//	Thread.sleep(5000);
+		waitForElementToPresent(myeco);
+        click(myeco, "My Ecosystem");
+     //   Thread.sleep(8000);
+		return (EcoSystemPage) openPage(EcoSystemPage.class);
 	}
 }

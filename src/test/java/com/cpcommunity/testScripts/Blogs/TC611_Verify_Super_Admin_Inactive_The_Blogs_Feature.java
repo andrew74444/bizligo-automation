@@ -7,9 +7,13 @@ import org.testng.annotations.Test;
 import com.cpcommunity.PageObjects.AdminHomePage;
 import com.cpcommunity.PageObjects.AdminLogin;
 import com.cpcommunity.PageObjects.AdminPage;
+import com.cpcommunity.PageObjects.BlogsPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.MyDashboardPage;
+import com.cpcommunity.PageObjects.SuperAdminFeatureConfigurationPage;
+import com.cpcommunity.PageObjects.superAdminDashboardPage;
 import com.cpcommunity.testScripts.community.BaseTest;
 import com.cpcommunity.utilities.*;
 
@@ -26,14 +30,22 @@ public class TC611_Verify_Super_Admin_Inactive_The_Blogs_Feature extends BaseTes
 		log.info("Inside Login Test");
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
-		AdminHomePage home = new AdminHomePage().open("https://admin.ezysubscribe.com/account/login");
-		AdminLogin login =home.navigateToAdminLogin();
-		AdminPage admin = login.adminloginToApplication(data.get("email"), data.get("password"));
-		admin.blogsdisabled();
+//		AdminHomePage home = new AdminHomePage().open("https://admin.ezysubscribe.com/account/login");
+//		AdminLogin login =home.navigateToAdminLogin();
+//		AdminPage admin = login.adminloginToApplication(data.get("email"), data.get("password"));
+//		admin.blogsdisabled();
+		AdminHomePage home= new AdminHomePage().open("https://admin.bizligotest.com");
+		AdminLogin login=home.navigateToAdminLogin();
+		superAdminDashboardPage SADP=login.superAdminloginToApplication(data.get("email"), data.get("password"));
+		SuperAdminFeatureConfigurationPage SAFC=SADP.goToFeatureConfigurationsPage();
+		SAFC.disablefeature(data.get("feature"));
+		
+	//	SAFC.enablefeature(data.get("feature"));
 		HomePage home1 = new HomePage().open(data.get("tenantType"));
 		LoginPage login1 = home1.clickOnLOGINBtn();
-		MyDashboardPage dashboard = login1.loginToMemberdashboard(data.get("email1"),data.get("password1"));
-		dashboard.blogPageisnotWorking();
+	//	MyDashboardPage dashboard = login1.loginToMemberdashboard(data.get("email1"),data.get("password1"));
+		 EcoSystemPage EcoSystemPage = login1.loginToApplication(data.get("email1"), data.get("password1"));
+			EcoSystemPage.blogPageIsNotWorking();
 		
 		
 		

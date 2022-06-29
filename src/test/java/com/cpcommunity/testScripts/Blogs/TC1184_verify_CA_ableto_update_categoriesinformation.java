@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 import com.cpcommunity.PageObjects.BlogsPage;
 import com.cpcommunity.PageObjects.CategoriesPage;
 import com.cpcommunity.PageObjects.CommunityDashboardPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.MyCommunitiesPage;
@@ -30,12 +31,15 @@ public class TC1184_verify_CA_ableto_update_categoriesinformation extends BaseTe
 	logInfo("BizLigo Application Opened");
 	HomePage home = new HomePage().open(data.get("tenantType"));
 	LoginPage login = home.clickOnLOGINBtn();
-	MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
-	CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
+	//MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
+EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+	
+	MyCommunitiesPage mycommunities = EcoSystemPage.goToMyCommunities();
+	CommunityDashboardPage communityDashboard = mycommunities.gotoManageCommunity(data.get("communityName"));
 	CategoriesPage categories=communityDashboard.gotoCategories();
 	categories.updatecategorie(data.get("Name"),data.get("categoryName"),data.get("Description"));
 	BlogsPage blogpage=categories.gotoBlogsPage();
-	blogpage.verifychanges();
+	blogpage.verifychanges(data.get("categoryName"),data.get("Name"));
 	
 	
 	}

@@ -42,7 +42,7 @@ public class TC234_Verify_Member_Able_To_Signup_For_MembershipPlan_Disabled exte
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC234 Test Completed");
 		
 		quit();
 		

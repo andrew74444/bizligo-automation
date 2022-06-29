@@ -9,8 +9,11 @@ import org.testng.annotations.Test;
 
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataUtil;
+import com.cpcommunity.PageObjects.CreateCommunityPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
+import com.cpcommunity.PageObjects.MyCommunitiesPage;
 import com.cpcommunity.PageObjects.PendingCommunitiesPage;
 import com.cpcommunity.PageObjects.SystemAdminDashboardPage;
 import com.cpcommunity.PageObjects.Yahoo;
@@ -32,15 +35,25 @@ public class TC030_System_Admin_Community_Rejection extends BaseTest {
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
-		LoginPage login = home.clickOnLOGINBtn();
-		logInfo("Username entered as "+data.get("email")+" and Password entered as "+ data.get("password"));
-		SystemAdminDashboardPage Dashboard_Page = login.SystemAdminloginToApplication(data.get("email"), data.get("password"));
+		LoginPage loginPage = home.clickOnLOGINBtn();
+		EcoSystemPage EcoSystemPage = loginPage.loginToApplication(data.get("email1"), data.get("password1"));
+		
+		MyCommunitiesPage MyCommunitiesPage= EcoSystemPage.goToMyCommunities();
+		CreateCommunityPage CreateCommunityPage = MyCommunitiesPage.clickOnCreateCommunity();
+		CreateCommunityPage.CreateCommunity(data.get("communityName"), data.get("Networking"), data.get("Marketing"), data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"), data.get("InvestInBusiness"), data.get("Other"), data.get("About"), data.get("Category"), data.get("type"));
+
+		HomePage home1 = new HomePage().open(data.get("tenantType"));
+		home1.logout();
+		
+		LoginPage login1 = home1.clickOnLOGINBtn();
+	//	logInfo("Username entered as "+data.get("email")+" and Password entered as "+ data.get("password"));
+		SystemAdminDashboardPage Dashboard_Page = login1.SystemAdminloginToApplication(data.get("email"), data.get("password"));
 		PendingCommunitiesPage PendingCommunitiesPage = Dashboard_Page.naviagteToPendingCommunities();
 		PendingCommunitiesPage.rejectCommunity(data.get("communityName"), data.get("rejectReason"));
 		
 		Yahoo yahoo= new Yahoo().open();
 
-		yahoo.Login(data.get("email1"), data.get("password1"));
+		yahoo.Login(data.get("email1"), data.get("password1"));//member mail checking
 		yahoo.tAdminRejectedCommunity();
 		//Assert.fail("Failing the login test");
 	}

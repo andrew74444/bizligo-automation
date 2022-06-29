@@ -5,6 +5,7 @@ package com.cpcommunity.testScripts.Loyalty;
 import java.util.Hashtable;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.HomePage;
@@ -30,5 +31,12 @@ public class TC2133_Verify_TA_able_add_loyalty_point_when_checkbox_checked exten
 		LoginPage login = home.clickOnLOGINBtn();	
 		
 	}
-
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("TC2133 Test Completed");
+		
+		quit();
+		
+	}
 }

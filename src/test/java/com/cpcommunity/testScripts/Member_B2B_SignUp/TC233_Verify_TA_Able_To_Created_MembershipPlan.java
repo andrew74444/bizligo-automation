@@ -36,7 +36,7 @@ public class TC233_Verify_TA_Able_To_Created_MembershipPlan extends BaseTest {
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("Login Test Completed");
+		logInfo("TC233 Test Completed");
 		
 		quit();
 		

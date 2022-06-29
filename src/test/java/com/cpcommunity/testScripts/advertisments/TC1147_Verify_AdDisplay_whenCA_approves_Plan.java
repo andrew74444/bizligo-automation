@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.AuthorizeGateway;
 import com.cpcommunity.PageObjects.CommunityDashboardPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.GlobalCommunitesPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
@@ -14,6 +15,7 @@ import com.cpcommunity.PageObjects.ManageMemberAdvertisementsPage;
 import com.cpcommunity.PageObjects.MyCommunitiesPage;
 import com.cpcommunity.PageObjects.MyDashboardPage;
 import com.cpcommunity.PageObjects.SelectPlanPage;
+import com.cpcommunity.PageObjects.Yahoo;
 import com.cpcommunity.testScripts.community.BaseTest;
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataProviders;
@@ -32,23 +34,35 @@ public class TC1147_Verify_AdDisplay_whenCA_approves_Plan extends BaseTest{
 	logInfo("BizLigo Application Opened");
 	HomePage home = new HomePage().open(data.get("tenantType"));
 	LoginPage login = home.clickOnLOGINBtn();
-	 MyDashboardPage MDP=login.loginToMemberdashboard(data.get("email"), data.get("password"));
-	 GlobalCommunitesPage GCP=MDP.naviagtingToGlobalCommunities();
+//	 MyDashboardPage MDP=login.loginToMemberdashboard(data.get("email"), data.get("password"));
+//	 GlobalCommunitesPage GCP=MDP.naviagtingToGlobalCommunities();
+//	 GCP.searchCommunity(data.get("community"));
+	EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+	GlobalCommunitesPage GCP = EcoSystemPage.goToGlobalCommunities();
 	 GCP.searchCommunity(data.get("community"));
+	 GCP.goTocommunityPage(data.get("community"));
 	 SelectPlanPage SPP= GCP.navigatetoselectPlanPage();
 	 AuthorizeGateway AG=SPP.selectPlan1(data.get("planName"),data.get("AdName"),data.get("path"));
 	 AG.makePayment();
-	 quit();
+//	 quit();
 	 
-	 openBrowser(data.get("browser"));
-	logInfo("Launched Browser : "+ data.get("browser"));				
-	logInfo("BizLigo Application Opened");
+//	 openBrowser(data.get("browser"));
+//	logInfo("Launched Browser : "+ data.get("browser"));				
+//	logInfo("BizLigo Application Opened");
 	HomePage home1 = new HomePage().open(data.get("tenantType"));
+	home1.logout();
 	LoginPage login1 = home1.clickOnLOGINBtn();
-	MyCommunitiesPage myCommunity = login1.loginToMyCommunitiesPage(data.get("email1"), data.get("password1"));
-	CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
-	 ManageMemberAdvertisementsPage MMA=communityDashboard.navigateToMemberAdvertisements();
+//	MyCommunitiesPage myCommunity = login1.loginToMyCommunitiesPage(data.get("email1"), data.get("password1"));
+//	CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
+	EcoSystemPage EcoSystemPage1 = login1.loginToApplication(data.get("email1"), data.get("password1"));
+	MyCommunitiesPage MyCommunitiesPage = EcoSystemPage1.goToMyCommunities();
+	CommunityDashboardPage communityDashboard =  MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
+	ManageMemberAdvertisementsPage MMA=communityDashboard.navigateToMemberAdvertisements();
 	 MMA.approveAd(data.get("plan"),data.get("AdImage"),data.get("LinkUrl"));
+	 
+//	 Yahoo yahoo= new Yahoo().open();
+//		yahoo.Login(data.get("email"), data.get("password2"));// verifying mail published notification
+//		yahoo.AdPublishedNotification();
 }
 	@AfterMethod
 	public void tearDown() {

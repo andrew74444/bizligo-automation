@@ -5,8 +5,11 @@ import java.util.Hashtable;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
+import com.cpcommunity.PageObjects.CommunityDetailsPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
+import com.cpcommunity.PageObjects.MyCommunitiesPage;
 import com.cpcommunity.PageObjects.MyDashboardPage;
 import com.cpcommunity.PageObjects.ResourcesPage;
 import com.cpcommunity.testScripts.community.BaseTest;
@@ -27,9 +30,14 @@ public class TC1074_Verify_User_ableTo_view_Resources_If_User_Part_ofCommunity_w
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
-		MyDashboardPage dashpage = login.loginToDashboard(data.get("email"), data.get("password"));
-		ResourcesPage resource=dashpage.gotoResourcesPage();
-		resource.checkResources1();
+//		MyDashboardPage dashpage = login.loginToDashboard(data.get("email"), data.get("password"));
+//		ResourcesPage resource=dashpage.gotoResourcesPage();
+//		resource.checkResources1();
+
+		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"),data.get("password"));
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
+		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
+		CommunityDetailsPage.checkingResources();
 }
 	@AfterMethod
 	public void tearDown() {

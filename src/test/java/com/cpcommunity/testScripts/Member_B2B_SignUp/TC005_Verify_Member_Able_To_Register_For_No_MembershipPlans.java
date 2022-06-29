@@ -29,46 +29,42 @@ public class TC005_Verify_Member_Able_To_Register_For_No_MembershipPlans extends
 		LoginPage loginPage = home.clickOnLOGINBtn();
 	//	loginPage.clickonSignup();
 		
-		SignupPage signupPage = loginPage.clickonSignup();
-		signupPage.signup(data.get("firstName"), data.get("lastName"), data.get("emailAddress"), data.get("phNo"), data.get("password"), data.get("isB2B"), data.get("isNewOrg"), data.get("corporateAddress"), data.get("organizationName"), data.get("website"), data.get("businessDescription"), data.get("businessCategories"), data.get("isOrgRequired"));
-	
-		
-		signupPage.send();
-		signupPage.newTab();
-		
-//*************for verification code*******************\\		
-		Gmail gmail= new Gmail().open();
-		gmail.Login(data.get("email3"), data.get("password3"));
-		
-		 gmail.registMail();
-//********Entering code and selecting membership plan**********\\\\\\\\\\\\\\\\\\\\\\\	 
-		 gmail.backToOldTab();
-		 gmail.enterCode();
-		 gmail.selectPlan();
-//*********member checking mail about membership plan**************\\\\\\\\\\\\\\\		 
-		 gmail.newTab();
-		 
-		 gmail.payementMail();
-//******tenant admin checking mail about new member registration*************\\\\		 
-			Yahoo yahoo= new Yahoo().open();
-
-			yahoo.Login(data.get("email4"), data.get("password4"));
-			yahoo.tAdminRegsNotification();
-		 
+//		SignupPage signupPage = loginPage.clickonSignup();
+//		signupPage.signup(data.get("firstName"), data.get("lastName"), data.get("emailAddress"), data.get("phNo"), data.get("password"), data.get("isB2B"), data.get("isNewOrg"), data.get("corporateAddress"), data.get("organizationName"), data.get("website"), data.get("businessDescription"), data.get("businessCategories"), data.get("isOrgRequired"));
+//	
+//		
+//		signupPage.send();
+//		signupPage.newTab();
+//		
+////*************for verification code*******************\\		
+//		Gmail gmail= new Gmail().open();
+//		gmail.Login(data.get("email3"), data.get("password3"));
+//		
+//		 gmail.registMail();
+////********Entering code and selecting membership plan**********\\\\\\\\\\\\\\\\\\\\\\\	 
+//		 gmail.backToOldTab();
+//		 gmail.enterCode();
+//		 gmail.selectPlan();
+////*********member checking mail about membership plan**************\\\\\\\\\\\\\\\		 
+//		 gmail.newTab();
+//		 
+//		 gmail.payementMail();
+////******tenant admin checking mail about new member registration*************\\\\		 
+//			Yahoo yahoo= new Yahoo().open();
+//
+//			yahoo.Login(data.get("email4"), data.get("password4"));
+//			yahoo.tAdminRegsNotification();
+//		 
 	}
+	
+	
+	@AfterMethod
+	public void tearDown() {
 
-	
-	
-	
-	
-	
-//	@AfterMethod
-//	public void tearDown() {
-//
-//		logInfo("Login Test Completed");
-//
-//		quit();
-//
-//	}
+		logInfo("TC005 Test Completed");
+
+		quit();
+
+	}
 
 }

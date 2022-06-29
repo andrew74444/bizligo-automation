@@ -69,7 +69,30 @@ public class CreateAdPage extends BasePage {
 		Thread.sleep(4000);
 	}
 	
+	public void createAdandSave(String AdName) throws InterruptedException {
+		waitForElementToPresent(Adtitle);
+		AdName=AdName+getSystemCurrentMintues();
+		type(Adtitle, AdName, "Advertisement name");
+		Thread.sleep(1000);
+		waitForElementToPresent(date);
+		click(date, "Select Date");
+		waitForElementToPresent(adStartDatecalendar);
 	
+		Thread.sleep(1000);
+		click(nextMonth, "Next");
+		click(nextMonth, "Next");
+		waitForElementToPresent(dateselect);
+		click(dateselect, "Date");
+	
+		waitForElementToPresent(choosefile);
+		String path1 = projectFloder("\\src\\test\\resources\\testImages\\Files\\ChromeImage3.jpeg");
+		type(choosefile, path1, "Image Path");
+	scrollDownVertically();
+	waitForElementToPresent(save);
+	click(save, "Save");
+	Thread.sleep(15000);
+		
+	}
 	
 	
 	

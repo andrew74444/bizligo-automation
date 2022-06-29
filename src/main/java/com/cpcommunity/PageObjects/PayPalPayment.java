@@ -206,7 +206,7 @@ public class PayPalPayment extends BasePage{
 	WebElement login;
 	@FindBy(xpath="//*[@id='payment-submit-btn']")
 	WebElement submit;
-	@FindBy(xpath="//*[@data-testid='header-cart-total']")
+	@FindBy(xpath="//*[@amount='getAmount()']/*[@class='ltrOverride']")
 	WebElement amount;
 	public String PayPalpayment1(String PEmail, String PPwd) throws Exception{
 		click(login,"login button");
@@ -215,23 +215,26 @@ public class PayPalPayment extends BasePage{
 		click(btnNext,"next button");
 		
 		type(PayPalPWd,PPwd,"PayPalPWd");
+		Thread.sleep(3000);
+		waitForElementToPresent(LoginBtn);
 		click(LoginBtn,"btnLogin");
 		
-	String text=	amount.getText();
-	String Amount=text.substring(1,3);
-	System.out.println(Amount);
+//	String text=	amount.getText();
+//	System.out.println(text);
+//	String Amount=text.substring(1,4);
+//	System.out.println(Amount);
 	waitForElementToPresent(submit);
-	//	click(submit,"submit button");
+//	//	click(submit,"submit button");
 		clickElementByJavaScript(submit);
 		Thread.sleep(5000);
-		return Amount;
-		
+		return null;
+//		
 	}
 	public String PayPalpayment(String PEmail, String PPwd) throws Exception
 	
 	{
 		
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
 		WebDriverWait wait = new WebDriverWait(driver, 20);
 		waitForElementToPresent(driver.findElement(By.xpath("//button[contains(.,'Log In')]")));
 		

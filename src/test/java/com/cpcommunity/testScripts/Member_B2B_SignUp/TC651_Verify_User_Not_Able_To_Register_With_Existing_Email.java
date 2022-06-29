@@ -39,7 +39,7 @@ public class TC651_Verify_User_Not_Able_To_Register_With_Existing_Email extends 
 	@AfterMethod
 	public void tearDown() {
 
-		logInfo("Login Test Completed");
+		logInfo("TC651 Test Completed");
 
 		quit();
 

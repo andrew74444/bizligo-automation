@@ -29,6 +29,7 @@ public class Create_Tag extends BaseTest {
 		
 		
 		MyCommunitiesPage mycommunities = EcoSystemPage.goToMyCommunities();
+		
 		CommunityDashboardPage communityDashboardPage = mycommunities
 				.gotoManageCommunity(data.get("communityName"));
 		TagsPage tags = communityDashboardPage.gotoTags();

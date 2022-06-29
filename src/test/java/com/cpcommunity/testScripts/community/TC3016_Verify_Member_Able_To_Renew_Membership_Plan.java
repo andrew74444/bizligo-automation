@@ -48,13 +48,14 @@ public class TC3016_Verify_Member_Able_To_Renew_Membership_Plan extends BaseTest
 	      
 			yahoo.Login(data.get("email2"), data.get("password2"));//member
 			yahoo.membershipPlanRenewedMail();
-			yahoo.openAndGoToNewTab();
-			
+						
 	//***********To check community admin mail*******************************//	
-			Yahoo yahoo1= new Yahoo().open();
-			yahoo1.Login(data.get("email3"), data.get("password3"));//community admin
-			yahoo1.membershipPlanRenewedMailToCA();
-		
+//			yahoo.openAndGoToNewTab();
+//
+//			Yahoo yahoo1= new Yahoo().open();
+//			yahoo1.Login(data.get("email3"), data.get("password3"));//community admin
+//			yahoo1.membershipPlanRenewedMailToCA();
+//		
 			
 	}
 

@@ -6,6 +6,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.CommunityDashboardPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.GlobalCommunitesPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
@@ -34,44 +35,43 @@ public class TC1141_verify_PopUpAlertmsg_display_whenCA_inactivate_AdPlan_Create
 	logInfo("BizLigo Application Opened");
 	HomePage home = new HomePage().open(data.get("tenantType"));
 	LoginPage login = home.clickOnLOGINBtn();
-	 MyDashboardPage MDP=login.loginToMemberdashboard(data.get("email"), data.get("password"));
-	 GlobalCommunitesPage GCP=MDP.naviagtingToGlobalCommunities();
-	 GCP.searchCommunity(data.get("community"));
+//
+	 EcoSystemPage EcoSystemPage1 = login.loginToApplication(data.get("email"), data.get("password"));
+		GlobalCommunitesPage GCP = EcoSystemPage1.goToGlobalCommunities();
+		 GCP.searchCommunity(data.get("community"));
+		 GCP.goTocommunityPage(data.get("community"));
 	 SelectPlanPage SPP= GCP.navigatetoselectPlanPage();
 	 SPP.selectPlan(data.get("planName"),data.get("AdName"),data.get("path"));
-	 quit();
-	 
-	 openBrowser(data.get("browser"));
-	logInfo("Launched Browser : "+ data.get("browser"));				
-	logInfo("BizLigo Application Opened");
+ 
+
 	HomePage home1 = new HomePage().open(data.get("tenantType"));
+	home1.logout();
 	LoginPage login1 = home1.clickOnLOGINBtn();
-	MyCommunitiesPage myCommunity = login1.loginToMyCommunitiesPage(data.get("email1"), data.get("password1"));
-	CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
+	EcoSystemPage EcoSystemPage = login1.loginToApplication(data.get("email1"), data.get("password1"));
+	MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
+	CommunityDashboardPage communityDashboard = MyCommunitiesPage.gotoManageCommunity(data.get("community"));
 	 ManageAdPlansPage MApP=communityDashboard.goToManageAdPlansPage();
 	 MApP.Inactivate(data.get("plan"));
-	 quit();
-	 
-	 openBrowser(data.get("browser"));
-	 logInfo("Launched Browser : "+data.get("browser"));
-	 logInfo("BizLigo Application Opened");
-	 HomePage home2 = new HomePage().open(data.get("tenantType"));		
+	
+	 HomePage home2 = new HomePage().open(data.get("tenantType"));	
+	 home2.logout();
 	 LoginPage login2 = home2.clickOnLOGINBtn();
-	 MyDashboardPage MDP2=login2.loginToMemberdashboard(data.get("email2"), data.get("password2"));
-	 MyAdvertisements Map=MDP2.NaviagtingToMyAdvertisements();
+
+	 EcoSystemPage EcoSystemPage2 = login2.loginToApplication(data.get("email"), data.get("password"));	
+		 MyAdvertisements Map=EcoSystemPage2.NaviagtingToMyAdvertisements();
 	 Map.searchplan(data.get("planName1"));
 	 Map.checkIsplanInactive(); 
 	 
-	    openBrowser(data.get("browser"));
-		logInfo("Launched Browser : "+ data.get("browser"));				
-		logInfo("BizLigo Application Opened");
+
 		HomePage home3= new HomePage().open(data.get("tenantType"));
+		home3.logout();
 		LoginPage login3 = home3.clickOnLOGINBtn();
-		MyCommunitiesPage myCommunity3 = login3.loginToMyCommunitiesPage(data.get("email3"), data.get("password3"));
-		CommunityDashboardPage communityDashboard3 = myCommunity3.gotoManageCommunity(data.get("communityName3"));
-		 ManageAdPlansPage MApP3=communityDashboard3.goToManageAdPlansPage();
+		EcoSystemPage EcoSystemPage3 = login3.loginToApplication(data.get("email1"), data.get("password1"));
+		MyCommunitiesPage MyCommunitiesPage3 = EcoSystemPage3.goToMyCommunities();
+		CommunityDashboardPage communityDashboard3 = MyCommunitiesPage3.gotoManageCommunity(data.get("community"));
+		ManageAdPlansPage MApP3=communityDashboard3.goToManageAdPlansPage();
 		 MApP3.Activate(data.get("plan3"));
-		 quit();
+	//	 quit();
 	}
 	
 	@AfterMethod

@@ -39,7 +39,7 @@ public class TC660_Verify_User_Can_Not_be_Able_To_Register_With_Existing_Email e
 	@AfterMethod
 	public void tearDown() {
 
-		logInfo("Login Test Completed");
+		logInfo("TC660 Test Completed");
 
 		quit();
 

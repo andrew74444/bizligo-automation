@@ -18,11 +18,11 @@ public class TC116_Accept_And_Reject_Connection extends BaseTest {
 	String TCID="TC116";	
 	
 	
-	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP",enabled=false)
-	public void loginTest(Hashtable<String,String> data) throws Exception {
+	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
+	public void TC116(Hashtable<String,String> data) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "LoginTest", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC116", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
@@ -31,9 +31,12 @@ public class TC116_Accept_And_Reject_Connection extends BaseTest {
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
-		ConnectionsPage ConnectionsPage = EcoSystemPage.goToMyConnections();
-		ConnectionsPage.RejectConnectionRequest(data.get("RejectMemberName"));
-		ConnectionsPage.AcceptConnectionRequest(data.get("AcceptMemberName"));
+//		ConnectionsPage ConnectionsPage = EcoSystemPage.goToMyConnections();
+	//	ConnectionsPage.RejectConnectionRequest(data.get("RejectMemberName"));
+//		ConnectionsPage.AcceptConnectionRequest(data.get("AcceptMemberName"));
+		EcoSystemPage.goToMyConnectionRequests();
+		EcoSystemPage.RejectConnectionRequest(data.get("RejectMemberName"));
+
 		
 		//Assert.fail("Failing the login test");
 	}

@@ -213,7 +213,7 @@ public class PlansPage extends BasePage {
 		waitForElementToPresent(this.name);
 		// int ID1 = this.getFeatureID();
 		// String feature = this.selectMembershipPlan(ID1);
-
+//	name=name+getSystemCurrentHourIn12Hour();//added 0n 10/05
 		type(this.name, name, "Name");
 		type(this.price, price, "Price");
 		type(this.duration, duration, "duration");
@@ -253,7 +253,7 @@ public class PlansPage extends BasePage {
 		// .findElement(By.xpath("//*[contains(text(),'Showing 1 to " + T1 + " of " + T1
 		// + " entries')]"));
 		// waitHelper.waitForElement(ele, expTime);
-		picture();
+//		picture();
 		return feature;
 	}
 
@@ -511,16 +511,39 @@ public class PlansPage extends BasePage {
 		durationTypeDisabled.isDisplayed();
 
 	}
-
-	public void InActivateTheMembershipPlan() throws Exception {
+	@FindBy(xpath="//*[@class='toggle-group']/*[text()='In-Active']")
+	WebElement inactive;
+	@FindBy(xpath="//*[@placeholder='Search by Plan Name']")
+	WebElement searchBox;
+	@FindBy(xpath="//*[@id='btnSearch']")
+	WebElement search;
+	public void InActivateTheMembershipPlan(String name) throws Exception {
+//**added code for search plan name*********\\
 		waitForElementToPresent(editPlan);
+		type(searchBox,name,"Plan name");
+		waitForElementToPresent(search);
+		click(search,"search");
+		waitForElementToPresent(editPlan);
+		
 		click(editPlan, "edit MembershipPlan");
 		waitForElementToPresent(toggleOn);
 		click(toggleOn, "Status Active");
 		click(save, "save");
 		Thread.sleep(3000);
 		waitForElementToPresent(editPlan);
+		//***added below code on 09/05 for activating plan*******\\		
+		type(searchBox,name,"Plan name");
+		waitForElementToPresent(search);
+		click(search,"search");
 		AssertionHelper.verifyText(MembershipPlanStatus.getText(), "In-Active");
+	
+		click(editPlan, "edit MembershipPlan");
+		waitForElementToPresent(inactive);
+		click(inactive, "Status InActive");
+		waitForElementToPresent(save);
+		click(save, "save");
+		Thread.sleep(3000);
+		
 	}
 
 	@FindBy(xpath = "//*[contains(text(),'Membership Plan duration cannot exceed the Pricing Plan duration of your community')]")
@@ -528,7 +551,7 @@ public class PlansPage extends BasePage {
 
 	public void checkMembershipPlanDurationCannotExceedThePricingPlanDuration() {
 		waitForElementToPresent(MembershipPlanDurationCannotExceedThePricingPlanDuration);
-		picture();
+	//	picture();
 
 	}
 
@@ -554,7 +577,7 @@ public class PlansPage extends BasePage {
 		// create a HashMap and print
 		HashMap<String, String> Planfeatures = new HashMap<String, String>();
 
-		planName = planName + " " + getDateInDDMMMYYYY();
+	//	planName = planName + " " + getDateInDDMMMYYYY();
 		searchPlan(planName);
 
 		click(editPlan, "edit Plan");

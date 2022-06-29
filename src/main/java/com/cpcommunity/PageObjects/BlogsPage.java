@@ -45,7 +45,7 @@ public class BlogsPage extends BasePage {
 	WebElement Searchs;
 	@FindBy(xpath = "//input[@id='term']")
 	WebElement search;
-	@FindBy(xpath = "(//*[contains(text(),'Really an in')])")
+	@FindBy(xpath = "//*[text()='No Posts found']")
 	WebElement verifyBlog;
 	@FindBy(xpath = "//article[1]//header[1]//div[1]//div[1]//div[1]")
 	WebElement verifyname;
@@ -105,19 +105,17 @@ public class BlogsPage extends BasePage {
 	
 	public void searchPostByMember(String search) throws Throwable
 	{
-		String date = ": "+getSystemCurrentDate()+"-"+getSystemCurrentMonth()+"-"+getSystemCurrentYear();
-		type(this.search,search+date,"Search");
+	//	String date = ": "+getSystemCurrentDate()+"-"+getSystemCurrentMonth()+"-"+getSystemCurrentYear();
+		type(this.search,search,"Search");//+date
 		Thread.sleep(1000);
 		click(SearchBtn,"searchbutton");
 		String expected = verifyBlog.getText();
-		if(search.contains(expected))
+		String actual="No Posts found";
+		if(actual.equalsIgnoreCase(expected))
 		{
-			System.out.println("Both are equals");
-			
+			Assert.assertTrue(true);
+			System.out.println("Blog post is In-Active");	
 		}
-		
-		System.out.println("Failed");
-		Thread.sleep(4000);
 	}
 	
 	
@@ -160,11 +158,12 @@ public class BlogsPage extends BasePage {
 	
 	
 	public void searchPost(Hashtable<String,String> data) throws InterruptedException {
+		waitForElementToPresent(selectCommuntiy);
 		selectByVisibleText(selectCommuntiy, data.get("communityName"), "selecting Communtiy");
 		type(blogsPostName, data.get("title"), "Post Name to search");
 		
 		click(SearchBtn, "Search");
-		Thread.sleep(15000);
+	//	Thread.sleep(15000);
 		
 		try {
 			WebElement ele = driver.findElement(By.xpath("//*[contains(text(),'" + data.get("title") + "')]"));
@@ -195,19 +194,31 @@ public class BlogsPage extends BasePage {
 	}
 	
  public CommunityDashboardPage gotoCommunityDashboard() throws InterruptedException {
-	 Thread.sleep(10000);
-	// waitForElementToPresent(Toggledropdownmenu);
+	// Thread.sleep(10000);
+	 waitForElementToPresent(Toggledropdownmenu);
 		clickElementByJavaScript(Toggledropdownmenu);
-		Thread.sleep(3000);
+	//	Thread.sleep(3000);
 		waitForElementToPresent(ecosystem);
 		click(ecosystem,"Ecosystem");
-		Thread.sleep(18000);
-		click(MANAGEbtn, "Manage");
-	 Thread.sleep(5000);
+	//	Thread.sleep(18000);
+	//	waitForElementToPresent(MANAGEbtn);
+	//	click(MANAGEbtn, "Manage");
+	// Thread.sleep(5000);
 	 return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);	 
  }
+ public void gotoMyEcoSystem() throws InterruptedException {
+	// Thread.sleep(10000);
+	 waitForElementToPresent(Toggledropdownmenu);
+		clickElementByJavaScript(Toggledropdownmenu);
+	//	Thread.sleep(3000);
+		waitForElementToPresent(ecosystem);
+		click(ecosystem,"Ecosystem");
+
+		 
+ }
+
  
-  public void verifychanges() throws InterruptedException {
+  public void verifychanges(String newName,String oldName) throws InterruptedException {
 		Thread.sleep(5000);
 		Select dropdown = new Select(selectCategories);
 		 //Get all options
@@ -217,11 +228,11 @@ public class BlogsPage extends BasePage {
 	          System.out.println(dd.get(j).getText());
 
 	      }
-	      String biz="NewCat";
-	      String notpresent="Atest";
-	      if(dd.contains(biz)) {
+	   //   String biz="NewCat001";
+	   //   String notpresent="Atest";
+	      if(dd.contains(newName)) {
 			System.out.println("Category is present");
-			Assert.assertNotSame(notpresent, dd);
+			Assert.assertNotSame(oldName, dd);
 		}
 	  
   }

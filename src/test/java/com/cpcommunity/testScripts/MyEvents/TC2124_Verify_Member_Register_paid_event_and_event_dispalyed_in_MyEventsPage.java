@@ -30,10 +30,10 @@ public class TC2124_Verify_Member_Register_paid_event_and_event_dispalyed_in_MyE
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));		
 		UpcomingEventsPage UpcomingEventsPage = EcoSystemPage.navigateToUpComingEvents();		
-		UpcomingEventsPage.registerToPaidEvent(data.get("UpcomingPaidEvent"));
+		UpcomingEventsPage.registerToPaidEvent(data.get("UpcomingEvent"),data.get("email"),data.get("Fname"),data.get("Lname"));
 		MyEventsPage MEP=UpcomingEventsPage.goToMyEventsPage();
-		MEP.registeredEventPresentInMyevents(data.get("UpcomingPaidEvent"));
-		
+	//	MEP.registeredEventPresentInMyevents(data.get("UpcomingEvent"));
+		MEP.searchByEventDate(data.get("Start Date"),data.get("End Date"),data.get("UpcomingEvent"));//added on 12/05
 	}
 	@AfterMethod
 	public void tearDown() {

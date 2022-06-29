@@ -89,12 +89,14 @@ public class CommunityEventsPage extends BasePage {
 		
 	}
 
-	
+
+
 
 	public CreateOrEditEvent NewEvent() throws InterruptedException {
-
+		waitForElementToPresent(New);
 		click(New, "New button");
-		Thread.sleep(4000);
+		
+	//	Thread.sleep(4000);
 		return (CreateOrEditEvent) openPage(CreateOrEditEvent.class);
 		// new CreateOrEditEvent(driver);
 	}
@@ -137,7 +139,7 @@ public class CommunityEventsPage extends BasePage {
 		type(EventNameSearch, eventTitleName, "Event Name Search");
 		selectByVisibleText(EventStatusSearch, "Published", "Published");
 		click(btnSearch, "button Search");
-	//	Thread.sleep(9000);
+		Thread.sleep(5000);
 	}
 
 	@Override
@@ -170,13 +172,16 @@ public class CommunityEventsPage extends BasePage {
 		   System.out.println("Custom field not editable");
 		   
 	   }
-	
+	@FindBy(xpath="//*[text()='Showing 1 to 1 of 1 entries']")
+	 WebElement text;
 	public CheckInPage checkIn(Hashtable<String, String> data) throws Exception {
 		this.SearchEvent(data.get("eventName"));//+" "+getDateInDDMMMYYYY()
-		
+		waitForElementToPresent(text);
+		waitForElementToPresent(firstEventRowCheckBox);
 		click(firstEventRowCheckBox,"firstEventRowCheckBox");
 		 
-		Thread.sleep(1000);
+	//	Thread.sleep(1000);
+		waitForElementToPresent(btnCheckinEvent);
 		click(btnCheckinEvent, "Checkin Event");		
 		return (CheckInPage) openPage(CheckInPage.class);
 	}

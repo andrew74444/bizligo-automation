@@ -42,7 +42,7 @@ public class TC1023_Verify_CA_ableTo_Edit_Group extends BaseTest {
 	@AfterMethod
 	public void tearDown() {
 		
-		logInfo("TC190 Test Completed");
+		logInfo("TC1023 Test Completed");
 		
 		quit();
 		

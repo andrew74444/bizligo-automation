@@ -2,6 +2,7 @@ package com.cpcommunity.testScripts.ChangeAndForgotPassword;
 
 import java.util.Hashtable;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.HomePage;
@@ -27,6 +28,14 @@ public class TC2200_Verify_Member_able_to_change_Password extends BaseTest{
 		LoginPage login = home.clickOnLOGINBtn();
 		MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
 	    myCommunity.changePassword(data.get("passwordOld"));
+	}
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("TC2200 Test Completed");
+		
+		quit();
+		
 	}
 
 }

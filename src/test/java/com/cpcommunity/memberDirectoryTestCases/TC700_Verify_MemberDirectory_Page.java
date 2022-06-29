@@ -5,6 +5,7 @@ import java.util.Hashtable;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.MemberDirectoryPage;
@@ -29,8 +30,10 @@ public class TC700_Verify_MemberDirectory_Page extends BaseTest {
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
-		MyCommunitiesPage MyCP = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
-		MemberDirectoryPage MDP=MyCP.gotoMemberDirectoryPage();
+	//	MyCommunitiesPage MyCP = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
+	//	MemberDirectoryPage MDP=MyCP.gotoMemberDirectoryPage();
+		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+		MemberDirectoryPage MDP= EcoSystemPage.gotoMemberDirectoryPage();
 		MDP.searchMember(data.get("First Name"),data.get("Last Name"));
 		MDP.profileCategoryList();
 

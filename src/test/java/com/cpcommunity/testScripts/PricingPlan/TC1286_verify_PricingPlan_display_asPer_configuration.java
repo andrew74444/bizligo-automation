@@ -17,10 +17,10 @@ import com.cpcommunity.utilities.ExcelReader;
 
 public class TC1286_verify_PricingPlan_display_asPer_configuration extends BaseTest {
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC1285(Hashtable<String,String> data) throws Exception {
+	public void TC1286(Hashtable<String,String> data) throws Exception {
  
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC1285", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC1286", data.get("Runmode"), excel);
 		log.info("Inside Login Test");			
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+ data.get("browser"));		

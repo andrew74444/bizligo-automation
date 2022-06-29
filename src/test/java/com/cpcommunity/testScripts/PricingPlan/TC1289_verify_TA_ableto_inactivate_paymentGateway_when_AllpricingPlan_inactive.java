@@ -29,8 +29,10 @@ public class TC1289_verify_TA_ableto_inactivate_paymentGateway_when_AllpricingPl
 		LoginPage login = home.clickOnLOGINBtn();
 		TenantAdminDashboardPage tadashoboard=login.loginToTADashboard(data.get("email"), data.get("password"));
 		PaymentGatewaysPage PG=tadashoboard.NavigatetoPaymentGatewayPage();
+		PG.selectCommunity(data.get("name"));//added on 28/04 for particular community
 		PG.clickAuthorise();
 		PG.ClickonInActivate();
+		PG.selectCommunity(data.get("name"));
 		PG.clickAuthorise();
 		PG.ClickonActivate();
 	

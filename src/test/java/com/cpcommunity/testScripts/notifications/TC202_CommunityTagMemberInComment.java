@@ -32,7 +32,7 @@ public class TC202_CommunityTagMemberInComment extends BaseTest {
 		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
 		CommunityDetailsPage CommunityDetailsPage = GlobalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));
 		Discussions discussions =CommunityDetailsPage.sharePosts(data.get("PostMessage"), data.get("postFile"), data.get("linkURL"), data.get("linkName"), data.get("postImage"), data.get("postComment"));
-		discussions.tagMemberInComment(data.get("PostMessage"), data.get("postComment"));
+		discussions.tagMemberInComment(data.get("tag"), data.get("postComment"));
 		//Assert.fail("Failing the login test");
 	}
 

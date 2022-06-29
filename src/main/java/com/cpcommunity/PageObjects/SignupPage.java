@@ -99,8 +99,8 @@ public class SignupPage extends BasePage {
 
 		type(this.firstName, firstName, "first Name");
 		type(this.lastName, lastName, "last Name");
-	//	emailAddress = emailAddress.replace("@gmail.com", "");//commented on 21/03
-	//	emailAddress = emailAddress + "+" + currentTime() + "@gmail.com";	
+		emailAddress = emailAddress.replace("@gmail.com", "");
+		emailAddress = emailAddress + "+" + currentTime() + "@gmail.com";	
 //		list.put("email", emailAddress);
 		type(this.emailAddress, emailAddress, "email Address");
 		type(this.phone, phNo, "phone No");
@@ -127,6 +127,20 @@ public class SignupPage extends BasePage {
 		return (AccountVerificationCodePage) openPage(AccountVerificationCodePage.class);
 
 	}
+	//added on 16/05
+	@FindBy(xpath="//*[text()='Email address already exists. Please enter a new Email address']")
+	WebElement message;
+	public void signUpWithExistingEmail(String email) {
+		waitForElementToPresent(emailAddress);
+		type(this.emailAddress, email, "email Address");
+		lastName.click();
+		waitForElementToPresent(message);
+		if(message.isDisplayed()) {
+			System.out.println("User not able to register with existing email");
+		}else {
+			System.out.println("User  able to register with existing email");
+		}
+	}
 
 	public void fillOrgDetails(String isNewOrg, String corporateAddress, String organizationName, String website,
 			String businessDescription, String businessCategories) throws Exception {
@@ -136,7 +150,7 @@ public class SignupPage extends BasePage {
 			this.corporateAddress.sendKeys(Keys.ARROW_DOWN);
 			Thread.sleep(1000);
 			this.corporateAddress.sendKeys(Keys.ENTER);
-		//	organizationName = organizationName + getDateInDDMMMYYYY();
+			organizationName = organizationName + getSystemCurrentHourIn12Hour();//getDateInDDMMMYYYY()
 
 			type(this.organizationName, organizationName, "organization Name");
 			
@@ -145,7 +159,8 @@ public class SignupPage extends BasePage {
 			// this.corporateAddress.sendKeys(Keys.ENTER);
 			WebElement element = driver.findElement(By.xpath("//li[contains(text(),'" + businessCategories + "')]"));
 			click(element, businessCategories);
-
+			website = website.replace(".com", "");
+			website = website + "+" + currentTime() + ".com";
 			type(this.website, website, "website");
 			type(this.businessDescription, businessDescription, "business Description");
 			selectByVisibleText(noOfEmployees, "151-200", "151-200");
@@ -176,6 +191,7 @@ public class SignupPage extends BasePage {
 		type(this.organizationName, orgName, "org Name");
 		click(password, "password");
 		waitForElementToPresent(organizationIsAlreadyExists);
+		System.out.println(organizationIsAlreadyExists.getText());
 	//	picture();
 
 	}
@@ -229,7 +245,11 @@ public class SignupPage extends BasePage {
 		
 		type(this.firstName, firstName, "first Name");
 		type(this.lastName, lastName, "last Name");
+		emailAddress = emailAddress.replace("@gmail.com", "");//added on 16/05
+		emailAddress = emailAddress + "+" + currentTime() + "@gmail.com";	
+		System.out.println(emailAddress);
 		type(this.emailAddress, emailAddress, "email Address");
+		
 		type(this.password, password, "password");
 		type(this.confirmPassword, confirmPassword, "confirm Password");
 		type(this.phone, phNo, "phone No");

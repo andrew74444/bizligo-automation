@@ -33,19 +33,19 @@ public class TC106_Join_And_Leave_Public_Group_From_My_Groups_Page extends BaseT
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 //********************for joining group********************\\	
 		
-//		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
-//		CommunityDetailsPage CommunityDetailsPage = GlobalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));//+" "+runTime
+		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
+		CommunityDetailsPage CommunityDetailsPage = GlobalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));//+" "+runTime
 //
-//		try {
-//			CommunityDetailsPage.JoinGroups(data.get("groupName"));
-//			Thread.sleep(7000);
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//		}
+		try {
+			CommunityDetailsPage.JoinGroups(data.get("groupName"));
+			Thread.sleep(4000);
+	} catch (Exception e) {
+			// TODO: handle exception	
+		}
 				
 		//** commented below for leaving group**//
 		
-	//	EcoSystemPage = EcoSystemPage.goToMyEcosystem();
+		EcoSystemPage = EcoSystemPage.goToMyEcosystem();
 		MyGroupsPage MyGroupsPage = EcoSystemPage.goToMyGroups();
 		MyGroupsPage.LeaveGroup(data.get("groupName"));	
 		

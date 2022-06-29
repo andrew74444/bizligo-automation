@@ -1,5 +1,8 @@
 package com.cpcommunity.PageObjects;
 
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -7,6 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
+import com.uiFramework.pamTen.cpcommunity.helper.assertion.AssertionHelper;
 import com.uiFramework.pamTen.cpcommunity.helper.imagediffer.Imagediff;
 import com.cpcommunity.utilities.DriverManager;
 
@@ -53,6 +57,8 @@ public class EcoSystemPage extends BasePage {
 	WebElement myJobs;
 	@FindBy (xpath="//*[contains(text(),'My Connections')]")
 	WebElement myConnections;
+	@FindBy (xpath="//*[contains(text(),'Requests')]")
+	WebElement requests;
 	@FindBy(xpath = "(//*[@class='col-md-3 left_col']//*[@title='Manage Applications'])")
 	WebElement ManageApplications;
 	
@@ -122,17 +128,17 @@ public class EcoSystemPage extends BasePage {
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 	
-	//	waitForElementToPresent(articles);//added on 21/03 //for wait purpose
-		waitForElementToPresent(logo);//for wait purpose
+	//	waitForElementToPresent(articles);//for wait purpose
+	//	waitForElementToPresent(logo);//for wait purpose
 		waitForElementToPresent(progress);//for wait purpose
 		return ExpectedConditions.visibilityOf(Home);
 	}
-
+	
 	public HomePage logout() throws Exception {
 	
-		waitForElementToPresent(Toggledropdownmenu);// added by me
-		
-		click(Toggledropdownmenu,"Toggledropdownmenu");
+		waitForElementToPresent(Toggledropdownmenu);
+		clickElementByJavaScript(Toggledropdownmenu);
+	//	click(Toggledropdownmenu,"Toggledropdownmenu");
 		//Thread.sleep(500);
 		
 		waitForElementToPresent(Logout);
@@ -160,6 +166,9 @@ public class EcoSystemPage extends BasePage {
 
 	public GlobalCommunitesPage goToGlobalCommunities() throws Exception {
 		// click(Toggledropdownmenu,"Toggledropdownmenu");
+		waitForElementToPresent(viewAll);
+		waitForElementToPresent(wait1);
+		waitForElementToPresent(wait2);
 		waitForElementToPresent(globalCommunities);
 		clickElementByJavaScript(globalCommunities);
 		// Thread.sleep(1000);
@@ -170,8 +179,9 @@ public class EcoSystemPage extends BasePage {
 	public CommunityDashboardPage gotoManageCommunity(String communityName) throws Exception {
 
 
-		//this.searchCommunity(communityName+getDateInDDMMMYYYY());
-		//this.searchCommunity(communityName);
+	//	this.searchCommunity(communityName+getDateInDDMMMYYYY());
+	//	this.searchCommunity(communityName);
+		waitForElementToPresent(MANAGEbtn);
 		click(MANAGEbtn, "Manage");
 		return (CommunityDashboardPage) openPage(CommunityDashboardPage.class);
 		// new CommunityDashboardPage(driver, );
@@ -279,7 +289,9 @@ public class EcoSystemPage extends BasePage {
 	}
 
 	public EcoSystemPage goToMyEcosystem() {
-		click(Toggledropdownmenu, "Toggledropdownmenu");
+		waitForElementToPresent(Toggledropdownmenu);
+		clickElementByJavaScript(Toggledropdownmenu, "Toggledropdownmenu");
+	//	click(Toggledropdownmenu, "Toggledropdownmenu");
 		waitForElementToPresent(myEcosystemInMenu);
 		click(myEcosystemInMenu, "My Ecosystem In Menu Drop Down");
 		return (EcoSystemPage) openPage(EcoSystemPage.class);
@@ -299,6 +311,8 @@ public class EcoSystemPage extends BasePage {
 	}
 
 	public Messages goToMyMessages() {
+		waitForElementToPresent(wait1);
+		waitForElementToPresent(myMessages);
 		click(myMessages,"myMessages");
 		return (Messages) openPage(Messages.class);
 		// new Messages(driver, );
@@ -358,7 +372,9 @@ public class EcoSystemPage extends BasePage {
 
 	public MyProfilePage goToMyProfilePage() throws Exception {
 		
-		Thread.sleep(2000);	
+	//	Thread.sleep(2000);	
+		waitForElementToPresent(wait1);//added on 13/04 
+		waitForElementToPresent(wait22);//added on 13/04 
 		
 		waitForElementToPresent(articles);//added on 14/03
 			
@@ -374,6 +390,9 @@ public class EcoSystemPage extends BasePage {
 	}
 
 	public GlobalMembersPage goToMembersPage() {
+		waitForElementToPresent(articles);//added on 19/04
+		waitForElementToPresent(wait1);//added on 19/04 
+		waitForElementToPresent(wait22);//added on 19/04 
 		
 		click(directory,"Directory");//added on 21/03
 		
@@ -382,14 +401,82 @@ public class EcoSystemPage extends BasePage {
 		return (GlobalMembersPage) openPage(GlobalMembersPage.class);
 		// new GlobalMembersPage(driver, );
 	}
+	public MemberDirectoryPage gotoMemberDirectoryPage() throws Exception {
+		waitForElementToPresent(wait1);//added on 19/04 
+		waitForElementToPresent(wait22);//added on 19/04 
+		waitForElementToPresent(articles);//added on 19/04
+		
+		click(directory,"Directory");
 
+		waitForElementToPresent(memberDirectory);
+	//	click(memberDirectory,"MemberDirectory");
+		clickElementByJavaScript(memberDirectory);
+		return (MemberDirectoryPage) openPage(MemberDirectoryPage.class);
+		// new MyProfilePage(driver, );
+
+	}
 	public ConnectionsPage goToMyConnections() {
+		waitForElementToPresent(wait1);
+		waitForElementToPresent(myConnections);
 		click(myConnections,"myConnections");
 		return (ConnectionsPage) openPage(ConnectionsPage.class);
 		// new ConnectionsPage(driver, );
 	}
+	public void goToMyConnectionRequests() {
+		waitForElementToPresent(wait1);
+		waitForElementToPresent(wait22);
+		waitForElementToPresent(articles);
 
+		waitForElementToPresent(requests);
+		click(requests,"Requests");
+		
+		// new ConnectionsPage(driver, );
+	}
+	@FindBy(xpath="(//*[@class='panel-title pull-right ng-binding'])[2]")
+	WebElement NewRequests;
+	
+	
+	@FindBy(xpath="//h1[contains(text(),'My Connections')]")
+	WebElement MyConnectionsTitle;	
+
+	   public void RejectConnectionRequest(String SenderMemberName ) throws InterruptedException
+	    {
+	    	waitForElementToPresent(MyConnectionsTitle);
+	    	String TotalRequestsMessage = NewRequests.getText();
+	    	String[]  TRS = TotalRequestsMessage.split("\\s");
+	    	int TotalRequests=Integer.parseInt(TRS[0]);   	
+	    	for(int i=1;i<=TotalRequests;i++)
+	    	{  		                                                                                                          
+	    		String MemberName = driver.findElement(By.xpath("(//*[@class='ng-binding'])["+i+"]")).getText();
+	    		if(MemberName.equalsIgnoreCase(SenderMemberName))
+	    		{
+	    			driver.findElement(By.xpath("(//*[contains(text(),'Reject')])["+i+"]")).click();
+	    		}
+	    	}     
+	    	Thread.sleep(3000);
+	    	waitForElementToPresent(MyConnectionsTitle);
+	    	
+	    	try {
+	    		for(int i=1;i<=TotalRequests;i++)
+	        	{  		                                                                                                          
+	        		String MemberName = driver.findElement(By.xpath("(//*[@class='ng-binding'])["+i+"]")).getText();
+	        		if(MemberName.equalsIgnoreCase(SenderMemberName))
+	        		{
+	        			AssertionHelper.markFail();
+	        		}
+	        	}
+			} catch (Exception e) {
+				AssertionHelper.markPass();
+			}
+	    	
+	    	
+	    }
+
+	  @FindBy(xpath="(//*[@class='cm-group-name'])[1]")
+			   WebElement name2;
 	public void eventsMenu() {
+		waitForElementToPresent(name2);
+		waitForElementToPresent(globalEvents);
 		moveToElement(globalEvents);
 		// click(globalEvents,"Global Events");
 	}
@@ -402,11 +489,19 @@ public class EcoSystemPage extends BasePage {
 		return (UpcomingEventsPage) openPage(UpcomingEventsPage.class);
 		// new UpcomingEventsPage(driver, );
 	}
-	
+	@FindBy(xpath="(//*[@class='cm-group-name'])[1]")
+			WebElement name;
+	@FindBy(xpath="	(//*[@title='Go to My Communities'])[1]")
+			WebElement title;
 	public UpcomingEventsPage navigateToUpComingEvents() throws InterruptedException {
-		clickElementByJavaScript(globalEvents);
-		//Thread.sleep(5000);
+		waitForElementToPresent(name);
+		waitForElementToPresent(title);
+		waitForElementToPresent(globalEvents);
+		Thread.sleep(3000);
+	//	scrollToElement(globalEvents);
+	//	clickElementByJavaScript(globalEvents,"Global Events");
 		click(globalEvents,"Global Events");
+	
 		waitForElementToPresent(upcomingEvents);
 		click(upcomingEvents, "Upcoming Events");
 		return (UpcomingEventsPage) openPage(UpcomingEventsPage.class);
@@ -442,10 +537,45 @@ public class EcoSystemPage extends BasePage {
 	WebElement posts;
 
 	public BlogsPage goToBlogsPage() {
-		click(blog, "blog");
+		waitForElementToPresent(viewAll);
+		waitForElementToPresent(wait);
+		waitForElementToPresent(wait2);
+		waitForElementToPresent(blog);
+		clickElementByJavaScript(blog, "blog");
 
 		return (BlogsPage) openPage(BlogsPage.class);
 
+	}
+	@FindBy(xpath = "//*[@jsselect='heading']")
+	WebElement blogpageisnotWorking;
+
+	public void blogPageIsNotWorking() {
+		waitForElementToPresent(viewAll);
+		waitForElementToPresent(wait);
+		waitForElementToPresent(wait2);
+		waitForElementToPresent(blog);
+		clickElementByJavaScript(blog, "blog");
+
+		waitForElementToPresent(blogpageisnotWorking);
+		if(blogpageisnotWorking.isDisplayed()) {
+			Assert.assertTrue(true);
+		}
+	
+	}
+	@FindBy(xpath = "(//*[contains(text(),'Blog')])[3]")
+	WebElement blogpageisWorking;
+	public void blogPageIsWorking() {
+		waitForElementToPresent(viewAll);
+		waitForElementToPresent(wait);
+		waitForElementToPresent(wait2);
+		waitForElementToPresent(blog);
+		clickElementByJavaScript(blog, "blog");
+
+		waitForElementToPresent(blogpageisWorking);
+		if(blogpageisWorking.isDisplayed()) {
+			Assert.assertTrue(true);
+		}
+	
 	}
 	public ManageApplications navigateToManageApplicationsPage() {
 		scrollDownVertically();
@@ -486,9 +616,13 @@ public class EcoSystemPage extends BasePage {
 		click(myEvents,"myEvents");
 		return (MyEventsPage) openPage(MyEventsPage.class);
 	}	
-public  MyEventsPage goToMyEventsPage() {
-		
-		click(toggleDropDown,"Toggle Drop Down Menu");
+public  MyEventsPage goToMyEventsPage() throws InterruptedException {
+	waitForElementToPresent(name);
+	waitForElementToPresent(title);
+	Thread.sleep(3000);
+		waitForElementToPresent(toggleDropDown);
+		clickElementByJavaScript(toggleDropDown,"Toggle Drop Down Menu");
+		waitForElementToPresent(myEvents);
 		click(myEvents,"My events");
 		return (MyEventsPage) openPage(MyEventsPage.class);
 	}
@@ -507,6 +641,49 @@ waitForElementToPresent(contactUs);//added on 11/04
 	click(contactUs, "Contact Us");
 	return (ContactUsPage) openPage(ContactUsPage.class);
 	
+}
+public void gotoPricingPlanUsingURL() throws InterruptedException{
+	//   Thread.sleep(2000); 
+	   DriverManager.getDriver().navigate().to("https://tenant1.bizligotest.com/eventmanager/pricing");
+//	   Thread.sleep(8000);
+	   System.out.println("User cannot open Pricing Plan page using URl");
+	   
+	    }
+
+@FindBy(xpath="//div[normalize-space()='My Advertisements']")
+WebElement myAdvertisements1;
+@FindBy(xpath="//div[@class='pull-right text-right Ads-color']")
+WebElement adcounts;
+
+public int checkAdcounts() {
+	waitForElementToPresent(viewAll);
+	waitForElementToPresent(wait1);
+	waitForElementToPresent(wait2);
+	waitForElementToPresent(myAdvertisements1);
+	scrollToElement(myAdvertisements1);
+	String count=adcounts.getText();
+	System.out.println("Advertisement counts :" + count);
+	int i = Integer.parseInt(count);				
+	return i;
+	
+}
+public MyAdvertisements NaviagtingToMyAdvertisements() throws InterruptedException
+{	waitForElementToPresent(viewAll);
+waitForElementToPresent(wait1);
+waitForElementToPresent(wait2);
+
+	waitForElementToPresent(myAdvertisements);
+	scrollToElement(myAdvertisements);
+	clickElementByJavaScript(myAdvertisements);
+	
+
+	return (MyAdvertisements) openPage(MyAdvertisements.class);
+//	new MyProfilePage(driver, );
+}public boolean CompareProgressBars(int previouscount,int Aftercount){
+	if(previouscount <= Aftercount) {
+		  return true;
+	} 
+	else return false;
 }
 
 }

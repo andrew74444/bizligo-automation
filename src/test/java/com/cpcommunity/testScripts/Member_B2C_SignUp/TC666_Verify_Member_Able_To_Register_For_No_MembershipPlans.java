@@ -53,7 +53,7 @@ public class TC666_Verify_Member_Able_To_Register_For_No_MembershipPlans extends
 	@AfterMethod
 	public void tearDown() {
 
-		logInfo("Login Test Completed");
+		logInfo("TC666 Test Completed");
 
 		quit();
 

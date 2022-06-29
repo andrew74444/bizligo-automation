@@ -95,7 +95,8 @@ public class SetupAuthorizePage extends BasePage{
 		 type(txtTransactionKey, "9B5eQP236vdWe85p", "txtTransactionKey");
 		 txtContent.clear();
 		 type(txtContent, "Simon", "txtContent");
-		 Thread.sleep(500);
+	//	 Thread.sleep(500);
+		 waitForElementToPresent(ValidateBtn);
 		 click(ValidateBtn,"ValidateBtn");
 		 waitForElementToPresent(OkBtn);
 		 click(OkBtn,"Ok Btn");	
@@ -117,7 +118,10 @@ public class SetupAuthorizePage extends BasePage{
 	}
 	
 	public PaymentGatewaysPage ActiveAuthorizeGateway() {
+		
+		waitForElementToPresent(toggleOff);
 		click(toggleOff,"toggleOff");
+		waitForElementToPresent(Update);
 		click(Update,"Update");
 		waitForElementToPresent(OkBtn);
 		click(OkBtn,"OkBtn");

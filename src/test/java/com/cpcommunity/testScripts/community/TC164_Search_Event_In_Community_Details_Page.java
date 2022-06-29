@@ -32,7 +32,7 @@ public class TC164_Search_Event_In_Community_Details_Page extends BaseTest {
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDetailsPage communityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
+		CommunityDetailsPage communityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));//+" "+runTime
 		communityDetailsPage.searchEvent(data);
 		//Assert.fail("Failing the login test");
 	}

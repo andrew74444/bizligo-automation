@@ -87,8 +87,8 @@ public class PaymentReceipt extends BasePage {
 	}
 
 	
-	public void paymentSuccess( ) {
-		
+	public void paymentSuccess( ) throws InterruptedException {
+		Thread.sleep(5000);
 		waitForElementToPresent(Success);
 		Success.isDisplayed();
 	//	picture();
@@ -112,7 +112,7 @@ public class PaymentReceipt extends BasePage {
 	public void verifyPublishedMessageisDisplayed()
 	{
 		waitForElementToPresent(published);
-		picture();		
+	//	picture();		
 	}
 	
 	public CommunityDetailsPage NavigateToCommunityDetailspage() {

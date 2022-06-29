@@ -5,6 +5,7 @@ import java.util.Hashtable;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.MemberDirectoryPage;
@@ -28,9 +29,11 @@ public class TC1038_Verify_SkillAndInterest_Values_Updating_InSearchField_If_Upd
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
-		MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
+		//MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
 		//BusinessDirectoryPage bussinessdirectory= myCommunity.gotoBusinessDirectoryPage();
-		MemberDirectoryPage memberdirectory= myCommunity.gotoMemberDirectoryPage();
+	//	MemberDirectoryPage memberdirectory= myCommunity.gotoMemberDirectoryPage();
+		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+		MemberDirectoryPage memberdirectory= EcoSystemPage.gotoMemberDirectoryPage();
 		memberdirectory.clickOnsearchByName(data.get("memberName"));
 		MyProfilePage myprofilep = memberdirectory.goToMyProfilePage();
 		//profilep.ClickOnEditSkillsBtn();

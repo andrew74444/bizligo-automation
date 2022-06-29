@@ -19,10 +19,10 @@ public class TC223_Verify_Tagging_Member_In_Community_Comment extends BaseTest {
 	
 	
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC223(Hashtable<String,String> data) throws Exception {
+	public void TC2231(Hashtable<String,String> data) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC223", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC2231", data.get("Runmode"), excel);
 		log.info("Inside TC223 Test");
 		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
@@ -32,9 +32,10 @@ public class TC223_Verify_Tagging_Member_In_Community_Comment extends BaseTest {
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
+		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));//+" "+runTime
 		Discussions discussions =CommunityDetailsPage.sharePosts(data.get("PostMessage"), data.get("postFile"), data.get("linkURL"), data.get("linkName"), data.get("postImage"), data.get("postComment"));
-		discussions.addPosts(data.get("PostMessage"), data.get("postComment"));
+	//	discussions.addPosts(data.get("PostMessage"), data.get("postComment"));
+		discussions.addComment(data.get("PostMessage"), data.get("postComment"));//added on 10/05
 		//Assert.fail("Failing the login test");
 	}
 

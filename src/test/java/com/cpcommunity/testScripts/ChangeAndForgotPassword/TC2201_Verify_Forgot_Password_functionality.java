@@ -2,6 +2,7 @@ package com.cpcommunity.testScripts.ChangeAndForgotPassword;
 
 import java.util.Hashtable;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.HomePage;
@@ -24,7 +25,15 @@ public class TC2201_Verify_Forgot_Password_functionality extends BaseTest{
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
-		//login.forgotPassword(data.get("email"));
+		login.forgotPassword(data.get("email"));
 
 }
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("TC2201 Test Completed");
+		
+		quit();
+		
+	}
 }

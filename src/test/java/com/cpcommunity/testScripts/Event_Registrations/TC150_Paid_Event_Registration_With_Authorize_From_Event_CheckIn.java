@@ -37,13 +37,13 @@ public class TC150_Paid_Event_Registration_With_Authorize_From_Event_CheckIn ext
 		eventTicketPage.successfulRegistration();
 	}
 
-//	@AfterMethod
-//	public void tearDown() {
-//
-//		logInfo("TC150 Test Completed");
-//
-//		quit();
-//
-//	}
+	@AfterMethod
+	public void tearDown() {
+
+		logInfo("TC150 Test Completed");
+
+		quit();
+
+	}
 
 }

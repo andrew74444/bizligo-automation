@@ -40,6 +40,13 @@ public class TC1027_Verify_Proper_LeaveErrorMessage_DisplayedTo_OnlyGroupAdmin e
 	//mygroup.checkProperAlertDisplayedWhenOnlyOneAdmin(data.get("communityName"));
 	
 }
-	
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("TC1027 Test Completed");
+		
+		quit();
+		
+	}
 
 }

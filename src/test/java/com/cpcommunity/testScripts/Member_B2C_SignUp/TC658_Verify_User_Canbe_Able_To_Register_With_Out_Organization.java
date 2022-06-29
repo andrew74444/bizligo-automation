@@ -43,7 +43,7 @@ public class TC658_Verify_User_Canbe_Able_To_Register_With_Out_Organization exte
 	@AfterMethod
 	public void tearDown() {
 
-		logInfo("TC222 Test Completed");
+		logInfo("TC658 Test Completed");
 
 		quit();
 

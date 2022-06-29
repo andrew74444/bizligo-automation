@@ -233,7 +233,7 @@ public class TACommunitiesPage extends BasePage{
         selectByVisibleText(CommunityType, type, "CommunityType");
         selectByVisibleText(this.pricingPlan, PricingPlan, "pricing Plan");
 		
-        picture();
+  //      picture();
         click(Createbtn,"Create btn");
         Thread.sleep(3000);
         waitForElementToPresent(toastMessage);
@@ -246,7 +246,7 @@ public class TACommunitiesPage extends BasePage{
     
     
         public void TA_editCommunity(String Name,String EditedName,String About,String Other,String Category) throws InterruptedException {
-    		//Name = Name+getDateInDDMMMYYYY(); 
+    		Name = Name+getDateInDDMMMYYYY(); 
     		type(nameSearch, Name, "Community Name Search");
     		click(searchBtn, "search Button");
     		//Thread.sleep(5000);

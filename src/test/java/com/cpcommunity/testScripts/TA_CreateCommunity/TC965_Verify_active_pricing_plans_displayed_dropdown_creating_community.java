@@ -2,6 +2,7 @@ package com.cpcommunity.testScripts.TA_CreateCommunity;
 
 import java.util.Hashtable;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.HomePage;
@@ -29,4 +30,14 @@ public class TC965_Verify_active_pricing_plans_displayed_dropdown_creating_commu
 		TACommunitiesPage TCP = TDP.navigateToCommunitiesPage();
 		TCP.checkPaymentPlan(data.get("Active Payment Plan"),data.get("Inactive Payment Plan"));		
 	}
+
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("TC965 Test Completed");
+		
+		quit();
+		
+	}
+
 }

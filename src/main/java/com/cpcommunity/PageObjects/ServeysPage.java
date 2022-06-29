@@ -41,7 +41,8 @@ public class ServeysPage extends BasePage
 	@FindBy(xpath = "//div[@class='btn-group open']//li[2]//a[1]")
 	WebElement inactiveBtn;
 
-	@FindBy(xpath = "//a[normalize-space()='Active']")
+//	@FindBy(xpath = "//a[normalize-space()='Active']")
+	@FindBy(xpath = "//tbody/tr[1]/td[4]/div[1]/ul[1]/li[2]/a[1]")
 	WebElement activeBtn;
 
 	@FindBy(xpath = "//div[@class='btn-group open']//li[1]//a[1]//i[1]")
@@ -178,9 +179,9 @@ public void eventNameNotVisibleInDropDown(String Title) {
 		waitForElementToPresent(addBtn);
 		click(addBtn, "create new survey");
 		waitForElementToPresent(name);
-		Name = Name+getDateInDDMMMYYYY();
+	//	Name = Name+getDateInDDMMMYYYY();
 		type(name,Name,Name);
-		getDateInDDMMYYYY();
+	//	getDateInDDMMYYYY();
 		System.out.println(startDate.getAttribute("value"));
 		selectUsingIndex(eventID,1,"Event selected");		
 		click(addQues,"Add Question");
@@ -211,7 +212,9 @@ public void eventNameNotVisibleInDropDown(String Title) {
 		System.out.println(x);
 		driver.switchTo().alert().accept();
 		Thread.sleep(5000);
+		waitForElementToPresent(action);
 		click(action,"Action")	;
+		waitForElementToPresent(activeBtn);
 		click(activeBtn,"Active");
 		driver.switchTo().alert().accept();
 	}
@@ -248,14 +251,28 @@ public void eventNameNotVisibleInDropDown(String Title) {
 		waitForElementToPresent(title);
 		type(title,Ques6, Ques6);		
 		click(Save,"Save");
+//******below code added on 29/04********//		
+		click(cancel,"Cancel");
+		String x=driver.switchTo().alert().getText();
+		System.out.println(x);
+		if(x.equalsIgnoreCase("Do you want to discard the changes?")) {
+			System.out.println("Pop up comes up when we cancel filled survey form");
+			Assert.assertTrue(true);
+		}
+		driver.switchTo().alert().dismiss();	
+		System.out.println("We can click cancel on pop up and the form remains");
+			
+		click(cancel,"Cancel");
+		driver.switchTo().alert().accept();
+		System.out.println("We can click ok on pop up and form gets cancelled and survey page opens");
 		
 	}
 	public void draftAndCancelledEvents(String Draft,String Cancelled) {
 		waitForElementToPresent(addBtn);
 		click(addBtn, "create new survey");
 		System.out.println(eventID.getText());
-		System.out.println(Draft);
-		System.out.println(Cancelled);
+		System.out.println("Draft Event Name      " + Draft);
+		System.out.println("Cancelled Event Name  " + Cancelled);
 		if(!eventID.getText().contains(Draft)) {
 			System.out.println("Draft Event not available in the Event dropdown Menu");
 			Assert.assertTrue(true);
@@ -272,20 +289,30 @@ public void eventNameNotVisibleInDropDown(String Title) {
 		
 	}
 	public void disabledSurveyQuestion() throws InterruptedException {
+		waitForElementToPresent(action);
 		click(action,"Action")	;
+		waitForElementToPresent(edit);
 		click(edit,"Edit");
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
+		waitForElementToPresent(questionActionBtn);
 		click(questionActionBtn,"Action For Question");
-		click(questionDisable,"Disable Question")	;
+		waitForElementToPresent(questionDisable);
+		clickElementByJavaScript(questionDisable,"Disable Question");
+//		click(questionDisable,"Disable Question");
 		String x=inactiveMsg.getAttribute("data-bind");
 		System.out.println(x);
 		if(x.contains("!isActive")) {
 			System.out.println("On disabling question it becomes inactive");
 			Assert.assertTrue(true);
 		}else Assert.assertTrue(false);		
+		
 		click(questionActionBtn,"Action For Question");
-		click(questionEnable,"Enable Question")	;
-		click(SaveSurvey,"save survey");
+		waitForElementToPresent(questionEnable);
+		clickElementByJavaScript(questionEnable,"Enable Question");
+	//	click(questionEnable,"Enable Question")	;
+		waitForElementToPresent(saveSurvey);
+	//	click(SaveSurvey,"save survey");
+		clickElementByJavaScript(SaveSurvey,"save survey");
 		
 		
 		
@@ -294,7 +321,8 @@ public void eventNameNotVisibleInDropDown(String Title) {
 	public void editQuestionByCA(String newQuestion,String oldQuestion) throws InterruptedException {
 		click(action,"Action")	;
 		click(edit,"Edit");
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
+		waitForElementToPresent(questionActionBtn);
 		click(questionActionBtn,"Action For Question");
 		click(editQuestion,"Edit Question");
 		type(question,newQuestion,newQuestion);
@@ -305,20 +333,24 @@ public void eventNameNotVisibleInDropDown(String Title) {
 			System.out.println("CA can edit question after survey submitted");
 			Assert.assertTrue(true);
 		}else Assert.assertTrue(false);
+		
 		click(questionActionBtn,"Action For Question");
 		click(editQuestion,"Edit Question");
 		type(question,oldQuestion,oldQuestion);
 		click(saveBtn,"Save edited question");
-		click(SaveSurvey,"save survey");
+		waitForElementToPresent(SaveSurvey);
+		clickElementByJavaScript(SaveSurvey,"save survey");
+	//	click(SaveSurvey,"save survey");
 	}
 	public void emptyFormSubmission() throws InterruptedException {
 		waitForElementToPresent(addBtn);
 		click(addBtn, "create new survey");
 		click(addQues,"Add Question");
-		Thread.sleep(1000);
+	//	Thread.sleep(1000);
 		//driver.switchTo().frame(0);
 		//type(description,"ABCD","description");
 		//driver.switchTo().defaultContent();
+		waitForElementToPresent(Save);
 		click(Save,"Save");
 		Thread.sleep(1000);
 		String x=driver.switchTo().alert().getText();

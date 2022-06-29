@@ -152,6 +152,9 @@ public class ManageCommunityPage extends BasePage{
 		Thread.sleep(8000);
 		//AssertionHelper.verifyText(toastmessage.getText(), "Community details updated successfully");
 	}
+	public void changeCommunityCategory() {
+		
+	}
 	
 	public void openGuerillamail(String emailName) throws InterruptedException, AWTException {
 		// Thread.sleep(5000);

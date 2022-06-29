@@ -27,12 +27,14 @@ public class TC147_100_Percent_PromoCode_Event_Registration_From_Event_Details_P
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		UpcomingEventsPage UpcomingEventsPage = EcoSystemPage.goToUpComingEvents();
-		EventDetailsPage eventDetailsPage =UpcomingEventsPage.goToEventDetailsPage(data);
-		eventDetailsPage.FullPercentPromocodeRegistration(data);
+//		UpcomingEventsPage UpcomingEventsPage = EcoSystemPage.goToUpComingEvents();
+//		EventDetailsPage eventDetailsPage =UpcomingEventsPage.goToEventDetailsPage(data);
+//		eventDetailsPage.FullPercentPromocodeRegistration(data);
 		
-		
-
+		MyCommunitiesPage MyCommunitiesPage1 = EcoSystemPage.goToMyCommunities();
+		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage1.navigateToCommunityDetailsPage(data.get("communityName"));
+		EventsPage event=CommunityDetailsPage.gotoevents();	
+		event.purchaseWithPromoCodeOnly(data);
 	}
 
 	@AfterMethod

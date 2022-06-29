@@ -34,9 +34,9 @@ public class TC2120_Verify_Member_Register_event_and_event_dispalyed_in_MyEvents
 		UpcomingEventsPage.registerToAnEvent(data.get("UpcomingEvent"));
 		//UpcomingEventsPage.registerToPaidEvent(data.get("UpcomingPaidEvent"));
 		MyEventsPage MEP=UpcomingEventsPage.goToMyEventsPage();
-		MEP.registeredEventPresentInMyevents(data.get("UpcomingEvent"));
-		
-		
+	//	MEP.registeredEventPresentInMyevents(data.get("UpcomingEvent"));
+		MEP.searchByEventDate(data.get("Start Date"),data.get("End Date"),data.get("UpcomingEvent"));//added on 12/05
+	
 
 	}
 	@AfterMethod

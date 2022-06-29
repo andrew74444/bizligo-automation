@@ -40,8 +40,8 @@ public class TC087_Configure_Cash_Payment extends BaseTest {
 		
 		//Assert.fail("Failing the login test");
 		Yahoo yahoo= new Yahoo().open();
-	//	yahoo.Login(data.get("email1"), data.get("password1"));//for Community created admin receiving mail checking purpose
-		yahoo.Login(data.get("email2"), data.get("password2"));//for other admin receiving mail checking purpose
+		yahoo.Login(data.get("email1"), data.get("password1"));//for Community created admin receiving mail checking purpose
+	//	yahoo.Login(data.get("email2"), data.get("password2"));//for other admin receiving mail checking purpose
 		yahoo.cashPaymentGateway();
 	}
 

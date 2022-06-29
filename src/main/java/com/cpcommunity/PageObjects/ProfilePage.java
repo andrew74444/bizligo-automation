@@ -237,8 +237,8 @@ public void AddEndorsement(String Endorsement, String Endorsement2, String Endor
 	protected ExpectedCondition getPageLoadCondition() {
 		// TODO Auto-generated method stub
 	//	return ExpectedConditions.visibilityOf(profilePage);
-		//return ExpectedConditions.visibilityOf(ProfileCategory);//commented on 22/03
-		return ExpectedConditions.visibilityOf(memberName);//for add endorsement method
+		return ExpectedConditions.visibilityOf(ProfileCategory);//commented on 22/03
+	//	return ExpectedConditions.visibilityOf(memberName);//for add endorsement method
 	}
 
 	public void AddEndorsement(String Endorsement, String Endorsement2, String Endorsement3, String Endorsement4) throws InterruptedException{
@@ -368,7 +368,7 @@ public void AddEndorsement(String Endorsement, String Endorsement2, String Endor
 	}
 }
 	public void profileComplenessViibility() throws InterruptedException {
-		Thread.sleep(1000);
+	//	Thread.sleep(1000);
 		Assert.assertEquals(0, profileCompletenessBardisplay.size());
 	
 		System.out.println("ProfileCompletenessBar not is displaying");

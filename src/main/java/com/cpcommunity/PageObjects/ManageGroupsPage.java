@@ -116,6 +116,7 @@ public class ManageGroupsPage extends BasePage{
 	
 	public Create_UpdateGroupPage clickOnCreateBtn(){
 		//scrollToElement(Createbtn);
+		waitForElementToPresent(Createbtn);
 			click(Createbtn," Create Btn");
 		return (Create_UpdateGroupPage) openPage(Create_UpdateGroupPage.class);
 //		new Create_UpdateGroupPage(driver, );
@@ -124,7 +125,7 @@ public class ManageGroupsPage extends BasePage{
 	public ManageGroupsPage clickOnCreateGroupBtn(){
 		//scrollToElement(Createbtn);
 		//	click(Creategroupbtn," Creategroupbtn");
-			hardClick(Creategroupbtn);
+			clickElementByJavaScript(Creategroupbtn,"Creategroupbtn");
 			return (ManageGroupsPage) openPage(ManageGroupsPage.class);
 		//return (Create_UpdateGroupPage) openPage(Create_UpdateGroupPage.class);
 //		new Create_UpdateGroupPage(driver, );

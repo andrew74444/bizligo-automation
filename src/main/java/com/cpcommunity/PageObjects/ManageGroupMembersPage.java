@@ -94,11 +94,12 @@ public class ManageGroupMembersPage extends BasePage {
 	}
 
 	public void memberOutSearch(String email) throws Exception {
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
 	//	memberOutSearch.clear();
+		waitForElementToPresent(memberOutSearch);
 		type(memberOutSearch, email, "Searching in members not joined");
 	//	waitForElementToPresent(waitForTheSearchOut);
-		Thread.sleep(10000);
+		Thread.sleep(5000);
 
 	}
 
@@ -130,11 +131,11 @@ public class ManageGroupMembersPage extends BasePage {
 
 	public void memberOutCheckBox() throws Exception {
 
-		Thread.sleep(2000);
-
+	//	Thread.sleep(2000);
+waitForElementToPresent(memberOutCheckBox);
 		click(memberOutCheckBox, "Selecting Check box");
 
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
 
 	}
 
@@ -142,7 +143,7 @@ public class ManageGroupMembersPage extends BasePage {
 
 		this.memberOutSearch(email);
 		this.memberOutCheckBox();
-
+		waitForElementToPresent(Add);
 		click(Add, "Add");
 		this.clickOnYesProceed();
 	}
@@ -170,12 +171,12 @@ public class ManageGroupMembersPage extends BasePage {
 	}
 
 	public boolean ManageMembers(String email) throws Exception {
-		//*******---------according to our need we can use the below code-----********\\
 		
-		        //  	this.addmember(email);
+		
+		          	this.addmember(email);
 	              //	this.makeAdmin(email);
 		       //   this.removeAdmin(email);
-	              	this.removeMember(email);
+	            //  	this.removeMember(email);
 		          
 		return true;
 

@@ -2,6 +2,7 @@ package com.cpcommunity.testScripts.TA_CreateCommunity;
 
 import java.util.Hashtable;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.EcoSystemPage;
@@ -31,4 +32,14 @@ public class TC964_Verify_TA_Inactivated_Community_NotDisplay_GlobalCommunity ex
 		GCP.searchInactiveCommunityTA(data.get("InactiveCommunity"));
 
 }
+
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("TC964 Test Completed");
+		
+		quit();
+		
+	}
+
 }

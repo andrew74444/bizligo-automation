@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 import com.cpcommunity.PageObjects.AuthorizeGateway;
 import com.cpcommunity.PageObjects.CommunityDashboardPage;
 import com.cpcommunity.PageObjects.CreateCommunityPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.MakePaymentPage;
@@ -36,13 +37,20 @@ public class TC1294_verify_CA_cannot_create_MP_Events_if_PaymentG_Not_available 
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+ data.get("browser"));		
 		logInfo("BizLigo Application Opened");
-		HomePage home1 = new HomePage().open(data.get("tenantType"));
-		LoginPage login1 = home1.clickOnLOGINBtn();
-		MyCommunitiesPage com=login1.loginToMyCommunitiesPage(data.get("email1"), data.get("password1"));
-		MyDashboardPage dash=com.gotoMyDashboard();
-		dash.searchcommunity(data.get("Name"));
-		CommunityDashboardPage comdash=com.gotoManageCommunity(data.get("community"));
-		ManageMembershipPlan MMP=comdash.navigateTomembershipPlan();
+		HomePage home = new HomePage().open(data.get("tenantType"));
+		LoginPage login = home.clickOnLOGINBtn();
+//		MyCommunitiesPage com=login.loginToMyCommunitiesPage(data.get("email1"), data.get("password1"));
+//		MyDashboardPage dash=com.gotoMyDashboard();
+//		dash.searchcommunity(data.get("Name"));
+//		CommunityDashboardPage comdash=com.gotoManageCommunity(data.get("community"));
+//		ManageMembershipPlan MMP=comdash.navigateTomembershipPlan();
+//		MMP.cannotcreatePlan(data.get("plan"), data.get("Price"));
+EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+		
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
+		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
+		
+		ManageMembershipPlan MMP=CommunityDashboardPage.navigateTomembershipPlan();
 		MMP.cannotcreatePlan(data.get("plan"), data.get("Price"));
 		
 	}

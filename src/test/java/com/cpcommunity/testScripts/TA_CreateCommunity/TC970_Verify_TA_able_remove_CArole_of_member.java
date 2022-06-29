@@ -30,7 +30,7 @@ public class TC970_Verify_TA_able_remove_CArole_of_member extends BaseTest {
 		TenantAdminDashboardPage TDP = login.loginToTADashboard(data.get("email"), data.get("password"));
 		TACommunitiesPage TCP = TDP.navigateToCommunitiesPage();
 		ManageCommunityMembersPage MCMP =TCP.navigateToManageMembers(data.get("Name"));
-		MCMP.removeMemberAsAdmin(data.get("Email"));
+		MCMP.removeMemberAsAdmin(data.get("Email"),data.get("MemberName"));
 		
 	}
 	@AfterMethod

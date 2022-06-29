@@ -102,7 +102,8 @@ public class ManagePricingPlan extends BasePage {
 	
 	
 	public String createPlan(String Name, String Price, String Duration, String  adminNo, String groupNo, String memberNo ) throws InterruptedException {
-		 Name=Name+" " + getDateInDDMMMYYYY();
+	//	 Name=Name+" " + getDateInDDMMMYYYY();
+		 Name=Name+" " +	getSystemCurrentHourIn12Hour();
 		 waitForElementToPresent(btnaddNew);
 		 click(btnaddNew, "Add plan");
 		waitForElementToPresent(planName);
@@ -116,8 +117,8 @@ public class ManagePricingPlan extends BasePage {
 		type(NoMember, memberNo, "Number of member");
 		selectUsingIndex(storage, 1, "Storage");
 		click(email, "email");
-		
-		click(create, "Create");
+		clickElementByJavaScript(create, "Create");
+	//	click(create, "Create");
 		Thread.sleep(3000);
 		return Name;
 	
@@ -193,23 +194,33 @@ public class ManagePricingPlan extends BasePage {
 		this.create.isDisplayed();
 		
 	}
-	
+	@FindBy(xpath = "//a[normalize-space()='Pricing Plans']")
+	WebElement pricingplan;
+
 	public void inactivate(String plan) throws InterruptedException {
 		Thread.sleep(5000);
-		plan=plan+" " + getDateInDDMMMYYYY();
+		waitForElementToPresent(pricingplan);
+		click(pricingplan, "pricingplan");//for waiting purpose
+		
+	//	plan=plan+" " + getDateInDDMMMYYYY();
+		plan=plan+" " +	getSystemCurrentHourIn12Hour();
 		waitForElementToPresent(searchbyPlan);
 		type(searchbyPlan, plan, "Plan Name");
-		click(search, "Search");
-		Thread.sleep(8000);
+		waitForElementToPresent(search);
+	//	click(search, "Search");
+		clickElementByJavaScript(search, "Search");
+		Thread.sleep(5000);
+		waitForElementToPresent(edit);
 		click(edit, "Edit");
+		waitForElementToPresent(inactive);
 		click(inactive, "Inactive");
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
 		
 	}
 	
 	public void configuration(String plan) throws InterruptedException {
 		Thread.sleep(5000);
-		plan=plan+" " + getDateInDDMMMYYYY();
+	//	plan=plan+" " + getDateInDDMMMYYYY();
 		waitForElementToPresent(searchbyPlan);
 		type(searchbyPlan, plan, "Plan Name");
 		click(search, "Search");
@@ -220,7 +231,7 @@ public class ManagePricingPlan extends BasePage {
 		
 	}
 	public String UpdatePlan(String Name, String Price, String Duration, String  adminNo, String groupNo, String memberNo ) throws InterruptedException {
-		Name=Name+" " + getDateInDDMMMYYYY();
+	//	Name=Name+" " + getDateInDDMMMYYYY();
 		waitForElementToPresent(searchbyPlan);
 		type(searchbyPlan, Name, "Plan Name");
 		click(search, "Search");

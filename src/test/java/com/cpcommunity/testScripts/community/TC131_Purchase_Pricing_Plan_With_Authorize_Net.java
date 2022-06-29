@@ -32,7 +32,7 @@ public class TC131_Purchase_Pricing_Plan_With_Authorize_Net extends BaseTest {
 		CreateCommunityPage CreateCommunityPage = MyCommunitiesPage.clickOnCreateCommunity();
 		String communityName = data.get("communityName");// + " " + runTime;
 		try {
-			CreateCommunityPage.CreateCommunity(communityName, data.get("Networking"), data.get("Marketing"),
+			GlobalCommunitesPage GlobalCommunitesPage=	CreateCommunityPage.CreateCommunity(communityName, data.get("Networking"), data.get("Marketing"),
 					data.get("BuildingRelationship"), data.get("Branding"), data.get("GrowMyBusiness"),
 					data.get("InvestInBusiness"), data.get("Other"), data.get("About"), data.get("Category"),
 					data.get("type"));

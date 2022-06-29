@@ -27,17 +27,17 @@ public class TC167_Verify_CA_Able_To_Change_Community_Status_To_Public_And_Verif
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
-		login = home.clickOnLOGINBtn();
+	//	login = home.clickOnLOGINBtn();
+//		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email2"), data.get("password2"));
+//		
+//		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
+//		GlobalCommunitesPage.JoinPrivateCommunity(data.get("communityName"));//+" "+date()+" "+runTime
+//		home = EcoSystemPage.logout();
+//		login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
-		GlobalCommunitesPage.JoinPrivateCommunity(data.get("communityName")+" "+date()+" "+runTime);
-		home = EcoSystemPage.logout();
-		login = home.clickOnLOGINBtn();
-		EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
-		
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName")+" "+runTime);
+		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));//+" "+runTime
 		EditCommunityPage EditCommunityPage = CommunityDashboardPage.navigateToEditCommunityPage();
 		CommunityDashboardPage = EditCommunityPage.updateCommunityType(data.get("type"));
 		CommunityPendingRequestsPage communityPendingRequestsPage =CommunityDashboardPage.NavigateToCommunityPendingRequets();

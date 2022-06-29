@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.CategoriesPage;
 import com.cpcommunity.PageObjects.CommunityDashboardPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.MyCommunitiesPage;
@@ -31,17 +32,19 @@ public class TC1193_Verify_allCreated_Tag_Categories_displaying_toAll_Admin exte
 	logInfo("BizLigo Application Opened");
 	HomePage home = new HomePage().open(data.get("tenantType"));
 	LoginPage login = home.clickOnLOGINBtn();
-	MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
-	CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
-	CategoriesPage categories=communityDashboard.gotoCategories();
-	categories.createCategorie(data.get("categoryName"),data.get("Statusis"),data.get("Description"));
-	TagsPage tag=categories.navigatetoTagpage();
+//	MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
+	EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+	MyCommunitiesPage mycommunities = EcoSystemPage.goToMyCommunities();
+	CommunityDashboardPage communityDashboard = mycommunities.gotoManageCommunity(data.get("communityName"));
+//	CategoriesPage categories=communityDashboard.gotoCategories();
+//	categories.createCategorie(data.get("categoryName"),data.get("Statusis"),data.get("Description"));
+	TagsPage tag=communityDashboard.gotoTags();
 	tag.createTag(data.get("Name"),data.get("Description1"));
 	HomePage HP=tag.logout();
 	LoginPage login1 = HP.clickOnLOGINBtn();
 	TenantAdminDashboardPage tadashoboard=login1.loginToTADashboard(data.get("email1"), data.get("password1"));
 	CategoriesPage C=tadashoboard.gotoCategories();
-	C.listOfCategories();
+//	C.listOfCategories();
 	TagsPage T=C.navigatetoTagpage();
 	T.listOfTags();
 	

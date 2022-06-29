@@ -251,7 +251,8 @@ public ManageResourcesPage navigateToManageResourcesPage() throws Exception {
 }
 
 public ManagePricingPlan navigateToManagePricingPlan() throws Exception {
-	Thread.sleep(2000);
+//	Thread.sleep(2000);
+	waitForElementToPresent(pricingplan);
 	click(pricingplan, "pricingplan");
 	return (ManagePricingPlan) openPage(ManagePricingPlan.class);
 	
@@ -319,6 +320,7 @@ public void goHomePage() throws InterruptedException {
 	        return TC;
  	}
      public void clickOnAdvertisments() {
+    	 waitForElementToPresent(advertisements);
  		click(advertisements, "advertisements");
  	}
      public ManageAdPlansPage goToManageAdPlansPage() {

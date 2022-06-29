@@ -9,7 +9,6 @@ import org.testng.annotations.Test;
 
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataUtil;
-import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.*;
 import com.cpcommunity.utilities.DataProviders;
 import com.cpcommunity.utilities.ExcelReader;
@@ -20,18 +19,28 @@ public class TC045_Member_Accept_Community_Request_From_Global_Community extends
 	
 	
 	@Test(dataProviderClass=DataProviders.class,dataProvider="masterDP")
-	public void TC041ToTC046(Hashtable<String,String> data) throws Exception {
+	public void TC045(Hashtable<String,String> data) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC041ToTC046", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC045", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		String runTime = openBrowser(data.get("browser"));
 		logInfo("Launched Browser : "+data.get("browser"));
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
-		LoginPage loginPage = home.clickOnLOGINBtn();
-		EcoSystemPage EcoSystemPage = loginPage.loginToApplication(data.get("email1"),data.get("password"));
-		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
+		LoginPage login = home.clickOnLOGINBtn();
+		
+		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
+		CommunityDashboardPage CommunityDashboardPage = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
+		CommunityInviteMembersPage CommunityInviteMembersPage = CommunityDashboardPage.navigateToinvitePeople();
+		CommunityInviteMembersPage.	invite(data.get("email1"));
+		
+		HomePage home1= CommunityInviteMembersPage.logOut();
+		LoginPage login1 = home1.clickOnLOGINBtn();
+		
+		EcoSystemPage EcoSystemPage1 = login1.loginToApplication(data.get("email1"),data.get("password1"));
+		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage1.goToGlobalCommunities();
 		GlobalCommunitesPage.acceptCommunity(data.get("communityName"));
 		
 		//Assert.fail("Failing the login test");

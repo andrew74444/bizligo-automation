@@ -59,7 +59,8 @@ public class MyAdvertisements extends BasePage {
 	WebElement selectGold2;
 	@FindBy(xpath="//input[@id='PlanNameSearch']")
 	WebElement plansearch;
-	@FindBy(xpath="//a[@title='Click to edit this page']")
+	//@FindBy(xpath="//a[@title='Click to edit this page']")
+	@FindBy(xpath="(//*[@class='glyphicon glyphicon-pencil'])[1]")
 	WebElement edit;
 	@FindBy(xpath="//a[@title='Click to purchase this Advertisement']")
 	WebElement editp;
@@ -144,7 +145,7 @@ public class MyAdvertisements extends BasePage {
 
 	public void NonCommunityMemberCannotSeeAds() throws InterruptedException {
 		waitForElementToPresent(information);
-	Thread.sleep(1000);
+//	Thread.sleep(1000);
 		click(information, "Non Member Information");
 		AssertionHelper.verifyText(information.getText(), "To Post Advertisements in Community, go to respective community page");
 		System.out.println("To Post Advertisements in Community, go to respective community page");
@@ -168,17 +169,19 @@ public class MyAdvertisements extends BasePage {
 
 		  // 
 	   }
-
+	 @FindBy(xpath=" (//*[@class='col-sm-12'])[2]")
+			  WebElement wait;
 	public UpdateADPage gotoUpdateAdpage(String planName) throws InterruptedException {
 
 		//Thread.sleep(2000);
 		 //waitForElementToPresent(plansearch);
 		  // type(plansearch, planName, "Plan Name");
 		   //click(search, "Search");
-		   Thread.sleep(4000);
+		//   Thread.sleep(4000);
+		   waitForElementToPresent(wait);
 		waitForElementToPresent(editPP);
 		click(editPP, "Edit");
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
 		return (UpdateADPage) openPage(UpdateADPage.class);
 
 	}
@@ -249,31 +252,40 @@ public class MyAdvertisements extends BasePage {
 		
 	}
 	public void createAd( String planName,String AdName, String path) throws Exception {
-		driver.manage().timeouts().implicitlyWait(300, TimeUnit.SECONDS);
+	//	driver.manage().timeouts().implicitlyWait(300, TimeUnit.SECONDS);
+		waitForElementToPresent(createGlobalAd);
 		  click(createGlobalAd, "Creat global Ad");
-		picture();
+	//	picture();
 		waitForElementToPresent(selectGold2);
 		 clickElementByJavaScript(selectGold2);
-		 driver.manage().timeouts().implicitlyWait(400, TimeUnit.SECONDS);		
+	//	 driver.manage().timeouts().implicitlyWait(400, TimeUnit.SECONDS);	
+		 waitForElementToPresent(next);
 			click(next, "Next button");
-			driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
-			picture();
+		//	driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
+		//	picture();
 			waitForElementToPresent(adname);
+			AdName=AdName+getSystemCurrentMintues();
 			type(adname, AdName, "Advertisement name");
+			Thread.sleep(1000);
+			waitForElementToPresent(date);
 			click(date, "Select Date");
 			waitForElementToPresent(adStartDatecalendar);
-			driver.manage().timeouts().implicitlyWait(300, TimeUnit.SECONDS);
+		//	driver.manage().timeouts().implicitlyWait(300, TimeUnit.SECONDS);
+			Thread.sleep(1000);
 			click(nextMonth, "Next");
 			click(nextMonth, "Next");
 			waitForElementToPresent(dateselect);
 			click(dateselect, "Date");
-			driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
+		//	driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
 			//click(this.adEndDate, "Ad End Date");
 			//Thread.sleep(1000);
-			type(choosefile, path, "Image Path");
+			waitForElementToPresent(choosefile);
+			String path1 = projectFloder("\\src\\test\\resources\\testImages\\Files\\ChromeImage3.jpeg");
+			type(choosefile, path1, "Image Path");
 		scrollDownVertically();
+		waitForElementToPresent(save);
 		click(save, "Save");
-		Thread.sleep(12000);
+		Thread.sleep(15000);
 		
 	}
 	public void createGlobalAd2( String planName,String AdName, String path) throws Exception {
@@ -303,26 +315,28 @@ public class MyAdvertisements extends BasePage {
 		
 	}
 	public void createGlobalAd1( String planName,String AdName, String path) throws Exception {
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 		 waitForElementToPresent(plansearch);
 		   type(plansearch, planName, "Plan Name");
 		   click(search, "Search");
 		   Thread.sleep(9000);
 		   waitForElementToPresent(editp);
 		   click(editp, "Edit");
-		picture();
+	//	picture();
 		waitForElementToPresent(adname);
 		type(adname, AdName, "Advertisement name");
 		click(date, "Select Date");
 		waitForElementToPresent(adStartDatecalendar);
-		driver.manage().timeouts().implicitlyWait(200, TimeUnit.SECONDS);
+	//	driver.manage().timeouts().implicitlyWait(200, TimeUnit.SECONDS);
 		click(nextMonth, "Next");
 		click(nextMonth, "Next");
 		waitForElementToPresent(dateselect);
 		//waitForElementToPresent(dateselect);
 		click(dateselect, "Date ");
 		waitForElementToPresent(choosefile);
-		type(choosefile, path, "Image Path");
+		String path1 = projectFloder("\\src\\test\\resources\\testImages\\Files\\ChromeImage3.jpeg");
+		type(choosefile, path1, "Image Path");
+	
 		scrollDownVertically();
 		Actions act = new Actions(driver);
 		//Double click on element
@@ -371,21 +385,31 @@ public class MyAdvertisements extends BasePage {
 		this.createGlobalAd.click();
         Thread.sleep(2000);
 		//this.selectAPlan(planName);
+        waitForElementToPresent(selectGold2);
           clickElementByJavaScript(selectGold2);
         //click(selectGold2, "Gold2");	
+          waitForElementToPresent(next);
 		click(next, "Next button");
-		Thread.sleep(5000);
-		picture();
+	//	Thread.sleep(5000);
+	//	picture();
 		waitForElementToPresent(adname);
+		AdName=AdName+getSystemCurrentMintues();
 		type(adname, AdName, "Advertisement name");
+		Thread.sleep(2000);
+		waitForElementToPresent(date);
 		click(date, "Select Date");
+		waitForElementToPresent(adStartDatecalendar);
+	
 		Thread.sleep(1000);
 		click(nextMonth, "Next");
 		click(nextMonth, "Next");
 		waitForElementToPresent(dateselect);
-		click(dateselect, "Date 17 july");
+		click(dateselect, "Date");
+	
 		waitForElementToPresent(choosefile);
-		type(choosefile, path, "Image Path");
+		String path1 = projectFloder("\\src\\test\\resources\\testImages\\Files\\ChromeImage3.jpeg");
+		type(choosefile, path1, "Image Path");
+	
 		scrollDownVertically();
 		click(proceedTopayment, "Proceed To Payment");
 		waitForElementToPresent(Authorised);
@@ -406,8 +430,27 @@ public class MyAdvertisements extends BasePage {
 		//click(searchPlan, "Search Plan");
 		type(searchPlan, planName1, "Plan Name");
 		click(search, "Search");
-		Thread.sleep(7000);
+	//	Thread.sleep(7000);
 		
+	}
+	@FindBy(xpath="//*[@id='AdTitleSearch']")
+	WebElement titleSearchBox;
+	@FindBy(xpath="//*[@title='This plan is inactive']")
+	WebElement status1;
+	public void searchinactiveAd(String adName) throws InterruptedException {
+	
+		scrollUpVertically();
+		waitForElementToPresent(titleSearchBox);
+		
+		type(titleSearchBox, adName, "Plan Name");
+		waitForElementToPresent(search);
+		click(search, "Search");
+		
+		waitForElementToPresent(status1);
+		if(status1.isDisplayed()) {
+			Assert.assertTrue(true);
+			System.out.println("This plan is inactive");
+		}
 	}
 	public void searchinactiveplan(String planName1) throws InterruptedException {
 		Thread.sleep(3000);
@@ -448,6 +491,7 @@ public class MyAdvertisements extends BasePage {
 		click(edit, "Edit");
 		waitForElementToPresent(inactiveerror);
 		System.out.print(inactiveerror);
+		waitForElementToPresent(ok);
 		click(ok, "OK");
 	
 	}
@@ -463,7 +507,17 @@ public class MyAdvertisements extends BasePage {
 		return (MyDashboardPage) openPage(MyDashboardPage.class);
 	
 	}
+	public EcoSystemPage gotoEcoSystemPage() throws Exception {
+		//driver.manage().timeouts().implicitlyWait(800, TimeUnit.SECONDS);
+		waitForElementToPresent(Toggledropdownmenu);
+		click(Toggledropdownmenu,"Toggledropdownmenu");
 	
+		waitForElementToPresent(ecosystem);
+		click(ecosystem,"DashBoard");
+	//	driver.manage().timeouts().implicitlyWait(800, TimeUnit.SECONDS);
+		return (EcoSystemPage) openPage(EcoSystemPage.class);
+	
+	}
 		
 }
 

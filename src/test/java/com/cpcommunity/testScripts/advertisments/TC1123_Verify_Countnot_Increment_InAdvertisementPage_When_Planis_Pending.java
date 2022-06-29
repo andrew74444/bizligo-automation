@@ -6,6 +6,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.CommunityDashboardPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.GlobalCommunitesPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
@@ -29,14 +30,17 @@ public class TC1123_Verify_Countnot_Increment_InAdvertisementPage_When_Planis_Pe
 	openBrowser(data.get("browser"));
 	logInfo("Launched Browser : "+data.get("browser"));
 	logInfo("BizLigo Application Opened");
-	HomePage home1 = new HomePage().open(data.get("tenantType"));
-	LoginPage login1 = home1.clickOnLOGINBtn();
-	MyCommunitiesPage myCommunity = login1.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
-	MyDashboardPage mydash=myCommunity.gotoMyDashboardPage();
-	int previouscount=mydash.checkAdcounts();
-	 MyAdvertisements A=mydash.NaviagtingToMyAdvertisements();
+	HomePage home = new HomePage().open(data.get("tenantType"));
+	LoginPage login = home.clickOnLOGINBtn();
+//	MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
+//	MyDashboardPage mydash=myCommunity.gotoMyDashboardPage();
+	EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));	
+	int previouscount=EcoSystemPage.checkAdcounts();
+	
+	 MyAdvertisements A=EcoSystemPage.NaviagtingToMyAdvertisements();
 	 A.createAd(data.get("planName"), data.get("AdName"),data.get("path"));
-	MyDashboardPage dash=A.gotoMyDashboardPage();
+	 
+	 EcoSystemPage dash=A.gotoEcoSystemPage();
 	int Aftercount=dash.checkAdcounts();
 	boolean val=dash.CompareProgressBars(previouscount,Aftercount);
 	 

@@ -88,11 +88,12 @@ public class UpcomingEventsPage extends BasePage{
 		return (CreateOrEditEvent) openPage(CreateOrEditEvent.class);
 	}
 	
-	
+	@FindBy(xpath="(//*[@class='event-image'])[1]")
+			WebElement image;
 	public EventDetailsPage goToEventDetailsPage(Hashtable<String, String> data) throws Exception {
 		this.searchEvent(data);
 		
-		
+		waitForElementToPresent(image);
 		WebElement element = driver.findElement(By.xpath("(//div[@ng-app='EventsApp']//*[@class='row']//a[@target='_self'])[1]"));
 //		JavascriptExecutor js = (JavascriptExecutor) driver;
 //		js.executeScript("arguments[0].setAttribute('target','_self');", element);
@@ -195,29 +196,50 @@ public class UpcomingEventsPage extends BasePage{
 		st.assertAll();
 
 	}
-	
+	@FindBy(xpath="(//*[@ng-if='Event.BannerTypeID == 1'])[1]")
+			WebElement eventname;
+	@FindBy(xpath="(//select[@id='selectticketcount'])[1]")
+			WebElement freeTicket;
+	@FindBy(xpath="(//*[@class='booking-details']/*/*/*)[1]")
+			WebElement id;
+	@FindBy(xpath="(//*[@class='booking-details']/*/*/*)[2]")
+	WebElement date;
+	@FindBy(xpath="(//*[@class='booking-details']/*/*/*)[3]")
+	WebElement type;
 	public void registerToAnEvent(String Event) throws InterruptedException {
+		waitForElementToPresent(eventname);
 		type(EventNameSearch, Event, "eventName");
 		click(Search,"Search");
-		Thread.sleep(3000);
-		driver.findElement(By.xpath("//strong[contains(text(),'" + Event + "')]")).click();
+	//	Thread.sleep(3000);
+		waitForElementToPresent(eventname);
+		click(eventname,"Event name");
+	//	driver.findElement(By.xpath("//strong[contains(text(),'" + Event + "')]")).click();
 		waitForElementToPresent(registe);
 		click(registe,"Register");
-		Thread.sleep(2000);
-		selectUsingIndex(noOfTickets,1,"1");
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
+	//	selectUsingIndex(noOfTickets,1,"1");
+		waitForElementToPresent(freeTicket2);
+		selectUsingIndex(freeTicket2,1,"1");//added on 11/05 based on event ticket list
+		Thread.sleep(3000);
+		scrollDownVertically();
 		//type(AuthoriseNet, label, Event)
-		click(booknow,"Book Now");
+		scrollToElement(booknow);
+		clickElementByJavaScript(booknow,"Book Now");
+		Thread.sleep(15000);
 		waitForElementToPresent(bookingConfirmation);
-		//Thread.sleep(4000);
+		
 		if(bookingConfirmation.isDisplayed()) {
 			Assert.assertTrue(true);
 		}else Assert.assertTrue(false);
 		System.out.println("Details of registration:");
-		System.out.println(bookingId.getText());
-		System.out.println(bookingDate.getText());
-		System.out.println(eventType.getText());
-		System.out.println(eventDetails.getText());
+	//	System.out.println(bookingId.getText());
+	//	System.out.println(bookingDate.getText());
+	//	System.out.println(eventType.getText());
+	//	System.out.println(eventDetails.getText());
+		System.out.println(id.getText());//added on 11/05
+			System.out.println(date.getText());
+			System.out.println(type.getText());
+
 		
 	}
 
@@ -225,7 +247,8 @@ public class UpcomingEventsPage extends BasePage{
 	WebElement register;
 	@FindBy(xpath="//select[@id='selectticketcount']")
 	WebElement noOfTickets;	
-	@FindBy(xpath="//span[@ng-click='data.ShowInviteGuestHide()']")
+//	@FindBy(xpath="//span[@ng-click='data.ShowInviteGuestHide()']")
+	@FindBy(xpath="//body[1]/div[2]/div[1]/div[2]/div[1]/div[9]/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/div[3]/div[2]/div[1]/fieldset[1]/form[1]/button[2]")
 	WebElement booknow;
 	@FindBy(xpath="//h3[normalize-space()='BOOKING CONFIRMATION']")
 	WebElement bookingConfirmation;
@@ -271,6 +294,8 @@ public class UpcomingEventsPage extends BasePage{
 	WebElement cardNum;
 	@FindBy(xpath="//input[@id='expiryDate']")
 	WebElement expiryDate;
+	@FindBy(xpath="//*[@id='cvv']")
+	WebElement cvv;
 	@FindBy(xpath="//*[@id=\"payBtn\"]")
 	WebElement pay;
 	@FindBy(xpath="//*[@id=\"PaymentController\"]//table[1]/tbody/tr[1]/td[1]")
@@ -289,47 +314,64 @@ public class UpcomingEventsPage extends BasePage{
 	WebElement element;
 
 	
-public  MyEventsPage goToMyEventsPage() {
-		
-		click(toggleDropDown,"Toggle Drop Down Menu");
+public  MyEventsPage goToMyEventsPage() throws InterruptedException {
+	
+	waitForElementToPresent(toggleDropDown);
+		clickElementByJavaScript(toggleDropDown,"Toggle Drop Down Menu");
+		waitForElementToPresent(myEvents);
 		click(myEvents,"My events");
 		return (MyEventsPage) openPage(MyEventsPage.class);
 	}
-
+@FindBy(xpath="(//select[@id='selectticketcount'])[2]")
+WebElement freeTicket2;
 public void registerToAnEventAsGuest(String Event,String Email) throws InterruptedException {
+	waitForElementToPresent(eventname);
 	type(EventNameSearch, Event, "eventName");
 	click(Search,"Search");
-	Thread.sleep(3000);
-	driver.findElement(By.xpath("//strong[contains(text(),'" + Event + "')]")).click();
+//	Thread.sleep(3000);
+//	driver.findElement(By.xpath("//strong[contains(text(),'" + Event + "')]")).click();
+	waitForElementToPresent(eventname);
+	click(eventname,"Event");
 	waitForElementToPresent(register);
 	click(register,"Register");
-	selectUsingIndex(noOfTickets,1,"1");
+//	selectUsingIndex(noOfTickets,1,"1");
+	waitForElementToPresent(freeTicket2);
+	selectUsingIndex(freeTicket2,1,"1");//added on 11/05 based on ticket list in event
 	//Thread.sleep(4000);
 	waitForElementToPresent(emailId);
 	type(emailId,Email,"Email Of registered Guest User");
 	emailId.sendKeys(Keys.ENTER);
 	click(booknow,"Book Now");
+	Thread.sleep(10000);
 	waitForElementToPresent(bookingConfirmation);
-	Thread.sleep(4000);
+	
 	if(bookingConfirmation.isDisplayed()) {
 		Assert.assertTrue(true);
 		System.out.println("Member able to register for event as Guest user");
 	}else Assert.assertTrue(false);
 	System.out.println("Details of registration:");
-	System.out.println(bookingId.getText());
-	System.out.println(bookingDate.getText());
-	System.out.println(eventType.getText());
-	System.out.println(eventDetails.getText());
+//	System.out.println(bookingId.getText());
+//	System.out.println(bookingDate.getText());
+//	System.out.println(eventType.getText());
+//	System.out.println(eventDetails.getText());
+	System.out.println(id.getText());//added on 11/05
+	System.out.println(date.getText());
+	System.out.println(type.getText());
 	}
 
 public void registerToAnEventThroughOtherMember(String Event,String Email,String Fname,String Lname) throws InterruptedException {
+	waitForElementToPresent(eventname);
 	type(EventNameSearch, Event, "eventName");
 	click(Search,"Search");
-	Thread.sleep(3000);
-	driver.findElement(By.xpath("//strong[contains(text(),'" + Event + "')]")).click();
+	//Thread.sleep(3000);
+//	driver.findElement(By.xpath("//strong[contains(text(),'" + Event + "')]")).click();
+	waitForElementToPresent(eventname);
+	click(eventname,"Event");
 	waitForElementToPresent(register);
 	click(register,"Register");
-	selectUsingIndex(noOfTickets,1,"1");
+	//selectUsingIndex(noOfTickets,1,"1");
+	waitForElementToPresent(freeTicket2);
+	selectUsingIndex(freeTicket2,1,"1");//added on 11/05 based on ticket list in event
 	//Thread.sleep(2000);
 	waitForElementToPresent(emailId);
 	type(emailId,Email,"Email Of registered Guest User");
@@ -338,56 +380,112 @@ public void registerToAnEventThroughOtherMember(String Event,String Email,String
 	//emailId.sendKeys(Keys.ENTER);
 	//Thread.sleep(6000);
 	click(booknow,"Book Now");
-	//Thread.sleep(8000);
+	Thread.sleep(15000);
 	waitForElementToPresent(bookingConfirmation);
-	Thread.sleep(3000);
+
 	if(bookingConfirmation.isDisplayed()) {
 		Assert.assertTrue(true);
 	}else Assert.assertTrue(false);
 	System.out.println("Details of registration:");
-	System.out.println(bookingId.getText());
-	System.out.println(bookingDate.getText());
-	System.out.println(eventType.getText());
-	System.out.println(eventDetails.getText());
+//	System.out.println(bookingId.getText());
+//	System.out.println(bookingDate.getText());
+//	System.out.println(eventType.getText());
+//	System.out.println(eventDetails.getText());
+	System.out.println(id.getText());//added on 11/05
+	System.out.println(date.getText());
+	System.out.println(type.getText());
 }
+@FindBy(xpath="//*[@name='PayerEmailID']")
+WebElement payerId;
+@FindBy(xpath="//*[@name='PayerFirstName']")
+WebElement payerName1;
+@FindBy(xpath="//*[@name='PayerLastName']")
+WebElement payerName2;
+@FindBy(xpath="(//*[@type='radio'])[2]")
+		WebElement net;
+@FindBy(xpath="//*[@name='PayerComments']")
+WebElement comment;
+@FindBy(xpath = "//input[@id='cardNum']")
+WebElement cardnum;
+//
+@FindBy(xpath = "//input[@id='expiryDate']")
+WebElement ExpiryDate;
 
-public void registerToPaidEvent(String Event) throws InterruptedException {
+@FindBy(xpath = "//input[@id='cvv']")
+WebElement CVV;
+@FindBy(xpath = "(//select[@id='selectticketcount'])[5]")
+		WebElement paidTicket;
+public void registerToPaidEvent(String Event,String Email,String Fname,String Lname) throws InterruptedException {
+	waitForElementToPresent(eventname);
 	type(EventNameSearch, Event, "eventName");
 	click(Search,"Search");
 	Thread.sleep(3000);
-	driver.findElement(By.xpath("//strong[contains(text(),'" + Event + "')]")).click();
+//	driver.findElement(By.xpath("//strong[contains(text(),'" + Event + "')]")).click();
+	waitForElementToPresent(eventname);
+	clickElementByJavaScript(eventname,"Event");
 	waitForElementToPresent(register);
 	click(register,"Register");
 	//Thread.sleep(2000);
-	waitForElementToPresent(noOfTickets);
-	selectUsingIndex(noOfTickets,1,"1");
+	//waitForElementToPresent(noOfTickets);
+	//selectUsingIndex(noOfTickets,1,"1");
+	waitForElementToPresent(paidTicket);
+	selectUsingIndex(paidTicket,1,"1");//based on tickets list in events page
+	waitForElementToPresent(emailId);
+	type(emailId,Email,"Email");
 	Thread.sleep(2000);
-	click(next,"Next");
-	Thread.sleep(4000);
-	clickElementByJavaScript(bookNow);
-	Thread.sleep(2000);
-	waitForElementToPresent(makePayment);
+	firstName.clear();
+	type(firstName,Fname,"First name Of registered User");
+	lastName.clear();
+	type(lastName,Lname,"Last Name Of registered User");
 	
-	click(AuthoriseNet,"Authorize Net");
-	click(proceed,"Proceed");		
+	//Thread.sleep(2000);
+	click(next,"Next");
+	Thread.sleep(10000);
+	waitForElementToPresent(payerId);
+//	payerId.clear();
+//	type(payerId,"yogesh.bhor141@yahoo.com","Payer Email");
+	Thread.sleep(2000);
+	payerName1.clear();
+	type(payerName1,"venkata","Payer FirstName");
+	payerName2.clear();
+	type(payerName2,"kr","Payer LastName");
+	comment.click();
+	scrollToElement(bookNow);
+	clickElementByJavaScript(bookNow);
+	Thread.sleep(10000);
+	waitForElementToPresent(makePayment);
+	waitForElementToPresent(net);
+	click(net,"Authorize Net");
+	click(proceed,"Proceed");	
 	Thread.sleep(4000);
 	waitForElementToPresent(paymentForm);
 	Thread.sleep(2000);
 	switchToFrameByID(0);
 	type(cardNum,"4111111111111111","card number");
-	type(expiryDate,"02/333","Expiry Date");
+	type(expiryDate,"0525","Expiry Date");
+	type(cvv,"025","CVV");
+//	cardnum.click();
+//	type(cardnum, "4111111111111111", "card Num");
+//	ExpiryDate.click();
+//	type(ExpiryDate, "0525", "Expiry Date");
+//	CVV.click();
+//	type(CVV, "025", "CVV");
 	//switchToFrameByID(0);
 	click(pay,"Pay");
-	switchTodefaultContent();		
+	switchTodefaultContent();	
+	Thread.sleep(30000);
 	waitForElementToPresent(bookingConfirmation);
-	Thread.sleep(3000);
+	
 	if(bookingConfirmation.isDisplayed()) {
 		Assert.assertTrue(true);
 	}else Assert.assertTrue(false);
 	System.out.println("Details of registration:");
-	System.out.println(bookingIdPaid.getText());
-	System.out.println(bookingDatePaid.getText());
-	System.out.println(eventTypePaid.getText());
+//	System.out.println(bookingIdPaid.getText());
+//	System.out.println(bookingDatePaid.getText());
+//	System.out.println(eventTypePaid.getText());
+	System.out.println(id.getText());//added on 11/05
+	System.out.println(date.getText());
+	System.out.println(type.getText());
 	
 }
 
@@ -407,12 +505,14 @@ public void registerTt(String Event) throws InterruptedException {
 
 }
 public void searchevent(String name) throws InterruptedException {
+	waitForElementToPresent(eventname);
+
 	waitForElementToPresent(EventNameSearch);
-	name=name +" " + getDateInDDMMMYYYY();
+//	name=name +" " + getDateInDDMMMYYYY();
 	type(EventNameSearch, name, "Event Name");
-	Thread.sleep(8000);
+//	Thread.sleep(8000);
 	click(Search, "Search");
-	Thread.sleep(8000);
+//	Thread.sleep(8000);
 	
 }
 public void AllowDuplicatesEmailwithGuestUser(String Email, String Fname, String Lname) throws InterruptedException {
@@ -437,13 +537,16 @@ public void AllowDuplicatesEmailwithGuestUser(String Email, String Fname, String
 
 }
 public void CannotregisterwithDuplicates(String Email, String Fname, String Lname) throws InterruptedException {
-	
-	click(EventName, "Event");
+	waitForElementToPresent(eventname);
+	click(eventname, "Event");
+	//click(EventName, "Event");
 	waitForElementToPresent(register);
 	click(register,"Register");
-	Thread.sleep(2000);
+	//Thread.sleep(2000);
+	waitForElementToPresent(noOfTickets);
 	selectUsingIndex(noOfTickets,2,"1");
-	Thread.sleep(4000);
+//	Thread.sleep(4000);
+	scrollDownVertically();
 	type(emailId1,Email,"Email Of registered");
 	type(firstName, Fname, "First name");
 	type(lastName, Lname, "Last name");

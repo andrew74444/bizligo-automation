@@ -29,7 +29,7 @@ public class TC041_Member_Reject_Community_request_from_My_Communities extends B
 		LoginPage login = home.clickOnLOGINBtn();
 //		login.login(data.get("username"), data.get("password"));
 //		logInfo("Username entered as "+getBrook()+" and Password entered as "+getPassword());
-		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email5"),data.get("password"));
+		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email1"),data.get("password1"));
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		MyCommunitiesPage.rejectcommunity(data.get("communityName"));
 		

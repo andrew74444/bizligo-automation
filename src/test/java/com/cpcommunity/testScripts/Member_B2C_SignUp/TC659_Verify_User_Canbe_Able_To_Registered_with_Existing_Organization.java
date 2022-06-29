@@ -43,7 +43,7 @@ public class TC659_Verify_User_Canbe_Able_To_Registered_with_Existing_Organizati
 	@AfterMethod
 	public void tearDown() {
 
-		logInfo("TC222 Test Completed");
+		logInfo("TC659 Test Completed");
 
 		quit();
 

@@ -27,12 +27,19 @@ public class TC146_PromoCode_Event_Registration_With_Authorize_From_Event_Detail
 		LoginPage login = home.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		
-		UpcomingEventsPage UpcomingEventsPage = EcoSystemPage.goToUpComingEvents();
-		EventDetailsPage eventDetailsPage =UpcomingEventsPage.goToEventDetailsPage(data);
-		AuthorizeGateway authorizeGateway = eventDetailsPage.registerEventbyAuthorizeNet(data);
-		EventTicketPage eventTicket = authorizeGateway.MakePaymentToEvent();
-		eventTicket.successfulRegistration();
+//		UpcomingEventsPage UpcomingEventsPage = EcoSystemPage.goToUpComingEvents();
+//		EventDetailsPage eventDetailsPage =UpcomingEventsPage.goToEventDetailsPage(data);
+//		AuthorizeGateway authorizeGateway = eventDetailsPage.registerEventbyAuthorizeNet(data);
+//		EventTicketPage eventTicket = authorizeGateway.MakePaymentToEvent();
+//		eventTicket.successfulRegistration();
 
+
+		MyCommunitiesPage MyCommunitiesPage1 = EcoSystemPage.goToMyCommunities();
+		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage1.navigateToCommunityDetailsPage(data.get("communityName"));
+		EventsPage event=CommunityDetailsPage.gotoevents();	
+		AuthorizeGateway authorizeGateway = event.registerEventbyAuthorizeNetWithPromo(data);
+		EventTicketPage eventTicketPage = authorizeGateway.MakePaymentToEvent();
+		eventTicketPage.successfulRegistration();
 	}
 
 	@AfterMethod

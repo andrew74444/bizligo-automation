@@ -227,7 +227,8 @@ public class ManageJobsPage extends BasePage {
 	public CommunityDetailsPage navigateToCommunityDetailsPage(String name) {
 		WebElement ele = driver.findElement(By.xpath("//*[contains(text(),'" + name + "')]"));
 		scrollToElement(ele);
-		click(ele, "name");
+		waitForElementToPresent(ele);
+		clickElementByJavaScript(ele, "name");
 		return (CommunityDetailsPage) openPage(CommunityDetailsPage.class);
 	}
 

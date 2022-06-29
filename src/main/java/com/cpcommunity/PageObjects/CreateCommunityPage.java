@@ -84,7 +84,7 @@ public class CreateCommunityPage extends BasePage{
 	public String samecommunity(String Name) throws InterruptedException {
 		waitForElementToPresent(name);
 		type(name, Name, "Name");
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
 		click(networking, "Networking");
 		String error=this.samecommunityerror.getText();
 		System.out.println(error);
@@ -94,7 +94,7 @@ public class CreateCommunityPage extends BasePage{
 	}
 	
 	public String Createcommunity(String Name,String About, String Category,String type) throws InterruptedException {
-		Name=Name+" " + getDateInDDMMMYYYY();
+	//	Name=Name+" " + getDateInDDMMMYYYY();
 		waitForElementToPresent(name);
 		type(name, Name, "Name");
 		//type(name, Name, "Name");
@@ -114,6 +114,7 @@ public class CreateCommunityPage extends BasePage{
 	    click(create, "Create");
 	    waitForElementToPresent(communityrequest);
 	    String request=this.communityrequest.getText();
+	    System.out.println(request);
 	    click(ok, "Ok");
 		return Name;
 		

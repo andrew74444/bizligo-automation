@@ -33,13 +33,13 @@ public class TC115_SendMessages extends BaseTest {
 //		logInfo("Username entered as "+data.get("username")+" and Password entered as "+data.get("password"));
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		Messages messages = EcoSystemPage.goToMyMessages();
-		String Message =messages.SendNewMessage("Curator", data.get("NewMessage"));
-		EcoSystemPage.logout();
+		String Message =messages.SendNewMessage("Venkata Kr", data.get("NewMessage"));
+		messages.logout();
 		home.clickOnLOGINBtn();
-		EcoSystemPage = login.loginToApplication(data.get("email1"), data.get("password"));
+		EcoSystemPage = login.loginToApplication(data.get("email1"), data.get("password1"));
 		messages = EcoSystemPage.goToMyMessages();
-		messages.messageDisplayed("Andrew", Message);		
-		messages.SendNewMessage("Andrew", data.get("ReplyMessage"));
+		messages.messageDisplayed("Venkata Kodi", Message);		
+		messages.SendNewMessage("Venkata Kodi", data.get("ReplyMessage"));
 		
 		//Assert.fail("Failing the login test");
 	}

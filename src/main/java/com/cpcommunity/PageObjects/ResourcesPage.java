@@ -64,7 +64,7 @@ public class ResourcesPage  extends BasePage{
 	WebElement adPlans;
 	
 	public void checkResources1() throws InterruptedException {
-		Thread.sleep(4000);
+	//	Thread.sleep(4000);
 
 		waitForElementToPresent(resource1);
 		if(this.resource1.isDisplayed()&&this.resource1.isEnabled()) {

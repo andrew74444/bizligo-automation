@@ -5,6 +5,7 @@ import java.util.Hashtable;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.MemberDirectoryPage;
@@ -27,8 +28,11 @@ public class TC703_Verify_MemberPendingApproval_NotDisplayed_MemberDirectory ext
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
-		MyCommunitiesPage MyCP = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
-		MemberDirectoryPage MDP=MyCP.gotoMemberDirectoryPage();
+	//	MyCommunitiesPage MyCP = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
+		//MemberDirectoryPage MDP=MyCP.gotoMemberDirectoryPage();
+		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+		MemberDirectoryPage MDP= EcoSystemPage.gotoMemberDirectoryPage();
+
 		MDP.searchPendingMember(data.get("Member Name"));
 		
 

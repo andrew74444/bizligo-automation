@@ -17,17 +17,18 @@ public class TC004_Verify_Member_Not_Able_To_Register_With_Exsiting_Organization
 	PaymentReceipt PaymentReceipt;
 	
 	@Test(dataProviderClass = DataProviders.class, dataProvider = "masterDP")
-	public void TC001(Hashtable<String, String> data) throws Exception {
+	public void TC231(Hashtable<String, String> data) throws Exception {
 
 		ExcelReader excel = new ExcelReader(Constants.SUITE1_XL_PATH);
-		DataUtil.checkExecution("master", "TC001", data.get("Runmode"), excel);
+		DataUtil.checkExecution("master", "TC231", data.get("Runmode"), excel);
 		log.info("Inside Login Test");
 		System.out.println(data.get("duration"));
 		openBrowser(data.get("browser"));
 		logInfo("Launched Browser : " + data.get("browser"));
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage loginPage = home.clickOnLOGINBtn();
-		loginPage.clickonSignup();
+		SignupPage signupPage = 	loginPage.clickonSignup();
+		signupPage.checkUserAbleToSignUpWithExsitingOrganizationName(data.get("organizationName"));
 	}
 
 	
@@ -38,7 +39,7 @@ public class TC004_Verify_Member_Not_Able_To_Register_With_Exsiting_Organization
 	@AfterMethod
 	public void tearDown() {
 
-		logInfo("Login Test Completed");
+		logInfo("TC004 Test Completed");
 
 		quit();
 

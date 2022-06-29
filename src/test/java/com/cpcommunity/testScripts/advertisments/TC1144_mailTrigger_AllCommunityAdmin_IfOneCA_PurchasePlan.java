@@ -6,12 +6,14 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.AuthorizeGateway;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.Gmail;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.MyAdvertisements;
 import com.cpcommunity.PageObjects.MyCommunitiesPage;
 import com.cpcommunity.PageObjects.MyDashboardPage;
+import com.cpcommunity.PageObjects.Yahoo;
 import com.cpcommunity.testScripts.community.BaseTest;
 import com.cpcommunity.utilities.Constants;
 import com.cpcommunity.utilities.DataProviders;
@@ -31,13 +33,18 @@ public class TC1144_mailTrigger_AllCommunityAdmin_IfOneCA_PurchasePlan extends B
 	logInfo("BizLigo Application Opened");
 	HomePage home = new HomePage().open(data.get("tenantType"));
 	LoginPage login = home.clickOnLOGINBtn();
-	 MyDashboardPage MDP=login.loginToMemberdashboard(data.get("email"), data.get("password"));
-	 MyAdvertisements MAP=MDP.NaviagtingToMyAdvertisements();
+	// MyDashboardPage MDP=login.loginToMemberdashboard(data.get("email"), data.get("password"));
+	 EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+	 MyAdvertisements MAP=EcoSystemPage.NaviagtingToMyAdvertisements();
 	AuthorizeGateway AG= MAP.createPaidGlobalAd(data.get("planName"), data.get("AdName"), data.get("path"));
 	AG.makePayment();
-	AG.openGuerillamail(data.get("email1"));
+//	AG.openGuerillamail(data.get("email1"));
 	
-	 
+	Yahoo yahoo= new Yahoo().open();
+
+	yahoo.Login(data.get("email"), data.get("password"));//CA verifying mail
+	yahoo.AdPublishedNotification();
+//	yahoo.AdPurchasedNotification();
 	}
 	@AfterMethod
 	public void tearDown() {

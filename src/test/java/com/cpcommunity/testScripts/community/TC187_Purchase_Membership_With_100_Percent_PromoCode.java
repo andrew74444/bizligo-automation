@@ -34,19 +34,21 @@ public class TC187_Purchase_Membership_With_100_Percent_PromoCode extends BaseTe
 		
 		MembershipPlansPage membershipPlansPage = globalCommunitesPage.joinCommunityWithMembershipPlan(data.get("communityName"));//+" "+runTime
 		membershipPlansPage.purchaseMembershipPlan(data.get("membershipPlan"));
-		if (data.get("paymentMethod").equalsIgnoreCase("paypal")) 
-		{
-			PayPalPayment PayPalPayment = membershipPlansPage.paymentByPayPal();
-			PaymentReceipt = PayPalPayment.Payment(data.get("email"), data.get("password"));
-		} else if (data.get("paymentMethod").equalsIgnoreCase("authorize")) {
-			AuthorizeGateway AuthorizeGateway = membershipPlansPage.paymentByauthorize();
-			PaymentReceipt = AuthorizeGateway.payment();
-		}
+		PaymentReceipt=	membershipPlansPage.usingPromoCode(data.get("code"));//added on 10/05
+//		if (data.get("paymentMethod").equalsIgnoreCase("paypal")) 
+//		{
+//			PayPalPayment PayPalPayment = membershipPlansPage.paymentByPayPal();
+//			PaymentReceipt = PayPalPayment.Payment(data.get("email"), data.get("password"));
+//		} else if (data.get("paymentMethod").equalsIgnoreCase("authorize")) {
+//			AuthorizeGateway AuthorizeGateway = membershipPlansPage.paymentByauthorize();
+//			PaymentReceipt = AuthorizeGateway.payment();
+//		}
 		PaymentReceipt.paymentSuccess();
 		CommunityDetailsPage communityDetailsPage = PaymentReceipt.viewCommunity();
-		communityDetailsPage.verifyMembershipDetails(data.get("membershipPlan"), data.get("duration"));
-		communityDetailsPage.verifymembershipPlan(data.get("membershipPlan"), data.get("groupName"), data.get("jobTitle"),data.get("resume"), data.get("optionalMessage"));
-//		Dashboard_Page.navigateToMyDashBoard();
+	//	communityDetailsPage.verifyMembershipDetails(data.get("membershipPlan"), data.get("duration"));
+	//	communityDetailsPage.verifymembershipPlan(data.get("membershipPlan"), data.get("groupName"), data.get("jobTitle"),data.get("resume"), data.get("optionalMessage"));
+		communityDetailsPage.verifyMembershipPlan(data.get("membershipPlan"));//added on 10/05
+		//		Dashboard_Page.navigateToMyDashBoard();
 //		Dashboard_Page.checkUnreadCountIsDisplayed();
 		
 			
@@ -65,7 +67,7 @@ public class TC187_Purchase_Membership_With_100_Percent_PromoCode extends BaseTe
 
 		logInfo("TC187 Test Completed");
 
-		quit();
+	quit();
 
 	}
 

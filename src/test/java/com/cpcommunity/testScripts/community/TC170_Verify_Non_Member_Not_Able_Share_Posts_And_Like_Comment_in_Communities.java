@@ -28,24 +28,25 @@ public class TC170_Verify_Non_Member_Not_Able_Share_Posts_And_Like_Comment_in_Co
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
-		EcoSystemPage EcoSystemPage = login.loginToApplication("andrew74444@gmail.com", data.get("password"));
-
-		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
-		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
-		Discussions discussions =CommunityDetailsPage.sharePosts(data.get("PostMessage"), data.get("postFile"), data.get("linkURL"), data.get("linkName"), data.get("postImage"), data.get("postComment"));
-		discussions.addPosts(data.get("PostMessage"), data.get("postComment"));
-
-		Thread.sleep(8000);
-
-		home = EcoSystemPage.logout();
-		home.clickOnLOGINBtn();
+//		EcoSystemPage EcoSystemPage = login.loginToApplication("andrew74444@gmail.com", data.get("password"));
+//
+//		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
+//		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));//+" "+runTime
+//		Discussions discussions =CommunityDetailsPage.sharePosts(data.get("PostMessage"), data.get("postFile"), data.get("linkURL"), data.get("linkName"), data.get("postImage"), data.get("postComment"));
+//		discussions.addPosts(data.get("PostMessage"), data.get("postComment"));
+//
+//		Thread.sleep(8000);
+//
+//		home = EcoSystemPage.logout();
+//		home.clickOnLOGINBtn();
 		
-		EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+		EcoSystemPage	EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
-		 CommunityDetailsPage = GlobalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
-		 discussions =CommunityDetailsPage.CheckNonMemberNotAbleTosharePosts();
-		discussions.CheckNonMemberIsNotAbleToPostLikeComment();
+		CommunityDetailsPage	 CommunityDetailsPage = GlobalCommunitesPage.navigateToCommunityDetailsPage(data.get("communityName"));//+" "+runTime
+		Discussions	 discussions =CommunityDetailsPage.CheckNonMemberNotAbleTosharePosts();
+	discussions.CheckNonMemberIsNotAbleToPostLikeComment();
 		//Assert.fail("Failing the login test");
+	//	CommunityDetailsPage.CheckNonMemberIsNotAbleToPostLikeComment();//added on 09/05
 	}
 
 	@AfterMethod

@@ -63,7 +63,7 @@ public class Bizligo1CommunityPage extends BasePage {
 	@FindBy(xpath="//button[@ng-click='appData.closeModel()']")
 	WebElement cancelPopup;
 	
-	@FindBy(xpath="//div[@ng-show='appData.showLoginOrJoinMessage']")
+	@FindBy(xpath="(//div[@class='col-lg-6 col-lg-offset-3']/*/p/*)[1]")
 	WebElement msgWhenNotMember;
 	//a[@title='Manage Community']
 
@@ -201,11 +201,12 @@ public class Bizligo1CommunityPage extends BasePage {
 
 	
 	public void resourceForGuestMember() throws InterruptedException {
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
+		waitForElementToPresent(cancelPopup);
 		click(cancelPopup,"cancel");
 		waitForElementToPresent(resources);
 		click(resources,"Resources");
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
 		
 		String Loginmsg=msgWhenNotMember.getText();
 		 {
@@ -213,8 +214,8 @@ public class Bizligo1CommunityPage extends BasePage {
 			Assert.assertTrue(true);
 		}
 		System.out.println(msgWhenNotMember.getText());
-		
-		if(msgWhenNotMember.getText().equalsIgnoreCase("Join the community or login if you are already a member")) {
+		//Join the community or login if you are already a member
+		if(msgWhenNotMember.getText().equalsIgnoreCase("login")) {
 			Assert.assertTrue(true);
 			System.out.println("Guest member cannot see resources");
 		}else Assert.assertTrue(false);

@@ -51,7 +51,7 @@ public class ManageGroupMembersPageByGroupAdmin extends BasePage {
 	@FindBy(xpath = "//button[contains(.,'Ok')]")
 	WebElement OkBth;
 
-	@FindBy(xpath = "((//*[@class='col-md-5'])[2])//*[contains(text(),'Showing 1 to 1 of 1 entries')]")
+	@FindBy(xpath = "(//*[contains(text(),'Showing 1 to 1 of 1 entries')])[1]")
 	WebElement waitForTheSearchIn;
 
 	@FindBy(xpath = "((//*[@class='col-md-5'])[1])//*[contains(text(),'Showing 1 to 1 of 1 entries')]")
@@ -101,34 +101,37 @@ public class ManageGroupMembersPageByGroupAdmin extends BasePage {
 
 	public void clickOnYesProceed() throws Exception {
 		waitForElementToPresent(YesProceed);
-
-		click(YesProceed, "Yes, Proceed");
+clickElementByJavaScript(YesProceed, "Yes, Proceed");
+	//	click(YesProceed, "Yes, Proceed");
 		waitForElementToPresent(OkBth);
-		click(OkBth, "Ok Button");
+		clickElementByJavaScript(OkBth, "Ok Button");
+	//	click(OkBth, "Ok Button");
 	}
 
 	public void memberOutSearch(String email) throws Exception {
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
+		waitForElementToPresent(memberOutSearch);
 		memberOutSearch.clear();
 		type(memberOutSearch, email, "Searching in members not joined");
-		waitForElementToPresent(waitForTheSearchOut);
-		Thread.sleep(10000);
-
+		
+		Thread.sleep(5000);
+	//	waitForElementToPresent(waitForTheSearchOut);
 	}
 
 	public void memberInSearch(String email) throws Exception {
 
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
 		memberinSearch.clear();
+		waitForElementToPresent(memberinSearch);
 		type(memberinSearch, email, "Searching in members joined");
-		waitForElementToPresent(waitForTheSearchIn);
-		Thread.sleep(10000);
+//		waitForElementToPresent(waitForTheSearchIn);
+		Thread.sleep(3000);
 
 	}
 
 	public void memberInCheckBox() throws Exception {
-		Thread.sleep(1000);
-
+	//	Thread.sleep(1000);
+		waitForElementToPresent(memberInCheckBox);
 		click(memberInCheckBox, "Selecting Check box");
 
 		while (true) {
@@ -136,19 +139,19 @@ public class ManageGroupMembersPageByGroupAdmin extends BasePage {
 				break;
 			}
 			click(memberInCheckBox, "Selecting Check box");
-			Thread.sleep(3000);
+		//	Thread.sleep(3000);
 		}
 
-		Thread.sleep(1000);
+	//	Thread.sleep(1000);
 	}
 
 	public void memberOutCheckBox() throws Exception {
 
-		Thread.sleep(2000);
-
+	//	Thread.sleep(2000);
+waitForElementToPresent(memberOutCheckBox);
 		click(memberOutCheckBox, "Selecting Check box");
 
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
 
 	}
 
@@ -156,7 +159,7 @@ public class ManageGroupMembersPageByGroupAdmin extends BasePage {
 
 		this.memberOutSearch(email);
 		this.memberOutCheckBox();
-
+		waitForElementToPresent(Add);
 		click(Add, "Add");
 		this.clickOnYesProceed();
 	}
@@ -164,14 +167,15 @@ public class ManageGroupMembersPageByGroupAdmin extends BasePage {
 	public void removeMember(String email) throws Exception {
 		this.memberInSearch(email);
 		this.memberInCheckBox();
-
+waitForElementToPresent(Remove);
 		click(Remove, "Remove");
 		this.clickOnYesProceed();
-		Thread.sleep(5000);
+		Thread.sleep(3000);
 	}
 
 	public void makeAdmin(String email) throws Exception {
 		this.memberInSearch(email);
+		waitForElementToPresent(MakeAdmin);
 		click(MakeAdmin, "Make Admin");
 		this.clickOnYesProceed();
 	}
@@ -179,6 +183,7 @@ public class ManageGroupMembersPageByGroupAdmin extends BasePage {
 	public void removeAdmin(String email) throws Exception {
 
 		this.memberInSearch(email);
+		waitForElementToPresent(RemoveAdmin);
 		click(RemoveAdmin, "Remove Admin");
 		this.clickOnYesProceed();
 	}
@@ -238,7 +243,16 @@ public class ManageGroupMembersPageByGroupAdmin extends BasePage {
 		log.info(email2.getText());
 		return email2.getText();	
 	}
-	
-	
+	@FindBy(xpath="//*[@title='Toggle dropdown menu']")
+	WebElement dropdown;
+	@FindBy(xpath="//*[@class='logOffNew']/*/*")
+	WebElement logout;
+	public HomePage logout() {
+		waitForElementToPresent(dropdown);
+		clickElementByJavaScript(dropdown,"dropdown");
+		waitForElementToPresent(logout);
+		clickElementByJavaScript(logout,"LogOut");
+		return (HomePage) openPage(HomePage.class);
+	}
 
 }

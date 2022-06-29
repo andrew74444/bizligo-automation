@@ -5,8 +5,11 @@ import java.util.Hashtable;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
+import com.cpcommunity.PageObjects.CommunityDetailsPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
+import com.cpcommunity.PageObjects.MyCommunitiesPage;
 import com.cpcommunity.PageObjects.MyDashboardPage;
 import com.cpcommunity.PageObjects.ResourcesPage;
 import com.cpcommunity.testScripts.community.BaseTest;
@@ -27,10 +30,16 @@ public class TC1078_Verify_Member_ableTo_view_Resources_IfJoins_Group_whichIs_Co
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
-		MyDashboardPage dashpage = login.loginToDashboard(data.get("email"), data.get("password"));
-		dashpage.joinGroup(data.get("Community"));
-		ResourcesPage RP=dashpage.gotoResource();
-		RP.checkResources2();
+		  EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+		  MyCommunitiesPage MyCommunitiesPage=	  EcoSystemPage.goToMyCommunities();
+		  CommunityDetailsPage CommunityDetailsPage=  MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));
+		  CommunityDetailsPage.  JoinGroups(data.get("name"));
+		  CommunityDetailsPage.  checkingResources2();
+		  CommunityDetailsPage.  LeaveGroup(data.get("name"));
+//		  MyDashboardPage dashpage = login.loginToDashboard(data.get("email"), data.get("password"));
+//		dashpage.joinGroup(data.get("Community"));
+//		ResourcesPage RP=dashpage.gotoResource();
+//		RP.checkResources2();
 	
 }
 	@AfterMethod

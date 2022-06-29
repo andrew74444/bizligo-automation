@@ -92,8 +92,9 @@ public class Create_UpdateGroupPage extends BasePage {
 
 	public ManageGroupsPage createGroup(String name, String Description, String City, String State
 			) throws Exception {
-	//	name = name+getDateInDDMMMYYYY();//commented on 23/03
-		Thread.sleep(5000);
+		name = name+getDateInDDMMMYYYY();//commented on 23/03
+	//	Thread.sleep(5000);
+		waitForElementToPresent(Create);
 		waitForElementToPresent(Name);
 		type(Name, name, "groupname");//commented on 23/03
 	
@@ -107,10 +108,10 @@ public class Create_UpdateGroupPage extends BasePage {
 			
 		Select drp = new Select(GroupType);
 		drp.selectByVisibleText("Public");
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
 		Select drp1 = new Select(GroupCategory);
 		drp1.selectByVisibleText("NGO");
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
 		waitForElementToPresent(Create);
 	 //   scrollToElement(Create);
 		return (ManageGroupsPage) openPage(ManageGroupsPage.class);

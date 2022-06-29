@@ -77,13 +77,13 @@ public class MemberDirectoryPage extends BasePage{
 	@FindBy(xpath = "//li[@class='select2-results__option select2-results__option--highlighted']")
 	WebElement searchBySkillAndInterestValue;
 		
-	@FindBy(xpath = "//ul[@id='select2-skillsInterests-results']")
+	@FindBy(xpath = "//*[@id='select2-skillsInterests-results']")//changed on 20/04
 	WebElement skillCategoryList;
 	
 	@FindBy(xpath = "//li[@role='treeitem']")
 	WebElement errorOfSkillCategory;
 	
-	@FindBy(xpath = "//li[@title='running race']//span[@role='presentation'][normalize-space()='×']")
+	@FindBy(xpath = "//*[@title='running race']//*[@role='presentation'][normalize-space()='×']")
 	WebElement runningcancelBtn;
 	
 	@FindBy(xpath = "//div[@class='col-lg-6 col-md-6 col-sm-6 organizations-profile-card ng-scope']")
@@ -94,7 +94,7 @@ public class MemberDirectoryPage extends BasePage{
 	WebElement searchByOrganisation;
 	@FindBy(xpath = "//input[@placeholder='Search by Communities (Upto 3)']")
 	WebElement searchByCommunities;
-	@FindBy(xpath = "//input[@placeholder='Search by Business Categories (Upto 5)']")
+	@FindBy(xpath = "//*[@placeholder='Search By Business Category (Upto 5)']")//changed on 19/04
 	WebElement searchByBussinessCategory;
 
 	//@FindBy(xpath = "//input[@placeholder='Select Groups (Limit 3)']")
@@ -115,8 +115,15 @@ public class MemberDirectoryPage extends BasePage{
 	WebElement connectButton;
 	@FindBy(xpath ="//*[@id=\"removeinnercss\"]/div[2]/div[1]/div[4]/div[3]/div[4]/div/div[1]/div[2]/a/strong/div")
 	WebElement firstMemberProfile;
-	@FindBy(xpath ="//div[@ng-bind='member.MemberName']")
+	@FindBy(xpath ="//*[@ng-bind='member.MemberName']")
+	
 	List<WebElement> MemberProfileList;
+	
+//@FindBy(xpath ="//*[@class='col-md-9 col-sm-12 col-xs-12']/*/*/*[@ng-bind='member.MemberName']")
+@FindBy(xpath ="/html[1]/body[1]/div[3]/div[1]/div[1]/section[1]/div[1]/div[2]/div[1]/div[4]/div[3]/div[1]/div[1]/div[1]/div[2]/a[1]/strong[1]/div[1]")
+	
+	WebElement MemberProfile;
+	
 	@FindBy(xpath = "//i[@title='Download Excel']")
 
 
@@ -159,7 +166,7 @@ public class MemberDirectoryPage extends BasePage{
 	List<WebElement> BusinessCategoryvalue5;
 	@FindBy(xpath = "//ul[@class='select2-results__options']//li")
 	List<WebElement> BusinessCategoryList;
-	@FindBy(xpath = "//span[@ng-bind='member.Address']")
+	@FindBy(xpath = "//*[@ng-show='member.Address']/*[@ng-bind='member.Address']")
 	WebElement memberAddress;
 
 	
@@ -169,7 +176,7 @@ public class MemberDirectoryPage extends BasePage{
 	WebElement toastMessage;
 	@FindBy(xpath = "//span[@ng-bind='member.OrganizationName | limitTo:14']")
 	WebElement memberOrganisation;
-	@FindBy(xpath = "//*[@ng-repeat='member in data.members|itemsPerPage:data.pagesize'][1]")
+	@FindBy(xpath = "//*[@class='row directory-box']/*[@total-items='data.totalrecords'][1]")
 	WebElement Allmembers;
 	@FindBy(xpath = "//*[@ng-repeat='member in data.members|itemsPerPage:data.pagesize']")
 	List<WebElement> membersDiv;
@@ -177,7 +184,9 @@ public class MemberDirectoryPage extends BasePage{
 
 	@FindBy(xpath = "//a[normalize-space()='Andrew Thomson']")
 	WebElement memberNameAndrew;
-	@FindBy(xpath = "//div[@class='directory-name firstletterCap ng-binding']")
+
+	@FindBy(xpath = "//div[@ng-bind='member.MemberName']")
+//	@FindBy(xpath = "/html[1]/body[1]/div[3]/div[1]/div[1]/section[1]/div[1]/div[2]/div[1]/div[4]/div[3]/div[1]/div[1]/div[1]/div[2]/a[1]/strong[1]/div[1]")
 	WebElement memberName;
 	@FindBy(xpath = "//ul[@id='select2-WhoAmIs-results']")
 	WebElement profileCategoryList;
@@ -281,35 +290,42 @@ public class MemberDirectoryPage extends BasePage{
 
 	public ProfilePage goToProfilePage() throws Exception {
 
-
-		scrollIntoView(MemberProfileList);
-		//Thread.sleep(5000);
-		waitForElementToPresent(MemberProfileList);
-		if(MemberProfileList.size() > 0) {
-			click(MemberProfileList.get(0),"OpenMemberProfile");		
-		}
-
+			scrollIntoView(MemberProfile);
+		
+			clickElementByJavaScript(MemberProfile,"OpenMemberProfile");
+	
 		return (ProfilePage) openPage(ProfilePage.class);
 		// new MyProfilePage(driver, );
 	}
 	
 	public ProfilePage gotoProfilePage() throws InterruptedException {
-
-		Thread.sleep(4000);
+		scrollIntoView(MemberProfileList);
+		  
+		 if(MemberProfileList.size() > 0) {
+		  click(MemberProfileList.get(0),"OpenMemberProfile"); }
+		
 		return (ProfilePage) openPage(ProfilePage.class);
 	// new MyProfilePage(driver, );
 }
+	@FindBy(xpath="//*[@class='col-md-9 col-sm-12 col-xs-12']")
+	WebElement details;
 	public MyProfilePage goToMyProfilePage() throws InterruptedException {
 
-		scrollIntoView(MemberProfileList);
+		//scrollIntoView(MemberProfile);
 		//Thread.sleep(5000);
-		waitForElementToPresent(MemberProfileList);
-		if(MemberProfileList.size() > 0) {
+//		waitForElementToPresent(details);//for waiting purpose
+	
+	//	waitForElementToPresent(MemberProfile);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@class='col-md-9 col-sm-12 col-xs-12']")));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html[1]/body[1]/div[3]/div[1]/div[1]/section[1]/div[1]/div[2]/div[1]/div[4]/div[3]/div[1]/div[1]/div[1]/div[2]/a[1]/strong[1]/div[1]")));
+		
+		click(MemberProfile,"OpenMemberProfile");
+	/*	if(MemberProfileList.size() > 0) {
 			click(MemberProfileList.get(0),"OpenMemberProfile");		
 		}
-
+*/
 		
-		return (MyProfilePage) openPage(ProfilePage.class);
+		return (MyProfilePage) openPage(MyProfilePage.class);
 
 		// new CreateCommunityPage(driver);
 	}
@@ -337,11 +353,13 @@ public class MemberDirectoryPage extends BasePage{
 	}
 
 	public void profileComplenessViibility() throws InterruptedException {
-		Thread.sleep(1000);
+	//	Thread.sleep(1000);
+		
 		Assert.assertEquals(0, profileCompletenessBar.size());
 	
 		System.out.println("ProfileCompletenessBar not is displaying");
 	//Assert.assertTrue(true);
+		
 	}
 
 	public void SearchElementViibility() throws InterruptedException {
@@ -354,25 +372,18 @@ public class MemberDirectoryPage extends BasePage{
 
 		waitForElementToPresent(searchByBussinessCategory);
 		waitForElementToPresent(searchByGroup);
-		//scrollIntoView(Send);
+		
 		waitForElementToPresent(searchByLocation);
-	if(searchByName.isDisplayed()&&searchByProfileCategory.isDisplayed()&&searchBySkillAndInterest.isDisplayed()&&searchByOrganisation.isDisplayed()&&searchByCommunities.isDisplayed()&&searchByBussinessCategory.isDisplayed()&&searchByGroup.isDisplayed()&&searchByLocation.isDisplayed()) {
 
-		waitForElementToPresent(searchByBussinessCat);
-		waitForElementToPresent(searchByGroup);
-		//scrollIntoView(Send);
-		waitForElementToPresent(searchByLocation);
-	if(searchByName.isDisplayed()&&searchByProfileCategory.isDisplayed()&&searchBySkillAndInterest.isDisplayed()&&searchByOrganisation.isDisplayed()&&searchByCommunities.isDisplayed()&&searchByBussinessCat.isDisplayed()&&searchByGroup.isDisplayed()&&searchByLocation.isDisplayed()) {
+	if(searchByName.isDisplayed()&&searchByProfileCategory.isDisplayed()&&searchBySkillAndInterest.isDisplayed()&&searchByOrganisation.isDisplayed()&&searchByCommunities.isDisplayed()&&searchByBussinessCategory.isDisplayed()&&searchByGroup.isDisplayed()&&searchByLocation.isDisplayed()) {
 
 		System.out.println("All search is displaying");
 	}
 	else {
 		System.out.println("search is not displaying");
 	}
-	Thread.sleep(2000);
+
 	Assert.assertTrue(true);
-	
-	}
 	
 	}
 	
@@ -391,7 +402,8 @@ public class MemberDirectoryPage extends BasePage{
 		scrollIntoView(searchByName);
 		waitForElementToPresent(searchByName);
 		type(searchByName, Name, "Search by Name");
-		Thread.sleep(1000);
+	//	Thread.sleep(1000);
+		waitForElementToPresent(searchBtn);
 		click(searchBtn, "search btn");
 	}
 	
@@ -402,21 +414,28 @@ public class MemberDirectoryPage extends BasePage{
     	click(searchBtn,"search btn");
     	Thread.sleep(3000); 
 	}
+	@FindBy(xpath="(//*[@ng-bind='member.MemberName'])[1]")
+			WebElement membername;
 	public void searchMemberName(String Name, String LastName) throws Exception{
-		searchByName.clear();
+	//	searchByName.clear();
     	log.info(Name);
+    	
     	type(searchByName, Name,"Search by Name");
     	click(searchBtn,"search btn");
-    	String MemberName=searchByName.getText();
+    //	String MemberName=searchByName.getText();
+    //	waitForElementToPresent(membername);//added on 19/04
+    	wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//*[@ng-bind='member.MemberName'])[1]")));
+   	String MemberName=membername.getText();//added on 19/04
     	if(MemberName.contains(Name)) {
-    		System.out.println("First Name :" +MemberName);
+    		System.out.println("First Name :" +Name);
     	}
-    	searchByName.clear();
+   // 	searchByName.clear();
     	type(searchByName, LastName,"Search by Name");
     	click(searchBtn,"search btn");
-    	String Last=searchByName.getText();
-    	if(MemberName.contains(LastName)) {
-    		System.out.println("Last Name :" +Last);
+    	//String Last=searchByName.getText();
+    	String Last=membername.getText();///added on 19/04
+    	if(Last.contains(LastName)) {
+    		System.out.println("Last Name :" +LastName);
     	}
 	}
 	
@@ -424,17 +443,19 @@ public class MemberDirectoryPage extends BasePage{
 
 	//public void searchFields(String MemberName, String location, String OrganisationName,
 	//		String SkillAndInterest  ) throws InterruptedException {
-
+	@FindBy(xpath="(//*[@ng-bind='member.MemberName'])[1]")
+			WebElement name;
 	public void searchFields(String MemberName, String location,String ProfileCat, String OrganisationName,String Communities,
 			String Groups, String SkillAndInterest  ) throws InterruptedException {
 			
 
-		
+	
 		waitForElementToPresent(this.searchByName);
 		type(this.searchByName,MemberName, "Member Name");		
 		click(searchBtn , "Search button");
 		this.searchByName.clear();
 		
+
 		waitForElementToPresent(this.searchByLocation);
 		type(this.searchByLocation,location, "location");
 		click(searchBtn , "Search button");
@@ -445,6 +466,7 @@ public class MemberDirectoryPage extends BasePage{
 		click(searchByProfileCategory, "Profile Category");
 		selectUsingIndex(this.searchByProfileCategory,0,"ProfileCategory");
 		CheckSearchResult(this.totalResult,ProfileCategory);*/
+		
 
 		waitForElementToPresent(this.searchByProfileCategory);
 		//click(searchByProfileCategory, "Profile Category");
@@ -452,22 +474,25 @@ public class MemberDirectoryPage extends BasePage{
 		click(searchBtn , "Search button");
 		this.searchByProfileCategory.clear();
 
-		
+
 		waitForElementToPresent(this.searchByOrganisation);
 		type(this.searchByOrganisation,OrganisationName , "Organisation Name");
 		click(searchBtn , "Search button");
 		this.searchByOrganisation.clear();
 
+	
+//		waitForElementToPresent(this.searchBySkillAndInterest);
+//		selectByVisibleText(this.searchBySkillAndInterest,SkillAndInterest , "Skill And Interest");
+	//	Thread.sleep(2000);
 		
-		waitForElementToPresent(this.searchBySkillAndInterest);
-		selectByVisibleText(this.searchBySkillAndInterest,SkillAndInterest , "Skill And Interest");
-
-		Thread.sleep(2000);
+	
 		waitForElementToPresent(this.searchBySkillAndInterest);
 		type(this.searchBySkillAndInterest,SkillAndInterest , "Skill and Interest");
-
-		click(searchBtn , "Search button");
-		waitForElementToPresent(membersDiv);
+	click(searchBtn , "Search button");
+	
+	//	waitForElementToPresent(membersDiv);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@ng-repeat='member in data.members|itemsPerPage:data.pagesize']")));
+		
 		if(membersDiv.size() > 0) {
 			Assert.assertTrue(true);
 		}
@@ -493,10 +518,10 @@ public class MemberDirectoryPage extends BasePage{
 		CheckSearchResult(this.totalResult,Groups);
 		selectUsingIndex(this.searchByGroup,0,"Group");*/	
 
-		Thread.sleep(4000);
+	//	Thread.sleep(4000);
 		waitForElementToPresent(this.searchByCommunities);
 		type(this.searchByCommunities,Communities , "Communities");
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
 		click(searchBtn , "Search button");
 		this.searchByCommunities.clear();
 		
@@ -509,19 +534,23 @@ public class MemberDirectoryPage extends BasePage{
 		
 	}
 	
-			
+	@FindBy(xpath="//*[@id='skillsInterests']")
+	WebElement skills;
 			public void ClickonSkillAndInterest(String SkillAndInterest) throws InterruptedException {
 
-				//scrollIntoView(searchBySkillAndInterest);
+	/*			//scrollIntoView(searchBySkillAndInterest);
 				waitForElementToPresent(this.searchBySkillAndInterest);
 				
 			   //selectByVisibleText(this.searchBySkillAndInterest,SkillAndInterest , "Skill And Interest");
-				String SkillList = this.searchBySkillAndInterest.getText();
+			//	String SkillList = this.searchBySkillAndInterest.getText();
 				//CheckSearchResult(this.totalResult,SkillAndInterest);
+				searchBySkillAndInterest.click();
+				String SkillList=skillCategoryList.getText();
 				System.out.println("List is :" +SkillList);
 				String skillsArray[] = SkillAndInterest.split(",");
 				for(int i=0;i< skillsArray.length;i++) {
-					selectByVisibleText(this.searchBySkillAndInterest, skillsArray[i], "Skill And Interest");
+					
+					selectByVisibleText(this.skills, skillsArray[i], "Skill And Interest");//searchBySkillAndInterest
 					waitForElementToPresent(this.cancelICON);
 					if(cancelICON.isDisplayed()) {
 						System.out.println("Cancel icon Displayed");
@@ -536,22 +565,25 @@ public class MemberDirectoryPage extends BasePage{
 				else {
 				Assert.assertFalse(false);
 				}
+	
+				searchByLocation.click();
+				waitForElementToPresent(searchBtn);
 				click(searchBtn , "Search button");
-				
+	*/			
 
-				Thread.sleep(5000);
-				
-				searchBySkillAndInterest.click();
+	
+				waitForElementToPresent(searchBySkillAndInterest);
+			click(searchBySkillAndInterest,"searchBySkillAndInterest");
 				String Skilllist=skillCategoryList.getText();
 				System.out.println(Skilllist);
 				if(Skilllist.contains("Hockey")) {
 					System.out.println("Skill list contains list of values");
 				}else System.out.println("Skill list not asserted");
-				Thread.sleep(2000);	
+			
+				waitForElementToPresent(searchBySkillAndInterest);
 				searchBySkillAndInterest.click();
-				Select select=new Select(driver.findElement(By.xpath("//select[@id='skillsInterests']")));
-				//select.selectByVisibleText("Hockey");
-				//select.selectByVisibleText("running race");				
+				Select select=new Select(driver.findElement(By.xpath("//*[@id='skillsInterests']")));
+						
 				String[] skillArr = SkillAndInterest.split(",");
 				for(int i=0;i<skillArr.length;i++) {
 					select.selectByVisibleText(skillArr[i]);
@@ -568,10 +600,14 @@ public class MemberDirectoryPage extends BasePage{
 					System.out.println("running race cancel button is displayed");
 					Assert.assertTrue(true);
 				}
-								
-				click(searchBtn,"search");
-				Thread.sleep(3000);
 				
+				searchByLocation.click();
+				waitForElementToPresent(searchBtn);
+			
+				click(searchBtn,"search");
+			//	Thread.sleep(3000);
+			//	waitForElementToPresent(resultOfSkills);
+				wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='col-lg-6 col-md-6 col-sm-6 organizations-profile-card ng-scope']")));
 				if(resultOfSkills.isDisplayed()) {
 					System.out.println("Skills and Interest search result is displaying");
 					Assert.assertTrue(true);
@@ -585,23 +621,24 @@ public class MemberDirectoryPage extends BasePage{
 				type(this.searchByOrganisation,Organisation1 , "Organisation Name");
 				click(searchBtn , "Search button");
 				waitForElementToPresent(this.Allmembers);
+		//		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@class='row directory-box']/*[@total-items='data.totalrecords'][1]")));	
 				if(Allmembers.isDisplayed()) {
 					System.out.println("All organisation displayed");
 					Assert.assertTrue(true);
 				}
 
-				Thread.sleep(4000);
+		//		Thread.sleep(4000);
 
-				Thread.sleep(6000);
+		//		Thread.sleep(6000);
 
 				this.searchByOrganisation.clear();
 				waitForElementToPresent(this.searchByOrganisation);
 				type(this.searchByOrganisation,organisation , "Organisation Name");
 				click(searchBtn , "Search button");
 
-				Thread.sleep(3000);
+		//		Thread.sleep(3000);
 
-				Thread.sleep(6000);
+		//		Thread.sleep(6000);
 
 				   String Message=this.warning.getText();
 	                String message2=this.warning2.getText();
@@ -689,9 +726,9 @@ public class MemberDirectoryPage extends BasePage{
 				waitForElementToPresent(this.searchByLocation);
 				type(this.searchByLocation,Location , "Location");
 				click(searchBtn , "Search button");
-				Thread.sleep(5000);
-
-				waitForElementToPresent(this.memberAddress);
+			//	Thread.sleep(5000);
+wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@ng-show='member.Address']/*[@ng-bind='member.Address']")));
+		//		waitForElementToPresent(this.memberAddress);
 				if(memberAddress.isDisplayed()) {
 					System.out.println("All address displayed");
 					Assert.assertTrue(true);
@@ -702,14 +739,14 @@ public class MemberDirectoryPage extends BasePage{
 				waitForElementToPresent(this.searchByName);
 				type(searchByName, SuspendedName,"Search by Name");
 		    	click(searchBtn,"search btn");
-				Thread.sleep(3000);
+			//	Thread.sleep(3000);
 				Assert.assertTrue(true);
 				
 				
 				waitForElementToPresent(this.searchByName);
 				type(searchByName, ExpiredName,"Search by Name");
 		    	click(searchBtn,"search btn");
-				Thread.sleep(3000);
+			//	Thread.sleep(3000);
                 String Message=this.warning.getText();
                 String message2=this.warning2.getText();
 				System.out.println("Warning msg:" + Message);
@@ -769,14 +806,14 @@ public class MemberDirectoryPage extends BasePage{
 		}
 			
 			public void profileCategoryList() throws InterruptedException {
-				searchByProfileCategory.click();
+		click(searchByProfileCategory,"searchByProfileCategory");
 				String profilelist=profileCategoryList.getText();
 				System.out.println(profilelist);
 				if(profilelist.contains("Mentor")) {
 					System.out.println("Profile list contains list of values");
 				}else System.out.println("Profile list not asserted");
-				Thread.sleep(2000);	
-				searchByProfileCategory.click();
+			//	Thread.sleep(2000);	
+				click(searchByProfileCategory,"searchByProfileCategory");
 				Select select=new Select(driver.findElement(By.xpath("//select[@id='WhoAmIs']")));
 				select.selectByVisibleText("Mentor");
 				select.selectByVisibleText("Great");
@@ -786,8 +823,8 @@ public class MemberDirectoryPage extends BasePage{
 				try {
 					select.selectByIndex(10);
 					select.selectByIndex(11);
-					Thread.sleep(3000);
-					picture();
+			//		Thread.sleep(3000);
+			//		picture();
 					String error=errorOfProfileCategory.getText();
 					System.out.println(error);
 					System.out.println("you can not add more than 10 elements");
@@ -814,10 +851,13 @@ public class MemberDirectoryPage extends BasePage{
 					System.out.println("Profile Category search result is displaying");
 					
 				}
+				searchByLocation.click();
 				click(searchBtn,"search");
-				Thread.sleep(5000);
-				driver.findElement(By.xpath("//div[normalize-space()='Alen Border']")).click();
-				Thread.sleep(8000);
+			
+			//	Thread.sleep(5000);
+			//	wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html[1]/body[1]/div[3]/div[1]/div[1]/section[1]/div[1]/div[2]/div[1]/div[4]/div[3]/div[1]/div[1]/div[1]/div[2]/a[1]/strong[1]/div[1]")));
+				driver.findElement(By.xpath("/html[1]/body[1]/div[3]/div[1]/div[1]/section[1]/div[1]/div[2]/div[1]/div[4]/div[3]/div[1]/div[1]/div[1]/div[2]/a[1]/strong[1]/div[1]")).click();////div[normalize-space()='Alen Border']
+			//	Thread.sleep(8000);
 				
 				System.out.println("checking member profile");
 				String memprofile=memberProfileCategory.getText();
@@ -829,7 +869,7 @@ public class MemberDirectoryPage extends BasePage{
 				//searchProfileCategorywithValues.clear();		
 			}
 			public void searchCommunitiesList() throws InterruptedException {
-				searchByCommunities.click();
+				click(searchByCommunities,"searchByCommunities");
 				String communitylist=communitiesList.getText();
 				//int beginInt=communitylist.indexOf("Chamber of commerce viswanadh");
 				//int endInt=communitylist.lastIndexOf("Chamber of commerce viswanadh");
@@ -839,8 +879,9 @@ public class MemberDirectoryPage extends BasePage{
 					System.out.println("Community list contains list of values");
 				}else 
 					System.out.println("Community list not asserted");
-				Thread.sleep(2000);	
-				searchByCommunities.click();
+			//	Thread.sleep(2000);	
+				click(searchByCommunities,"searchByCommunities");
+			
 				Select select=new Select(driver.findElement(By.xpath("//select[@id='CommunityIDs']")));
 				select.selectByVisibleText("Chamber of commerce viswanadh");
 				select.selectByVisibleText("Chambers and Partners");
@@ -850,8 +891,8 @@ public class MemberDirectoryPage extends BasePage{
 				try {
 					select.selectByIndex(3);
 					select.selectByIndex(4);
-					Thread.sleep(3000);
-					picture();
+			//		Thread.sleep(3000);
+			//		picture();
 					String error=errorOfProfileCategory.getText();
 					System.out.println(error);
 					System.out.println("you can not add more than 3 Communities elements");
@@ -883,7 +924,7 @@ public class MemberDirectoryPage extends BasePage{
 				
 				type(searchByName,MemberName,"Name of Pending Member");//search pending member
 				click(searchBtn,"search");
-				Thread.sleep(3000);
+			//	Thread.sleep(3000);
 				Assert.assertEquals(0, wordDownload1.size());
 				String memberError=errorBtnWhenMemberNotShowing.getText();
 				String memberError2=errorBtnWhenMemberNotShowing2.getText();
@@ -899,16 +940,17 @@ public class MemberDirectoryPage extends BasePage{
 				String name="AllMembers.xls";
 			    String name1="AllMembers.doc";
 				System.out.print("update file name" +name);
-			    click(excelDownload1,"download file");
+		    click(excelDownload1,"download file");
 			    log.info("downloading excel file");
-			    Thread.sleep(12000);
-			    click(wordDownload2,"download file");
+		    Thread.sleep(12000);
+	    click(wordDownload2,"download file");
 			    log.info("downloading doc file");
 			    Thread.sleep(10000);
 			    
 			    if (CheckFile(path,name))//we check if the directory or folder exists
 			    {
 			    	log.info("asserting whether excel file downloaded");
+			    	System.out.println("Excel file downloaded");
 			    	Assert.assertTrue(true);
 			    }
 			                        
@@ -921,6 +963,7 @@ public class MemberDirectoryPage extends BasePage{
 			    if (CheckFile(path,name1))//we check if the directory or folder exists
 			    {
 			    	log.info("asserting whether word file downloaded");
+			    	System.out.println("Word file downloaded");
 			    	Assert.assertTrue(true);
 			    }
 			                        
@@ -936,19 +979,20 @@ public class MemberDirectoryPage extends BasePage{
 			{
 				log.info("Making string of file name and path");
 				System.out.println(name);
-			    String currentFile = path+"/"+name+"" ;
+			    String currentFile = path+"\\"+name;
 			    System.out.println(currentFile);
 			    File f=new File(currentFile);
 			    if (f.exists()) //helps to check if the zip file is present
 			    { 
-			    	log.info("checking size of file");
-			    	if(f.length()>0 ){  
-			    		DeleteFilesAndDirectory(f);
-			    		return true; //if the zip file exists return boolean true
-			    	}else {
-			    		DeleteFilesAndDirectory(f);
-			    		return false;
-			    	}
+//			    	log.info("checking size of file");
+//			    	if(f.length()>0 ){  
+//			    		DeleteFilesAndDirectory(f);
+//			    		return true; //if the zip file exists return boolean true
+//			    	}else {
+//			    		DeleteFilesAndDirectory(f);
+//			    		return false;
+//			    	}
+			    	return true;
 			    }
 			    else
 			    {
@@ -965,14 +1009,31 @@ public class MemberDirectoryPage extends BasePage{
 				
 			public void searchMemberWithAllDetails(String name, String profile, String skills, String organisation, String community, String businessCategory, String group, String location) throws InterruptedException {
 				type(searchByName,name,"name");
-				type(searchByProfileCategory,profile,"profile");
-				Thread.sleep(2000);
-				type(searchBySkillAndInterest,skills,"Skills");
+				
+				click(searchByProfileCategory,"searchByProfileCategory");
+				Select select=new Select(driver.findElement(By.xpath("//select[@id='WhoAmIs']")));
+				select.selectByVisibleText(profile);
+				
+				searchBySkillAndInterest.click();
+				Select select1=new Select(driver.findElement(By.xpath("//*[@id='skillsInterests']")));
+				select1.selectByVisibleText(skills);
+				
+			//	type(searchByProfileCategory,profile,"profile");
+			//	Thread.sleep(2000);
+			//	type(searchBySkillAndInterest,skills,"Skills");
+				
 				type(searchByOrganisation,organisation,"organization name");
-				type(searchByGroup,group,"groups");
+				
+				Select select2=new Select(driver.findElement(By.xpath("//*[@id='GroupIDs']")));
+				select2.selectByVisibleText(group);
+				
+			//	type(searchByGroup,group,"groups");
 				type(searchByLocation,location,"location");
+				searchByName.click();//for waiting purpose
+				waitForElementToPresent(searchBtn);
 				click(searchBtn,"search");
-				Thread.sleep(5000);
+			//	Thread.sleep(5000);
+			//	wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html[1]/body[1]/div[3]/div[1]/div[1]/section[1]/div[1]/div[2]/div[1]/div[4]/div[3]/div[1]/div[1]/div[1]/div[2]/a[1]/strong[1]/div[1]")));
 				String Member=memberName.getText();
 				System.out.println("Matching Member is:"+ Member);
 				Assert.assertEquals(name, Member);
@@ -986,23 +1047,24 @@ public class MemberDirectoryPage extends BasePage{
 				
 				type(searchByName,LastName,LastName);//search with last name
 				click(searchBtn,"search");
-				Thread.sleep(3000);
+			//	Thread.sleep(3000);
+				wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html[1]/body[1]/div[3]/div[1]/div[1]/section[1]/div[1]/div[2]/div[1]/div[4]/div[3]/div[1]/div[1]/div[1]/div[2]/a[1]/strong[1]/div[1]")));
 				String Membername=memberName.getText();
 				if(Membername.contains(LastName)) {
 					System.out.println("Search Member is validated");
 				}
 				
-				searchByName.clear();//clear out first name
-				Thread.sleep(3000);
+				searchByName.clear();//clear out last name
+			//	Thread.sleep(3000);
 				type(searchByName,FirstName,FirstName);//search with first name
 				click(searchBtn,"search");
-				
+				wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html[1]/body[1]/div[3]/div[1]/div[1]/section[1]/div[1]/div[2]/div[1]/div[4]/div[3]/div[1]/div[1]/div[1]/div[2]/a[1]/strong[1]/div[1]")));
 				if(Membername.contains(FirstName)) {
 					System.out.println("Search Member is validated");
 				}
 				
 				searchByName.clear();//clear out the last name
-				Thread.sleep(3000);
+			//	Thread.sleep(3000);
 			}
 			public void editNoteOfAMember(String Name,String NewTitle) throws Exception {
 				type(searchMemberName,Name,Name);

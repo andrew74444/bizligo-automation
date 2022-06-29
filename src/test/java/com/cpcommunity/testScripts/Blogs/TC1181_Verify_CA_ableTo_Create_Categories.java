@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 import com.cpcommunity.PageObjects.BlogsSummary;
 import com.cpcommunity.PageObjects.CategoriesPage;
 import com.cpcommunity.PageObjects.CommunityDashboardPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.MyCommunitiesPage;
@@ -30,8 +31,11 @@ public class TC1181_Verify_CA_ableTo_Create_Categories extends BaseTest{
 	logInfo("BizLigo Application Opened");
 	HomePage home = new HomePage().open(data.get("tenantType"));
 	LoginPage login = home.clickOnLOGINBtn();
-	MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
-	CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
+//	MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
+	EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+	
+	MyCommunitiesPage mycommunities = EcoSystemPage.goToMyCommunities();
+	CommunityDashboardPage communityDashboard = mycommunities.gotoManageCommunity(data.get("communityName"));
 	CategoriesPage categories=communityDashboard.gotoCategories();
 	BlogsSummary BS=categories.navigateToBlogsSummarypage();
 	CategoriesPage C=BS.categorycounts();

@@ -499,6 +499,143 @@ public class CreateOrEditEvent extends BasePage {
 		this.AdditionalInformationDetails(data, StartTime, endTime, hour, m, AmPm, endHour);
 		this.customField(data);//added on 24/03
 		this.EventResources(data);
+		
+		return (CommunityEventsPage) openPage(CommunityEventsPage.class);
+	}
+	public CommunityEventsPage createEventWithDuplicateReg(Hashtable<String, String> data) throws Exception {
+		String h = getSystemCurrentHourIn12Hour();
+		String m = getSystemCurrentMintues();
+
+		// String m = "55";
+		String y = getSystemCurrentYear();
+		String date = getSystemCurrentDate();//for current day
+		String date1=newDay();//for new day
+		
+		String month = getSystemCurrentMonth();//for current month
+		String month1=newMonth();//for new month
+		
+		
+		int hour = stringToInt(h);
+
+		int i = stringToInt(m);
+		if (i >= 00 && i <= 15) {
+			m = intToString(30);
+		} else if (i >= 15 && i <= 30) {
+			m = intToString(45);
+		} else if (i >= 30 && i <= 45) {
+			m = "00";
+			hour = stringToInt(h) + 1;
+
+		} else {
+			m = intToString(15);
+			hour = stringToInt(h) + 1;
+
+		}
+		String AmPm = getStringPositionAt(getAmPm(), 1);
+
+		// if (m.equalsIgnoreCase("30") || m.equalsIgnoreCase("45")) {
+		// hour = stringToInt(h)+1;
+		// }
+
+		String StartTime = month1 + "/" + date1 + "/" + y + " " + hour + ":" + m + " " + AmPm;
+		String StartTime1 = month + "/" + date + "/" + y + " " + hour + ":" + m + " " + AmPm;//added on 29/03
+		System.out.println(StartTime);
+		// 11/05/2019 7:45 PM
+		// String t = getPositionAt(StartTime, 1);
+		// System.out.println(t);
+
+		// https://www.javatpoint.com/java-char-to-int
+		int endHour = stringToInt(h) + 4;
+		if (stringToInt(h) > 8) {
+			endHour = 11;
+		}
+		String endTime = month1 + "/" + date1 + "/" + y + " " + "11" + ":" + m + " " + "PM";
+		String endTime1 = month + "/" + date + "/" + y + " " + "11" + ":" + m + " " + "PM";//added on 29/03
+		// String endTime = month + "/" + date + "/" + y + " " + endHour + ":" + m + " "
+		// + AmPm;
+
+		this.FillEventDetails2(data, StartTime, endTime, hour, m, AmPm, endHour);
+		clickElementByJavaScript(SaveEventdetailsBtn);
+		Thread.sleep(5000);
+		this.AddTicketDetails(data, StartTime1, endTime, hour, m, AmPm, endHour);
+		Thread.sleep(1000);	
+		click(TicketsSaveAndContinueBtn, "Save And Continue");
+		Thread.sleep(10000);
+		waitForElementToPresent(AddtionalinfomationSaveAndContinueBtn);
+		clickElementByJavaScript(AddtionalinfomationSaveAndContinueBtn);
+		Thread.sleep(20000);
+		this.customField(data);
+		waitForElementToPresent(Publishbtn);
+		clickElementByJavaScript(Publishbtn);
+		Thread.sleep(20000);
+		return (CommunityEventsPage) openPage(CommunityEventsPage.class);
+	}
+	public CommunityEventsPage createEventWithOutDuplicateReg(Hashtable<String, String> data) throws Exception {
+		String h = getSystemCurrentHourIn12Hour();
+		String m = getSystemCurrentMintues();
+
+		// String m = "55";
+		String y = getSystemCurrentYear();
+		String date = getSystemCurrentDate();//for current day
+		String date1=newDay();//for new day
+		
+		String month = getSystemCurrentMonth();//for current month
+		String month1=newMonth();//for new month
+		
+		
+		int hour = stringToInt(h);
+
+		int i = stringToInt(m);
+//		if (i >= 00 && i <= 15) {
+//			m = intToString(30);
+//		} else if (i >= 15 && i <= 30) {
+//			m = intToString(45);
+//		} else if (i >= 30 && i <= 45) {
+//			m = "00";
+//			hour = stringToInt(h) + 1;
+//
+//		} else {
+//			m = intToString(15);
+//			hour = stringToInt(h) + 1;
+//
+//		}
+		String AmPm = getStringPositionAt(getAmPm(), 1);
+
+		// if (m.equalsIgnoreCase("30") || m.equalsIgnoreCase("45")) {
+		// hour = stringToInt(h)+1;
+		// }
+
+		String StartTime = month1 + "/" + date1 + "/" + y + " " + hour + ":" + m + " " + AmPm;
+		String StartTime1 = month + "/" + date + "/" + y + " " + hour + ":" + m + " " + AmPm;//added on 29/03
+		System.out.println(StartTime);
+		// 11/05/2019 7:45 PM
+		// String t = getPositionAt(StartTime, 1);
+		// System.out.println(t);
+
+		// https://www.javatpoint.com/java-char-to-int
+		int endHour = stringToInt(h) + 4;
+		if (stringToInt(h) > 8) {
+			endHour = 11;
+		}
+		String endTime = month1 + "/" + date1 + "/" + y + " " + "11" + ":" + m + " " + "PM";
+		String endTime1 = month + "/" + date + "/" + y + " " + "11" + ":" + m + " " + "PM";//added on 29/03
+		// String endTime = month + "/" + date + "/" + y + " " + endHour + ":" + m + " "
+		// + AmPm;
+
+		this.FillEventDetails3(data, StartTime, endTime, hour, m, AmPm, endHour);
+		clickElementByJavaScript(SaveEventdetailsBtn);
+		Thread.sleep(5000);
+		this.AddTicketDetails(data, StartTime1, endTime, hour, m, AmPm, endHour);
+		Thread.sleep(1000);	
+		click(TicketsSaveAndContinueBtn, "Save And Continue");
+		Thread.sleep(10000);
+		waitForElementToPresent(AddtionalinfomationSaveAndContinueBtn);
+		clickElementByJavaScript(AddtionalinfomationSaveAndContinueBtn);
+		Thread.sleep(20000);
+		this.customField(data);
+		waitForElementToPresent(Publishbtn);
+		clickElementByJavaScript(Publishbtn);
+		Thread.sleep(20000);
 		return (CommunityEventsPage) openPage(CommunityEventsPage.class);
 	}
 
@@ -572,6 +709,88 @@ public class CreateOrEditEvent extends BasePage {
 
 		Thread.sleep(5000);
 		// Runtime.getRuntime().exec(ImagePath);
+
+	}
+	@FindBy(xpath="//*[@ng-model='data.EventDetails.AllowDuplicateRegistration']")
+	WebElement checkBox;
+	@FindBy(xpath="//*[@id='EventTimezone']")
+	WebElement timeZone;
+	public void FillEventDetails2(Hashtable<String, String> data, String StartTime, String endTime, int hour, String m,
+			String AmPm, int endHour) throws Exception {
+
+		
+		enterLocation(data.get("Location"),data.get("StreetName"),data.get("City"),data.get("State")
+				,data.get("Zip"),data.get("Country"));
+		
+		type(EventName, data.get("eventTitleName") , "Event Name");//+ " " + getDateInDDMMMYYYY()
+		selectEventType(data.get("isPaidEvent"));
+		selectEventMode(data.get("eventModeTo"));
+		selectByVisibleText(timeZone,"India Standard Time", "Event Time zone");
+		selectByVisibleText(EventCategoryID, data.get("eventCategory"), "Event Category");
+		eventAvailableTo(data.get("isPrivateCommunityEvent"), data.get("isPrivateGroupEvent"),
+				data.get("publicGroupName"), data.get("privateGroupName"));
+		Thread.sleep(1000);
+
+		selectEventDates(StartTime, endTime, hour, m, AmPm, endHour);
+		Thread.sleep(2000);
+
+		switchToFrameByID(1);
+	
+		EventDescription.click();
+		
+		type(EventDescription, data.get("eventDescription"), "Description");
+		switchTodefaultContent();
+		waitForElementToPresent(checkBox);
+		click(checkBox,"Allow Dupliacte Registration");
+		click(changeImageLink, "change Image Link");
+
+		waitForElementToPresent(browse);
+		click(browse, "browse");
+		String path = projectFloder("\\src\\test\\resources\\testImages\\ExeFiles\\ChromeImage8.exe");
+		uploadImage(path);
+		click(upload, "upload");
+
+
+		Thread.sleep(5000);
+
+	}
+	public void FillEventDetails3(Hashtable<String, String> data, String StartTime, String endTime, int hour, String m,
+			String AmPm, int endHour) throws Exception {
+
+		
+		enterLocation(data.get("Location"),data.get("StreetName"),data.get("City"),data.get("State")
+				,data.get("Zip"),data.get("Country"));
+		
+		type(EventName, data.get("eventTitleName") , "Event Name");//+ " " + getDateInDDMMMYYYY()
+		selectEventType(data.get("isPaidEvent"));
+		selectEventMode(data.get("eventModeTo"));
+		selectByVisibleText(timeZone,"India Standard Time", "Event Time zone");
+		selectByVisibleText(EventCategoryID, data.get("eventCategory"), "Event Category");
+		eventAvailableTo(data.get("isPrivateCommunityEvent"), data.get("isPrivateGroupEvent"),
+				data.get("publicGroupName"), data.get("privateGroupName"));
+		Thread.sleep(1000);
+
+		selectEventDates(StartTime, endTime, hour, m, AmPm, endHour);
+		Thread.sleep(2000);
+
+		switchToFrameByID(1);
+	
+		EventDescription.click();
+		
+		type(EventDescription, data.get("eventDescription"), "Description");
+		switchTodefaultContent();
+	
+		
+		click(changeImageLink, "change Image Link");
+
+		waitForElementToPresent(browse);
+		click(browse, "browse");
+		String path = projectFloder("\\src\\test\\resources\\testImages\\ExeFiles\\ChromeImage8.exe");
+		uploadImage(path);
+		click(upload, "upload");
+
+
+		Thread.sleep(5000);
 
 	}
 
@@ -851,7 +1070,7 @@ public class CreateOrEditEvent extends BasePage {
 	
 	public void customField(Hashtable<String, String> data) throws Exception {
 		Thread.sleep(8000);
-	//	waitForElementToPresent(customFieldSave);
+		waitForElementToPresent(customFieldSave);
 		click(customFieldSave, "customFieldSave button");
 		}
 	
@@ -1915,13 +2134,17 @@ type(Document_Title, DocumentTitle, "Document_Title");
 	   System.out.println("Custom field not editable");
 	   
    }
-   @FindBy(xpath="//span[normalize-space()='Events']")
+   @FindBy(xpath="//*[@ui-sref='community.event']")
 	WebElement event;
-   
+   @FindBy(xpath="//*[@class='communities-name']/*")
+   WebElement name;
    public EventsPage gotoevents() throws InterruptedException {
 		Thread.sleep(8000);
-		click(homePage, "Bizligo Home page");
-		Thread.sleep(4000);
+	//	click(homePage, "Bizligo Home page");
+	//	Thread.sleep(4000);
+		waitForElementToPresent(name);
+		click(name, "Community name");
+		waitForElementToPresent(event);
 		click(event, "Events");
 		Thread.sleep(3000);
 		return (EventsPage) openPage(EventsPage.class);

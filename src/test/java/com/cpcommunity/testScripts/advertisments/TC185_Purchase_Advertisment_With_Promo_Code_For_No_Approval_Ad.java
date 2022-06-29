@@ -29,7 +29,7 @@ public class TC185_Purchase_Advertisment_With_Promo_Code_For_No_Approval_Ad exte
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 			
 		MyCommunitiesPage myCommunitiesPage =  EcoSystemPage.goToMyCommunities();
-		CommunityDetailsPage communityDetailsPage = myCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
+		CommunityDetailsPage communityDetailsPage = myCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));//+" "+runTime
 		AdvertismentPurchasePage advertismentPurchasePage =communityDetailsPage.clickOnAdvertisements();
 		PaymentOptionsPage paymentOptionsPage = advertismentPurchasePage.SelectPlan(data.get("planName"), data.get("adImage"), data.get("linkUrl"), data.get("additionalInstructions"));
 		PaymentReceipt paymentReceipt = paymentOptionsPage.makePayment(data.get("paymentMethod"),data.get("promoCode"));
@@ -48,7 +48,7 @@ public class TC185_Purchase_Advertisment_With_Promo_Code_For_No_Approval_Ad exte
 		
 		logInfo("Login Test Completed");
 		
-//		quit();
+		quit();
 		
 	}
 

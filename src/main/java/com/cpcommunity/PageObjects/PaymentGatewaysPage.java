@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
@@ -53,9 +54,9 @@ public class PaymentGatewaysPage extends BasePage {
 	WebElement txtTransactionKey;
 	@FindBy(xpath = "//input[@name='txtContent']")
 	WebElement txtContent;
-	@FindBy(xpath = "//label[@class='btn btn-success toggle-on']")
+	@FindBy(xpath = "//*[@class='swal-button-container']/*[text()='Activate']")
 	WebElement Activate;
-	@FindBy(xpath = "//label[@class='btn btn-danger active toggle-off']")
+	@FindBy(xpath = "//*[@class='swal-button-container']/*[text()='InActivate']")
 	WebElement InActivate;
 	@FindBy(xpath = "//button[@class='btn btn-info btn-sm']")
 	WebElement update1;
@@ -104,9 +105,10 @@ public class PaymentGatewaysPage extends BasePage {
 	// return (ZohoCRMPage) openPage(ZohoCRMPage.class);
 
 	public SetupPayPalPage SetPayPal() throws Exception {
+		waitForElementToPresent(PayPal);
 		click(PayPal,"PayPal");
 		this.OkBtn();
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
 		return (SetupPayPalPage) openPage(SetupPayPalPage.class);
 		// new SetupPayPalPage(driver, );
 	}
@@ -117,14 +119,16 @@ public class PaymentGatewaysPage extends BasePage {
 		// new SetupPayPalPage(driver, );
 	}
 
-	public SetupAuthorizePage navigateActivateAuthorize() {
+	public SetupAuthorizePage navigateActivateAuthorize() throws InterruptedException {
+		Thread.sleep(3000);
+		waitForElementToPresent(Authorize);
 		click(Authorize,"Authorize");
 		return (SetupAuthorizePage) openPage(SetupAuthorizePage.class);
 		// new SetupAuthorizePage(driver, );
 	}
 
 	public SetupAuthorizePage setUpAuthorize() throws Exception {
-
+waitForElementToPresent(Authorize);
 		click(Authorize,"Authorize");
 		this.OkBtn();
 		Thread.sleep(2000);
@@ -143,24 +147,34 @@ public class PaymentGatewaysPage extends BasePage {
 	@FindBy(xpath="//*[@class='swal-button-container']/*[text()='Activate']")
 	WebElement activateBtn;
 	public void activateCash() throws Exception {
-
-		click(Cash,"Cash");
+		Thread.sleep(2000);
+		waitForElementToPresent(Cash);
+		clickElementByJavaScript(Cash,"Cash");
+	//	click(Cash,"Cash");
 		waitForElementToPresent(activateBtn);
 		click(activateBtn,"Activate Button");//added on 05/04
 	//this.ClickonActivate();//commented 0n 05/04
+		waitForElementToPresent(OkBtn);
+		click(OkBtn,"OkBtn");
 		Thread.sleep(2000);
 
 	}
-
+	@FindBy(xpath="//*[@class='swal-button-container']/*[text()='Activate']")
+	WebElement activate;
 	public void activateCheque() throws Exception {
-
+waitForElementToPresent(Cheque);
 		click(Cheque,"Cheque");
-		this.ClickonActivate();
+		waitForElementToPresent(activate);
+		click(activate,"Activate");//added on 06/05
+		waitForElementToPresent(OkBtn);
+		click(OkBtn,"OkBtn");
+	//	this.ClickonActivate();
 		Thread.sleep(2000);
 
 	}
 
 	public void inActivateCheque() throws InterruptedException {
+		waitForElementToPresent(Cheque);
 		click(Cheque,"Cheque");
 		this.ClickonInActivate();
 	}
@@ -170,7 +184,12 @@ public class PaymentGatewaysPage extends BasePage {
 		PayPal.click();
 		this.ClickonInActivate();
 	}
-	
+	@FindBy(xpath="//*[@id='CommunityID']")
+	WebElement communityName;
+	public void selectCommunity(String name) {
+		Select select=new Select(communityName);
+		select.selectByVisibleText(name);
+	}
 	public void clickAuthorise() throws InterruptedException {
 		Thread.sleep(2000);
 		Authorize.click();
@@ -178,22 +197,25 @@ public class PaymentGatewaysPage extends BasePage {
 	}
 
 	public void inActivateCash() throws InterruptedException {
-
+		waitForElementToPresent(Cash);
 		click(Cash,"Cash");
 		this.ClickonInActivate();
 	}
 
 	public void ClickonInActivate() throws InterruptedException {
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
+		waitForElementToPresent(InActivate);
 		click(InActivate,"InActivate");
-		click(update1, "Update");
+	//	click(update1, "Update");
 		this.OkBtn();
 	}
 
 	public void ClickonActivate() throws InterruptedException {
-		Thread.sleep(3000);
-		click(InActivate,"Activate");
-		click(update1, "Update");
+	//	Thread.sleep(3000);
+		waitForElementToPresent(Activate);
+		click(Activate,"Activate");
+	//	click(update1, "Update");
+		waitForElementToPresent(OkBtn);
 		click(OkBtn,"OkBtn");
 	}
 

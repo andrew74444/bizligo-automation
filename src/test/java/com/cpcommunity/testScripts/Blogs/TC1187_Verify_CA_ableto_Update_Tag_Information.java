@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.BlogsPage;
 import com.cpcommunity.PageObjects.CommunityDashboardPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.MyCommunitiesPage;
@@ -30,8 +31,10 @@ public class TC1187_Verify_CA_ableto_Update_Tag_Information extends BaseTest {
 	logInfo("BizLigo Application Opened");
 	HomePage home = new HomePage().open(data.get("tenantType"));
 	LoginPage login = home.clickOnLOGINBtn();
-	MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
-	CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
+	//MyCommunitiesPage myCommunity = login.loginToMyCommunitiesPage(data.get("email"), data.get("password"));
+	EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+	MyCommunitiesPage mycommunities = EcoSystemPage.goToMyCommunities();
+	CommunityDashboardPage communityDashboard = mycommunities.gotoManageCommunity(data.get("communityName"));
 	TagsPage tag=communityDashboard.gotoTags();
 	tag.updateTag(data.get("Name"),data.get("tagName"),data.get("Description"));
 	BlogsPage blogpage=tag.gotoBlogsPage();

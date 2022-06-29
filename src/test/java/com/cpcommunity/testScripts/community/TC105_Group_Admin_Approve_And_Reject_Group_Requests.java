@@ -34,39 +34,39 @@ public class TC105_Group_Admin_Approve_And_Reject_Group_Requests extends BaseTes
 		
 		EcoSystemPage	EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		MyCommunitiesPage MyCommunitiesPage  = EcoSystemPage.goToMyCommunities();
-		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
+		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));//+" "+runTime
 		ManageGroupMembersPageByGroupAdmin manageGroupMembersPageByGroupAdmin = CommunityDetailsPage.navigateToManageGroupMembers(data.get("groupName")); 
 		String email1 = manageGroupMembersPageByGroupAdmin.getMember1();
 		String email2 = manageGroupMembersPageByGroupAdmin.getMember2();
 		
-		home = EcoSystemPage.logout();
+		home = manageGroupMembersPageByGroupAdmin.logout();
 		home.clickOnLOGINBtn();
 		
 		
-		 EcoSystemPage = login.loginToApplication(email1, data.get("password"));
+		 EcoSystemPage = login.loginToApplication(email1, data.get("password1"));
 		
 		 MyCommunitiesPage  = EcoSystemPage.goToMyCommunities();
-		 CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
+		 CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));//+" "+runTime
 		CommunityDetailsPage.JoinGroups(data.get("groupName"));
-		Thread.sleep(6000);
-		EcoSystemPage.logout();
+	//	Thread.sleep(6000);
+		CommunityDetailsPage.logout();
 		
 		
 		
 		home.clickOnLOGINBtn();		
-		EcoSystemPage = login.loginToApplication(email2, data.get("password"));
+		EcoSystemPage = login.loginToApplication(email2, data.get("password1"));
 		
 		MyCommunitiesPage  = EcoSystemPage.goToMyCommunities();
-		CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
+		CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));//+" "+runTime
 		CommunityDetailsPage.JoinGroups(data.get("groupName"));
-		Thread.sleep(6000);
-		EcoSystemPage.logout();
+	//	Thread.sleep(6000);
+		CommunityDetailsPage.logout();
 		
 		
 		home.clickOnLOGINBtn();		
 		EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
 		MyCommunitiesPage  = EcoSystemPage.goToMyCommunities();
-		CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName")+" "+runTime);
+		CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPage(data.get("communityName"));//+" "+runTime
 		GroupDetailsPage GroupDetailsPage = CommunityDetailsPage.navigateToGroupDetailsPage(data.get("groupName")); 
 		GroupDetailsPage.approveMember();
 		GroupDetailsPage.rejectMember();

@@ -5,6 +5,7 @@ import java.util.Hashtable;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.MyAdvertisements;
@@ -27,10 +28,12 @@ public class TC1124_Verify_Member_ableto_Edit_AdPlan_when_Status_Is_paymentPendi
 	openBrowser(data.get("browser"));
 	logInfo("Launched Browser : "+data.get("browser"));
 	logInfo("BizLigo Application Opened");
-	HomePage home1 = new HomePage().open(data.get("tenantType"));
-	LoginPage login1 = home1.clickOnLOGINBtn();
-	 MyDashboardPage MDP=login1.loginToMemberdashboard(data.get("email"), data.get("password"));
-	 MyAdvertisements MAP=MDP.NaviagtingToMyAdvertisements();
+	HomePage home = new HomePage().open(data.get("tenantType"));
+	LoginPage login = home.clickOnLOGINBtn();
+	// MyDashboardPage MDP=login1.loginToMemberdashboard(data.get("email"), data.get("password"));
+	
+	 EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+	 MyAdvertisements MAP=EcoSystemPage.NaviagtingToMyAdvertisements();
 	UpdateADPage upp= MAP.gotoUpdateAdpage(data.get("planName"));
 	 upp.editPaymentpendingAD(data.get("AdName"),data.get("path"));
 	 

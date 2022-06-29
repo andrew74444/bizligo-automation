@@ -37,7 +37,7 @@ public class TC986_Verify_member_apply_job_successfully extends BaseTest{
 		
 		EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email3"), data.get("password3"));
 		GlobalCareers GCP=	EcoSystemPage.goToGlobalCareers();
-		GCP.applyToJob(data.get("path"));
+		GCP.applyToJob(data.get("jobTitle"),data.get("path"));
 		
 		
 		Yahoo yahoo= new Yahoo().open();

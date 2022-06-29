@@ -73,8 +73,9 @@ public class CommunityBlogsPage extends BasePage {
 	@FindBy(xpath = "//a[contains(text(),'Logout')]")
 	WebElement logOut;
 	
-	@FindBy(xpath = "//*[@id=\"row_29\"]/td[2]/a")
-	WebElement editBlogdetails;
+	//@FindBy(xpath = "//*[@id=\"row_29\"]/td[2]/a")
+	@FindBy(xpath = "(//*[@title='Click to edit this post'])[1]")
+		WebElement editBlogdetails;
 	
 	@FindBy(xpath = "//a[@title='Click to edit this post']")
 	WebElement edit;
@@ -135,19 +136,24 @@ public class CommunityBlogsPage extends BasePage {
 	 
 	  String date = ": "+getSystemCurrentDate()+"-"+getSystemCurrentMonth()+"-"+getSystemCurrentYear();
 	  type(this.title, title+date, "blogTitle");
-	  Thread.sleep(3000);
-	  type(shortdescription,"shortDescription","shortDescription");
-	  driver.switchTo().frame(0);
-	  Thread.sleep(2000);       
-	  type(this.content,"content", "Content");
+	//  Thread.sleep(3000);
+	  waitForElementToPresent(shortdescription);
+	  type(shortdescription,shortDescription,"shortDescription");
+	  Thread.sleep(2000);
+	  driver.switchTo().frame(0);     
+	  type(this.content,content, "Content");
 	  driver.switchTo().defaultContent();
+	  
 	  Select s = new Select(categoryid);
 	  s.selectByIndex(2);
+	  
 	  click(this.publisheddate, "Published Date");
       waitForElementToPresent(calendar);
       DateManager d = new DateManager(driver);
       String date1 = d.getCurrentDateString();
       d.selectDate("//*[@class='datepicker-days']",date1);
+      
+      waitForElementToPresent(save);
 	  click(save,"Save"); 
 	  waitForElementToPresent(OkButton);
 	  click(OkButton,"Ok Button");
@@ -201,13 +207,14 @@ public class CommunityBlogsPage extends BasePage {
 	public void canceledBlog(String title, String shortDescription, String content) throws Throwable
 	{
 		scrollUpVertically();
+		 waitForElementToPresent(addNewpost);
 		clickElementByJavaScript(addNewpost);
 		String date = ": "+getSystemCurrentDate()+"-"+getSystemCurrentMonth()+"-"+getSystemCurrentYear();
 		  type(this.title, title+date, "blogTitle");
-		  Thread.sleep(3000);
+	//	  Thread.sleep(3000);
 		  type(shortdescription,"shortDescription","shortDescription");
-		  driver.switchTo().frame(0);
-		  Thread.sleep(2000);       
+		  Thread.sleep(2000); 
+		  driver.switchTo().frame(0);       
 		  type(this.content,"content", "Content");
 		  driver.switchTo().defaultContent();
 		  Select s = new Select(categoryid);
@@ -217,10 +224,11 @@ public class CommunityBlogsPage extends BasePage {
 	      DateManager d = new DateManager(driver);
 	      String date1 = d.getCurrentDateString();
 	      d.selectDate("//*[@class='datepicker-days']",date1);
-		Thread.sleep(9000);
+	//	Thread.sleep(9000);
+	      waitForElementToPresent(cancel);
 		click(cancel, "Cancel");
 		//cancel.click();
-		Thread.sleep(3000);
+	//	Thread.sleep(3000);
 	}
 	
 	public void logOut() throws Throwable
@@ -230,21 +238,28 @@ public class CommunityBlogsPage extends BasePage {
 		Thread.sleep(5000);
 		click(logOut, "Logout");
 	}
-	
+	@FindBy(xpath="//iframe")
+	WebElement content2;
 	public void editBlog(String search) throws Throwable
 	{
-		String date = ": "+getSystemCurrentDate()+"-"+getSystemCurrentMonth()+"-"+getSystemCurrentYear();
-		type(this.search,search+date,"Search");
-		Thread.sleep(2000);
+		waitForElementToPresent(this.search);
+	//	String date = ": "+getSystemCurrentDate()+"-"+getSystemCurrentMonth()+"-"+getSystemCurrentYear();
+		type(this.search,search,"Search");//+date
+	//	Thread.sleep(2000);
+		waitForElementToPresent(editBlogdetails);
 		click(editBlogdetails,"EditBlog");
-		Thread.sleep(3000);
+		scrollDownVertically();
+		Thread.sleep(5000);
+		waitForElementToPresent(content2);
+		waitForElementToPresent(status);
 		Select s = new Select(status);
 		s.selectByIndex(1);
-		Thread.sleep(5000);
+		Thread.sleep(1000);
+		waitForElementToPresent(save);
 		click(save,"Save");
 		waitForElementToPresent(OkButton);
 		click(OkButton,"Ok Button");
-		
+		Thread.sleep(3000);
 	}
 	public void Updatedate(String searchName) throws Throwable
 	{

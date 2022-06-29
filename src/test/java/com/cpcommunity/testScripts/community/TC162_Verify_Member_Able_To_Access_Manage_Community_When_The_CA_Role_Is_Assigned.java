@@ -45,7 +45,7 @@ public class TC162_Verify_Member_Able_To_Access_Manage_Community_When_The_CA_Rol
 		}
 		
 		
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
 		home = CommunityDashboardPage.logout();
 		login = home.clickOnLOGINBtn();
 		EcoSystemPage = login.loginToApplication(data.get("email1"), data.get("password1"));

@@ -80,10 +80,12 @@ public class Messages extends BasePage{
 //	return (ZohoCRMPage) openPage(ZohoCRMPage.class);
 	
 	public void messageDisplayed(String MemberName,String Message) throws Exception{
+		waitForElementToPresent(newMessage);
 		click(newMessage,"newMessage");
 		WebElement element = driver.findElement(By.xpath("(//*[contains(text(),'"+MemberName+"')])[1]"));
 		waitForElementToPresent(element);
-		click( element,"Member Name");
+		clickElementByJavaScript(element,"Member Name");
+	//	click( element,"Member Name");
 		List<WebElement> elements = driver.findElements(By.xpath("//*[@id='ChatController']/div/div/div[1]/div/div/div[2]/div[1]/ul/li"));
 		String i = Integer.toString(elements.size());
 		String SharedMessage = driver.findElement(By.xpath("//*[@id='ChatController']/div/div/div[1]/div/div/div[2]/div[1]/ul/li["+i+"]/div[2]/p")).getText();	
@@ -93,15 +95,17 @@ public class Messages extends BasePage{
 	}
 	
 	public String SendNewMessage(String MemberName,String NewMessage) throws Exception{
-		click( newMessage,"new Message");
+		waitForElementToPresent(newMessage);
+		clickElementByJavaScript(newMessage,"new Message");
+	//	click(newMessage,"new Message");
 		//Thread.sleep(3000);
 		WebElement element = driver.findElement(By.xpath("(//*[contains(text(),'"+MemberName+"')])[1]"));
 		waitForElementToPresent(element);
 		click(element,"Member Name" );
 		scrollToElement(PrivacyPolicy);
-		DateFormat dateFormat = new SimpleDateFormat("yy-MM-dd HH-mm-ss");
-	    Date date = new Date();
-		String Message = NewMessage+" "+dateFormat.format(date);
+	//	DateFormat dateFormat = new SimpleDateFormat("yy-MM-dd HH-mm-ss");
+	//    Date date = new Date();
+		String Message = NewMessage;//+" "+dateFormat.format(date);
 		//Thread.sleep(2000);
 		waitForElementToPresent(txtMsg);
 		txtMsg.sendKeys(Message);
@@ -149,4 +153,16 @@ public class Messages extends BasePage{
 		
 		
 	}
+	@FindBy(xpath="//*[@data-toggle='dropdown']/*[@title='Toggle dropdown menu']")
+	WebElement dropdown;
+	@FindBy(xpath="//*[@class='logOffNew']/*")
+	WebElement logout;
+	public HomePage logout() {
+		waitForElementToPresent(dropdown);
+		click(dropdown,"Toggle dropdown menu");
+		waitForElementToPresent(logout);
+		click(logout,"LogOut");
+
+		return (HomePage) openPage(HomePage.class);
+}
 }

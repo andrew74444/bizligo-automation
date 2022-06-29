@@ -85,7 +85,7 @@ public class BlogsBySystemAdmin extends BasePage
 	
 	public CommunityBlogsPage navigateToCommunityBlogsPage() throws Throwable
 	{	
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
 		return (CommunityBlogsPage) openPage(CommunityBlogsPage.class);
 //		new MyDashboardPage(driver, );
 	}

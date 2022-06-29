@@ -85,15 +85,15 @@ public class PayPalMerchant extends BasePage{
 		  EmailID.clear();
 		  type(EmailID, PEmail, "EmailID");
 		  
-		  
-		  if(PEmail.equalsIgnoreCase("andrew74444@gmail.com"))
-		  {
-			  click(btnNext,"btnNext");
-			  Thread.sleep(3000);
-		  }
-
+		  click(btnNext,"btnNext");
+//		  if(PEmail.equalsIgnoreCase("andrew74444@gmail.com"))
+//		  {
+//			  click(btnNext,"btnNext");
+//			  Thread.sleep(3000);
+//		  }
+			waitForElementToPresent(PayPalPWd);
 		  type(PayPalPWd,PPwd,"PayPalPWd");
-		  picture();
+//		  picture();
 //		  new TestBase().captureScreen(, driver);
 		  
 		  if(PEmail.equalsIgnoreCase("ObjectReader.reader.MerchantEmailID()"))
@@ -116,22 +116,22 @@ public class PayPalMerchant extends BasePage{
 		driver.get("https://developer.paypal.com/developer/notifications");
 		waitForElementToPresent(LoginIntoDashboard);
 //		new TestBase().captureScreen(, driver);
-		picture();
+//		picture();
 		String AmountPaid = null;
 		String TransactionID = null;
 		String parent=driver.getWindowHandle();		
 				
 		click(LoginIntoDashboard,"LoginIntoDashboard");				
 		this.Login(PEmail, PPwd);
-		picture();
+//		picture();
 //		new TestBase().captureScreen(, driver);
 		while(true)
 		{
 			waitForElementToPresent(btnSearchNotifications);
 			scrollToElement(btnSearchNotifications);			
 			waitForElementToPresent(FirstRow);			
-			Thread.sleep(2000);
-			picture();
+	//		Thread.sleep(2000);
+	//		picture();
 //			new TestBase().captureScreen(, driver);
 			clickElementByJavaScript(FirstRow);
 //			FirstRow.click();
@@ -160,7 +160,7 @@ public class PayPalMerchant extends BasePage{
 					waitForElementToPresent(TrasactionNumber);
 					TransactionID = TrasactionNumber.getText();
 					AmountPaid = PaidAmount.getText();
-					picture();
+			//		picture();
 //					new TestBase().captureScreen(, driver);
 					driver.close();					
 					driver.switchTo().window(parent);					

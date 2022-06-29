@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.AuthorizeGateway;
 import com.cpcommunity.PageObjects.CommunityDashboardPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.GlobalCommunitesPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
@@ -32,36 +33,41 @@ public class TC1161_verify_Rejected_Adcounts_Decrease_when_CA_published extends 
 	logInfo("BizLigo Application Opened");
 	HomePage home2 = new HomePage().open(data.get("tenantType"));
 	LoginPage login2 = home2.clickOnLOGINBtn();
-	MyCommunitiesPage myCommunity = login2.loginToMyCommunitiesPage(data.get("email1"), data.get("password1"));
-	CommunityDashboardPage communityDashboard = myCommunity.gotoManageCommunity(data.get("communityName"));
-	communityDashboard.RejectedAdcounts();
-	quit();
+//	MyCommunitiesPage myCommunity = login2.loginToMyCommunitiesPage(data.get("email1"), data.get("password1"));
+	EcoSystemPage EcoSystemPage = login2.loginToApplication(data.get("email"), data.get("password"));
+	MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
+	CommunityDashboardPage communityDashboard = MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
+	int previouscount=	communityDashboard.RejectedAdcounts();
+//	quit();
 	
-	openBrowser(data.get("browser"));
-	logInfo("Launched Browser : "+data.get("browser"));
-	logInfo("BizLigo Application Opened");
-	HomePage home = new HomePage().open(data.get("tenantType"));
-	LoginPage login = home.clickOnLOGINBtn();
-	MyDashboardPage MDP=login.loginToMemberdashboard(data.get("email"), data.get("password"));
-	MDP.MyAdCount();
-	GlobalCommunitesPage GCP=MDP.naviagtingToGlobalCommunities();
-	//GCP.searchCommunity(data.get("community"));
-	SelectPlanPage SPP= GCP.NavigatetoselectPlanPage(data.get("community"));
-	AuthorizeGateway AG=SPP.selectPlan1(data.get("planName"),data.get("AdName"),data.get("path"));
-	AG.makePayment();
-	quit();
+//	openBrowser(data.get("browser"));
+//	logInfo("Launched Browser : "+data.get("browser"));
+//	logInfo("BizLigo Application Opened");
+//	HomePage home = new HomePage().open(data.get("tenantType"));
+//	LoginPage login = home.clickOnLOGINBtn();
+//	MyDashboardPage MDP=login.loginToMemberdashboard(data.get("email"), data.get("password"));
+//	MDP.MyAdCount();
+//	GlobalCommunitesPage GCP=MDP.naviagtingToGlobalCommunities();
+//	//GCP.searchCommunity(data.get("community"));
+//	SelectPlanPage SPP= GCP.NavigatetoselectPlanPage(data.get("community"));
+//	AuthorizeGateway AG=SPP.selectPlan1(data.get("planName"),data.get("AdName"),data.get("path"));
+//	AG.makePayment();
+//	quit();
 	
-	openBrowser(data.get("browser"));
-	logInfo("Launched Browser : "+ data.get("browser"));				
-	logInfo("BizLigo Application Opened");
-	HomePage home1 = new HomePage().open(data.get("tenantType"));
-	LoginPage login1 = home1.clickOnLOGINBtn();
-	MyCommunitiesPage myCommunity1 = login1.loginToMyCommunitiesPage(data.get("email1"), data.get("password1"));
-	CommunityDashboardPage communityDashboard1 = myCommunity1.gotoManageCommunity(data.get("communityName"));
-    ManageMemberAdvertisementsPage MMA=communityDashboard1.navigateToMemberAdvertisements();
-    MMA.RejectAd(data.get("status"));
+//	openBrowser(data.get("browser"));
+//	logInfo("Launched Browser : "+ data.get("browser"));				
+//	logInfo("BizLigo Application Opened");
+//	HomePage home1 = new HomePage().open(data.get("tenantType"));
+//	LoginPage login1 = home1.clickOnLOGINBtn();
+//	MyCommunitiesPage myCommunity1 = login1.loginToMyCommunitiesPage(data.get("email1"), data.get("password1"));
+//	CommunityDashboardPage communityDashboard1 = myCommunity1.gotoManageCommunity(data.get("communityName"));
+    ManageMemberAdvertisementsPage MMA=communityDashboard.navigateToMemberAdvertisements();
+ //   MMA.RejectAd(data.get("status"));
+    //**********8below code added on 21/05****************\\
+	MMA.approveRejectedAd(data.get("plan"), data.get("adImage"),data.get("linkUrl"),data.get("status"));
     CommunityDashboardPage comdash= MMA.gotoCommunityDashboard();
-    comdash.RejectedAdcounts();
+    int Aftercount=  comdash.RejectedAdcounts();
+    comdash. CompareProgressBars(previouscount,Aftercount);
 	}
 	@AfterMethod
 	public void tearDown() {

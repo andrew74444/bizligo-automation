@@ -35,8 +35,9 @@ public class TC118_Send_Connection_From_Community_Details_Page extends BaseTest 
 		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
 		
 		CommunityDetailsPage CommunityDetailsPage = MyCommunitiesPage.navigateToCommunityDetailsPageWithoutDate(data.get("communityName"));
-		
-		CommunityDetailsPage.sendconnection();
+	//	CommunityDetailsPage.sendconnection();//commented on 06/05
+
+		CommunityDetailsPage.sendconnection(data.get("name"));//added on 06/05
 		
 		//Assert.fail("Failing the login test");
 	}

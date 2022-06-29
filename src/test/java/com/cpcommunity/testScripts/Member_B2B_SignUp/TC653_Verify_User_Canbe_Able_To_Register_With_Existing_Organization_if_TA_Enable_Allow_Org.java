@@ -28,8 +28,8 @@ public class TC653_Verify_User_Canbe_Able_To_Register_With_Existing_Organization
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage loginPage = home.clickOnLOGINBtn();
 		SignupPage signup = loginPage.clickonSignup();
-		AccountVerificationCodePage verification = signup.signupExistingORG(data.get("firstName"),data.get("lastName"),data.get("emailAddress"), data.get("password"), data.get("confirmPassword"), data.get("organizationName"), data.get("phNo"));
-		verification.clickOnSendTOloginPage(data.get("email"));
+		AccountVerificationCodePage verification = signup.signupExistingORG(data.get("firstName"),data.get("lastName"),data.get("emailAddress"), data.get("password"), data.get("confirmPassword"),data.get("phNo"),data.get("organizationName"));
+	//	verification.clickOnSendTOloginPage(data.get("email"));//gorilla mail
 		
 		
 	}
@@ -42,7 +42,7 @@ public class TC653_Verify_User_Canbe_Able_To_Register_With_Existing_Organization
 	@AfterMethod
 	public void tearDown() {
 
-		logInfo("TC222 Test Completed");
+		logInfo("TC653 Test Completed");
 
 		quit();
 

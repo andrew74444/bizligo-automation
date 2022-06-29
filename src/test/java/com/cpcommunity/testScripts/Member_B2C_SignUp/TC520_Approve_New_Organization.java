@@ -38,7 +38,7 @@ public class TC520_Approve_New_Organization extends BaseTest {
 	@AfterMethod
 	public void tearDown() {
 
-		logInfo("Login Test Completed");
+		logInfo("TC520 Test Completed");
 
 		quit();
 

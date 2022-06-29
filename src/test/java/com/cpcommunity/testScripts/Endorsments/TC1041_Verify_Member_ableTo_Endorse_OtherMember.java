@@ -53,12 +53,12 @@ public class TC1041_Verify_Member_ableTo_Endorse_OtherMember extends BaseTest{
 		yahoo.Login(data.get("email1"), data.get("password1"));
 		yahoo.endorsementVerfication();
 	}
-	//@AfterMethod
-	//public void tearDown() {
+	@AfterMethod
+	public void tearDown() {
 		
-	//	logInfo("TC1041 Test Completed");
+		logInfo("TC1041 Test Completed");
 		
-	//	quit();
+		quit();
 		
-	//}
+	}
 }

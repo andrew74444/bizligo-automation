@@ -5,6 +5,9 @@ import java.util.Hashtable;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
+import com.cpcommunity.PageObjects.CommunityDetailsPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
+import com.cpcommunity.PageObjects.GlobalCommunitesPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
 import com.cpcommunity.PageObjects.MyDashboardPage;
@@ -27,9 +30,14 @@ public class TC1077_Verify_Member_Not_ableTo_ViewResources_IfNot_Purchased_Membe
 		logInfo("BizLigo Application Opened");
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage login = home.clickOnLOGINBtn();
-		MyDashboardPage dashpage = login.loginToDashboard(data.get("email"), data.get("password"));
-		ResourcesPage R=dashpage.goToBDMAIResouces(data.get("Community"));
-        R.checkResourceNotDisplaying();
+	    EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));	
+		GlobalCommunitesPage GlobalCommunitesPage = EcoSystemPage.goToGlobalCommunities();
+		CommunityDetailsPage communityDetailsPage=	GlobalCommunitesPage.checkResource();
+		communityDetailsPage.resourceNotdisplaying();
+		
+//		MyDashboardPage dashpage = login.loginToDashboard(data.get("email"), data.get("password"));
+//		ResourcesPage R=dashpage.goToBDMAIResouces(data.get("Community"));
+//        R.checkResourceNotDisplaying();
 		
 		
 }

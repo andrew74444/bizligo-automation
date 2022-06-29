@@ -33,12 +33,16 @@ public class MemberRevenueReport extends BasePage{
 	WebElement email;
 	
 	public void checkRevenue(String member) throws InterruptedException {
-		Thread.sleep(8000);
+		//Thread.sleep(8000);
+		waitForElementToPresent(membername);
 		type(membername, member, "Member Name");
-		Thread.sleep(8000);
+		//Thread.sleep(8000);
+		waitForElementToPresent(menu);
 		click(menu, "Menu");
-		Thread.sleep(1000);
+	//	Thread.sleep(1000);
+		waitForElementToPresent(email);
 		click(email, "email Id");
+		waitForElementToPresent(menu);
 		click(menu, "menu");
 		String amt=johnRevenue.getText();
 		System.out.println(amt);

@@ -39,7 +39,7 @@ public class HomePage extends BasePage {
 
 	@FindBy(xpath = "//h1[normalize-space()='building communities']")
 	
-//@FindBy(xpath = "//*[@class='shetek-banner-btn']")// for Shetek tenant
+	//@FindBy(xpath = "//*[@class='shetek-banner-btn']")// for Shetek tenant
 	
 	WebElement home;
 	
@@ -100,8 +100,8 @@ public class HomePage extends BasePage {
 
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
-		waitForElementToPresent (newConnection);//added 0n 31/03 for wait purpose
-		waitForElementToPresent (join);//added 0n 31/03 for wait purpose
+	//	waitForElementToPresent (newConnection);//added 0n 31/03 for wait purpose
+	//	waitForElementToPresent (join);//added 0n 31/03 for wait purpose
 		return ExpectedConditions.visibilityOf(home);
 	}
 
@@ -168,18 +168,28 @@ public class HomePage extends BasePage {
 		
 
 	}
+	public LoginPage clickOnLOGINBtnB2C() throws Exception {
+		
+		waitForElementToPresent (LOGINBtn);
+		
+		clickElementByJavaScript(LOGINBtn);
+		
+		return (LoginPage) openPage(LoginPage.class);
+		
+
+	}
 	@FindBy(xpath="//h5[contains(text(),'New Connections')]")
 	WebElement newConnection;
 	@FindBy(xpath="//a[contains(text(),'join communities')]")
 	WebElement join;
 	public HomePage logout() throws InterruptedException {
-		waitForElementToPresent (newConnection);//added 0n 31/03 for wait purpose
-		waitForElementToPresent (join);//added 0n 31/03 for wait purpose
+		waitForElementToPresent (newConnection);
+		waitForElementToPresent (join);
 		
-		waitForElementToPresent (toggleDropDown);//added on for wait
+		waitForElementToPresent (toggleDropDown);
 	//	toggleDropDown.click();
-		hardClick(toggleDropDown);//added on 31/03
-		waitForElementToPresent (logoutBtn);//added on for wait
+		clickElementByJavaScript(toggleDropDown,"toggleDropDown");
+		waitForElementToPresent (logoutBtn);
 	//	logoutBtn.click();
 		hardClick(logoutBtn);//added on 31/03
 		Thread.sleep(3000);
@@ -299,8 +309,10 @@ public void verifyContactPageWhenSuperAdminDisable() {
 	
 }
 public UpcomingEventsPage navigateToUpComingEvents() throws InterruptedException {
-	clickElementByJavaScript(globalEvents);
-	Thread.sleep(2000);
+	
+	waitForElementToPresent(globalEvents);
+	click(globalEvents,"Global events");
+//	Thread.sleep(2000);
 	waitForElementToPresent(upcomingEvents);
 	click(upcomingEvents, "Upcoming Events");
 	return (UpcomingEventsPage) openPage(UpcomingEventsPage.class);

@@ -34,7 +34,9 @@ public class MyProfilePage extends BasePage {
 	WebElement MyProfile;
 	@FindBy(xpath = "//i[@title='Edit Profile']")
 	WebElement EditBtn;
-	@FindBy(xpath = "//*[@id=\"Skill_InterestController\"]/div[2]/div/div[2]")
+	//@FindBy(xpath = "//*[@id=\"Skill_InterestController\"]/div[2]/div/div[2]")
+	@FindBy(xpath = "//*[@id='Skill_InterestController']/div[2]/div/div[2]")
+	
 	WebElement profileCompletenessBar;
 	@FindBy(xpath = "//*[@name='FirstName']")
 	WebElement FirstName;
@@ -122,6 +124,7 @@ public class MyProfilePage extends BasePage {
 	@FindBy(xpath = "//*[@ng-click='SIdata.RemoveSkills(Skill)']") // added on 18/03
 	WebElement DeleteSkillsBtn;
 	@FindBy(xpath = "//form[@id='EditMySkillsForm']//i[@class='fa fa-floppy-o']")
+//	@FindBy(xpath = "//body/div[3]/div[1]/div[1]/section[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[4]/div[1]/div[1]/div[1]/div[1]/div[2]/div[13]/div[1]/div[1]/div[1]/form[1]/div[3]/div[2]/button[1]")
 
 	WebElement SkillsSaveBtn;
 
@@ -214,10 +217,11 @@ public class MyProfilePage extends BasePage {
 	WebElement progressBarPercent;
 	@FindBy(xpath = "//a[contains(.,' Apply LinkedIn Profile')]")
 	WebElement ApplyLinkedInProfileBtn;
-
+	@FindBy(xpath = "//*[text()='Organization Details']")
+	WebElement wait;
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
-
+		waitForElementToPresent(wait);//added on 27/04
 		return ExpectedConditions.visibilityOf(MyProfile);
 	}
 
@@ -265,7 +269,7 @@ public class MyProfilePage extends BasePage {
 		LastName.clear();
 		Phone.clear();
 		Ext.clear();
-		picture();
+	//	picture();
 //		new TestBase().captureScreen(, driver);
 		scrollIntoView(FirstName);
 		//Thread.sleep(3000);
@@ -281,7 +285,7 @@ public class MyProfilePage extends BasePage {
 		type(FacebookUrl, FUrl, "FacebookUrl");
 		type(TwitterUrl, TUrl, "TwitterUrl");
 		click(PublicRdnBtn, "Public Radio Btn");
-		picture();
+	//	picture();
 //		new TestBase().captureScreen(, driver);
 		return this.UpdateProfile();
 	}
@@ -290,10 +294,10 @@ public class MyProfilePage extends BasePage {
 		scrollIntoView(MyProfileSaveBtn);
 		//Thread.sleep(5000);
 		waitForElementToPresent(MyProfileSaveBtn);
-		clickElementByJavaScript(MyProfileSaveBtn);
+		clickElementByJavaScript(MyProfileSaveBtn,"MyProfileSaveBtn");
 		// *[contains(text(),'Save')]
 		//Thread.sleep(4000);
-		picture();
+	//	picture();
 //		new TestBase().captureScreen(, driver);
 //		waitHelper.waitForElementToPresent(profileSuccessPopup, 100);
 //		if (profileSuccessPopup.getText().equalsIgnoreCase("Profile updated successfully")) {
@@ -541,14 +545,16 @@ public class MyProfilePage extends BasePage {
 		clickElementByJavaScript(UpdateSkillsBtn);
 	
 	}
-
+	@FindBy(xpath="//*[@ng-bind='Skill.Name']")
+	WebElement skillDisplay;
 	public boolean clickOnSkillsSavebutton() throws Exception {
 		//Thread.sleep(1000);
 		waitForElementToPresent(SkillsSaveBtn);
-		click(SkillsSaveBtn, "SkillsSaveBtn");
-	//	waitForElementToPresent(saveButton);//added on 18/03
-	//	click(saveButton,"save button");
-		Thread.sleep(2000);
+		clickElementByJavaScript(SkillsSaveBtn);
+	//	click(SkillsSaveBtn, "SkillsSaveBtn");
+	
+		waitForElementToPresent(skillDisplay);	//checking skill added
+	//	Thread.sleep(2000);
 	//	picture();
 //		new TestBase().captureScreen(, driver);
 //		waitHelper.waitForElement(SuccessPopup, 100);
@@ -577,13 +583,18 @@ public class MyProfilePage extends BasePage {
 	WebElement addingSkill;
 	@FindBy(xpath="(//*[@class='pull-right']//*[@type='submit'])[1]")
 	WebElement saveButton;
+	@FindBy(xpath="(//*[@id='populateSkills']/*/*/*[@type='button'])[1]")
+			WebElement skill;
 	public boolean AddSkills(String Skills) throws Exception {
 		this.ClickOnEditSkillsBtn();
 	//	type(AddSkills, Skills, "AddSkills");
 		type(addSkill, Skills, "AddSkills");//added on 18/03
-		
-		click(addingSkill,"Adding Skill");
-		Thread.sleep(1000);
+		waitForElementToPresent(skill);
+		clickElementByJavaScript(skill);
+	//	click(skill,"Skill");//added on 26/04
+
+	//	click(addingSkill,"Adding Skill");
+	//	Thread.sleep(1000);
 		
 	
 		
@@ -1515,10 +1526,12 @@ public void updateLocation(String locationName1, String locationAddress, String 
 	     		type(this.confirmPassword, confirmPassword, "Confirm Password");
 	     		//Thread.sleep(1000);
 	     		Select s = new Select(contactType);
-	     		s.selectByIndex(1);
+	     	//	s.selectByIndex(1);//commented 0n 21/04
+	     		s.selectByVisibleText("Primary Contact");//added on 21/04
 	     		//Thread.sleep(2000);
 	     		Select s1 = new Select(selectLocation);
-	     		s1.selectByIndex(1);
+	     	//	s1.selectByIndex(1);//commented on 21/04
+	     		s1.selectByVisibleText("Primary");//added on 21/04
 	     		//Thread.sleep(2000);
 	     		click(saveMember, "SaveMember");
 	     		
@@ -1564,7 +1577,8 @@ public void updateLocation(String locationName1, String locationAddress, String 
 	     	}
 	     	
 	     	public int GetProfileProgress() throws InterruptedException {
-	     		Thread.sleep(8000);
+	     	//	Thread.sleep(8000);
+	     		
 				String profileProgress=profileCompletenessBar.getText();
 				profileProgress = StringUtils.stripEnd(profileProgress, "%");	
 				System.out.println("ProgressBar status is " + profileProgress);
@@ -1594,7 +1608,7 @@ public void updateLocation(String locationName1, String locationAddress, String 
 				Phone.clear();
 				Ext.clear();
 				click(PublicRdnBtn, "Public Radio Btn");
-				Thread.sleep(5000);
+		//		Thread.sleep(5000);
 				return this.UpdateProfile();
 			}
 
@@ -1661,12 +1675,12 @@ public void updateLocation(String locationName1, String locationAddress, String 
 				//LastName.clear();
 				Phone.clear();
 				Ext.clear();
-				picture();
+			//	picture();
 //				new TestBase().captureScreen(, driver);
 				scrollIntoView(FirstName);
 				
 				click(PublicRdnBtn, "Public Radio Btn");
-				picture();
+			//	picture();
 //				new TestBase().captureScreen(, driver);
 				return this.UpdateProfile();
 			}   

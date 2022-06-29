@@ -6,6 +6,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.Discussions;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.GlobalCommunitesPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
@@ -29,10 +30,14 @@ public class TC1132_Verify_details_ShouldNotSave_when_filledAnd_clickedCancel ex
 	logInfo("BizLigo Application Opened");
 	HomePage home1 = new HomePage().open(data.get("tenantType"));
 	LoginPage login1 = home1.clickOnLOGINBtn();
-	 MyDashboardPage MDP=login1.loginToMemberdashboard(data.get("email"), data.get("password"));
-	 GlobalCommunitesPage GCP=MDP.naviagtingToGlobalCommunities();
-	 GCP.searchCommunity(data.get("community"));
-	 GCP.Gotoresources();
+//	 MyDashboardPage MDP=login1.loginToMemberdashboard(data.get("email"), data.get("password"));
+//	 GlobalCommunitesPage GCP=MDP.naviagtingToGlobalCommunities();
+//	 GCP.searchCommunity(data.get("community"));
+//	 GCP.Gotoresources();
+	 EcoSystemPage EcoSystemPage1 = login1.loginToApplication(data.get("email"), data.get("password"));
+		GlobalCommunitesPage GCP = EcoSystemPage1.goToGlobalCommunities();
+		 GCP.searchCommunity(data.get("communityName"));
+		 GCP.goTocommunityPage(data.get("communityName"));
 	 GCP.clickCancel(data.get("AdName"), data.get("path"));
 	
 	}

@@ -7,6 +7,7 @@ import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.util.StringTokenizer;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -60,7 +61,8 @@ public class EmailTemplatePage extends BasePage {
 	WebElement BCClist;
 	@FindBy(xpath = "//input[@id='CcList']")
 	WebElement CClist;
-	@FindBy(xpath = "//div[@id='toast-container']")
+	@FindBy(xpath = "//*[@id='toast-container']")
+//	@FindBy(xpath = "//*[@class='toast-message']")
 	WebElement toastMessage;
 	@FindBy(xpath = "//div[@id='qepmar71vb0g1fa3sij0t']")
 	WebElement resettoastMessage;
@@ -84,13 +86,15 @@ public class EmailTemplatePage extends BasePage {
     WebElement fromemailReq;
     @FindBy(xpath = "//div[@class='email-btn-heading']")
     WebElement allFeatures;
-    @FindBy(xpath = "//div[@class='emil-edited-icon']//i[@class='fa fa-pencil-square']")
+  //  @FindBy(xpath = "//div[@class='emil-edited-icon']//i[@class='fa fa-pencil-square']")
+    @FindBy(xpath = "(//*[@class='row']/div[2]/div[1]/a[1]/i[1])[1]")
     WebElement editGroup;
     @FindBy(xpath = "//a[normalize-space()='Back to Filters']")
     WebElement backtoFilter;
     @FindBy(xpath = " //a[@id='Advertisements']")
     WebElement advertisements;
-    @FindBy(xpath = "  //div[@class='row']//div[1]//div[1]//div[1]//div[2]//div[1]//a[1]//i[1]")
+  //  @FindBy(xpath = "  //div[@class='row']//div[1]//div[1]//div[1]//div[2]//div[1]//a[1]//i[1]")
+    @FindBy(xpath = "//body[1]/div[1]/div[1]/div[3]/div[1]/div[4]/div[1]/div[1]/div[1]/div[1]/div[3]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/a[1]/i[1]")
     WebElement advertisementsEdit;
     @FindBy(xpath = "//span[@id='inbox-id']")
 	WebElement boxId;
@@ -107,9 +111,11 @@ public class EmailTemplatePage extends BasePage {
 	}
 	 public void EditEvents(String Template, String Footer, String Subject, String Header, String Email, String bcc) throws InterruptedException {
     	 waitForElementToPresent(events);
-    	this.events.click();
+    	//this.events.click();
+    	click(events,"Events");
     	waitForElementToPresent(editevents);
-    	this.editevents.click();
+    	//this.editevents.click();
+    	click(editevents,"Edit EventTemplate");
     	waitForElementToPresent(this.emailsubject);
 		this.emailsubject.clear();
 		this.emailheader.clear();
@@ -129,18 +135,26 @@ public class EmailTemplatePage extends BasePage {
 		enterTextInframe.clear();
 		type(enterTextInframe, Footer, "Footer");
 		driver.switchTo().defaultContent();
-		
+		waitForElementToPresent(save);
 		click(save, "Save");
 		//waitForElementToPresent(toastMessage);
-		AssertionHelper.verifyText(toastMessage.getText(), "Success! Template changed successfully.");
-		Thread.sleep(7000);
+		//	AssertionHelper.verifyText(toastMessage.getText(), "Success! Template changed successfully.");
+//		JavascriptExecutor jse=(JavascriptExecutor)driver;
+		//jse.executeScript("return arguments[0].innerHTML", toastMessage);
+
+		Thread.sleep(5000);
 	}
+	@FindBy(xpath="//*[text()='Community']")
+	 WebElement community;
+	@FindBy(xpath = "//div[@class='row']//div[1]//div[1]//div[1]//div[2]//div[1]//a[1]//i[1]")
+	WebElement editcommunity;
+
 	 public void SameCCandBCC(String Template, String Footer, String Subject, String Header, String Email, String bcc, String cc) throws InterruptedException {
     	 waitForElementToPresent(events);
     	this.events.click();
     	waitForElementToPresent(editevents);
     	this.editevents.click();
-    	waitForElementToPresent(this.emailsubject);
+		
 		this.emailsubject.clear();
 		this.emailheader.clear();
 		this.fromEmail.clear();
@@ -153,7 +167,7 @@ public class EmailTemplatePage extends BasePage {
 		type(CClist, cc, "BCC List");		
 		driver.switchTo().frame(0);
 		enterTextInframe.clear();
-		enterTextInframe.sendKeys(Header);
+		enterTextInframe.sendKeys(Template);
 		driver.switchTo().defaultContent();
 
 		driver.switchTo().frame(1);
@@ -163,14 +177,28 @@ public class EmailTemplatePage extends BasePage {
 		
 		click(save, "Save");
 		//waitForElementToPresent(toastMessage);
-		AssertionHelper.verifyText(toastMessage.getText(), "Success! Template changed successfully.");
-		Thread.sleep(7000);
+	//	AssertionHelper.verifyText(toastMessage.getText(), "Success! Template changed successfully.");
+		//Thread.sleep(7000);
 	}
+	 public void SameCCandBCC(String bcc,String cc) throws InterruptedException {
+		 waitForElementToPresent(community);
+         click(community,"community");
+         Thread.sleep(2000);
+         waitForElementToPresent(editcommunity);
+         click(editcommunity,"community template");
+waitForElementToPresent(this.emailsubject);
+this.BCClist.clear();
+type(BCClist, bcc, "BCC List");
+click(save, "Save");
+Thread.sleep(2000);
+	 }
 	public void CheckTemplateAndDescriptionReadOnly(){
 		 waitForElementToPresent(events);
-	    	this.events.click();
+	    //	this.events.click();
+	    	click(events,"Events");
 	    	waitForElementToPresent(editevents);
-	    	this.editevents.click();
+	  //  	this.editevents.click();
+	    	click(editevents,"Edit eventsTemplate");
 	    	 WebElement readOnly = this.templateName;
 	    	 WebElement readOnly2= this.description;
 	         Assert.assertTrue(readOnly.getAttribute("readOnly").equals("true"),"Template ReadOnly");
@@ -181,9 +209,11 @@ public class EmailTemplatePage extends BasePage {
 	public void CheckResetTemplateButtonReadOnly() throws InterruptedException{
 		    waitForElementToPresent(advertisements);
 	    	this.advertisements.click();
+	  Thread.sleep(2000);
 	    	waitForElementToPresent(advertisementsEdit);
-	    	this.advertisementsEdit.click();
-	    	Thread.sleep(2000);
+	    //	this.advertisementsEdit.click();
+	    	click(advertisementsEdit,"advertisementsEdit");
+	    //	Thread.sleep(2000);
 	    	scrollDownVertically();
 	    	 WebElement readOnly1 = this.resetTemplate;
 	    	 System.out.println("ResetTemplate is Read Only");
@@ -196,7 +226,7 @@ public class EmailTemplatePage extends BasePage {
 	    	this.events.click();
 	    	waitForElementToPresent(editevents);
 	    	this.editevents.click();
-	    	Thread.sleep(2000);
+	   // 	Thread.sleep(2000);
 	    	scrollDownVertically();
 	    	 WebElement enableMode = this.resetTemplate;
 	         Assert.assertTrue(true, enableMode.getAttribute("enableMode"));
@@ -205,9 +235,11 @@ public class EmailTemplatePage extends BasePage {
 	}
 	 public void ResetTemplate(String Template, String Footer, String Subject, String Header, String Email, String bcc) throws InterruptedException {
     	 waitForElementToPresent(events);
-    	this.events.click();
+    //	this.events.click();
+    	click(events,"Events in email Templates");
     	waitForElementToPresent(editevents);
-    	this.editevents.click();
+    //	this.editevents.click();
+    	click(editevents,"Edit eventTemplate");
     	waitForElementToPresent(this.emailsubject);
 		this.emailsubject.clear();
 		this.emailheader.clear();
@@ -217,7 +249,7 @@ public class EmailTemplatePage extends BasePage {
 		type(emailheader, Header, "Email Header");
 		type(fromEmail, Email, "From Email");
 		type(BCClist, bcc, "BCC List");
-				
+		Thread.sleep(3000);	
 		driver.switchTo().frame(0);
 		enterTextInframe.clear();
 		enterTextInframe.sendKeys(Header);
@@ -227,10 +259,12 @@ public class EmailTemplatePage extends BasePage {
 		enterTextInframe.clear();
 		type(enterTextInframe, Footer, "Footer");
 		driver.switchTo().defaultContent();
-		
+//		Thread.sleep(2000);
+		waitForElementToPresent(resetTemplate);
 		click(resetTemplate, "reset Template");
-		Thread.sleep(2000);
-		click(yesProceed, "leave");
+	//	Thread.sleep(2000);
+		waitForElementToPresent(yesProceed);
+		click(yesProceed, "Yes Proceed");
 		//takeScreenshotByShutterBug(yesProceed, "Leave Btn");
 		//AssertionHelper.verifyText(toastMessage.getText(), "Success! Template changed successfully.");
 		
@@ -238,6 +272,10 @@ public class EmailTemplatePage extends BasePage {
 	 public void checkColorOfEditButton() {
 
 			click(emailtemplate, "Email Template");
+			 waitForElementToPresent(events);
+		    	
+		    	click(events,"Events");
+		    
 			waitForElementToPresent(editevents);
 			
 			String color = this.editevents.getCssValue("color");
@@ -257,9 +295,9 @@ public class EmailTemplatePage extends BasePage {
     	type(emailsubject, Subject, "Email Subject");
     	type(emailheader, Header, "Email Header");
     	 type(fromEmail, Email, "From Email");
-	    Thread.sleep(3000);
+	 //   Thread.sleep(3000);
     	 click(save, "Save");
-    	 waitForElementToPresent(emailReq);
+       	 waitForElementToPresent(emailReq);
     	 String error1=this.emailReq.getText();
     	 String error2=this.emailheaderReq.getText();
     	 String error3=this.fromemailReq.getText();
@@ -273,11 +311,17 @@ public class EmailTemplatePage extends BasePage {
 	    	Assert.assertNotEquals(Notpresent, AllFeatures, "Job is not present");
 	    }
 	 public void clickBackToFilter() throws InterruptedException {
-		 waitForElementToPresent(group);
-	    	this.group.click();
-	    	waitForElementToPresent(editGroup);
-	    	click(editGroup, "Edit");
-	    	Thread.sleep(2000);
+//		 waitForElementToPresent(group);
+//	    //	this.group.click();
+//	    	click(group,"group templates");
+//	    	
+//	    	waitForElementToPresent(editGroup);
+//	    	clickElementByJavaScript(editGroup, "Edit Group emailTemplate");
+	  //  	Thread.sleep(2000);
+		 waitForElementToPresent(events);
+	    	this.events.click();
+	    	waitForElementToPresent(editevents);
+	    	this.editevents.click();
 	    	waitForElementToPresent(backtoFilter);
 	    	click(backtoFilter, "Back to Filter");
 	 }
@@ -312,11 +356,12 @@ public class EmailTemplatePage extends BasePage {
 	}
 	 public void changeFromEmail(String Template, String Footer, String Subject, String Header, String Email, String bcc) throws InterruptedException {
     	 waitForElementToPresent(group);
-    	 Thread.sleep(6000);
+    	// Thread.sleep(6000);
     	this.group.click();
+    	Thread.sleep(2000);
     	waitForElementToPresent(editGroup);
     	this.editGroup.click();
-    	Thread.sleep(5000);
+    //	Thread.sleep(5000);
     	waitForElementToPresent(this.emailsubject);
 		this.emailsubject.clear();
 		this.emailheader.clear();
@@ -329,7 +374,7 @@ public class EmailTemplatePage extends BasePage {
 				
 		driver.switchTo().frame(0);
 		enterTextInframe.clear();
-		enterTextInframe.sendKeys(Header);
+		enterTextInframe.sendKeys(Template);
 		driver.switchTo().defaultContent();
 
 		driver.switchTo().frame(1);
@@ -338,10 +383,25 @@ public class EmailTemplatePage extends BasePage {
 		driver.switchTo().defaultContent();
 		
 		click(save, "Save");
-		waitForElementToPresent(toastMessage);
-		AssertionHelper.verifyText(toastMessage.getText(), "Success! Your changes saved successfully.");
+//		waitForElementToPresent(toastMessage);
+//		AssertionHelper.verifyText(toastMessage.getText(), "Success! Your changes saved successfully.");
 		Thread.sleep(7000);
 	}
+		@FindBy(xpath = "(//*[@class='user-profile dropdown-toggle']/*)[2]")
+		WebElement Toggledropdownmenu;
+		@FindBy(xpath = "//a[contains(text(),'Logout')]")
+		WebElement Logout;
+	 public HomePage logout() throws Exception {
+			//	Thread.sleep(2000);
+				waitForElementToPresent(Toggledropdownmenu);
+				clickElementByJavaScript(Toggledropdownmenu);
+				
+						
+				waitForElementToPresent(Logout);
+				click(Logout,"Logout");
+				return (HomePage) openPage(HomePage.class);
+				
+			}
 	 public void openGuerillamail(String emailName) throws InterruptedException, AWTException {
 			// Thread.sleep(5000);
 		     //((JavascriptExecutor)driver).executeScript("window.open()");

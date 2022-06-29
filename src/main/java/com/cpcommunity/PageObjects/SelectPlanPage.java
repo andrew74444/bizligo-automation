@@ -22,7 +22,7 @@ import junit.framework.Assert;
 public class SelectPlanPage extends BasePage {
 
 //	@FindBy(xpath = "//button[normalize-space()='Next']")
-	@FindBy(xpath = "//*[@class='text-center next-btn-section']/*/*[@ng-hide='data.IsFreePricingPlan']")
+	@FindBy(xpath = "//*[@ng-click='GoToCreateAd()']")
 	WebElement next;
 
 	@FindBy(xpath = "//button[@id='pricing_plan_20']")
@@ -113,7 +113,7 @@ public class SelectPlanPage extends BasePage {
 
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
-		System.out.println(driver + "Select the Plan Page");
+	//	System.out.println(driver + "Select the Plan Page");
 		return ExpectedConditions.visibilityOf(next);
 	}
 
@@ -261,17 +261,21 @@ public class SelectPlanPage extends BasePage {
 	@FindBy(xpath = "//h4[contains(text(),'Success')]")
 	 WebElement Success;
 
-	
+	@FindBy(xpath="(//*[@ng-data='promotionPlan.data'])[1]")
+	WebElement selectplan;
 	public AuthorizeGateway selectPlan(String planName, String AdName, String path ) throws Exception {
 		//this.createGlobalAd.click();
         Thread.sleep(2000);
 		//this.selectAPlan(planName);
-          clickElementByJavaScript(selectGold2);
-        Thread.sleep(3000);		
-		click(next, "Next button");
-		Thread.sleep(5000);
-		picture();
+        waitForElementToPresent(selectplan);
+          clickElementByJavaScript(selectplan);
+    //    Thread.sleep(3000);	
+          waitForElementToPresent(next);
+		clickElementByJavaScript(next, "Next button");
+	//	Thread.sleep(5000);
+	//	picture();
 		waitForElementToPresent(adname);
+		AdName=AdName+getSystemCurrentMintues();
 		type(adname, AdName, "Advertisement name");
 		click(date, "Select Date");
 		waitForElementToPresent(adStartDatecalendar);
@@ -284,10 +288,13 @@ public class SelectPlanPage extends BasePage {
 		//waitForElementToPresent(adEndDatecalendar);
 		//Thread.sleep(1000);
 		//click(enddate, "EndDate");
-		Thread.sleep(4000);
+	//	Thread.sleep(4000);
 		waitForElementToPresent(choosefile);
-		type(choosefile, path, "Image Path");
+		String path1 = projectFloder("\\src\\test\\resources\\testImages\\Files\\ChromeImage3.jpeg");
+		type(choosefile, path1, "Image Path");
+	
 		scrollDownVertically();
+		waitForElementToPresent(proceedTopayment);
 		click(proceedTopayment, "Proceed To Payment");
 		waitForElementToPresent(Authorised);
 		click(Authorised, "Authorised.Net");
@@ -399,38 +406,41 @@ public class SelectPlanPage extends BasePage {
 		Thread.sleep(5000);
 		return (AuthorizeGateway) openPage(AuthorizeGateway.class);
 	}
-	
+	@FindBy(xpath="//tbody/*/td[@class='day active']")
+	WebElement today;
 	public AuthorizeGateway selectPlan1(String planName, String AdName, String path ) throws Exception {
 		//this.createGlobalAd.click();
-		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
+	//	driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
 		//this.selectAPlan(planName);
 		waitForElementToPresent(selectGold3);
           clickElementByJavaScript(selectGold3);
-          driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);		
+        //  driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);	
+          waitForElementToPresent(next); 
 		click(next, "Next button");
-		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
-		picture();
+//		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
+//		picture();
 		waitForElementToPresent(adname);
+		AdName=AdName+getSystemCurrentMintues();
 		type(adname, AdName, "Advertisement name");
+		waitForElementToPresent(date);
 		click(date, "Select Date");
+		Thread.sleep(2000);
 		waitForElementToPresent(adStartDatecalendar);
-		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
-		click(nextMonth, "Next");
-		click(nextMonth, "Next");
-		waitForElementToPresent(dateselect);
-		click(dateselect, "Date");
-		//click(this.adEndDate, "Ad End Date");
-		//waitForElementToPresent(adEndDatecalendar);
-		//Thread.sleep(1000);
-		//click(enddate, "EndDate");
-		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
+		Thread.sleep(2000);
+//		click(nextMonth, "Next");
+//		click(nextMonth, "Next");
+		waitForElementToPresent(today);
+		click(today, "Date");
+		
 		waitForElementToPresent(choosefile);
-		type(choosefile, path, "Image Path");
+		String path1 = projectFloder("\\src\\test\\resources\\testImages\\Files\\ChromeImage3.jpeg");
+		type(choosefile, path1, "Image Path");
+	
 		scrollDownVertically();
 		click(proceedTopayment, "Proceed To Payment");
 		waitForElementToPresent(Authorised);
 		click(Authorised, "Authorised.Net");
-		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);;
+	//	driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);;
 	    waitForElementToPresent(proceed);
 		click(proceed, "Proceed");
 		Thread.sleep(4000);
@@ -465,12 +475,13 @@ public class SelectPlanPage extends BasePage {
 	}
 	
 	public void checkNextbtnError() throws InterruptedException {
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
 		scrollDownVertically();
-		click(next, "Next btn");
+		waitForElementToPresent(next)
+;		click(next, "Next btn");
 		click(next, "Next btn");
 		AssertionHelper.verifyText(toastMessage.getText(), "Please select a plan.");
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
 
 	
 

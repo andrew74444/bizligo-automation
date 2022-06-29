@@ -6,6 +6,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.CommunityDashboardPage;
+import com.cpcommunity.PageObjects.EcoSystemPage;
 import com.cpcommunity.PageObjects.GlobalCommunitesPage;
 import com.cpcommunity.PageObjects.HomePage;
 import com.cpcommunity.PageObjects.LoginPage;
@@ -33,12 +34,16 @@ public class TC1131_Verify_otherCA_ofSameCommunity_Can_Edit_AdPlans extends Base
 	logInfo("BizLigo Application Opened");
 	HomePage home = new HomePage().open(data.get("tenantType"));
 	LoginPage login = home.clickOnLOGINBtn();
-	 MyDashboardPage MDP=login.loginToMemberdashboard(data.get("email"), data.get("password"));
-	 GlobalCommunitesPage GCP=MDP.naviagtingToGlobalCommunities();
-	 GCP.searchCommunity(data.get("community"));
-	 ManageCommunityPage MC=GCP.goToManagecommunity();
-	 ManageAdPlansPage MAP=MC.NavigateTomanageAdpage();
-	 MAP.editPlan();
+//	 MyDashboardPage MDP=login.loginToMemberdashboard(data.get("email"), data.get("password"));
+//	 GlobalCommunitesPage GCP=MDP.naviagtingToGlobalCommunities();
+//	 GCP.searchCommunity(data.get("community"));
+//	 ManageCommunityPage MC=GCP.goToManagecommunity();
+//	 ManageAdPlansPage MAP=MC.NavigateTomanageAdpage();
+	 EcoSystemPage EcoSystemPage = login.loginToApplication(data.get("email"), data.get("password"));
+		MyCommunitiesPage MyCommunitiesPage = EcoSystemPage.goToMyCommunities();
+		CommunityDashboardPage communityDashboard =MyCommunitiesPage.gotoManageCommunity(data.get("communityName"));
+		ManageAdPlansPage MAPP=communityDashboard.goToManageAdPlansPage();
+	 MAPP.editPlan(data.get("plan"));
 	
 	}
 	@AfterMethod

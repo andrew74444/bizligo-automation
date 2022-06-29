@@ -36,8 +36,8 @@ public class TC2123_Verify_Events_registered_from_other_members_displaying_in_My
 		LoginPage login1 = home1.clickOnLOGINBtn();
 		EcoSystemPage EcoSystemPage1 = login1.loginToApplication(data.get("email1"), data.get("password1"));
 		MyEventsPage MEP=EcoSystemPage1.goToMyEventsPage();
-		MEP.registeredEventPresentInMyevents(data.get("UpcomingEvent"));
-		
+	//	MEP.registeredEventPresentInMyevents(data.get("UpcomingEvent"));
+		MEP.searchByEventDate(data.get("Start Date"),data.get("End Date"),data.get("UpcomingEvent"));//added on 12/05
 		
 	
 	

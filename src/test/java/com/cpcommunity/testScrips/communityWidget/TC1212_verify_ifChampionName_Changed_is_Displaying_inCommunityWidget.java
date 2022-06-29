@@ -2,6 +2,7 @@ package com.cpcommunity.testScrips.communityWidget;
 
 import java.util.Hashtable;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.cpcommunity.PageObjects.Bizligo1CommunityPage;
@@ -40,6 +41,14 @@ public class TC1212_verify_ifChampionName_Changed_is_Displaying_inCommunityWidge
     ManageCommunityWidgets CW=MCp.navigateTomanageWidget();
     CW.RenameChampionWidget(data.get("champion1"));
     
+	}
+	@AfterMethod
+	public void tearDown() {
+		
+		logInfo("TC1212 Test Completed");
+		
+		quit();
+		
 	}
 
 }

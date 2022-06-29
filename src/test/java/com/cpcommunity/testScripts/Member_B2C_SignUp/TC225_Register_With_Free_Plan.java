@@ -84,7 +84,7 @@ public class TC225_Register_With_Free_Plan extends BaseTest {
 	@AfterMethod
 	public void tearDown() {
 
-		logInfo("Login Test Completed");
+		logInfo("TC225 Test Completed");
 
 		quit();
 

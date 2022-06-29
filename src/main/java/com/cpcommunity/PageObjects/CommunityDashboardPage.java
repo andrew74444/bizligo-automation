@@ -262,18 +262,19 @@ public class CommunityDashboardPage extends BasePage {
 		// new CommunityPendingRequestsPage(driver);
 	}
 	public ManageMemberAdvertisementsPage navigateToMemberAdvertisements() throws InterruptedException {
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
 		this.clickOnAdvertisments();
 		waitForElementToPresent(manageMemberAdvertisements);
 		click(manageMemberAdvertisements, "Manage Member Advertisements");
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
 		return (ManageMemberAdvertisementsPage) openPage(ManageMemberAdvertisementsPage.class);
 		// new CommunityPendingRequestsPage(driver);
 	}
 
 
 	public HomePage logout() {
-		click(angleDown, "Community Admin Menu Drop down");
+		waitForElementToPresent(angleDown);
+		clickElementByJavaScript(angleDown, "Community Admin Menu Drop down");
 		waitForElementToPresent(logout);
 		click(logout, "logout");
 		return (HomePage) openPage(HomePage.class);
@@ -286,7 +287,7 @@ public class CommunityDashboardPage extends BasePage {
 	// }
 
 	public CommunityPendingRequestsPage NavigateToCommunityPendingRequets() {
-
+		waitForElementToPresent(Members);
 		click(Members, "Members");
 		waitForElementToPresent(CommunityPendingRequest);
 		click(CommunityPendingRequest, "Community Pending Request");
@@ -303,23 +304,27 @@ public class CommunityDashboardPage extends BasePage {
 	}
 
 	public PlansPage navigateToMembershipPlans() throws Exception {
-		Thread.sleep(500);
+	//	Thread.sleep(500);
 		scrollIntoView(pricingPlanDetails);
-		Thread.sleep(500);
+	//	Thread.sleep(500);
+		waitForElementToPresent(MembershipPlans);
 		click(MembershipPlans, "Membership Plans");
 		return (PlansPage) openPage(PlansPage.class);
 		// new MeetingAccountsPage(driver);
 	}
 
 	public PaymentGatewaysPage navigateToPaymentGateways() {
+		scrollToElement(paymentGateways);
 		click(paymentGateways, "payment Gateways");
 		return (PaymentGatewaysPage) openPage(PaymentGatewaysPage.class);
 		// new PaymentGatewaysPage(driver);
 	}
 
 	public EditCommunityPage navigateToEditCommunityPage() throws Exception {
+		waitForElementToPresent(manage);
 		click(manage, "manage");
-		Thread.sleep(1000);
+	//	Thread.sleep(1000);
+		waitForElementToPresent(EditCommunity);
 		click(EditCommunity, "EditCommunity");
 		return (EditCommunityPage) openPage(EditCommunityPage.class);
 		// new EditCommunityPage(driver);
@@ -335,15 +340,17 @@ public class CommunityDashboardPage extends BasePage {
 	}
 
 	public ManageCommunityMembersPage navigateToManageCommunityMembers() throws Exception {
-
+		waitForElementToPresent(Members);
 		click(Members, "Members");
-		Thread.sleep(1000);
+	//	Thread.sleep(1000);
+		waitForElementToPresent(ManageMembers);
 		click(ManageMembers, "Manage Members");
 		return (ManageCommunityMembersPage) openPage(ManageCommunityMembersPage.class);
 		// new ManageCommunityMembersPage(driver);
 	}
 
 	public CommunityInviteMembersPage navigateToinvitePeople() {
+		waitForElementToPresent(manage);
 		click(manage, "manage");
 		waitForElementToPresent(invitePeople);
 		click(invitePeople, "invitePeople");
@@ -371,7 +378,8 @@ public class CommunityDashboardPage extends BasePage {
 
 	}
 	public ManageMembershipPlan navigateTomembershipPlan() throws InterruptedException {
-         Thread.sleep(5000);
+    //     Thread.sleep(5000);
+		waitForElementToPresent(MembershipPlans);
 		click(MembershipPlans, "MembershipPlans");
 		
 		return (ManageMembershipPlan) openPage(ManageMembershipPlan.class);
@@ -417,10 +425,11 @@ public class CommunityDashboardPage extends BasePage {
 	// }
 
 	public ManageGroupsPage navigateToManageGroupsPage() throws Exception {
+		scrollToElement(Groups);
 		click(Groups, "Groups");
 		//Thread.sleep(1000);
 		waitForElementToPresent(ManageGroups);
-		click(ManageGroups, "Manage Groups"); 
+		clickElementByJavaScript(ManageGroups, "Manage Groups"); 
 		return (ManageGroupsPage) openPage(ManageGroupsPage.class);
 		// new ManageGroupsPage(driver);
 	}
@@ -455,7 +464,8 @@ public class CommunityDashboardPage extends BasePage {
 	}
 
 	public CategoriesPage gotoCategories() throws InterruptedException {
-		Thread.sleep(1000);
+	//	Thread.sleep(1000);
+		waitForElementToPresent(blogs);
 		click(blogs, "Categories");
 		waitForElementToPresent(categories);
 		click(categories, "Categories");
@@ -464,7 +474,8 @@ public class CommunityDashboardPage extends BasePage {
 	}
 
 	public TagsPage gotoTags() throws InterruptedException {
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
+		waitForElementToPresent(blogs);
 		click(blogs, "Tags");
 		waitForElementToPresent(tags);
 		click(tags, "Tags");
@@ -822,8 +833,8 @@ public class CommunityDashboardPage extends BasePage {
 		}
 	 
 	 public RevenueReportPage goToRevenueReport() throws InterruptedException {
-			//waitForElementToPresent(dashboardreport);
-		 Thread.sleep(5000);
+			waitForElementToPresent(dashboardreport);
+	//	 Thread.sleep(5000);
 			click(dashboardreport, "Dashboard Reports");
 			waitForElementToPresent(revenuereport);
 			click(revenuereport, "Revenue Report");
@@ -831,7 +842,8 @@ public class CommunityDashboardPage extends BasePage {
 		}
 	 
 	 public EmailTemplatePage navigateToEmailTemplate() throws InterruptedException {
-           Thread.sleep(5000);
+        //   Thread.sleep(5000);
+		 waitForElementToPresent(emailtemplate);
 			click(emailtemplate, "Email Template");
 			return (EmailTemplatePage) openPage(EmailTemplatePage.class);
 			// new CommunityEvents(driver);
@@ -878,6 +890,12 @@ public class CommunityDashboardPage extends BasePage {
 		this.Staticcampaign.click();
 		//click(composeCampaign, "composeCampaign");
 		return (StatisticsManageCampaign) openPage(StatisticsManageCampaign.class);
+		}
+		public boolean CompareProgressBars(int previouscount,int Aftercount){
+			if(previouscount > Aftercount) {
+				  return true;
+			} 
+			else return false;
 		}
 
 }

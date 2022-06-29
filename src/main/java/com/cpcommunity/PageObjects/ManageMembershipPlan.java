@@ -15,7 +15,7 @@ public class ManageMembershipPlan extends BasePage {
 	@Override
 	protected ExpectedCondition getPageLoadCondition() {
 		// TODO Auto-generated method stub
-		return ExpectedConditions.visibilityOf(title);
+		return ExpectedConditions.visibilityOf(Title);
 	}
 
 	@Override
@@ -26,8 +26,10 @@ public class ManageMembershipPlan extends BasePage {
 	}
 	@FindBy(xpath="//body//div[@class='container body']//div[@class='row']//div[@class='row']//h2[1]")
 	WebElement title;
+	@FindBy(xpath="//*[@class='x_title']/*[text()='Manage Membership Plans']")
+	WebElement Title;
 	
-	@FindBy(xpath="//button[@id='btnAddNewPlan']")
+	@FindBy(xpath="//button[@id='btnAddNew']")
 	WebElement addnew;
 	
 	@FindBy(xpath="//input[@id='Name']")
@@ -183,8 +185,8 @@ public class ManageMembershipPlan extends BasePage {
 		 click(addnew, "Add new pLan");
 		// driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
 		 waitForElementToPresent(planName);
-		Thread.sleep(4000);
-		 plan=plan+" " + getDateInDDMMMYYYY();
+	//	Thread.sleep(4000);
+	//	 plan=plan+" " + getDateInDDMMMYYYY();
 		 type(planName, plan, "Plan name");
 		 type(price, Price, "Price");
 		 waitForElementToPresent(configurationError);

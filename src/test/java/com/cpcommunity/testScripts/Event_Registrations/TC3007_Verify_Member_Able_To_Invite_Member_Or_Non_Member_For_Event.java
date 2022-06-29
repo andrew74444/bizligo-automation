@@ -35,10 +35,10 @@ public class TC3007_Verify_Member_Able_To_Invite_Member_Or_Non_Member_For_Event 
 		
 		UpcomingEventsPage UpcomingEventsPage = EcoSystemPage.goToUpComingEvents();
 		EventDetailsPage eventDetailsPage = UpcomingEventsPage.goToEventDetailsPage(data);
-		eventDetailsPage.inviteMember(data.get("email1"));
+		eventDetailsPage.inviteMember(data.get("attendeeEmailID"),data.get("attendeeFirstName"),data.get("attendeLastName"));
 		
 		Yahoo yahoo= new Yahoo().open();
-		yahoo.Login(data.get("email1"), data.get("password1"));
+		yahoo.Login(data.get("email"), data.get("password"));
 		yahoo.invitation();
 	}
 

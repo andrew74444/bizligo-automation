@@ -36,11 +36,12 @@ public class TC1013_Verify_ProgressBar_NotDisplaying_WhenViewing_BissinessDirect
 		//BusinessDirectoryPage bussinessdirectory= myCommunity.gotoBusinessDirectoryPage();
 		MemberDirectoryPage memberdirectory= myCommunity.gotoMemberDirectoryPage();
 		//memberdirectory.clickOnsearchByName(data.get("memberName"));
-		memberdirectory.goToProfilePage();
-		memberdirectory.profileComplenessViibility();
+		//***below two lines commented on 27/04*******\\
+	//	memberdirectory.goToProfilePage();
+	//	memberdirectory.profileComplenessViibility();
 		
-		
-		
+		ProfilePage ProfilePage	=memberdirectory.goToProfilePage();
+		ProfilePage.profileComplenessViibility();
 }
 	@AfterMethod
 	public void tearDown() {

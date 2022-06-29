@@ -41,10 +41,10 @@ public class EventTicketPage extends BasePage {
 	}
 
 	public void successfulRegistration() throws Exception {
-
+		Thread.sleep(3000);
 		waitForElementToPresent(ticketsProcessed);
 		
-		Thread.sleep(3000);
+		
 		AssertionHelper.verifyText(ticketsProcessed.getText(),
 		
 		"Your tickets have processed. You will receive an email with the details.");

@@ -27,10 +27,10 @@ public class TC656_Verify_New_User_Unable_To_Login_to_the_System_If_a_User_regis
 		logInfo("Launched Browser : " + data.get("browser"));
 		HomePage home = new HomePage().open(data.get("tenantType"));
 		LoginPage loginPage = home.clickOnLOGINBtn();
-		SignupPage signup = loginPage.clickonSignup();
-		AccountVerificationCodePage verification = signup.signupExistingORG(data.get("firstName"),data.get("lastName"),data.get("emailAddress"), data.get("password"), data.get("confirmPassword"), data.get("phNo"),data.get("organizationName"));
-		LoginPage loginPage1 = verification.clickOnSendToNavigateHomepage(data.get("email"));
-		loginPage1.waitingForTAApproval(data.get("emailAddress1"), data.get("password1"));
+//		SignupPage signup = loginPage.clickonSignup();
+//		AccountVerificationCodePage verification = signup.signupExistingORG(data.get("firstName"),data.get("lastName"),data.get("emailAddress"), data.get("password"), data.get("confirmPassword"), data.get("phNo"),data.get("organizationName"));
+//		LoginPage loginPage1 = verification.clickOnSendToNavigateHomepage(data.get("email"));
+		loginPage.waitingForTAApproval(data.get("emailAddress1"), data.get("password1"));
 	}
 
 	
